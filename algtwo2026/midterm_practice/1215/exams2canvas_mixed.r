@@ -11,19 +11,15 @@ outdir = "outcanvas"
 # exams2pdf(pm,name="example_1205_cA",dir=".",n=5)
 # 
 
-
-
 ### Entrance ticket
-pm = list("et01_solve_a1_standard_eq_0.Rmd",
-          "et02_optimize_rect_fence_barn_B.Rmd",
-          "complete_the_square_F.Rmd",
-          "et03_quad_formula_decimal.Rmd")
+pm = list("vertex_form_params_from_graph.Rmd",
+          "trans_sqrt_params.Rmd")
 exams2canvas(pm,
              n=n,
              dir=outdir,
-             points=rep(1,length(pm)),
+             points=rep(5,length(pm)),
              maxattempts = 8,
-             name="at1212_MASTERY",
+             name="at1215_entrance",
              template = "canvas_qti12.xml",
              cloze = list(enumerate = FALSE))
 

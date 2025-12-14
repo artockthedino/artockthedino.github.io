@@ -1,0 +1,175 @@
+```{r,echo=FALSE}
+options(scipen=999)
+
+pn = function(coeffs,pows){
+    pows = pows[coeffs!=0]
+    coeffs = coeffs[coeffs!=0]
+    ex1 = paste0("{",coeffs,"}x^{",pows,"}",collapse="+")
+    ex1 = gsub("+{-","-{",ex1,fixed=T)
+    ex1 = gsub("{1}x^{0}","1",ex1,fixed=T)
+    ex1 = gsub("{-1}x^{0}","-1",ex1,fixed=T)
+    ex1 = gsub("{1}x","x",ex1,fixed=T)
+    ex1 = gsub("{-1}x","-x",ex1,fixed=T)
+    ex1 = gsub("x^{0}","",ex1,fixed=T)
+    ex1 = gsub("x^{1}","x",ex1,fixed=T)
+    ex1 = gsub("+-","-",ex1,fixed=T)
+    ex1 = gsub("{","",ex1,fixed=T)
+    ex1 = gsub("}","",ex1,fixed=T)
+    if(ex1 == ""){
+        ex1 = "0"
+    }
+    return(ex1)
+}
+
+while(T){
+    mphk = sample(1:7,4)*sample(c(-1,1),4,T)
+    m = mphk[1]
+    p = mphk[2]
+    h = mphk[3]
+    k = mphk[4]
+    if(abs(p)!=4 && abs(h+p)<10 && abs(k+m)<10 && abs(m)>1 && abs(p)>1){break}
+}
+
+ach = c(-7:7)
+al = paste0("* ",ach,collapse="\n")
+
+sol1 = paste0(1*(ach==m),collapse="")
+sol2 = paste0(1*(ach==p),collapse="")
+sol3 = paste0(1*(ach==h),collapse="")
+sol4 = paste0(1*(ach==k),collapse="")
+
+```
+
+Question
+========
+
+A transformed square-root function was constructed by randomly choosing integers for the values of $m$, $p$, $h$, and $k$ in the equation below.
+
+$$y~=~m\sqrt{\frac{1}{p}(x-h)}+k$$
+
+The equation's curve is plotted below:
+
+```{r,echo=F,fig.dim=c(6,6)}
+par(mar=c(0,0,0,0),pty="s")
+plot(0,0,"n",xlim=c(-11,11),ylim=c(-11,11),axes=F,ann=F)
+
+for(i in -10:10){
+    lines(c(-10,10),c(i,i),col="grey",lwd=0.5)
+    lines(c(i,i),c(-10,10),col="grey",lwd=0.5)
+}
+for(i in seq(-10,10,5)){
+    lines(c(-10,10),c(i,i),col="darkgrey",lwd=0.8)
+    lines(c(i,i),c(-10,10),col="darkgrey",lwd=0.8)
+}
+for(i in c(-10,-5,5,10)){
+    text(i,0,i,adj=c(0.5,1.2))
+    text(0,i,i,adj=c(0.5,1.2),srt=-90)
+}
+text(10.5,0,"x",adj=c(0.5,-0.5))
+text(0,10.5,"y",adj=c(-0.5,0.5))
+
+arrows(-11,0,11,0,0.1,15,3,lwd=1.2)
+arrows(0,-11,0,11,0.1,15,3,lwd=1.2)
+
+x = seq(h,10*sign(p),0.001*sign(p))
+y = m*sqrt(1/p*(x-h))+k
+x = x[abs(y)<=10]
+y = y[abs(y)<=10]
+
+lines(x,y,col="blue",lwd=2)
+points(h,k,col="blue",pch=19)
+points(h+p,k+m,col="blue",pch=19)
+if(abs(h+4*p)<=10 && abs(k+2*m)<=10){
+    points(h+4*p,k+2*m,col="blue",pch=19)
+}
+
+```
+\
+
+Notice, I've marked where the curve intersects the lattice points exactly. These points are where $x$ and $y$ are both integers. (*On the midterm, these points might not be marked.*)
+
+Find the values of the parameters:
+
+* $m=$ ##ANSWER1##
+* $p=$ ##ANSWER2##
+* $h=$ ##ANSWER3##
+* $k=$ ##ANSWER4##
+
+Answerlist
+--------
+
+`r al`
+`r al`
+`r al`
+`r al`
+
+
+Solution
+========
+
+I recommend opening up [Desmos](https://www.desmos.com/calculator) and typing in $y~=~m\sqrt{\frac{1}{p}(x-h)}+k$, using sliders for $m$, $p$, $h$, and $k$. Then see what happens as you adjust each slider. You might also add points $(h,k)$ and $(h+p,k+m)$ to see where those move.
+
+The given equation represents a transformation that is best thought of as stretches and then shifts. Imagine the parent function stretched vertically by factor $m$ and horizontally by factor $p$. Then, the parent function is shifted horizontally by distance $h$ and vertically by distance $k$.
+
+The parent function, $y=\sqrt{x}$, has its endpoint at the origin. This point on the curve is unaffected by the stretches, so its corresponding point at $(`r h`,`r k`)$ represents the shifts only.
+
+$$h=`r h`$$
+$$k=`r k`$$
+
+The parent function also goes through $(1,1)$. Because both stretches are integer multipliers, we know the corresponding point will be a lattice point on the curve. This key lattice point on the curve is at $(`r h+p`,`r k+m`)$. We can find $m$ and $p$ by comparing this point to the endpoint.
+
+```{r,echo=F,fig.dim=c(6,6)}
+par(mar=c(0,0,0,0),pty="s")
+plot(0,0,"n",xlim=c(-11,11),ylim=c(-11,11),axes=F,ann=F)
+
+for(i in -10:10){
+    lines(c(-10,10),c(i,i),col="grey",lwd=0.5)
+    lines(c(i,i),c(-10,10),col="grey",lwd=0.5)
+}
+for(i in seq(-10,10,5)){
+    lines(c(-10,10),c(i,i),col="darkgrey",lwd=0.8)
+    lines(c(i,i),c(-10,10),col="darkgrey",lwd=0.8)
+}
+for(i in c(-10,-5,5,10)){
+    text(i,0,i,adj=c(0.5,1.2))
+    text(0,i,i,adj=c(0.5,1.2),srt=-90)
+}
+text(10.5,0,"x",adj=c(0.5,-0.5))
+text(0,10.5,"y",adj=c(-0.5,0.5))
+
+arrows(-11,0,11,0,0.1,15,3,lwd=1.2)
+arrows(0,-11,0,11,0.1,15,3,lwd=1.2)
+
+x = seq(h,10*sign(p),0.001*sign(p))
+y = m*sqrt(1/p*(x-h))+k
+x = x[abs(y)<=10]
+y = y[abs(y)<=10]
+
+lines(x,y,col="blue",lwd=2)
+points(h,k,col="blue",pch=19)
+points(h+p,k+m,col="blue",pch=19)
+if(abs(h+4*p)<=10 && abs(k+2*m)<=10){
+    points(h+4*p,k+2*m,col="blue",pch=19)
+}
+
+arrows(h,k,h+p,k,0.1,20,col="purple",lwd=3)
+text(h+p/2,k,p,col="purple",adj=c(0.5,0.5+sign(m)),cex=1.5)
+arrows(h+p,k,h+p,k+m,0.1,20,col="red",lwd=3)
+text(h+p,k+m/2,m,col="red",adj=c(0.5-sign(p),0.5),cex=1.5)
+
+```
+\
+
+
+* $m=`r m`$
+* $p=`r p`$
+* $h=`r h`$
+* $k=`r k`$
+
+
+Meta-information
+============
+extype: cloze
+exclozetype: schoice|schoice|schoice|schoice
+exsolution: `r sol1`|`r sol2`|`r sol3`|`r sol4`
+exname: trans_sqrt_params

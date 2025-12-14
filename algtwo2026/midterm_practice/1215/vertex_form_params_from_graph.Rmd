@@ -21,9 +21,21 @@ pn = function(coeffs,pows){
     return(ex1)
 }
 
-a = sample(c(-3,-2,2,3),1)
-h = sample(1:7,1)*sample(c(-1,1))
-k = sample(1:7,1)*sample(c(-1,1))
+while(T){
+    a = sample(c(-4,-3,-2,2,3,4),1)
+    h = sample(1:7,1)*sample(c(-1,1),1)
+    k = sample(1:6,1)*sample(c(-1,1),1)
+    if(length(unique(abs(c(a,h,k))))==3 && abs(k+a)<10){break}
+}
+
+
+ach = -7:7
+
+al = paste0("* ",ach,collapse="\n")
+
+sol1 = paste0(1*(ach==a),collapse="")
+sol2 = paste0(1*(ach==h),collapse="")
+sol3 = paste0(1*(ach==k),collapse="")
 
 ```
 
@@ -34,9 +46,51 @@ Quadratic functions are often expressed in [vertex form](https://en.wikipedia.or
 
 $$y~=~a(x-h)^2+k$$
 
-where the vertex is at point $(h,k)$ and parameter $a$ dictates the vertical stretch and reflection.
+From the graph below, determine the values of the 3 parameters.
+
+```{r,echo=F,fig.dim=c(6,6)}
+par(mar=c(0,0,0,0),pty="s")
+plot(0,0,"n",xlim=c(-11,11),ylim=c(-11,11),axes=F,ann=F)
+
+for(i in -10:10){
+    lines(c(-10,10),c(i,i),col="grey",lwd=0.5)
+    lines(c(i,i),c(-10,10),col="grey",lwd=0.5)
+}
+for(i in seq(-10,10,5)){
+    lines(c(-10,10),c(i,i),col="darkgrey",lwd=0.8)
+    lines(c(i,i),c(-10,10),col="darkgrey",lwd=0.8)
+}
+for(i in c(-10,-5,5,10)){
+    text(i,0,i,adj=c(0.5,1.2))
+    text(0,i,i,adj=c(0.5,1.2),srt=-90)
+}
+text(10.5,0,"x",adj=c(0.5,-0.5))
+text(0,10.5,"y",adj=c(-0.5,0.5))
+
+arrows(-11,0,11,0,0.1,15,3,lwd=1.2)
+arrows(0,-11,0,11,0.1,15,3,lwd=1.2)
+
+x = seq(-10,10,0.01)
+y = a*(x-h)^2+k
+x = x[abs(y)<=10]
+y = y[abs(y)<=10]
+
+lines(x,y,col="blue",lwd=2)
+
+```
+\
+
+* $a=$ ##ANSWER1##
+* $h=$ ##ANSWER2##
+* $k=$ ##ANSWER3##
 
 
+Answerlist
+--------
+
+`r al`
+`r al`
+`r al`
 
 
 
@@ -44,12 +98,73 @@ where the vertex is at point $(h,k)$ and parameter $a$ dictates the vertical str
 Solution
 ========
 
+Based on function transformations, it should be clear that the vertex is at point $(h,k)$ and parameter $a$ dictates the vertical stretch and possible vertical reflection (which flips the parabola upside down, such that it looks like a hill, not a valley).
 
+When determining $a$ from a graph, it is easiest to identify the point on the curve 1 unit to the right of the vertex. That point will be at $(h+1,k+a)$. By subtracting the $y$ value of the vertex from the $y$ value of that point 1 unit to the right, it is easy to find $a$.
+
+
+```{r,echo=F,fig.dim=c(6,6)}
+par(mar=c(0,0,0,0),pty="s")
+plot(0,0,"n",xlim=c(-11,11),ylim=c(-11,11),axes=F,ann=F)
+
+for(i in -10:10){
+    lines(c(-10,10),c(i,i),col="grey",lwd=0.5)
+    lines(c(i,i),c(-10,10),col="grey",lwd=0.5)
+}
+for(i in seq(-10,10,5)){
+    lines(c(-10,10),c(i,i),col="darkgrey",lwd=0.8)
+    lines(c(i,i),c(-10,10),col="darkgrey",lwd=0.8)
+}
+for(i in c(-10,-5,5,10)){
+    text(i,0,i,adj=c(0.5,1.2))
+    text(0,i,i,adj=c(0.5,1.2),srt=-90)
+}
+text(10.5,0,"x",adj=c(0.5,-0.5))
+text(0,10.5,"y",adj=c(-0.5,0.5))
+
+arrows(-11,0,11,0,0.1,15,3,lwd=1.2)
+arrows(0,-11,0,11,0.1,15,3,lwd=1.2)
+
+x = seq(-10,10,0.01)
+y = a*(x-h)^2+k
+x = x[abs(y)<=10]
+y = y[abs(y)<=10]
+
+lines(x,y,col="blue",lwd=2)
+
+points(h,k,col="red",pch=19)
+text(h,k,paste0("(",h,", ",k,")"),col="red",adj=c(0.5,0.5+sign(a)),cex=1.5)
+
+points(h+1,k+a,col="purple",pch=19)
+text(h+1,k+a,paste0("(",h+1,", ",k+a,")"),col="purple",adj=c(-0.2,0.5),cex=1.5)
+
+
+# lines(c(h,h+1),c(k,k),col="pink")
+# lines(c(h+1,h+1),c(k,k+a),col="darkgreen",lwd=3)
+# text(h+1,k+a/2,a,col="darkgreen",adj=c(-0.2,0.5),cex=1.5)
+
+
+eq = paste0("y~=~",a,"(x+",-h,")^2+",k)
+eq = gsub("+-","-",eq,fixed=T)
+
+```
+\
+
+$$(`r k+a`)-(`r k`)~=~ `r a`$$
+
+So,
+
+* $a=`r a`$
+* $h=`r h`$
+* $k=`r k`$
+
+Thus, the equation of the curve is:
+$$`r eq`$$
 
 
 Meta-information
 ============
 extype: cloze
-exclozetype: 
-exsolution: 
-exname: 
+exclozetype: schoice|schoice|schoice
+exsolution: `r sol1`|`r sol2`|`r sol3`
+exname: vertex_form_params_from_graph
