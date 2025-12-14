@@ -38,6 +38,9 @@ sol2 = paste0(1*(ach==p),collapse="")
 sol3 = paste0(1*(ach==h),collapse="")
 sol4 = paste0(1*(ach==k),collapse="")
 
+eq = paste0("y=",m,"\\sqrt{\\frac{1}{",p,"}(x+",-h,")}+",k)
+eq = gsub("+-","-",eq,fixed=T)
+
 ```
 
 Question
@@ -166,6 +169,7 @@ text(h+p,k+m/2,m,col="red",adj=c(0.5-sign(p),0.5),cex=1.5)
 * $h=`r h`$
 * $k=`r k`$
 
+Thus, the equation of the curve is $$`r eq`$$
 
 Meta-information
 ============

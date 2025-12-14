@@ -1,5 +1,5 @@
 library("exams2forms")
-n = 8
+n = 5
 
 ### Entrance ticket
 pm = list("vertex_form_params_from_graph.Rmd",

@@ -132,16 +132,16 @@ y = y[abs(y)<=10]
 
 lines(x,y,col="blue",lwd=2)
 
-points(h,k,col="red",pch=19)
-text(h,k,paste0("(",h,", ",k,")"),col="red",adj=c(0.5,0.5+sign(a)),cex=1.5)
+points(h,k,col="orange",pch=19)
+text(h,k,paste0("(",h,", ",k,")"),col="orange",adj=c(0.5,0.5+sign(a)),cex=1.5)
 
-points(h+1,k+a,col="purple",pch=19)
-text(h+1,k+a,paste0("(",h+1,", ",k+a,")"),col="purple",adj=c(-0.2,0.5),cex=1.5)
+points(h+1,k+a,col="blue",pch=19)
+text(h+1,k+a,paste0("(",h+1,", ",k+a,")"),col="blue",adj=c(-0.2,0.5),cex=1.5)
 
 
 # lines(c(h,h+1),c(k,k),col="pink")
-# lines(c(h+1,h+1),c(k,k+a),col="darkgreen",lwd=3)
-# text(h+1,k+a/2,a,col="darkgreen",adj=c(-0.2,0.5),cex=1.5)
+arrows(h+1,k,h+1,k+a,0.15,20,col="red",lwd=2)
+text(h+1,k+a/2,gsub("+-","-",paste0("+",a),fixed=T),col="red",adj=c(-0.2,0.5),cex=1.5)
 
 
 eq = paste0("y~=~",a,"(x+",-h,")^2+",k)
