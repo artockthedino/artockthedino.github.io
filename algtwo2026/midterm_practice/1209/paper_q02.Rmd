@@ -1,0 +1,156 @@
+---
+output: pdf_document
+---
+
+\pagenumbering{gobble}
+
+## Midterm practice: Transform squaring function
+
+```{r,echo=F}
+options(scipen=999)
+gcd2 <- function(a, b) {
+    if (b == 0) a else Recall(b, a %% b)
+}
+gcd <- function(...) Reduce(gcd2, c(...))
+
+pn = function(coeffs,pows){
+    pows = pows[coeffs!=0]
+    coeffs = coeffs[coeffs!=0]
+    ex1 = paste0("{",coeffs,"}x^{",pows,"}",collapse="+")
+    ex1 = gsub("+{-","-{",ex1,fixed=T)
+    ex1 = gsub("{1}x^{0}","1",ex1,fixed=T)
+    ex1 = gsub("{-1}x^{0}","-1",ex1,fixed=T)
+    ex1 = gsub("{1}x","x",ex1,fixed=T)
+    ex1 = gsub("{-1}x","-x",ex1,fixed=T)
+    ex1 = gsub("x^{0}","",ex1,fixed=T)
+    ex1 = gsub("x^{1}","x",ex1,fixed=T)
+    ex1 = gsub("+-","-",ex1,fixed=T)
+    ex1 = gsub("{","",ex1,fixed=T)
+    ex1 = gsub("}","",ex1,fixed=T)
+    if(ex1 == ""){
+        ex1 = "0"
+    }
+    return(ex1)
+}
+
+xlist = list()
+ylist = list()
+eqs = character()
+handles = character()
+as = numeric()
+bs = numeric()
+hs = numeric()
+ks = numeric()
+step1s = character()
+lrs = character()
+dus = character()
+
+while(length(handles)<9){
+    # y = a sqrt(1/b*(x-h))+k
+    hk = sample(1:6,2)*sample(c(-1,1),2,T)
+    h = hk[1]
+    k = hk[2]
+    isHS = sample(c(T,F),1,F,c(0.3,0.7))
+    if(isHS){
+        a = 1
+        b = sample(2:3,1)
+        expr = paste0("y=\\left(\\frac{1}{",b,"}(",pn(c(1,-h),1:0),")\\right)^2+",k,collapse="")
+        expr = gsub("+-","-",expr,fixed=T)
+        if(b<0){
+            step1 = paste0("Horizontal stretch by factor ",abs(b),", and horizontal reflection.")
+        }
+        else{
+            step1 = paste0("Horizontal stretch by factor ",abs(b),".")
+        }
+    } else {
+        a = sample(2:3,1)*sample(c(-1,1),1)
+        b = 1
+        expr = paste0("y=",a,"\\left(",pn(c(1,-h),1:0),"\\right)^2+",k,collapse="")
+        expr = gsub("+-","-",expr,fixed=T)
+        if(a<0){
+            step1 = paste0("Vertical stretch by factor ",abs(a),", and vertical reflection.")
+        }
+        else{
+            step1 = paste0("Vertical stretch by factor ",abs(a),".")
+        }
+    }
+    x = seq(-12,12,0.01)
+    y = a*(1/b*(x-h))^2+k
+    handle = paste0(c(a,b,h,k),collapse="#")
+    if(!(handle %in% handles)){
+        n = length(eqs)+1
+        xlist[[n]] = x
+        ylist[[n]] = y
+        eqs = c(eqs,expr)
+        handles = c(handles,handle)
+        as = c(as,a)
+        bs = c(bs,b)
+        hs = c(hs,h)
+        ks = c(ks,k)
+        step1s = c(step1s,step1)
+    }
+    
+}
+
+```
+
+For each of the graphs shown below:
+
+1. Identify the stretch and/or reflection.
+2. Identify the translations.
+3. Write an equation for the child curve.
+
+*On the actual midterm, the helpful dots will not be shown.*
+
+
+```{r,echo=F,fig.dim=c(6.5,6.5)}
+par(mar=c(1,1,1,1),mfrow=c(3,3),pty="s")
+
+for(n in 1:9){
+    plot(0,0,"n",xlim=c(-10,10),ylim=c(-10,10),axes=F,ann=F)
+    mtext(n,3,cex=0.8)
+    for(i in -10:10){
+        lines(c(-10,10),c(i,i),col="grey",lwd=0.4)
+        lines(c(i,i),c(-10,10),col="grey",lwd=0.4)
+    }
+    for(i in seq(-10,10,5)){
+        lines(c(-10,10),c(i,i),col="darkgrey",lwd=0.8)
+        lines(c(i,i),c(-10,10),col="darkgrey",lwd=0.8)
+    }
+    # abline(h=0)
+    # abline(v=0)
+    arrows(-10.5,0,10.5,0,0.04,15,3,lwd=1)
+    arrows(0,-10.5,0,10.5,0.04,15,3,lwd=1)
+    lines(xlist[[n]],ylist[[n]],col="blue",lwd=1.5)
+    points(hs[n]+bs[n],ks[n]+as[n],pch=19,col="blue",cex=0.8)
+    points(hs[n]+2*bs[n],ks[n]+4*as[n],pch=19,col="blue",cex=0.8)
+    points(hs[n]+3*bs[n],ks[n]+9*as[n],pch=19,col="blue",cex=0.8)
+    points(hs[n]-bs[n],ks[n]+as[n],pch=19,col="blue",cex=0.8)
+    points(hs[n]-2*bs[n],ks[n]+4*as[n],pch=19,col="blue",cex=0.8)
+    points(hs[n]-3*bs[n],ks[n]+9*as[n],pch=19,col="blue",cex=0.8)
+    points(hs[n],ks[n],pch=19,col="blue",cex=0.8)
+    text(10.5,-0.75,"x",cex=0.8)
+    text(-0.75,10.5,"y",cex=0.8)
+}
+
+```
+
+\newpage
+
+
+```{r,echo=F,results='asis'}
+for(n in sample(1:9)){
+    cat(paste0(n,": \n\n* ",step1s[n],"\n"))
+    lr = c("left","right")[round(sign(hs[n])/2+1.5)]
+    du = c("down","up")[round(sign(ks[n])/2+1.5)]
+    cat(paste0("* Shift ",lr," by ",abs(hs[n]),", and shift ",du," by ",abs(ks[n]),".\n"))
+    cat(paste0("* $",eqs[n],"$\n\n\n"))
+}
+
+```
+
+
+
+
+
+

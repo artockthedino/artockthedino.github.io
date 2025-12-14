@@ -1,0 +1,220 @@
+---
+output: pdf_document
+params:
+    rseed: 0
+    showsol: true
+---
+
+Name: \vspace{5pt} \hrule
+
+## at1117paper: Complete the Square (v`r params$rseed`)
+
+
+```{r,echo=F}
+options(scipen=999)
+if(params$rseed !=0){
+    set.seed(params$rseed)
+}
+
+pn = function(coeffs,pows){
+    pows = pows[coeffs!=0]
+    coeffs = coeffs[coeffs!=0]
+    ex1 = paste0("{",coeffs,"}x^{",pows,"}",collapse="+")
+    ex1 = gsub("+{-","-{",ex1,fixed=T)
+    ex1 = gsub("{1}x^{0}","1",ex1,fixed=T)
+    ex1 = gsub("{-1}x^{0}","-1",ex1,fixed=T)
+    ex1 = gsub("{1}x","x",ex1,fixed=T)
+    ex1 = gsub("{-1}x","-x",ex1,fixed=T)
+    ex1 = gsub("x^{0}","",ex1,fixed=T)
+    ex1 = gsub("x^{1}","x",ex1,fixed=T)
+    ex1 = gsub("+-","-",ex1,fixed=T)
+    if(ex1 == ""){
+        ex1 = "0"
+    }
+    return(ex1)
+}
+gcd2 <- function(a, b) {
+    if (b == 0) a else Recall(b, a %% b)
+}
+gcd <- function(...) Reduce(gcd2, c(...))
+
+```
+
+```{r,echo=F}
+n = 6
+xy = sort(sample(8:30,2))
+x = xy[1]
+y = xy[2]
+area = x^2+2*x*y
+
+xs = c(x)
+ys = c(y)
+areas = c(area)
+
+for(i in 1:(n-1)){
+    while(T){
+        xy = sort(sample(6:30,2))
+        x = xy[1]
+        y = xy[2]
+        area = x^2+2*x*y
+        if((!(x %in% xs))||(!(y %in% ys))){
+            xs = c(xs,x)
+            ys = c(ys,y)
+            areas = c(areas,area)
+            break
+        }
+    }
+}
+
+```
+
+## Example
+
+```{r,echo=F}
+i = 1
+x = xs[i]
+y = ys[i]
+area = areas[i]
+```
+
+
+A square's edge length is $x$ feet. A rectangle has a height of $x$ feet and a width of $`r 2*y`$ feet. Their combined area, found by adding the square's area and the rectangle's area, is $`r area`$ square feet. What is the value of $x$?
+
+### Example's Solution
+
+\color{red}
+$$x^2+`r 2*y`x=`r area`$$
+
+To complete the square, add $\left(\frac{`r 2*y`}{2}\right)^2=`r y^2`$ to both sides.
+$$x^2+`r 2*y`x+`r y^2`=`r area+y^2`$$
+Recognize the left side is now a perfect-square trinomial. Factor the left side.
+$$(x+`r y`)^2=`r area+y^2`$$
+Undo the squaring.
+$$x+`r y`=\pm\sqrt{`r area+y^2`}$$
+$$x+`r y`=\pm`r sqrt(area+y^2)`$$
+Subtract `r y` from both sides.
+$$x=-`r y`\pm`r sqrt(area+y^2)`$$
+In this geometric example, we are only concerned about the positive solution. So, $$x=`r x`$$
+
+\color{black}
+
+
+## Question 1
+
+```{r,echo=F}
+i = i+1
+x = xs[i]
+y = ys[i]
+area = areas[i]
+```
+
+A square's edge length is $x$ feet. A rectangle has a height of $x$ feet and a width of $`r 2*y`$ feet. The total area, of the square and rectangle, is $`r area`$ square feet. What is the value of $x$?
+
+
+\vfill
+
+```{r,echo=F,results="asis"}
+if(params$showsol){
+    cat("\\color{red}\n\n")
+    eq1 = paste0("$$x^2+",2*y,"x=",area,"$$")
+    cat(eq1)
+    cat("\n")
+    eq2 = paste0("$$x^2+",2*y,"x+",y^2,"=",area+y^2,"$$")
+    cat(eq2)
+    cat("\n")
+    eq3 = paste0("$$(x+",y,")^2=",area+y^2,"$$")
+    cat(eq3)
+    cat("\n")
+    eq4 = paste0("$$x+",y,"=\\pm",sqrt(area+y^2),"$$")
+    cat(eq4)
+    cat("\n")
+    eq5 = paste0("$$x=",x,"$$")
+    cat(eq5)
+    cat("\n")
+    cat("\\color{black}")
+}
+
+```
+
+\vfill
+
+\newpage 
+
+
+## Question 2
+
+```{r,echo=F}
+i = i+1
+x = xs[i]
+y = ys[i]
+area = areas[i]
+```
+
+A square's edge length is $x$ feet. A rectangle has a height of $x$ feet and a width of $`r 2*y`$ feet. The total area, of the square and rectangle, is $`r area`$ square feet. What is the value of $x$?
+
+
+\vfill
+
+```{r,echo=F,results="asis"}
+if(params$showsol){
+    cat("\\color{red}\n\n")
+    eq1 = paste0("$$x^2+",2*y,"x=",area,"$$")
+    cat(eq1)
+    cat("\n")
+    eq2 = paste0("$$x^2+",2*y,"x+",y^2,"=",area+y^2,"$$")
+    cat(eq2)
+    cat("\n")
+    eq3 = paste0("$$(x+",y,")^2=",area+y^2,"$$")
+    cat(eq3)
+    cat("\n")
+    eq4 = paste0("$$x+",y,"=\\pm",sqrt(area+y^2),"$$")
+    cat(eq4)
+    cat("\n")
+    eq5 = paste0("$$x=",x,"$$")
+    cat(eq5)
+    cat("\n")
+    cat("\\color{black}")
+}
+
+```
+
+\vfill
+
+## Question 3
+
+```{r,echo=F}
+i = i+1
+x = xs[i]
+y = ys[i]
+area = areas[i]
+```
+
+A square's edge length is $x$ feet. A rectangle has a height of $x$ feet and a width of $`r 2*y`$ feet. The total area, of the square and rectangle, is $`r area`$ square feet. What is the value of $x$?
+
+
+\vfill
+
+```{r,echo=F,results="asis"}
+if(params$showsol){
+    cat("\\color{red}\n\n")
+    eq1 = paste0("$$x^2+",2*y,"x=",area,"$$")
+    cat(eq1)
+    cat("\n")
+    eq2 = paste0("$$x^2+",2*y,"x+",y^2,"=",area+y^2,"$$")
+    cat(eq2)
+    cat("\n")
+    eq3 = paste0("$$(x+",y,")^2=",area+y^2,"$$")
+    cat(eq3)
+    cat("\n")
+    eq4 = paste0("$$x+",y,"=\\pm",sqrt(area+y^2),"$$")
+    cat(eq4)
+    cat("\n")
+    eq5 = paste0("$$x=",x,"$$")
+    cat(eq5)
+    cat("\n")
+    cat("\\color{black}")
+}
+
+```
+
+\vfill

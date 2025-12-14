@@ -1,0 +1,455 @@
+---
+output: pdf_document
+---
+
+\pagenumbering{gobble}
+
+```{r,echo=F}
+set.seed(2)
+pn = function(coeffs,pows){
+    pows = pows[coeffs!=0]
+    coeffs = coeffs[coeffs!=0]
+    ex1 = paste0("{",coeffs,"}x^{",pows,"}",collapse="+")
+    ex1 = gsub("+{-","-{",ex1,fixed=T)
+    ex1 = gsub("{1}x^{0}","1",ex1,fixed=T)
+    ex1 = gsub("{-1}x^{0}","-1",ex1,fixed=T)
+    ex1 = gsub("{1}x","x",ex1,fixed=T)
+    ex1 = gsub("{-1}x","-x",ex1,fixed=T)
+    ex1 = gsub("x^{0}","",ex1,fixed=T)
+    ex1 = gsub("x^{1}","x",ex1,fixed=T)
+    ex1 = gsub("+-","-",ex1,fixed=T)
+    ex1 = gsub("{","",ex1,fixed=T)
+    ex1 = gsub("}","",ex1,fixed=T)
+    if(ex1 == ""){
+        ex1 = "0"
+    }
+    return(ex1)
+}
+
+funs = list(c("x^2","squaring",function(x){x^2},"$(-\\infty,\\infty)$","$[k,\\infty)$","$(h,\\infty)$","$(-\\infty,h)$","None","Minimum at $(h,k)$",function(x){list(c(-20,20))},"(x-h)^2+k"),
+            c("\\frac{1}{x}","reciprocal",function(x){1/x},"$(-\\infty,h)\\cup(h,\\infty)$","$(-\\infty,k)\\cup(k,\\infty)$","$\\emptyset$","$(-\\infty,h)\\cup(h,\\infty)$","Vertical asymptote at $x=h$. Horizontal asymptote at $y=k$.","None",function(x){list(c(-20,-0.00001),c(0.00001,20))},"\\frac{1}{x-h}+k"),
+            c("\\sqrt{x}","square root",function(x){x^(1/2)},"$[h,\\infty)$","$[k,\\infty)$","$[h,\\infty)$","$\\emptyset$","None","Minimum at $(h,k)$",function(x){list(c(0,20))},"\\sqrt{x-h}+k"),
+            c("2^x","exponential",function(x){2^x},"$(-\\infty,\\infty)$","$(k,\\infty)$","$(-\\infty,\\infty)$","$\\emptyset$","Horizontal asymptote at $y=k$.","None",function(x){list(c(-20,20))},"2^{x-h}+k"),
+            c("\\log_2(x)","logarithmic",function(x){log(x)/log(2)},"$(h,\\infty)$","$(-\\infty,\\infty)$","$(h,\\infty)$","$\\emptyset$","Vertical asymptote at $x=h$","None",function(x){list(c(0.00001,20))},"\\log_2(x-h)+k")
+            )
+
+```
+
+
+# Identify features of translated child functions from graph
+
+Below are graphs of 9 child functions, each created by simply translating a parent function. For each child-function graph, identify:
+
+1. The equation of the parent function.
+2. The equation of the (graphed) child function.
+3. The domain.
+4. The range.
+5. Interval of increase.
+6. Interval of decrease.
+7. Asymptotes.
+8. Maximums or minimums (extrema).
+
+(*Answers are on back of this page.*)
+
+
+```{r,echo=F}
+ngraph = 9
+nfuns = length(funs)
+extrafun = sample(1:4,4)
+fns = sample(c(1:5,extrafun))
+hs = sample(1:5,ngraph,T)*sample(c(-1,1),ngraph,T)
+ks = sample(1:5,ngraph,T)*sample(c(-1,1),ngraph,T)
+```
+
+
+```{r,echo=F,fig.dim=c(6.5,6.5)}
+par(mar=c(1,1,1,1),mfrow=c(3,3),pty="s")
+
+for(n in 1:9){
+    plot(0,0,"n",xlim=c(-10,10),ylim=c(-10,10),axes=F,ann=F)
+    mtext(n,3,cex=0.8)
+    for(i in -10:10){
+        lines(c(-10,10),c(i,i),col="grey",lwd=0.4)
+        lines(c(i,i),c(-10,10),col="grey",lwd=0.4)
+    }
+    for(i in seq(-10,10,5)){
+        lines(c(-10,10),c(i,i),col="darkgrey",lwd=0.8)
+        lines(c(i,i),c(-10,10),col="darkgrey",lwd=0.8)
+    }
+    arrows(-10.5,0,10.5,0,0.04,15,3,lwd=1)
+    arrows(0,-10.5,0,10.5,0.04,15,3,lwd=1)
+    
+    fn = fns[n]
+    h = hs[n]
+    k = ks[n]
+    getlim = funs[[fn]][10][[1]]
+    limits = getlim(h)
+    for(j in 1:length(limits)){
+        x = seq(limits[[j]][1],limits[[j]][2],length.out=1000)
+        y = funs[[fn]][3][[1]](x)
+        lines(x+h,y+k,col="blue",lwd=1.5)
+    }
+    text(10.5,-0.75,"x",cex=0.8)
+    text(-0.75,10.5,"y",cex=0.8)
+}
+```
+
+
+
+\newpage
+
+```{r,echo=F,results='asis'}
+for(i in 1:9){
+    h = hs[i]
+    k = ks[i]
+    ff = funs[[fns[i]]]
+    dom = gsub("h",h,ff[4],fixed=T)
+    ran = gsub("k",k,ff[5],fixed=T)
+    inc = gsub("h",h,ff[6],fixed=T)
+    dec = gsub("h",h,ff[7],fixed=T)
+    asy = gsub("k",k,gsub("h",h,ff[8],fixed=T),fixed=T)
+    ext = gsub("k",k,gsub("h",h,ff[9],fixed=T),fixed=T)
+    chi = gsub("k",k,gsub("h",h,ff[11],fixed=T),fixed=T)
+    chi = gsub("+-","-",chi,fixed=T)
+    chi = gsub("--","+",chi,fixed=T)
+    cat(paste0(i,". \n\n* Parent: $y=",ff[1],"$\\hspace{15pt} Child: $y=",chi,"$\n* Domain: ",dom," \\hspace{15pt} Range: ",ran,"\n* Increasing: ",inc,"\\hspace{15pt} Decreasing: ",dec,"\n* Asymptotes: ",asy," \\hspace{15pt} Extrema: ",ext))
+    cat("\n\n\\vfill\n\n")
+}
+```
+
+
+
+\newpage
+
+
+# Identify features of translated child functions from equation
+
+Below are equations of 9 child functions, each created by simply translating a parent function. For each child-function, identify:
+
+1. The equation of the parent function.
+2. The domain.
+3. The range.
+4. Interval of increase.
+5. Interval of decrease.
+6. Asymptotes.
+7. Maximums or minimums (extrema).
+
+(*Answers are on back of this page. I'd recommend drawing a sketch for each.*)
+
+
+```{r,echo=F,results='asis'}
+ngraph = 9
+nfuns = length(funs)
+extrafun = sample(1:4,4)
+fns = sample(c(1:5,extrafun))
+hs = sample(1:5,ngraph,T)*sample(c(-1,1),ngraph,T)
+ks = sample(1:5,ngraph,T)*sample(c(-1,1),ngraph,T)
+for(i in 1:9){
+    h = hs[i]
+    k = ks[i]
+    ff = funs[[fns[i]]]
+    chi = gsub("k",k,gsub("h",h,ff[11],fixed=T),fixed=T)
+    chi = gsub("+-","-",chi,fixed=T)
+    chi = gsub("--","+",chi,fixed=T)
+    cat(paste0(i,". $$y=",chi,"$$\n\n\\vfill\n\n"))
+}
+
+```
+
+
+\newpage
+
+```{r,echo=F,results='asis'}
+for(i in 1:9){
+    h = hs[i]
+    k = ks[i]
+    ff = funs[[fns[i]]]
+    dom = gsub("h",h,ff[4],fixed=T)
+    ran = gsub("k",k,ff[5],fixed=T)
+    inc = gsub("h",h,ff[6],fixed=T)
+    dec = gsub("h",h,ff[7],fixed=T)
+    asy = gsub("k",k,gsub("h",h,ff[8],fixed=T),fixed=T)
+    ext = gsub("k",k,gsub("h",h,ff[9],fixed=T),fixed=T)
+    cat(paste0(i,". \n\n* Parent: $y=",ff[1],"$ \n* Domain: ",dom," \\hspace{15pt} Range: ",ran,"\n* Increasing: ",inc,"\\hspace{15pt} Decreasing: ",dec,"\n* Asymptotes: ",asy," \\hspace{15pt} Extrema: ",ext))
+    cat("\n\n\\vfill\n\n")
+}
+```
+
+
+\newpage
+
+
+# Graph translated and reflected children
+
+Each equation below represents a child function that has been created by reflecting (either horizontally or vertically) and then shifting a parent function. Plot them as accurately as possible. Pay attention to asymptotes, extrema, and key points.
+
+(*Answers on back of this page.*)
+
+```{r,echo=F}
+funs = list(c(function(x,a,b,h,k){a*(b*(x-h))^2+k},"-(x-h)^2+k","(-(x-h))^2+k"),
+            c(function(x,a,b,h,k){a/(b*(x-h))+k},"-\\frac{1}{x-h}+k","\\frac{1}{-(x-h)}+k"),
+            c(function(x,a,b,h,k){a*sqrt(b*(x-h))+k},"-\\sqrt{x-h}+k","\\sqrt{-(x-h)}+k"),
+            c(function(x,a,b,h,k){a*2^(b*(x-h))+k},"-2^{x-h}+k","2^{-(x-h)}+k"),
+            c(function(x,a,b,h,k){a*log2(b*(x-h))+k},"-\\log_2(x-h)+k","\\log_2(-(x-h))+k")
+            )
+
+fns = sample(c(1:4,1:5))
+as = numeric()
+bs = numeric()
+for(i in 1:9){
+    ab = sample(c(-1,1))
+    aa = ab[1]
+    bb = ab[2]
+    as = c(as,aa)
+    bs = c(bs,bb)
+}
+hs = sample(1:5,9,T)*sample(c(-1,1),9,T)
+ks = sample(1:5,9,T)*sample(c(-1,1),9,T)
+
+```
+
+```{r,echo=F,fig.dim=c(6.5,6.5)}
+par(mar=c(0,1,3,1),mfrow=c(3,3),pty="s")
+library(latex2exp)
+
+for(n in 1:9){
+    plot(0,0,"n",xlim=c(-10,10),ylim=c(-10,10),axes=F,ann=F)
+    for(i in -10:10){
+        lines(c(-10,10),c(i,i),col="grey",lwd=0.4)
+        lines(c(i,i),c(-10,10),col="grey",lwd=0.4)
+    }
+    for(i in seq(-10,10,5)){
+        lines(c(-10,10),c(i,i),col="darkgrey",lwd=0.8)
+        lines(c(i,i),c(-10,10),col="darkgrey",lwd=0.8)
+    }
+    arrows(-10.5,0,10.5,0,0.04,15,3,lwd=1)
+    arrows(0,-10.5,0,10.5,0.04,15,3,lwd=1)
+    text(10.5,-0.75,"x",cex=0.8)
+    text(-0.75,10.5,"y",cex=0.8)
+    
+    fn = fns[n]
+    h = hs[n]
+    k = ks[n]
+    a = as[n]
+    b = bs[n]
+    if(a<0){
+        eq = funs[[fn]][2]
+    } else {
+        eq = funs[[fn]][3]
+    }
+    eq = gsub("h",h,eq,fixed=T)
+    eq = gsub("k",k,eq,fixed=T)
+    eq = gsub("+-","-",eq,fixed=T)
+    eq = gsub("--","+",eq,fixed=T)
+    mtext(TeX(paste0("$y=",eq,"$")),3,cex=0.7)
+}
+```
+
+
+\newpage
+
+
+
+```{r,echo=F,fig.dim=c(6.5,6.5)}
+par(mar=c(0,1,3,1),mfrow=c(3,3),pty="s")
+library(latex2exp)
+
+for(n in 1:9){
+    plot(0,0,"n",xlim=c(-10,10),ylim=c(-10,10),axes=F,ann=F)
+    for(i in -10:10){
+        lines(c(-10,10),c(i,i),col="grey",lwd=0.4)
+        lines(c(i,i),c(-10,10),col="grey",lwd=0.4)
+    }
+    for(i in seq(-10,10,5)){
+        lines(c(-10,10),c(i,i),col="darkgrey",lwd=0.8)
+        lines(c(i,i),c(-10,10),col="darkgrey",lwd=0.8)
+    }
+    arrows(-10.5,0,10.5,0,0.04,15,3,lwd=1)
+    arrows(0,-10.5,0,10.5,0.04,15,3,lwd=1)
+    text(10.5,-0.75,"x",cex=0.8)
+    text(-0.75,10.5,"y",cex=0.8)
+    
+    fn = fns[n]
+    h = hs[n]
+    k = ks[n]
+    a = as[n]
+    b = bs[n]
+    if(a<0){
+        eq = funs[[fn]][2]
+    } else {
+        eq = funs[[fn]][3]
+    }
+    eq = gsub("h",h,eq,fixed=T)
+    eq = gsub("k",k,eq,fixed=T)
+    eq = gsub("+-","-",eq,fixed=T)
+    eq = gsub("--","+",eq,fixed=T)
+    mtext(TeX(paste0("$y=",eq,"$")),3,cex=0.7)
+    if(fn==1){
+        xx = list(seq(-20,20,0.001))
+    }
+    if(fn==2){
+        xx = list(seq(-20,-0.001,length.out=1000),seq(0.001,20,length.out=1000))
+    }
+    if(fn==3){
+        xx = list(seq(0,20,0.001))
+    }
+    if(fn==4){
+        xx = list(seq(-20,20,0.001))
+    }
+    if(fn==5){
+        xx = list(seq(0.00001,20,length.out=1000))
+    }
+    for(jj in 1:length(xx)){
+        xxx = xx[[jj]]
+        yyy = funs[[fn]][[1]](xxx,1,1,0,0)
+        X = b*xxx+h
+        Y = a*yyy+k
+        lines(X,Y,col="red",lwd=1.5)
+    }
+    
+}
+```
+
+\newpage
+
+
+
+# Graph translated and reflected children
+
+Each equation below represents a child function that has been created by reflecting (either horizontally or vertically) and then shifting a parent function. Plot them as accurately as possible. Pay attention to asymptotes, extrema, and key points.
+
+(*Answers on back of this page.*)
+
+```{r,echo=F}
+funs = list(c(function(x,a,b,h,k){a*(b*(x-h))^2+k},"-(x-h)^2+k","(-(x-h))^2+k"),
+            c(function(x,a,b,h,k){a/(b*(x-h))+k},"-\\frac{1}{x-h}+k","\\frac{1}{-(x-h)}+k"),
+            c(function(x,a,b,h,k){a*sqrt(b*(x-h))+k},"-\\sqrt{x-h}+k","\\sqrt{-(x-h)}+k"),
+            c(function(x,a,b,h,k){a*2^(b*(x-h))+k},"-2^{x-h}+k","2^{-(x-h)}+k"),
+            c(function(x,a,b,h,k){a*log2(b*(x-h))+k},"-\\log_2(x-h)+k","\\log_2(-(x-h))+k")
+            )
+
+fns = sample(c(1:4,1:5))
+as = numeric()
+bs = numeric()
+for(i in 1:9){
+    ab = sample(c(-1,1))
+    aa = ab[1]
+    bb = ab[2]
+    as = c(as,aa)
+    bs = c(bs,bb)
+}
+hs = sample(1:5,9,T)*sample(c(-1,1),9,T)
+ks = sample(1:5,9,T)*sample(c(-1,1),9,T)
+
+```
+
+```{r,echo=F,fig.dim=c(6.5,6.5)}
+par(mar=c(0,1,3,1),mfrow=c(3,3),pty="s")
+library(latex2exp)
+
+for(n in 1:9){
+    plot(0,0,"n",xlim=c(-10,10),ylim=c(-10,10),axes=F,ann=F)
+    for(i in -10:10){
+        lines(c(-10,10),c(i,i),col="grey",lwd=0.4)
+        lines(c(i,i),c(-10,10),col="grey",lwd=0.4)
+    }
+    for(i in seq(-10,10,5)){
+        lines(c(-10,10),c(i,i),col="darkgrey",lwd=0.8)
+        lines(c(i,i),c(-10,10),col="darkgrey",lwd=0.8)
+    }
+    arrows(-10.5,0,10.5,0,0.04,15,3,lwd=1)
+    arrows(0,-10.5,0,10.5,0.04,15,3,lwd=1)
+    text(10.5,-0.75,"x",cex=0.8)
+    text(-0.75,10.5,"y",cex=0.8)
+    
+    fn = fns[n]
+    h = hs[n]
+    k = ks[n]
+    a = as[n]
+    b = bs[n]
+    if(a<0){
+        eq = funs[[fn]][2]
+    } else {
+        eq = funs[[fn]][3]
+    }
+    eq = gsub("h",h,eq,fixed=T)
+    eq = gsub("k",k,eq,fixed=T)
+    eq = gsub("+-","-",eq,fixed=T)
+    eq = gsub("--","+",eq,fixed=T)
+    mtext(TeX(paste0("$y=",eq,"$")),3,cex=0.7)
+}
+```
+
+
+\newpage
+
+
+
+```{r,echo=F,fig.dim=c(6.5,6.5)}
+par(mar=c(0,1,3,1),mfrow=c(3,3),pty="s")
+library(latex2exp)
+
+for(n in 1:9){
+    plot(0,0,"n",xlim=c(-10,10),ylim=c(-10,10),axes=F,ann=F)
+    for(i in -10:10){
+        lines(c(-10,10),c(i,i),col="grey",lwd=0.4)
+        lines(c(i,i),c(-10,10),col="grey",lwd=0.4)
+    }
+    for(i in seq(-10,10,5)){
+        lines(c(-10,10),c(i,i),col="darkgrey",lwd=0.8)
+        lines(c(i,i),c(-10,10),col="darkgrey",lwd=0.8)
+    }
+    arrows(-10.5,0,10.5,0,0.04,15,3,lwd=1)
+    arrows(0,-10.5,0,10.5,0.04,15,3,lwd=1)
+    text(10.5,-0.75,"x",cex=0.8)
+    text(-0.75,10.5,"y",cex=0.8)
+    
+    fn = fns[n]
+    h = hs[n]
+    k = ks[n]
+    a = as[n]
+    b = bs[n]
+    if(a<0){
+        eq = funs[[fn]][2]
+    } else {
+        eq = funs[[fn]][3]
+    }
+    eq = gsub("h",h,eq,fixed=T)
+    eq = gsub("k",k,eq,fixed=T)
+    eq = gsub("+-","-",eq,fixed=T)
+    eq = gsub("--","+",eq,fixed=T)
+    mtext(TeX(paste0("$y=",eq,"$")),3,cex=0.7)
+    if(fn==1){
+        xx = list(seq(-20,20,0.001))
+    }
+    if(fn==2){
+        xx = list(seq(-20,-0.001,length.out=1000),seq(0.001,20,length.out=1000))
+    }
+    if(fn==3){
+        xx = list(seq(0,20,0.001))
+    }
+    if(fn==4){
+        xx = list(seq(-20,20,0.001))
+    }
+    if(fn==5){
+        xx = list(seq(0.00001,20,length.out=1000))
+    }
+    for(jj in 1:length(xx)){
+        xxx = xx[[jj]]
+        yyy = funs[[fn]][[1]](xxx,1,1,0,0)
+        X = b*xxx+h
+        Y = a*yyy+k
+        lines(X,Y,col="red",lwd=1.5)
+    }
+    
+}
+```
+
+
+
+
+
+
+
+
+

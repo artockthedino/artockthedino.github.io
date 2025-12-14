@@ -1,0 +1,55 @@
+```{r,echo=FALSE}
+options(scipen=999)
+
+pn = function(coeffs,pows){
+    pows = pows[coeffs!=0]
+    coeffs = coeffs[coeffs!=0]
+    ex1 = paste0("{",coeffs,"}x^{",pows,"}",collapse="+")
+    ex1 = gsub("+{-","-{",ex1,fixed=T)
+    ex1 = gsub("{1}x^{0}","1",ex1,fixed=T)
+    ex1 = gsub("{-1}x^{0}","-1",ex1,fixed=T)
+    ex1 = gsub("{1}x","x",ex1,fixed=T)
+    ex1 = gsub("{-1}x","-x",ex1,fixed=T)
+    ex1 = gsub("x^{0}","",ex1,fixed=T)
+    ex1 = gsub("x^{1}","x",ex1,fixed=T)
+    ex1 = gsub("+-","-",ex1,fixed=T)
+    ex1 = gsub("{","",ex1,fixed=T)
+    ex1 = gsub("}","",ex1,fixed=T)
+    if(ex1 == ""){
+        ex1 = "0"
+    }
+    return(ex1)
+}
+
+a = sample(c(-3,-2,2,3),1)
+h = sample(1:7,1)*sample(c(-1,1))
+k = sample(1:7,1)*sample(c(-1,1))
+
+```
+
+Question
+========
+
+Quadratic functions are often expressed in [vertex form](https://en.wikipedia.org/wiki/Quadratic_function#Forms_of_a_univariate_quadratic_function):
+
+$$y~=~a(x-h)^2+k$$
+
+where the vertex is at point $(h,k)$ and parameter $a$ dictates the vertical stretch and reflection.
+
+
+
+
+
+
+Solution
+========
+
+
+
+
+Meta-information
+============
+extype: cloze
+exclozetype: 
+exsolution: 
+exname: 

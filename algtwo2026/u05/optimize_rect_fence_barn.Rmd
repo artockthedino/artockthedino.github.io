@@ -1,0 +1,125 @@
+```{r,echo=FALSE}
+options(scipen=999)
+gcd2 <- function(a, b) {
+    if (b == 0) a else Recall(b, a %% b)
+}
+gcd <- function(...) Reduce(gcd2, c(...))
+
+pfix = function(c,d){
+    p = paste0("{",c,"}x^{",d,"}",collapse="+")
+    p = gsub("x^{0}","",p,fixed=T)
+    p = gsub("x^{1}","x",p,fixed=T)
+    p = gsub("+{-","-{",p,fixed=T)
+    p = gsub("+{1}x","+x",p,fixed=T)
+    p = gsub("-{1}x","-x",p,fixed=T)
+    p = gsub("{-1}x","-x",p,fixed=T)
+    p = gsub("{1}x","x",p,fixed=T)
+    return(p)
+}
+
+# P = (n+1)x+y
+# y = P-(n+1)x
+# A = xy
+# A = x(P-(n+1)x)
+# A = Px-(n+1)x^2
+# xopt = P/2/(n+1)
+# yopt = P/2
+# xopt = yopt/(n+1)
+
+n = 9 #sample(2:9,1)
+x = sample(10:40,1)
+y = x*(n+1)
+
+A = x*y
+P = (n+1)*x+y
+
+
+
+```
+
+
+Question
+========
+
+Amelia will use `r P` feet of fence to build `r n` rectangular enclosures. As shown in the figure below, the `r n` enclosures will be built so each one is against a barn. Neighboring enclosures will use a single fence to separate them. Let $x$ represent the length of fence perpendicular to the barn, and let $y$ represent the length of fence parallel to the barn.
+
+```{r,echo=F,fig.dim=c(5,5)}
+par(mar=c(0,0,0,0))
+plot(0,0,"n",xlim=c(0,1),ylim=c(0,1),axes=F,ann=F)
+polygon(c(0,0.2,0.2,0),c(0,0,1,1),col="red")
+polygon(c(1,0.2,0.2,1),c(0,0,1,1),col=rgb(0.2,0.9,0.2))
+text(0.1,0.5,"BARN",col=rgb(0.6,0,0),srt=90,cex=2)
+lines(c(0.2,0.5,0.5,0.2),c(0.1,0.1,0.9,0.9),lwd=5,col="black")
+for(i in seq(0.1,0.9,length.out=n+1)){
+    lines(c(0.2,0.5),c(i,i),lwd=5,col="black")
+}
+lines(c(0.5,0.5),c(0.1,0.9),lwd=3,col="blue")
+text(0.35,0.9,"x",adj=c(0.5,-0.2),cex=2)
+text(0.35,0.1,"x",adj=c(0.5,1.2),cex=2)
+text(0.5,0.5,"y",adj=c(-0.4,0.5),cex=2,col="blue")
+
+```
+\
+
+Amelia wants to maximize the total area of the enclosures. Find the value of $x$ that maximizes the area.
+
+Solution
+========
+
+The total area is simply the product of $x$ and $y$.
+
+$$A~=~xy$$
+
+The total length of fence is `r P` feet. Notice for `r n` enclosures, we need `r n+1` lengths of $x$.
+
+$$`r P`~=~`r n+1`x+y$$
+
+Solve this equation for $y$ by subtracting $`r n+1`x$ from both sides.
+
+$$`r P`-`r n+1`x~=~y$$
+
+Substitute $`r P`-`r n+1`x$ for $y$ in the area equation.
+
+$$A~=~x\cdot(`r P`-`r n+1`x)$$
+
+Distribute.
+
+
+$$A~=~`r P`x-`r n+1`x^2$$
+
+Put quadratic expression in standard order.
+
+
+$$A~=~-`r n+1`x^2+`r P`x$$
+
+If you draw a graph of $A$ versus $x$, you'll get a parabola.
+
+```{r,echo=F,fig.dim=c(5,5)}
+xs = seq(-0.1*P/(n+1),1.1*P/(n+1),length.out=1000)
+As = -(n+1)*xs^2+P*xs
+
+plot(xs,As,"l",xlab="x",ylab="A")
+abline(h=0,lwd=2)
+abline(v=0,lwd=2)
+lines(xs,As,lwd=3,col="blue")
+
+points(x,A,pch=19,col="red")
+
+```
+\
+
+Notice, the maximum area occurs at the parabola's vertex. So, we can use $h=\frac{-b}{2a}$ to find the optimal $x$ value.
+
+$$x_{\text{optimal}}~=~\frac{-b}{2a}$$
+
+$$x_{\text{optimal}}~=~\frac{-(`r P`)}{2(`r -(n+1)`)}$$
+
+
+$$x_{\text{optimal}}~=~`r x`$$
+
+
+Meta-information
+============
+extype: num
+exsolution: `r x`
+exname: optimize_rect_fence_barn_B
