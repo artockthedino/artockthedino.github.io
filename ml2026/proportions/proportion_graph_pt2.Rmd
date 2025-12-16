@@ -1,0 +1,147 @@
+```{r,echo=FALSE}
+library(numbers)
+
+gcd2 <- function(a, b) {
+    if (b == 0) a else Recall(b, a %% b)
+}
+gcd <- function(...) Reduce(gcd2, c(...))
+
+pn = function(coeffs,pows){
+    pows = pows[coeffs!=0]
+    coeffs = coeffs[coeffs!=0]
+    ex1 = paste0("{",coeffs,"}x^{",pows,"}",collapse="+")
+    ex1 = gsub("+{-","-{",ex1,fixed=T)
+    ex1 = gsub("{1}x^{0}","1",ex1,fixed=T)
+    ex1 = gsub("{-1}x^{0}","-1",ex1,fixed=T)
+    ex1 = gsub("{1}x","x",ex1,fixed=T)
+    ex1 = gsub("{-1}x","-x",ex1,fixed=T)
+    ex1 = gsub("x^{0}","",ex1,fixed=T)
+    ex1 = gsub("x^{1}","x",ex1,fixed=T)
+    ex1 = gsub("+-","-",ex1,fixed=T)
+    ex1 = gsub("{","",ex1,fixed=T)
+    ex1 = gsub("}","",ex1,fixed=T)
+    if(ex1 == ""){
+        ex1 = "0"
+    }
+    return(ex1)
+}
+
+while(T){
+    propA = sample(2:12,1)
+    propB = sample(2:12,1)
+    gg = gcd(c(propA,propB))
+    propA = round(propA/gg)
+    propB = round(propB/gg)
+    if(min(c(propA,propB))>1){break}
+}
+while(T){
+    mult1 = sample(2:10,1)
+    mult2 = sample(2:10,1)
+    gg = gcd(c(mult1,mult2))
+    m1 = mult1/gg
+    m2 = mult2/gg
+
+    if(min(c(m1,m2))>1){break}
+}
+
+x1 = mult1*propB
+y1 = mult1*propA
+x2 = mult2*propB
+y2 = mult2*propA
+
+px1 = primeFactors(x1)
+tpx1 = table(px1)
+pfx1 = paste0(names(tpx1),"^{",as.vector(tpx1),"}",collapse="\\cdot")
+
+px2 = primeFactors(x2)
+tpx2 = table(px2)
+pfx2 = paste0(names(tpx2),"^{",as.vector(tpx2),"}",collapse="\\cdot")
+
+py1 = primeFactors(y1)
+tpy1 = table(py1)
+pfy1 = paste0(names(tpy1),"^{",as.vector(tpy1),"}",collapse="\\cdot")
+
+pnu = c(px2,py1)
+tpnu = table(pnu)
+pfnu = paste0(names(tpnu),"^{",as.vector(tpnu),"}",collapse="\\cdot")
+
+py2 = primeFactors(y2)
+tpy2 = table(py2)
+pfy2 = paste0(names(tpy2),"^{",as.vector(tpy2),"}",collapse="\\cdot")
+```
+
+
+Question
+========
+
+A proportional relationship can be represented by a line through the origin. If points $(0,0)$ and $(`r x1`, `r y1`)$ are on a line, and so is point $(`r x2`,z)$, then what is the value of $z$?
+
+
+
+Solution
+========
+
+You can set this up in two different ways...
+
+$$\frac{`r y1`}{`r x1`}~=~\frac{z}{`r x2`}$$
+
+or 
+
+$$\frac{`r x2`}{`r x1`}~=~\frac{z}{`r y1`}$$
+
+Either way, you can start by using "cross multiplication".
+
+$$`r x2`\cdot `r y1` = `r x1`z$$
+
+Divide both sides by $`r x1`$.
+
+$$\frac{`r x2`\cdot `r y1`}{`r x1`} = z$$
+
+Now, I would find common factors in the numerator and denominator. The thorough approach is to find the prime factorization of each number.
+
+
+$$\frac{\left(`r pfx2`\right)\cdot \left(`r pfy1`\right)}{`r pfx1`} = z$$
+
+Simplify the numerator.
+
+$$\frac{`r pfnu`}{`r pfx1`} = z$$
+
+Eliminate common factors.
+
+
+$$`r pfy2` = z$$
+
+Evaluate $z$.
+
+$$z=`r y2`$$
+
+
+```{r,echo=F,fig.dim=c(4,4)}
+maxx = max(c(x1,y1,x2,y2))*1.1
+par(pty="s",mar=c(5,5,0,0))
+plot(0,0,"n",xlim=c(0,maxx),ylim=c(0,maxx),xlab="x",ylab="y")
+abline(h=0,lwd=2)
+abline(v=0,lwd=2)
+abline(0,propA/propB,col="blue",lwd=2)
+
+xlo = min(c(x1,x2))
+ylo = min(c(y1,y2))
+xhi = max(c(x1,x2))
+yhi = max(c(y1,y2))
+
+points(xlo,ylo,pch=19,col="red")
+points(xhi,yhi,pch=19,col="purple")
+points(0,0,pch=19,col="blue")
+ang = atan(propA/propB)
+text(xlo,ylo,paste0("(",xlo,", ",ylo,")"),srt=ang/pi*180,adj=c(0.5,1.7),col="red")
+text(xhi,yhi,paste0("(",xhi,", ",yhi,")"),srt=ang/pi*180,adj=c(0.8,-0.7),col="purple")
+
+```
+\
+
+
+Meta-information
+============
+extype: num
+exsolution: `r y2`
+exname: proportion_graph_pt2
