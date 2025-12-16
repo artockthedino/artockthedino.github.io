@@ -1,0 +1,220 @@
+```{r,echo=FALSE}
+options(scipen=999)
+
+pn = function(coeffs,pows){
+    pows = pows[coeffs!=0]
+    coeffs = coeffs[coeffs!=0]
+    ex1 = paste0("{",coeffs,"}x^{",pows,"}",collapse="+")
+    ex1 = gsub("+{-","-{",ex1,fixed=T)
+    ex1 = gsub("{1}x^{0}","1",ex1,fixed=T)
+    ex1 = gsub("{-1}x^{0}","-1",ex1,fixed=T)
+    ex1 = gsub("{1}x","x",ex1,fixed=T)
+    ex1 = gsub("{-1}x","-x",ex1,fixed=T)
+    ex1 = gsub("x^{0}","",ex1,fixed=T)
+    ex1 = gsub("x^{1}","x",ex1,fixed=T)
+    ex1 = gsub("+-","-",ex1,fixed=T)
+    ex1 = gsub("{","",ex1,fixed=T)
+    ex1 = gsub("}","",ex1,fixed=T)
+    if(ex1 == ""){
+        ex1 = "0"
+    }
+    return(ex1)
+}
+
+while(T){
+    m = sample(c(-1,1),1)
+    p = sample(c(-1,1),1)
+    h = sample(1:5,1)*sample(c(-1,1),1)
+    k = sample(1:5,1)*sample(c(-1,1),1)
+    if(m<0 || p<0){break}
+}
+ach1 = c(-1,1)
+ach2 = -5:5
+al1 = paste0("* ",c(-1,1),collapse="\n")
+al2 = paste0("* ",ach2,collapse="\n")
+
+sol1 = paste0(1*(m==ach1),collapse="")
+sol2 = paste0(1*(p==ach1),collapse="")
+sol3 = paste0(1*(h==ach2),collapse="")
+sol4 = paste0(1*(k==ach2),collapse="")
+
+if(m>0 && p>0){
+    ref = "There are no reflections, so $m=1$ and $p=1$."
+    eq = paste0("y=2^{x+",-h,"}+",k)
+}
+if(m<0 && p>0){
+    ref = "There is a vertical reflection only, so $m=-1$ and $p=1$."
+    eq = paste0("y=-2^{x+",-h,"}+",k)
+}
+if(m>0 && p<0){
+    ref = "There is a horizontal reflection only, so $m=1$ and $p=-1$."
+    eq = paste0("y=2^{-(x+",-h,")}+",k)
+}
+if(m<0 && p<0){
+    ref = "There are both vertical and horizontal reflections, so $m=-1$ and $p=-1$."
+    eq = paste0("y=-2^{-(x+",-h,")}+",k)
+}
+eq = gsub("+-","-",eq,fixed=T)
+
+```
+
+Question
+========
+
+
+A possible parameterization to show transformed base-2 exponential functions is:
+
+$$y~=~ m \cdot 2^{\frac{1}{p}(x-h)}+k$$
+
+With this form, the stretches happen before the shifts. The stretch factors are $p$ horizontally and $m$ vertically. The shift terms are $h$ horizontally and $k$ vertically.
+
+If $m$ and $p$ are restricted to $-1$ and $1$, then the only "stretches" are reflections. If $m$ is negative, then there is a vertical reflection over the $x$ axis. If $p$ is negative, then there is a horizontal reflection over the $y$ axis.
+
+By randomly selecting $-1$ or $1$ for $m$ and $p$, and random integers for $h$ and $k$, the following blue curve is defined. (And the grey curve is the parent $y=2^x$.)
+
+
+```{r,echo=F,fig.dim=c(6,6)}
+par(mar=c(0,0,0,0),pty="s")
+plot(0,0,"n",xlim=c(-11,11),ylim=c(-11,11),axes=F,ann=F)
+
+for(i in -10:10){
+    lines(c(-10,10),c(i,i),col="grey",lwd=0.5)
+    lines(c(i,i),c(-10,10),col="grey",lwd=0.5)
+}
+for(i in seq(-10,10,5)){
+    lines(c(-10,10),c(i,i),col="darkgrey",lwd=0.8)
+    lines(c(i,i),c(-10,10),col="darkgrey",lwd=0.8)
+}
+for(i in c(-10,-5,5,10)){
+    text(i,0,i,adj=c(0.5,1.2))
+    text(0,i,i,adj=c(0.5,1.2),srt=-90)
+}
+text(10.5,0,"x",adj=c(0.5,-0.5))
+text(0,10.5,"y",adj=c(-0.5,0.5))
+
+arrows(-11,0,11,0,0.1,15,3,lwd=1.2)
+arrows(0,-11,0,11,0.1,15,3,lwd=1.2)
+
+x = seq(-10,10,0.01)
+y = 2^x
+x = x[abs(y)<=10]
+y = y[abs(y)<=10]
+
+lines(x,y,col="grey",lwd=1)
+
+x = seq(-10,10,0.01)
+y = m*2^(1/p*(x-h))+k
+x = x[abs(y)<=10]
+y = y[abs(y)<=10]
+
+lines(x,y,col="blue",lwd=3)
+
+```
+\
+
+Find the parameters.
+
+* $m=$ ##ANSWER1##
+* $p=$ ##ANSWER2##
+* $h=$ ##ANSWER3##
+* $k=$ ##ANSWER4##
+
+
+Answerlist
+--------
+
+`r al1`
+`r al1`
+`r al2`
+`r al2`
+
+
+
+Solution
+========
+
+I'd recommend setting up the following equation in [Desmos](https://www.desmos.com/calculator). Let sliders represent the parameters, and see what each parameter does as you vary it.
+
+$$y~=~ m \cdot 2^{\frac{1}{p}(x-h)}+k$$
+
+It will help to first identify the reflections. `r ref` It is helpful to sketch the reflected parent function. In orange, I will sketch the reflected (but unshifted) transformation.
+
+It also helps to sketch the horizontal asymptotes. Also, you'll want to identify the point that is either 1 above or 1 below the asymptote. I've marked this point on both the orange and blue curves.
+
+And finally, you'll want to identify the displacements from the orange dot to the blue dot. These horizontal and vertical displacements show the values of $h$ and $k$.
+
+
+```{r,echo=F,fig.dim=c(6,6)}
+par(mar=c(0,0,0,0),pty="s")
+plot(0,0,"n",xlim=c(-11,11),ylim=c(-11,11),axes=F,ann=F)
+
+for(i in -10:10){
+    lines(c(-10,10),c(i,i),col="grey",lwd=0.5)
+    lines(c(i,i),c(-10,10),col="grey",lwd=0.5)
+}
+for(i in seq(-10,10,5)){
+    lines(c(-10,10),c(i,i),col="darkgrey",lwd=0.8)
+    lines(c(i,i),c(-10,10),col="darkgrey",lwd=0.8)
+}
+for(i in c(-10,-5,5,10)){
+    text(i,0,i,adj=c(0.5,1.2))
+    text(0,i,i,adj=c(0.5,1.2),srt=-90)
+}
+text(10.5,0,"x",adj=c(0.5,-0.5))
+text(0,10.5,"y",adj=c(-0.5,0.5))
+
+arrows(-11,0,11,0,0.1,15,3,lwd=1.2)
+arrows(0,-11,0,11,0.1,15,3,lwd=1.2)
+
+x = seq(-10,10,0.01)
+y = 2^x
+x = x[abs(y)<=10]
+y = y[abs(y)<=10]
+
+lines(x,y,col="grey",lwd=1)
+
+x = seq(-10,10,0.01)
+y = m*2^(1/p*(x))
+x = x[abs(y)<=10]
+y = y[abs(y)<=10]
+
+abline(h=0,lty=2,col="darkorange")
+lines(x,y,col="darkorange",lwd=2)
+points(0,m,pch=19,col="darkorange")
+
+x = seq(-10,10,0.01)
+y = m*2^(1/p*(x-h))+k
+x = x[abs(y)<=10]
+y = y[abs(y)<=10]
+
+abline(h=k,lty=2,col="blue")
+lines(x,y,col="blue",lwd=3)
+points(h,k+m,pch=19,col="blue")
+
+arrows(0,m,h,m,0.1,20,col="red")
+datex = gsub("+-","-",paste0("+",h,collapse=""),fixed=T)
+text(h/2,m,datex,col="red",adj=c(0.5,0.5+sign(k)))
+arrows(h,m,h,m+k,0.1,20,col="red")
+datex = gsub("+-","-",paste0("+",k,collapse=""),fixed=T)
+text(h,m+k/2,datex,col="red",adj=c(0.5-sign(h),0.5))
+
+
+```
+\
+
+* $m=`r m`$
+* $p=`r p`$
+* $h=`r h`$
+* $k=`r k`$
+
+And, thus, the equation of the blue curve is:
+
+$$`r eq`$$
+
+
+Meta-information
+============
+extype: cloze
+exclozetype: schoice|schoice|schoice|schoice
+exsolution: `r sol1`|`r sol2`|`r sol3`|`r sol4`
+exname: exponential_params

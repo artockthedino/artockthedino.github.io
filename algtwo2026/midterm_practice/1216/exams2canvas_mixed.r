@@ -2,31 +2,37 @@ library("exams")
 n = 30
 outdir = "outcanvas"
 
-
 ### Entrance ticket
-pm = list("vertex_form_params_from_graph.Rmd",
-          "trans_sqrt_params.Rmd",
-          "vertex_form_params_from_graph.Rmd",
-          "trans_sqrt_params.Rmd")
+pm = list("01_ID_transforms_from_feq.Rmd")
+exams2canvas(pm,
+             n=n,
+             dir=outdir,
+             points=rep(4,length(pm)),
+             maxattempts = 8,
+             name="at1216cA_ID_transforms",
+             template = "canvas_qti12.xml",
+             cloze = list(enumerate = FALSE))
+
+pm = list("exponential_params.Rmd")
+exams2canvas(pm,
+             n=n,
+             dir=outdir,
+             points=rep(4,length(pm)),
+             maxattempts = 8,
+             name="at1216cB_exponential_transform",
+             template = "canvas_qti12.xml",
+             cloze = list(enumerate = FALSE))
+
+pm = list("01_ID_transforms_from_feq.Rmd",
+          "exponential_params.Rmd")
 exams2canvas(pm,
              n=n,
              dir=outdir,
              points=rep(1,length(pm)),
-             maxattempts = 8,
-             name="at1215_MASTERY",
+             maxattempts = 6,
+             name="at1216_MASTERY",
              template = "canvas_qti12.xml",
              cloze = list(enumerate = FALSE))
-
-# # Classwork 1
-# pm = list("optimize_rect_fence_barn_B.Rmd")
-# exams2canvas(pm,
-#              n=n,
-#              dir=outdir,
-#              points=rep(5,length(pm)),
-#              maxattempts = 6,
-#              name="at1205cA",
-#              template = "canvas_qti12.xml",
-#              cloze = list(enumerate = FALSE))
 
  
 # # # Classwork 2

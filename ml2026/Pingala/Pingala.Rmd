@@ -1,0 +1,211 @@
+---
+output: slidy_presentation
+---
+
+
+# Pingala Rhythms
+
+* Musical rhythms have mathematical connections!
+* Pingala was an Indian poet around 300 BCE.
+* Pingala described the Fibonacci sequence over 1000 years before "Fibonacci".
+
+```{r,echo=F,warning=F,results='hide',comment=F,message=F}
+library(gm)
+```
+
+# Quarter notes and half notes
+
+* A quarter note is filled in. It represents 1 beat.
+* A half note is open. It represents 2 beats.
+* For example, the "Jingle Bells" rhythm is two quarters followed by a half.
+
+
+```{r,echo=F,cache=TRUE}
+m <- Music()
+
+durations = c(1,1,2,1,1,2)
+pitches = rep("E5",length(durations))
+
+m <- m + Meter(4,4) +
+  Line(pitches = pitches, durations = durations)
+show(m, to = c("score"))
+
+m <- Music()
+m <- m + Meter(4,4) +
+  Line(pitches = rep(pitches,4), durations = rep(durations,4))
+show(m, to = c("audio"))
+
+```
+
+
+Notice, the time signature, $\substack{4 \\ 4}$, shows 4 beats per measure (and the four underneath says a quarter note represents a single beat). Try tapping out the 4 beats while the Jingle-Bell rhythm plays.
+
+
+# How many 3-beat rhythms?
+
+When filling a measure of $\substack{3 \\ 4}$ with quarter notes and half notes, there are only 3 possible rhythms.
+
+```{r,echo=F,cache=TRUE}
+m <- Music()
+durations = c(1,1,1)
+pitches = rep("F4",length(durations))
+m <- m + Meter(3,4) +
+  Line(pitches = pitches, durations = durations)
+show(m, to = c("score"))
+
+m <- Music()
+durations = c(1,2)
+pitches = rep("F4",length(durations))
+m <- m + Meter(3,4) +
+  Line(pitches = pitches, durations = durations)
+show(m, to = c("score"))
+
+m <- Music()
+durations = c(2,1)
+pitches = rep("F4",length(durations))
+m <- m + Meter(3,4) +
+  Line(pitches = pitches, durations = durations)
+show(m, to = c("score"))
+
+```
+
+>- Can you clap out these rhythms? As one person repeatedly, and evenly, counts "one, two, three", try clapping on the 1 and 2, but not the three. Or, try clapping on the 1 and 3, but not the 2. Start slowly!
+
+
+
+# How many 4-beat rhythms?
+
+Can you find all the 4-beat rhythms? In other words, how many ways can you fill a measure of $\substack{4 \\ 4}$ with quarter notes and half notes?
+
+# How many 4-beat rhythms?
+
+When filling a measure of $\substack{4 \\ 4}$ with quarter notes and half notes, there are only **5** possible rhythms.
+
+```{r,echo=F,cache=TRUE}
+m <- Music()
+durations = c(1,1,1,1)
+pitches = rep("F4",length(durations))
+m <- m + Meter(4,4) +
+  Line(pitches = pitches, durations = durations)
+show(m, to = c("score"))
+
+m <- Music()
+durations = c(1,1,2)
+pitches = rep("F4",length(durations))
+m <- m + Meter(4,4) +
+  Line(pitches = pitches, durations = durations)
+show(m, to = c("score"))
+
+m <- Music()
+durations = c(1,2,1)
+pitches = rep("F4",length(durations))
+m <- m + Meter(4,4) +
+  Line(pitches = pitches, durations = durations)
+show(m, to = c("score"))
+
+
+m <- Music()
+durations = c(2,1,1)
+pitches = rep("F4",length(durations))
+m <- m + Meter(4,4) +
+  Line(pitches = pitches, durations = durations)
+show(m, to = c("score"))
+
+
+m <- Music()
+durations = c(2,2)
+pitches = rep("F4",length(durations))
+m <- m + Meter(4,4) +
+  Line(pitches = pitches, durations = durations)
+show(m, to = c("score"))
+```
+
+
+# How many 5-beat rhythms?
+
+Can you find all the 5-beat rhythms? In other words, how many ways can you fill a measure of $\substack{5 \\ 4}$ with quarter notes and half notes?
+
+
+# How many 5-beat rhythms?
+
+When filling a measure of $\substack{5 \\ 4}$ with quarter notes and half notes, there are **8** possible rhythms.
+
+```{r,echo=F,cache=TRUE}
+
+rhythms = list(c(1,1,1,1,1),
+               c(1,1,1,2),
+               c(1,1,2,1),
+               c(1,2,1,1),
+               c(1,2,2),
+               c(2,1,1,1),
+               c(2,1,2),
+               c(2,2,1))
+
+
+m <- Music()
+for(i in 1:length(rhythms)){
+    durations = rhythms[[i]]
+    pitches = rep("F4",length(durations))
+    m <- m + Meter(5,4) +
+      Line(pitches = pitches, durations = durations)
+}
+show(m, to = c("score"))
+
+```
+
+
+If you can clap all these... you've got RHYTHM!
+
+# How can we systematically produce the 5-beat rhythms?
+
+Notice, to make **all** of the 5-beat rhythms:
+
+* Put a quarter note in front of each 4-beat rhythm.
+* Put a half note in front of each 3-beat rhythm.
+
+```{r,echo=F,cache=TRUE}
+rhythms = list(c(1,1,1,1,1),
+               c(1,1,1,2),
+               c(1,1,2,1),
+               c(1,2,1,1),
+               c(1,2,2),
+               c(2,1,1,1),
+               c(2,1,2),
+               c(2,2,1))
+
+notehead2 <- Notehead(1, color = "#FF0000")
+m <- Music()
+for(i in 1:length(rhythms)){
+    durations = rhythms[[i]]
+    pitches = rep("F4",length(durations))
+    m <- m + Meter(5,4) +
+      Line(pitches = pitches, durations = durations)+notehead2
+}
+show(m, to = c("score"))
+
+```
+
+
+# Let's start a table
+
+```{r,echo=F}
+bpm = paste0(1:8)
+nr = c("1","2","3","5","8"," "," "," ")
+
+mytab = data.frame(bpm,nr)
+colnames(mytab) = c("Beats per measure","How many rhythms?")
+
+kableExtra::kable_styling(kableExtra::kable(mytab),bootstrap_options = c("striped", "bordered", "hover"), full_width = F)
+```
+
+
+
+
+
+
+# How many 6-beat rhythms?
+
+Can you find all the 6-beat rhythms? In other words, how many ways can you fill a measure of $\substack{6 \\ 4}$ with quarter notes and half notes?
+
+
+
