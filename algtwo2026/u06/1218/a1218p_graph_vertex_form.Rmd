@@ -1,0 +1,201 @@
+---
+output: pdf_document
+params:
+    rseed: 0
+    showsol: true
+---
+
+```{r,echo=F,warning=FALSE,message=FALSE}
+if(params$rseed !=0){
+    set.seed(params$rseed)
+}
+
+pn = function(coeffs,pows){
+    pows = pows[coeffs!=0]
+    coeffs = coeffs[coeffs!=0]
+    ex1 = paste0("{",coeffs,"}x^{",pows,"}",collapse="+")
+    ex1 = gsub("+{-","-{",ex1,fixed=T)
+    ex1 = gsub("{1}x^{0}","1",ex1,fixed=T)
+    ex1 = gsub("{-1}x^{0}","-1",ex1,fixed=T)
+    ex1 = gsub("{1}x","x",ex1,fixed=T)
+    ex1 = gsub("{-1}x","-x",ex1,fixed=T)
+    ex1 = gsub("x^{0}","",ex1,fixed=T)
+    ex1 = gsub("x^{1}","x",ex1,fixed=T)
+    ex1 = gsub("+-","-",ex1,fixed=T)
+    if(ex1 == ""){
+        ex1 = "0"
+    }
+    return(ex1)
+}
+gcd2 <- function(a, b) {
+    if (b == 0) a else Recall(b, a %% b)
+}
+gcd <- function(...) Reduce(gcd2, c(...))
+
+
+```
+
+
+Name: \vspace{5pt} \hrule
+
+## at1218p_graph_vertex_form (v`r params$rseed`)
+
+```{r,echo=F,warning=FALSE,message=FALSE}
+as = c(1)
+hs = c(3)
+ks = c(-4)
+ps = c(1)
+
+gs = c(paste0(c(as,hs,ks,ps),collapse="#"))
+
+for(i in 1:3){
+    while(T){
+        a = sample(c(-1,1),1,T,prob=c(0.6,0.4))
+        h = sample(1:7,1)*sample(c(-1,1),1)
+        k = sample(1:7,1)*sample(c(-1,1),1)
+        p = 1
+        g = paste0(c(a,h,k,p),collapse="#")
+        if(!(g %in% gs)){break}
+    }
+    as = c(as,a)
+    hs = c(hs,h)
+    ks = c(ks,k)
+    ps = c(ps,p)
+}
+for(i in 1:5){
+    while(T){
+        a = sample(c(-3,-2,2,3),1)
+        h = sample(1:7,1)*sample(c(-1,1),1)
+        k = sample(1:7,1)*sample(c(-1,1),1)
+        p = 1
+        g = paste0(c(a,h,k,p),collapse="#")
+        if(!(g %in% gs)){break}
+    }
+    as = c(as,a)
+    hs = c(hs,h)
+    ks = c(ks,k)
+    ps = c(ps,p)
+}
+
+for(i in 1:9){
+    while(T){
+        a = sample(c(-9,-4,-3,-2,2,3,4,9),1)
+        h = sample(1:7,1)*sample(c(-1,1),1)
+        k = sample(1:7,1)*sample(c(-1,1),1)
+        p = -1
+        g = paste0(c(a,h,k,p),collapse="#")
+        if(!(g %in% gs)){break}
+    }
+    as = c(as,a)
+    hs = c(hs,h)
+    ks = c(ks,k)
+    ps = c(ps,p)
+}
+
+
+eqs = character()
+for(i in 1:length(as)){
+    a = as[i]
+    h = hs[i]
+    k = ks[i]
+    p = ps[i]
+    if(a==1){
+        aa = ""
+    } else if(a==-1){
+        aa = "-"
+    } else {
+        aa = paste0(a)
+    }
+    if(p==1){
+        eq = paste0(aa,"(x+",-h,")^2+",k)
+        eq = gsub("+-","-",eq,fixed=T)
+    } else {
+        if(abs(a)!=1){
+            aa = paste0("\\frac{",sign(a),"}{",abs(a),"}",collapse="")
+        }
+        eq = paste0(aa,"(x+",-h,")^2+",k)
+        eq = gsub("+-","-",eq,fixed=T)
+    }
+    eqs = c(eqs,eq)
+}
+```
+
+Graph each of the vertex-form quadratic equations. Accurately mark all lattice points of the curve with filled circles.
+
+```{r,echo=F,fig.dim=c(6.5,7.5)}
+library(latex2exp)
+par(mar=c(0.2,0.2,3,0),pty="s",mfrow=c(3,3))
+for(i in 1:9){
+    a = as[i]
+    p = ps[i]
+    h = hs[i]
+    k = ks[i]
+    plot(0,0,"n",xlim=c(-11,11),ylim=c(-11,11),axes=F,ann=F)
+    mtext(TeX(paste0("$y=",eqs[i],"$")),3)
+    for(j in -10:10){
+        lines(c(-10,10),c(j,j),col="grey",lwd=0.5)
+        lines(c(j,j),c(-10,10),col="grey",lwd=0.5)
+    }
+    for(j in seq(-10,10,5)){
+        lines(c(-10,10),c(j,j),col="darkgrey",lwd=1)
+        lines(c(j,j),c(-10,10),col="darkgrey",lwd=1)
+    }
+    arrows(-11,0,11,0,0.05,20,3,lwd=1.5)
+    arrows(0,-11,0,11,0.05,20,3,lwd=1.5)
+    if(params$showsol){
+        x = seq(-10,10,0.01)
+        y = a^p*(x-h)^2+k
+        x = x[abs(y)<=10]
+        y = y[abs(y)<=10]
+        lines(x,y,col="red",lwd=2)
+        x = seq(-10,10,1)
+        y = a^p*(x-h)^2+k
+        x = x[abs(y)<=10]
+        y = y[abs(y)<=10]
+        points(x,y,col="red",pch=19)
+    }
+}
+
+```
+
+
+\newpage
+
+```{r,echo=F,fig.dim=c(6.5,7.5)}
+library(latex2exp)
+par(mar=c(0.2,0.2,3,0),pty="s",mfrow=c(3,3))
+for(i in 10:18){
+    a = as[i]
+    p = ps[i]
+    h = hs[i]
+    k = ks[i]
+    plot(0,0,"n",xlim=c(-11,11),ylim=c(-11,11),axes=F,ann=F)
+    mtext(TeX(paste0("$y=",eqs[i],"$")),3)
+    for(j in -10:10){
+        lines(c(-10,10),c(j,j),col="grey",lwd=0.5)
+        lines(c(j,j),c(-10,10),col="grey",lwd=0.5)
+    }
+    for(j in seq(-10,10,5)){
+        lines(c(-10,10),c(j,j),col="darkgrey",lwd=1)
+        lines(c(j,j),c(-10,10),col="darkgrey",lwd=1)
+    }
+    arrows(-11,0,11,0,0.05,20,3,lwd=1.5)
+    arrows(0,-11,0,11,0.05,20,3,lwd=1.5)
+    if(params$showsol){
+        x = seq(-10,10,0.01)
+        y = a^p*(x-h)^2+k
+        x = x[abs(y)<=10]
+        y = y[abs(y)<=10]
+        lines(x,y,col="red",lwd=2)
+        x = seq(-10,10,1)
+        y = a^p*(x-h)^2+k
+        x = x[abs(y)<=10]
+        y = y[abs(y)<=10]
+        x = x[y%%1==0]
+        y = y[y%%1==0]
+        points(x,y,col="red",pch=19)
+    }
+}
+
+```
+

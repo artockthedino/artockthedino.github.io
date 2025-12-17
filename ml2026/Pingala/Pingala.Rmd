@@ -2,7 +2,6 @@
 output: slidy_presentation
 ---
 
-
 # Pingala Rhythms
 
 * Musical rhythms have mathematical connections!
