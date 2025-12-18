@@ -1,0 +1,170 @@
+```{r,echo=FALSE}
+pn = function(c,d){
+    cc = c[c!=0]
+    dd = d[c!=0]
+    p = paste0("{",cc,"}x^{",dd,"}",collapse="+")
+    p = gsub("x^{0}","",p,fixed=T)
+    p = gsub("x^{1}","x",p,fixed=T)
+    p = gsub("+{-","-{",p,fixed=T)
+    p = gsub("+{1}x","+x",p,fixed=T)
+    p = gsub("-{1}x","-x",p,fixed=T)
+    p = gsub("{-1}x","-x",p,fixed=T)
+    p = gsub("{1}x","x",p,fixed=T)
+    return(p)
+}
+
+
+qt = sample(0:2,1)
+while(T){
+    abc = sample(1:9,3,T)*sample(c(-1,1),3,T)
+    a = abc[1]
+    b = abc[2]
+    c = abc[3]
+    disc = b^2-4*a*c
+    if(qt==0 && disc<0){break}
+    if(qt==1 && disc==0){break}
+    if(qt==2 && disc>0){break}
+}
+
+ach1 = c("The parabola opens downward.","The parabola opens upward.")
+ach2 = c("There are 0 x-intercepts","There is 1 x-intercept","There are 2 x-intercepts")
+ach3 = c("The vertex is to the left of the y axis.","The vertex is on the y axis.","The vertex is to the right of the y axis.")
+ach4 = c("The vertex is below the x axis.","The vertex is on the x axis.","The vertex is above the x axis.")
+
+
+al1 = paste0("* ",ach1,collapse="\n")
+al2 = paste0("* ",ach2,collapse="\n")
+al3 = paste0("* ",ach3,collapse="\n")
+al4 = paste0("* ",ach4,collapse="\n")
+
+if(a<0){
+    sol1 = "10"
+    wrd1 = paste0("The quadratic coefficient, $a=",a,"$, is negative, so the parabola opens downward.")
+} else {
+    sol1 = "01"
+    wrd1 = paste0("The quadratic coefficient, $a=",a,"$, is positive, so the parabola opens upward.")
+}
+
+D = b^2-4*a*c
+sol2 = paste0(1*(sign(D)==-1:1),collapse="")
+if(D<0){
+    wrd2 = paste0("The discriminant, $D=",D,"$, is negative, so there are no $x$-intercepts.")
+}
+if(D==0){
+    wrd2 = paste0("The discriminant, $D=",0,"$, is zero, so there is one $x$-intercept.")
+}
+if(D>0){
+    wrd2 = paste0("The discriminant, $D=",D,"$, is positive, so there are two $x$-intercepts.")
+}
+
+
+h = -b/2/a
+sol3 = paste0(1*(sign(h)==-1:1),collapse="")
+
+if(h<0){
+    wrd3 = paste0("The horizontal coordinate of the vertex, $h=",h,"$, is negative, so the vertex is to the left of the y axis.")
+}
+if(h==0){
+    wrd3 = paste0("The horizontal coordinate of the vertex, $h=",h,"$, is zero, so the vertex is on the y axis.")
+}
+if(h>0){
+    wrd3 = paste0("The horizontal coordinate of the vertex, $h=",h,"$, is positive, so the vertex is to the right of the y axis.")
+}
+
+k = -D/4/a
+sol4 = paste0(1*(sign(k)==-1:1),collapse="")
+
+if(k<0){
+    wrd4 = paste0("The vertical coordinate of the vertex, $k=",k,"$, is negative, so the vertex is below of the x axis.")
+}
+if(k==0){
+    wrd4 = paste0("The vertical coordinate of the vertex, $k=",k,"$, is zero, so the vertex is on the x axis.")
+}
+if(k>0){
+    wrd4 = paste0("The vertical coordinate of the vertex, $k=",k,"$, is positive, so the vertex is above the y axis.")
+}
+
+```
+
+Question
+========
+
+A standard-form quadratic function has three parameters $a$, $b$, and $c$:
+
+$$y=ax^2+bx+c$$
+
+When graphed, the quadratic function represents a parabola with a vertical axis of symmetry. The quadratic coefficient, $a$, represents the vertical stretch and orientation (whether the parabola opens upwards or downwards).
+
+* If $a<0$, the parabola opens downwards, and the vertex is a maximum.
+* If $a>0$, the parabola opens upwards, and the vertex is a minimum.
+
+The constant term, $c$, represents the $y$-intercept. The linear coefficient, $b$, does not have a simple geometric interpretation. However, it is an essential part of some key formulas. For example, we have formulas for finding the vertex at $(h,k)$:
+
+$$h=\frac{-b}{2a}$$
+
+$$k=\frac{4ac-b^2}{4a}$$
+
+Another important quantity we can calculate is the [discriminant](https://en.wikipedia.org/wiki/Quadratic_equation#Discriminant).
+
+$$D~=~b^2-4ac$$
+
+* If $D<0$, there are 0 $x$-intercepts.
+* If $D=0$, there is 1 $x$-intercept, the vertex.
+* If $D>0$, there are 2 $x$-intercepts.
+
+
+A parabolic curve is defined with a quadratic function in standard form.
+
+$$y~=~`r pn(c(a,b,c),2:0)`$$
+
+* What is the orientation?
+* ##ANSWER1##
+* How many $x$-intercepts does the curve have?
+* ##ANSWER2##
+* Is the vertex left or right of the $y$ axis?
+* ##ANSWER3##
+* Is the vertex above or below the $x$ axis?
+* ##ANSWER4##
+
+
+Answerlist
+--------
+
+`r al1`
+`r al2`
+`r al3`
+`r al4`
+
+
+
+Solution
+========
+
+`r wrd1`
+
+
+$$D=(`r b`)^2-4(`r a`)(`r c`)$$
+
+$$D=`r D`$$
+
+`r wrd2`
+
+$$h=\frac{-(`r b`)}{2(`r a`)}$$
+
+$$h=`r h`$$
+
+`r wrd3`
+
+
+$$k=\frac{4(`r a`)(`r c`)-(`r b`)^2}{4(`r a`)}$$
+
+$$k=`r k`$$
+
+`r wrd4`
+
+Meta-information
+============
+extype: cloze
+exclozetype: schoice|schoice|schoice|schoice
+exsolution: `r sol1`|`r sol2`|`r sol3`|`r sol4`
+exname: discriminant_num_roots
