@@ -1,0 +1,152 @@
+---
+output: html_document
+params:
+    rseed: 0
+    showsol: true
+---
+
+```{r,echo=F,warning=FALSE,message=FALSE}
+if(params$rseed !=0){
+    set.seed(params$rseed)
+}
+```
+
+## Stretched Parabolas
+
+Consider the stretched parabola $y=ax^2$, where $a$ is any constant. For the table below, some simple positive values of $a$ were used. When the output is a whole number less than 16, it is highlighted in red, because those lattice points are indicated as dots in the graphs on the back of this page.
+
+
+```{r,echo=F,warning=FALSE,message=FALSE}
+as = c(1,2,3,2,3,4,9,16,25)
+ps = c(1,1,1,-1,-1,-1,-1,-1,-1)
+aa = character()
+for(i in 1:length(as)){
+    a = as[i]
+    p = ps[i]
+    if(p==1){
+        aa = c(aa,paste0(a))
+    } else {
+        aa = c(aa,paste0("\\frac{",sign(a),"}{",abs(a),"}"))
+    }
+    if(a==1){
+        aa = ""
+    }
+}
+
+quads = paste0("$",aa,"x^2$")
+
+x = -10:10
+
+cns = c("$x$",quads)
+
+mydf = data.frame(x)
+
+library(MASS)
+
+for(i in 1:length(as)){
+    colu = character()
+    for(j in 1:length(x)){
+        y = as[i]^ps[i]*x[j]^2
+        if(y<=15 && y%%1==0){
+            colu = c(colu,paste0("\\color{red}",fractions(as[i]^ps[i]*x[j]^2),"\\color{black}",collapse=""))
+        } else {
+            colu = c(colu,paste0(fractions(as[i]^ps[i]*x[j]^2)))
+        }
+    }
+    mydf = cbind(mydf,colu)
+}
+
+colnames(mydf)= cns
+
+kableExtra::kable(mydf,format="simple")
+
+```
+
+\normalsize
+
+That's a lot of information. I think it is easier to appreciate the graphs (see back).
+
+
+\newpage
+
+```{r,echo=F,fig.dim=c(6.5,9)}
+as = c(1,2,3,2,3,4,9,16,25)
+ps = c(1,1,1,-1,-1,-1,-1,-1,-1)
+hs = rep(0,length(as))
+ks = rep(0,length(as))
+eqs = character()
+for(i in 1:length(as)){
+    a = as[i]
+    h = hs[i]
+    k = ks[i]
+    p = ps[i]
+    if(a==1){
+        aa = ""
+    } else if(a==-1){
+        aa = "-"
+    } else {
+        aa = paste0(a)
+    }
+    if(p==1){
+        eq = paste0(aa,"x^2")
+        eq = gsub("+-","-",eq,fixed=T)
+    } else {
+        if(abs(a)!=1){
+            aa = paste0("\\frac{",sign(a),"}{",abs(a),"}",collapse="")
+        }
+        eq = paste0(aa,"x^2")
+        eq = gsub("+-","-",eq,fixed=T)
+    }
+    eqs = c(eqs,eq)
+}
+library(latex2exp)
+par(mar=c(0.2,0.2,3,0),pty="s",mfrow=c(3,3))
+for(i in 1:length(as)){
+    a = as[i]
+    p = ps[i]
+    h = hs[i]
+    k = ks[i]
+    plot(0,0,"n",xlim=c(-11,11),ylim=c(-6,16),axes=F,ann=F)
+    mtext(TeX(paste0("$y=",eqs[i],"$")),3)
+    for(j in -5:15){
+        lines(c(-10,10),c(j,j),col="grey",lwd=0.5)
+    }
+    for(j in -10:10){
+        lines(c(j,j),c(-5,15),col="grey",lwd=0.5)
+    }
+    for(j in seq(-5,15,5)){
+        lines(c(-10,10),c(j,j),col="darkgrey",lwd=1)
+    }
+    for(j in seq(-10,10,5)){
+        lines(c(j,j),c(-5,15),col="darkgrey",lwd=1)
+    }
+    arrows(-11,0,11,0,0.05,20,3,lwd=1.5)
+    arrows(0,-6,0,16,0.05,20,3,lwd=1.5)
+    text(0,15,15,adj=c(-0.2,0.5))
+    text(10,0,10,adj=c(0.5,-0.2))
+    text(0,15,"y",adj=c(1.2,-0.8))
+    text(10,0,"x",adj=c(-0.8,1.2))
+    if(params$showsol){
+        x = seq(-10,10,0.01)
+        y = a^p*(x-h)^2+k
+        x = x[abs(y)<=15]
+        y = y[abs(y)<=15]
+        lines(x,y,col="red",lwd=2)
+        x = seq(-10,10,1)
+        y = a^p*(x-h)^2+k
+        x = x[abs(y)<=15]
+        y = y[abs(y)<=15]
+        x = x[y%%1==0]
+        y = y[y%%1==0]
+        points(x,y,col="red",pch=19)
+    }
+}
+
+```
+
+
+
+
+
+
+

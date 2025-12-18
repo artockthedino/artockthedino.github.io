@@ -41,14 +41,14 @@ Name: \vspace{5pt} \hrule
 ## at1218p_graph_vertex_form (v`r params$rseed`)
 
 ```{r,echo=F,warning=FALSE,message=FALSE}
-as = c(1)
-hs = c(3)
-ks = c(-4)
-ps = c(1)
+as = numeric()
+hs = numeric()
+ks = numeric()
+ps = numeric()
 
 gs = c(paste0(c(as,hs,ks,ps),collapse="#"))
 
-for(i in 1:3){
+for(i in 1:4){
     while(T){
         a = sample(c(-1,1),1,T,prob=c(0.6,0.4))
         h = sample(1:7,1)*sample(c(-1,1),1)
@@ -120,11 +120,11 @@ for(i in 1:length(as)){
 }
 ```
 
-Graph each of the vertex-form quadratic equations. Accurately mark all lattice points of the curve with filled circles.
+Graph each of the vertex-form quadratic equations. Accurately mark all lattice points of the curve with filled circles. Also state how many $x$ intercepts the curve has.
 
 ```{r,echo=F,fig.dim=c(6.5,7.5)}
 library(latex2exp)
-par(mar=c(0.2,0.2,3,0),pty="s",mfrow=c(3,3))
+par(mar=c(1,0,3,0),pty="s",mfrow=c(3,3))
 for(i in 1:9){
     a = as[i]
     p = ps[i]
@@ -153,6 +153,11 @@ for(i in 1:9){
         x = x[abs(y)<=10]
         y = y[abs(y)<=10]
         points(x,y,col="red",pch=19)
+        if(sign(a)==sign(k)){
+            mtext("No x-ints",1,col="red")
+        } else {
+            mtext("Two x-ints",1,col="red")
+        }
     }
 }
 
@@ -161,9 +166,9 @@ for(i in 1:9){
 
 \newpage
 
-```{r,echo=F,fig.dim=c(6.5,7.5)}
+```{r,echo=F,fig.dim=c(6.5,9)}
 library(latex2exp)
-par(mar=c(0.2,0.2,3,0),pty="s",mfrow=c(3,3))
+par(mar=c(1,0,3,0),pty="s",mfrow=c(3,3))
 for(i in 10:18){
     a = as[i]
     p = ps[i]
@@ -194,6 +199,11 @@ for(i in 10:18){
         x = x[y%%1==0]
         y = y[y%%1==0]
         points(x,y,col="red",pch=19)
+        if(sign(a)==sign(k)){
+            mtext("No x-ints",1,col="red")
+        } else {
+            mtext("Two x-ints",1,col="red")
+        }
     }
 }
 

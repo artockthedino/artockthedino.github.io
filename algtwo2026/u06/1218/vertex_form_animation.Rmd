@@ -33,9 +33,9 @@ solk = paste0(1*(1:(length(chk)+1)==wk),collapse="")
 Question
 ========
 
-In [Desmos graphing calculator](https://www.desmos.com/calculator), define $f(x)$ with the following parameterized equation, and add sliders for all three parameters ($A$, $h$, and $k$). The sliders should default with boundaries of $-10$ and $10$.
+In [Desmos graphing calculator](https://www.desmos.com/calculator), define $f(x)$ with the following parameterized equation, and add sliders for all three parameters ($a$, $h$, and $k$). The sliders should default with boundaries of $-10$ and $10$.
 
-$$f(x)~=~A(x-h)^2+k$$
+$$f(x)~=~a(x-h)^2+k$$
 
 To make the animation shown below, two of the parameters were set to constants, and the other parameter was animated by pressing the "play" button. That animated parameter varies between $-10$ and $10$ by default.
 
@@ -101,7 +101,7 @@ for(i in 1:n){
 
 Find the value of each parameter, or if the parameter varies then choose "animated".
 
-* $A~=~$ ##ANSWER1##
+* $a~=~$ ##ANSWER1##
 * $h~=~$ ##ANSWER2##
 * $k~=~$ ##ANSWER3##
 
@@ -141,7 +141,7 @@ if(whichvaries==1){
 
 ```
 
-* $A=$ `r numA`
+* $a=$ `r numA`
 * $h=$ `r numh`
 * $k=$ `r numk`
 
