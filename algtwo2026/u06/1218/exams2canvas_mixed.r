@@ -2,31 +2,32 @@ library("exams")
 n = 30
 outdir = "outcanvas"
 
-
 ### Entrance ticket
-pm = list("vertex_form_animation.Rmd",
-          "vertex_form_animation.Rmd")
-exams2canvas(pm,
-             n=n,
-             dir=outdir,
-             points=rep(5,length(pm)),
-             maxattempts = 6,
-             name="a1218_ET",
-             template = "canvas_qti12.xml",
-             cloze = list(enumerate = FALSE))
-
-# # Classwork 1
-# pm = list("optimize_rect_fence_barn_B.Rmd")
+# pm = list("vertex_form_animation.Rmd",
+#           "vertex_form_animation.Rmd")
 # exams2canvas(pm,
 #              n=n,
 #              dir=outdir,
 #              points=rep(5,length(pm)),
 #              maxattempts = 6,
-#              name="at1205cA",
+#              name="a1218_ET",
 #              template = "canvas_qti12.xml",
 #              cloze = list(enumerate = FALSE))
 
- 
+# # Classwork 1
+pm = list("ahk_count_roots.Rmd",
+          "ahk_count_roots.Rmd",
+          "ahk_count_roots.Rmd")
+exams2canvas(pm,
+             n=n,
+             dir=outdir,
+             points=rep(4,length(pm)),
+             maxattempts = 8,
+             name="a1218cA_vertex_form_params",
+             template = "canvas_qti12.xml",
+             cloze = list(enumerate = FALSE))
+
+
 # # # Classwork 2
 # pm = list("03_quad_AOS_from_roots.Rmd",
 #           "04_quad_AOS_from_roots_B.Rmd",

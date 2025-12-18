@@ -2,7 +2,7 @@
 library(MASS)
 aposs = c(-3,-2,-1/2,-1/3,-1/4,-1/9,1/9,1/4,1/3,1/2,2,3)
 a = sample(aposs,1)
-hk = sample(0:7,2)*sample(c(-1,1),2,T)
+hk = sample(0:6,2)*sample(c(-1,1),2,T)
 h = hk[1]
 k = hk[2]
 
@@ -13,7 +13,7 @@ eq = gsub("+0","",eq,fixed=T)
 ach1 = paste0(fractions(aposs))
 ach2 = -6:6
 ach3 = -6:6
-ach4 = 0:2
+ach4 = c("There are 0 x-intercepts.","There is 1 x-intercept.","There are 2 x-intercepts.")
 
 al1 = paste0("* ",ach1,collapse="\n")
 al2 = paste0("* ",ach2,collapse="\n")
@@ -22,7 +22,7 @@ al4 = paste0("* ",ach4,collapse="\n")
 
 sol1 = paste0(1*(ach1==paste0(fractions(a))),collapse="")
 sol2 = paste0(1*(ach2==h),collapse="")
-sol3 = paste0(1*(ach3==h),collapse="")
+sol3 = paste0(1*(ach3==k),collapse="")
 
 if(sign(a)==sign(k)){
     sol4 = "100"
@@ -81,7 +81,7 @@ Find the parameters.
 * $h=$ ##ANSWER2##
 * $k=$ ##ANSWER3##
 
-How many $x$ intercepts does the parabola have? (Some might not show on the graph.)
+How many $x$-intercepts does the parabola have? (Some might not show on the graph.)
 
 * ##ANSWER4##
 
@@ -96,8 +96,17 @@ Answerlist
 Solution
 ========
 
+To find $a$, you might use [this reference](https://artockthedino.github.io/algtwo2026/u06/1218/Stretched_Parabolas_Reference.html). Notice, if $a$ is negative, the parabola faces down, and if $a$ is positive, the parabola faces up. If $|a|$ is bigger than 1, then the parent $y=x^2$ is stretched vertically. If $|a|$ is less than 1, then the parent $y=x^2$ is shrunk vertically. To find the exact value, you need to look at precisely where the curve intersects the lattice points.
 
+To find $h$ and $k$, you can just find the coordinates of the vertex.
 
+To determine the number of roots... 
+
+* If the vertex is on the $x$ axis, there is one root.
+* If the parabola opens **up** and the vertex is **above** the $x$ axis, then 0 roots.
+* If the parabola opens **down** and the vertex is **above** the $x$ axis, then 2 roots.
+* If the parabola opens **up** and the vertex is **below** the $x$ axis, then 2 roots.
+* If the parabola opens **down** and the vertex is **below** the $x$ axis, then 0 roots.
 
 
 Meta-information

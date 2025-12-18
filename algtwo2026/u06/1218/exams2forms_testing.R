@@ -2,14 +2,13 @@ library("exams2forms")
 n = 8
 
 ### Entrance ticket
-pm = list("optimize_rect_fence_barn.Rmd",
-          "optimize_rect_fence_barn_B.Rmd")
+pm = list("ahk_count_roots.Rmd")
 
 exams2webquiz(pm,
              n=n,
-             title = "examples_1205",
+             title = "examples_1218",
              dir = ".",
-             name="examples_1205")
+             name="examples_1218")
 
 
 

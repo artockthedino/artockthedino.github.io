@@ -1,5 +1,5 @@
 ---
-output: pdf_document
+output: html_document
 params:
     rseed: 0
     showsol: true
@@ -13,7 +13,7 @@ if(params$rseed !=0){
 
 ## Stretched Parabolas
 
-Consider the stretched parabola $y=ax^2$, where $a$ is any constant. For the table below, some simple positive values of $a$ were used. When the output is a whole number less than 16, it is highlighted in red, because those lattice points are indicated as dots in the graphs on the back of this page.
+Consider the stretched parabola $y=ax^2$, where $a$ is any constant. For the table below, some simple positive values of $a$ were used. When the output is a whole number less than 16, it is highlighted in red, because those lattice points are indicated as dots in the graphs below.
 
 
 ```{r,echo=F,warning=FALSE,message=FALSE}
@@ -48,7 +48,7 @@ for(i in 1:length(as)){
     for(j in 1:length(x)){
         y = as[i]^ps[i]*x[j]^2
         if(y<=15 && y%%1==0){
-            colu = c(colu,paste0("\\color{red}",fractions(as[i]^ps[i]*x[j]^2),"\\color{black}",collapse=""))
+            colu = c(colu,paste0("<span style='color: #ff0000;'>",fractions(as[i]^ps[i]*x[j]^2),"</span>",collapse=""))
         } else {
             colu = c(colu,paste0(fractions(as[i]^ps[i]*x[j]^2)))
         }
@@ -64,7 +64,7 @@ kableExtra::kable(mydf,format="simple")
 
 \normalsize
 
-That's a lot of information. I think it is easier to appreciate the graphs (see back of this page).
+That's a lot of information. I think it is easier to appreciate the graphs (see below).
 
 
 \newpage
