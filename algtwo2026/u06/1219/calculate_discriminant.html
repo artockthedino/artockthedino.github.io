@@ -11,7 +11,7 @@
 
 
 
-<title>discriminant_num_roots.knit</title>
+<title>calculate_discriminant.knit</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -356,84 +356,24 @@ display: none;
 <h1>Question</h1>
 <p>A standard-form quadratic function has three parameters <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>, and <span class="math inline">\(c\)</span>:</p>
 <p><span class="math display">\[y=ax^2+bx+c\]</span></p>
-<p>When graphed, the quadratic function represents a parabola with a
-vertical axis of symmetry. The quadratic coefficient, <span class="math inline">\(a\)</span>, represents the vertical stretch and
-orientation (whether the parabola opens upwards or downwards).</p>
-<ul>
-<li>If <span class="math inline">\(a&lt;0\)</span>, the parabola opens
-downwards, and the vertex is a maximum.</li>
-<li>If <span class="math inline">\(a&gt;0\)</span>, the parabola opens
-upwards, and the vertex is a minimum.</li>
-</ul>
-<p>The constant term, <span class="math inline">\(c\)</span>, represents
-the <span class="math inline">\(y\)</span>-intercept. The linear
-coefficient, <span class="math inline">\(b\)</span>, does not have a
-simple geometric interpretation. However, it is an essential part of
-some key formulas. For example, we have formulas for finding the vertex
-at <span class="math inline">\((h,k)\)</span>:</p>
-<p><span class="math display">\[h=\frac{-b}{2a}\]</span></p>
-<p><span class="math display">\[k=\frac{4ac-b^2}{4a}\]</span></p>
-<p>Another important quantity we can calculate is the <a href="https://en.wikipedia.org/wiki/Quadratic_equation#Discriminant">discriminant</a>.</p>
+<p>An important quantity we can calculate is the <a href="https://en.wikipedia.org/wiki/Quadratic_equation#Discriminant">discriminant</a>.</p>
 <p><span class="math display">\[D~=~b^2-4ac\]</span></p>
-<ul>
-<li>If <span class="math inline">\(D&lt;0\)</span>, there are 0 <span class="math inline">\(x\)</span>-intercepts.</li>
-<li>If <span class="math inline">\(D=0\)</span>, there is 1 <span class="math inline">\(x\)</span>-intercept, the vertex.</li>
-<li>If <span class="math inline">\(D&gt;0\)</span>, there are 2 <span class="math inline">\(x\)</span>-intercepts.</li>
-</ul>
-<p>A parabolic curve is defined with a quadratic function in standard
-form.</p>
-<p><span class="math display">\[y~=~{-5}x^{2}-{7}x+{11}\]</span></p>
-<ul>
-<li>What is the orientation?</li>
-<li>##ANSWER1##</li>
-<li>How many <span class="math inline">\(x\)</span>-intercepts does the
-curve have?</li>
-<li>##ANSWER2##</li>
-<li>Is the vertex left or right of the <span class="math inline">\(y\)</span> axis?</li>
-<li>##ANSWER3##</li>
-<li>Is the vertex above or below the <span class="math inline">\(x\)</span> axis?</li>
-<li>##ANSWER4##</li>
-</ul>
-<div id="answerlist" class="section level2">
-<h2>Answerlist</h2>
-<ul>
-<li>The parabola opens downward.</li>
-<li>The parabola opens upward.</li>
-<li>There are 0 x-intercepts</li>
-<li>There is 1 x-intercept</li>
-<li>There are 2 x-intercepts</li>
-<li>The vertex is to the left of the y axis.</li>
-<li>The vertex is on the y axis.</li>
-<li>The vertex is to the right of the y axis.</li>
-<li>The vertex is below the x axis.</li>
-<li>The vertex is on the x axis.</li>
-<li>The vertex is above the x axis.</li>
-</ul>
-</div>
+<p>Calculate the discriminant of the following quadratic function:</p>
+<p><span class="math display">\[y~=~{4}x^{2}-{2}x+{6}\]</span></p>
 </div>
 <div id="solution" class="section level1">
 <h1>Solution</h1>
 <p>Identify the coefficients.</p>
-<p><span class="math display">\[a=-5\]</span> <span class="math display">\[b=-7\]</span> <span class="math display">\[c=11\]</span></p>
-<p>The quadratic coefficient, <span class="math inline">\(a=-5\)</span>,
-is negative, so the parabola opens downward.</p>
-<p><span class="math display">\[D=(-7)^2-4(-5)(11)\]</span></p>
-<p><span class="math display">\[D=269\]</span></p>
-<p>The discriminant, <span class="math inline">\(D=269\)</span>, is
-positive, so there are two <span class="math inline">\(x\)</span>-intercepts.</p>
-<p><span class="math display">\[h=\frac{-(-7)}{2(-5)}\]</span></p>
-<p><span class="math display">\[h=-0.7\]</span></p>
-<p>The horizontal coordinate of the vertex, <span class="math inline">\(h=-0.7\)</span>, is negative, so the vertex is to
-the left of the y axis.</p>
-<p><span class="math display">\[k=\frac{4(-5)(11)-(-7)^2}{4(-5)}\]</span></p>
-<p><span class="math display">\[k=13.45\]</span></p>
-<p>The vertical coordinate of the vertex, <span class="math inline">\(k=13.45\)</span>, is positive, so the vertex is
-above the y axis.</p>
+<p><span class="math display">\[a=4\]</span> <span class="math display">\[b=-2\]</span> <span class="math display">\[c=6\]</span></p>
+<p>Use the formula for the disciminant.</p>
+<p><span class="math display">\[D=(-2)^2-4(4)(6)\]</span></p>
+<p><span class="math display">\[D=-92\]</span></p>
+<p>The discriminant, <span class="math inline">\(D=-92\)</span>, is
+negative, so there are no <span class="math inline">\(x\)</span>-intercepts.</p>
 </div>
 <div id="meta-information" class="section level1">
 <h1>Meta-information</h1>
-<p>extype: cloze exclozetype: schoice|schoice|schoice|schoice
-exsolution: 10|001|100|001 exname: discriminant_num_roots</p>
+<p>extype: num exsolution: -92 exname: discriminant</p>
 </div>
 
 

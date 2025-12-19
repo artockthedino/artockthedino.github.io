@@ -1,0 +1,106 @@
+```{r,echo=FALSE}
+pn = function(c,d){
+    cc = c[c!=0]
+    dd = d[c!=0]
+    p = paste0("{",cc,"}x^{",dd,"}",collapse="+")
+    p = gsub("x^{0}","",p,fixed=T)
+    p = gsub("x^{1}","x",p,fixed=T)
+    p = gsub("+{-","-{",p,fixed=T)
+    p = gsub("+{1}x","+x",p,fixed=T)
+    p = gsub("-{1}x","-x",p,fixed=T)
+    p = gsub("{-1}x","-x",p,fixed=T)
+    p = gsub("{1}x","x",p,fixed=T)
+    return(p)
+}
+
+while(T){
+    a = sample(c(2,3,4,0.5,0.2,0.1),1)*sample(c(-1,1),1)
+    rs = sample(1:9,2)*sample(c(-1,1),2,T)
+    r = rs[1]
+    s = rs[2]
+    
+    eq = paste0(a,"(",pn(c(1,-r),1:0),")(",pn(c(1,-s),1:0),")",collapse="")
+    
+    h = (r+s)/2
+    w = abs(r-s)/2
+    k = -a*w^2
+    if(abs(k)<1000){break}
+}
+
+
+hposs = sort(unique(c((r+s)/2,(r-s)/2,(-r+s)/2,(-r-s)/2)))
+wposs = hposs
+kposs = sort(unique(c(k,-k,a*h^2,-a*h^2)))
+
+ach = sort(unique(c(hposs,kposs)))
+
+al = paste0("* ",ach,collapse="\n")
+
+sol1 = paste0(1*(ach==h),collapse="")
+sol2 = paste0(1*(ach==w),collapse="")
+sol3 = paste0(1*(ach==k),collapse="")
+
+```
+
+Question
+========
+
+Quadratic functions can be written in factored form:
+
+$$y~=~a(x-r)(x-s)$$
+
+where $r$ and $s$ represent the two $x$-intercepts and $a$ represents the vertical stretch factor (and possibly a reflection if $a$ is negative).
+
+It can be helpful to use the following formulas, when graphing from factored form, to find the vertex:
+
+$$h~=~\frac{r+s}{2}$$
+$$w~=~\frac{|r-s|}{2}$$
+$$k~=~-aw^2$$
+
+The vertex is at $(h,k)$ and $w$ represents the distance from either $x$-intercept to the axis of symmetry.
+
+A quadratic function in factored form is shown below:
+
+$$y=`r eq`$$
+
+Find $h$, $w$, and $k$.
+
+* $h=$ ##ANSWER1##
+* $w=$ ##ANSWER2##
+* $k=$ ##ANSWER3##
+
+
+
+Answerlist
+--------
+
+`r al`
+`r al`
+`r al`
+
+
+Solution
+========
+
+Identify the parameters.
+
+$$a=`r a`$$
+$$r=`r r`$$
+$$s=`r s`$$
+
+Use the formulas.
+
+$$h=\frac{(`r r`)+(`r s`)}{2}=`r h`$$
+
+$$w=\frac{|(`r r`)-(`r s`)|}{2}=`r w`$$
+
+$$k=-(`r a`)(`r w`)^2=`r k`$$
+
+
+
+Meta-information
+============
+extype: cloze
+exclozetype: schoice|schoice|schoice
+exsolution: `r sol1`|`r sol2`|`r sol3`
+exname: hk_from_factored
