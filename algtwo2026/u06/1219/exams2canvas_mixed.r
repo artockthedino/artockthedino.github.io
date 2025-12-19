@@ -4,44 +4,41 @@ outdir = "outcanvas"
 
 ### Entrance ticket
 # pm = list("vertex_form_animation.Rmd",
-#           "vertex_form_animation.Rmd")
-# exams2canvas(pm,
-#              n=n,
-#              dir=outdir,
-#              points=rep(5,length(pm)),
-#              maxattempts = 6,
-#              name="a1218_ET",
-#              template = "canvas_qti12.xml",
-#              cloze = list(enumerate = FALSE))
-
-# # Classwork 1
-pm = list("ahk_count_roots.Rmd",
-          "ahk_count_roots.Rmd",
-          "ahk_count_roots.Rmd")
-exams2canvas(pm,
-             n=n,
-             dir=outdir,
-             points=rep(4,length(pm)),
-             maxattempts = 8,
-             name="a1218cA_vertex_form_params",
-             template = "canvas_qti12.xml",
-             cloze = list(enumerate = FALSE))
-
-
-# # # Classwork 2
-# pm = list("03_quad_AOS_from_roots.Rmd",
-#           "04_quad_AOS_from_roots_B.Rmd",
-#           "05_quad_w_from_roots.Rmd",
-#           "06_quad_h_from_standard_B.Rmd",
-#           "07_quad_w_from_standard.Rmd")
+#           "ahk_count_roots.Rmd")
 # exams2canvas(pm,
 #              n=n,
 #              dir=outdir,
 #              points=rep(2,length(pm)),
 #              maxattempts = 6,
-#              name="at1203cB_roots",
+#              name="a1219et_vertex_form",
 #              template = "canvas_qti12.xml",
 #              cloze = list(enumerate = FALSE))
+
+# # Classwork 1
+pm = list("factored_form_from_graph.Rmd",
+          "factored_form_from_graph.Rmd",
+          "factored_form_from_graph.Rmd",
+          "factored_form_from_graph.Rmd")
+exams2canvas(pm,
+             n=n,
+             dir=outdir,
+             points=rep(2,length(pm)),
+             maxattempts = 8,
+             name="a1219c1_factored_eq_from_graph",
+             template = "canvas_qti12.xml",
+             cloze = list(enumerate = FALSE))
+
+# # Classwork 2
+pm = list("hk_from_factored_form.Rmd",
+          "hk_from_factored_form.Rmd")
+exams2canvas(pm,
+             n=n,
+             dir=outdir,
+             points=rep(3,length(pm)),
+             maxattempts = 6,
+             name="a1218c2_vertex_from_factrd_eq",
+             template = "canvas_qti12.xml",
+             cloze = list(enumerate = FALSE))
 
 
 # pm = list("vertex_form_animation.Rmd")

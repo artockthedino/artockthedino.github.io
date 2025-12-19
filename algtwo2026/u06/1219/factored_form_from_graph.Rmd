@@ -37,7 +37,7 @@ for(aa in c(as,-as)){
             if(abs(aa)>1){
                 eqposs=c(eqposs,paste0(aa,"(",pn(c(1,-rr),1:0),")(",pn(c(1,-ss),1:0),")",collapse=""))
             } else {
-                eqposs=c(eqposs,paste0("\\frac{",sign(aa),"}{",round(1/aa),"}(",pn(c(1,-rr),1:0),")(",pn(c(1,-ss),1:0),")",collapse=""))
+                eqposs=c(eqposs,paste0("\\frac{",sign(aa),"}{",abs(round(1/aa)),"}(",pn(c(1,-rr),1:0),")(",pn(c(1,-ss),1:0),")",collapse=""))
             }
             
         }
@@ -102,14 +102,17 @@ Solution
 The correct answer is:
 $$y=`r eq`$$
 
-You can determine $a$ based on [this reference sheet]().
+You can determine $a$ by using [this reference sheet](https://artockthedino.github.io/algtwo2026/u06/1218/Stretched_Parabolas_Reference.html). You also need to remember that if $a<0$, then the parabola opens downward.
 
+The roots are at $(`r min(c(r,s))`,0)$ and $(`r max(c(r,s))`,0)$. Thus, we could say $r=`r r`$ and $s=`r s`$ (or the other way around). We put those parameters into factored-form equation, $y=a(x-r)(x-s)$, to get...
+
+
+$$y=`r eq`$$
 
 
 
 Meta-information
 ============
-extype: cloze
-exclozetype: schoice|schoice|schoice
-exsolution:
-exname: hk_from_factored
+extype: schoice
+exsolution: `r sol`
+exname: factored_form_from_graph
