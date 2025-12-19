@@ -109,9 +109,9 @@ showrules = function(g){
 }
 
 g99 = list("A",
-           list("A"="+B-ACA-ACA-B+",
-                "B"="-A+BCB+BCB+A-",
-                "C"="CCC"),
+           list("A"="+BA+ABCBA+AB+",
+                "B"="-C+++BACAB+++C-",
+                "C"="CC"),
            5,
            108)
 

@@ -199,9 +199,6 @@ kableExtra::kable_styling(kableExtra::kable(mytab),bootstrap_options = c("stripe
 
 
 
-
-
-
 # How many 6-beat rhythms?
 
 Can you find all the 6-beat rhythms? In other words, how many ways can you fill a measure of $\substack{6 \\ 4}$ with quarter notes and half notes?

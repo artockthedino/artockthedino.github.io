@@ -1,7 +1,7 @@
-fn = "a1218p_graph_vertex_form.Rmd"
+fn = "a1219p_graph_factored_form.Rmd"
 shortfn = strsplit(fn,"_")[[1]][1]
-nlow = 101
-nhigh = 130
+nlow = 201
+nhigh = 230
 
 sss44 = "<!DOCTYPE html>
 <html lang='en'>

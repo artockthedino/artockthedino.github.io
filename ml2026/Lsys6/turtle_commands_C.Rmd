@@ -581,10 +581,11 @@ g86 = list("A",
            135)
 
 g87 = list("A",
-           list("A"="+B-AA-B+",
-                "B"="-A+BB+A-"),
-           3,
-           108)
+           list("A"="+BAA-ABA-AAB+",
+                "B"="-A+B[-C]B+A-",
+                "C"="CCCC[A][+A][-A][--A]"),
+           4,
+           90)
 
 g88 = list("A",
            list("A"="+B-AA-AA-B+",
@@ -606,8 +607,105 @@ g90 = list("A",
            5,
            108)
 
-goodies = list(g1,g2,g3,g4,g5,g6,g7,g8,g9,g10,g11,g12,g13,g14,g15,g16,g17,g18,g19,g20,g21,g22,g23,g24,g25,g26,g27,g28,g29,g30,g31,g32,g33,g34,g35,g36,g37,g38,g39,g40,g41,g42,g43,g44,g45,g46,g47,g48,g49,g50,g51,g52,g53,g54,g55,g56,g57,g58,g59,g60,g61,g62,g63,g64,g65,g66,g67,g68,g69,g70,g71,g72,g73,g74,g75,g76,g77,g78,g79,g80,g81,g82,g83,g84,g85,g86,g87,g88,g89,g90)
+g91 = list("-A",
+           list("A"="+B-AA-B+",
+                "B"="-A+BB+A-"),
+           5,
+           90)
 
+g92 = list("A",
+           list("A"="+B-AAA-B+",
+                "B"="-A+BBB+A-"),
+           5,
+           120)
+
+g93 = list("AA",
+           list("A"="+B-AAA-B+",
+                "B"="-A+BBB+A-"),
+           5,
+           108)
+
+g94 = list("AA",
+           list("A"="+B-ABA-B+",
+                "B"="-A+BAB+A-"),
+           5,
+           108)
+
+g95 = list("A",
+           list("A"="+BB-ABA-BB+",
+                "B"="-AA+BAB+AA-"),
+           5,
+           90)
+
+g96 = list("A",
+           list("A"="+BA-ABA-AB+",
+                "B"="-AB+BAB+BA-"),
+           5,
+           90)
+
+g97 = list("A",
+           list("A"="+BA-A--B--A-AB+",
+                "B"="-AB+B++A++B+BA-"),
+           5,
+           60)
+
+g98 = list("A",
+           list("A"="+BA-A--A--A-AB+",
+                "B"="-AB+B++B++B+BA-"),
+           5,
+           120)
+
+g99 = list("A",
+           list("A"="+BA-B--A--B-AB+",
+                "B"="-AB+A++B++A+BA-"),
+           5,
+           72)
+
+g99 = list("A",
+           list("A"="+AA-B--A--B-AA+",
+                "B"="-BB+A++B++A+BB-"),
+           5,
+           120)
+
+g100= list("A",
+           list("A"="+BA--AA--AB+",
+                "B"="-AB++BB++BA-"),
+           5,
+           30)
+
+g101= list("A",
+           list("A"="+++BA----ABA----AB+++",
+                "B"="---AB++++BAB++++BA---"),
+           5,
+           45)
+
+g102= list("A",
+           list("A"="+++BA----ABA----AB+++",
+                "B"="---AB++++BAB++++BA---"),
+           4,
+           50)
+
+g103= list("A",
+           list("A"="+++BA----ABA----AB+++",
+                "B"="---AB++++BAB++++BA---"),
+           5,
+           50)
+
+g104= list("A",
+           list("A"="CAA[--CAB][++CAB]",
+                "B"="C[-CC-CA][+CC+CA]",
+                "C"="CC"),
+           5,
+           100)
+
+g105= list("A",
+           list("A"="CAA[--CAB][++CAB]",
+                "B"="C[-CC-CA][+CC+CA]",
+                "C"="CC"),
+           5,
+           90)
+
+goodies = list(g1,g2,g3,g4,g5,g6,g7,g8,g9,g10,g11,g12,g13,g14,g15,g16,g17,g18,g19,g20,g21,g22,g23,g24,g25,g26,g27,g28,g29,g30,g31,g32,g33,g34,g35,g36,g37,g38,g39,g40,g41,g42,g43,g44,g45,g46,g47,g48,g49,g50,g51,g52,g53,g54,g55,g56,g57,g58,g59,g60,g61,g62,g63,g64,g65,g66,g67,g68,g69,g70,g71,g72,g73,g74,g75,g76,g77,g78,g79,g80,g81,g82,g83,g84,g85,g86,g87,g88,g89,g90,g91,g92,g93,g94,g95,g96,g97,g98,g99,g100,g101,g102,g103,g104,g105)
 
 showrules = function(g){
     rules = g[[2]]
