@@ -6,7 +6,7 @@ with open("//Users/chad.worley@bartcharter.org/Documents/canvasAPItests/acctok.t
 
 # Variables
 course_id = '1703'  ## ML=1945... PBL_Q2_ACE=1703... PBL_Q2_BD=
-file_path_list = ["outcanvas/ET_1215_Lsys_turbo_turtle.zip"]
+file_path_list = ["outcanvas/ET_1219.zip"]
 
 ######## FOR UPLOADING ETS
 

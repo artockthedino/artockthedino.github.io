@@ -109,11 +109,11 @@ showrules = function(g){
 }
 
 g99 = list("A",
-           list("A"="+BA+ABCBA+AB+",
-                "B"="-C+++BACAB+++C-",
+           list("A"="+BA-ACA-AB+",
+                "B"="-A++CB+BC++A-",
                 "C"="CC"),
-           5,
-           108)
+           4,
+           90)
 
 # png("hi.png",300,300)
 

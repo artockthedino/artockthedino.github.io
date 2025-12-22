@@ -1,0 +1,16 @@
+---
+title: "examples_1222"
+output: exams2forms::webquiz
+---
+
+```{r exams2forms-setup, include = FALSE}
+## package and exercises
+library("exams2forms")
+exm <- list("ahk_count_roots.Rmd", "factored_form_from_graph.Rmd", "simplify_radical.Rmd", 
+    "maximize_profit.Rmd", "standard_from_graph.Rmd", "calculate_discriminant.Rmd", 
+    "discriminant_num_roots.Rmd")
+```
+
+```{r exams2forms-include, echo = FALSE, message = FALSE, results="asis"}
+exams2forms(exm,  n = 6, nsamp = NULL)
+```

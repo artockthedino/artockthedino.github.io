@@ -1,0 +1,64 @@
+```{r,echo=FALSE}
+library(MASS)
+pn = function(c,d){
+    cc = c[c!=0]
+    dd = d[c!=0]
+    p = paste0("{",cc,"}x^{",dd,"}",collapse="+")
+    p = gsub("x^{0}","",p,fixed=T)
+    p = gsub("x^{1}","x",p,fixed=T)
+    p = gsub("+{-","-{",p,fixed=T)
+    p = gsub("+{1}x","+x",p,fixed=T)
+    p = gsub("-{1}x","-x",p,fixed=T)
+    p = gsub("{-1}x","-x",p,fixed=T)
+    p = gsub("{1}x","x",p,fixed=T)
+    return(p)
+}
+
+a = sample(2:99,1)/10*sample(c(-1,1),1)
+h = sample(2:99,1)/10*sample(c(-1,1),1)
+k = sample(2:99,1)/10*sample(c(-1,1),1)
+
+b = -2*a*h
+
+```
+
+Question
+========
+
+A quadratic function has a vertex at $(`r h`,`r k`)$. One unit horizontally to the right, the curve also goes through point $(`r h+1`,`r k+a`)$.
+
+The quadratic function could be expressed in standard form:
+
+$$y=ax^2+bx+c$$
+
+Calculate $b$.
+
+
+
+Solution
+========
+
+Let the vertex be at $(h,k)$, so 
+
+$$h=`r h`$$
+$$k=`r k`$$
+
+The second given point is 1 unit horizontally along the curve. Since $a$ represents the vertical stretch, we know that the second point is at $(h+1,k+a)$.
+
+$$k+a~=~`r k+a`$$
+$$`r k`+a~=~`r k+a`$$
+$$a~=~`r a`$$
+
+You've probably memorized the formula $h=-b/(2a)$. With a bit of algebra, we can solve for $b$.
+
+$$b ~=~-2ah$$
+$$b ~=~-2(`r a`)(`r h`)$$
+$$b ~=~`r -2*a*h`$$
+
+
+
+Meta-information
+============
+extype: num
+exsolution: `r -2*a*h`
+exname: b_from_vert_and_a

@@ -1,0 +1,91 @@
+```{r,echo=FALSE}
+library(numbers)
+options(scipen=999)
+pn = function(c,d){
+    cc = c[c!=0]
+    dd = d[c!=0]
+    p = paste0("{",cc,"}x^{",dd,"}",collapse="+")
+    p = gsub("x^{0}","",p,fixed=T)
+    p = gsub("x^{1}","x",p,fixed=T)
+    p = gsub("+{-","-{",p,fixed=T)
+    p = gsub("+{1}x","+x",p,fixed=T)
+    p = gsub("-{1}x","-x",p,fixed=T)
+    p = gsub("{-1}x","-x",p,fixed=T)
+    p = gsub("{1}x","x",p,fixed=T)
+    return(p)
+}
+
+# P = (x-u)*(-mx+i)
+# roots at u and i/m
+# P = -m*x^2 + (i+u*m)*x - i*u
+# h = (i+u*m)/(2*m)
+# 2*m*h = i+u*m
+# 2*m*h-u*m = i
+# m = i/(2*h-u)
+# k = (4*a*c-b^2)/4/a
+
+# a = -m
+# b = i+u*m
+# c = -i*u
+
+while(T){
+    u = round(runif(1,0.01,9.99),2)
+    h = round(runif(1,u*1.5,u*8),2)
+    i = sample(50:100,1)
+    m = i/(2*h-u)
+    if((m*100)%%1==0 && m<200 && h%%1!=0){break}
+}
+
+a = -m
+b = i+u*m
+c = -i*u
+
+```
+
+Question
+========
+
+Jordan is selling widgets. Each widget costs Jordan \$`r sprintf("%.2f",u)` to produce. Per week, the number of widgets ($w$) Jordan sells is a linear function of the price ($x$) Jordan charges per widget.
+$$w=`r i*100`-`r m*100`x$$
+
+Thus, the profit ($P$) is also a function of $x$.
+
+$$P=(x-`r sprintf("%.2f",u)`)\cdot(`r i*100`-`r m*100`x)$$
+
+If Jordan wishes to maximize profit, what price should he charge per widget?
+
+$x_{\text{optimal}}~=~?$
+
+
+Solution
+========
+
+We can start by expanding (by FOIL or box) the profit function.
+
+$$P=(x-`r sprintf("%.2f",u)`)\cdot(`r i*100`-`r m*100`x)$$
+
+
+$$P=`r i*100`x-`r m*100`x^2-`r u*i*100`+`r u*m*100`x$$
+
+Combine like terms, and put into standard order.
+
+$$P=-`r m*100`x^2+`r u*m*100+i*100`x-`r u*i*100`$$
+
+Notice if we graphed this function, it would be a downward facing parabola. Thus, the vertex would represent the maximizing of profit. Because the question asks for the optimal price, we need to find $h$.
+
+$$h=\frac{-b}{2a}$$
+
+
+$$h=\frac{-`r b*100`}{2(`r a*100`)}$$
+
+
+$$h=`r h`$$
+
+Thus, $x_{\text{optimal}}=`r sprintf("%.2f",h)`$, and so Jordan should charge \$`r sprintf("%.2f",h)` per widget.
+
+
+Meta-information
+============
+extype: num
+exsolution: `r h`
+exname: maximize_profit
