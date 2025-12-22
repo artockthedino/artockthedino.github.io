@@ -108,19 +108,21 @@ showrules = function(g){
     return(pr)
 }
 
-g99 = list("A",
-           list("A"="+BA-ACA-AB+",
-                "B"="-A++CB+BC++A-",
-                "C"="CC"),
-           4,
-           90)
+g99 = list("B",
+            list("A"="[++XXBC][--XXBC][++++XXBC]",
+                 "B"="[-BA][+BA]",
+                 "C"="AB",
+                 "X"="XX"),
+            6,
+            45)
+
 
 # png("hi.png",300,300)
 
 par(mar=c(0,0,0,0),oma=c(0,0,0,0),pty="s")
 s = getstr(g99[[1]],g99[[2]],g99[[3]])
 angle = g99[[4]]
-xyc = getxyc(s,angle/180*pi,angle_initial=90/180*pi,col=line_color)
+xyc = getxyc(s,angle/180*pi,angle_initial=0,col=line_color)
 makeplot(xyc,lwd=2)
 
 # dev.off()

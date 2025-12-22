@@ -1,0 +1,119 @@
+```{r,echo=FALSE}
+pn = function(c,d){
+    cc = c[c!=0]
+    dd = d[c!=0]
+    p = paste0("{",cc,"}x^{",dd,"}",collapse="+")
+    p = gsub("x^{0}","",p,fixed=T)
+    p = gsub("x^{1}","x",p,fixed=T)
+    p = gsub("+{-","-{",p,fixed=T)
+    p = gsub("+{1}x","+x",p,fixed=T)
+    p = gsub("-{1}x","-x",p,fixed=T)
+    p = gsub("{-1}x","-x",p,fixed=T)
+    p = gsub("{1}x","x",p,fixed=T)
+    return(p)
+}
+
+
+qt = sample(0:2,1)
+while(T){
+    abc = sample(2:16,3,T)*sample(c(-1,1),3,T)
+    a = abc[1]
+    b = abc[2]
+    c = abc[3]
+    disc = b^2-4*a*c
+    if(qt==0 && disc<0 && abs(disc)<1000){break}
+    if(qt==1 && disc==0){break}
+    if(qt==2 && disc>0 && abs(disc)<1000){break}
+}
+
+ach1 = c("The parabola opens downward.","The parabola opens upward.")
+ach2 = c("There are 0 x-intercepts","There is 1 x-intercept","There are 2 x-intercepts")
+ach3 = c("The vertex is to the left of the y axis.","The vertex is on the y axis.","The vertex is to the right of the y axis.")
+ach4 = c("The vertex is below the x axis.","The vertex is on the x axis.","The vertex is above the x axis.")
+
+
+al1 = paste0("* ",ach1,collapse="\n")
+al2 = paste0("* ",ach2,collapse="\n")
+al3 = paste0("* ",ach3,collapse="\n")
+al4 = paste0("* ",ach4,collapse="\n")
+
+if(a<0){
+    sol1 = "10"
+    wrd1 = paste0("The quadratic coefficient, $a=",a,"$, is negative, so the parabola opens downward.")
+} else {
+    sol1 = "01"
+    wrd1 = paste0("The quadratic coefficient, $a=",a,"$, is positive, so the parabola opens upward.")
+}
+
+D = b^2-4*a*c
+sol2 = paste0(1*(sign(D)==-1:1),collapse="")
+if(D<0){
+    wrd2 = paste0("The discriminant, $D=",D,"$, is negative, so there are no $x$-intercepts.")
+}
+if(D==0){
+    wrd2 = paste0("The discriminant, $D=",0,"$, is zero, so there is one $x$-intercept.")
+}
+if(D>0){
+    wrd2 = paste0("The discriminant, $D=",D,"$, is positive, so there are two $x$-intercepts.")
+}
+
+
+h = -b/2/a
+sol3 = paste0(1*(sign(h)==-1:1),collapse="")
+
+if(h<0){
+    wrd3 = paste0("The horizontal coordinate of the vertex, $h=",h,"$, is negative, so the vertex is to the left of the y axis.")
+}
+if(h==0){
+    wrd3 = paste0("The horizontal coordinate of the vertex, $h=",h,"$, is zero, so the vertex is on the y axis.")
+}
+if(h>0){
+    wrd3 = paste0("The horizontal coordinate of the vertex, $h=",h,"$, is positive, so the vertex is to the right of the y axis.")
+}
+
+k = -D/4/a
+sol4 = paste0(1*(sign(k)==-1:1),collapse="")
+
+if(k<0){
+    wrd4 = paste0("The vertical coordinate of the vertex, $k=",k,"$, is negative, so the vertex is below of the x axis.")
+}
+if(k==0){
+    wrd4 = paste0("The vertical coordinate of the vertex, $k=",k,"$, is zero, so the vertex is on the x axis.")
+}
+if(k>0){
+    wrd4 = paste0("The vertical coordinate of the vertex, $k=",k,"$, is positive, so the vertex is above the y axis.")
+}
+
+```
+
+Question
+========
+
+Calculate the [discriminant](https://en.wikipedia.org/wiki/Quadratic_equation#Discriminant) of the following quadratic function:
+
+$$y~=~`r pn(c(a,b,c),2:0)`$$
+
+
+Solution
+========
+
+Identify the coefficients.
+
+$$a=`r a`$$
+$$b=`r b`$$
+$$c=`r c`$$
+
+Use the formula for the disciminant.
+
+$$D=(`r b`)^2-4(`r a`)(`r c`)$$
+
+$$D=`r D`$$
+
+`r wrd2`
+
+
+Meta-information
+============
+extype: num
+exsolution: `r D`
+exname: discriminant

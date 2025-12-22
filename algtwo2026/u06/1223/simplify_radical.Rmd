@@ -1,0 +1,80 @@
+```{r,echo=FALSE}
+library(numbers)
+options(scipen=999)
+pn = function(c,d){
+    cc = c[c!=0]
+    dd = d[c!=0]
+    p = paste0("{",cc,"}x^{",dd,"}",collapse="+")
+    p = gsub("x^{0}","",p,fixed=T)
+    p = gsub("x^{1}","x",p,fixed=T)
+    p = gsub("+{-","-{",p,fixed=T)
+    p = gsub("+{1}x","+x",p,fixed=T)
+    p = gsub("-{1}x","-x",p,fixed=T)
+    p = gsub("{-1}x","-x",p,fixed=T)
+    p = gsub("{1}x","x",p,fixed=T)
+    return(p)
+}
+
+a = sample(c(2,3,4,5,6),1)
+b = sample(c(2,3,5,6,10,11),1)
+
+radicand = a*a*b
+
+aposs = 1:12
+bposs = 1:12
+
+al = paste0("* ",aposs,collapse="\n")
+
+sol1 = paste0(1*(aposs==a),collapse="")
+sol2 = paste0(1*(bposs==b),collapse="")
+
+
+```
+
+Question
+========
+
+When $\sqrt{`r radicand`}$ is simplified, it can be expressed as $p\sqrt{m}$, where $p$ and $m$ are both positive integers. Find $p$ and $m$.
+
+$p=$ ##ANSWER1##
+
+$m=$ ##ANSWER2##
+
+Answerlist
+-------
+
+`r al`
+`r al`
+
+
+Solution
+========
+
+Start with the given expression.
+$$\sqrt{`r radicand`}$$
+I recommend prime factorization.
+$$\sqrt{`r paste0(primeFactors(radicand),collapse="\\cdot")`}$$
+
+Every pair of matching factors under the radical can be replaced with a single factor in front of the radical. More formally, we can apply the following 2 rules:
+
+1. Square roots distribute over multiplication. $\sqrt{x\cdot y}\equiv \sqrt{x}\cdot\sqrt{y}$
+2. The square root of a squared number is equivalent to the absolute value of that number.
+$\sqrt{z^2}~\equiv~|z|$
+
+Applying those rules (or "bringing out repeating factors") leads to:
+
+$$`r paste0(primeFactors(a),collapse="\\cdot")`\sqrt{`r paste0(primeFactors(b),collapse="\\cdot")`}$$
+
+If necessary, evaluate any products to simplify.
+
+$$`r a`\sqrt{`r b`}$$
+
+So, $p=`r a`$ and $m=`r b`$.
+
+
+Meta-information
+============
+extype: cloze
+exclozetype: schoice|schoice
+exsolution: `r sol1`|`r sol2`
+exname: simplify_radical
