@@ -1,0 +1,15 @@
+---
+title: "examples_0105"
+output: exams2forms::webquiz
+---
+
+```{r exams2forms-setup, include = FALSE}
+## package and exercises
+library("exams2forms")
+exm <- list("01_i_to_power_intro.Rmd", "02_simplify_sqrt_neg_square.Rmd", 
+    "03_simplify_sqrt_neg_nonsqr.Rmd", "04_quadratic_formula_complex.Rmd")
+```
+
+```{r exams2forms-include, echo = FALSE, message = FALSE, results="asis"}
+exams2forms(exm,  n = 10, nsamp = NULL)
+```

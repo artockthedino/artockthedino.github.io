@@ -1,7 +1,7 @@
-fn = "a1223p_graph_quads.Rmd"
+fn = "a0104_complex_solutions.Rmd"
 shortfn = strsplit(fn,"_")[[1]][1]
-nlow = 401
-nhigh = 430
+nlow = 501
+nhigh = 530
 
 sss44 = "<!DOCTYPE html>
 <html lang='en'>

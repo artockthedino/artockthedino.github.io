@@ -1,0 +1,38 @@
+```{r,echo=FALSE}
+a = sample(4:15,1)
+
+```
+
+Question
+========
+
+Simplify $\sqrt{`r -a^2`}$.
+
+*The computer will be particular with how you express your answer. For example, if the problem asked you to simplify $\sqrt{-9}$, you would type `3i` to get credit.*
+
+Solution
+========
+
+Remember, $i=\sqrt{-1}$.
+
+You could reason like this...
+
+
+$$\sqrt{`r -a^2`}~=~\sqrt{(-1)\cdot `r a` \cdot `r a`}$$
+
+
+$$\sqrt{`r -a^2`}~=~\sqrt{-1}\cdot\sqrt{`r a` \cdot `r a`}$$
+
+
+$$\sqrt{`r -a^2`}~=~i\cdot `r a`$$
+
+$$\sqrt{`r -a^2`}~=~`r a`i$$
+
+So, the answer is ``r a`i`
+
+
+Meta-information
+============
+extype: string
+exsolution: `r paste0(a,"i",collapse="")`
+exname: simplify_sqrt_neg_square

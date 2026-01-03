@@ -1,0 +1,67 @@
+```{r,echo=FALSE}
+library(numbers)
+n = 4
+while(T){
+    p = sample(c(2,3,4,5,6),n,T)
+    q = sample(c(2,3,5,6,7,10),n,T)
+    negs = sample(c(-1,1),n,T)
+    handles = paste0(p,"#",q)
+    if(length(unique(handles))==n && abs(diff(c(sum(negs==1),sum(negs==-1))))<=1 && negs[1]==-1){break}
+}
+
+qstr = paste0("* $\\sqrt{",negs*p^2*q,"}=$ ##ANSWER",1:n,"##",collapse="\n")
+astr1= paste0("$",p,"\\sqrt{",q,"}$")
+astr2= paste0("$",p,"i\\sqrt{",q,"}$")
+astr3= paste0("$",q,"\\sqrt{",p,"}$")
+astr4= paste0("$",q,"i\\sqrt{",p,"}$")
+ach = sort(unique(c(astr1,astr2,astr3,astr4)))
+
+al = paste0("* ",ach,collapse="\n")
+
+pp = p[1]
+qq = q[1]
+nn = -1
+
+sol = paste0(1*(ach==paste0("$",pp,"\\sqrt{",qq,"}$")),collapse="")
+
+```
+
+Question
+========
+
+Simplify the following radical expression.
+
+$$\sqrt{`r -pp^2*qq`}$$
+
+
+Answerlist
+--------
+
+`r al`
+
+
+Solution
+========
+
+
+$$\sqrt{`r -pp^2*qq`}$$
+
+Use [prime factorization](https://simple.wikipedia.org/wiki/Prime_factorization).
+
+$$\sqrt{(-1)\cdot `r paste0(primeFactors(pp^2*qq),collapse="\\cdot")`}$$
+
+$$Isolate twins.$$
+
+$$\sqrt{`r paste0(primeFactors(pp^2),collapse="\\cdot")`\cdot (-1)\cdot `r paste0(primeFactors(qq),collapse="\\cdot")`}$$
+
+
+$$\sqrt{`r pp^2`}\cdot \sqrt{-1}\cdot \sqrt{`r qq`}$$
+
+$$`r pp`i \sqrt{`r qq`}$$
+
+
+Meta-information
+============
+extype: schoice
+exsolution: `r sol`
+exname: simplify_sqrt_neg_nonsqr

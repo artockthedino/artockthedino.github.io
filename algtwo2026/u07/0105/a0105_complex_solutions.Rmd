@@ -1,0 +1,145 @@
+---
+output: pdf_document
+params:
+    rseed: 0
+    showsol: true
+---
+
+```{r,echo=F,warning=FALSE,message=FALSE}
+if(params$rseed !=0){
+    set.seed(params$rseed)
+}
+
+pn = function(coeffs,pows){
+    pows = pows[coeffs!=0]
+    coeffs = coeffs[coeffs!=0]
+    ex1 = paste0("{",coeffs,"}x^{",pows,"}",collapse="+")
+    ex1 = gsub("+{-","-{",ex1,fixed=T)
+    ex1 = gsub("{1}x^{0}","1",ex1,fixed=T)
+    ex1 = gsub("{-1}x^{0}","-1",ex1,fixed=T)
+    ex1 = gsub("{1}x","x",ex1,fixed=T)
+    ex1 = gsub("{-1}x","-x",ex1,fixed=T)
+    ex1 = gsub("x^{0}","",ex1,fixed=T)
+    ex1 = gsub("x^{1}","x",ex1,fixed=T)
+    ex1 = gsub("+-","-",ex1,fixed=T)
+    if(ex1 == ""){
+        ex1 = "0"
+    }
+    return(ex1)
+}
+gcd2 <- function(a, b) {
+    if (b == 0) a else Recall(b, a %% b)
+}
+gcd <- function(...) Reduce(gcd2, c(...))
+```
+
+Name: \vspace{5pt} \hrule
+
+## a0104p_complex_solutions (v`r params$rseed`)
+
+Remember the quadratic formula:
+
+$$\begin{aligned}
+\text{if}\\ & ax^2+bx+c = 0\\ 
+\text{then} \\
+& x = \frac{-b}{2a}\pm \frac{\sqrt{b^2-4ac}}{2a}
+\end{aligned}$$
+
+
+\color{red}
+### Example: solve quadratic equation with complex solutions
+
+
+```{r,echo=F}
+# (x-(r+qi))(x-(r-qi))
+# x^2 - 2*r*x + (r^2+q^2)
+r = sample(2:9,1)*sample(c(-1,1),1)
+q = sample(2:9,1)
+a = 1
+b = -2*r
+c = r^2+q^2
+eq = paste0(pn(c(a,b,c),2:0),"=0")
+soln = paste0("$$x=\\frac{",-b,"}{2(",a,")}\\pm \\frac{\\sqrt{(",b,")^2-4(",a,")(",c,")}}{2(",a,")}$$\n\n")
+soln = paste0(soln,"$$x=",-b/2/a,"\\pm\\frac{\\sqrt{",b^2,"-",4*a*c,"}}{",2*a,"}$$\n\n")
+soln = paste0(soln,"$$x=",-b/2/a,"\\pm\\frac{\\sqrt{",b^2-4*a*c,"}}{",2*a,"}$$\n\n")
+soln = paste0(soln,"$$x=",r,"\\pm",q,"i$$")
+
+rs = r
+qs = q
+nicks = paste0(abs(r),"&",abs(q))
+eqs = eq
+solns = soln
+
+for(i in 1:4){
+    while(T){
+        r = sample(2:9,1)*sample(c(-1,1),1)
+        q = sample(2:9,1)
+        a = 1
+        b = -2*r
+        c = r^2+q^2
+        if(!(abs(r) %in% abs(rs)) && !(abs(q)%in%abs(qs))){
+            rs = c(rs,r)
+            qs = c(qs,q)
+            eqs = c(eqs,paste0(pn(c(a,b,c),2:0),"=0"))
+            if(params$showsol){
+                soln = paste0("\\color{red}$$x=\\frac{",-b,"}{2(",a,")}\\pm \\frac{\\sqrt{(",b,")^2-4(",a,")(",c,")}}{2(",a,")}$$\n\n")
+                soln = paste0(soln,"$$x=",-b/2/a,"\\pm\\frac{\\sqrt{",b^2,"-",4*a*c,"}}{",2*a,"}$$\n\n")
+                soln = paste0(soln,"$$x=",-b/2/a,"\\pm\\frac{\\sqrt{",b^2-4*a*c,"}}{",2*a,"}$$\n\n")
+                soln = paste0(soln,"$$x=",r,"\\pm",q,"i$$\\color{black}")
+            } else {
+                soln = " "
+            }
+            solns = c(solns,soln)
+            break
+        }
+    }
+}
+
+```
+
+Solve $`r eqs[1]`$.
+
+$$a=1$$
+$$b=`r -2*rs[1]`$$
+$$c=`r rs[1]^2+qs[1]^2`$$
+
+`r solns[1]`
+
+\color{black}
+
+
+## Exercise 1
+
+
+Solve $`r eqs[2]`$.
+
+`r solns[2]`
+
+\newpage
+
+## Exercise 2
+
+Solve $`r eqs[3]`$.
+`r solns[3]`
+
+
+\vfill
+
+## Exercise 3
+
+Solve $`r eqs[4]`$.
+`r solns[4]`
+
+\vfill
+
+## Exercise 4
+
+Solve $`r eqs[5]`$.
+`r solns[5]`
+
+
+
+\vfill
+
+
+
