@@ -3,31 +3,30 @@ n = 30
 outdir = "outcanvas"
 
 ### Entrance ticket
-pm = list("01_i_to_power_intro.Rmd",
-          "02_simplify_sqrt_neg_square.Rmd",
-          "03_simplify_sqrt_neg_nonsqr.Rmd",
-          "04_quadratic_formula_complex.Rmd")
+pm = list("et_qf_radical_solns.Rmd")
 exams2canvas(pm,
              n=n,
              dir=outdir,
              points=rep(1,length(pm)),
              maxattempts = 5,
-             name="a0105c_imaginary_unit",
+             name="a0105et_qf_radical_solns",
              template = "canvas_qti12.xml",
              cloze = list(enumerate = FALSE))
 
 
-# pm = list("maximize_profit.Rmd",
-#           "maximize_profit.Rmd")
+# pm = list("01_i_to_power_intro.Rmd",
+#           "02_simplify_sqrt_neg_square.Rmd",
+#           "03_simplify_sqrt_neg_nonsqr.Rmd",
+#           "04_quadratic_formula_complex.Rmd")
 # exams2canvas(pm,
 #              n=n,
 #              dir=outdir,
-#              points=rep(5,length(pm)),
-#              maxattempts = 8,
-#              name="a1222c1_maximize_profit",
+#              points=rep(1,length(pm)),
+#              maxattempts = 5,
+#              name="a0105c_imaginary_unit",
 #              template = "canvas_qti12.xml",
 #              cloze = list(enumerate = FALSE))
-# 
+
 # pm = list("standard_from_graph.Rmd",
 #           "standard_from_graph.Rmd")
 # exams2canvas(pm,
