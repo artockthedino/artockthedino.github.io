@@ -1,4 +1,4 @@
-fn = "a0104_complex_solutions.Rmd"
+fn = "a0105p_qf_complex_solns.Rmd"
 shortfn = strsplit(fn,"_")[[1]][1]
 nlow = 501
 nhigh = 530

@@ -22,7 +22,7 @@ pp = p[1]
 qq = q[1]
 nn = -1
 
-sol = paste0(1*(ach==paste0("$",pp,"\\sqrt{",qq,"}$")),collapse="")
+sol = paste0(1*(ach==paste0("$",pp,"i\\sqrt{",qq,"}$")),collapse="")
 
 ```
 
@@ -50,7 +50,7 @@ Use [prime factorization](https://simple.wikipedia.org/wiki/Prime_factorization)
 
 $$\sqrt{(-1)\cdot `r paste0(primeFactors(pp^2*qq),collapse="\\cdot")`}$$
 
-$$Isolate twins.$$
+Isolate twins.
 
 $$\sqrt{`r paste0(primeFactors(pp^2),collapse="\\cdot")`\cdot (-1)\cdot `r paste0(primeFactors(qq),collapse="\\cdot")`}$$
 

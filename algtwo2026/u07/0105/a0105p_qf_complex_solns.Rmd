@@ -35,7 +35,7 @@ gcd <- function(...) Reduce(gcd2, c(...))
 
 Name: \vspace{5pt} \hrule
 
-## a0104p_complex_solutions (v`r params$rseed`)
+## a0105p_qf_complex_solns (v`r params$rseed`)
 
 Remember the quadratic formula:
 
@@ -47,7 +47,7 @@ $$\begin{aligned}
 
 
 \color{red}
-### Example: solve quadratic equation with complex solutions
+### Example: use quadratic formula to solve quadratic equation with complex solutions
 
 
 ```{r,echo=F}
