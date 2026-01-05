@@ -108,14 +108,13 @@ showrules = function(g){
     return(pr)
 }
 
-g99 = list("C",
-           list("A"="+B++A-XCX-A++B+",
-                "B"="-AX--BCB--XA-",
-                "C"="C+AD-B-DA+C",
-                "X"="XDX",
-                "D"="DD"),
+g99 = list("A",
+           list("A"="[-CB][+CB][CB][--CB][++CB][---CB]",
+                "B"="D+B-D-B+D",
+                "C"="CC",
+                "D"="B-D+A+D-B"),
            4,
-           170)
+           60)
 
 
 # png("hi.png",300,300)

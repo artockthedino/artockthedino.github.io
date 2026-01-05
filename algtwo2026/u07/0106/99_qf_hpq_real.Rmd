@@ -20,31 +20,33 @@ pn = function(coeffs,pows){
 }
 
 # -b/2a +- sqrt(b^2-4ac)/2a
-# (x-(h+i*p*sqrt(q)))(x-(h-i*p*sqrt(q)))
-# (x-(h+i*sqrt(p^2*q)))(x-(h-i*sqrt(p^2*q)))
+# (x-(h+p*sqrt(q)))(x-(h-p*sqrt(q)))
+# (x-(h+sqrt(p^2*q)))(x-(h-sqrt(p^2*q)))
 
-# x^2 - 2*h + h^2+p^2*q
+# x^2 - 2*h + h^2-p^2*q
 
 h = sample(2:9,1)*sample(c(-1,1),1)
 p = sample(2:6,1)
 q = sample(c(2,3,5,6,10),1)
 a = 1
 b = -2*h
-c = h^2+p^2*q
+c = h^2-p^2*q
 
 eq = paste0(pn(c(a,b,c),2:0),"=0")
 
 ach1 = -10:10
-ach2 = 2:10
+ach2 = c("2","2i","3","3i","4","4i","5","5i","6","6i","7","7i","8","8i","9","9i","10","10i")
 ach3 = 2:10
 
+
 al1 = paste0("* ",ach1,collapse="\n")
-al2 = paste0("* ",ach2,"i",collapse="\n")
+al2 = paste0("* ",ach2,collapse="\n")
 al3 = paste0("* ",ach3,collapse="\n")
 
 sol1 = paste0(1*(ach1==h),collapse="")
 sol2 = paste0(1*(ach2==p),collapse="")
 sol3 = paste0(1*(ach3==q),collapse="")
+
 
 ```
 
@@ -54,7 +56,7 @@ Question
 
 The quadratic formula says if $ax^2+bx+c=0$ then $x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}$.
 
-The solutions to $`r eq`$ can be expressed, in simplest form, as $x=h\pm p\sqrt{q}$, where $p$ is [imaginary](https://en.wikipedia.org/wiki/Imaginary_number). Find the values of $h$, $p$, and $q$.
+The solutions to $`r eq`$ can be expressed, in simplest form, as $x=h\pm p\sqrt{q}$, where $p$ might be [imaginary](https://en.wikipedia.org/wiki/Imaginary_number). Find the values of $h$, $p$, and $q$.
 
 $h=$ ##ANSWER1##
 
@@ -92,7 +94,7 @@ $$x = \frac{-(`r b`)\pm\sqrt{(`r b`)^2-4(`r a`)(`r c`)}}{2(`r a`)} $$
 
 Simplify.
 
-$$x = \frac{`r -b` \pm \sqrt{`r b^2`-`r 4*a*c`}}{`r 2*a`}$$
+$$x = \frac{`r -b` \pm \sqrt{`r b^2`-(`r 4*a*c`)}}{`r 2*a`}$$
 
 Simplify.
 
@@ -102,31 +104,31 @@ $$x = \frac{`r -b` \pm \sqrt{`r b^2-4*a*c`}}{`r 2*a`}$$
 
 Use prime factorization.
 
-$$x = \frac{`r -b` \pm \sqrt{(-1)\cdot`r paste0(primeFactors(-b^2+4*a*c),collapse="\\cdot")`}}{`r 2*a`}$$
+$$x = \frac{`r -b` \pm \sqrt{`r paste0(primeFactors(b^2-4*a*c),collapse="\\cdot")`}}{`r 2*a`}$$
 
 
 Isolate the twin factors.
 
-$$x = \frac{`r -b` \pm \sqrt{`r paste0(primeFactors(4*p^2),collapse="\\cdot")`}\cdot\sqrt{-1} \cdot \sqrt{`r paste0(primeFactors(q),collapse="\\cdot")`}}{`r 2*a`}$$
+$$x = \frac{`r -b` \pm \sqrt{`r paste0(primeFactors(4*p^2),collapse="\\cdot")`}\cdot \sqrt{`r paste0(primeFactors(q),collapse="\\cdot")`}}{`r 2*a`}$$
 
 Simplify the square root of the square.
 
-$$x = \frac{`r -b` \pm `r paste0(primeFactors(2*p),collapse="\\cdot")`\cdot i \cdot \sqrt{`r paste0(primeFactors(q),collapse="\\cdot")`}}{`r 2*a`}$$
+$$x = \frac{`r -b` \pm `r paste0(primeFactors(2*p),collapse="\\cdot")`\cdot \sqrt{`r paste0(primeFactors(q),collapse="\\cdot")`}}{`r 2*a`}$$
 
 Simplify the integer products.
 
-$$x = \frac{`r -b` \pm `r 2*p`i \sqrt{`r q`}}{`r 2*a`}$$
+$$x = \frac{`r -b` \pm `r 2*p`\cdot \sqrt{`r q`}}{`r 2*a`}$$
 
 Split the fraction.
 
-$$x = \frac{`r -b`}{`r 2*a`} \pm \frac{`r 2*p`i\sqrt{`r q`}}{`r 2*a`}$$
+$$x = \frac{`r -b`}{`r 2*a`} \pm \frac{`r 2*p`\cdot \sqrt{`r q`}}{`r 2*a`}$$
 
 Both numerators contain a factor of 2.
 
 
-$$x = `r h` \pm `r p`i\sqrt{`r q`}$$
+$$x = `r h` \pm `r p`\sqrt{`r q`}$$
 
-So, $h=`r h`$ and $p=`r p`i$ and $q=`r q`$.
+So, $h=`r h`$ and $p=`r p`$ and $q=`r q`$.
 
 Meta-information
 ============

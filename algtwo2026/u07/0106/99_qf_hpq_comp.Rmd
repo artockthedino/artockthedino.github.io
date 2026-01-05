@@ -35,16 +35,17 @@ c = h^2+p^2*q
 eq = paste0(pn(c(a,b,c),2:0),"=0")
 
 ach1 = -10:10
-ach2 = 2:10
+ach2 = c("2","2i","3","3i","4","4i","5","5i","6","6i","7","7i","8","8i","9","9i","10","10i")
 ach3 = 2:10
 
 al1 = paste0("* ",ach1,collapse="\n")
-al2 = paste0("* ",ach2,"i",collapse="\n")
+al2 = paste0("* ",ach2,collapse="\n")
 al3 = paste0("* ",ach3,collapse="\n")
 
 sol1 = paste0(1*(ach1==h),collapse="")
-sol2 = paste0(1*(ach2==p),collapse="")
+sol2 = paste0(1*(ach2==paste0(p,"i",collapse="")),collapse="")
 sol3 = paste0(1*(ach3==q),collapse="")
+
 
 ```
 
@@ -54,7 +55,7 @@ Question
 
 The quadratic formula says if $ax^2+bx+c=0$ then $x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}$.
 
-The solutions to $`r eq`$ can be expressed, in simplest form, as $x=h\pm p\sqrt{q}$, where $p$ is [imaginary](https://en.wikipedia.org/wiki/Imaginary_number). Find the values of $h$, $p$, and $q$.
+The solutions to $`r eq`$ can be expressed, in simplest form, as $x=h\pm p\sqrt{q}$, where $p$ might be imaginary. Find the values of $h$, $p$, and $q$.
 
 $h=$ ##ANSWER1##
 

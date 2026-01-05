@@ -1,0 +1,156 @@
+---
+output: pdf_document
+params:
+    rseed: 0
+    showsol: true
+---
+
+```{r,echo=F,warning=FALSE,message=FALSE}
+library(numbers)
+if(params$rseed !=0){
+    set.seed(params$rseed)
+}
+
+pn = function(coeffs,pows){
+    pows = pows[coeffs!=0]
+    coeffs = coeffs[coeffs!=0]
+    ex1 = paste0("{",coeffs,"}x^{",pows,"}",collapse="+")
+    ex1 = gsub("+{-","-{",ex1,fixed=T)
+    ex1 = gsub("{1}x^{0}","1",ex1,fixed=T)
+    ex1 = gsub("{-1}x^{0}","-1",ex1,fixed=T)
+    ex1 = gsub("{1}x","x",ex1,fixed=T)
+    ex1 = gsub("{-1}x","-x",ex1,fixed=T)
+    ex1 = gsub("x^{0}","",ex1,fixed=T)
+    ex1 = gsub("x^{1}","x",ex1,fixed=T)
+    ex1 = gsub("+-","-",ex1,fixed=T)
+    if(ex1 == ""){
+        ex1 = "0"
+    }
+    return(ex1)
+}
+gcd2 <- function(a, b) {
+    if (b == 0) a else Recall(b, a %% b)
+}
+gcd <- function(...) Reduce(gcd2, c(...))
+```
+
+Name: \vspace{5pt} \hrule
+
+## a0106p_qf_radical_complex_sols (v`r params$rseed`)
+
+Remember the quadratic formula:
+
+$$\begin{aligned}
+\text{if}\\ & ax^2+bx+c = 0\\ 
+\text{then} \\
+& x = \frac{-b}{2a}\pm \frac{\sqrt{b^2-4ac}}{2a}
+\end{aligned}$$
+
+
+\color{red}
+### Example: use quadratic formula to solve a quadratic equation with complex solutions
+
+
+```{r,echo=F}
+# (x-(r+qi))(x-(r-qi))
+# x^2 - 2*r*x + (r^2+q^2)
+
+# -b/2a +- sqrt(b^2-4ac)/2a
+# (x-(h+i*p*sqrt(q)))(x-(h-i*p*sqrt(q)))
+# (x-(h+i*sqrt(p^2*q)))(x-(h-i*sqrt(p^2*q)))
+
+# x^2 - 2*h + h^2+p^2*q
+
+h = -7 #sample(2:10,1)*sample(c(-1,1),1)
+p = 5 #sample(c(2,3,4,5,6),1)
+q = 3 #sample(c(2,3,5,6,10),1)
+a = 1
+b = -2*h
+c = h^2+p^2*q
+eq = paste0(pn(c(a,b,c),2:0),"=0")
+soln = paste0("$$x=\\frac{",-b,"}{2(",a,")}\\pm \\frac{\\sqrt{(",b,")^2-4(",a,")(",c,")}}{2(",a,")}$$\n\n")
+soln = paste0(soln,"$$x=",-b/2/a,"\\pm\\frac{\\sqrt{",b^2,"-",4*a*c,"}}{",2*a,"}$$\n\n")
+soln = paste0(soln,"$$x=",-b/2/a,"\\pm\\frac{\\sqrt{",b^2-4*a*c,"}}{",2*a,"}$$\n\n")
+soln = paste0(soln,"$$x=",-b/2/a,"\\pm\\frac{\\sqrt{(-1)\\cdot",paste0(primeFactors(-b^2+4*a*c),collapse="\\cdot"),"}}{",2*a,"}$$\n\n")
+soln = paste0(soln,"$$x=",-b/2/a,"\\pm\\frac{",paste0(primeFactors(2*p),collapse="\\cdot"),"\\cdot i \\cdot \\sqrt{",paste0(primeFactors(q),collapse="\\cdot"),"}}{",2*a,"}$$\n\n")
+soln = paste0(soln,"$$x=",h,"\\pm",p,"i\\sqrt{",q,"}$$")
+
+hs = h
+ps = p
+qs = q
+eqs = eq
+solns = soln
+
+for(i in 1:4){
+    while(T){
+        h = sample(2:10,1)*sample(c(-1,1),1)
+        p = sample(c(2,3,4,5,6),1)
+        q = sample(c(2,3,5,6,10),1)
+        a = 1
+        b = -2*h
+        c = h^2+p^2*q
+        if(!(abs(h) %in% abs(hs)) && !(abs(p)%in%abs(ps)) && !(abs(q)%in%abs(qs))){
+            hs = c(hs,h)
+            ps = c(ps,p)
+            qs = c(qs,q)
+            eqs = c(eqs,paste0(pn(c(a,b,c),2:0),"=0"))
+            if(params$showsol){
+                soln = paste0("\\color{red}$$x=\\frac{",-b,"}{2(",a,")}\\pm \\frac{\\sqrt{(",b,")^2-4(",a,")(",c,")}}{2(",a,")}$$\n\n")
+                soln = paste0(soln,"$$x=",-b/2/a,"\\pm\\frac{\\sqrt{",b^2,"-",4*a*c,"}}{",2*a,"}$$\n\n")
+                soln = paste0(soln,"$$x=",-b/2/a,"\\pm\\frac{\\sqrt{",b^2-4*a*c,"}}{",2*a,"}$$\n\n")
+                soln = paste0(soln,"$$x=",-b/2/a,"\\pm\\frac{\\sqrt{(-1)\\cdot",paste0(primeFactors(-b^2+4*a*c),collapse="\\cdot"),"}}{",2*a,"}$$\n\n")
+                soln = paste0(soln,"$$x=",h,"\\pm",p,"i\\sqrt{",q,"}$$\n\n\\color{black}")
+            } else {
+                soln = " "
+            }
+            solns = c(solns,soln)
+            break
+        }
+    }
+}
+
+```
+
+Solve $`r eqs[1]`$.
+
+
+`r solns[1]`
+
+\color{black}
+
+
+## Exercise 1
+
+
+Solve $`r eqs[2]`$. Write your answer in simplified form.
+
+`r solns[2]`
+
+\newpage
+
+## Exercise 2
+
+Solve $`r eqs[3]`$. Write your answer in simplified form.
+`r solns[3]`
+
+
+\vfill
+
+## Exercise 3
+
+Solve $`r eqs[4]`$. Write your answer in simplified form.
+`r solns[4]`
+
+\vfill
+
+## Exercise 4
+
+Solve $`r eqs[5]`$.
+`r solns[5]`
+
+
+
+\vfill
+
+
+
