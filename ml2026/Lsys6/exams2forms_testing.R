@@ -1,14 +1,14 @@
 library("exams2forms")
-n = 8
+n = 10
 
 ### Entrance ticket
 pm = list("turtle_commands_D.Rmd")
 
 exams2webquiz(pm,
              n=n,
-             title = "examples_1219",
+             title = "examples_0106",
              dir = ".",
-             name="examples_1219")
+             name="examples_0106")
 
 
 
