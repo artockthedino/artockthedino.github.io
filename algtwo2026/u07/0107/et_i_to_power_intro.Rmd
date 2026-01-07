@@ -25,7 +25,6 @@ Question
 
 Simplify the following powers of $i$.
 
-
 `r qstr`
 
 Answerlist
@@ -59,8 +58,6 @@ calcs = paste0("* $\\mathrm{mod}(",x,",4)","=",x%%4,"$ so $i^{",x,"}=",ans,"$",c
 To find the remainder using a scientific calculator, I would divide by 4, [floor](https://en.wikipedia.org/wiki/Floor_and_ceiling_functions) the result, multiply by 4, and subtract that amount from the original.
 
 $$\mathrm{mod}(x,4)~=~x-4\cdot \left\lfloor\frac{x}{4}\right\rfloor$$
-
-
 
 
 Meta-information

@@ -20,7 +20,7 @@ cn1 = cn(a,b)
 Question
 ========
 
-Let $z_1$ be a complex number with integer components. It is graphed on a [complex plane](https://en.wikipedia.org/wiki/Complex_plane) below.
+Let $z$ be a complex number with integer components. It is graphed on a [complex plane](https://en.wikipedia.org/wiki/Complex_plane) below.
 
 ```{r,fig.dim=c(6,6),echo=FALSE,results="asis"}
 par(pty="s")
@@ -35,7 +35,7 @@ points(a,b,pch=20,cex=1.5,col="blue")
 ```
 \
 
-Please **write the value of $z_1$** (in rectangular form: $a+bi$).
+Please **write the value of $z$** (in rectangular form: $a+bi$).
 
 *Type your answer precisely, with no spaces, using digits, "-", "+", and "i". If the real term is nonzero, put it first. If either component is zero, do not include that term. If both components are zero, type "0" without the quotes. Instead of writing "1i" or "-1i" just write "i" or "-i".*
 
@@ -44,7 +44,7 @@ Solution
 ========
 
 The horizontal (real) component is `r a`. The vertical (imaginary) component is `r b`. So,
-$$z_1 = `r cn1`$$
+$$z = `r cn1`$$
 
 Meta-information
 ============

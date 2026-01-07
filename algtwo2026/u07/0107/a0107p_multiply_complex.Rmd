@@ -1,0 +1,116 @@
+---
+output: pdf_document
+params:
+    rseed: 0
+    showsol: false
+---
+
+```{r,echo=F,warning=FALSE,message=FALSE}
+n = 10
+options(scipen=999)
+if(params$rseed !=0){
+    set.seed(params$rseed)
+}
+
+pn = function(coeffs,pows){
+    pows = pows[coeffs!=0]
+    coeffs = coeffs[coeffs!=0]
+    ex1 = paste0("{",coeffs,"}x^{",pows,"}",collapse="+")
+    ex1 = gsub("+{-","-{",ex1,fixed=T)
+    ex1 = gsub("{1}x^{0}","1",ex1,fixed=T)
+    ex1 = gsub("{-1}x^{0}","-1",ex1,fixed=T)
+    ex1 = gsub("{1}x","x",ex1,fixed=T)
+    ex1 = gsub("{-1}x","-x",ex1,fixed=T)
+    ex1 = gsub("x^{0}","",ex1,fixed=T)
+    ex1 = gsub("x^{1}","x",ex1,fixed=T)
+    ex1 = gsub("+-","-",ex1,fixed=T)
+    if(ex1 == ""){
+        ex1 = "0"
+    }
+    return(ex1)
+}
+
+cn = function(a,b){
+  cn = gsub("+-","-",paste0(a,"+",b,"i"),fixed=TRUE)
+  cn = gsub("0+0i","0",cn,fixed=TRUE)
+  cn = gsub("+1i","+i",cn,fixed=TRUE)
+  cn = gsub("-1i","-i",cn,fixed=TRUE)
+  cn = gsub("+0i","",cn,fixed=TRUE)
+  cn = gsub("-0i","",cn,fixed=TRUE)
+  if(nchar(cn)>1 && substr(cn, start = 1, stop = 2)=="0+"){cn = gsub("0+","",cn,fixed=TRUE)}
+  if(nchar(cn)>1 && substr(cn, start = 1, stop = 2)=="0-"){cn = gsub("0-","-",cn,fixed=TRUE)}
+  return(cn)
+}
+
+
+# (a+bi)(c+di)
+# (ac-bd) + (a*d+b*c)i
+
+as = numeric()
+bs = numeric()
+cs = numeric()
+ds = numeric()
+cn1s = character()
+cn2s = character()
+cn3s = character()
+abs_reals = numeric()
+abs_imags = numeric()
+
+for(i in 1:n){
+    while(T){
+        abcd = sample(1:9,4)
+        a = abcd[1]*sample(c(-1,1),1)
+        b = abcd[2]*sample(c(-1,1),1)
+        c = abcd[3]*sample(c(-1,1),1)
+        d = abcd[4]*sample(c(-1,1),1)
+        cn1 = cn(a,b)
+        cn2 = cn(c,d)
+        cn3 = cn(a*c-b*d,a*d+b*c)
+        abs_real = abs(a*c-b*d)
+        abs_imag = abs(a*d+b*c)
+        if(!(abs_real %in% abs_reals) && !(abs_imag %in% abs_imags)){
+            as = c(as,a)
+            bs = c(bs,b)
+            cs = c(cs,c)
+            ds = c(ds,d)
+            cn1s = c(cn1s,cn1)
+            cn2s = c(cn2s,cn2)
+            cn3s = c(cn3s,cn3)
+            break
+        }
+    }
+}
+
+```
+
+Name: \vspace{5pt} \hrule
+
+## a0107p_multiply_complex (v`r params$rseed`)
+
+
+```{r,echo=F,results='asis'}
+for(i in 1:n){
+    cat(paste0(i,". Find the complex-number product. $(",cn1s[i],")\\cdot(",cn2s[i],")$  \n\n"))
+    if(params$showsol || i==1){
+        cat("\\color{red}\n\n\\vfill\n\n")
+        cat("FOIL. Use the fact that $i^2=-1$. Combine real terms. Combine imaginary terms.\n")
+        cat(paste0("$$(",as[i]*cs[i],")~+~(",as[i]*ds[i],"i)~+~(",bs[i]*cs[i],"i)~+~(",bs[i]*ds[i],"i^2)$$\n"))
+        # cat("Use the fact that $i^2=-1$. Also move the real terms next to each other.\n")
+        cat(paste0("$$(",as[i]*cs[i],")~+~(",-bs[i]*ds[i],")~+~(",as[i]*ds[i],"i)~+~(",bs[i]*cs[i],"i)$$\n"))
+        # cat("Combine real terms. Combine imaginary terms.\n")
+        cat(paste0("$$",cn3s[i],"$$\n\n"))
+        cat("\\vfill\n\n\\color{black}\n\n")
+    } else {
+        cat("\n\n \\vfill \n \\vfill \n \\vfill \n \\vfill  \n\n")
+    }
+    
+    if(i==floor(n/2)){
+        cat("\\newpage \n\n")
+    }
+}
+
+cat("\\color{gray}",paste0("$",cn3s,"$",collapse=", "))
+
+```
+
+
