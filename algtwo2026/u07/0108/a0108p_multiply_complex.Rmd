@@ -85,7 +85,7 @@ for(i in 1:n){
 
 Name: \vspace{5pt} \hrule
 
-## a0107p_multiply_complex (v`r params$rseed`)
+## a0108p_multiply_complex (v`r params$rseed`)
 
 
 ```{r,echo=F,results='asis'}
