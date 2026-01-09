@@ -1,0 +1,278 @@
+---
+output: pdf_document
+params:
+    rseed: 0
+    showsol: true
+---
+
+```{r,echo=F,warning=FALSE,message=FALSE}
+options(scipen=999)
+if(params$rseed !=0){
+    set.seed(params$rseed)
+}
+
+pn = function(coeffs,pows){
+    pows = pows[coeffs!=0]
+    coeffs = coeffs[coeffs!=0]
+    ex1 = paste0("{",coeffs,"}x^{",pows,"}",collapse="+")
+    ex1 = gsub("+{-","-{",ex1,fixed=T)
+    ex1 = gsub("{1}x^{0}","1",ex1,fixed=T)
+    ex1 = gsub("{-1}x^{0}","-1",ex1,fixed=T)
+    ex1 = gsub("{1}x","x",ex1,fixed=T)
+    ex1 = gsub("{-1}x","-x",ex1,fixed=T)
+    ex1 = gsub("x^{0}","",ex1,fixed=T)
+    ex1 = gsub("x^{1}","x",ex1,fixed=T)
+    ex1 = gsub("+-","-",ex1,fixed=T)
+    if(ex1 == ""){
+        ex1 = "0"
+    }
+    return(ex1)
+}
+
+cn = function(a,b){
+  cn = gsub("+-","-",paste0(a,"+",b,"i"),fixed=TRUE)
+  cn = gsub("0+0i","0",cn,fixed=TRUE)
+  cn = gsub("+1i","+i",cn,fixed=TRUE)
+  cn = gsub("-1i","-i",cn,fixed=TRUE)
+  cn = gsub("+0i","",cn,fixed=TRUE)
+  cn = gsub("-0i","",cn,fixed=TRUE)
+  if(nchar(cn)>1 && substr(cn, start = 1, stop = 2)=="0+"){cn = gsub("0+","",cn,fixed=TRUE)}
+  if(nchar(cn)>1 && substr(cn, start = 1, stop = 2)=="0-"){cn = gsub("0-","-",cn,fixed=TRUE)}
+  return(cn)
+}
+
+```
+
+Name: \vspace{5pt} \hrule
+
+## a0109_MASTERY (v`r params$rseed`)
+
+### Question 1
+
+```{r,echo=F}
+while(T){
+    pows = c("1","i","-1","-i")
+    x = sort(sample(40:99,4))
+    ans = pows[x%%4+1]
+    if(length(unique(ans))==4 && min(diff(x))>5){break}
+}
+```
+
+
+Simplify the following powers of $i$.
+
+`r paste0("$i^{",x,"}$",collapse=" \\hfill ")`
+
+\vfill
+
+\color{red}
+`r if(params$showsol){paste0("$",ans,"$",collapse=" \\hfill ")}`
+\color{black}
+
+\vfill
+
+
+
+### Question 2
+
+```{r,echo=F}
+p = sample(c(2,3,4,5,6),1)
+q = sample(c(2,3,5,6,7,10),1)
+radicand = -p^2*q
+```
+
+Simplify the radical expression.
+
+$$\sqrt{`r radicand`}$$
+
+\vfill
+
+\color{red}
+`r if(params$showsol){paste0("$$",p,"i\\sqrt{",q,"}$$")}`
+\color{black}
+
+\vfill
+
+### Question 3
+
+```{r,echo=F}
+h = sample(2:9,1)*sample(c(-1,1),1)
+p = sample(2:6,1)
+q = sample(c(2,3,5,6,10),1)
+a = 1
+b = -2*h
+c = h^2-p^2*q
+eq = paste0(pn(c(a,b,c),2:0),"=0")
+```
+
+Solve.
+
+$$`r eq`$$
+
+\vfill
+
+\color{red}
+`r if(params$showsol){paste0("$$x=\\frac{",-b,"}{2}\\pm \\frac{\\sqrt{",b^2,"-(",4*a*c,")}}{2}$$")}`
+`r if(params$showsol){paste0("$$x=\\frac{",-b,"}{2}\\pm \\frac{\\sqrt{",b^2-4*a*c,"}}{2}$$")}`
+`r if(params$showsol){paste0("$$x=",h,"\\pm",p,"\\sqrt{",q,"}$$")}`
+\color{black}
+
+\vfill
+
+### Question 4
+
+```{r,echo=F}
+h = sample(2:9,1)*sample(c(-1,1),1)
+p = sample(2:6,1)
+q = sample(c(2,3,5,6,10),1)
+a = 1
+b = -2*h
+c = h^2+p^2*q
+eq = paste0(pn(c(a,b,c),2:0),"=0")
+```
+
+Solve.
+
+$$`r eq`$$
+
+\vfill
+
+\color{red}
+`r if(params$showsol){paste0("$$x=\\frac{",-b,"}{2}\\pm \\frac{\\sqrt{",b^2,"-",4*a*c,"}}{2}$$")}`
+`r if(params$showsol){paste0("$$x=\\frac{",-b,"}{2}\\pm \\frac{\\sqrt{",b^2-4*a*c,"}}{2}$$")}`
+`r if(params$showsol){paste0("$$x=",h,"\\pm",p,"i\\sqrt{",q,"}$$")}`
+\color{black}
+
+\vfill
+
+\newpage
+
+### Question 5
+
+```{r,echo=FALSE}
+ab = sample(2:9,2)
+a = ab[1]*sample(c(-1,1),1)
+b = ab[2]*sample(c(-1,1),1)
+cn = function(a,b){
+  cn = gsub("+-","-",paste0(a,"+",b,"i"),fixed=TRUE)
+  cn = gsub("0+0i","0",cn,fixed=TRUE)
+  cn = gsub("+1i","+i",cn,fixed=TRUE)
+  cn = gsub("-1i","-i",cn,fixed=TRUE)
+  cn = gsub("+0i","",cn,fixed=TRUE)
+  cn = gsub("-0i","",cn,fixed=TRUE)
+  if(length(cn)>1 && substr(cn, start = 1, stop = 2)=="0+"){cn = gsub("0+","",cn,fixed=TRUE)}
+  if(length(cn)>1 && substr(cn, start = 1, stop = 2)=="0-"){cn = gsub("0-","-",cn,fixed=TRUE)}
+  return(cn)
+}
+cn1 = cn(a,b)
+```
+
+What complex number is represented by the dot on the complex plane below?
+
+```{r,fig.dim=c(2.5,2.5),echo=FALSE,results="asis"}
+par(pty="s",mar=c(0,0,0,0))
+plot(0,0,type="n",xlim=c(-10,10),ylim=c(-10,10),lwd=2,ylab="imaginary component",xlab="real component",ann=F,axes=F)
+for(j in seq(-10,10,1)){
+    lines(c(j,j),c(-10,10),lwd=0.5,col="grey")
+    lines(c(-10,10),c(j,j),lwd=0.5,col="grey")
+}
+for(j in seq(-10,10,5)){
+    lines(c(j,j),c(-10,10),lwd=1,col="darkgrey")
+    lines(c(-10,10),c(j,j),lwd=1,col="darkgrey")
+    if(j!=0){
+        text(j,0,j,adj=c(0.5,1.2),cex=0.8)
+        text(0,j,paste0(j,"i"),adj=c(1.2,0.5),cex=0.8)
+    }
+}
+abline(h=0,lwd=2)
+abline(v=0,lwd=2)
+points(a,b,pch=20,cex=1,col="blue")
+```
+\
+
+\color{red}
+`r if(params$showsol){paste0("$$",cn1,"$$")}`
+\color{black}
+
+
+
+### Question 6
+
+```{r,echo=F}
+abcd = sample(1:9,4)
+a = abcd[1]*sample(c(-1,1),1)
+b = abcd[2]*sample(c(-1,1),1)
+c = abcd[3]*sample(c(-1,1),1)
+d = abcd[4]*sample(c(-1,1),1)
+cn1 = cn(a,b)
+cn2 = cn(c,d)
+cn3 = cn(a+c,b+d)
+```
+
+Find the sum:
+$$(`r cn1`)+(`r cn2`)$$
+
+\vfill
+\color{red}
+`r if(params$showsol){paste0("$$",cn3,"$$")}`
+\color{black}
+\vfill
+
+### Question 7
+
+```{r,echo=F}
+abcd = sample(1:9,4)
+a = abcd[1]*sample(c(-1,1),1)
+b = abcd[2]*sample(c(-1,1),1)
+c = abcd[3]*sample(c(-1,1),1)
+d = abcd[4]*sample(c(-1,1),1)
+cn1 = cn(a,b)
+cn2 = cn(c,d)
+cn3 = cn(a-c,b-d)
+```
+
+Find the difference:
+$$(`r cn1`)-(`r cn2`)$$
+
+\vfill
+\color{red}
+`r if(params$showsol){paste0("$$",cn3,"$$")}`
+\color{black}
+\vfill
+
+
+### Question 8
+
+```{r,echo=F}
+abcd = sample(1:9,4)
+a = abcd[1]*sample(c(-1,1),1)
+b = abcd[2]*sample(c(-1,1),1)
+c = abcd[3]*sample(c(-1,1),1)
+d = abcd[4]*sample(c(-1,1),1)
+cn1 = cn(a,b)
+cn2 = cn(c,d)
+cn3 = cn(a*c-b*d,a*d+b*c)
+
+exp3 = paste0(a*c,"+",-b*d,"+",a*d,"i+",b*c,"i")
+exp3 = gsub("+-","-",exp3,fixed=T)
+
+```
+
+Find the product:
+$$(`r cn1`)\cdot(`r cn2`)$$
+\vfill
+\vfill
+\color{red}
+`r if(params$showsol){paste0("$$(",a*c,")~+~(",a*d,")i~+~(",b*c,")i~+~(",(b*d),")i^2$$")}`
+$$`r if(params$showsol){exp3}`$$
+`r if(params$showsol){paste0("$$",cn3,"$$")}`
+\color{black}
+\vfill
+\vfill
+
+
+
+
+
+
+

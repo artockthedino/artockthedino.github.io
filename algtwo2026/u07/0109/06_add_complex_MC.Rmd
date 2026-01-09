@@ -1,0 +1,73 @@
+```{r,echo=FALSE}
+library(reticulate)
+options(scipen=999)
+# a = sample(c(-9:-1,1:9),1)
+# b = sample(c(-9:-1,1:9),1)
+# c = sample(c(-9:-1,1:9),1)
+# d = sample(c(-9:-1,1:9),1)
+
+
+
+cn = function(a,b){
+  cn = gsub("+-","-",paste0(a,"+",b,"i"),fixed=TRUE)
+  cn = gsub("0+0i","0",cn,fixed=TRUE)
+  cn = gsub("+1i","+i",cn,fixed=TRUE)
+  cn = gsub("-1i","-i",cn,fixed=TRUE)
+  cn = gsub("+0i","",cn,fixed=TRUE)
+  cn = gsub("-0i","",cn,fixed=TRUE)
+  if(nchar(cn)>1 && substr(cn,1,2)=="0+"){cn = gsub("0+","",cn,fixed=TRUE)}
+  if(nchar(cn)>1 && substr(cn,1,2)=="0-"){cn = gsub("0-","-",cn,fixed=TRUE)}
+  return(cn)
+}
+
+abcd = sample(1:9,4)
+a = abcd[1]*sample(c(-1,1),1)
+b = abcd[2]*sample(c(-1,1),1)
+c = abcd[3]*sample(c(-1,1),1)
+d = abcd[4]*sample(c(-1,1),1)
+cn1 = cn(a,b)
+cn2 = cn(c,d)
+cn3 = cn(a+c,b+d)
+
+rpo = c(a+c,a-c,-a+c,-a-c)
+ipo = c(b+d,b-d,-b+d,-b-d)
+
+ach = character()
+for(rr in rpo){
+    for(ii in ipo){
+        ach = c(ach,paste0(cn(rr,ii)))
+    }
+}
+ach = sort(unique(ach))
+
+
+al = paste0("* $",ach,"$",collapse="\n")
+sol = paste0(1*(ach==cn3),collapse="")
+
+
+```
+
+Question
+========
+
+Find the sum of the two complex numbers.
+$$(`r cn1`)+(`r cn2`)$$
+
+Answerlist
+--------
+
+`r al`
+
+Solution
+========
+
+For addition, just add the real components $(`r a`)+(`r c`)=`r a+c`$ and the imaginary components $(`r b`)i+(`r d`)i=`r b+d`i$.
+$$`r cn3`$$
+
+
+
+Meta-information
+============
+extype: schoice
+exsolution: `r sol`
+exname: add_complex
