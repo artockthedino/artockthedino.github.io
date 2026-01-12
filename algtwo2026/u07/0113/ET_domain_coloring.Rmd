@@ -1,0 +1,119 @@
+```{r,echo=FALSE}
+library(reticulate)
+options(scipen=999)
+deg = 1
+cn = function(a,b){
+  cn = gsub("+-","-",paste0(a,"+",b,"i"),fixed=TRUE)
+  cn = gsub("0+0i","0",cn,fixed=TRUE)
+  cn = gsub("1i","i",cn,fixed=TRUE)
+  cn = gsub("-1i","-i",cn,fixed=TRUE)
+  cn = gsub("+0i","",cn,fixed=TRUE)
+  cn = gsub("-0i","",cn,fixed=TRUE)
+  if(nchar(cn)>1 && substr(cn,1,2)=="0+"){cn = gsub("0+","",cn,fixed=TRUE)}
+  if(nchar(cn)>1 && substr(cn,1,2)=="0-"){cn = gsub("0-","-",cn,fixed=TRUE)}
+  return(cn)
+}
+ab = sample(2:10,2)
+a1 = ab[1]*sample(c(-1,1),1)
+b1 = ab[2]
+as = c(a1,a1)
+bs = c(b1,-b1)
+cns = c(cn(a1,b1),cn(a1,-b1))
+
+ex = paste0("(x-(",as,"+",bs,"*I))",collapse="*")
+ex = gsub("+-","-",ex,fixed=TRUE)
+
+asall = as
+bsall = bs
+cnall = cns
+while(length(cnall)<10){
+  if(length(cnall)==9 || sample(1:2,1,F,c(0.66,0.34))==1){
+    a = sample(-5:5,1)
+    b = 0
+    cn1 = cn(a,b)
+    if(sum(cn1==cnall)==0){
+      asall = c(asall,a)
+      bsall = c(bsall,b)
+      cnall = c(cnall,cn1)
+    }
+  } else {
+    a = sample(-5:5,1)
+    b = sample(1:5,1)
+    cn1 = cn(a,b)
+    cn2 = cn(a,-b)
+    if(sum(cn1==cnall)==0){
+      asall = c(asall,a,a)
+      bsall = c(bsall,b,-b)
+      cnall = c(cnall,cn1,cn2)
+    }
+  }
+}
+
+ach = -10:10
+al = paste0("* ",ach,collapse="\n")
+
+achb = 1:10
+alb = paste0("* ",achb,collapse="\n")
+
+sol1 = paste0(1*(a1==ach),collapse="")
+sol2 = paste0(1*(b1==achb),collapse="")
+
+```
+
+
+Question
+========
+
+```{python,echo=FALSE}
+from sympy import *
+x = symbols("x")
+ex = sympify(r.ex)
+ex2 = expand(ex)
+lex = latex(ex2)
+pex = str(ex2)
+```
+
+Find the solutions to the quadratic equation below.
+$$`r gsub("x","z",py$lex)`=0$$
+
+```{r,echo=FALSE}
+link = gsub("**","%5E",py$pex,fixed=TRUE)
+link = gsub("+","%2B",link,fixed=TRUE)
+link = gsub(" ","",link,fixed=TRUE)
+link = gsub("x","z",link,fixed=TRUE)
+```
+
+Both solutions will be complex numbers (because the discriminant is negative). To find the solutions, I'd recommend using [this website](https://samuelj.li/complex-function-plotter/#`r link`), which uses [domain coloring](https://en.wikipedia.org/wiki/Domain_coloring) to visualize the solutions. By default the solutions will appear as the center of concentric rings.
+
+Whenever a quadratic equation with REAL coefficients has COMPLEX solutions, the two solutions are [complex conjugates](https://en.wikipedia.org/wiki/Complex_conjugate). In other words, the solutions can be expressed as $x=h-wi$ and $x=h+wi$, where $i=\sqrt{-1}$. Find $h$ and $w$.
+
+$h=$ ##ANSWER1##
+
+$w=$ ##ANSWER2##
+
+
+Answerlist
+--------
+
+`r al`
+`r alb`
+
+
+Solution
+========
+
+
+Use [this website](https://samuelj.li/complex-function-plotter/#`r link`). It should automatically have the function typed in.
+
+Zoom out. Notice two "circles". Zoom into a circle to find the real component $h$ and the imaginary component $w$. You will find solutions at $`r a1`-`r b1`i$ and $`r a1`+`r b1`i$. So,
+
+$$h=`r a1`$$
+$$w=`r b1`$$
+
+
+Meta-information
+============
+extype: cloze
+exclozetype: schoice|schoice
+exsolution: `r sol1`|`r sol2`
+exname: domain_coloring

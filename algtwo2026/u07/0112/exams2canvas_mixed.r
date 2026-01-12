@@ -27,8 +27,6 @@ exams2canvas(pm,
              cloze = list(enumerate = FALSE))
 
 
-
-
 # pm = list("standard_from_graph.Rmd",
 #           "standard_from_graph.Rmd")
 # exams2canvas(pm,
