@@ -55,7 +55,7 @@ Question
 
 The quadratic formula says if $ax^2+bx+c=0$ then $x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}$.
 
-The solutions to $`r eq`$ can be expressed, in simplest form, as $x=h\pm p\sqrt{q}$, where $p$ might be imaginary. Find the values of $h$, $p$, and $q$.
+The solutions to $`r eq`$ can be expressed, in simplest form, as $x=h\pm p\sqrt{q}$, where $p$ might be [imaginary](https://en.wikipedia.org/wiki/Imaginary_number). Find the values of $h$, $p$, and $q$.
 
 $h=$ ##ANSWER1##
 

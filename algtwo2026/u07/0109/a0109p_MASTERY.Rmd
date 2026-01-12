@@ -264,7 +264,7 @@ $$(`r cn1`)\cdot(`r cn2`)$$
 \vfill
 \color{red}
 `r if(params$showsol){paste0("$$(",a*c,")~+~(",a*d,")i~+~(",b*c,")i~+~(",(b*d),")i^2$$")}`
-$$`r if(params$showsol){exp3}`$$
+`r if(params$showsol){paste0("$$",exp3,"$$")}`
 `r if(params$showsol){paste0("$$",cn3,"$$")}`
 \color{black}
 \vfill

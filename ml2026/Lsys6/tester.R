@@ -108,12 +108,12 @@ showrules = function(g){
     return(pr)
 }
 
-g99 = list("A",
-           list("A"="C--ABA--C",
-                "B"="BA+C+AB",
-                "C"="-BCA+ACB-"),
-           5,
-           90)
+g99 = list("AAAA",
+           list("A"="A--ACB+C+BCA--A",
+                "B"="BA+++C+++AB",
+                "C"="-B--A+C+A--B-"),
+           4,
+           165)
 
 
 # png("hi.png",300,300)

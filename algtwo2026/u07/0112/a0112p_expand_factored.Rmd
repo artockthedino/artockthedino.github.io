@@ -1,0 +1,131 @@
+---
+output: pdf_document
+params:
+    rseed: 0
+    showsol: true
+---
+
+```{r,echo=F,warning=FALSE,message=FALSE}
+options(scipen=999)
+if(params$rseed !=0){
+    set.seed(params$rseed)
+}
+
+pn = function(coeffs,pows){
+    pows = pows[coeffs!=0]
+    coeffs = coeffs[coeffs!=0]
+    ex1 = paste0("{",coeffs,"}x^{",pows,"}",collapse="+")
+    ex1 = gsub("+{-","-{",ex1,fixed=T)
+    ex1 = gsub("{1}x^{0}","1",ex1,fixed=T)
+    ex1 = gsub("{-1}x^{0}","-1",ex1,fixed=T)
+    ex1 = gsub("{1}x","x",ex1,fixed=T)
+    ex1 = gsub("{-1}x","-x",ex1,fixed=T)
+    ex1 = gsub("x^{0}","",ex1,fixed=T)
+    ex1 = gsub("x^{1}","x",ex1,fixed=T)
+    ex1 = gsub("+-","-",ex1,fixed=T)
+    if(ex1 == ""){
+        ex1 = "0"
+    }
+    return(ex1)
+}
+
+cn = function(a,b){
+  cn = gsub("+-","-",paste0(a,"+",b,"i"),fixed=TRUE)
+  cn = gsub("0+0i","0",cn,fixed=TRUE)
+  cn = gsub("+1i","+i",cn,fixed=TRUE)
+  cn = gsub("-1i","-i",cn,fixed=TRUE)
+  cn = gsub("+0i","",cn,fixed=TRUE)
+  cn = gsub("-0i","",cn,fixed=TRUE)
+  if(nchar(cn)>1 && substr(cn, start = 1, stop = 2)=="0+"){cn = gsub("0+","",cn,fixed=TRUE)}
+  if(nchar(cn)>1 && substr(cn, start = 1, stop = 2)=="0-"){cn = gsub("0-","-",cn,fixed=TRUE)}
+  return(cn)
+}
+
+while(T){
+    hs = numeric()
+    ps = numeric()
+    qs = numeric()
+    iscomps = logical()
+    facs = character()
+    foils = character()
+    stas = character()
+    dists = character()
+    
+    while(length(hs)<8){
+        h = sample(2:10,1)*sample(c(-1,1),1)
+        p = sample(2:7,1)
+        q = sample(c(2,3,5,6,7,10),1)
+        iscomp = sample(c(F,T),1)
+        a = 1
+        b = -2*h
+        if(!iscomp){
+            c = h^2-p^2*q
+            fac = paste0("\\Big(x-\\left(",h,"-",p,"\\sqrt{",q,"}\\right)\\Big)\\Big(x-\\left(",h,"+",p,"\\sqrt{",q,"}\\right)\\Big)")
+            foil = paste0("x^2-\\left(",h,"+",p,"\\sqrt{",q,"}\\right)x-\\left(",h,"-",p,"\\sqrt{",q,"}\\right)x+\\left(",h,"-",p,"\\sqrt{",q,"}\\right)\\left(",h,"+",p,"\\sqrt{",q,"}\\right)")
+            dist = paste0("x^2+",-h,"x+",-p,"\\sqrt{",q,"}x-",h,"x+",p,"\\sqrt{",q,"}x+",h^2,"+",h*p,"\\sqrt{",q,"}+",-h*p,"\\sqrt{",q,"}+",-p^2*q)
+        } else {
+            c = h^2+p^2*q
+            fac = paste0("\\Big(x-\\left(",h,"-",p,"i\\sqrt{",q,"}\\right)\\Big)\\Big(x-\\left(",h,"+",p,"i\\sqrt{",q,"}\\right)\\Big)")
+            foil = paste0("x^2-\\left(",h,"+",p,"i\\sqrt{",q,"}\\right)x-\\left(",h,"-",p,"i\\sqrt{",q,"}\\right)x+\\left(",h,"-",p,"i\\sqrt{",q,"}\\right)\\left(",h,"+",p,"i\\sqrt{",q,"}\\right)")
+            dist = paste0("x^2+",-h,"x+",-p,"i\\sqrt{",q,"}x-",h,"x+",p,"i\\sqrt{",q,"}x+",h^2,"+",h*p,"i\\sqrt{",q,"}+",-h*p,"i\\sqrt{",q,"}+",-p^2*q,"i^2")
+        }
+        sta = paste0("x^2+",b,"x+",c)
+        fac = gsub("+-","-",fac,fixed=T)
+        sta = gsub("+-","-",sta,fixed=T)
+        dist = gsub("+-","-",dist,fixed=T)
+        dist = gsub("--","+",dist,fixed=T)
+        if(!(sta %in% stas)){
+            hs = c(hs,h)
+            ps = c(ps,p)
+            qs = c(qs,q)
+            iscomps = c(iscomps,iscomp)
+            facs = c(facs,fac)
+            stas = c(stas,sta)
+            foils = c(foils,foil)
+            dists = c(dists,dist)
+        }
+    }
+    if(sum(1*iscomps)==floor(length(hs)/2) && iscomps[1]==T && iscomps[2]==F){break}
+}
+
+```
+
+Name: \vspace{5pt} \hrule
+
+## a0112_expand_factored (v`r params$rseed`)
+
+Express each **factored-form** quadratic expression in **standard form**. Remember $i=\sqrt{-1}$.
+
+\color{red}
+
+### Example
+
+```{r,echo=F,results='asis'}
+for(i in 1:length(hs)){
+    cat(paste0("$$",facs[i],"$$\n\n"))
+    if(params$showsol || i==1){
+        cat("\\color{red}\n\n")
+        cat("FOIL.")
+        cat(paste0("$$",foils[i],"$$"))
+        cat("Distribute (and FOIL again)")
+        cat(paste0("$$",dists[i],"$$"))
+        cat("Combine like terms. If relevant, $i^2=-1$.")
+        cat(paste0("$$",stas[i],"$$\n\n\\color{black}\n\n"))
+    } else {
+        cat("\\vfill\n\n")
+    }
+    if(i == floor(length(hs)/2)){
+        cat("\\newpage \n\n Express each **factored-form** quadratic expression in **standard form**. \n\n")
+    }
+}
+
+
+if(!(params$showsol)){
+    cat("\\color{gray}\n")
+    cat(paste0("$",stas[2:8],"$\n",collapse=", "))
+    cat("\\color{black}")
+}
+```
+
+
+

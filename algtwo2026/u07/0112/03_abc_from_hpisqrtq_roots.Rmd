@@ -1,0 +1,154 @@
+```{r,echo=FALSE}
+options(scipen=99)
+library(numbers)
+pn = function(coeffs,pows){
+    pows = pows[coeffs!=0]
+    coeffs = coeffs[coeffs!=0]
+    ex1 = paste0("{",coeffs,"}x^{",pows,"}",collapse="+")
+    ex1 = gsub("+{-","-{",ex1,fixed=T)
+    ex1 = gsub("{1}x^{0}","1",ex1,fixed=T)
+    ex1 = gsub("{-1}x^{0}","-1",ex1,fixed=T)
+    ex1 = gsub("{1}x","x",ex1,fixed=T)
+    ex1 = gsub("{-1}x","-x",ex1,fixed=T)
+    ex1 = gsub("x^{0}","",ex1,fixed=T)
+    ex1 = gsub("x^{1}","x",ex1,fixed=T)
+    ex1 = gsub("+-","-",ex1,fixed=T)
+    if(ex1 == ""){
+        ex1 = "0"
+    }
+    return(ex1)
+}
+
+# -b/2a +- sqrt(b^2-4ac)/2a
+# (x-(h+p*sqrt(q)))(x-(h-p*sqrt(q)))
+# (x-(h+sqrt(p^2*q)))(x-(h-sqrt(p^2*q)))
+
+# x^2 - 2*h + h^2-p^2*q
+
+h = sample(2:9,1)*sample(c(-1,1),1)
+p = sample(2:6,1)
+q = sample(c(2,3,5,6,7,10),1)
+a = 1
+b = -2*h
+c = h^2+p^2*q
+
+eq = paste0(pn(c(a,b,c),2:0),"=0")
+
+ha = c(-9:-2,2:9)
+pa = 2:6
+qa = c(2,3,5,6,7,10)
+ba = numeric()
+ca = numeric()
+
+for(hb in ha){
+    for(pb in pa){
+        for(qb in qa){
+            ba = c(ba,-2*hb)
+            ca = c(ca,hb^2+pb^2*qb)
+        }
+    }
+}
+ba = sort(unique(ba))
+ca = sort(unique(ca))
+
+ach1 = sample(unique(abs(ba)),4)
+if(!(abs(b) %in% ach1)){
+    ach1[1] = abs(b)
+}
+ach1 = sort(c(-ach1,ach1))
+
+ach2 = sample(ca,8)
+if(!(c %in% ach2)){
+    ach2[1] = c
+}
+ach2 = sort(ach2)
+
+
+al1 = paste0("* ",ach1,collapse="\n")
+al2 = paste0("* ",ach2,collapse="\n")
+
+sol1 = paste0(1*(ach1==b),collapse="")
+sol2 = paste0(1*(ach2==c),collapse="")
+
+
+```
+
+
+Question
+========
+
+A quadratic function, $f$, has zeros at $(`r h`-`r p`i\sqrt{`r q`},0)$ and $(`r h`+`r p`i\sqrt{`r q`},0)$. The function $f$ can be expressed in **factored form**, with parameter $a$ adjusting the vertical stretch and orientation of the parabola.
+
+$$f(x)~=~a\cdot \left[x-(`r h`-`r p`i\sqrt{`r q`})\right]\cdot\left[x-(`r h`+`r p`i\sqrt{`r q`})\right]$$
+
+The function, expressed in **standard form**, is parameterized with quadratic coefficient $a$, linear coefficient $b$, and constant $c$.
+
+$$f(x)~=~ax^2+bx+c$$
+
+In this case, the quadratic coefficient equals 1.
+
+$$a=1$$
+
+Find the linear coefficient and the constant. You can do this by expanding the factored form and combining like terms.
+
+$b=$ ##ANSWER1##
+
+$c=$ ##ANSWER2##
+
+Answerlist
+--------
+
+`r al1`
+`r al2`
+
+Solution
+========
+
+Start in factored form. We know $a=1$.
+
+$$f(x)~=~\left[x-(`r h`-`r p`i\sqrt{`r q`})\right]\cdot\left[x-(`r h`+`r p`i\sqrt{`r q`})\right]$$
+
+At this point, you can either FOIL or distribute away the inside parentheses. I think it'll be a bit cleaner to distribute the subtraction across the parentheses.
+
+```{r,echo=F}
+fac1 = paste0("x+",-h,"+",p,"i\\sqrt{",q,"}")
+fac2 = paste0("x+",-h,"-",p,"i\\sqrt{",q,"}")
+fac1 = gsub("+-","-",fac1,fixed=T)
+fac2 = gsub("+-","-",fac2,fixed=T)
+```
+
+$$\left[`r fac1`\right]\cdot\left[`r fac2`\right]$$
+
+But now, instead of FOIL, we need to generalize, because each factor has three terms: a linear term and two constant terms. You could probably guess that we simply multiply each of the first factor's terms by each of the second factor's terms.
+
+```{r,echo=F}
+# (x-h+psqrt(q))(x-h-psqrt(q))
+# x^2-hx-psqrt(q)x-hx+h^2+hpsqrt(q)+psqrt(q)x-hpsqrt(q)-p^2*q
+
+exp3 = paste0("x^2+",-h,"x-",p,"i\\sqrt{",q,"}x+",-h,"x+",h^2,"+",h*p,"i\\sqrt{",q,"}+",p,"i\\sqrt{",q,"}x+",-h*p,"i\\sqrt{",q,"}+",-p^2*q,"i^2")
+exp3 = gsub("+-","-",exp3,fixed=T)
+```
+
+$$`r exp3`$$
+
+Remember, $i^2=-1$. Combine like terms. Opposite terms cancel each other out.
+
+```{r,echo=F}
+# x^2-hx-psqrt(q)x-hx+h^2+hpsqrt(q)+psqrt(q)x-hpsqrt(q)-p^2*q
+# x^2-hx-hx+h^2-p^2*q
+
+exp4 = paste0("x^2+",-2*h,"x+",h^2+p^2*q)
+exp4 = gsub("+-","-",exp4,fixed=T)
+```
+
+
+$$`r exp4`$$
+
+Thus, $b=`r b`$ and $c=`r c`$.
+
+Meta-information
+============
+extype: cloze
+exclozetype: schoice|schoice
+exsolution: `r sol1`|`r sol2`
+exname: abc_from_hpsqrtq_roots

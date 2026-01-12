@@ -1,0 +1,174 @@
+```{r,echo=FALSE}
+options(scipen=99)
+library(numbers)
+pn = function(coeffs,pows){
+    pows = pows[coeffs!=0]
+    coeffs = coeffs[coeffs!=0]
+    ex1 = paste0("{",coeffs,"}x^{",pows,"}",collapse="+")
+    ex1 = gsub("+{-","-{",ex1,fixed=T)
+    ex1 = gsub("{1}x^{0}","1",ex1,fixed=T)
+    ex1 = gsub("{-1}x^{0}","-1",ex1,fixed=T)
+    ex1 = gsub("{1}x","x",ex1,fixed=T)
+    ex1 = gsub("{-1}x","-x",ex1,fixed=T)
+    ex1 = gsub("x^{0}","",ex1,fixed=T)
+    ex1 = gsub("x^{1}","x",ex1,fixed=T)
+    ex1 = gsub("+-","-",ex1,fixed=T)
+    if(ex1 == ""){
+        ex1 = "0"
+    }
+    return(ex1)
+}
+
+# -b/2a +- sqrt(b^2-4ac)/2a
+# (x-(h+p*sqrt(q)))(x-(h-p*sqrt(q)))
+# (x-(h+sqrt(p^2*q)))(x-(h-sqrt(p^2*q)))
+
+# x^2 - 2*h + h^2-p^2*q
+
+h = sample(2:9,1)*sample(c(-1,1),1)
+p = sample(2:6,1)
+q = sample(c(2,3,5,6,10),1)
+a = 1
+b = -2*h
+c = h^2-p^2*q
+
+eq = paste0(pn(c(a,b,c),2:0),"=0")
+fx = pn(c(a,b,c),2:0)
+
+ach1 = -10:10
+# ach2 = c("2","2i","3","3i","4","4i","5","5i","6","6i","7","7i","8","8i","9","9i","10","10i")
+ach2 = 2:10
+ach3 = 2:10
+
+
+al1 = paste0("* ",ach1,collapse="\n")
+al2 = paste0("* ",ach2,collapse="\n")
+al3 = paste0("* ",ach3,collapse="\n")
+
+sol1 = paste0(1*(ach1==h),collapse="")
+sol2 = paste0(1*(ach2==p),collapse="")
+sol3 = paste0(1*(ach3==q),collapse="")
+
+
+```
+
+
+Question
+========
+
+Let quadratic function $f$ be defined below:
+
+$$f(x)~=~`r fx`$$
+
+When curve $y=f(x)$ is graphed, we see two $x$-intercepts at $(x_1,0)$ and $(x_2,0)$.
+
+```{r,echo=F,fig.dim=c(4,4)}
+library(latex2exp)
+par(mar=c(5,5,0,0))
+k = -(b^2-4*a*c)/4/a
+r1 = h-p*sqrt(q)
+r2 = h+p*sqrt(q)
+dx = 2*p*sqrt(q)
+dy = abs(k)*1.5
+plot(0,0,"n",xlim=c(h-dx,h+dx),ylim=c(-abs(k)*1.5,abs(k)*1.5),xlab="x",ylab="y")
+abline(h=0,lwd=2)
+abline(v=0,lwd=2)
+xx = seq(h-dx,h+dx,dx/100)
+yy = a*xx^2+b*xx+c
+lines(xx,yy,col="blue",lwd=2)
+points(c(r1,r2),c(0,0),pch=19,col="red")
+text(r1,0,TeX("$(x_1,0)$"),adj=c(-0.1,-0.2),col="red",cex=1.1)
+text(r2,0,TeX("$(x_2,0)$"),adj=c(1.1,-0.2),col="red",cex=1.1)
+legend("topleft",TeX("$y=f(x)$"),lwd=2,col="blue")
+
+```
+\
+
+In exact form, those $x$ intercepts can be expressed as $h\pm p\sqrt{q}$. 
+
+$$x_1=h-p\sqrt{q}$$
+$$x_2=h+p\sqrt{q}$$
+
+Find the values of $h$, $p$, and $q$.
+
+$h=$ ##ANSWER1##
+
+$p=$ ##ANSWER2##
+
+$q=$ ##ANSWER3##
+
+
+Answerlist
+--------
+
+`r al1`
+`r al2`
+`r al3`
+
+
+Solution
+========
+
+The $x$ intercepts occur when either $x_1$ or $x_2$ satisfies $f(x)=0$.
+
+$$`r eq`$$
+
+Identify the coefficients.
+
+$$a=`r a`$$
+$$b=`r b`$$
+$$c=`r c`$$
+
+Plug numbers into the quadratic formula!
+
+$$x = \frac{-(`r b`)\pm\sqrt{(`r b`)^2-4(`r a`)(`r c`)}}{2(`r a`)} $$
+
+Simplify.
+
+$$x = \frac{`r -b` \pm \sqrt{`r b^2`-(`r 4*a*c`)}}{`r 2*a`}$$
+
+Simplify.
+
+$$x = \frac{`r -b` \pm \sqrt{`r b^2-4*a*c`}}{`r 2*a`}$$
+
+
+
+Use prime factorization.
+
+$$x = \frac{`r -b` \pm \sqrt{`r paste0(primeFactors(b^2-4*a*c),collapse="\\cdot")`}}{`r 2*a`}$$
+
+
+Isolate the twin factors.
+
+$$x = \frac{`r -b` \pm \sqrt{`r paste0(primeFactors(4*p^2),collapse="\\cdot")`}\cdot \sqrt{`r paste0(primeFactors(q),collapse="\\cdot")`}}{`r 2*a`}$$
+
+Simplify the square root of the square.
+
+$$x = \frac{`r -b` \pm `r paste0(primeFactors(2*p),collapse="\\cdot")`\cdot \sqrt{`r paste0(primeFactors(q),collapse="\\cdot")`}}{`r 2*a`}$$
+
+Simplify the integer products.
+
+$$x = \frac{`r -b` \pm `r 2*p`\cdot \sqrt{`r q`}}{`r 2*a`}$$
+
+Split the fraction.
+
+$$x = \frac{`r -b`}{`r 2*a`} \pm \frac{`r 2*p`\cdot \sqrt{`r q`}}{`r 2*a`}$$
+
+Both numerators contain a factor of 2.
+
+
+$$x = `r h` \pm `r p`\sqrt{`r q`}$$
+
+So, $h=`r h`$ and $p=`r p`$ and $q=`r q`$.
+
+
+I should mention this means we could now write the function in **factored form**.
+
+$$f(x)~=~\left[x-(`r h`-`r p`\sqrt{`r q`})\right]\cdot\left[x-(`r h`+`r p`\sqrt{`r q`})\right]$$
+
+Meta-information
+============
+extype: cloze
+exclozetype: schoice|schoice|schoice
+exsolution: `r sol1`|`r sol2`|`r sol3`
+exname: et_qf_radical_solns
