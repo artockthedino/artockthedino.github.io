@@ -3,15 +3,18 @@ n = 12
 outdir = "outcanvas"
 
 ### Entrance ticket
-pm = list("turtle_commands_D.Rmd",
-          "turtle_commands_D.Rmd")
+pm = list("01_tra_rot_gli_mir.Rmd",
+          "02_recognize_Frieze_group.Rmd",
+          "03_which_spirolateral.Rmd",
+          "04_Lsys_string_long.Rmd",
+          "05_turtle_commands_D.Rmd")
 
 exams2canvas(pm,
              n=n,
              dir=outdir,
-             points=c(5,5),
+             points=c(3,3,3,3,3),
              maxattempts = 4,
-             name="ET_0109",
+             name="ET_0112",
              template = "canvas_qti12.xml",
              cloze = list(enumerate = FALSE))
 
