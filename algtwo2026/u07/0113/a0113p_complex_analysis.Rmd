@@ -2,7 +2,7 @@
 output: pdf_document
 params:
     rseed: 0
-    showsol: false
+    showsol: true
 ---
 
 ```{r,echo=F,warning=FALSE,message=FALSE}
@@ -51,14 +51,14 @@ sqs = character()
 e2s = character()
 e3s = character()
 
-
+# zero
 while(length(fs)<2){
     while(T){
         a = sample(1:4,1)
         r = sample(1:9,1)*sample(c(-1,1),1)
         q = sample(1:9,1)*sample(c(-1,1),1)
         b = -2*a*r
-        c = a*r^2-a*q^2
+        c = a*r^2+a*q^2
         f = pn(c(a,b,c),2:0)
         z = cn(r,q)
         fz = 0
@@ -77,7 +77,7 @@ while(length(fs)<2){
         e2 = gsub("+-","-",e2,fixed=T)
         e2 = gsub("+{-","-{",e2,fixed=T)
         e2 = gsub("{1}(","(",e2,fixed=T)
-        e3 = paste0(a*r2,"+",a*q2,"i+",b*r,"+",b*q,"i+",c)
+        e3 = paste0(cn(a*r2,a*q2),"+",b*r,"+",b*q,"i+",c)
         e3 = gsub("+-","-",e3,fixed=T)
         if(!(f %in% fs) && !(z %in% zs) && max(abs(c(a,b,c)))<40 && min(abs(c(a,b,c)))>0){
             fs = c(fs,f)
@@ -94,6 +94,7 @@ while(length(fs)<2){
 
 # If f(z)=w... a(x-r+qi)(x-r-qi)+w
 # ax^2-2arx+(ar^2-aq^2+w)
+# reals
 
 while(length(fs)<4){
     while(T){
@@ -102,7 +103,7 @@ while(length(fs)<4){
         q = sample(1:9,1)*sample(c(-1,1),1)
         w = sample(1:20,1)*sample(c(-1,1),1)
         b = -2*a*r
-        c = a*r^2-a*q^2+w
+        c = a*r^2+a*q^2+w
         f = pn(c(a,b,c),2:0)
         z = cn(r,q)
         fz = w
@@ -121,7 +122,7 @@ while(length(fs)<4){
         e2 = gsub("+-","-",e2,fixed=T)
         e2 = gsub("+{-","-{",e2,fixed=T)
         e2 = gsub("{1}(","(",e2,fixed=T)
-        e3 = paste0(a*r2,"+",a*q2,"i+",b*r,"+",b*q,"i+",c)
+        e3 = paste0(cn(a*r2,a*q2),"+",b*r,"+",b*q,"i+",c)
         e3 = gsub("+-","-",e3,fixed=T)
         if(!(f %in% fs) && !(z %in% zs) && max(abs(c(a,b,c)))<40 && min(abs(c(a,b,c)))>0){
             fs = c(fs,f)
@@ -164,7 +165,7 @@ while(length(fs)<7){
         e2 = gsub("+-","-",e2,fixed=T)
         e2 = gsub("+{-","-{",e2,fixed=T)
         e2 = gsub("{1}(","(",e2,fixed=T)
-        e3 = paste0(a*r2,"+",a*q2,"i+",b*r,"+",b*q,"i+",c)
+        e3 = paste0(cn(a*r2,a*q2),"+",b*r,"+",b*q,"i+",c)
         e3 = gsub("+-","-",e3,fixed=T)
         if(!(f %in% fs) && !(z %in% zs) && max(abs(c(R,Q)))<40 && min(abs(c(R,Q)))>0){
             fs = c(fs,f)
@@ -206,7 +207,7 @@ while(length(fs)<9){
         e2 = gsub("+-","-",e2,fixed=T)
         e2 = gsub("+{-","-{",e2,fixed=T)
         e2 = gsub("{1}(","(",e2,fixed=T)
-        e3 = paste0(a*r2,"+",a*q2,"i+",b*r,"+",b*q,"i+",c)
+        e3 = paste0(cn(a*r2,a*q2),"+",b*r,"+",b*q,"i+",c)
         e3 = gsub("+-","-",e3,fixed=T)
         if(!(f %in% fs) && !(z %in% zs) && max(abs(c(R,Q)))<40 && abs(Q)>0 && R==0){
             fs = c(fs,f)
