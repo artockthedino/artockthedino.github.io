@@ -1,0 +1,273 @@
+---
+output: pdf_document
+params:
+    rseed: 0
+    showsol: false
+---
+
+```{r,echo=F,warning=FALSE,message=FALSE}
+options(scipen=999)
+if(params$rseed !=0){
+    set.seed(params$rseed)
+}
+pn = function(coeffs,pows){
+    pows = pows[coeffs!=0]
+    coeffs = coeffs[coeffs!=0]
+    ex1 = paste0("{",coeffs,"}x^{",pows,"}",collapse="+")
+    ex1 = gsub("+{-","-{",ex1,fixed=T)
+    ex1 = gsub("{1}x^{0}","1",ex1,fixed=T)
+    ex1 = gsub("{-1}x^{0}","-1",ex1,fixed=T)
+    ex1 = gsub("{1}x","x",ex1,fixed=T)
+    ex1 = gsub("{-1}x","-x",ex1,fixed=T)
+    ex1 = gsub("x^{0}","",ex1,fixed=T)
+    ex1 = gsub("x^{1}","x",ex1,fixed=T)
+    ex1 = gsub("+-","-",ex1,fixed=T)
+    if(ex1 == ""){
+        ex1 = "0"
+    }
+    return(ex1)
+}
+
+cn = function(a,b){
+  cn = gsub("+-","-",paste0(a,"+",b,"i"),fixed=TRUE)
+  cn = gsub("0+0i","0",cn,fixed=TRUE)
+  cn = gsub("+1i","+i",cn,fixed=TRUE)
+  cn = gsub("-1i","-i",cn,fixed=TRUE)
+  cn = gsub("+0i","",cn,fixed=TRUE)
+  cn = gsub("-0i","",cn,fixed=TRUE)
+  if(nchar(cn)>1 && substr(cn, start = 1, stop = 2)=="0+"){cn = gsub("0+","",cn,fixed=TRUE)}
+  if(nchar(cn)>1 && substr(cn, start = 1, stop = 2)=="0-"){cn = gsub("0-","-",cn,fixed=TRUE)}
+  return(cn)
+}
+
+# If f(z)=0... a(x-r+qi)(x-r-qi)
+# ax^2-2arx+(ar^2-aq^2)
+
+fs = character()
+zs = character()
+fzs = character()
+e1s = character()
+sqs = character()
+e2s = character()
+e3s = character()
+
+
+while(length(fs)<2){
+    while(T){
+        a = sample(1:4,1)
+        r = sample(1:9,1)*sample(c(-1,1),1)
+        q = sample(1:9,1)*sample(c(-1,1),1)
+        b = -2*a*r
+        c = a*r^2-a*q^2
+        f = pn(c(a,b,c),2:0)
+        z = cn(r,q)
+        fz = 0
+        r2 = r^2-q^2
+        q2 = 2*r*q
+        cn2 = cn(r2,q2)
+        e1 = paste0("{",a,"}(",z,")^2+{",b,"}(",z,")+",c,collapse="")
+        e1 = gsub("+-","-",e1,fixed=T)
+        e1 = gsub("+{-","-{",e1,fixed=T)
+        e1 = gsub("{1}(","(",e1,fixed=T)
+        sq = paste0("(",z,")^2~\\equiv~(",z,")(",z,")~\\equiv~",r^2,"+",r*q,"i+",r*q,"i+",q^2,"i^2~\\equiv~",cn2)
+        sq = gsub("+-","-",sq,fixed=T)
+        sq = gsub("+{-","-{",sq,fixed=T)
+        sq = gsub("{1}(","(",sq,fixed=T)
+        e2 = paste0("{",a,"}(",cn2,")+{",b,"}(",z,")+",c,collapse="")
+        e2 = gsub("+-","-",e2,fixed=T)
+        e2 = gsub("+{-","-{",e2,fixed=T)
+        e2 = gsub("{1}(","(",e2,fixed=T)
+        e3 = paste0(a*r2,"+",a*q2,"i+",b*r,"+",b*q,"i+",c)
+        e3 = gsub("+-","-",e3,fixed=T)
+        if(!(f %in% fs) && !(z %in% zs) && max(abs(c(a,b,c)))<40 && min(abs(c(a,b,c)))>0){
+            fs = c(fs,f)
+            zs = c(zs,z)
+            fzs = c(fzs,paste0(fz))
+            e1s = c(e1s,e1)
+            e2s = c(e2s,e2)
+            sqs = c(sqs,sq)
+            e3s = c(e3s,e3)
+            break
+            }
+    }
+}
+
+# If f(z)=w... a(x-r+qi)(x-r-qi)+w
+# ax^2-2arx+(ar^2-aq^2+w)
+
+while(length(fs)<4){
+    while(T){
+        a = sample(1:4,1)
+        r = sample(1:9,1)*sample(c(-1,1),1)
+        q = sample(1:9,1)*sample(c(-1,1),1)
+        w = sample(1:20,1)*sample(c(-1,1),1)
+        b = -2*a*r
+        c = a*r^2-a*q^2+w
+        f = pn(c(a,b,c),2:0)
+        z = cn(r,q)
+        fz = w
+        r2 = r^2-q^2
+        q2 = 2*r*q
+        cn2 = cn(r2,q2)
+        e1 = paste0("{",a,"}(",z,")^2+{",b,"}(",z,")+",c,collapse="")
+        e1 = gsub("+-","-",e1,fixed=T)
+        e1 = gsub("+{-","-{",e1,fixed=T)
+        e1 = gsub("{1}(","(",e1,fixed=T)
+        sq = paste0("(",z,")^2~\\equiv~(",z,")(",z,")~\\equiv~",r^2,"+",r*q,"i+",r*q,"i+",q^2,"i^2~\\equiv~",cn2)
+        sq = gsub("+-","-",sq,fixed=T)
+        sq = gsub("+{-","-{",sq,fixed=T)
+        sq = gsub("{1}(","(",sq,fixed=T)
+        e2 = paste0("{",a,"}(",cn2,")+{",b,"}(",z,")+",c,collapse="")
+        e2 = gsub("+-","-",e2,fixed=T)
+        e2 = gsub("+{-","-{",e2,fixed=T)
+        e2 = gsub("{1}(","(",e2,fixed=T)
+        e3 = paste0(a*r2,"+",a*q2,"i+",b*r,"+",b*q,"i+",c)
+        e3 = gsub("+-","-",e3,fixed=T)
+        if(!(f %in% fs) && !(z %in% zs) && max(abs(c(a,b,c)))<40 && min(abs(c(a,b,c)))>0){
+            fs = c(fs,f)
+            zs = c(zs,z)
+            fzs = c(fzs,paste0(fz))
+            e1s = c(e1s,e1)
+            e2s = c(e2s,e2)
+            sqs = c(sqs,sq)
+            e3s = c(e3s,e3)
+            break
+            }
+    }
+}
+
+
+while(length(fs)<7){
+    while(T){
+        a = sample(1:4,1)
+        b = sample(2:10,1)*sample(c(-1,1),1)
+        c = sample(2:10,1)*sample(c(-1,1),1)
+        r = sample(1:5,1)*sample(c(-1,1),1)
+        q = sample(1:5,1)*sample(c(-1,1),1)
+        f = pn(c(a,b,c),2:0)
+        z = cn(r,q)
+        R = a*r^2-a*q^2+b*r+c
+        Q = 2*a*r*q+b*q
+        fz = cn(R,Q)
+        r2 = r^2-q^2
+        q2 = 2*r*q
+        cn2 = cn(r2,q2)
+        e1 = paste0("{",a,"}(",z,")^2+{",b,"}(",z,")+",c,collapse="")
+        e1 = gsub("+-","-",e1,fixed=T)
+        e1 = gsub("+{-","-{",e1,fixed=T)
+        e1 = gsub("{1}(","(",e1,fixed=T)
+        sq = paste0("(",z,")^2~\\equiv~(",z,")(",z,")~\\equiv~",r^2,"+",r*q,"i+",r*q,"i+",q^2,"i^2~\\equiv~",cn2)
+        sq = gsub("+-","-",sq,fixed=T)
+        sq = gsub("+{-","-{",sq,fixed=T)
+        sq = gsub("{1}(","(",sq,fixed=T)
+        e2 = paste0("{",a,"}(",cn2,")+{",b,"}(",z,")+",c,collapse="")
+        e2 = gsub("+-","-",e2,fixed=T)
+        e2 = gsub("+{-","-{",e2,fixed=T)
+        e2 = gsub("{1}(","(",e2,fixed=T)
+        e3 = paste0(a*r2,"+",a*q2,"i+",b*r,"+",b*q,"i+",c)
+        e3 = gsub("+-","-",e3,fixed=T)
+        if(!(f %in% fs) && !(z %in% zs) && max(abs(c(R,Q)))<40 && min(abs(c(R,Q)))>0){
+            fs = c(fs,f)
+            zs = c(zs,z)
+            fzs = c(fzs,fz)
+            e1s = c(e1s,e1)
+            e2s = c(e2s,e2)
+            sqs = c(sqs,sq)
+            e3s = c(e3s,e3)
+            break
+            }
+    }
+}
+
+while(length(fs)<9){
+    while(T){
+        a = sample(1:4,1)
+        b = sample(2:10,1)*sample(c(-1,1),1)
+        c = sample(2:10,1)*sample(c(-1,1),1)
+        r = sample(1:5,1)*sample(c(-1,1),1)
+        q = sample(1:5,1)*sample(c(-1,1),1)
+        f = pn(c(a,b,c),2:0)
+        z = cn(r,q)
+        R = a*r^2-a*q^2+b*r+c
+        Q = 2*a*r*q+b*q
+        fz = cn(R,Q)
+        r2 = r^2-q^2
+        q2 = 2*r*q
+        cn2 = cn(r2,q2)
+        e1 = paste0("{",a,"}(",z,")^2+{",b,"}(",z,")+",c,collapse="")
+        e1 = gsub("+-","-",e1,fixed=T)
+        e1 = gsub("+{-","-{",e1,fixed=T)
+        e1 = gsub("{1}(","(",e1,fixed=T)
+        sq = paste0("(",z,")^2~\\equiv~(",z,")(",z,")~\\equiv~",r^2,"+",r*q,"i+",r*q,"i+",q^2,"i^2~\\equiv~",cn2)
+        sq = gsub("+-","-",sq,fixed=T)
+        sq = gsub("+{-","-{",sq,fixed=T)
+        sq = gsub("{1}(","(",sq,fixed=T)
+        e2 = paste0("{",a,"}(",cn2,")+{",b,"}(",z,")+",c,collapse="")
+        e2 = gsub("+-","-",e2,fixed=T)
+        e2 = gsub("+{-","-{",e2,fixed=T)
+        e2 = gsub("{1}(","(",e2,fixed=T)
+        e3 = paste0(a*r2,"+",a*q2,"i+",b*r,"+",b*q,"i+",c)
+        e3 = gsub("+-","-",e3,fixed=T)
+        if(!(f %in% fs) && !(z %in% zs) && max(abs(c(R,Q)))<40 && abs(Q)>0 && R==0){
+            fs = c(fs,f)
+            zs = c(zs,z)
+            fzs = c(fzs,fz)
+            e1s = c(e1s,e1)
+            e2s = c(e2s,e2)
+            sqs = c(sqs,sq)
+            e3s = c(e3s,e3)
+            break
+            }
+    }
+}
+
+ord = c(7,1,8,sample(c(2,3,4,5,6,9)))
+fs = fs[ord]
+zs = zs[ord]
+fzs = fzs[ord]
+e1s = e1s[ord]
+e2s = e2s[ord]
+sqs = sqs[ord]
+e3s = e3s[ord]
+
+```
+
+Name: \vspace{5pt} \hrule
+
+## a0113_complex_analysis (v`r params$rseed`)
+
+\color{red}
+
+Example: 
+```{r,echo=F,results='asis'}
+for(i in 1:length(fs)){
+    if(i>1){
+        cat(paste0(i-1,". "))
+    }
+    cat(paste0("Define function $f$ with equation $f(x)=",fs[i],"$. Evaluate $f(",zs[i],")$.\n\n"))
+    if(params$showsol || i==1){
+        cat("\\color{red}\n\n")
+        cat("$$",e1s[i],"$$")
+        cat("$$",sqs[i],"$$")
+        cat("$$",e2s[i],"$$")
+        cat("$$",e3s[i],"$$")
+        cat("$$",fzs[i],"$$")
+    } else {
+        cat("\\vfill\n\n")
+    }
+    cat("\n\n\\color{black}\n\n")
+    if(i==floor(length(fs)/2+1)){
+        cat("\\newpage\n\n")
+    }
+    
+    
+}
+
+cat("\\color{gray}\n")
+cat(paste0("$",fzs[2:9],"$",collapse=" \\hfill "))
+cat("\n\\color{black}")
+```
+
+
+
+

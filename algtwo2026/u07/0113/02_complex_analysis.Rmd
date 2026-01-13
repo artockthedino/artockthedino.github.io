@@ -1,0 +1,125 @@
+```{r,echo=FALSE}
+options(scipen=999)
+cn = function(a,b){
+  cn = gsub("+-","-",paste0(a,"+",b,"i"),fixed=TRUE)
+  cn = gsub("0+0i","0",cn,fixed=TRUE)
+  cn = gsub("+1i","+i",cn,fixed=TRUE)
+  cn = gsub("-1i","-i",cn,fixed=TRUE)
+  cn = gsub("+0i","",cn,fixed=TRUE)
+  cn = gsub("-0i","",cn,fixed=TRUE)
+  if(length(cn)>1 && substr(cn, start = 1, stop = 2)=="0+"){cn = gsub("0+","",cn,fixed=TRUE)}
+  if(length(cn)>1 && substr(cn, start = 1, stop = 2)=="0-"){cn = gsub("0-","-",cn,fixed=TRUE)}
+  return(cn)
+}
+
+pn = function(coeffs,pows){
+    pows = pows[coeffs!=0]
+    coeffs = coeffs[coeffs!=0]
+    ex1 = paste0("{",coeffs,"}x^{",pows,"}",collapse="+")
+    ex1 = gsub("+{-","-{",ex1,fixed=T)
+    ex1 = gsub("{1}x^{0}","1",ex1,fixed=T)
+    ex1 = gsub("{-1}x^{0}","-1",ex1,fixed=T)
+    ex1 = gsub("{1}x","x",ex1,fixed=T)
+    ex1 = gsub("{-1}x","-x",ex1,fixed=T)
+    ex1 = gsub("x^{0}","",ex1,fixed=T)
+    ex1 = gsub("x^{1}","x",ex1,fixed=T)
+    ex1 = gsub("+-","-",ex1,fixed=T)
+    if(ex1 == ""){
+        ex1 = "0"
+    }
+    return(ex1)
+}
+
+while(T){
+    abcrq = sample(2:9,5)*sample(c(-1,1),5,T)
+    a = abcrq[1]
+    b = abcrq[2]
+    c = abcrq[3]
+    r = abcrq[4]
+    q = abcrq[5]
+    R = a*r^2-a*q^2+b*r+c
+    Q = 2*a*r*q+b*q
+    if(min(abs(c(R,Q)))>0){break}
+}
+
+```
+
+Question
+========
+
+In [complex analysis](https://en.wikipedia.org/wiki/Complex_analysis), complex numbers are used as inputs and outputs of various functions.
+
+Consider the function $f$ defined below.
+
+$$f(x)~=~`r pn(c(a,b,c),2:0)`$$
+
+Evaluate $f(`r cn(r,q)`)$.
+
+You answer should be a complex number. Type the complex number **without spaces**, with the real term first and the imaginary term second. So your answer should look like `5+7i` or `-11+9i`.
+
+Solution
+========
+
+```{r,echo=F}
+cn1 = cn(r,q)
+exp1 = paste0(a,"(",cn1,")^2+",b,"(",cn1,")+",c,collapse="")
+exp1 = gsub("+-","-",exp1,fixed=T)
+```
+
+$$f(`r cn(r,q)`) ~=~ `r exp1`$$
+
+The most challenging part is squaring the complex input. Remember, raising to the power of 2 means multiplying by itself. When we multiply two complex numbers, we basically "FOIL".
+
+
+```{r,echo=F}
+exp2 = paste0(r^2,"+",r*q,"i+",r*q,"i+",q^2,"i^2")
+exp2 = gsub("+-","-",exp2,fixed=T)
+exp3 = paste0(r^2,"+",r*q,"i+",r*q,"i+",-q^2)
+exp3 = gsub("+-","-",exp3,fixed=T)
+
+exp4 = paste0(r^2-q^2,"+",2*r*q,"i")
+exp4 = gsub("+-","-",exp4,fixed=T)
+cn2 = cn(r^2-q^2,2*r*q)
+r2 = r^2-q^2
+q2 = 2*r*q
+```
+
+$$(`r cn1`)^2~\equiv~(`r cn1`)(`r cn1`)~\equiv~`r exp2`$$
+
+Remember, $i^2=-1$.
+
+
+$$(`r cn1`)^2~\equiv~`r exp3`$$
+
+Combine like terms.
+
+
+$$(`r cn1`)^2~\equiv~`r exp4`$$
+
+So, now return to the full expression, replacing $(`r cn1`)^2$ with $`r exp4`$.
+
+```{r,echo=F}
+exp5 = paste0(a,"(",cn2,")+",b,"(",cn1,")+",c,collapse="")
+exp5 = gsub("+-","-",exp5,fixed=T)
+exp6 = paste0(a*r2,"+",a*q2,"i+",b*r,"+",b*q,"i+",c)
+exp6 = gsub("+-","-",exp6,fixed=T)
+```
+
+$$f(`r cn(r,q)`) ~=~ `r exp5`$$
+
+Distribute.
+
+$$f(`r cn(r,q)`) ~=~ `r exp6`$$
+
+Combine like terms.
+
+
+$$f(`r cn(r,q)`) ~=~ `r cn(R,Q)`$$
+
+So, type your answer as ``r cn(R,Q)``.
+
+Meta-information
+============
+extype: string
+exsolution: `r cn(R,Q)`
+exname: complex_analysis

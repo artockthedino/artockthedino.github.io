@@ -24,9 +24,9 @@ Question
 Let $z_1$ be a complex number with integer components. It is graphed on a [complex plane](https://en.wikipedia.org/wiki/Complex_plane) below, along with a segment connecting it to the origin.
 
 
-```{r,fig.dim=c(6,6),echo=FALSE,results="asis"}
-par(pty="s")
-plot(0,0,type="n",xlim=c(-10,10),ylim=c(-10,10),lwd=2,ylab="imaginary component",xlab="real component",axes=F)
+```{r,fig.dim=c(4,4),echo=FALSE,results="asis"}
+par(pty="s",mar=c(0,0,0,0))
+plot(0,0,type="n",xlim=c(-10,10),ylim=c(-10,10),lwd=2,ylab="imaginary component",xlab="real component",axes=F,ann=F)
 for(j in seq(-10,10,1)){
     lines(c(j,j),c(-10,10),lwd=0.5,col="grey")
     lines(c(-10,10),c(j,j),lwd=0.5,col="grey")
