@@ -1,0 +1,96 @@
+```{r,echo=FALSE}
+library(numbers)
+# (a+bi)/(c+di)
+
+# (a+bi)(c-di)/(c^2+d^2)
+# ((ac+bd)+(bc-ad)i)/(c^2+d^2)
+gcd2 <- function(a, b) {
+  if (b == 0) a else Recall(b, a %% b)
+}
+gcd <- function(...) Reduce(gcd2, c(...))
+
+while(T){
+    abcd = sample(c(2:9),4)*sample(c(-1,1),1)
+    gg1 = gcd(abs(abcd))
+    a = abcd[1]/gg1
+    b = abcd[2]/gg1
+    c = abs(abcd[3]/gg1)
+    d = abcd[4]/gg1
+    
+    e1 = paste0("\\frac{",a,"+",b,"i}{",c,"+",d,"i}")
+    e1 = gsub("+-","-",e1,fixed=T)
+    
+    # (r+qi)/n
+    
+    r = a*c+b*d
+    q = b*c-a*d
+    n = c^2+d^2
+    gg2 = gcd(abs(c(r,q,n)))
+    r2 = r/gg2
+    q2 = q/gg2
+    n2 = n/gg2
+    
+    e2 = paste0("\\frac{",r2,"+",q2,"i}{",n2,"}")
+    e2 = gsub("+-","-",e2,fixed=T)
+    if(min(abs(c(r2,q2,n2)))>1 && max(abs(c(r,q,n)))<70){break}
+}
+
+
+e3 = paste0("\\frac{(",a,"+",b,"i)(",c,"+",-d,"i)}{(",c,"+",d,"i)(",c,"+",-d,"i)}")
+e3 = gsub("+-","-",e3,fixed=T)
+
+
+e4 = paste0("\\frac{",a*c,"+",-a*d,"i+",b*c,"i+",-b*d,"i^2}{",c^2,"+",-c*d,"i+",c*d,"i+",-d^2,"i^2}")
+e4 = gsub("+-","-",e4,fixed=T)
+
+e5 = paste0("\\frac{",a*c,"+",-a*d,"i+",b*c,"i+",b*d,"}{",c^2,"+",-c*d,"i+",c*d,"i+",d^2,"}")
+e5 = gsub("+-","-",e5,fixed=T)
+
+e6 = paste0("\\frac{",a*c+b*d,"+",-a*d+b*c,"i}{",c^2+d^2,"}")
+e6 = gsub("+-","-",e6,fixed=T)
+
+ans = paste0("(",r2,"+",q2,"i)/",n2)
+ans = gsub("+-","-",ans,fixed=T)
+```
+
+Question
+========
+
+Simplify the following expression so that the denominator is a positive real integer.
+
+$$`r e1`$$
+
+Your answer will have the form $\frac{r+qi}{n}$.
+
+*If your answer is $\frac{4-10i}{3}$, type your answer as `(4-10i)/3` without any spaces.*
+
+Solution
+========
+
+Multiply the numerator and denominator by the complex conjugate of the denominator.
+
+$$`r e3`$$
+
+"FOIL" the numerator and "FOIL" the denominator.
+
+$$`r e4`$$
+
+Remember, $i^2=-1$.
+
+$$`r e5`$$
+
+Combine like terms.
+
+$$`r e6`$$
+
+If all terms have a common factor, reduce the fraction. The greatest common factor of `r abs(a*c+b*d)` and `r abs(-a*d+b*c)` and `r abs(c^2+d^2)` is the number `r gg2`.
+
+$$`r e2`$$
+
+So, your answer is typed exactly like ``r ans`` without any spaces.
+
+Meta-information
+============
+extype: string
+exsolution: `r ans`
+exname: realize_denominator
