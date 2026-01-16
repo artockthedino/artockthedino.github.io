@@ -11,7 +11,7 @@
 
 
 
-<title>quad_formula_decimal.knit</title>
+<title>factor_quadratic.knit</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -354,72 +354,140 @@ display: none;
 
 <div id="question" class="section level1">
 <h1>Question</h1>
-<p>If we start with a generic quadratic equation and use <a href="https://en.wikipedia.org/wiki/Completing_the_square">completing
-the square</a> to solve it, we can derive the <a href="https://en.wikipedia.org/wiki/Quadratic_formula">quadratic
-formula</a>:</p>
-<ul>
-<li>If <span class="math inline">\(ax^2+bx+c=0\)</span>, then <span class="math display">\[x~=~\frac{-b \pm
-\sqrt{b^2-4ac}}{2a}\]</span></li>
-</ul>
-<p>Use the quadratic formula to find both solutions (rounded to the
-nearest hundredth) to the equation below.</p>
-<p><span class="math display">\[-2x^2-10x-4~=~0\]</span></p>
-<ul>
-<li><span class="math inline">\(x=\)</span> ##ANSWER1##</li>
-<li>or</li>
-<li><span class="math inline">\(x=\)</span> ##ANSWER2##</li>
-</ul>
+<p>The quadratic polynomial <span class="math inline">\(p(x)\)</span> is
+defined below.</p>
+<p><span class="math display">\[p(x)~=~x^{2}+{5}x+{6}\]</span></p>
+<p>Which two linear polynomials are factors of <span class="math inline">\(p(x)\)</span>?</p>
 <div id="answerlist" class="section level2">
 <h2>Answerlist</h2>
 <ul>
-<li>-4.56</li>
-<li>-4.53</li>
-<li>-4.50</li>
-<li>-4.47</li>
-<li>-4.44</li>
-<li>-0.44</li>
-<li>-0.41</li>
-<li>-0.38</li>
-<li>-0.35</li>
-<li>-0.32</li>
+<li><span class="math inline">\(x-{12}\)</span></li>
+<li><span class="math inline">\(x-{11}\)</span></li>
+<li><span class="math inline">\(x-{10}\)</span></li>
+<li><span class="math inline">\(x-{9}\)</span></li>
+<li><span class="math inline">\(x-{8}\)</span></li>
+<li><span class="math inline">\(x-{7}\)</span></li>
+<li><span class="math inline">\(x-{6}\)</span></li>
+<li><span class="math inline">\(x-{5}\)</span></li>
+<li><span class="math inline">\(x-{4}\)</span></li>
+<li><span class="math inline">\(x-{3}\)</span></li>
+<li><span class="math inline">\(x-{2}\)</span></li>
+<li><span class="math inline">\(x-{1}\)</span></li>
+<li><span class="math inline">\(x+{1}\)</span></li>
+<li><span class="math inline">\(x+{2}\)</span></li>
+<li><span class="math inline">\(x+{3}\)</span></li>
+<li><span class="math inline">\(x+{4}\)</span></li>
+<li><span class="math inline">\(x+{5}\)</span></li>
+<li><span class="math inline">\(x+{6}\)</span></li>
+<li><span class="math inline">\(x+{7}\)</span></li>
+<li><span class="math inline">\(x+{8}\)</span></li>
+<li><span class="math inline">\(x+{9}\)</span></li>
+<li><span class="math inline">\(x+{10}\)</span></li>
+<li><span class="math inline">\(x+{11}\)</span></li>
+<li><span class="math inline">\(x+{12}\)</span></li>
 </ul>
 </div>
 </div>
 <div id="solution" class="section level1">
 <h1>Solution</h1>
-<p>Identify the parameters.</p>
-<ul>
-<li>The quadratic coefficient: <span class="math inline">\(a=-2\)</span></li>
-<li>The linear coefficient: <span class="math inline">\(b=-10\)</span></li>
-<li>The constant: <span class="math inline">\(c=-4\)</span></li>
-</ul>
-<p>Plug the numbers into the quadratic formula.</p>
-<p><span class="math display">\[x~=~\frac{-(-10)\pm
-\sqrt{(-10)^2-4(-2)(-4)}}{2(-2)}\]</span></p>
-<p>Simplify.</p>
-<p><span class="math display">\[x~=~\frac{10\pm \sqrt{100
--32}}{-4}\]</span></p>
-<p>Simplify MORE.</p>
-<p><span class="math display">\[x~=~\frac{10\pm
-\sqrt{68}}{-4}\]</span></p>
-<p>Now, plug both expressions into a calculator.</p>
-<p><span class="math display">\[x~=~\frac{10-
-\sqrt{68}}{-4}~=~-0.4384472 ~\approx -0.44\]</span></p>
-<p>OR</p>
-<p><span class="math display">\[x~=~\frac{10+
-\sqrt{68}}{-4}~=~-4.5615528 ~\approx -4.56\]</span></p>
-<p>If you are using a basic (one-line) scientific calculator, you can
-type the expressions like:</p>
-<p><code>(10-sqrt(68))/(-4)</code></p>
-<p><code>(10+sqrt(68))/(-4)</code></p>
-<p>Or maybe…</p>
-<p><code>(10-√(68))/(-4)</code></p>
-<p><code>(10+√(68))/(-4)</code></p>
+<p>You can get this by guessing and checking. Eventually you might guess
+the following:</p>
+<p><span class="math display">\[p(x) ~=~
+(x+{3})\cdot(x+{2})\]</span></p>
+<p>You can check by using polynomial multiplication (in this case you
+can use the <a href="https://en.wikipedia.org/wiki/FOIL_method">FOIL
+method</a>).</p>
+<style type="text/css">
+.boxy td {
+border: 1px solid black;
+color: black;
+background-color: white;
+}
+.boxy th {
+background-color: rgb(200, 200, 200);
+color: black;
+border: 1px solid black;
+}
+.boxy td:first-child {
+background-color: rgb(200, 200, 200);
+color: black;
+border: 1px solid black;
+}
+</style>
+<div class="boxy">
+<table>
+<thead>
+<tr class="header">
+<th align="center">*</th>
+<th align="center"><span class="math inline">\(x\)</span></th>
+<th align="center"><span class="math inline">\(3\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(x\)</span></td>
+<td align="center"><span class="math inline">\(x^2\)</span></td>
+<td align="center"><span class="math inline">\({3}x\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(2\)</span></td>
+<td align="center"><span class="math inline">\({2}x\)</span></td>
+<td align="center"><span class="math inline">\(6\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><span class="math display">\[p(x) ~=~
+x^{2}+{3}x+{2}x+{6}\]</span></p>
+<p><span class="math display">\[p(x) ~=~ x^{2}+{5}x+{6}\]</span></p>
+<p>After you’ve done this a few hundred times, you’ll notice that you
+wanted two numbers that added to give 5 and multiplied to give 6. So,
+you start thinking of factor pairs of 6 until you find a pair that sums
+to 5. You will see that below I’ve listed all factor pairs of 6, along
+with the corresponding polynomials in factored and expanded forms.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Factor pairs of 6</th>
+<th align="center">Factored polynomial</th>
+<th align="center">Expanded polynomial</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1 and 6</td>
+<td align="center"><span class="math inline">\((x+{1})\cdot
+(x+{6})\)</span></td>
+<td align="center"><span class="math inline">\(x^{2}+{7}x+{6}\)</span></td>
+</tr>
+<tr class="even">
+<td align="center">-1 and -6</td>
+<td align="center"><span class="math inline">\((x-{1})\cdot
+(x-{6})\)</span></td>
+<td align="center"><span class="math inline">\(x^{2}-{7}x+{6}\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center">2 and 3</td>
+<td align="center"><span class="math inline">\((x+{2})\cdot
+(x+{3})\)</span></td>
+<td align="center"><span class="math inline">\(x^{2}+{5}x+{6}\)</span></td>
+</tr>
+<tr class="even">
+<td align="center">-2 and -3</td>
+<td align="center"><span class="math inline">\((x-{2})\cdot
+(x-{3})\)</span></td>
+<td align="center"><span class="math inline">\(x^{2}-{5}x+{6}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>And, so, <span class="math inline">\(x^{2}+{5}x+{6}\)</span> is an <a href="https://en.wikipedia.org/wiki/Identity_(mathematics)">equivalent
+expression</a> to <span class="math inline">\((x+{3})\cdot(x+{2})\)</span>, which is also
+equivalent to <span class="math inline">\((x+{2})\cdot(x+{3})\)</span>.</p>
 </div>
 <div id="meta-information" class="section level1">
 <h1>Meta-information</h1>
-<p>extype: cloze exclozetype: schoice|schoice exsolution: 10000|10000
-exname: quad_formula_decimal</p>
+<p>extype: mchoice exsolution: 000000000000011000000000 exname:
+factor_quadratic</p>
 </div>
 
 

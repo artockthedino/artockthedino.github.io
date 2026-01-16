@@ -29,7 +29,7 @@ while(T){
 # print(rules)
 # print(strings)
 
-printrules = paste0("  * ",names(rules)," $\\to$ ",rules,collapse="\n")
+printrules = paste0("  * ",names(rules)," > ",rules,collapse="\n")
 
 sol = strings[iters+1]
 ```

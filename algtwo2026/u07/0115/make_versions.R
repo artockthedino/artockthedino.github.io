@@ -1,7 +1,7 @@
 fn = "a0115p_realize_denom.Rmd"
 shortfn = strsplit(fn,"_")[[1]][1]
-nlow = 301
-nhigh = 330
+nlow = 331
+nhigh = 333
 
 sss44 = "<!DOCTYPE html>
 <html lang='en'>

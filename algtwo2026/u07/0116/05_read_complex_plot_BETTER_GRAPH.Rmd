@@ -1,0 +1,63 @@
+```{r,echo=FALSE}
+options(scipen=999)
+ab = sample(2:9,2)
+a = ab[1]*sample(c(-1,1),1)
+b = ab[2]*sample(c(-1,1),1)
+cn = function(a,b){
+  cn = gsub("+-","-",paste0(a,"+",b,"i"),fixed=TRUE)
+  cn = gsub("0+0i","0",cn,fixed=TRUE)
+  cn = gsub("+1i","+i",cn,fixed=TRUE)
+  cn = gsub("-1i","-i",cn,fixed=TRUE)
+  cn = gsub("+0i","",cn,fixed=TRUE)
+  cn = gsub("-0i","",cn,fixed=TRUE)
+  if(length(cn)>1 && substr(cn, start = 1, stop = 2)=="0+"){cn = gsub("0+","",cn,fixed=TRUE)}
+  if(length(cn)>1 && substr(cn, start = 1, stop = 2)=="0-"){cn = gsub("0-","-",cn,fixed=TRUE)}
+  return(cn)
+}
+cn1 = cn(a,b)
+```
+
+Question
+========
+
+Let $z$ be a complex number with integer components. It is graphed on a [complex plane](https://en.wikipedia.org/wiki/Complex_plane) below.
+
+```{r,fig.dim=c(4,4),echo=FALSE,results="asis"}
+par(pty="s",mar=c(0,0,0,0))
+plot(0,0,type="n",xlim=c(-10,10),ylim=c(-10,10),lwd=2,ylab="imaginary component",xlab="real component",axes=F,ann=F)
+for(j in seq(-10,10,1)){
+    lines(c(j,j),c(-10,10),lwd=0.5,col="grey")
+    lines(c(-10,10),c(j,j),lwd=0.5,col="grey")
+}
+for(j in seq(-10,10,5)){
+    lines(c(j,j),c(-10,10),lwd=1,col="darkgrey")
+    lines(c(-10,10),c(j,j),lwd=1,col="darkgrey")
+    if(j!=0){
+        text(j,0,j,adj=c(0.5,1.2),cex=0.8)
+        text(0,j,paste0(j,"i"),adj=c(1.2,0.5),cex=0.8)
+    }
+}
+abline(h=0,lwd=2)
+abline(v=0,lwd=2)
+points(a,b,pch=20,cex=1.5,col="blue")
+```
+\
+
+Please **write the value of $z$** (in rectangular form: $a+bi$).
+
+*Type your answer precisely, with no spaces, using digits, "-", "+", and "i". If the real term is nonzero, put it first. If either component is zero, do not include that term. If both components are zero, type "0" without the quotes. Instead of writing "1i" or "-1i" just write "i" or "-i".*
+
+
+Solution
+========
+
+The horizontal (real) component is `r a`. The vertical (imaginary) component is `r b`. So,
+$$z = `r cn1`$$
+
+So, you should type ``r cn1`` to get full credit.
+
+Meta-information
+============
+extype: string
+exsolution: `r cn1`
+exname: read_complex_plot

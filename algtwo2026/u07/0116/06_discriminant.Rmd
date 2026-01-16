@@ -1,0 +1,119 @@
+```{r,echo=FALSE}
+pn = function(coeffs,pows){
+    pows = pows[coeffs!=0]
+    coeffs = coeffs[coeffs!=0]
+    ex1 = paste0("{",coeffs,"}x^{",pows,"}",collapse="+")
+    ex1 = gsub("+{-","-{",ex1,fixed=T)
+    ex1 = gsub("{1}x^{0}","1",ex1,fixed=T)
+    ex1 = gsub("{-1}x^{0}","-1",ex1,fixed=T)
+    ex1 = gsub("{1}x","x",ex1,fixed=T)
+    ex1 = gsub("{-1}x","-x",ex1,fixed=T)
+    ex1 = gsub("x^{0}","",ex1,fixed=T)
+    ex1 = gsub("x^{1}","x",ex1,fixed=T)
+    ex1 = gsub("+-","-",ex1,fixed=T)
+    if(ex1 == ""){
+        ex1 = "0"
+    }
+    return(ex1)
+}
+# b^2-4*a*c
+library(numbers)
+
+
+while(T){
+    ac1 = sample(3:6,1)
+    b = ac1*2*sample(c(-1,1),1)
+    
+    ac2 = primeFactors(ac1^2)
+    npf = length(ac2)
+    npfa = sample(0:npf,1)
+    if(npfa==0){
+        a = 1
+    } else {
+        a = prod(sample(ac2,npfa))
+    }
+    c = round(ac1^2/a)
+    
+    qt = sample(-1:1,1)
+    wc = sample(1:2,1)
+    
+    if(wc == 1){
+        a = a-qt
+    } else {
+        c = c-qt
+    }
+    
+    D = b^2-4*a*c
+    if(min(c(a,b,c))>0 && max(abs(c(a,b,c)))<13){break}
+}
+
+if(D<0){
+    s1 = "D<0"
+    s2 = "two complex solutions."
+    sol = "001"
+}
+if(D==0){
+    s1 = "D=0"
+    s2 = "one real solution."
+    sol = "010"
+}
+if(D>0){
+    s1 = "D>0"
+    s2 = "two real solutions."
+    sol = "100"
+}
+
+```
+
+
+Question
+========
+
+Consider the quadratic equation:
+
+$$`r pn(c(a,b,c),2:0)`=0$$
+
+Does the equation have two real solutions, one real solution, or two complex solutions?
+
+*Hint: Calculate the [discriminant](https://en.wikipedia.org/wiki/Quadratic_equation#Discriminant).*
+
+Answerlist
+--------
+
+* Two real solutions
+* One real solution
+* Two complex solutions
+
+
+Solution
+========
+
+The discriminant, $D$, is the expression under the radical in the quadratic formula.
+
+$$D=b^2-4ac$$
+
+| If | Then |
+|:---:|:---:|
+| $D<0$ | There are two complex solutions |
+| $D=0$ | There is one real solution |
+| $D>0$ | There are two real solutions |
+
+Calculate the discriminant.
+
+
+$$D=(`r b`)^2-4(`r a`)(`r c`)$$
+
+
+$$D=`r b^2`-`r 4*a*c`$$
+
+
+$$D=`r D`$$
+
+Because $`r s1`$ we know the equation has `r s2`
+
+
+Meta-information
+============
+extype: schoice
+exsolution: `r sol`
+exname: discriminant
