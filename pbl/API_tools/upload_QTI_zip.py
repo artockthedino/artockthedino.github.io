@@ -5,8 +5,8 @@ with open("//Users/chad.worley@bartcharter.org/Documents/canvasAPItests/acctok.t
   access_token = f.read()
 
 # Variables
-course_id = '1703'  ## ML=1945... PBL_Q2_ACE=1703... PBL_Q2_BD=1698
-file_path_list = ["outcanvas/ET_0116.zip"]
+course_id = '1789'  ## ML=1945... PBL_Q3_ACE=1789... PBL_Q2_BD=1698
+file_path_list = ["outcanvas/pbl_0121_QUIZ.zip"]
 
 ######## FOR UPLOADING ETS
 

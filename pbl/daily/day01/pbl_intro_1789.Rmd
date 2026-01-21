@@ -7,7 +7,7 @@ output: slidy_presentation
 # Mr. Worley
 
 * chad.worley@bartcharter.org
-* Canvas: https://bart.instructure.com/courses/1769
+* Canvas: https://bart.instructure.com/courses/1789
 
 # Overview of course
 
