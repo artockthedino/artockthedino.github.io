@@ -40,9 +40,9 @@ output: slidy_presentation
 
 # Wallpaper patterns
 
-![](wallpaper.png){width=70%}
+![](wallpaper.png){height=90%}
 
-![](wallpaper2.png){width=70%}
+![](wallpaper2.png){height=90%}
 
 # Spirolaterals
 
