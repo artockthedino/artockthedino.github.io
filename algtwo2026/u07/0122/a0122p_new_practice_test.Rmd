@@ -66,25 +66,40 @@ $$\begin{aligned}
 \text{vertex form} && y&=a(x-h)^2+k
 \end{aligned}$$
 
-In the parabola graphed below, $|a|=1$. 
+In the parabola graphed below, $a=1$. 
 
 ```{r,fig.dim=c(4,4)}
-poss_pairs = list(c(-1,-3),
-                  c(-1,3),
-                  c(-1,-5),
-                  c(-1,5),
-                  c(-2,4),
-                  c(2,4),
-                  c(-2,-4),
-                  c(2,-4))
-a = sample(c(-1,1),1)
-rs = poss_pairs[[sample(1:length(poss_pairs),1)]]
-r = rs[1]*a
-s = rs[2]*a
-h = mean(c(r,s))
-c = a*(-r)*(-s)
-b = -2*a*h
-k = a*(h-r)*(h-s)
+# poss_pairs = list(c(-1,-3),
+#                   c(-1,3),
+#                   c(-1,-5),
+#                   c(-1,5),
+#                   c(-2,4),
+#                   c(2,4),
+#                   c(-2,-4),
+#                   c(2,-4))
+a = 1
+delta = sample(c(2,4,6),1)
+while(T){
+    r = sample(-9:(9-delta),1)
+    s = r+delta
+    h = mean(c(r,s))
+    c = a*(-r)*(-s)
+    b = -2*a*h
+    k = a*(h-r)*(h-s)
+    if(min(abs(c(r,s,h,k)))>0 && length(unique(abs(c(r,s,h,k))))==4){break}
+}
+r1 = r
+s1 = s
+h1 = h
+k1 = k
+b1 = b
+c1 = c
+
+
+# rs = poss_pairs[[sample(1:length(poss_pairs),1)]]
+# r = rs[1]*a
+# s = rs[2]*a
+
 
 par(mar=c(0,0,0,0),pty="s")
 plot(0,0,"n",xlim=c(-11,11),ylim=c(-11,11),axes=F,ann=F)
@@ -134,7 +149,7 @@ eq_fac = gsub("{-1}(","-(",eq_fac,fixed=T)
 eq_fac = gsub("+-","-",eq_fac,fixed=T)
 ```
 
-Write the equation of the graphed parabola in all three quadratic forms.
+Write the equation of the parabola in all three quadratic forms.
 
 \vfill 
 
@@ -157,9 +172,13 @@ if(params$showsol){
 ### Question 2
 
 ```{r}
-rs = sample(2:11,2)*sample(c(-1,1),2)
-r = rs[1]
-s = rs[2]
+while(T){
+    rs = sample(2:11,2)*sample(c(-1,1),2)
+    r = rs[1]
+    s = rs[2]
+    if(!(abs(r1) %in% abs(rs)) && !(abs(s1) %in% abs(rs))){break}
+}
+
 a = 1
 b = -(r+s)
 c = r*s
@@ -197,17 +216,24 @@ if(params$showsol){
 ```{r}
 # h+-p*i*sqrt(q)
 while(T){
-    h = sample(1:5,1)*sample(c(-1,1),1)
-    p = sample(2:5,1)
-    q = sample(c(1,2,3,5),1)
+    h = sample(1:8,1)*sample(c(-1,1),1)
+    p = sample(2:10,1)
+    q = 1 #sample(c(1,2,3,5),1)
     a = 1
-    b = -2*h
+    b = -2*h*a
     c = h^2+p^2*q
-    if(abs(c)<30){break}
+    if(abs(c)<50){break}
 }
 
+qf1 = paste0("x=\\frac{-(",b,")\\pm\\sqrt{(",b,")^2-4(",a,")(",c,")}}{2(",a,")}",collapse="")
+qf2 = paste0("x=\\frac{",-b,"\\pm\\sqrt{",b^2,"-",4*a*c,"}}{",2*a,"}",collapse="")
+qf3 = paste0("x=\\frac{",-b,"\\pm\\sqrt{",b^2-4*a*c,"}}{",2*a,"}",collapse="")
+
+
 eq3 = paste0("x=",h,"\\pm ",p,"i\\sqrt{",q,"}",collapse="")
+qf4 = paste0("x=\\frac{",-b,"\\pm",2*a*p,"i\\sqrt{",q,"}}{",2*a,"}",collapse="")
 if(q==1){
+    qf4 = paste0("x=\\frac{",-b,"\\pm",2*a*p,"i}{",2*a,"}",collapse="")
     eq3 = paste0("x=",h,"\\pm ",p,"i",collapse="")
 }
 ```
@@ -223,6 +249,10 @@ Remember, $i=\sqrt{-1}$.
 ```{r,results='asis'}
 if(params$showsol){
     cat("\\color{red}\n\n")
+    cat(paste0("$$",qf1,"$$\n"))
+    cat(paste0("$$",qf2,"$$\n"))
+    cat(paste0("$$",qf3,"$$\n"))
+    cat(paste0("$$",qf4,"$$\n"))
     cat(paste0("$$",eq3,"$$\n"))
     cat("\\color{black}\n\n")
 }
@@ -300,7 +330,7 @@ while(T){
     cn1 = cn(a,b)
     cn2 = cn(c,d)
     cn3 = cn(a*c-b*d,a*d+b*c)
-    if(min(abs(c(a*c-b*d,a*d+b*c)))>0){break}
+    if(min(abs(c(a*c-b*d,a*d+b*c)))>0 && sum(sign(c(a,b,c,d)))>-1 && sum(sign(c(a,b,c,d)))<4){break}
 }
 
 
@@ -352,7 +382,7 @@ while(T){
     
     e2 = paste0("\\frac{",r2,"+",q2,"i}{",n2,"}")
     e2 = gsub("+-","-",e2,fixed=T)
-    if(min(abs(c(r2,q2,n2)))>1 && max(abs(c(r,q,n)))<70){break}
+    if(min(abs(c(r2,q2,n2)))>1 && max(abs(c(r,q,n)))<70 && gg2>1 && gcd(abs(c(a,b)))==1 && gcd(abs(c(c,d)))==1){break}
 }
 
 
@@ -414,7 +444,7 @@ while(T){
     }
     c = round(ac1^2/a)
     
-    qt = sample(-1:1,1)
+    qt = sample(c(-1,1),1)
     wc = sample(1:2,1)
     
     if(wc == 1){
