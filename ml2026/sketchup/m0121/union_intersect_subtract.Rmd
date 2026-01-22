@@ -73,7 +73,8 @@ To answer this question, open a [new SketchUp](https://app.sketchup.com) with *D
 We will practice using the `Union`, `Intersection`, and `Subtract` functions in SketchUp. To find the volume of an object, click on it and then open the `Entity Info` (button is top-right of window). The volume will be shown there.
 
 
-```{r,echo=F,fig.dim=c(8,8)}
+```{r,echo=F,fig.dim=c(5,5)}
+par(mar=c(0,0,0,0))
 yr = 0.1
 draw_cyl = function(r,h){
     th = seq(0,2*pi,pi/100)
@@ -106,13 +107,21 @@ draw_quarter = function(R,h){
     lines(xb+yr*yb,zb+yr*yb)
 }
 
-par(mar=c(0,0,0,0))
 plot(0,0,"n",axes=F,ann=F,xlim=c(-R,max(c(w,d,h,H))*(1+yr)),ylim=c(-R,max(c(w,d,h,H))*(1+yr)))
 draw_cyl(R,H)
 draw_box(w,d,h)
 if(h<H){
-draw_quarter(R,h)
+    draw_quarter(R,h)
 }
+
+h2 = min(H,h)
+ths = seq(0,pi/2,pi/100)
+xb = R*cos(ths)
+yb = R*sin(ths)
+xx = c(0,R,xb+yr*yb,0)
+yy = c(0,0,rep(h2,length(yb))+yr*yb,h2)
+polygon(xx,yy,col = rgb(1,0,0,0.5))
+
 ```
 \
 
