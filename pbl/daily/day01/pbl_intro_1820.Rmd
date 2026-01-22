@@ -7,7 +7,7 @@ output: slidy_presentation
 # Mr. Worley
 
 * chad.worley@bartcharter.org
-* Canvas: https://bart.instructure.com/courses/1789
+* Canvas: https://bart.instructure.com/courses/1820
 
 # Overview of course
 
@@ -46,7 +46,7 @@ output: slidy_presentation
 
 # Spirolaterals
 
-```{r,echo=F,cache=T}
+```{r,echo=F,cache=TRUE}
 set.seed(123)
 options(scipen=999)
 gcd2 <- function(a, b) {
@@ -126,6 +126,7 @@ al = paste0("* ",LETTERS[1:8],collapse="\n")
 ```
 
 
+
 ```{r,echo=F,fig.dim=c(5,10),cache=T}
 par(mar=c(1,1,3,1),mfrow=c(4,2),pty="s")
 for(i in 1:8){
@@ -138,7 +139,7 @@ for(i in 1:8){
 # Lindenmayer systems
 
 ```{r data generation, echo = FALSE, results = "hide",cache=T}
-set.seed(666)
+set.seed(66)
 g1 = list("A",
           list("A"="B-A-B",
                "B"="A+B+A"),
