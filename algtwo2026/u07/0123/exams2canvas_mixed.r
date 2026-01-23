@@ -3,13 +3,13 @@ n = 30
 outdir = "outcanvas"
 
 ### Entrance ticket
-pm = list("union_intersect_subtract.Rmd")
+pm = list("ET_realize_denominator.Rmd")
 exams2canvas(pm,
              n=n,
              dir=outdir,
-             points=rep(6,length(pm)),
+             points=rep(5,length(pm)),
              maxattempts = 6,
-             name="m0123c_union_intersect_sub",
+             name="a0122c_rationalize_comp_denom",
              template = "canvas_qti12.xml",
              cloze = list(enumerate = FALSE))
 

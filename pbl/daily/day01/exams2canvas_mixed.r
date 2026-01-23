@@ -1,5 +1,5 @@
 library("exams")
-n = 15
+n = 20
 outdir = "outcanvas"
 
 ### Entrance ticket
@@ -9,9 +9,9 @@ pm = list("01_tra_rot_gli_mir.Rmd",
 exams2canvas(pm,
              n=n,
              dir=outdir,
-             points=c(3,3),
+             points=c(4,4),
              maxattempts = 7,
-             name="pbl_0121_QUIZ",
+             name="pbl_0122_QUIZ",
              template = "canvas_qti12.xml",
              cloze = list(enumerate = FALSE))
 

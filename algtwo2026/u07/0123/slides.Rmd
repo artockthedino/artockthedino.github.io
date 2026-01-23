@@ -1,0 +1,17 @@
+---
+title: "Alg 2 - Thu Jan 22"
+output: slidy_presentation
+---
+
+
+# Thu Jan 22
+
+* [Entrance ticket](https://bart.instructure.com/courses/2110/quizzes/3407)
+    * SAT practice questions on Canvas
+* [Rationalize denominator](https://bart.instructure.com/courses/2110/quizzes/3410)
+    * Canvas quiz. You'll need to write down some work.
+* Practice tests (paper)
+    * [a0121_practice_test](https://bart.instructure.com/courses/2110/assignments/30240)
+    * [a0122_new_practice_test](https://bart.instructure.com/courses/2110/assignments/30336)
+    * In the a0122_new_practice_test assignment, you can find some answer keys.
+
