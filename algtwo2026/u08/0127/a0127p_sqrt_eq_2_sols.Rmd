@@ -1,0 +1,109 @@
+---
+output: pdf_document
+params:
+    rseed: 0
+    showsol: true
+---
+
+```{r,echo=F,warning=FALSE,message=FALSE}
+options(scipen=999)
+if(params$rseed !=0){
+    set.seed(params$rseed)
+}
+knitr::opts_chunk$set(echo = FALSE)
+bn <- basename(knitr::current_input())
+bn = strsplit(bn,".",fixed=T)[[1]][1]
+```
+
+Name: \vspace{5pt} \hrule
+
+## `r bn` (v`r params$rseed`)
+
+```{r}
+gcd2 <- function(a, b) {
+  if (b == 0) a else Recall(b, a %% b)
+}
+gcd <- function(...) Reduce(gcd2, c(...))
+
+e1s = character()
+sols = character()
+
+while(length(sols)<6){
+    while(T){
+        h = sample(2:6,1)*sample(c(-1,1),1)
+        k = sample(2:6,1)*sample(c(-1,1),1)
+        g = sample(2:15,1)
+        a = sqrt(g)
+        m = sample(2:5,1)
+        b = sample(2:8,1)*sample(c(-1,1),1)
+        b2 = (b+h*m-k)/a
+        if((4*m*(b+h*m-k)<g) && (b2>0)){break}
+    }
+    e1 = paste0("\\sqrt{",g,"x+",-g*h,"}+",k,"=",m,"x+",b)
+    e1 = gsub("+-","-",e1,fixed=T)
+    A = m^2
+    B = 2*m*(b-k)-g
+    C = (b-k)^2+g*h
+    D = B^2-4*A*C
+    psqs = rev((1:100)^2)
+    for(ps in psqs){
+        if(D %% ps == 0){
+            pp = round(sqrt(ps))
+            qq = D %/% ps
+            break
+        }
+    }
+    gg = gcd(abs(c(-B,pp,2*A)))
+    if(2*A>gg){
+        ee = paste0("\\frac{",round(-B/gg),"\\pm{",round(pp/gg),"}\\sqrt{",qq,"}}{",round(2*A/gg),"}")
+        ee = gsub("{1}\\sqrt{1}","1",ee,fixed=T)
+        ee = gsub("\\sqrt{1}","",ee,fixed=T)
+        ee = gsub("{1}","",ee,fixed=T)
+    } else {
+        ee = paste0(round(-B/gg),"\\pm{",round(pp/gg),"}\\sqrt{",qq,"}}")
+        ee = gsub("{1}\\sqrt{1}","1",ee,fixed=T)
+        ee = gsub("\\sqrt{1}","",ee,fixed=T)
+        ee = gsub("{1}","",ee,fixed=T)
+    }
+    if(!(ee %in% sols)){
+        e1s = c(e1s,e1)
+        sols = c(sols,ee)
+    }
+}
+```
+
+
+```{r,echo=F,results='asis'}
+for(i in 1:length(e1s)){
+    cat("### Question ",i,"\n\n")
+    cat(paste0("Solve the equation. Express your answer is exact form. $$",e1s[i],"$$\n\n"))
+    if(params$showsol){
+        cat("\n\n\\vfill\n\n\\color{red}\n\n")
+        cat(paste0("$$",sols[i],"$$\n\n"))
+        cat("\n\n\\vfill\n\n\\color{black}\n\n")
+    }
+    else{
+        cat("\n\n\\vfill\n\n")
+    }
+    if(i%%2==0 && i<length(e1s)){
+        cat("\n\n\\newpage\n\n")
+        cat(paste0("## ",bn," (v",params$rseed,")\n\n"))
+        }
+}
+cat("\\newpage\n\n")
+cat(paste0("## ",bn," (v",params$rseed,")\n\n"))
+cat("### Scrambled solutions:\n\n")
+for(i in sample(sols)){
+    cat(paste0("$$x=",i,"$$\n\n"))
+}
+
+```
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,54 @@
+```{r,echo=FALSE}
+# sqrt(x)/a = b
+
+while(T){
+    sab = sample(c(-1,1),1)
+    a = sample(2:6,1)*sab
+    b = sample(2:6,1)*sab
+    sqrtx = a*b
+    x = (a*b)^2
+    if(sqrtx<17){break}
+}
+
+eq = paste0("\\frac{\\sqrt{x}}{",a,"}=",b)
+eq2 = paste0("\\sqrt{x}=",a*b)
+
+eq3 = paste0("\\frac{\\sqrt{",x,"}}{",a,"}\\stackrel{?}{=}",b)
+
+eq4 = paste0("\\frac{",sqrtx,"}{",a,"}\\stackrel{?}{=}",b)
+
+```
+
+Question
+========
+
+Find the value of $x$ that satisfies the equation.
+
+$$`r eq`$$
+
+Solution
+========
+
+Multiply both sides by `r a`.
+
+
+$$`r eq2`$$
+
+Square both sides.
+
+$$x=`r x`$$
+
+Check the solution in the original equation.
+
+$$`r eq3`$$
+
+$$`r eq4`$$
+
+Yup, that is true. So $x=`r x`$ is a solution to the given equation.
+
+
+Meta-information
+============
+extype: num
+exsolution: `r x`
+exname: tsre_sqrt_div

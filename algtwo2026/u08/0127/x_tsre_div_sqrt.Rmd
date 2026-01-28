@@ -1,0 +1,48 @@
+```{r,echo=FALSE}
+# sqrt(x/a) = b
+
+
+b = sample(2:5,1)
+a = sample(c(2:5,10),1)*sample(c(-1,1),1)
+x = a*b^2
+
+eq = paste0("\\sqrt{\\frac{x}{",a,"}}=",b)
+eq2 = paste0("\\frac{x}{",a,"}=",b^2)
+
+eq3 = paste0("\\sqrt{\\frac{",x,"}{",a,"}}\\stackrel{?}{=}",b)
+eq4 = paste0("\\sqrt{",round(x/a),"}\\stackrel{?}{=}",b)
+
+```
+
+Question
+========
+
+Find the value of $x$ that satisfies the equation.
+
+$$`r eq`$$
+
+Solution
+========
+
+Square both sides.
+
+$$`r eq2`$$
+
+Multiply both sides by `r a`.
+
+$$x=`r x`$$
+
+Check the solution in the original equation.
+
+$$`r eq3`$$
+
+$$`r eq4`$$
+
+Yup, that is true. So $x=`r x`$ is a solution to the given equation.
+
+
+Meta-information
+============
+extype: num
+exsolution: `r x`
+exname: tsre_div_sqrt
