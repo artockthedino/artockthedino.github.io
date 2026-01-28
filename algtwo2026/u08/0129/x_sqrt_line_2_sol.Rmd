@@ -1,0 +1,198 @@
+```{r,echo=FALSE}
+gcd2 <- function(a, b) {
+  if (b == 0) a else Recall(b, a %% b)
+}
+gcd <- function(...) Reduce(gcd2, c(...))
+library(numbers)
+
+e1s = character()
+sols = character()
+
+while(length(sols)<8){
+    while(T){
+        h = sample(2:6,1)*sample(c(-1,1),1)
+        k = sample(2:6,1)*sample(c(-1,1),1)
+        g = sample(2:15,1)
+        a = sqrt(g)
+        m = sample(2:5,1)
+        b = sample(2:8,1)*sample(c(-1,1),1)
+        b2 = (b+h*m-k)/a
+        if(4*m*(b+h*m-k)<g && b2>0){break}
+    }
+    e1 = paste0(k,"+\\sqrt{",g,"x+",-g*h,"}=",m,"x+",b)
+    e1 = gsub("+-","-",e1,fixed=T)
+    A = m^2
+    B = 2*m*(b-k)-g
+    C = (b-k)^2+g*h
+    D = B^2-4*A*C
+    psqs = rev((1:100)^2)
+    for(ps in psqs){
+        if(D %% ps == 0){
+            pp = round(sqrt(ps))
+            qq = D %/% ps
+            break
+        }
+    }
+    gg = gcd(abs(c(-B,pp,2*A)))
+    if(2*A>gg){
+        ee = paste0("\\frac{",round(-B/gg),"\\pm{",round(pp/gg),"}\\sqrt{",qq,"}}{",round(2*A/gg),"}")
+        ee = gsub("{1}\\sqrt{1}","1",ee,fixed=T)
+        ee = gsub("\\sqrt{1}","",ee,fixed=T)
+        ee = gsub("{1}","",ee,fixed=T)
+    } else {
+        ee = paste0(round(-B/gg),"\\pm{",round(pp/gg),"}\\sqrt{",qq,"}}")
+        ee = gsub("{1}\\sqrt{1}","1",ee,fixed=T)
+        ee = gsub("\\sqrt{1}","",ee,fixed=T)
+        ee = gsub("{1}","",ee,fixed=T)
+    }
+    if(!(ee %in% sols)){
+        sols = c(sols,ee)
+    }
+}
+
+ach = sample(sols)
+al = paste0("* $x=",ach,"$",collapse="\n")
+sol = paste0(1*(ach==ee),collapse="")
+
+fx = paste0("y=",k,"+\\sqrt{",g,"x+",-g*h,"}")
+fx = gsub("+-","-",fx,fixed=T)
+gx = paste0("y=",m,"x+",b)
+gx = gsub("+-","-",gx,fixed=T)
+
+```
+
+Question
+========
+
+Consider the two curves defined algebraically and graphed below.
+
+$$`r fx`$$
+$$`r gx`$$
+
+```{r,echo=F,fig.dim=c(4,4)}
+x0 = h
+x1 = (-B-sqrt(B^2-4*A*C))/2/A
+x2 = (-B+sqrt(B^2-4*A*C))/2/A
+y1 = sqrt(g*x1-g*h)+k
+y2 = sqrt(g*x2-g*h)+k
+dis = abs(x2-x0)
+xf = x0+dis*1.5
+
+yf = sqrt(g*xf-g*h)+k
+y0 = k
+ylow = k-sqrt(g*xf-g*h)/5
+
+xx = seq(x0,xf,length.out=1000)
+yy = sqrt(g*xx-g*h)+k
+
+
+xx2 = seq(x0-(xf-x0),xf,length.out=1000)
+yy2 = m*xx2+b
+par(mar=c(5,5,1,1))
+plot(0,0,"n",xlim=c(x0,xf),ylim=c(ylow,yf),xlab="x",ylab="y")
+lines(xx,yy,col="blue",lwd=2)
+lines(xx2,yy2,col="red",lwd=2)
+library(latex2exp)
+legend("bottomright",c(TeX(fx),TeX(gx)),col=c("blue","red"),lwd=c(2,2))
+points(x1,y1,pch=19,col="purple")
+text(x1,y1,TeX("$(x_1,y_1)$"),adj=c(0,1.2),col="purple")
+
+points(x2,y2,pch=19,col="purple")
+text(x2,y2,TeX("$(x_2,y_2)$"),adj=c(0,1.2),col="purple")
+
+```
+\
+
+The horizontal coordinates of the intersections, $x_1$ and $x_2$, are also the solutions to the equation below:
+
+$$`r e1`$$
+
+Solve that equation.
+
+Answerlist
+--------
+
+`r al`
+
+Solution
+========
+
+```{r,results='asis',echo=F}
+e1 = paste0(k,"+\\sqrt{",g,"x+",-g*h,"}=",m,"x+",b)
+e1 = gsub("+-","-",e1,fixed=T)
+cat(paste0("$$",e1,"$$\n\n"))
+if(k<0){
+    cat("Add ",abs(k),"to both sides.\n\n")
+} else {
+    cat("Subtract ",abs(k),"from both sides.\n\n")
+}
+e2 = paste0("\\sqrt{",g,"x+",-g*h,"}=",m,"x+",b-k)
+e2 = gsub("+-","-",e2,fixed=T)
+cat(paste0("$$",e2,"$$\n\n"))
+
+cat("Square both sides.")
+e3 = paste0("",g,"x+",-g*h,"=(",m,"x+",b-k,")^2")
+e3 = gsub("+-","-",e3,fixed=T)
+cat(paste0("$$",e3,"$$\n\n"))
+
+cat("Expand the right side.")
+e4 = paste0(g,"x+",-g*h,"=",m^2,"x^2+",2*m*(b-k),"x+",(b-k)^2)
+e4 = gsub("+-","-",e4,fixed=T)
+cat(paste0("$$",e4,"$$\n\n"))
+
+ee = paste0(g,"x+",-g*h)
+ee = gsub("+-","-",ee,fixed=T)
+cat(paste0("Subtract $",ee,"$ from both sides."))
+
+ee = paste0("0=",m^2,"x^2+",2*m*(b-k)-g,"x+",(b-k)^2+g*h)
+ee = gsub("+-","-",ee,fixed=T)
+cat(paste0("$$",ee,"$$\n\n"))
+
+cat("Use the quadratic formula.\n\n")
+ee = paste0("\\frac{-(",B,")\\pm\\sqrt{(",B,")^2-4(",A,")(",C,")}}{2(",A,")}")
+cat(paste0("$$x=",ee,"$$\n\n"))
+
+cat("Simplify.")
+ee = paste0("\\frac{",-B,"\\pm\\sqrt{",B^2,"+",-4*A*C,"}}{",2*A,"}")
+ee = gsub("+-","-",ee,fixed=T)
+cat(paste0("$$x=",ee,"$$\n\n"))
+
+cat("Simplify.")
+ee = paste0("\\frac{",-B,"\\pm\\sqrt{",B^2-4*A*C,"}}{",2*A,"}")
+ee = gsub("+-","-",ee,fixed=T)
+cat(paste0("$$x=",ee,"$$\n\n"))
+
+if(pp>1){
+    cat(paste0("Simplify the radical."))
+    ee = paste0("\\frac{",-B,"\\pm",pp,"\\sqrt{",qq,"}}{",2*A,"}")
+    ee = gsub("+-","-",ee,fixed=T)
+    ee = gsub("\\sqrt{1}","",ee,fixed=T)
+    cat(paste0("$$x=",ee,"$$\n\n"))
+} else {
+    cat(paste0("The discriminant, ",D,", has no perfect-square factors, so we are done simplifying."))
+}
+
+if(gg>1){
+    cat(paste0("Simplify based on common factor of ",gg,".\n\n"))
+    if(2*A>gg){
+        ee = paste0("\\frac{",round(-B/gg),"\\pm{",round(pp/gg),"}\\sqrt{",qq,"}}{",round(2*A/gg),"}")
+        ee = gsub("+-","-",ee,fixed=T)
+        ee = gsub("{1}","",ee,fixed=T)
+        cat(paste0("$$x=",ee,"$$\n\n"))
+    } else {
+        ee = paste0(round(-B/gg),"\\pm{",round(pp/gg),"}\\sqrt{",qq,"}")
+        ee = gsub("+-","-",ee,fixed=T)
+        ee = gsub("{1}","",ee,fixed=T)
+        cat(paste0("$$x=",ee,"$$\n\n"))
+    }
+}
+
+```
+
+
+
+Meta-information
+============
+extype: schoice
+exsolution: `r sol`
+exname: sqrt_line_2_sols
