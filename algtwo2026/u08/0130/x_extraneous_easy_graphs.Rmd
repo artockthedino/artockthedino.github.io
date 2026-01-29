@@ -1,0 +1,147 @@
+```{r,echo=FALSE}
+options(scipen=99)
+library(numbers)
+library(MASS)
+gcd2 <- function(a, b) {
+  if (b == 0) a else Recall(b, a %% b)
+}
+gcd <- function(...) Reduce(gcd2, c(...))
+
+fsimp = function(top,bot){
+    gg = abs(gcd(c(top,bot)))
+    top = round(abs(top)/gg*sign(top*bot))
+    bot = round(abs(mbot)/gg)
+    if(bot==1){
+        return(top)
+    } else {
+        return(paste0("\\frac{",top,"}{",bot,"}"))
+    }
+}
+
+# y = a*sqrt(s(x-h))+k
+
+x0s = c(1,4,9,16)
+y0s = c(1,2,3,4)
+x0e = c(1,4,9,16)
+y0e = c(-1,-2,-3,-4)
+qt = sample(1:3,1)
+
+while(T){
+    a = sample(2:3,1)*sample(c(-1,1),1)
+    h = sample(1:8,1)*sample(c(-1,1),1)
+    k = sample(1:8,1)*sample(c(-1,1),1)
+    s = sample(c(-1,1),1)
+    x1s = x0s*s+h
+    y1s = y0s*a+k
+    x1e = x0e*s+h
+    y1e = y0e*a+k
+    if(qt==1){ #Two valid real solutions
+        ns = sample(1:length(x1s),2)
+        xi = x1s[ns]
+        yi = y1s[ns]
+    }
+    if(qt==2){ #One valid, one extraneous
+        while(T){
+            ns = sample(1:length(x1s),1)
+            ne = sample(1:length(x1e),1)
+            xis = x1s[ns]
+            yis = y1s[ns]
+            xie = x1e[ne]
+            yie = y1e[ne]
+            if(xis != xie){
+                xi = c(xis,xie)
+                yi = c(yis,yie)
+                nn = sample(1:2)
+                xi = xi[nn]
+                yi = yi[nn]
+                break
+            }
+        }
+    }
+    if(qt==3){ #Two extraneous
+        ns = sample(1:length(x1e),2)
+        xi = x1e[ns]
+        yi = y1e[ns]
+    }
+    mtop = diff(yi)
+    mbot = diff(xi)
+    gg = abs(gcd(c(mtop,mbot)))
+    mtop = round(abs(mtop)/gg*sign(mtop*mbot))
+    mbot = round(abs(mbot)/gg)
+    m = fsimp(mtop,mbot)
+    btop = (yi[1]*mbot-mtop*xi[1])
+    bbot = mbot
+    gg = abs(gcd(c(btop,bbot)))
+    b = fsimp(btop,bbot)
+    if(max(abs(xi))<13 && max(abs(yi))<13 && abs(btop/gg)<20 && bbot==gg){break}
+}
+
+eq1 = paste0("{",a,"}\\sqrt{{",s,"}(x+",-h,")}+",k)
+eq1 = gsub("{1}","",eq1,fixed=T)
+eq1 = gsub("{-1}","-",eq1,fixed=T)
+eq1 = gsub("+-","-",eq1,fixed=T)
+if(s==1){
+    eq1 = paste0("{",a,"}\\sqrt{x+",-h,"}+",k)
+    eq1 = gsub("{1}","",eq1,fixed=T)
+    eq1 = gsub("{-1}","-",eq1,fixed=T)
+    eq1 = gsub("+-","-",eq1,fixed=T)
+}
+
+## y = m(x-x0)+y0
+## y = mx + y0-m*x0
+## b = (y0*mbot-mtop*x0)/mbot
+
+
+
+leq = paste0("[",m,"]x+",b)
+leq = gsub("[1]","",leq,fixed=T)
+leq = gsub("[-1]","-",leq,fixed=T)
+leq = gsub("[","",leq,fixed=T)
+leq = gsub("]","",leq,fixed=T)
+leq = gsub("+-","-",leq,fixed=T)
+leq = gsub("+\\frac{-","-\\frac{",leq,fixed=T)
+leq = gsub("+0","",leq,fixed=T)
+leq = gsub("-0","",leq,fixed=T)
+
+```
+
+Question
+========
+
+$$y=`r eq1`$$
+$$y=`r leq`$$
+
+
+Solution
+========
+
+`r xi`
+
+`r yi`
+
+`r qt`
+
+```{r,echo=F,fig.dim=c(5,5)}
+par(pty="s")
+xr = seq(h,h+40*s,length.out=1000)
+yr = a*sqrt(s*(xr-h))+k
+yr2 = -a*sqrt(s*(xr-h))+k
+xl = seq(-20,20,1)
+yl = mtop*xl/mbot+btop/bbot
+plot(0,0,"n",xlim=c(-20,20),ylim=c(-20,20))
+abline(h=0,lwd=2)
+abline(v=0,lwd=2)
+lines(xr,yr,col="red")
+lines(xr,yr2,col="grey",lty=2)
+lines(xl,yl,col="blue")
+points(xi,yi,pch=19,col="purple")
+
+```
+
+
+Meta-information
+============
+extype: cloze
+exclozetype: 
+exsolution: 
+exname: extraneous_easy_graphs
