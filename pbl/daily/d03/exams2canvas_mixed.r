@@ -3,31 +3,29 @@ n = 20
 outdir = "outcanvas"
 
 ### Entrance ticket
-pm = list("x_trarotglimir_noref.Rmd",
-          "x_trarotglimir_polygon.Rmd",
-          "x_trarotglimir_rainbownet.Rmd")
-
-exams2canvas(pm,
-             n=n,
-             dir=outdir,
-             points=c(2,2,2),
-             maxattempts = 7,
-             name="pbl_day3_ET",
-             template = "canvas_qti12.xml",
-             cloze = list(enumerate = FALSE))
-
-# # Classwork 1
-# pm = list("asymp_exp.Rmd",
-#           "asymp_log.Rmd",
-#           "asymp_recip.Rmd")
+# pm = list("x_trarotglimir_noref.Rmd",
+#           "x_trarotglimir_polygon.Rmd",
+#           "x_trarotglimir_rainbownet.Rmd")
+# 
 # exams2canvas(pm,
 #              n=n,
 #              dir=outdir,
 #              points=c(2,2,2),
-#              maxattempts = 8,
-#              name="OCW_0930_asymptote_shift",
+#              maxattempts = 7,
+#              name="pbl_day3_ET",
 #              template = "canvas_qti12.xml",
 #              cloze = list(enumerate = FALSE))
+
+# # Classwork 1
+pm = list("x_recognize_Frieze_group.Rmd")
+exams2canvas(pm,
+             n=n,
+             dir=outdir,
+             points=c(6),
+             maxattempts = 8,
+             name="pbl_day3_recognize_frieze",
+             template = "canvas_qti12.xml",
+             cloze = list(enumerate = FALSE))
 
 
 # Classwork 2

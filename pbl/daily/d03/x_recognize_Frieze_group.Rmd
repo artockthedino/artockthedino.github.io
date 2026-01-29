@@ -1,21 +1,3 @@
----
-title: "Frieze Groups"
-output: slidy_presentation
----
-
-# Frieze Patterns:
-
-
-* https://eschermath.org/wiki/Frieze_Patterns.html
-* https://maths.nuigalway.ie/~rquinlan/groups/exhibition/burke_hasanik_mcmahon_sweetman.pdf
-* https://www.onlinemath4all.com/frieze-patterns-geometry.html
-* https://lindagreen.web.unc.edu/wp-content/uploads/sites/5262/2020/12/Section15_ClassifyingFriezePatterns.pdf
-* https://www.craftsmanspace.com/free-patterns/collection-of-indian-frieze-patterns.html
-* https://www.youtube.com/watch?v=0mXz-NP-raY
-
-
-# Frieze Examples:
-
 ```{r,echo=F}
 fgs = sample(1:7,2)
 fg1 = fgs[1]
@@ -104,12 +86,12 @@ getbasedots = function(fg=1,n=4){
         x = runif(2*n)
         y = runif(2*n)-0.5
         h = runif(2*n)
-        p = sample(1:20,2*n)
+        p = sample(c(0,1,3,4,5,7,8,9,10,11,12,13,15,16,18,19,20),2*n,T)
     } else {
         x = runif(n)
         y = runif(n)-0.5
         h = runif(n)
-        p = sample(1:20,n)
+        p = sample(c(0,1,3,4,5,7,8,9,10,11,12,13,15,16,18,19,20),n,T)
         x = c(x,x)
         y = c(y,-y)
         h = c(h,h)
@@ -197,6 +179,9 @@ drawdots = function(dots,fg,val=1){
 
 ```
 
+Question
+========
+
 There are 7 different Frieze groups. I depicted them below with their [IUC names and Conway nicknames](https://en.wikipedia.org/wiki/Frieze_group#Descriptions_of_the_seven_frieze_groups).
 
 ```{r,fig.dim=c(5,7),echo=F}
@@ -281,6 +266,7 @@ polygon(c(0,0,6,6),c(-1,1,1,-1))
 ```
 \
 
+
 For each of the patterns below, determine the Frieze group.
 
 ## Pattern 1
@@ -294,6 +280,8 @@ polygon(c(-.1,-.1,6.1,6.1),c(-0.6,0.6,0.6,-0.6))
 ```
 \
 
+Match the IUC name: ##ANSWER1##
+
 ## Pattern 2
 
 ```{r,echo=F,fig.dim=c(6.2,1.4)}
@@ -305,3 +293,38 @@ polygon(c(-.1,-.1,6.1,6.1),c(-0.6,0.6,0.6,-0.6))
 ```
 \
 
+Match the Conway nickname: ##ANSWER2##
+
+
+Answerlist
+--------
+
+* p1
+* p11g
+* p1m1
+* p2
+* p2mg
+* p11m
+* p2mm
+* hop
+* step
+* sidle
+* spinning hop
+* spinning sidle
+* jump
+* spinning jump
+
+
+Solution
+========
+
+* The first pattern is a `r wrd1a` (which is also called `r wrd1b`).
+* The second pattern is a `r wrd2b` (which is also called `r wrd2a`).
+
+
+Meta-information
+============
+extype: cloze
+exclozetype: schoice|schoice
+exsolution: `r sol1`|`r sol2`
+exname: recognize_Frieze_group
