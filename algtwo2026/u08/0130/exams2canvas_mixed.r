@@ -3,27 +3,28 @@ n = 30
 outdir = "outcanvas"
 
 ### Entrance ticket
-pm = list("ET_realize_denominator.Rmd")
+pm = list("w_intro_extraneous.Rmd")
 exams2canvas(pm,
              n=n,
              dir=outdir,
-             points=rep(5,length(pm)),
+             points=rep(4,length(pm)),
              maxattempts = 6,
-             name="a0122c_rationalize_comp_denom",
+             name="a0130et",
              template = "canvas_qti12.xml",
              cloze = list(enumerate = FALSE))
 
-# pm = list("01_realize_denominator.Rmd",
-#           "01_realize_denominator.Rmd",
-#           "01_realize_denominator.Rmd")
-# exams2canvas(pm,
-#              n=n,
-#              dir=outdir,
-#              points=rep(2,length(pm)),
-#              maxattempts = 6,
-#              name="a0115c_realize_denominator",
-#              template = "canvas_qti12.xml",
-#              cloze = list(enumerate = FALSE))
+pm = list("w_2val.Rmd",
+          "w_0val.Rmd",
+          "w_1val.Rmd",
+          "w_2val_1val_0val.Rmd")
+exams2canvas(pm,
+             n=n,
+             dir=outdir,
+             points=rep(4,length(pm)),
+             maxattempts = 6,
+             name="a0130c_valid_extraneous",
+             template = "canvas_qti12.xml",
+             cloze = list(enumerate = FALSE))
 
 
 # pm = list("standard_from_graph.Rmd",

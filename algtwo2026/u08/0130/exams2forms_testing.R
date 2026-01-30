@@ -2,7 +2,7 @@ library("exams2forms")
 n = 10
 
 ### Entrance ticket
-pm = list("x_sqrt_line_one_extran.Rmd")
+pm = list("w_intro_extraneous.Rmd","w_2val_1val_0val.Rmd")
 
 exams2webquiz(pm,
              n=n,

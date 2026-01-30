@@ -1,14 +1,17 @@
 library("exams")
 n = 40
 outdir = "outpdf"
-fn = "a0128p_rad_eq"
+fn = "a0130p_valid_extraneous"
 
-qs = c("x_tsre_add_sqrt.Rmd","x_tsre_sqrt_add.Rmd","x_tsre_add_sqrt.Rmd","x_tsre_sqrt_add.Rmd","x_tsre_mult_sqrt.Rmd","x_tsre_sqrt_mult.Rmd","x_tsre_div_sqrt.Rmd","x_tsre_sqrt_div.Rmd")
+qs = c("w_pap_1val_valid_extraneous.Rmd",
+       "w_pap_0val_valid_extraneous.Rmd",
+       "w_pap_2val_valid_extraneous.Rmd",
+       rep(c("w_pap_mix_valid_extraneous.Rmd"),6))
 
 for(i in 1:n){
     fn2 = paste0(fn,"_v",sprintf("%03d",i))
     set.seed(i)
-    exams2pdf(file = c(sample(qs),sample(qs),sample(qs)),
+    exams2pdf(file = qs,
               n=1,
               dir=outdir,
               name=paste0(fn2,"_",collapse=""),

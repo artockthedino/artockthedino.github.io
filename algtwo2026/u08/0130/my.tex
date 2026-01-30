@@ -7,7 +7,7 @@
 \usepackage[margin=1.1in]{geometry}
 \usepackage{multicol}
 
-\newenvironment{question}{\begin{minipage}[t][2in][t]{0.4\textwidth}\item  }{\end{minipage}\vfill}
+\newenvironment{question}{\begin{minipage}[t][2.8in][t]{\textwidth}\item  }{\end{minipage}\vfill}
 \newenvironment{solution}{\comment}{\endcomment}
 
 % \newenvironment{question}{\item \textbf{Problem}\newline}{\newline}
@@ -38,6 +38,8 @@
 
 %% \exinput{header}
 
+\newcommand{\exstring}[1]{#1}
+
 \newcommand{\myID}{\@ID}
 \newcommand{\myDate}{\@Date}
 \newcommand{\exnum}[9]{#1#2#3#4#5#6}
@@ -49,13 +51,13 @@
 
 \begin{document}
 
-\begin{multicols}{2}
+% \begin{multicols}{2}
 
 \begin{enumerate}
 %% \exinput{exercises}
 \end{enumerate}
 
-\end{multicols}
+% \end{multicols}
 
 \newpage
 

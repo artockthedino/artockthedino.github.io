@@ -1,0 +1,255 @@
+```{r,echo=FALSE}
+
+while(T){
+    rs = sample(1:10,2)*sample(c(-1,1),2,T)
+    qea = 1
+    qeb = sum(-rs)
+    qec = prod(-rs)
+    psa = 1
+    psb = qeb+sample(2:9,1)*sample(c(-1,1),1)
+    if(psb%%2==1){
+        psb = psb+sample(c(-1,1),1)
+    }
+    psc = (psb/2)^2
+    
+    rm = psb-qeb
+    rb = psc-qec
+    
+    k = sample(1:9,1)*sample(c(-1,1),1)
+    
+    lm = sample(c(-1,1),1)
+    lb = (psb/2)*sign(lm)+k
+    
+    ra = sample(c(-1,1),1)
+    
+    eq = paste0(k,"+{",ra,"}\\sqrt{",rm,"x+",rb,"}=",lm,"x+",lb)
+    eq = gsub("+-","-",eq,fixed=T)
+    eq = gsub("+{-1}","-",eq,fixed=T)
+    eq = gsub("+{1}","+",eq,fixed=T)
+    eq = gsub("=1x","=x",eq,fixed=T)
+    eq = gsub("=-1x","=-x",eq,fixed=T)
+    
+    psol1 = min(rs)
+    psol2 = max(rs)
+    
+    val1 = (k+ra*sqrt(rm*psol1+rb)==lm*psol1+lb)
+    val2 = (k+ra*sqrt(rm*psol2+rb)==lm*psol2+lb)
+    
+    if(k!=lb && abs(psb)<19 && abs(rm)>1 && rb!=0 && lb!=0 && (1*val1+1*val2)==1){break}
+}
+
+ach = -10:10
+al = paste0("* ",ach,collapse="\n")
+
+if(val1){
+    valsol = psol1
+    sol1 = paste0(1*(psol1==ach),collapse="")
+    sol2 = paste0(1*(psol2==ach),collapse="")
+} else {
+    valsol = psol2
+    sol1 = paste0(1*(psol2==ach),collapse="")
+    sol2 = paste0(1*(psol1==ach),collapse="")
+}
+
+
+```
+
+Question
+========
+
+When solving the equation below with standard algebraic methods, two possible solutions are found.
+
+$$`r eq`$$
+
+When the possible solutions are tested in the above equation, one solution is valid, but the other is [extraneous](https://en.wikipedia.org/wiki/Extraneous_and_missing_solutions). Find both possible solutions, and determine which is valid and which is extraneous.
+
+* Valid solution: ##ANSWER1##
+* Extraneous solution: ##ANSWER2##
+
+Answerlist
+--------
+
+`r al`
+`r al`
+
+Solution
+========
+
+$$`r eq`$$
+
+```{r,echo=F,results='asis'}
+if(k<0){
+    cat(paste0("Add ",abs(k)," to both sides of the equation."))
+} else {
+    cat(paste0("Subtract ",abs(k)," from both sides of the equation."))
+}
+eq = paste0("{",ra,"}\\sqrt{",rm,"x+",rb,"}=",lm,"x+",lb-k)
+eq = gsub("+-","-",eq,fixed=T)
+eq = gsub("{-1}","-",eq,fixed=T)
+eq = gsub("{1}","",eq,fixed=T)
+eq = gsub("=1x","=x",eq,fixed=T)
+eq = gsub("=-1x","=-x",eq,fixed=T)
+cat(paste0("\n$$",eq,"$$\n"))
+
+if(ra<0){
+    cat("Multiply both sides by $-1$.")
+    eq = paste0("{",-ra,"}\\sqrt{",rm,"x+",rb,"}=",-lm,"x+",-(lb-k))
+    eq = gsub("+-","-",eq,fixed=T)
+    eq = gsub("{-1}","-",eq,fixed=T)
+    eq = gsub("{1}","",eq,fixed=T)
+    eq = gsub("=1x","=x",eq,fixed=T)
+    eq = gsub("=-1x","=-x",eq,fixed=T)
+    cat(paste0("\n$$",eq,"$$\n"))
+}
+
+cat("Square both sides of the equation. Remember, you'll need to FOIL the right side.")
+
+eq = paste0(rm,"x+",rb,"=",psa,"x^2+",psb,"x+",psc)
+eq = gsub("+-","-",eq,fixed=T)
+eq = gsub("=1x","=x",eq,fixed=T)
+eq = gsub("=-1x","=-x",eq,fixed=T)
+cat(paste0("\n$$",eq,"$$\n"))
+
+ls = paste0("{",rm,"}x+",rb)
+ls = gsub("+-","-",ls,fixed=T)
+ls = gsub("{1}","",ls,fixed=T)
+ls = gsub("{-1}","-",ls,fixed=T)
+ls = gsub("{","",ls,fixed=T)
+ls = gsub("}","",ls,fixed=T)
+
+cat("Subtract $(",ls,")$ from both sides.")
+
+eq = paste0("0={",qea,"}x^2+{",qeb,"}x+",qec)
+eq = gsub("{1}","",eq,fixed=T)
+eq = gsub("{-1}","-",eq,fixed=T)
+eq = gsub("{","",eq,fixed=T)
+eq = gsub("}","",eq,fixed=T)
+eq = gsub("+-","-",eq,fixed=T)
+cat(paste0("\n$$",eq,"$$\n"))
+
+cat("From here, you can either factor or use quadratic formula. It is easy enough to factor this one.")
+
+eq = paste0("0=(x+",-rs[1],")(x+",-rs[2],")")
+eq = gsub("+-","-",eq,fixed=T)
+cat(paste0("\n$$",eq,"$$\n"))
+
+cat(paste0("Use the zero-product property to identify the possible solutions are $x=",rs[1],"$ and $x=",rs[2],"$. Now we check which solution is valid by plugging both into the original equation.\n\n"))
+
+cat(paste0("Start with possible solution $x=",rs[1],"$"))
+
+eq = paste0(k,"+{",ra,"}\\sqrt{",rm,"(",rs[1],")+",rb,"}={",lm,"}(",rs[1],")+",lb)
+eq = gsub("+-","-",eq,fixed=T)
+eq = gsub("+{-1}","-",eq,fixed=T)
+eq = gsub("+{1}","+",eq,fixed=T)
+eq = gsub("={1}","=",eq,fixed=T)
+eq = gsub("={-1}","=-",eq,fixed=T)
+eq = gsub("=","\\stackrel{?}{=}",eq,fixed=T)
+cat(paste0("\n$$",eq,"$$\n"))
+
+eq = paste0(k,"+{",ra,"}\\sqrt{",rm*rs[1],"+",rb,"}=",lm*rs[1],"+",lb)
+eq = gsub("+-","-",eq,fixed=T)
+eq = gsub("+{-1}","-",eq,fixed=T)
+eq = gsub("+{1}","+",eq,fixed=T)
+eq = gsub("=1x","=x",eq,fixed=T)
+eq = gsub("=-1x","=-x",eq,fixed=T)
+eq = gsub("=","\\stackrel{?}{=}",eq,fixed=T)
+cat(paste0("\n$$",eq,"$$\n"))
+
+eq = paste0(k,"+{",ra,"}\\sqrt{",rm*rs[1]+rb,"}=",lm*rs[1]+lb)
+eq = gsub("+-","-",eq,fixed=T)
+eq = gsub("+{-1}","-",eq,fixed=T)
+eq = gsub("+{1}","+",eq,fixed=T)
+eq = gsub("=1x","=x",eq,fixed=T)
+eq = gsub("=-1x","=-x",eq,fixed=T)
+eq = gsub("=","\\stackrel{?}{=}",eq,fixed=T)
+cat(paste0("\n$$",eq,"$$\n"))
+
+eq = paste0(k,"+{",ra,"}",sqrt(rm*rs[1]+rb),"=",lm*rs[1]+lb)
+eq = gsub("+-","-",eq,fixed=T)
+eq = gsub("+{-1}","-",eq,fixed=T)
+eq = gsub("+{1}","+",eq,fixed=T)
+eq = gsub("=1x","=x",eq,fixed=T)
+eq = gsub("=-1x","=-x",eq,fixed=T)
+eq = gsub("=","\\stackrel{?}{=}",eq,fixed=T)
+cat(paste0("\n$$",eq,"$$\n"))
+
+eq = paste0(k+ra*sqrt(rm*rs[1]+rb),"=",lm*rs[1]+lb)
+if(valsol==rs[1]){
+    eq = gsub("=","=",eq,fixed=T)
+    cat(paste0("\n$$",eq,"$$\n"))
+    cat(paste0("So we see $x=",rs[1],"$ is a valid solution."))
+} else {
+    eq = gsub("=","\\ne ",eq,fixed=T)
+    cat(paste0("\n$$",eq,"$$\n"))
+    cat(paste0("So we see $x=",rs[1],"$ is an extraneous solution."))
+}
+
+
+cat(paste0("\n\nNow check possible solution $x=",rs[2],"$"))
+
+eq = paste0(k,"+{",ra,"}\\sqrt{",rm,"(",rs[2],")+",rb,"}={",lm,"}(",rs[2],")+",lb)
+eq = gsub("+-","-",eq,fixed=T)
+eq = gsub("+{-1}","-",eq,fixed=T)
+eq = gsub("+{1}","+",eq,fixed=T)
+eq = gsub("={1}","=",eq,fixed=T)
+eq = gsub("={-1}","=-",eq,fixed=T)
+eq = gsub("=","\\stackrel{?}{=}",eq,fixed=T)
+cat(paste0("\n$$",eq,"$$\n"))
+
+eq = paste0(k,"+{",ra,"}\\sqrt{",rm*rs[2],"+",rb,"}=",lm*rs[2],"+",lb)
+eq = gsub("+-","-",eq,fixed=T)
+eq = gsub("+{-1}","-",eq,fixed=T)
+eq = gsub("+{1}","+",eq,fixed=T)
+eq = gsub("=1x","=x",eq,fixed=T)
+eq = gsub("=-1x","=-x",eq,fixed=T)
+eq = gsub("=","\\stackrel{?}{=}",eq,fixed=T)
+cat(paste0("\n$$",eq,"$$\n"))
+
+eq = paste0(k,"+{",ra,"}\\sqrt{",rm*rs[2]+rb,"}=",lm*rs[2]+lb)
+eq = gsub("+-","-",eq,fixed=T)
+eq = gsub("+{-1}","-",eq,fixed=T)
+eq = gsub("+{1}","+",eq,fixed=T)
+eq = gsub("=1x","=x",eq,fixed=T)
+eq = gsub("=-1x","=-x",eq,fixed=T)
+eq = gsub("=","\\stackrel{?}{=}",eq,fixed=T)
+cat(paste0("\n$$",eq,"$$\n"))
+
+eq = paste0(k,"+{",ra,"}",sqrt(rm*rs[2]+rb),"=",lm*rs[2]+lb)
+eq = gsub("+-","-",eq,fixed=T)
+eq = gsub("+{-1}","-",eq,fixed=T)
+eq = gsub("+{1}","+",eq,fixed=T)
+eq = gsub("=1x","=x",eq,fixed=T)
+eq = gsub("=-1x","=-x",eq,fixed=T)
+eq = gsub("=","\\stackrel{?}{=}",eq,fixed=T)
+cat(paste0("\n$$",eq,"$$\n"))
+
+eq = paste0(k+ra*sqrt(rm*rs[2]+rb),"=",lm*rs[2]+lb)
+if(valsol==rs[2]){
+    eq = gsub("=","=",eq,fixed=T)
+    cat(paste0("\n$$",eq,"$$\n"))
+    cat(paste0("So we see $x=",rs[2],"$ is a valid solution."))
+} else {
+    eq = gsub("=","\\ne ",eq,fixed=T)
+    cat(paste0("\n$$",eq,"$$\n"))
+    cat(paste0("So we see $x=",rs[2],"$ is an extraneous solution."))
+}
+```
+
+
+```{r,echo=F}
+eq = paste0(k,"+{",ra,"}\\sqrt{",rm,"x+",rb,"}=",lm,"x+",lb)
+eq = gsub("+-","-",eq,fixed=T)
+eq = gsub("+{-1}","-",eq,fixed=T)
+eq = gsub("+{1}","+",eq,fixed=T)
+eq = gsub("=1x","=x",eq,fixed=T)
+eq = gsub("=-1x","=-x",eq,fixed=T)
+```
+
+
+
+Meta-information
+============
+extype: cloze
+exclozetype: schoice|schoice
+exsolution: `r sol1`|`r sol2`
+exname: extraneous_easy_graphs

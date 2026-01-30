@@ -60,7 +60,7 @@ while(T){
     A = m^2
     B = 2*m*(b-h)-p
     C = (b-h)^2+pk
-    if(max(abs(nums))<50 && min(abs(nums))>0 && (abs(pk)%%1==0) && mtop==-1 && sum(abs(c(atop,mbot,bbot))==1)==3 && min(abs(n2))>1 && max(abs(c(A,B,C)))<1000 && abs(pk)<200 && h!=b){break}
+    if(max(abs(nums))<50 && min(abs(nums))>0 && (abs(pk)%%1==0) && sum(abs(c(atop,mbot,bbot))==1)==3 && min(abs(n2))>1 && max(abs(c(A,B,C)))<1000 && abs(pk)<200 && h!=b && mtop==1){break}
 }
 
 
@@ -75,6 +75,7 @@ eq1 = paste0("\\sqrt{",abot,"x+",-pk,"}+",h)
 eq2 = paste0(mtop,"x+",btop)
 eq1 = gsub("+-","-",eq1,fixed=T)
 eq2 = gsub("+-","-",eq2,fixed=T)
+eq2 = gsub("+-","-",eq2,fixed=T)
 
 # y = sqrt(p(x-k))+h
 # y = mx+b
@@ -87,6 +88,8 @@ rs2 = m*sol2+b
 
 e1 = paste0(h,"+\\sqrt{",p,"x+",-pk,"}=",m,"x+",b)
 e1 = gsub("+-","-",e1,fixed=T)
+e1 = gsub("=1x","=x",e1,fixed=T)
+e1 = gsub("=-1x","=-x",e1,fixed=T)
 if(h>0){
     wrd1 = paste0("Subtract ",h," from both sides.")
 } else {
@@ -95,18 +98,26 @@ if(h>0){
 
 e2 = paste0("\\sqrt{",p,"x+",-pk,"}=",m,"x+",b-h)
 e2 = gsub("+-","-",e2,fixed=T)
+e2 = gsub("=1x","=x",e2,fixed=T)
+e2 = gsub("=-1x","=-x",e2,fixed=T)
 
 e3 = paste0(p,"x+",-pk,"=",m^2,"x^2+",2*m*(b-h),"x+",(b-h)^2)
 e3 = gsub("+-","-",e3,fixed=T)
+e3 = gsub("=1x","=x",e3,fixed=T)
+e3 = gsub("=-1x","=-x",e3,fixed=T)
 
 e4 = paste0(p,"x+",-p*k,"=",m^2,"x^2+",2*m*(b-h),"x+",(b-h)^2)
 e4 = gsub("+-","-",e4,fixed=T)
+e4 = gsub("=1x","=x",e4,fixed=T)
+e4 = gsub("=-1x","=-x",e4,fixed=T)
 
 wrd2 = paste0("Subtract $",p,"x+",-p*k,"$ from both sides.")
 wrd2 = gsub("+-","-",wrd2,fixed=T)
 
 e5 = paste0("0=",m^2,"x^2+",2*m*(b-h)-p,"x+",(b-h)^2+p*k)
 e5 = gsub("+-","-",e5,fixed=T)
+e5 = gsub("=1x","=x",e5,fixed=T)
+e5 = gsub("=-1x","=-x",e5,fixed=T)
 
 
 
@@ -124,8 +135,8 @@ if(abs(gg)>1){
 
 ach1 = -12:12
 ach2 = -12:12
-ach3 = c("Extraneous","Valid")
-ach4 = c("Extraneous","Valid")
+ach3 = c("an extraneous","a valid")
+ach4 = c("an extraneous","a valid")
 
 al1 = paste0("* ",ach1,collapse="\n")
 al2 = paste0("* ",ach2,collapse="\n")
@@ -144,16 +155,16 @@ Question
 
 Consider the equation.
 
-$$`r eq1`=`r eq2`$$
+$$`r e1`$$
 
-By using algebra, find both possible solutions. Try validating both possible solutions to determine whether each is extraneous or valid.
+By using algebra, find both **possible** solutions. Try validating both possible solutions to determine whether each is [extraneous](https://en.wikipedia.org/wiki/Extraneous_and_missing_solutions) or valid.
 
 Let $x_1$ and $x_2$ represent the two possible solutions such that $x_1<x_2$.
 
 * $x_1=$ ##ANSWER1##
 * $x_2=$ ##ANSWER2##
-* $x_1$ is an ##ANSWER3## solution.
-* $x_2$ is an ##ANSWER4## solution.
+* $x_1$ is ##ANSWER3## solution.
+* $x_2$ is ##ANSWER4## solution.
 
 
 Answerlist

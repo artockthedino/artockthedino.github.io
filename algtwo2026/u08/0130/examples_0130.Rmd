@@ -6,7 +6,7 @@ output: exams2forms::webquiz
 ```{r exams2forms-setup, include = FALSE}
 ## package and exercises
 library("exams2forms")
-exm <- list("x_sqrt_line_one_extran.Rmd")
+exm <- list("w_intro_extraneous.Rmd", "w_2val_1val_0val.Rmd")
 ```
 
 ```{r exams2forms-include, echo = FALSE, message = FALSE, results="asis"}
