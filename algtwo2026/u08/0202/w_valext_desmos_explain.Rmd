@@ -1,0 +1,132 @@
+```{r,echo=FALSE}
+nval = 1 #sample(0:2,1)
+while(T){
+    rs = sample(1:10,2)*sample(c(-1,1),2,T)
+    qea = 1
+    qeb = sum(-rs)
+    qec = prod(-rs)
+    psa = 1
+    psb = qeb+sample(2:9,1)*sample(c(-1,1),1)
+    if(psb%%2==1){
+        psb = psb+sample(c(-1,1),1)
+    }
+    psc = (psb/2)^2
+    
+    rm = psb-qeb
+    rb = psc-qec
+    h = -rb/rm
+    
+    k = sample(1:9,1)*sample(c(-1,1),1)
+    
+    lm = sample(c(-1,1),1)
+    lb = (psb/2)*sign(lm)+k
+    
+    ra = sample(c(-1,1),1)
+    
+    eq = paste0(k,"+{",ra,"}\\sqrt{",rm,"x+",rb,"}=",lm,"x+",lb)
+    eq = gsub("+-","-",eq,fixed=T)
+    eq = gsub("+{-1}","-",eq,fixed=T)
+    eq = gsub("+{1}","+",eq,fixed=T)
+    eq = gsub("=1x","=x",eq,fixed=T)
+    eq = gsub("=-1x","=-x",eq,fixed=T)
+    
+    psol1 = min(rs)
+    psol2 = max(rs)
+    
+    val1 = (k+ra*sqrt(rm*psol1+rb)==lm*psol1+lb)
+    val2 = (k+ra*sqrt(rm*psol2+rb)==lm*psol2+lb)
+    
+    y1 = k+ra*sqrt(rm*psol1+rb)
+    y2 = k+ra*sqrt(rm*psol2+rb)
+    y3 = k-ra*sqrt(rm*psol1+rb)
+    y4 = k-ra*sqrt(rm*psol2+rb)
+
+    if(max(abs(c(y1,y2,y3,y4)))<=10 && k!=lb && abs(psb)<19 && abs(rm)>1 && abs(rm)<=10 && rb!=0 && lb!=0 && (1*val1+1*val2)==nval && abs(h)<10){break}
+}
+
+ach = -10:10
+al = paste0("* ",ach,collapse="\n")
+ach2 = c("an extraneous","a valid")
+al2 = paste0("* ",ach2,collapse="\n")
+
+sol1 = paste0(1*(ach==psol1),collapse="")
+sol2 = paste0(1*(c(F,T)==val1),collapse="")
+sol3 = paste0(1*(ach==psol2),collapse="")
+sol4 = paste0(1*(c(F,T)==val2),collapse="")
+
+eq1 = paste0(k,"+{",ra,"}\\sqrt{",rm,"x+",rb,"}")
+eq1 = gsub("+-","-",eq1,fixed=T)
+eq1 = gsub("+{-1}","-",eq1,fixed=T)
+eq1 = gsub("+{1}","+",eq1,fixed=T)
+eq1 = gsub("=1x","=x",eq1,fixed=T)
+eq1 = gsub("=-1x","=-x",eq1,fixed=T)
+
+leq = paste0("{",lm,"}x+",lb)
+leq = gsub("{1}","",leq,fixed=T)
+leq = gsub("{-1}","-",leq,fixed=T)
+leq = gsub("{","",leq,fixed=T)
+leq = gsub("}","",leq,fixed=T)
+leq = gsub("+-","-",leq,fixed=T)
+
+eq2 = paste0(k,"+{",-ra,"}\\sqrt{",rm,"x+",rb,"}")
+eq2 = gsub("+-","-",eq2,fixed=T)
+eq2 = gsub("+{-1}","-",eq2,fixed=T)
+eq2 = gsub("+{1}","+",eq2,fixed=T)
+eq2 = gsub("=1x","=x",eq2,fixed=T)
+eq2 = gsub("=-1x","=-x",eq2,fixed=T)
+
+```
+
+Question
+========
+
+The equation below has one extraneous solution and one valid solution.
+
+$$`r eq1`~=~`r leq`$$
+
+We can find both using [Desmos](https://www.desmos.com/calculator). To find the valid solution, find the intersection of the following two curves:
+
+$$f(x)=`r eq1`$$
+$$L(x)=`r leq`$$
+
+You should see half a parabola facing sideways and a line. Click where the two curves cross. The $x$ value is the valid solution.
+
+The extraneous solution also has a geometric interpretation! We need to complete the parabola by plotting the following curve:
+
+$$g(x)=`r eq2`$$
+
+You should see the line crosses this second half of the parabola. Click on the intersection. The $x$ value is the extraneous solution.
+
+* Valid: ##ANSWER1##
+* Extraneous: ##ANSWER2##
+
+Answerlist
+--------
+
+`r al`
+`r al`
+
+
+Solution
+========
+
+Just read off the two $x$ values of the two purple points. The point further left is at point $(x_1,f(x_1))$ and the point further right is at point $(x_2,f(x_2))$. That way $x_1<x_2$, as required in the problem statement.
+
+Then, if the purple dot is on the red $y=f(x)$ curve, then the possible solution is a valid solution. If the purple dot is on the dashed-grey $y=g(x)$ curve, then the possible solution is extraneous. Lastly, if the purple dot is at the vertex of the parabol, then the solution is also valid.
+
+So, in this case:
+
+$$\begin{aligned}
+x_1 &= `r psol1` \\
+x_1 &\text{ is `r ach2[val1+1]` solution} \\
+x_2 &= `r psol2` \\
+x_2 &\text{ is `r ach2[val2+1]` solution}
+\end{aligned}$$
+
+
+Meta-information
+============
+extype: cloze
+exclozetype: schoice|schoice|schoice|schoice
+exsolution: `r sol1`|`r sol2`|`r sol3`|`r sol4`
+exname: w_2val_1val_0val

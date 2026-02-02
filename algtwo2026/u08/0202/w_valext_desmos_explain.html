@@ -11,7 +11,7 @@
 
 
 
-<title>w_intro_extraneous.knit</title>
+<title>w_valext_desmos_explain.knit</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -354,16 +354,24 @@ display: none;
 
 <div id="question" class="section level1">
 <h1>Question</h1>
-<p>When solving the equation below with standard algebraic methods, two
-possible solutions are found.</p>
-<p><span class="math display">\[2+\sqrt{3x+34}=x+10\]</span></p>
-<p>When the possible solutions are tested in the above equation, one
-solution is valid, but the other is <a href="https://en.wikipedia.org/wiki/Extraneous_and_missing_solutions">extraneous</a>.
-Find both possible solutions, and determine which is valid and which is
-extraneous.</p>
+<p>The equation below has one extraneous solution and one valid
+solution.</p>
+<p><span class="math display">\[-3-\sqrt{6x+31}~=~-x-7\]</span></p>
+<p>We can find both using <a href="https://www.desmos.com/calculator">Desmos</a>. To find the valid
+solution, find the intersection of the following two curves:</p>
+<p><span class="math display">\[f(x)=-3-\sqrt{6x+31}\]</span> <span class="math display">\[L(x)=-x-7\]</span></p>
+<p>You should see half a parabola facing sideways and a line. Click
+where the two curves cross. The <span class="math inline">\(x\)</span>
+value is the valid solution.</p>
+<p>The extraneous solution also has a geometric interpretation! We need
+to complete the parabola by plotting the following curve:</p>
+<p><span class="math display">\[g(x)=-3+\sqrt{6x+31}\]</span></p>
+<p>You should see the line crosses this second half of the parabola.
+Click on the intersection. The <span class="math inline">\(x\)</span>
+value is the extraneous solution.</p>
 <ul>
-<li>Valid solution: ##ANSWER1##</li>
-<li>Extraneous solution: ##ANSWER2##</li>
+<li>Valid: ##ANSWER1##</li>
+<li>Extraneous: ##ANSWER2##</li>
 </ul>
 <div id="answerlist" class="section level2">
 <h2>Answerlist</h2>
@@ -415,30 +423,28 @@ extraneous.</p>
 </div>
 <div id="solution" class="section level1">
 <h1>Solution</h1>
-<p><span class="math display">\[2+\sqrt{3x+34}=x+10\]</span></p>
-<p>Subtract 2 from both sides of the equation. <span class="math display">\[\sqrt{3x+34}=x+8\]</span> Square both sides of
-the equation. Remember, you’ll need to FOIL the right side. <span class="math display">\[3x+34=x^2+16x+64\]</span> Subtract <span class="math inline">\(( 3x+34 )\)</span> from both sides. <span class="math display">\[0=x^2+13x+30\]</span> From here, you can either
-factor or use quadratic formula. It is easy enough to factor this one.
-<span class="math display">\[0=(x+10)(x+3)\]</span> Use the zero-product
-property to identify the possible solutions are <span class="math inline">\(x=-10\)</span> and <span class="math inline">\(x=-3\)</span>. Now we check which solution is
-valid by plugging both into the original equation.</p>
-<p>Start with possible solution <span class="math inline">\(x=-10\)</span> <span class="math display">\[2+\sqrt{3(-10)+34}\stackrel{?}{=}(-10)+10\]</span></p>
-<p><span class="math display">\[2+\sqrt{-30+34}\stackrel{?}{=}-10+10\]</span></p>
-<p><span class="math display">\[2+\sqrt{4}\stackrel{?}{=}0\]</span></p>
-<p><span class="math display">\[2+2\stackrel{?}{=}0\]</span></p>
-<p><span class="math display">\[4\ne 0\]</span> So we see <span class="math inline">\(x=-10\)</span> is an extraneous solution.</p>
-<p>Now check possible solution <span class="math inline">\(x=-3\)</span>
-<span class="math display">\[2+\sqrt{3(-3)+34}\stackrel{?}{=}(-3)+10\]</span></p>
-<p><span class="math display">\[2+\sqrt{-9+34}\stackrel{?}{=}-3+10\]</span></p>
-<p><span class="math display">\[2+\sqrt{25}\stackrel{?}{=}7\]</span></p>
-<p><span class="math display">\[2+5\stackrel{?}{=}7\]</span></p>
-<p><span class="math display">\[7=7\]</span> So we see <span class="math inline">\(x=-3\)</span> is a valid solution.</p>
+<p>Just read off the two <span class="math inline">\(x\)</span> values
+of the two purple points. The point further left is at point <span class="math inline">\((x_1,f(x_1))\)</span> and the point further right
+is at point <span class="math inline">\((x_2,f(x_2))\)</span>. That way
+<span class="math inline">\(x_1&lt;x_2\)</span>, as required in the
+problem statement.</p>
+<p>Then, if the purple dot is on the red <span class="math inline">\(y=f(x)\)</span> curve, then the possible solution
+is a valid solution. If the purple dot is on the dashed-grey <span class="math inline">\(y=g(x)\)</span> curve, then the possible solution
+is extraneous. Lastly, if the purple dot is at the vertex of the
+parabol, then the solution is also valid.</p>
+<p>So, in this case:</p>
+<p><span class="math display">\[\begin{aligned}
+x_1 &amp;= -5 \\
+x_1 &amp;\text{ is an extraneous solution} \\
+x_2 &amp;= 3 \\
+x_2 &amp;\text{ is a valid solution}
+\end{aligned}\]</span></p>
 </div>
 <div id="meta-information" class="section level1">
 <h1>Meta-information</h1>
-<p>extype: cloze exclozetype: schoice|schoice exsolution:
-000000010000000000000|100000000000000000000 exname:
-extraneous_easy_graphs</p>
+<p>extype: cloze exclozetype: schoice|schoice|schoice|schoice
+exsolution: 000001000000000000000|10|000000000000010000000|01 exname:
+w_2val_1val_0val</p>
 </div>
 
 

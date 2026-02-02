@@ -1,0 +1,160 @@
+```{r,echo=FALSE}
+nval = 1 #sample(0:2,1)
+while(T){
+    rs = sample(1:10,2)*sample(c(-1,1),2,T)
+    qea = 1
+    qeb = sum(-rs)
+    qec = prod(-rs)
+    psa = 1
+    psb = qeb+sample(2:9,1)*sample(c(-1,1),1)
+    if(psb%%2==1){
+        psb = psb+sample(c(-1,1),1)
+    }
+    psc = (psb/2)^2
+    
+    rm = psb-qeb
+    rb = psc-qec
+    h = -rb/rm
+    
+    k = sample(1:9,1)*sample(c(-1,1),1)
+    
+    lm = sample(c(-1,1),1)
+    lb = (psb/2)*sign(lm)+k
+    
+    ra = sample(c(-1,1),1)
+    
+    eq = paste0(k,"+{",ra,"}\\sqrt{",rm,"x+",rb,"}=",lm,"x+",lb)
+    eq = gsub("+-","-",eq,fixed=T)
+    eq = gsub("+{-1}","-",eq,fixed=T)
+    eq = gsub("+{1}","+",eq,fixed=T)
+    eq = gsub("=1x","=x",eq,fixed=T)
+    eq = gsub("=-1x","=-x",eq,fixed=T)
+    
+    psol1 = min(rs)
+    psol2 = max(rs)
+    
+    val1 = (k+ra*sqrt(rm*psol1+rb)==lm*psol1+lb)
+    val2 = (k+ra*sqrt(rm*psol2+rb)==lm*psol2+lb)
+    
+    y1 = k+ra*sqrt(rm*psol1+rb)
+    y2 = k+ra*sqrt(rm*psol2+rb)
+    y3 = k-ra*sqrt(rm*psol1+rb)
+    y4 = k-ra*sqrt(rm*psol2+rb)
+
+    if(max(abs(c(y1,y2,y3,y4)))<=10 && k!=lb && abs(psb)<19 && abs(rm)>1 && abs(rm)<=10 && rb!=0 && lb!=0 && (1*val1+1*val2)==nval && abs(h)<10){break}
+}
+
+ach = -10:10
+al = paste0("* ",ach,collapse="\n")
+ach2 = c("an extraneous","a valid")
+al2 = paste0("* ",ach2,collapse="\n")
+
+sol1 = paste0(1*(ach==psol1),collapse="")
+sol2 = paste0(1*(c(F,T)==val1),collapse="")
+sol3 = paste0(1*(ach==psol2),collapse="")
+sol4 = paste0(1*(c(F,T)==val2),collapse="")
+
+
+    
+```
+
+Question
+========
+
+A transformed square-root function, $f(x)$, and line, $L(x)$, are parameterized and graphed below.
+
+$$f(x)=a\sqrt{n(x-h)}+k$$
+
+$$L(x)=mx+b$$
+The parameters:
+$$\begin{aligned}
+a &= \text{vertical flip and stretch} \\
+n &= \text{horizontal flip and stretch} \\
+h &= \text{horizontal translation} \\
+k &= \text{vertical translation} \\
+m &= \text{slope} \\
+b &= \text{y-intercept}
+\end{aligned}$$
+
+```{r,echo=F,fig.dim=c(10,5)}
+par(mar=c(4,4,0,0),mfrow=c(1,2),pty="s")
+xtnt = 10
+plot(0,0,"n",xlim=c(-xtnt,xtnt),ylim=c(-xtnt,xtnt),xlab="x",ylab="y")
+for(i in -xtnt:xtnt){
+    lines(c(-xtnt,xtnt),c(i,i),col="grey",lwd=0.5)
+    lines(c(i,i),c(-xtnt,xtnt),col="grey",lwd=0.5)
+}
+for(i in -xtnt:xtnt){
+    if(i%%5==0){
+        lines(c(-xtnt,xtnt),c(i,i),col="darkgrey",lwd=1)
+        lines(c(i,i),c(-xtnt,xtnt),col="darkgrey",lwd=1)
+    }
+}
+abline(h=0,lwd=2)
+abline(v=0,lwd=2)
+xf = seq(h,h+40*sign(rm),length.out=1000)
+yf = k+ra*sqrt(rm*xf+rb)
+xL = seq(-30,30,10)
+yL = lm*xL+lb
+xg = seq(h,h+40*sign(rm),length.out=1000)
+yg = k-ra*sqrt(rm*xg+rb)
+lines(xf,yf,col="red",lwd=2)
+lines(xL,yL,col="blue",lwd=2)
+lines(xg,yg,col="grey",lwd=2,lty=2)
+points(psol1,lm*psol1+lb,col="purple",pch=19)
+points(psol2,lm*psol2+lb,col="purple",pch=19)
+
+plot(0,0,"n",axes=F,ann=F)
+library(latex2exp)
+legend("topleft",c(TeX(paste0("$y=f(x)$")),
+                TeX(paste0("$y=L(x)$")),
+                TeX(paste0("$y=g(x)$"))),
+       col=c("red","blue","grey"),
+       lty=c(1,1,2),
+       lwd=c(2,2,2))
+
+```
+\
+
+Notice, another transformed square-root function, $g(x)$, is also graphed above. It represents the other half of the parabola.
+
+$$g(x)=-a\sqrt{n(x-h)}+k$$
+
+Now, consider algebraically solving for values of $x_{i}$ that satisfy the equation $f(x_i)=L(x_i)$. Let $x_1$ and $x_2$ represent the two possible solutions such that $x_1<x_2$. Find both possible solutions (by inspecting the graph) and determine whether each is valid or extraneous.
+
+* $x_1=$ ##ANSWER1##
+* $x_1$ is ##ANSWER2## solution.
+* $x_2=$ ##ANSWER3##
+* $x_2$ is ##ANSWER4## solution.
+
+Answerlist
+--------
+
+`r al`
+`r al2`
+`r al`
+`r al2`
+
+Solution
+========
+
+Just read off the two $x$ values of the two purple points. The point further left is at point $(x_1,L(x_1))$ and the point further right is at point $(x_2,L(x_2))$. That way $x_1<x_2$, as required in the problem statement.
+
+If the purple dot is on the red $y=f(x)$ curve, then the possible solution is a valid solution. If the purple dot is on the dashed-grey $y=g(x)$ curve, then the possible solution is extraneous. Lastly, if the purple dot is at the vertex of the parabol, then the solution is also valid.
+
+So, in this case:
+
+$$\begin{aligned}
+x_1 &= `r psol1` \\
+x_1 &\text{ is `r ach2[val1+1]` solution} \\
+x_2 &= `r psol2` \\
+x_2 &\text{ is `r ach2[val2+1]` solution}
+\end{aligned}$$
+
+
+Meta-information
+============
+extype: cloze
+exclozetype: schoice|schoice|schoice|schoice
+exsolution: `r sol1`|`r sol2`|`r sol3`|`r sol4`
+exname: w_2val_1val_0val

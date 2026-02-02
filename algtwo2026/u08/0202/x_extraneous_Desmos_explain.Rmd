@@ -1,0 +1,212 @@
+```{r,echo=FALSE}
+options(scipen=99)
+library(numbers)
+library(MASS)
+gcd2 <- function(a, b) {
+  if (b == 0) a else Recall(b, a %% b)
+}
+gcd <- function(...) Reduce(gcd2, c(...))
+
+fsimp = function(top,bot){
+    gg = abs(gcd(c(top,bot)))
+    top = round(abs(top)/gg*sign(top*bot))
+    bot = round(abs(mbot)/gg)
+    if(bot==1){
+        return(top)
+    } else {
+        return(paste0("\\frac{",top,"}{",bot,"}"))
+    }
+}
+
+# y = a*sqrt(s(x-h))+k
+
+x0s = c(1,4,9,16)
+y0s = c(1,2,3,4)
+x0e = c(1,4,9,16)
+y0e = c(-1,-2,-3,-4)
+qt = 2 #sample(1:3,1)
+
+while(T){
+    a = sample(2:4,1)*sample(c(-1,1),1)
+    h = sample(1:9,1)*sample(c(-1,1),1)
+    k = sample(1:9,1)*sample(c(-1,1),1)
+    s = sample(c(-1,1),1)
+    x1s = x0s*s+h
+    y1s = y0s*a+k
+    x1e = x0e*s+h
+    y1e = y0e*a+k
+    # if(qt==1){ #Two valid real solutions
+    #     ns = sample(1:length(x1s),2)
+    #     xi = x1s[ns]
+    #     yi = y1s[ns]
+    # }
+    if(qt==2){ #One valid, one extraneous
+        while(T){
+            ns = sample(1:length(x1s),1)
+            ne = sample(1:length(x1e),1)
+            xis = x1s[ns]
+            yis = y1s[ns]
+            xie = x1e[ne]
+            yie = y1e[ne]
+            if(xis != xie){
+                xi = c(xis,xie)
+                yi = c(yis,yie)
+                nn = sample(1:2)
+                xi = xi[nn]
+                yi = yi[nn]
+                break
+            }
+        }
+    }
+    # if(qt==3){ #Two extraneous
+    #     ns = sample(1:length(x1e),2)
+    #     xi = x1e[ns]
+    #     yi = y1e[ns]
+    # }
+    mtop = diff(yi)
+    mbot = diff(xi)
+    gg = abs(gcd(c(mtop,mbot)))
+    mtop = round(abs(mtop)/gg*sign(mtop*mbot))
+    mbot = round(abs(mbot)/gg)
+    m = fsimp(mtop,mbot)
+    btop = (yi[1]*mbot-mtop*xi[1])
+    bbot = mbot
+    gg = abs(gcd(c(btop,bbot)))
+    b = fsimp(btop,bbot)
+    if(max(abs(xi))<13 && max(abs(yi))<15 && min(abs(xi))>0 && mbot!=0){break}
+}
+
+eq1 = paste0(k,"+{",a,"}\\sqrt{{",s,"}(x+",-h,")}")
+eq1 = gsub("{1}","",eq1,fixed=T)
+eq1 = gsub("{-1}","-",eq1,fixed=T)
+eq1 = gsub("+{-","-{",eq1,fixed=T)
+eq1 = gsub("+-","-",eq1,fixed=T)
+if(s==1){
+    eq1 = paste0(k,"+{",a,"}\\sqrt{x+",-h,"}")
+    eq1 = gsub("{1}","",eq1,fixed=T)
+    eq1 = gsub("{-1}","-",eq1,fixed=T)
+    eq1 = gsub("+{-","-{",eq1,fixed=T)
+    eq1 = gsub("+-","-",eq1,fixed=T)
+}
+
+eq2 = paste0(k,"+{",-a,"}\\sqrt{{",s,"}(x+",-h,")}")
+eq2 = gsub("{1}","",eq2,fixed=T)
+eq2 = gsub("{-1}","-",eq2,fixed=T)
+eq2 = gsub("+{-","-{",eq2,fixed=T)
+eq2 = gsub("+-","-",eq2,fixed=T)
+if(s==1){
+    eq2 = paste0(k,"+{",-a,"}\\sqrt{x+",-h,"}")
+    eq2 = gsub("{1}","",eq2,fixed=T)
+    eq2 = gsub("{-1}","-",eq2,fixed=T)
+    eq2 = gsub("+{-","-{",eq2,fixed=T)
+    eq2 = gsub("+-","-",eq2,fixed=T)
+}
+
+## y = m(x-x0)+y0
+## y = mx + y0-m*x0
+## b = (y0*mbot-mtop*x0)/mbot
+
+leq = paste0("[",fsimp(mtop,mbot),"]x+",fsimp(btop,bbot))
+leq = gsub("[1]","",leq,fixed=T)
+leq = gsub("[-1]","-",leq,fixed=T)
+leq = gsub("[","",leq,fixed=T)
+leq = gsub("]","",leq,fixed=T)
+leq = gsub("+-","-",leq,fixed=T)
+leq = gsub("+\\frac{-","-\\frac{",leq,fixed=T)
+leq = gsub("+0","",leq,fixed=T)
+leq = gsub("-0","",leq,fixed=T)
+
+
+ach = (-12):12
+al = paste0("* ",ach,collapse="\n")
+
+if(round(k+a*sqrt(s*xi[1]-h),3) == round(mtop/mbot*xi[1]+btop/bbot,3)){
+    val1 = 1
+    xv = xi[1]
+    xe = xi[2]
+} else {
+    val1 = 0
+    xv = xi[2]
+    xe = xi[1]
+}
+
+# assumes qt==2 for into problem
+
+if(val1){
+    sol1 = paste0(1*(ach==xi[1]),collapse="")
+    sol2 = paste0(1*(ach==xi[2]),collapse="")
+} else {
+    sol1 = paste0(1*(ach==xi[2]),collapse="")
+    sol2 = paste0(1*(ach==xi[1]),collapse="")
+}
+
+```
+
+Question
+========
+
+
+The equation below has one extraneous solution and one valid solution.
+
+$$`r eq1`~=~`r leq`$$
+
+We can find both using [Desmos](https://www.desmos.com/calculator). To find the valid solution, find the intersection of the following two curves:
+
+$$f(x)=`r eq1`$$
+$$L(x)=`r leq`$$
+
+You should see half a parabola facing sideways and a line. Click where the two paths cross. The $x$ value is the valid solution.
+
+The extraneous solution also has a geometric interpretation! We need to complete the parabola by plotting the following curve:
+
+$$g(x)=`r eq2`$$
+
+You should see the line crosses this second half of the parabola. Click on the intersection. The $x$ value is the extraneous solution.
+
+* Valid: ##ANSWER1##
+* Extraneous: ##ANSWER2##
+
+Answerlist
+--------
+
+`r al`
+`r al`
+
+
+Solution
+========
+
+The valid solution is $x=`r xv`$. The extraneous solution is $x=`r xe`$. Below is a sketch that should resemble your Desmos graph.
+
+```{r,echo=F,fig.dim=c(8,4)}
+par(pty="s",mfrow=c(1,2),mar=c(5,5,1,1))
+xr = seq(h,h+40*s,length.out=1000)
+yr = a*sqrt(s*(xr-h))+k
+yr2 = -a*sqrt(s*(xr-h))+k
+xl = seq(-20,20,1)
+yl = mtop*xl/mbot+btop/bbot
+plot(0,0,"n",xlim=c(-20,20),ylim=c(-20,20),xlab="x",ylab="y")
+abline(h=0,lwd=2)
+abline(v=0,lwd=2)
+lines(xr,yr,col="red")
+lines(xr,yr2,col="grey",lty=2)
+lines(xl,yl,col="blue")
+points(xi,yi,pch=19,col="purple")
+plot(0,0,"n",axes=F,ann=F)
+library(latex2exp)
+legend("topleft",c(TeX(paste0("$y=f(x)$")),
+                TeX(paste0("$y=L(x)$")),
+                TeX(paste0("$y=g(x)$"))),
+       col=c("red","blue","grey"),
+       lty=c(1,1,2),
+       lwd=c(2,2,2))
+```
+\
+
+
+Meta-information
+============
+extype: cloze
+exclozetype: schoice|schoice
+exsolution: `r sol1`|`r sol2`
+exname: extraneous_easy_graphs

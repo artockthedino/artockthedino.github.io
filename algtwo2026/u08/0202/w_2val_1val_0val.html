@@ -11,7 +11,7 @@
 
 
 
-<title>w_intro_extraneous.knit</title>
+<title>w_2val_1val_0val.knit</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -356,14 +356,18 @@ display: none;
 <h1>Question</h1>
 <p>When solving the equation below with standard algebraic methods, two
 possible solutions are found.</p>
-<p><span class="math display">\[2+\sqrt{3x+34}=x+10\]</span></p>
-<p>When the possible solutions are tested in the above equation, one
-solution is valid, but the other is <a href="https://en.wikipedia.org/wiki/Extraneous_and_missing_solutions">extraneous</a>.
-Find both possible solutions, and determine which is valid and which is
+<p><span class="math display">\[-2+\sqrt{4x+29}=-x-10\]</span></p>
+<p>Let <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span> represent the two possible solutions,
+such that <span class="math inline">\(x_1&lt;x_2\)</span>. Find both
+possible solutions and determine whether each is valid or
 extraneous.</p>
 <ul>
-<li>Valid solution: ##ANSWER1##</li>
-<li>Extraneous solution: ##ANSWER2##</li>
+<li><span class="math inline">\(x_1=\)</span> ##ANSWER1##</li>
+<li><span class="math inline">\(x_1\)</span> is ##ANSWER2##
+solution.</li>
+<li><span class="math inline">\(x_2=\)</span> ##ANSWER3##</li>
+<li><span class="math inline">\(x_2\)</span> is ##ANSWER4##
+solution.</li>
 </ul>
 <div id="answerlist" class="section level2">
 <h2>Answerlist</h2>
@@ -389,6 +393,8 @@ extraneous.</p>
 <li>8</li>
 <li>9</li>
 <li>10</li>
+<li>an extraneous</li>
+<li>a valid</li>
 <li>-10</li>
 <li>-9</li>
 <li>-8</li>
@@ -410,35 +416,38 @@ extraneous.</p>
 <li>8</li>
 <li>9</li>
 <li>10</li>
+<li>an extraneous</li>
+<li>a valid</li>
 </ul>
 </div>
 </div>
 <div id="solution" class="section level1">
 <h1>Solution</h1>
-<p><span class="math display">\[2+\sqrt{3x+34}=x+10\]</span></p>
-<p>Subtract 2 from both sides of the equation. <span class="math display">\[\sqrt{3x+34}=x+8\]</span> Square both sides of
-the equation. Remember, you’ll need to FOIL the right side. <span class="math display">\[3x+34=x^2+16x+64\]</span> Subtract <span class="math inline">\(( 3x+34 )\)</span> from both sides. <span class="math display">\[0=x^2+13x+30\]</span> From here, you can either
+<p><span class="math display">\[-2+\sqrt{4x+29}=-x-10\]</span></p>
+<p>Add 2 to both sides of the equation. <span class="math display">\[\sqrt{4x+29}=-x-8\]</span> Square both sides of
+the equation. Remember, you’ll need to FOIL the right side. <span class="math display">\[4x+29=x^2+16x+64\]</span> Subtract <span class="math inline">\(( 4x+29 )\)</span> from both sides. <span class="math display">\[0=x^2+12x+35\]</span> From here, you can either
 factor or use quadratic formula. It is easy enough to factor this one.
-<span class="math display">\[0=(x+10)(x+3)\]</span> Use the zero-product
-property to identify the possible solutions are <span class="math inline">\(x=-10\)</span> and <span class="math inline">\(x=-3\)</span>. Now we check which solution is
-valid by plugging both into the original equation.</p>
-<p>Start with possible solution <span class="math inline">\(x=-10\)</span> <span class="math display">\[2+\sqrt{3(-10)+34}\stackrel{?}{=}(-10)+10\]</span></p>
-<p><span class="math display">\[2+\sqrt{-30+34}\stackrel{?}{=}-10+10\]</span></p>
-<p><span class="math display">\[2+\sqrt{4}\stackrel{?}{=}0\]</span></p>
-<p><span class="math display">\[2+2\stackrel{?}{=}0\]</span></p>
-<p><span class="math display">\[4\ne 0\]</span> So we see <span class="math inline">\(x=-10\)</span> is an extraneous solution.</p>
-<p>Now check possible solution <span class="math inline">\(x=-3\)</span>
-<span class="math display">\[2+\sqrt{3(-3)+34}\stackrel{?}{=}(-3)+10\]</span></p>
-<p><span class="math display">\[2+\sqrt{-9+34}\stackrel{?}{=}-3+10\]</span></p>
-<p><span class="math display">\[2+\sqrt{25}\stackrel{?}{=}7\]</span></p>
-<p><span class="math display">\[2+5\stackrel{?}{=}7\]</span></p>
-<p><span class="math display">\[7=7\]</span> So we see <span class="math inline">\(x=-3\)</span> is a valid solution.</p>
+<span class="math display">\[0=(x+7)(x+5)\]</span> Use the zero-product
+property to identify the possible solutions are <span class="math inline">\(x_1=-7\)</span> and <span class="math inline">\(x_2=-5\)</span>. Notice we correctly ordered them
+such that <span class="math inline">\(x_1&lt;x_2\)</span>. Now we check
+which solution is valid by plugging both into the original equation.</p>
+<p>Start with possible solution <span class="math inline">\(x=-7\)</span> <span class="math display">\[-2+\sqrt{4(-7)+29}\stackrel{?}{=}-(-7)-10\]</span></p>
+<p><span class="math display">\[-2+\sqrt{-28+29}\stackrel{?}{=}7-10\]</span></p>
+<p><span class="math display">\[-2+\sqrt{1}\stackrel{?}{=}-3\]</span></p>
+<p><span class="math display">\[-2+1\stackrel{?}{=}-3\]</span></p>
+<p><span class="math display">\[-1\ne -3\]</span> So we see <span class="math inline">\(x=-7\)</span> is an extraneous solution.</p>
+<p>Now check possible solution <span class="math inline">\(x=-5\)</span>
+<span class="math display">\[-2+\sqrt{4(-5)+29}\stackrel{?}{=}-(-5)-10\]</span></p>
+<p><span class="math display">\[-2+\sqrt{-20+29}\stackrel{?}{=}5-10\]</span></p>
+<p><span class="math display">\[-2+\sqrt{9}\stackrel{?}{=}-5\]</span></p>
+<p><span class="math display">\[-2+3\stackrel{?}{=}-5\]</span></p>
+<p><span class="math display">\[1\ne -5\]</span> So we see <span class="math inline">\(x=-5\)</span> is an extraneous solution.</p>
 </div>
 <div id="meta-information" class="section level1">
 <h1>Meta-information</h1>
-<p>extype: cloze exclozetype: schoice|schoice exsolution:
-000000010000000000000|100000000000000000000 exname:
-extraneous_easy_graphs</p>
+<p>extype: cloze exclozetype: schoice|schoice|schoice|schoice
+exsolution: 000100000000000000000|10|000001000000000000000|10 exname:
+w_2val_1val_0val</p>
 </div>
 
 

@@ -1,0 +1,161 @@
+```{r,echo=FALSE}
+
+nval = 1 #sample(0:2,1)
+
+# 0 = (x-r)(x-s)
+# 0 = x^2+(-r-s)x+rs
+# 0 = x^2+2Px+P^2+(-r-s-2P)x+(rs-P^2)
+# 0 = x^2+2Px+P^2+(-r-s-2P)x+(rs-P^2)
+# (r+s+2P)x + (P^2-rs) = x^2+2Px+P^2
+# sqrt( (r+s+2P)x + (P^2-rs) ) = x+P
+# sqrt( (r+s+2P)x + (P^2-rs) ) = x+P or sqrt( (r+s+2P)x + (P^2-rs) ) = -x-P
+# a*sqrt( (r+s+2P)x + (P^2-rs) ) = ax+aP or asqrt( (r+s+2P)x + (P^2-rs) ) = -ax-aP
+# ehhhh a=1
+# sqrt( (r+s+2P)x + (P^2-rs) )+k = vx+vP+k
+# h = (rs-P^2)/(r+s+2*P)
+
+# P = sample(1:9,1)
+
+while(T){
+    rs = sample(1:10,2)*sample(c(-1,1),2,T)
+    a = sample(c(-2,2),1)
+    r = rs[1]
+    s = rs[2]
+    P = sample(1:9,1)
+    v = sample(c(-1,1),1)
+    k = sample(2:8,1)*sample(c(-1,1),1)
+    h = (r*s-P^2)/(r+s+2*P)
+    fr = k+a*sqrt((r+s+2*P)*r+P^2-r*s)
+    fs = k+a*sqrt((r+s+2*P)*s+P^2-r*s)
+    gr = k-a*sqrt((r+s+2*P)*r+P^2-r*s)
+    gs = k-a*sqrt((r+s+2*P)*s+P^2-r*s)
+    Lr = v*a*r+v*a*P+k
+    Ls = v*a*s+v*a*P+k
+    if(fr==Lr){
+        valr = T
+    } else {
+        valr = F
+    }
+    if(fs==Ls){
+        vals = T
+    } else {
+        vals = F
+    }
+    if(abs(r+s+2*P)>1 && (v*a*P+k)!=0 && abs(k)!=abs(P^2-r*s) && max(abs(c(fr,fs,gr,gs)))<=20 && sum(1*valr+1*vals)==nval && h!=r && h!=s && (v*a*P+k)!=0){break}
+}
+
+
+f = paste0(k,"+",a,"\\sqrt{",r+s+2*P,"x+",P^2-r*s,"}",collapse="")
+f = gsub("+-","-",f,fixed=T)
+L = paste0(v*a,"x+",v*a*P+k,collapse="")
+L = gsub("+-","-",L,fixed=T)
+L = gsub("-1x","-x",L,fixed=T)
+L = gsub("1x","x",L,fixed=T)
+g = paste0(k,"+",-a,"\\sqrt{",r+s+2*P,"x+",P^2-r*s,"}",collapse="")
+g = gsub("+-","-",g,fixed=T)
+
+ach = -10:10
+al = paste0("* ",ach,collapse="\n")
+ach2 = c("an extraneous","a valid")
+al2 = paste0("* ",ach2,collapse="\n")
+
+
+
+if(fr==Lr){
+    sol1 = paste0(1*(ach==r),collapse="")
+    sol2 = paste0(1*(ach==s),collapse="")
+    sv = r
+    se = s
+} else {
+    sol1 = paste0(1*(ach==s),collapse="")
+    sol2 = paste0(1*(ach==r),collapse="")
+    sv = s
+    se = r
+}
+
+# sol1 = paste0(1*(ach==psol1),collapse="")
+# sol2 = paste0(1*(c(F,T)==val1),collapse="")
+# sol3 = paste0(1*(ach==psol2),collapse="")
+# sol4 = paste0(1*(c(F,T)==val2),collapse="")
+
+
+```
+
+Question
+========
+
+The equation below has one extraneous solution and one valid solution.
+
+$$`r f`~=~`r L`$$
+
+We can find both using [Desmos](https://www.desmos.com/calculator). To find the valid solution, find the intersection of the following two curves:
+
+$$f(x)=`r f`$$
+$$L(x)=`r L`$$
+
+You should see half a parabola facing sideways and a line. Click where the two curves cross. The $x$ value is the valid solution.
+
+The extraneous solution also has a geometric interpretation! We need to complete the parabola by plotting the following curve:
+
+$$g(x)=`r g`$$
+
+You should see the line crosses this second half of the parabola. Click on the intersection. The $x$ value is the extraneous solution.
+
+* Valid: ##ANSWER1##
+* Extraneous: ##ANSWER2##
+
+Answerlist
+--------
+
+`r al`
+`r al`
+
+Solution
+========
+
+The valid solution is $x=`r sv`$, and the extraneous solution is $x=`r se`$. Your Desmos graph should look somewhat similar to the graph below:
+
+```{r,echo=F,fig.dim=c(8,4)}
+
+xlow = min(c(h,r,s))
+xhigh = max(c(h,r,s))
+xmid = mean(c(xlow,xhigh))
+xwid = xhigh-xmid
+ylow = min(c(fr,fs,gr,gs))
+yhigh = max(c(fr,fs,gr,gs))
+ymid = mean(c(ylow,yhigh))
+ywid = yhigh-ymid
+
+par(mfrow=c(1,2),mar=c(5,5,1,1))
+xf = seq(h,h+3*xwid*sign(r-h),length.out=1000)
+yf = k+a*sqrt((r+s+2*P)*xf+P^2-r*s)
+xg = xf
+yg = k-a*sqrt((r+s+2*P)*xf+P^2-r*s)
+xl = seq(xmid-2*xwid,xmid+2*xwid,length.out=5)
+yl = v*a*xl+v*a*P+k
+sf = 1.2
+plot(0,0,"n",xlim=c(xmid-sf*xwid,xmid+sf*xwid),ylim=c(ymid-sf*ywid,ymid+sf*ywid),xlab="x",ylab="y")
+abline(h=0,lwd=2)
+abline(v=0,lwd=2)
+lines(xf,yf,col="red")
+lines(xg,yg,col="grey",lty=2)
+lines(xl,yl,col="blue")
+points(c(r,s),c(Lr,Ls),pch=19,col="purple")
+plot(0,0,"n",axes=F,ann=F)
+library(latex2exp)
+legend("topleft",c(TeX(paste0("$y=f(x)$")),
+                TeX(paste0("$y=L(x)$")),
+                TeX(paste0("$y=g(x)$"))),
+       col=c("red","blue","grey"),
+       lty=c(1,1,2),
+       lwd=c(2,2,2))
+```
+\
+
+
+Meta-information
+============
+extype: cloze
+exclozetype: schoice|schoice
+exsolution: `r sol1`|`r sol2`
+exname: zzz
