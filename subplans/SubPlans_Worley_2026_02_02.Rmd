@@ -1,7 +1,7 @@
 ---
 title: "Sub Plans for Worley on Mon Feb 02"
-output: pdf_document
-url_color: blue
+output: html_document
+urlcolor: blue
 ---
 
 
@@ -19,6 +19,7 @@ url_color: blue
 
 * Quiet study hall.
     * Students can work on assignments from other classes.
+* At the end of class, students should submit (on Canvas) a summary of what they worked on.
 
 
 ## Algebra 2 11:04-12:01 in Carson 301
@@ -37,15 +38,18 @@ url_color: blue
 ## Project Based Learning 2:02-2:57 in Holiday 206
 
 * There is an entrance ticket on Canvas. (10 minutes or so)
-* Students will make a frieze-pattern slideshow using [google slides](slides.new).
+* There is a project assignment on Canvas. Students will make a frieze-pattern slideshow using [google slides](slides.new). The project is described on Canvas.
+    * Exemplar: [https://artockthedino.github.io/pbl/daily/day04/Frieze_slideshow_exemplar.html](https://artockthedino.github.io/pbl/daily/day04/Frieze_slideshow_exemplar.html)
     * Students should use this tool to generate the patterns:
         * [https://chadworley.github.io/frieze/frieze.html](https://chadworley.github.io/frieze/frieze.html)
     * Students should create 7 patterns, one of each frieze group. They will screenshot their results to put them into the slideshow.
+    * The slideshow should have 8 slides. The first slide is a title slide with the project title and their name. Then there should be one slide per frieze pattern.
     * Each slide will say the [frieze group name](https://en.wikipedia.org/wiki/Frieze_group#Descriptions_of_the_seven_frieze_groups).
     * Each slide will say something about the pattern.
         * What was your process?
         * What does it remid you of?
     * Students will struggle to submit their slideshows. They should first download their slides as a PDF. Then, on the Canvas assignment, they can upload the PDF and submit it.
+    * STUDENTS SHOULD NOT SHARE THE SLIDES WITH ME. They should submit the slides on Canvas. They will lose points if they share their slides with me.
 
 
     
