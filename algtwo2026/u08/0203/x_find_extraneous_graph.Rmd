@@ -1,0 +1,155 @@
+```{r,echo=FALSE}
+gcd2 <- function(a, b) {
+  if (b == 0) a else Recall(b, a %% b)
+}
+gcd <- function(...) Reduce(gcd2, c(...))
+
+fsimp = function(top,bot){
+    gg = abs(gcd(c(top,bot)))
+    top = round(abs(top)/gg*sign(top*bot))
+    bot = round(abs(mbot)/gg)
+    if(bot==1){
+        return(top)
+    } else {
+        return(paste0("\\frac{",top,"}{",bot,"}"))
+    }
+}
+
+xpar = c(1,4,9)
+ypar = c(1,2,3)
+yext = c(-1,-2,-3)
+
+# horizontal shift before possible reflection
+
+# y = a*sqrt(bx-h)+k
+
+h = sample(-9:1,1)
+k = sample(-4:4,1)
+a = sample(c(-2,-1,1,2),1)
+b = sample(c(-1,1),1)
+
+xc = (xpar+h)/b
+yc = a*ypar+k
+xd = xc
+yd = k-a*ypar
+
+ii = sample(1:3,2)
+xv = xc[ii[1]]
+yv = yc[ii[1]]
+xe = xc[ii[2]]
+ye = yd[ii[2]]
+
+mtop = diff(c(yv,ye))
+mbot = diff(c(xv,xe))
+
+mf = fsimp(mtop,mbot)
+
+```
+
+Question
+========
+
+A transformed square-root function, $y=f(x)$, is graphed below. A linear function, $y=L(x)$, is not shown, but it goes through point $(`r xv`,`r yv`)$ and has a slope of $`r mf`$.
+
+```{r,echo=F,fig.dim=c(5,5)}
+par(pty="s",mar=c(4,4,0,0))
+plot(0,0,"n",xlim=c(-10,10),ylim=c(-10,10),xlab="x",ylab="y")
+
+for(i in -10:10){
+    lines(c(i,i),c(-10,10),col="grey",lwd=0.5)
+    lines(c(-10,10),c(i,i),col="grey",lwd=0.5)
+}
+for(i in seq(-10,10,5)){
+    lines(c(i,i),c(-10,10),col="darkgrey",lwd=1)
+    lines(c(-10,10),c(i,i),col="darkgrey",lwd=1)
+}
+abline(h=0,lwd=2)
+abline(v=0,lwd=2)
+
+xx = seq(h*sign(b),10*sign(b),0.01*sign(b))
+yy = a*sqrt(b*xx-h)+k
+
+xx = xx[abs(yy)<=10]
+yy = yy[abs(yy)<=10]
+
+
+lines(xx,yy,col="blue",lwd=2)
+
+x2 = (c(0,1,4,9,16)+h)/b
+y2 = a*c(0,1,2,3,4)+k
+x2 = x2[abs(y2)<=10]
+y2 = y2[abs(y2)<=10]
+
+points(x2,y2,pch=19,col="blue")
+
+```
+\
+
+If standard algebraic steps were used to find $x$ values that satisfy equation $f(x)=L(x)$, what extraneous solution would be found?
+
+
+Solution
+========
+
+You should be able to complete the picture. Use symmetry to complete the parabola, and use the slope to extend the line.
+
+```{r,echo=F,fig.dim=c(5,5)}
+par(pty="s",mar=c(4,4,0,0))
+plot(0,0,"n",xlim=c(-10,10),ylim=c(-10,10),xlab="x",ylab="y")
+
+for(i in -10:10){
+    lines(c(i,i),c(-10,10),col="grey",lwd=0.5)
+    lines(c(-10,10),c(i,i),col="grey",lwd=0.5)
+}
+for(i in seq(-10,10,5)){
+    lines(c(i,i),c(-10,10),col="darkgrey",lwd=1)
+    lines(c(-10,10),c(i,i),col="darkgrey",lwd=1)
+}
+abline(h=0,lwd=2)
+abline(v=0,lwd=2)
+
+xx = seq(h*sign(b),10*sign(b),0.01*sign(b))
+yy = a*sqrt(b*xx-h)+k
+
+xx = xx[abs(yy)<=10]
+yy = yy[abs(yy)<=10]
+
+
+lines(xx,yy,col="blue",lwd=2)
+
+x2 = (c(0,1,4,9,16)+h)/b
+y2 = a*c(0,1,2,3,4)+k
+x2 = x2[abs(y2)<=10]
+y2 = y2[abs(y2)<=10]
+
+# points(x2,y2,pch=19,col="blue")
+
+xl = seq(-10,10,0.1)
+yl = mtop/mbot*(xl-xv)+yv
+xl = xl[abs(yl)<=10]
+yl = yl[abs(yl)<=10]
+
+lines(xl,yl,col="red",lwd=2)
+
+xx = seq(h*sign(b),10*sign(b),0.01*sign(b))
+yy = -a*sqrt(b*xx-h)+k
+
+xx = xx[abs(yy)<=10]
+yy = yy[abs(yy)<=10]
+
+lines(xx,yy,col="grey",lwd=2,lty=2)
+
+points(xe,ye,pch=19,col="red")
+
+```
+\
+
+The intersection of the line with the second half of the parabola is at point $(`r xe`,`r ye`)$. Thus the extraneous solution is $x=`r xe`$.
+
+
+
+Meta-information
+============
+extype: num
+exsolution: `r xe`
+exname: x_find_extraneous_graph
