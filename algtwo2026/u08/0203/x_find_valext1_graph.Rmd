@@ -35,7 +35,7 @@ yc = a*ypar+k
 xd = (xext+h)/b
 yd = k+a*yext
 
-nval = sample(0:2,1)
+nval = 1 #sample(0:2,1)
 
 if(nval==0){
     ii = sample(1:length(xd),2)
