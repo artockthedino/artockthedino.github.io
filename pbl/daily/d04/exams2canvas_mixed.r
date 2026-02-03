@@ -1,5 +1,5 @@
 library("exams")
-n = 15
+n = 18
 outdir = "outcanvas"
 
 probs = list("et_recognize_Frieze_group.Rmd")
@@ -8,8 +8,8 @@ exams2canvas(probs,
              n=n,
              dir=outdir,
              points=pnts,
-             maxattempts = 5,
-             name="pbl_0202_ET",
+             maxattempts = 6,
+             name="pbl_0203_ET",
              template = "canvas_qti12.xml",
              cloze = list(enumerate = FALSE)
 )
