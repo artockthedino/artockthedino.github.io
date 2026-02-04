@@ -1,0 +1,316 @@
+---
+output: pdf_document
+params:
+    rseed: 0
+    showsol: true
+---
+
+```{r,echo=F,warning=FALSE,message=FALSE}
+options(scipen=999)
+if(params$rseed !=0){
+    set.seed(params$rseed)
+}
+knitr::opts_chunk$set(echo = FALSE)
+bn <- basename(knitr::current_input())
+bn = strsplit(bn,".",fixed=T)[[1]][1]
+```
+
+Name: \vspace{5pt} \hrule
+
+## `r bn` (v`r params$rseed`)
+
+```{r}
+gcd2 <- function(a, b) {
+  if (b == 0) a else Recall(b, a %% b)
+}
+gcd <- function(...) Reduce(gcd2, c(...))
+pn = function(coeffs,pows){
+    pows = pows[coeffs!=0]
+    coeffs = coeffs[coeffs!=0]
+    ex1 = paste0("{",coeffs,"}x^{",pows,"}",collapse="+")
+    ex1 = gsub("+{-","-{",ex1,fixed=T)
+    ex1 = gsub("{1}x^{0}","1",ex1,fixed=T)
+    ex1 = gsub("{-1}x^{0}","-1",ex1,fixed=T)
+    ex1 = gsub("{1}x","x",ex1,fixed=T)
+    ex1 = gsub("{-1}x","-x",ex1,fixed=T)
+    ex1 = gsub("x^{0}","",ex1,fixed=T)
+    ex1 = gsub("x^{1}","x",ex1,fixed=T)
+    ex1 = gsub("+-","-",ex1,fixed=T)
+    if(ex1 == ""){
+        ex1 = "0"
+    }
+    return(ex1)
+}
+
+fsimp = function(top,bot){
+    gg = abs(gcd(c(top,bot)))
+    top = round(abs(top)/gg*sign(top*bot))
+    bot = round(abs(mbot)/gg)
+    if(bot==1){
+        return(paste0(top))
+    } else {
+        return(paste0("\\frac{",top,"}{",bot,"}"))
+    }
+}
+
+xpar = c(0,1,4,9)
+ypar = c(0,1,2,3)
+xext = c(1,4,9)
+yext = c(-1,-2,-3)
+
+# horizontal shift before possible reflection
+
+# y = a*sqrt(bx-h)+k
+
+fxs = c("-1+3\\sqrt{x+1}","1-2\\sqrt{-x+7}")
+Lxs = c("\\frac{3}{2}(x-4)+2","2(x-5)-3")
+ks = c(-1,1)
+as = c(3,-2)
+hs = c(-1,-7)
+bs = c(1,-1)
+mtops = c(3,2)
+mbots = c(2,1)
+xis = list(c(0,8),c(6,7))
+yis = list(c(-4,8),c(-1,1))
+wrds = list(c("an extraneous","a valid"),c("a valid","a valid"))
+mfs = c("\\frac{3}{2}","2")
+xps = c(4,5)
+yps = c(2,-3)
+nvals = c(1,2)
+
+while(length(fxs)<9){
+    h = sample(c(-9:-1,1),1)
+    a = sample(c(-3,-2,-1,1,2,3),1)
+    k = sample(c(((-10+3*abs(a)):-1),(1:(10-3*abs(a)))),1)
+    b = sample(c(-1,1),1)
+    xc = (xpar+h)/b
+    yc = a*ypar+k
+    xd = (xext+h)/b
+    yd = k+a*yext
+    
+    nval = sample(0:2,1)
+    
+    if(nval==0){
+        ii = sample(1:length(xd),2)
+        xi = xd[ii]
+        yi = yd[ii]
+        isval = c(F,F)
+        wrd = c("an extraneous","an extraneous")
+    }
+    if(nval==1){
+        while(T){
+            ic = sample(1:length(xc),1)
+            id = sample(1:length(xd),1)
+            xic = xc[ic]
+            yic = yc[ic]
+            xid = xd[id]
+            yid = yd[id]
+            ii = sample(1:2)
+            xi = c(xic,xid)[ii]
+            yi = c(yic,yid)[ii]
+            isval = c(T,F)[ii]
+            wrd = c("a valid","an extraneous")[ii]
+            if(xic!=xid){break}
+        }
+    }
+    if(nval==2){
+        ii = sample(1:length(xc),2)
+        xi = xc[ii]
+        yi = yc[ii]
+        isval = c(T,T)
+        wrd = c("a valid","a valid")
+    }
+    
+    mtop = diff(yi)
+    mbot = diff(xi)
+    mf = fsimp(mtop,mbot)
+    
+    
+    while(T){
+        xp = sample(-10:10,1)
+        yp = mtop*(xp-xi[1])/mbot+yi[1]
+        if(abs(yp)<=10 && abs(yp)%%1==0 && yp!=yi[1] && yp!=yi[2] && min(abs(c(xp,yp)))>0){break}
+    }
+    
+    if(b==-1){
+        fx = paste0(k,"+[",a,"]\\sqrt{-x+",-h,"}")
+    } else {
+        fx = paste0(k,"+[",a,"]\\sqrt{x+",-h,"}")
+    }
+    fx = gsub("[1]","",fx,fixed=T)
+    fx = gsub("[-1]","-",fx,fixed=T)
+    fx = gsub("[","",fx,fixed=T)
+    fx = gsub("]","",fx,fixed=T)
+    fx = gsub("+-","-",fx,fixed=T)
+    Lx = paste0("[",mf,"](x+",-xp,")+",yp)
+    Lx = gsub("+-","-",Lx,fixed=T)
+    Lx = gsub("[1]","",Lx,fixed=T)
+    Lx = gsub("[-1]","-",Lx,fixed=T)
+    Lx = gsub("[","",Lx,fixed=T)
+    Lx = gsub("]","",Lx,fixed=T)
+    if(!(fx %in% fxs) && !(Lx %in% Lxs) && max(as.numeric(table(c(nvals,nval))))<=3 && max(as.numeric(table(c(sign(bs),sign(b)))))<=5 && max(as.numeric(table(c(sign(as),sign(a)))))<=5){
+        fxs = c(fxs,fx)
+        Lxs = c(Lxs,Lx)
+        ks = c(ks,k)
+        as = c(as,a)
+        hs = c(hs,h)
+        bs = c(bs,b)
+        mtops = c(mtops,mtop)
+        mbots = c(mbots,mbot)
+        xis[[length(xis)+1]] = xi
+        yis[[length(yis)+1]] = yi
+        wrds[[length(wrds)+1]] = wrd
+        mfs = c(mfs,mf)
+        xps = c(xps,xp)
+        yps = c(yps,yp)
+        nvals = c(nvals,nval)
+    }
+}
+
+```
+
+
+```{r,echo=F}
+doit = function(i){
+    fx = fxs[i]
+    Lx = Lxs[i]
+    k = ks[i]
+    a = as[i]
+    h = hs[i]
+    b = bs[i]
+    mtop = mtops[i]
+    mbot = mbots[i]
+    xi = xis[[i]]
+    yi = yis[[i]]
+    wrd = wrds[[i]]
+    mf = mfs[i]
+    xp = xps[i]
+    yp = yps[i]
+    cat(paste0("### Question ",i,"\n\n"))
+    cat(paste0("On the $x,y$ plane below, accurately plot the following two functions:\n\n$$y=",fx,"$$\n$$y=",Lx,"$$\n\n"))
+    
+    par(pty="s",mar=c(0,0,0,0))
+    plot(0,0,"n",xlim=c(-10,10),ylim=c(-10,10),ann=F,axes=F)
+    
+    for(i in -10:10){
+        lines(c(i,i),c(-10,10),col="grey",lwd=0.5)
+        lines(c(-10,10),c(i,i),col="grey",lwd=0.5)
+    }
+    for(i in seq(-10,10,5)){
+        lines(c(i,i),c(-10,10),col="darkgrey",lwd=1)
+        lines(c(-10,10),c(i,i),col="darkgrey",lwd=1)
+    }
+    abline(h=0,lwd=2)
+    abline(v=0,lwd=2)
+    text(10,0,"x",adj=c(-0.2,-0.2))
+    text(0,10,"y",adj=c(-0.2,-0.2))
+    text(10,0,"10",adj=c(0.5,1.2),cex=0.7)
+    text(0,10,"10",adj=c(1.1,0.5),cex=0.7)
+    
+    if(params$showsol){
+        xx = seq(h*sign(b),10*sign(b),0.01*sign(b))
+        yy = a*sqrt(b*xx-h)+k
+        
+        xx = xx[abs(yy)<=10]
+        yy = yy[abs(yy)<=10]
+        
+        
+        lines(xx,yy,col="blue",lwd=2)
+        
+        x2 = (c(0,1,4,9,16)+h)/b
+        y2 = a*c(0,1,2,3,4)+k
+        x2 = x2[abs(y2)<=10]
+        y2 = y2[abs(y2)<=10]
+        
+        points(x2,y2,pch=19,col="blue")
+        
+        xl = seq(-10,10,0.1)
+        yl = mtop/mbot*(xl-xi[1])+yi[1]
+        xl = xl[abs(yl)<=10]
+        yl = yl[abs(yl)<=10]
+        lines(xl,yl,col="red",lwd=2)
+    
+        xx = seq(h*sign(b),10*sign(b),0.01*sign(b))
+        yy = -a*sqrt(b*xx-h)+k
+        
+        xx = xx[abs(yy)<=10]
+        yy = yy[abs(yy)<=10]
+        
+        lines(xx,yy,col="grey",lwd=2,lty=2)
+        
+        points(xi,yi,pch=19,col="red")
+        points(xp,yp,pch=19,col="red")
+    }
+    cat(paste0("\\\n\nIf the equation $",fx,"=",Lx,"$ was solved using algebra, what two possible solutions would be found?\n\n"))
+    
+    if(params$showsol){
+        cat("\\color{red}")
+        cat("Possible solutions: ")
+        cat(paste0("$$x=",xi,"$$",collapse="\n"))
+        cat("\n\n\\color{black}\n\n")
+    }
+    
+    cat("\n\n\\vfill\n\n For each possible solution, state whether it would be a valid solution or an extraneous solution.\n\n\\vfill\n\n")
+    if(params$showsol){
+        cat("\\color{red}")
+        cat("\n\n")
+        cat(paste0("$x=",xi,"$ is ",wrd," solution.",collapse="\n\n"))
+        cat("\n\n\\color{black}\n\n")
+    }
+    cat("\\vfill\n\n")
+    if(i<length(fxs)){
+        cat("\\newpage\n\n")
+    }
+}
+```
+
+
+```{r,echo=F,fig.dim=c(4,4),results="asis"}
+doit(1)
+```
+
+```{r,echo=F,fig.dim=c(4,4),results="asis"}
+doit(2)
+```
+
+```{r,echo=F,fig.dim=c(4,4),results="asis"}
+doit(3)
+```
+
+```{r,echo=F,fig.dim=c(4,4),results="asis"}
+doit(4)
+```
+
+
+```{r,echo=F,fig.dim=c(4,4),results="asis"}
+doit(5)
+```
+
+```{r,echo=F,fig.dim=c(4,4),results="asis"}
+doit(6)
+```
+
+
+```{r,echo=F,fig.dim=c(4,4),results="asis"}
+doit(7)
+```
+
+```{r,echo=F,fig.dim=c(4,4),results="asis"}
+doit(8)
+```
+
+
+```{r,echo=F,fig.dim=c(4,4),results="asis"}
+doit(9)
+```
+
+\newpage
+
+
+```{r,echo=F,results='asis'}
+for(i in 1:length(fxs)){
+    cat(paste0(i,". Possible solution $x=",xis[[i]][1],"$ is ",wrds[[i]][1]," solution. And $x=",xis[[i]][2],"$ is ",wrds[[i]][2]," solution.\n",collapse=""))
+}
+```
+
+

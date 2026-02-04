@@ -1,0 +1,85 @@
+```{r,echo=FALSE}
+ab = sample(11:99,2)
+a = ab[1]
+b = ab[2]
+c = sqrt(a^2+b^2)
+
+```
+
+Question
+========
+
+On the right triangle below, find the length of the missing side.
+
+
+```{r,echo=F,fig.dim=c(4,4)}
+x0 = c(-2/3*b,1/3*b,1/3*b)
+y0 = c(-1/3*a,-1/3*a,2/3*a)
+r0 = sqrt(x0^2+y0^2)
+r0max = max(r0)
+
+bsize = 1/10*min(c(a,b))
+xb0 = c(1/3*b-bsize,1/3*b-bsize,1/3*b)
+yb0 = c(-1/3*a,-1/3*a+bsize,-1/3*a+bsize)
+
+ang = atan(a/b)
+tbump = 2/10*min(c(a,b))
+xt0 = c(-1/6*b,1/3*b+tbump,-1/6*b-cos(ang)*tbump)
+yt0 = c(-1/3*a-tbump,1/6*a,1/6*a+sin(ang)*tbump)
+
+th = runif(1,0,2*pi)
+
+if(sample(1:2,1)==2){
+    x0 = -x0
+    xb0 = -xb0
+    xt0 = -xt0
+}
+
+
+x1 = cos(th)*x0-sin(th)*y0
+y1 = sin(th)*x0+cos(th)*y0
+xb1 = cos(th)*xb0-sin(th)*yb0
+yb1 = sin(th)*xb0+cos(th)*yb0
+xt1 = cos(th)*xt0-sin(th)*yt0
+yt1 = sin(th)*xt0+cos(th)*yt0
+
+par(mar=c(0,0,0,0),pty="s")
+plot(0,0,"n",axes=F,ann=F,xlim=c(-r0max,r0max),ylim=c(-r0max,r0max))
+
+polygon(x1,y1,lwd=2)
+lines(xb1,yb1,lwd=1)
+
+text(xt1,yt1,c(a,b,"?"))
+
+```
+\
+
+The tolerance is $\pm 0.1$.
+
+
+Solution
+========
+
+Use pythagorean theorem.
+
+$$a=`r a`$$
+$$b=`r b`$$
+
+$a^2+b^2=c^2$
+
+$$c = \sqrt{a^2+b^2}$$
+
+$$c = \sqrt{{`r a`}^2+{`r b`}^2}$$
+
+
+$$c\approx `r sprintf("%0.2f",c)`$$
+
+
+
+
+Meta-information
+============
+extype: num
+exsolution: `r c`
+exname: pyth_thrm_get_hyp
+extol: 0.1

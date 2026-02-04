@@ -4,7 +4,6 @@ output:
     pdf_document:
         toc: true
 urlcolor: blue
-
 ---
 
 
