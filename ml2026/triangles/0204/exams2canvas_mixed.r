@@ -3,13 +3,17 @@ n = 30
 outdir = "outcanvas"
 
 ### Entrance ticket
-pm = list("ET_realize_denominator.Rmd")
+pm = list("x_pyth_thrm_get_hyp.Rmd",
+          "x_pyth_thrm_get_side.Rmd",
+          c("x_pyth_thrm_get_hyp.Rmd","x_pyth_thrm_get_side.Rmd"),
+          c("x_pyth_thrm_get_hyp.Rmd","x_pyth_thrm_get_side.Rmd"),
+          c("x_pyth_thrm_get_hyp.Rmd","x_pyth_thrm_get_side.Rmd"))
 exams2canvas(pm,
              n=n,
              dir=outdir,
-             points=rep(5,length(pm)),
+             points=rep(2,length(pm)),
              maxattempts = 6,
-             name="a0122c_rationalize_comp_denom",
+             name="m0204_use_pyth_thrm",
              template = "canvas_qti12.xml",
              cloze = list(enumerate = FALSE))
 
