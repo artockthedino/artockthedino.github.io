@@ -3,31 +3,44 @@ n = 30
 outdir = "outcanvas"
 
 ### Entrance ticket
-pm = list("x_pyth_thrm_get_hyp.Rmd",
-          "x_pyth_thrm_get_side.Rmd",
-          c("x_pyth_thrm_get_hyp.Rmd","x_pyth_thrm_get_side.Rmd"),
-          c("x_pyth_thrm_get_hyp.Rmd","x_pyth_thrm_get_side.Rmd"),
-          c("x_pyth_thrm_get_hyp.Rmd","x_pyth_thrm_get_side.Rmd"))
+pm = list("x_rtt_degs_01.Rmd",
+          "x_rtt_degs_02.Rmd",
+          "x_rtt_degs_03.Rmd",
+          "x_rtt_degs_04.Rmd",
+          "x_rtt_degs_05.Rmd",
+          "x_rtt_degs_06.Rmd",
+          "x_rtt_degs_07.Rmd",
+          "x_rtt_degs_08.Rmd",
+          "x_rtt_degs_09.Rmd",
+          "x_rtt_degs_10.Rmd",
+          "x_rtt_degs_11.Rmd")
+exams2canvas(pm,
+             n=n,
+             dir=outdir,
+             points=rep(1,length(pm)),
+             maxattempts = 6,
+             name="m0206c_right_triangles",
+             template = "canvas_qti12.xml",
+             cloze = list(enumerate = FALSE))
+
+pm = list("x_rtt_degs.Rmd",
+          "x_rtt_degs.Rmd",
+          "x_rtt_degs.Rmd",
+          "x_rtt_degs.Rmd",
+          "x_rtt_degs.Rmd",
+          "x_rtt_degs.Rmd",
+          "x_rtt_degs.Rmd",
+          "x_rtt_degs.Rmd",
+          "x_rtt_degs.Rmd",
+          "x_rtt_degs.Rmd")
 exams2canvas(pm,
              n=n,
              dir=outdir,
              points=rep(2,length(pm)),
              maxattempts = 6,
-             name="m0204_use_pyth_thrm",
+             name="m0206c_right_triangles_MIX",
              template = "canvas_qti12.xml",
              cloze = list(enumerate = FALSE))
-
-# pm = list("01_realize_denominator.Rmd",
-#           "01_realize_denominator.Rmd",
-#           "01_realize_denominator.Rmd")
-# exams2canvas(pm,
-#              n=n,
-#              dir=outdir,
-#              points=rep(2,length(pm)),
-#              maxattempts = 6,
-#              name="a0115c_realize_denominator",
-#              template = "canvas_qti12.xml",
-#              cloze = list(enumerate = FALSE))
 
 
 # pm = list("standard_from_graph.Rmd",
