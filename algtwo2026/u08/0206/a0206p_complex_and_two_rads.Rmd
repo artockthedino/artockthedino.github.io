@@ -1,0 +1,466 @@
+---
+output: pdf_document
+params:
+    rseed: 0
+    showsol: true
+---
+
+```{r,echo=F,warning=FALSE,message=FALSE}
+options(scipen=999)
+if(params$rseed !=0){
+    set.seed(params$rseed)
+}
+knitr::opts_chunk$set(echo = FALSE)
+bn <- basename(knitr::current_input())
+bn = strsplit(bn,".",fixed=T)[[1]][1]
+```
+
+Name: \vspace{5pt} \hrule
+
+## `r bn` (v`r params$rseed`)
+
+**YOU MUST SHOW WORK FOR CREDIT.**
+
+```{r}
+gcd2 <- function(a, b) {
+  if (b == 0) a else Recall(b, a %% b)
+}
+gcd <- function(...) Reduce(gcd2, c(...))
+pn = function(coeffs,pows){
+    pows = pows[coeffs!=0]
+    coeffs = coeffs[coeffs!=0]
+    ex1 = paste0("{",coeffs,"}x^{",pows,"}",collapse="+")
+    ex1 = gsub("+{-","-{",ex1,fixed=T)
+    ex1 = gsub("{1}x^{0}","1",ex1,fixed=T)
+    ex1 = gsub("{-1}x^{0}","-1",ex1,fixed=T)
+    ex1 = gsub("{1}x","x",ex1,fixed=T)
+    ex1 = gsub("{-1}x","-x",ex1,fixed=T)
+    ex1 = gsub("x^{0}","",ex1,fixed=T)
+    ex1 = gsub("x^{1}","x",ex1,fixed=T)
+    ex1 = gsub("+-","-",ex1,fixed=T)
+    if(ex1 == ""){
+        ex1 = "0"
+    }
+    return(ex1)
+}
+
+cn = function(a,b){
+  cn = gsub("+-","-",paste0(a,"+",b,"i"),fixed=TRUE)
+  cn = gsub("0+0i","0",cn,fixed=TRUE)
+  cn = gsub("+1i","+i",cn,fixed=TRUE)
+  cn = gsub("-1i","-i",cn,fixed=TRUE)
+  cn = gsub("+0i","",cn,fixed=TRUE)
+  cn = gsub("-0i","",cn,fixed=TRUE)
+  if(nchar(cn)>1 && substr(cn, start = 1, stop = 2)=="0+"){cn = gsub("0+","",cn,fixed=TRUE)}
+  if(nchar(cn)>1 && substr(cn, start = 1, stop = 2)=="0-"){cn = gsub("0-","-",cn,fixed=TRUE)}
+  return(cn)
+}
+```
+
+
+### Question 1
+
+```{r,echo=FALSE}
+
+while(T){
+    p = sample(1:9,1)*sample(c(-1,1),1)
+    q = sample(2:9,1)
+    psi = sample(1:9,1)*sample(c(-1,1),1)
+    # sqrt(mx+n)+k = x+psi+k
+    m = 2*psi-2*p
+    n = psi^2-p^2-q^2
+    k = sample(1:9,1)*sample(c(-1,1),1)
+    if(n!=0 && abs(m)>1 && abs(psi+k)>0){break}
+}
+
+p1 = p
+q1 = q
+
+fx = paste0("\\sqrt{",m,"x+",n,"}+",k)
+lx = paste0("x+",psi+k)
+fx = gsub("+-","-",fx,fixed=T)
+lx = gsub("+-","-",lx,fixed=T)
+gx = paste0("-\\sqrt{",m,"x+",n,"}+",k)
+gx = gsub("+-","-",gx,fixed=T)
+
+ach = -10:10
+ach2 = 1:10
+al = paste0("* ",ach,collapse="\n")
+al2 = paste0("* ",ach2,collapse="\n")
+sol1 = paste0(1*(ach==-p),collapse="")
+sol2 = paste0(1*(ach2==q),collapse="")
+```
+
+
+Find the complex possible solutions to the equation.
+
+$$`r fx`=`r lx`$$
+
+\vfill
+
+```{r,echo=F,results="asis",eval=params$showsol}
+cat("\\color{red}")
+
+eq2 = paste0("\\sqrt{",m,"x+",n,"}=x+",psi)
+eq2 = gsub("+-","-",eq2,fixed=T)
+cat(paste0("\n\n$$",eq2,"$$\n\n"))
+
+eq3 = paste0(m,"x+",n,"=x^2+",2*psi,"x+",psi^2)
+eq3 = gsub("+-","-",eq3,fixed=T)
+cat(paste0("\n\n$$",eq3,"$$\n\n"))
+
+eq4 = paste0("0=x^2+",2*psi-m,"x+",psi^2-n)
+eq4 = gsub("+-","-",eq4,fixed=T)
+cat(paste0("\n\n$$",eq4,"$$\n\n"))
+
+a = 1
+b = 2*psi-m
+c = psi^2-n
+qf1 = paste0("x=\\frac{-(",b,")\\pm\\sqrt{(",b,")^2-4(",a,")(",c,")}}{2(",a,")}")
+cat(paste0("\n\n$$",qf1,"$$\n"))
+
+qf2 = paste0("x=\\frac{",-b,"\\pm\\sqrt{",b^2,"-",4*a*c,"}}{",2*a,"}")
+cat(paste0("\n\n$$",qf2,"$$\n"))
+
+qf3 = paste0("x=\\frac{",-b,"\\pm\\sqrt{",b^2-4*a*c,"}}{",2*a,"}")
+cat(paste0("\n\n$$",qf3,"$$\n"))
+
+qf4 = paste0("x=\\frac{",-b,"\\pm",2*a*q,"i}{",2*a,"}")
+cat(paste0("\n\n$$",qf4,"$$\n"))
+
+qf5 = paste0("x=",-p,"\\pm",q,"i")
+cat(paste0("\n\n$$",qf5,"$$\n"))
+```
+
+
+\hfill \color{gray} \tiny $x=`r -p`\pm `r q`i$ \normalsize \color{black}
+
+```{r,echo=F,results="asis",eval=params$showsol}
+cat("\\newpage")
+```
+
+### Question 2
+
+```{r,echo=FALSE}
+
+while(T){
+    p = sample(1:9,1)*sample(c(-1,1),1)
+    q = sample(2:9,1)
+    psi = sample(1:9,1)*sample(c(-1,1),1)
+    # sqrt(mx+n)+k = x+psi+k
+    m = 2*psi-2*p
+    n = psi^2-p^2-q^2
+    k = sample(1:9,1)*sample(c(-1,1),1)
+    if(n!=0 && abs(m)>1 && abs(psi+k)>0 && p!=p1 && q!=q1){break}
+}
+
+fx = paste0("\\sqrt{",m,"x+",n,"}+",k)
+lx = paste0("x+",psi+k)
+fx = gsub("+-","-",fx,fixed=T)
+lx = gsub("+-","-",lx,fixed=T)
+gx = paste0("-\\sqrt{",m,"x+",n,"}+",k)
+gx = gsub("+-","-",gx,fixed=T)
+
+ach = -10:10
+ach2 = 1:10
+al = paste0("* ",ach,collapse="\n")
+al2 = paste0("* ",ach2,collapse="\n")
+sol1 = paste0(1*(ach==-p),collapse="")
+sol2 = paste0(1*(ach2==q),collapse="")
+```
+
+
+Find the complex possible solutions to the equation.
+
+$$`r fx`=`r lx`$$
+
+\vfill
+
+```{r,echo=F,results="asis",eval=params$showsol}
+cat("\\color{red}")
+
+eq2 = paste0("\\sqrt{",m,"x+",n,"}=x+",psi)
+eq2 = gsub("+-","-",eq2,fixed=T)
+cat(paste0("\n\n$$",eq2,"$$\n\n"))
+
+eq3 = paste0(m,"x+",n,"=x^2+",2*psi,"x+",psi^2)
+eq3 = gsub("+-","-",eq3,fixed=T)
+cat(paste0("\n\n$$",eq3,"$$\n\n"))
+
+eq4 = paste0("0=x^2+",2*psi-m,"x+",psi^2-n)
+eq4 = gsub("+-","-",eq4,fixed=T)
+cat(paste0("\n\n$$",eq4,"$$\n\n"))
+
+a = 1
+b = 2*psi-m
+c = psi^2-n
+qf1 = paste0("x=\\frac{-(",b,")\\pm\\sqrt{(",b,")^2-4(",a,")(",c,")}}{2(",a,")}")
+cat(paste0("\n\n$$",qf1,"$$\n"))
+
+qf2 = paste0("x=\\frac{",-b,"\\pm\\sqrt{",b^2,"-",4*a*c,"}}{",2*a,"}")
+cat(paste0("\n\n$$",qf2,"$$\n"))
+
+qf3 = paste0("x=\\frac{",-b,"\\pm\\sqrt{",b^2-4*a*c,"}}{",2*a,"}")
+cat(paste0("\n\n$$",qf3,"$$\n"))
+
+qf4 = paste0("x=\\frac{",-b,"\\pm",2*a*q,"i}{",2*a,"}")
+cat(paste0("\n\n$$",qf4,"$$\n"))
+
+qf5 = paste0("x=",-p,"\\pm",q,"i")
+cat(paste0("\n\n$$",qf5,"$$\n"))
+```
+
+\hfill \color{gray} \tiny $x=`r -p`\pm `r q`i$ \normalsize \color{black}
+
+
+
+\newpage
+
+
+### Question 3
+
+```{r,echo=FALSE}
+
+# sqrt(x+a)+b = sqrt(x+c)
+# x+a + 2b*sqrt(x+a) + b^2 = x+c
+# sqrt(x+a) = (c-a-b^2)/(2b)
+# x+a = (c-a-b^2)^2/(4b^2)
+# x = (c-a-b^2)^2/(4b^2)-a
+
+isval = sample(c(T,F),1)
+if(isval){
+    ans2 = "valid"
+} else {
+    ans2 = "extraneous"
+}
+
+while(T){
+    abc = sample(1:9,3)*sample(c(-1,1),3,T)
+    a = abc[1]
+    b = abc[2]
+    c = abc[3]
+    xposs = (c-a-b^2)^2/(4*b^2)-a
+    ls = sqrt(xposs+a)+b
+    rs = sqrt(xposs+c)
+    if((ls==rs)==isval && xposs%%1==0 && abs(xposs)<100 && abs(c-a-b^2)>0){break}
+}
+eq = paste0("\\sqrt{x+",a,"}+",b,"=\\sqrt{x+",c,"}")
+eq = gsub("+-","-",eq,fixed=T)
+
+ans21 = ans2
+
+abc1 = abc
+
+```
+
+Find the possible solution, and determine whether the solution is valid or extraneous.
+
+$$`r eq`$$
+
+\vfill
+
+```{r,echo=F,results="asis",eval=params$showsol}
+cat("\\color{red}")
+
+eq = paste0("(\\sqrt{x+",a,"}+",b,")^2=(\\sqrt{x+",c,"})^2")
+eq = gsub("+-","-",eq,fixed=T)
+cat(paste0("$$",eq,"$$"))
+
+cat("\n\nThe left side will need to be FOILed. On the right side, the inverse operations cancel out.\n\n")
+
+eq = paste0("(\\sqrt{x+",a,"}+",b,")(\\sqrt{x+",a,"}+",b,")=x+",c)
+eq = gsub("+-","-",eq,fixed=T)
+cat(paste0("$$",eq,"$$\n\n"))
+
+eq = paste0("(x+",a,")+",2*b,"\\sqrt{x+",a,"}+(",b,")^2=x+",c)
+eq = gsub("+-","-",eq,fixed=T)
+cat(paste0("$$",eq,"$$\n\n"))
+
+eq = paste0("x+",a,"+",2*b,"\\sqrt{x+",a,"}+",b^2,"=x+",c)
+eq = gsub("+-","-",eq,fixed=T)
+cat(paste0("$$",eq,"$$\n\n"))
+
+cat(paste0("Subtract $x+",a,"+",b^2,"$ from both sides.\n\n"))
+
+eq = paste0(2*b,"\\sqrt{x+",a,"}=",c-a-b^2)
+eq = gsub("+-","-",eq,fixed=T)
+cat(paste0("$$",eq,"$$\n\n"))
+
+cat(paste0("Divide both sides by $",2*b,"$.\n\n"))
+
+eq = paste0("\\sqrt{x+",a,"}=",round((c-a-b^2)/(2*b)))
+eq = gsub("+-","-",eq,fixed=T)
+cat(paste0("$$",eq,"$$\n\n"))
+
+cat("Square both sides.\n\n")
+
+eq = paste0("x+",a,"=",round((c-a-b^2)/(2*b))^2)
+eq = gsub("+-","-",eq,fixed=T)
+cat(paste0("$$",eq,"$$\n\n"))
+
+
+if(a>0){
+    cat("Subtract ",a," from both sides.")
+} else {
+    cat("Add ",-a," to both sides.")
+}
+
+eq = paste0("x=",round((c-a-b^2)/(2*b))^2-a)
+eq = gsub("+-","-",eq,fixed=T)
+cat(paste0("$$",eq,"$$\n\n"))
+
+cat(paste0("So, our possible solution is $x=",round((c-a-b^2)/(2*b))^2-a,"$. We need to check if this satisfies the given equation."))
+
+
+eq = paste0("\\sqrt{",xposs,"+",a,"}+",b,"\\stackrel{?}{=}\\sqrt{",xposs,"+",c,"}")
+eq = gsub("+-","-",eq,fixed=T)
+cat(paste0("$$",eq,"$$\n\n"))
+
+eq = paste0("\\sqrt{",xposs+a,"}+",b,"\\stackrel{?}{=}\\sqrt{",xposs+c,"}")
+eq = gsub("+-","-",eq,fixed=T)
+cat(paste0("$$",eq,"$$\n\n"))
+
+eq = paste0(sqrt(xposs+a),"+",b,"\\stackrel{?}{=}",sqrt(xposs+c))
+eq = gsub("+-","-",eq,fixed=T)
+cat(paste0("$$",eq,"$$\n\n"))
+
+if(isval){
+    eq = paste0(sqrt(xposs+a)+b,"=",sqrt(xposs+c))
+    eq = gsub("+-","-",eq,fixed=T)
+    cat(paste0("$$",eq,"$$\n\n"))
+    cat(paste0("So, the possible solution $x=",xposs,"$ is valid."))
+} else {
+    eq = paste0(sqrt(xposs+a)+b,"\\ne ",sqrt(xposs+c))
+    eq = gsub("+-","-",eq,fixed=T)
+    cat(paste0("$$",eq,"$$\n\n"))
+    cat(paste0("So, the possible solution $x=",xposs,"$ is extraneous."))
+}
+
+```
+
+\hfill \color{gray} \tiny $x=`r xposs`$, `r ans2` \normalsize \color{black}
+
+```{r,echo=F,results="asis",eval=params$showsol}
+cat("\\newpage")
+```
+
+### Question 4
+
+```{r,echo=FALSE}
+
+# sqrt(x+a)+b = sqrt(x+c)
+# x+a + 2b*sqrt(x+a) + b^2 = x+c
+# sqrt(x+a) = (c-a-b^2)/(2b)
+# x+a = (c-a-b^2)^2/(4b^2)
+# x = (c-a-b^2)^2/(4b^2)-a
+
+isval = !isval
+if(isval){
+    ans2 = "valid"
+} else {
+    ans2 = "extraneous"
+}
+
+while(T){
+    abc = sample(1:9,3)*sample(c(-1,1),3,T)
+    a = abc[1]
+    b = abc[2]
+    c = abc[3]
+    xposs = (c-a-b^2)^2/(4*b^2)-a
+    ls = sqrt(xposs+a)+b
+    rs = sqrt(xposs+c)
+    if((ls==rs)==isval && xposs%%1==0 && abs(xposs)<100 && abs(c-a-b^2)>0 && !(a%in%abc1) && !(c%in%abc1)){break}
+}
+eq = paste0("\\sqrt{x+",a,"}+",b,"=\\sqrt{x+",c,"}")
+eq = gsub("+-","-",eq,fixed=T)
+
+ans21 = ans2
+```
+
+Find the possible solution, and determine whether the solution is valid or extraneous.
+
+$$`r eq`$$
+
+\vfill
+
+\hfill \color{gray} \tiny $x=`r xposs`$, `r ans2` \normalsize \color{black}
+
+```{r,echo=F,results="asis",eval=params$showsol}
+
+cat("\\color{red}")
+
+eq = paste0("(\\sqrt{x+",a,"}+",b,")^2=(\\sqrt{x+",c,"})^2")
+eq = gsub("+-","-",eq,fixed=T)
+cat(paste0("$$",eq,"$$"))
+
+cat("\n\nThe left side will need to be FOILed. On the right side, the inverse operations cancel out.\n\n")
+
+eq = paste0("(\\sqrt{x+",a,"}+",b,")(\\sqrt{x+",a,"}+",b,")=x+",c)
+eq = gsub("+-","-",eq,fixed=T)
+cat(paste0("$$",eq,"$$\n\n"))
+
+eq = paste0("(x+",a,")+",2*b,"\\sqrt{x+",a,"}+(",b,")^2=x+",c)
+eq = gsub("+-","-",eq,fixed=T)
+cat(paste0("$$",eq,"$$\n\n"))
+
+eq = paste0("x+",a,"+",2*b,"\\sqrt{x+",a,"}+",b^2,"=x+",c)
+eq = gsub("+-","-",eq,fixed=T)
+cat(paste0("$$",eq,"$$\n\n"))
+
+cat(paste0("Subtract $x+",a,"+",b^2,"$ from both sides.\n\n"))
+
+eq = paste0(2*b,"\\sqrt{x+",a,"}=",c-a-b^2)
+eq = gsub("+-","-",eq,fixed=T)
+cat(paste0("$$",eq,"$$\n\n"))
+
+cat(paste0("Divide both sides by $",2*b,"$.\n\n"))
+
+eq = paste0("\\sqrt{x+",a,"}=",round((c-a-b^2)/(2*b)))
+eq = gsub("+-","-",eq,fixed=T)
+cat(paste0("$$",eq,"$$\n\n"))
+
+cat("Square both sides.\n\n")
+
+eq = paste0("x+",a,"=",round((c-a-b^2)/(2*b))^2)
+eq = gsub("+-","-",eq,fixed=T)
+cat(paste0("$$",eq,"$$\n\n"))
+
+
+if(a>0){
+    cat("Subtract ",a," from both sides.")
+} else {
+    cat("Add ",-a," to both sides.")
+}
+
+eq = paste0("x=",round((c-a-b^2)/(2*b))^2-a)
+eq = gsub("+-","-",eq,fixed=T)
+cat(paste0("$$",eq,"$$\n\n"))
+
+cat(paste0("So, our possible solution is $x=",round((c-a-b^2)/(2*b))^2-a,"$. We need to check if this satisfies the given equation."))
+
+
+eq = paste0("\\sqrt{",xposs,"+",a,"}+",b,"\\stackrel{?}{=}\\sqrt{",xposs,"+",c,"}")
+eq = gsub("+-","-",eq,fixed=T)
+cat(paste0("$$",eq,"$$\n\n"))
+
+eq = paste0("\\sqrt{",xposs+a,"}+",b,"\\stackrel{?}{=}\\sqrt{",xposs+c,"}")
+eq = gsub("+-","-",eq,fixed=T)
+cat(paste0("$$",eq,"$$\n\n"))
+
+eq = paste0(sqrt(xposs+a),"+",b,"\\stackrel{?}{=}",sqrt(xposs+c))
+eq = gsub("+-","-",eq,fixed=T)
+cat(paste0("$$",eq,"$$\n\n"))
+
+if(isval){
+    eq = paste0(sqrt(xposs+a)+b,"=",sqrt(xposs+c))
+    eq = gsub("+-","-",eq,fixed=T)
+    cat(paste0("$$",eq,"$$\n\n"))
+    cat(paste0("So, the possible solution $x=",xposs,"$ is valid."))
+} else {
+    eq = paste0(sqrt(xposs+a)+b,"\\ne ",sqrt(xposs+c))
+    eq = gsub("+-","-",eq,fixed=T)
+    cat(paste0("$$",eq,"$$\n\n"))
+    cat(paste0("So, the possible solution $x=",xposs,"$ is extraneous."))
+}
+
+```

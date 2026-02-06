@@ -1,5 +1,5 @@
 ```{r,echo=FALSE}
-qt = sample(1:12,1)
+qt = 11 #sample(1:12,1)
 cex = 1.5
 lwd = 4
 # al,ol,hl,th

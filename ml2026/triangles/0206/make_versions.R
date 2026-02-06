@@ -1,7 +1,7 @@
-fn = "a0206p_complex_and_two_rads.Rmd"
+fn = "a0122p_new_practice_test.Rmd"
 shortfn = strsplit(fn,"_")[[1]][1]
-nlow = 200
-nhigh = 240
+nlow = 440
+nhigh = 475
 
 sss44 = "<!DOCTYPE html>
 <html lang='en'>
