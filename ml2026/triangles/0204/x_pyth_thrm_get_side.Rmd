@@ -26,8 +26,8 @@ yb0 = c(-1/3*a,-1/3*a+bsize,-1/3*a+bsize)
 
 ang = atan(a/b)
 tbump = 1/10*max(c(a,b))
-xt0 = c(-1/6*b,1/3*b+tbump,-1/6*b-cos(ang)*tbump)
-yt0 = c(-1/3*a-tbump,1/6*a,1/6*a+sin(ang)*tbump)
+xt0 = c(-1/6*b,1/3*b+tbump,-1/6*b-sin(ang)*tbump)
+yt0 = c(-1/3*a-tbump,1/6*a,1/6*a+cos(ang)*tbump)
 
 th = runif(1,0,2*pi)
 

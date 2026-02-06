@@ -1,0 +1,111 @@
+```{r,echo=FALSE}
+
+while(T){
+    p = sample(1:9,1)*sample(c(-1,1),1)
+    q = sample(2:9,1)
+    psi = sample(1:9,1)*sample(c(-1,1),1)
+    # sqrt(mx+n)+k = x+psi+k
+    m = 2*psi-2*p
+    n = psi^2-p^2-q^2
+    k = sample(1:9,1)*sample(c(-1,1),1)
+    if(n!=0 && abs(m)>1 && abs(psi+k)>0){break}
+}
+
+fx = paste0("\\sqrt{",m,"x+",n,"}+",k)
+lx = paste0("x+",psi+k)
+fx = gsub("+-","-",fx,fixed=T)
+lx = gsub("+-","-",lx,fixed=T)
+gx = paste0("-\\sqrt{",m,"x+",n,"}+",k)
+gx = gsub("+-","-",gx,fixed=T)
+
+ach = -10:10
+ach2 = 1:10
+al = paste0("* ",ach,collapse="\n")
+al2 = paste0("* ",ach2,collapse="\n")
+sol1 = paste0(1*(ach==-p),collapse="")
+sol2 = paste0(1*(ach2==q),collapse="")
+
+
+```
+
+Question
+========
+
+Consider solving the following equation:
+
+$$`r fx`=`r lx`$$
+
+If you graph $y=`r fx`$ and $y=`r lx`$, you'll notice no intersections of the linear and radical functions, so there are no valid real solutions. If you also graph $y=`r gx`$, you'll see there are no extraneous real solutions.
+
+Using algebra to solve the equation will produce two [complex](https://en.wikipedia.org/wiki/Complex_number) possible solutions. Unfortunately, we do not have [the skills](https://math.stackexchange.com/questions/44406/how-do-i-get-the-square-root-of-a-complex-number) to check whether the possible complex solutions are valid or extraneous, but it is still good practice to find the possible complex solutions.
+
+The possible complex solutions can be expressed as $p\pm qi$, where $p$ and $q$ are integers and $i=\sqrt{-1}$ . Find the possible complex solutions.
+
+$p=$ ##ANSWER1##
+
+$q=$ ##ANSWER2##
+
+
+Answerlist
+--------
+
+`r al`
+`r al2`
+
+Solution
+========
+
+$$`r fx`=`r lx`$$
+
+```{r,echo=F,results="asis"}
+if(k<0){
+    cat(paste0("Add ",abs(k)," to both sides."))
+} else {
+    cat(paste0("Subtract ",abs(k)," from both sides."))
+}
+eq2 = paste0("\\sqrt{",m,"x+",n,"}=x+",psi)
+eq2 = gsub("+-","-",eq2,fixed=T)
+cat(paste0("\n\n$$",eq2,"$$\n\n"))
+
+cat("Square both sides.\n\n")
+eq3 = paste0(m,"x+",n,"=x^2+",2*psi,"x+",psi^2)
+eq3 = gsub("+-","-",eq3,fixed=T)
+cat(paste0("\n\n$$",eq3,"$$\n\n"))
+
+ls3 = paste0(m,"x+",n)
+ls3 = gsub("+-","-",ls3,fixed=T)
+cat("Subtract $(",ls3,")$ from both sides.\n\n")
+
+eq4 = paste0("0=x^2+",2*psi-m,"x+",psi^2-n)
+eq4 = gsub("+-","-",eq4,fixed=T)
+cat(paste0("\n\n$$",eq4,"$$\n\n"))
+
+cat("Now, the problem tells us the solutions are complex (not real), so jump right to quadratic formula (instead of trying to factor).\n\n")
+a = 1
+b = 2*psi-m
+c = psi^2-n
+qf1 = paste0("x=\\frac{-(",b,")\\pm\\sqrt{(",b,")^2-4(",a,")(",c,")}}{2(",a,")}")
+cat(paste0("\n\n$$",qf1,"$$\n\n"))
+
+qf2 = paste0("x=\\frac{",-b,"\\pm\\sqrt{",b^2,"-",4*a*c,"}}{",2*a,"}")
+cat(paste0("\n\n$$",qf2,"$$\n\n"))
+
+qf3 = paste0("x=\\frac{",-b,"\\pm\\sqrt{",b^2-4*a*c,"}}{",2*a,"}")
+cat(paste0("\n\n$$",qf3,"$$\n\n"))
+
+qf4 = paste0("x=\\frac{",-b,"\\pm",2*a*q,"i}{",2*a,"}")
+cat(paste0("\n\n$$",qf4,"$$\n\n"))
+
+qf5 = paste0("x=",-p,"\\pm",q,"i")
+cat(paste0("\n\n$$",qf5,"$$\n\n"))
+
+```
+
+So, $p=`r -p`$ and $q=`r q`$
+
+Meta-information
+============
+extype: cloze
+exclozetype: schoice|schoice
+exsolution: `r sol1`|`r sol2`
+exname: sqrt_line_complex

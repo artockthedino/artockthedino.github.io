@@ -1,0 +1,244 @@
+```{r,echo=FALSE}
+gcd2 <- function(a, b) {
+  if (b == 0) a else Recall(b, a %% b)
+}
+gcd <- function(...) Reduce(gcd2, c(...))
+
+fsimp = function(top,bot){
+    gg = abs(gcd(c(top,bot)))
+    top = round(abs(top)/gg*sign(top*bot))
+    bot = round(abs(mbot)/gg)
+    if(bot==1){
+        return(top)
+    } else {
+        return(paste0("\\frac{",top,"}{",bot,"}"))
+    }
+}
+
+xpar = c(0,1,4,9)
+ypar = c(0,1,2,3)
+xext = c(1,4,9)
+yext = c(-1,-2,-3)
+
+# horizontal shift before possible reflection
+
+# y = a*sqrt(bx-h)+k
+
+h = sample(c(-9:-1,1),1)
+a = 1 #sample(c(-3,-2,-1,1,2,3),1)
+k = sample(c(((-10+3*abs(a)):-1),(1:(10-3*abs(a)))),1)
+b = sample(c(-1,1),1)
+
+
+xc = (xpar+h)/b
+yc = a*ypar+k
+xd = (xext+h)/b
+yd = k+a*yext
+
+nval = 1 #sample(0:2,1)
+
+if(nval==0){
+    ii = sample(1:length(xd),2)
+    xi = xd[ii]
+    yi = yd[ii]
+    isval = c(F,F)
+    wrd = c("an extraneous","an extraneous")
+}
+if(nval==1){
+    while(T){
+        ic = sample(1:length(xc),1)
+        id = sample(1:length(xd),1)
+        xic = xc[ic]
+        yic = yc[ic]
+        xid = xd[id]
+        yid = yd[id]
+        ii = sample(1:2)
+        xi = c(xic,xid)[ii]
+        yi = c(yic,yid)[ii]
+        isval = c(T,F)[ii]
+        wrd = c("a valid","an extraneous")[ii]
+        if(xic!=xid){break}
+    }
+}
+if(nval==2){
+    ii = sample(1:length(xc),2)
+    xi = xc[ii]
+    yi = yc[ii]
+    isval = c(T,T)
+    wrd = c("a valid","a valid")
+}
+
+mtop = diff(yi)
+mbot = diff(xi)
+mf = fsimp(mtop,mbot)
+
+
+while(T){
+    xp = sample(-10:10,1)
+    yp = mtop*(xp-xi[1])/mbot+yi[1]
+    if(abs(yp)<=10 && abs(yp)%%1==0 && yp!=yi[1] && yp!=yi[2]){break}
+}
+
+if(b==-1){
+    fx = paste0(k,"+",a,"\\sqrt{-x+",-h,"}")
+} else {
+    fx = paste0(k,"+",a,"\\sqrt{x+",-h,"}")
+}
+Lx = paste0(mf,"(x+",-xp,")+",yp)
+fx = gsub("+-","-",fx,fixed=T)
+Lx = gsub("+-","-",Lx,fixed=T)
+Lx = gsub("=1(","=(",Lx,fixed=T)
+Lx = gsub("=-1(","=-(",Lx,fixed=T)
+
+ach = -10:10
+ava = c("an extraneous","a valid")
+
+al1 = paste0("* ",ach,collapse="\n")
+al2 = paste0("* ",ava,collapse="\n")
+
+minxii = which(xi==min(xi))
+maxxii = which(xi==max(xi))
+
+sol1 = paste0(1*(ach==xi[minxii]),collapse="")
+sol2 = paste0(1*(c(F,T)==isval[minxii]),collapse="")
+sol3 = paste0(1*(ach==xi[maxxii]),collapse="")
+sol4 = paste0(1*(c(F,T)==isval[maxxii]),collapse="")
+
+```
+
+Question
+========
+
+A transformed square-root function, $y=f(x)$, is graphed below. A linear function, $y=L(x)$, is not shown, but it goes through point $(`r xp`,`r yp`)$ and has a slope of $`r mf`$.
+
+```{r,echo=F,fig.dim=c(5,5)}
+par(pty="s",mar=c(4,4,0,0))
+plot(0,0,"n",xlim=c(-10,10),ylim=c(-10,10),xlab="x",ylab="y")
+
+for(i in -10:10){
+    lines(c(i,i),c(-10,10),col="grey",lwd=0.5)
+    lines(c(-10,10),c(i,i),col="grey",lwd=0.5)
+}
+for(i in seq(-10,10,5)){
+    lines(c(i,i),c(-10,10),col="darkgrey",lwd=1)
+    lines(c(-10,10),c(i,i),col="darkgrey",lwd=1)
+}
+abline(h=0,lwd=2)
+abline(v=0,lwd=2)
+
+xx = seq(h*sign(b),10*sign(b),0.01*sign(b))
+yy = a*sqrt(b*xx-h)+k
+
+xx = xx[abs(yy)<=10]
+yy = yy[abs(yy)<=10]
+
+
+lines(xx,yy,col="blue",lwd=2)
+
+x2 = (c(0,1,4,9,16)+h)/b
+y2 = a*c(0,1,2,3,4)+k
+x2 = x2[abs(y2)<=10]
+y2 = y2[abs(y2)<=10]
+
+points(x2,y2,pch=19,col="blue")
+
+```
+\
+
+If standard algebraic steps were used to find $x$ values that satisfy equation $f(x)=L(x)$, two possible solutions $x_1$ and $x_2$ will be found such that $x_1<x_2$. Determine the possible solutions, and check if each is valid or extraneous.
+
+* $x_1=$ ##ANSWER1##
+* $x_1$ is ##ANSWER2## solution
+* $x_2=$ ##ANSWER3##
+* $x_2$ is ##ANSWER4## solution
+
+Answerlist
+--------
+
+`r al1`
+`r al2`
+`r al1`
+`r al2`
+
+
+Solution
+========
+
+You should be able to complete the picture. Use symmetry to complete the parabola, and use the slope to extend the line.
+
+```{r,echo=F,fig.dim=c(5,5)}
+par(pty="s",mar=c(4,4,0,0))
+plot(0,0,"n",xlim=c(-10,10),ylim=c(-10,10),xlab="x",ylab="y")
+
+for(i in -10:10){
+    lines(c(i,i),c(-10,10),col="grey",lwd=0.5)
+    lines(c(-10,10),c(i,i),col="grey",lwd=0.5)
+}
+for(i in seq(-10,10,5)){
+    lines(c(i,i),c(-10,10),col="darkgrey",lwd=1)
+    lines(c(-10,10),c(i,i),col="darkgrey",lwd=1)
+}
+abline(h=0,lwd=2)
+abline(v=0,lwd=2)
+
+xx = seq(h*sign(b),10*sign(b),0.01*sign(b))
+yy = a*sqrt(b*xx-h)+k
+
+xx = xx[abs(yy)<=10]
+yy = yy[abs(yy)<=10]
+
+
+lines(xx,yy,col="blue",lwd=2)
+
+x2 = (c(0,1,4,9,16)+h)/b
+y2 = a*c(0,1,2,3,4)+k
+x2 = x2[abs(y2)<=10]
+y2 = y2[abs(y2)<=10]
+
+# points(x2,y2,pch=19,col="blue")
+
+xl = seq(-10,10,0.1)
+yl = mtop/mbot*(xl-xi[1])+yi[1]
+xl = xl[abs(yl)<=10]
+yl = yl[abs(yl)<=10]
+
+lines(xl,yl,col="red",lwd=2)
+
+xx = seq(h*sign(b),10*sign(b),0.01*sign(b))
+yy = -a*sqrt(b*xx-h)+k
+
+xx = xx[abs(yy)<=10]
+yy = yy[abs(yy)<=10]
+
+lines(xx,yy,col="grey",lwd=2,lty=2)
+
+points(xi,yi,pch=19,col="red")
+
+```
+\
+
+The intersection further left is at $x_1=`r xi[minxii]`$ and it is `r wrd[minxii]` solution.
+
+The intersection further right is at $x_2=`r xi[maxxii]`$ and it is `r wrd[maxxii]` solution.
+
+I'll also mention that you could solve approach this problem algebraically. First, examine curve $y=f(x)$ to find the transformations. From those transformations, you can write an algebraic definition of $f(x)$.
+
+$$f(x)=`r fx`$$
+
+To write an algebraic definition of $L(x)$, use point-slope form.
+
+$$L(x)=`r Lx`$$
+
+Then set up the equation to solve.
+
+$$`r fx`=`r Lx`$$
+
+By doing the algebraic manipulations, you'll find two possible solutions: $x_1=`r xi[minxii]`$ and $x_2=`r xi[maxxii]`$. If you test each in the equation, you'll find that $x=`r xi[minxii]`$ is `r wrd[minxii]` solution, and $x=`r xi[maxxii]`$ is `r wrd[maxxii]` solution.
+
+
+Meta-information
+============
+extype: cloze
+exclozetype: schoice|schoice|schoice|schoice
+exsolution: `r sol1`|`r sol2`|`r sol3`|`r sol4`
+exname: x_find_valext012_graph

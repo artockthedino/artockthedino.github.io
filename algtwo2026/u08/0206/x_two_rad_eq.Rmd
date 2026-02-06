@@ -1,0 +1,150 @@
+```{r,echo=FALSE}
+
+# sqrt(x+a)+b = sqrt(x+c)
+# x+a + 2b*sqrt(x+a) + b^2 = x+c
+# sqrt(x+a) = (c-a-b^2)/(2b)
+# x+a = (c-a-b^2)^2/(4b^2)
+# x = (c-a-b^2)^2/(4b^2)-a
+
+isval = sample(c(T,F),1)
+if(isval){
+    ans2 = "valid"
+} else {
+    ans2 = "extraneous"
+}
+
+while(T){
+    abc = sample(1:9,3)*sample(c(-1,1),3,T)
+    a = abc[1]
+    b = abc[2]
+    c = abc[3]
+    xposs = (c-a-b^2)^2/(4*b^2)-a
+    ls = sqrt(xposs+a)+b
+    rs = sqrt(xposs+c)
+    if((ls==rs)==isval && xposs%%1==0 && abs(xposs)<17 && abs(c-a-b^2)>0){break}
+}
+eq = paste0("\\sqrt{x+",a,"}+",b,"=\\sqrt{x+",c,"}")
+eq = gsub("+-","-",eq,fixed=T)
+
+ach1 = -16:16
+ach2 = c("extraneous","valid")
+
+al1 = paste0("* x=",ach1,collapse="\n")
+al2 = paste0("* ",ach2,collapse="\n")
+
+sol1 = paste0(1*(ach1==xposs),collapse="")
+sol2 = paste0(1*(ach2==ans2),collapse="")
+
+```
+
+Question
+========
+
+Find the possible solution, and determine whether the solution is valid or extraneous.
+
+$$`r eq`$$
+
+To get rid of the radicals, you'll need to isolate them and square both sides of the equation, one radical at a time.
+
+
+* Possible solution: ##ANSWER1##
+
+* The possible solution is ##ANSWER2##.
+
+Answerlist
+--------
+
+`r al1`
+`r al2`
+
+Solution
+========
+
+$$`r eq`$$
+
+We begin with an isolated radical on the right side, so we can square both sides.
+
+```{r,echo=F,results="asis"}
+eq = paste0("(\\sqrt{x+",a,"}+",b,")^2=(\\sqrt{x+",c,"})^2")
+eq = gsub("+-","-",eq,fixed=T)
+cat(paste0("$$",eq,"$$"))
+
+cat("\n\nThe left side will need to be FOILed. On the right side, the inverse operations cancel out.\n\n")
+
+eq = paste0("(\\sqrt{x+",a,"}+",b,")(\\sqrt{x+",a,"}+",b,")=x+",c)
+eq = gsub("+-","-",eq,fixed=T)
+cat(paste0("$$",eq,"$$\n\n"))
+
+eq = paste0("(x+",a,")+",2*b,"\\sqrt{x+",a,"}+(",b,")^2=x+",c)
+eq = gsub("+-","-",eq,fixed=T)
+cat(paste0("$$",eq,"$$\n\n"))
+
+eq = paste0("x+",a,"+",2*b,"\\sqrt{x+",a,"}+",b^2,"=x+",c)
+eq = gsub("+-","-",eq,fixed=T)
+cat(paste0("$$",eq,"$$\n\n"))
+
+cat(paste0("Subtract $x+",a,"+",b^2,"$ from both sides.\n\n"))
+
+eq = paste0(2*b,"\\sqrt{x+",a,"}=",c-a-b^2)
+eq = gsub("+-","-",eq,fixed=T)
+cat(paste0("$$",eq,"$$\n\n"))
+
+cat(paste0("Divide both sides by $",2*b,"$.\n\n"))
+
+eq = paste0("\\sqrt{x+",a,"}=",round((c-a-b^2)/(2*b)))
+eq = gsub("+-","-",eq,fixed=T)
+cat(paste0("$$",eq,"$$\n\n"))
+
+cat("Square both sides.\n\n")
+
+eq = paste0("x+",a,"=",round((c-a-b^2)/(2*b))^2)
+eq = gsub("+-","-",eq,fixed=T)
+cat(paste0("$$",eq,"$$\n\n"))
+
+
+if(a>0){
+    cat("Subtract ",a," from both sides.")
+} else {
+    cat("Add ",-a," to both sides.")
+}
+
+eq = paste0("x=",round((c-a-b^2)/(2*b))^2-a)
+eq = gsub("+-","-",eq,fixed=T)
+cat(paste0("$$",eq,"$$\n\n"))
+
+cat(paste0("So, our possible solution is $x=",round((c-a-b^2)/(2*b))^2-a,"$. We need to check if this satisfies the given equation."))
+
+
+eq = paste0("\\sqrt{",xposs,"+",a,"}+",b,"\\stackrel{?}{=}\\sqrt{",xposs,"+",c,"}")
+eq = gsub("+-","-",eq,fixed=T)
+cat(paste0("$$",eq,"$$\n\n"))
+
+eq = paste0("\\sqrt{",xposs+a,"}+",b,"\\stackrel{?}{=}\\sqrt{",xposs+c,"}")
+eq = gsub("+-","-",eq,fixed=T)
+cat(paste0("$$",eq,"$$\n\n"))
+
+eq = paste0(sqrt(xposs+a),"+",b,"\\stackrel{?}{=}",sqrt(xposs+c))
+eq = gsub("+-","-",eq,fixed=T)
+cat(paste0("$$",eq,"$$\n\n"))
+
+if(isval){
+    eq = paste0(sqrt(xposs+a)+b,"=",sqrt(xposs+c))
+    eq = gsub("+-","-",eq,fixed=T)
+    cat(paste0("$$",eq,"$$\n\n"))
+    cat(paste0("So, the possible solution $x=",xposs,"$ is valid."))
+} else {
+    eq = paste0(sqrt(xposs+a)+b,"\\ne ",sqrt(xposs+c))
+    eq = gsub("+-","-",eq,fixed=T)
+    cat(paste0("$$",eq,"$$\n\n"))
+    cat(paste0("So, the possible solution $x=",xposs,"$ is extraneous."))
+}
+
+```
+
+
+Meta-information
+============
+extype: cloze
+exclozetype: schoice|schoice
+exsolution: `r sol1`|`r sol2`
+exname: two_rad_eq

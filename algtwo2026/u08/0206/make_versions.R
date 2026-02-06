@@ -1,7 +1,7 @@
-fn = "a0205p_big_paper.Rmd"
+fn = "a0204p_graph_sqrt_line.Rmd"
 shortfn = strsplit(fn,"_")[[1]][1]
-nlow = 1
-nhigh = 40
+nlow = 100
+nhigh = 140
 
 sss44 = "<!DOCTYPE html>
 <html lang='en'>
