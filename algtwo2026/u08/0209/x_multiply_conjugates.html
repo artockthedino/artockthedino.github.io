@@ -11,7 +11,7 @@
 
 
 
-<title>x_tsre_sqrt_div.knit</title>
+<title>x_multiply_conjugates.knit</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -354,25 +354,22 @@ display: none;
 
 <div id="question" class="section level1">
 <h1>Question</h1>
-<p>Find the value of <span class="math inline">\(x\)</span> that
-satisfies the equation.</p>
-<p><span class="math display">\[\frac{\sqrt{x}}{-3}=-4\]</span></p>
+<p>In the expression below is a product of a pair of <a href="https://en.wikipedia.org/wiki/Conjugate_(square_roots)">conjugates</a>.</p>
+<p><span class="math display">\[(7+3\sqrt{2})\cdot(7-3\sqrt{2})\]</span></p>
+<p>This product simplifies to an integer; find that integer.</p>
 </div>
 <div id="solution" class="section level1">
 <h1>Solution</h1>
-<p>Multiply both sides by -3.</p>
-<p><span class="math display">\[\sqrt{x}=12\]</span></p>
-<p>Square both sides.</p>
-<p><span class="math display">\[x=144\]</span></p>
-<p>Check the solution in the original equation.</p>
-<p><span class="math display">\[\frac{\sqrt{144}}{-3}\stackrel{?}{=}-4\]</span></p>
-<p><span class="math display">\[\frac{12}{-3}\stackrel{?}{=}-4\]</span></p>
-<p>Yup, that is true. So <span class="math inline">\(x=144\)</span> is a
-solution to the given equation.</p>
+<p>You should FOIL (or use box method).</p>
+<p><span class="math display">\[(7)^2-21\sqrt{2}+21\sqrt{2}+(3\sqrt{2})(-3\sqrt{2})\]</span></p>
+<p>Notice the two middle terms cancel each other out. Also, <span class="math inline">\((7)^2=49\)</span> and <span class="math inline">\(3\cdot3=9\)</span> and <span class="math inline">\(\sqrt{2}\cdot\sqrt{2}=2\)</span>.</p>
+<p><span class="math display">\[49-9\cdot2\]</span></p>
+<p><span class="math display">\[49-18\]</span></p>
+<p><span class="math display">\[31\]</span></p>
 </div>
 <div id="meta-information" class="section level1">
 <h1>Meta-information</h1>
-<p>extype: num exsolution: 144 exname: tsre_sqrt_div</p>
+<p>extype: num exsolution: 31 exname: multiply_conjugates</p>
 </div>
 
 

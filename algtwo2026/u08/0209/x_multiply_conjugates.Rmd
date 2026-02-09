@@ -1,0 +1,59 @@
+```{r,echo=FALSE}
+gcd2 <- function(a, b) {
+  if (b == 0) a else Recall(b, a %% b)
+}
+gcd <- function(...) Reduce(gcd2, c(...))
+
+# (a+b*sqrt(c))*(a-b*sqrt(c))
+
+while(T){
+    a = sample(2:9,1)*sample(c(-1,1),1)
+    b = sample(2:7,1)*sample(c(-1,1),1)
+    c = sample(2:7,1)
+    sol = a^2-b^2*c
+    if(abs(sol)>1 && abs(sol)<100 && abs(b^2*c)<100 && length(unique(abs(c(a,b,c))))==3){break}
+}
+
+ex1 = paste0("(",a,"+",b,"\\sqrt{",c,"})\\cdot(",a,"+",-b,"\\sqrt{",c,"})")
+ex1 = gsub("+-","-",ex1,fixed=T)
+
+ex2 = paste0("(",a,")^2+",-a*b,"\\sqrt{",c,"}+",a*b,"\\sqrt{",c,"}+(",b,"\\sqrt{",c,"})(",-b,"\\sqrt{",c,"})")
+ex2 = gsub("+-","-",ex2,fixed=T)
+
+ex3 = paste0(a^2,"-",b^2,"\\cdot",c)
+
+ex4 = paste0(a^2,"-",b^2*c)
+
+```
+
+Question
+========
+
+In the expression below is a product of a pair of [conjugates](https://en.wikipedia.org/wiki/Conjugate_(square_roots)).
+
+$$`r ex1`$$
+
+This product simplifies to an integer; find that integer.
+
+
+Solution
+========
+
+You should FOIL (or use box method).
+
+$$`r ex2`$$
+
+Notice the two middle terms cancel each other out. Also, $(`r a`)^2=`r a^2`$ and $`r b`\cdot`r b`=`r b^2`$ and $\sqrt{`r c`}\cdot\sqrt{`r c`}=`r c`$.
+
+$$`r ex3`$$
+
+$$`r ex4`$$
+
+$$`r sol`$$
+
+
+Meta-information
+============
+extype: num
+exsolution: `r sol`
+exname: multiply_conjugates

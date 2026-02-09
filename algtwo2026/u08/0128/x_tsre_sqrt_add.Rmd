@@ -7,12 +7,8 @@ while(T){
         break
         }
 }
-
-
-
 eq = paste0("\\sqrt{x}+",a,"=",b)
 eq = gsub("+-","-",eq,fixed=T)
-
 x = (b-a)^2
 
 if(a>0){

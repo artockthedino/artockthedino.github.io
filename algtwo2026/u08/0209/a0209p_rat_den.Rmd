@@ -1,0 +1,242 @@
+---
+output: pdf_document
+params:
+    rseed: 0
+    showsol: true
+header-includes:
+  - \usepackage{multicol}
+---
+
+```{r,echo=F,warning=FALSE,message=FALSE}
+options(scipen=999)
+if(params$rseed !=0){
+    set.seed(params$rseed)
+}
+knitr::opts_chunk$set(echo = FALSE)
+bn <- basename(knitr::current_input())
+bn = strsplit(bn,".",fixed=T)[[1]][1]
+```
+
+Name: \vspace{5pt} \hrule
+
+## `r bn` (v`r params$rseed`)
+
+```{r}
+gcd2 <- function(a, b) {
+  if (b == 0) a else Recall(b, a %% b)
+}
+gcd <- function(...) Reduce(gcd2, c(...))
+pn = function(coeffs,pows){
+    pows = pows[coeffs!=0]
+    coeffs = coeffs[coeffs!=0]
+    ex1 = paste0("{",coeffs,"}x^{",pows,"}",collapse="+")
+    ex1 = gsub("+{-","-{",ex1,fixed=T)
+    ex1 = gsub("{1}x^{0}","1",ex1,fixed=T)
+    ex1 = gsub("{-1}x^{0}","-1",ex1,fixed=T)
+    ex1 = gsub("{1}x","x",ex1,fixed=T)
+    ex1 = gsub("{-1}x","-x",ex1,fixed=T)
+    ex1 = gsub("x^{0}","",ex1,fixed=T)
+    ex1 = gsub("x^{1}","x",ex1,fixed=T)
+    ex1 = gsub("+-","-",ex1,fixed=T)
+    if(ex1 == ""){
+        ex1 = "0"
+    }
+    return(ex1)
+}
+
+cn = function(a,b){
+  cn = gsub("+-","-",paste0(a,"+",b,"i"),fixed=TRUE)
+  cn = gsub("0+0i","0",cn,fixed=TRUE)
+  cn = gsub("+1i","+i",cn,fixed=TRUE)
+  cn = gsub("-1i","-i",cn,fixed=TRUE)
+  cn = gsub("+0i","",cn,fixed=TRUE)
+  cn = gsub("-0i","",cn,fixed=TRUE)
+  if(nchar(cn)>1 && substr(cn, start = 1, stop = 2)=="0+"){cn = gsub("0+","",cn,fixed=TRUE)}
+  if(nchar(cn)>1 && substr(cn, start = 1, stop = 2)=="0-"){cn = gsub("0-","-",cn,fixed=TRUE)}
+  return(cn)
+}
+```
+
+```{r,echo=F}
+psfs = rev((2:30)^2)
+
+# a*sqrt(b)/(c*sqrt(d))
+# a*sqrt(b*d)/(c*d)
+# A*sqrt(R)/(D)
+
+ex1s = c("\\frac{2\\sqrt{3}}{7\\sqrt{10}}","\\frac{1}{\\sqrt{3}}","\\frac{5\\sqrt{2}}{2\\sqrt{5}}","\\frac{4\\sqrt{3}}{\\sqrt{2}}")
+ans1s = c("\\frac{\\sqrt{30}}{35}","\\frac{\\sqrt{3}}{3}","\\frac{\\sqrt{10}}{2}","2\\sqrt{6}")
+
+
+while(length(ex1s)<14){
+    while(T){
+        canpass = T
+        a = sample(1:10,1)
+        b = sample(c(1,2,3,5,6,7,10),1)
+        c = sample(1:10,1)
+        d = sample(c(2,3,5,6,7,10),1)
+        if(gcd(c(a,c))>1 || b==d){
+            canpass = F
+        }
+        ex1 = paste0("\\frac{[",a,"]\\sqrt{",b,"}}{[",c,"]\\sqrt{",d,"}}")
+        ex1 = gsub("[1]\\sqrt{1}","1",ex1,fixed=T)
+        ex1 = gsub("[1]","",ex1,fixed=T)
+        ex1 = gsub("[","",ex1,fixed=T)
+        ex1 = gsub("]","",ex1,fixed=T)
+        ex1 = gsub("\\sqrt{1}","",ex1,fixed=T)
+        A1 = a
+        R1 = b*d
+        D1 = c*d
+        A2 = A1
+        R2 = R1
+        D2 = D1
+        for(psf in psfs){
+            if(R2%%psf==0){
+                A2 = round(A1*sqrt(psf))
+                R2 = round(R1/psf)
+            }
+        }
+        gg = gcd(c(A2,D2))
+        A3 = round(A2/gg)
+        D3 = round(D2/gg)
+        if(D3>1){
+            ans1 = paste0("\\frac{[",A3,"]\\sqrt{",R2,"}}{",D3,"}")
+        } else {
+            ans1 = paste0("[",A3,"]\\sqrt{",R2,"}")
+        }
+        ans1 = gsub("[1]\\sqrt{1}","1",ans1,fixed=T)
+        ans1 = gsub("[1]","",ans1,fixed=T)
+        ans1 = gsub("[","",ans1,fixed=T)
+        ans1 = gsub("]","",ans1,fixed=T)
+        ans1 = gsub("\\sqrt{1}","",ans1,fixed=T)
+        if(canpass){break}
+    }
+    if(!(ex1 %in% ex1s)){
+        ex1s = c(ex1s,ex1)
+        ans1s = c(ans1s,ans1)
+    }
+}
+
+```
+
+
+
+### Rationalize denominator with single term
+
+
+```{r,echo=F,results='asis'}
+for(i in 1:length(ex1s)){
+    cat("\\begin{minipage}[t][1.8in]{0.5\\textwidth}")
+    cat(paste0(i,". Simplify (and rationalize denominator): $$",ex1s[i],"$$ \n"))
+    cat("\\end{minipage}")
+    if(i%%2==0){
+        cat("\n\n\\vfill\n\n")
+    }
+}
+cat("\n\n")
+cat(paste0("$",ans1s,"$",collapse=" \\hfill "))
+# for(i in 1:length(ans1s)){
+#     cat(paste(i,". $",ans1s[i],"$ "))
+# }
+```
+
+\newpage
+
+```{r,echo=F}
+
+# (a+b*sqrt(c))/(d+e*sqrt(c))
+# (a+b*sqrt(c))*((d-e*sqrt(c)))/(d^2-e^2*c)
+# (a*d-b*e*c+(b*d-a*e)*sqrt(c))/(d^2-e^2*c)
+# (A+(B)*sqrt(c))/(D)
+
+questions = c("\\frac{4+\\sqrt{2}}{1-\\sqrt{2}}")
+answers = c("-6-5\\sqrt{2}")
+
+a = 3
+b = 7
+c = 6
+d = 8
+e = 2
+q = paste0("\\frac{",a,"+[",b,"]\\sqrt{",c,"}}{",d,"+[",e,"]\\sqrt{",c,"}}")
+q = gsub("+[-1]","-",q,fixed=T)
+q = gsub("+[1]","+",q,fixed=T)
+q = gsub("[","",q,fixed=T)
+q = gsub("]","",q,fixed=T)
+q = gsub("+-","-",q,fixed=T)
+A = a*d-b*e*c
+B = b*d-a*e
+D = d^2-e^2*c
+gg = abs(gcd(c(A,B,D)))*sign(D)
+if(gg != 0){
+    A = A/gg
+    B = B/gg
+    D = D/gg
+}
+answer = paste0("\\frac{",A,"+",B,"\\sqrt{",c,"}}{",D,"}")
+if(D==1){
+    answer = paste0(A,"+",B,"\\sqrt{",c,"}")
+}
+answer = gsub("+-","-",answer,fixed=T)
+answer = gsub("+1\\sqrt","+\\sqrt",answer,fixed=T)
+answer = gsub("-1\\sqrt","-\\sqrt",answer,fixed=T)
+
+questions = c(questions,q)
+answers = c(answers,answer)
+
+while(length(questions)<8){
+    a = sample(1:9,1)*sample(c(-1,1),1)
+    b = sample(1:9,1)*sample(c(-1,1),1)
+    c = sample(c(2,3,5,6,7,10),1)
+    d = sample(1:9,1)*sample(c(-1,1),1)
+    e = sample(1:9,1)*sample(c(-1,1),1)
+    q = paste0("\\frac{",a,"+[",b,"]\\sqrt{",c,"}}{",d,"+[",e,"]\\sqrt{",c,"}}")
+    q = gsub("+[-1]","-",q,fixed=T)
+    q = gsub("+[1]","+",q,fixed=T)
+    q = gsub("[","",q,fixed=T)
+    q = gsub("]","",q,fixed=T)
+    q = gsub("+-","-",q,fixed=T)
+    A = a*d-b*e*c
+    B = b*d-a*e
+    D = d^2-e^2*c
+    gg = abs(gcd(c(A,B,D)))*sign(D)
+    if(gg != 0){
+        A = A/gg
+        B = B/gg
+        D = D/gg
+    }
+    answer = paste0("\\frac{",A,"+",B,"\\sqrt{",c,"}}{",D,"}")
+    if(D==1){
+        answer = paste0(A,"+",B,"\\sqrt{",c,"}")
+    }
+    answer = gsub("+-","-",answer,fixed=T)
+    answer = gsub("+1\\sqrt","+\\sqrt",answer,fixed=T)
+    answer = gsub("-1\\sqrt","-\\sqrt",answer,fixed=T)
+    if(A!=0 && B!=0 && D!=0 && !(q %in% questions) && !(answer %in% answers) && abs(A)<11 && abs(B)<11 && abs(D)<11 && abs(b*e*c)<100 && abs(e^2*c)<100 && gg>1 && abs(gcd(c(a,b,d,e)))==1 && sum(sign(c(a,b,d,e)))>=0){
+        questions = c(questions,q)
+        answers = c(answers,answer)
+    }
+}
+
+```
+
+
+
+### Rationalize denominator by using conjugate
+
+
+```{r,echo=F,results='asis'}
+for(i in 1:length(questions)){
+    cat("\\begin{minipage}[t][4in]{0.5\\textwidth}")
+    cat(paste0(i+length(ex1s),". Simplify (and rationalize denominator): $$",questions[i],"$$ \n"))
+    cat("\\end{minipage}")
+    if(i%%2==0){
+        cat("\n\n")
+    }
+}
+cat("\n\n\\vfill\n\n")
+cat(paste0("$",answers,"$",collapse=" \\hfill "))
+
+```
+
+
+

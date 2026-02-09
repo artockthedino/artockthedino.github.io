@@ -17,7 +17,6 @@ if(a>0){
     wrd = paste0("Add ",abs(a)," to both sides.")
 }
 
-
 eq3 = paste0("\\sqrt{",x,"+",a,"}\\stackrel{?}{=}",b)
 eq3 = gsub("+-","-",eq3,fixed=T)
 

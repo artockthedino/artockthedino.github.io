@@ -9,7 +9,6 @@ while(T){
     x = (b/a)^2
     if(x%%1==0 && abs(a)!=abs(b)){break}
 }
-
 eq = paste0(a,"\\sqrt{x}=",b)
 eq2 = paste0("\\sqrt{x}=",multer)
 
