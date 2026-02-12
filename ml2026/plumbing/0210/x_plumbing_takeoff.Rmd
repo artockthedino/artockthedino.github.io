@@ -1,0 +1,102 @@
+```{r,echo=FALSE}
+M = 2+1/4
+H = 1+29/32
+J = 19/32
+
+```
+
+Question
+========
+
+In plumbing, it is common to use [elbows](https://en.wikipedia.org/wiki/Piping_and_plumbing_fitting) to change direction.
+
+```{r,echo=F,fig.dim=c(4,4)}
+par(mar=c(0,0,0,0),pty="s")
+
+# xp1 = c(0,0.3,0.3,0)
+# yp1 = c(0,0,0.1,0.1)
+
+thet = pi/4
+j = 0.15
+r1 = 0.2
+r2 = 0.16
+r3 = 0.12
+h = 0.4
+
+elbow = function(r,H,th=pi/4){
+    x0 = -r
+    y0 = -r*tan(th/2)
+    ths = seq(0,th,length.out=600)
+    xarc = x0+2*r*cos(ths)
+    yarc = y0+2*r*sin(ths)
+    xbot = c(-r,r)
+    ybot = c(-H,-H)
+    phi = th+pi/2
+    xtop = c(H*cos(phi)+r*cos(th),H*cos(phi)-r*cos(th))
+    ytop = c(H*sin(phi)+r*sin(th),H*sin(phi)-r*sin(th))
+    xs = c(x0,xbot,xarc,xtop)
+    ys = c(y0,ybot,yarc,ytop)
+    return(list(xs,ys))
+}
+elbowin = function(r,r2,r3,J,H,th=pi/4){
+    x0 = -r
+    y0 = -r*tan(th/2)
+    ths = seq(0,th,length.out=100)
+    phi = th+pi/2
+    xs = c(-r3,-r2,-r2,r2,r2,r3,x0+(r+r3)*cos(ths),J*cos(phi)+r3*cos(th),J*cos(phi)+r2*cos(th),H*cos(phi)+r2*cos(th),H*cos(phi)-r2*cos(th),J*cos(phi)-r2*cos(th),J*cos(phi)-r3*cos(th),x0+(r-r3)*cos(rev(ths)))
+    ys = c(-J,-J,-H,-H,-J,-J,y0+(r+r3)*sin(ths),J*sin(phi)+r3*sin(th),J*sin(phi)+r2*sin(th),H*sin(phi)+r2*sin(th),H*sin(phi)-r2*sin(th),J*sin(phi)-r2*sin(th),J*sin(phi)-r3*sin(th),y0+(r-r3)*sin(rev(ths)))
+    return(list(xs,ys))
+}
+
+
+plot(0,0,"n",xlim=c(-1,1),ylim=c(-1,1),axes=F,ann=F)
+
+e1 = elbow(r1,h,thet)
+polygon(e1[[1]],e1[[2]],col="grey")
+ei1 = elbowin(r1,r2,r3,j,h,thet)
+polygon(ei1[[1]],ei1[[2]],col = "white")
+
+phi = thet+pi/2
+polygon(c(-r2,r2,r2,-r2),c(-1,-1,-j,-j),col=rgb(1,0,0,0.2),border = NA)
+polygon(c(r3,r2,r2,r3),c(-1,-1,-j,-j),col=rgb(1,0,0,1),border = NA)
+polygon(c(-r3,-r2,-r2,-r3),c(-1,-1,-j,-j),col=rgb(1,0,0,1),border = NA)
+
+polygon(c(j*cos(phi)+r2*cos(thet),1*cos(phi)+r2*cos(thet),1*cos(phi)-r2*cos(thet),j*cos(phi)-r2*cos(thet)),c(j*sin(phi)+r2*sin(thet),1*sin(phi)+r2*sin(thet),1*sin(phi)-r2*sin(thet),j*sin(phi)-r2*sin(thet)),col=rgb(0,0,1,0.2),border = NA)
+
+polygon(c(j*cos(phi)+r2*cos(thet),j*cos(phi)+r3*cos(thet),1*cos(phi)+r3*cos(thet),1*cos(phi)+r2*cos(thet)),c(j*sin(phi)+r2*sin(thet),j*sin(phi)+r3*sin(thet),1*sin(phi)+r3*sin(thet),1*sin(phi)+r2*sin(thet)),col=rgb(0,0,1,0.6),border = NA)
+
+polygon(c(j*cos(phi)-r2*cos(thet),j*cos(phi)-r3*cos(thet),1*cos(phi)-r3*cos(thet),1*cos(phi)-r2*cos(thet)),c(j*sin(phi)-r2*sin(thet),j*sin(phi)-r3*sin(thet),1*sin(phi)-r3*sin(thet),1*sin(phi)-r2*sin(thet)),col=rgb(0,0,1,0.6),border = NA)
+
+
+xmid = c(0,0,cos(thet+pi/2))
+ymid = c(-1,0,sin(thet+pi/2))
+lines(xmid,ymid,lty=3)
+
+
+polygon(e1[[1]],e1[[2]],border="black",lwd=2)
+
+lines(c(-r3/10,r3/10,0,0,-r3/10,r3/10)+r3/2,c(0,0,0,-j,-j,-j),col="purple",lwd=3)
+text(r1,-j/2,"takeoff",col="purple",cex=2,adj=c(-0.1))
+points(0,0,pch=19,cex=0.4)
+
+```
+\
+
+
+
+When planning a piping route, a plumber maps a sequence of straight-line segments. These line segments follow the center of each pipe. Each elbow also has a "center", which is where the center lines of each pipe intersect. Notice the pipes do not extend all the way to the center of the elbow. This means the pipe will be cut shorter than the original "center-to-center" distance. This amount of shortening is called "takeoff".
+
+
+
+Solution
+========
+
+
+
+
+Meta-information
+============
+extype: num
+exsolution: 
+exname: pyth_thrm_get_leg
+extol: 0.1

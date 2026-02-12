@@ -1,0 +1,913 @@
+---
+output: pdf_document
+params:
+    rseed: 1
+    showsol: false
+header-includes:
+  - \usepackage{multicol}
+---
+
+```{r,echo=F,warning=FALSE,message=FALSE}
+options(scipen=999)
+if(params$rseed !=0){
+    set.seed(params$rseed)
+}
+knitr::opts_chunk$set(echo = FALSE)
+bn <- basename(knitr::current_input())
+bn = strsplit(bn,".",fixed=T)[[1]][1]
+```
+
+Name: \vspace{5pt} \hrule
+
+## `r bn` (v`r params$rseed`)
+
+```{r}
+gcd2 <- function(a, b) {
+  if (b == 0) a else Recall(b, a %% b)
+}
+gcd <- function(...) Reduce(gcd2, c(...))
+pn = function(coeffs,pows){
+    pows = pows[coeffs!=0]
+    coeffs = coeffs[coeffs!=0]
+    ex1 = paste0("{",coeffs,"}x^{",pows,"}",collapse="+")
+    ex1 = gsub("+{-","-{",ex1,fixed=T)
+    ex1 = gsub("{1}x^{0}","1",ex1,fixed=T)
+    ex1 = gsub("{-1}x^{0}","-1",ex1,fixed=T)
+    ex1 = gsub("{1}x","x",ex1,fixed=T)
+    ex1 = gsub("{-1}x","-x",ex1,fixed=T)
+    ex1 = gsub("x^{0}","",ex1,fixed=T)
+    ex1 = gsub("x^{1}","x",ex1,fixed=T)
+    ex1 = gsub("+-","-",ex1,fixed=T)
+    if(ex1 == ""){
+        ex1 = "0"
+    }
+    return(ex1)
+}
+
+cn = function(a,b){
+  cn = gsub("+-","-",paste0(a,"+",b,"i"),fixed=TRUE)
+  cn = gsub("0+0i","0",cn,fixed=TRUE)
+  cn = gsub("+1i","+i",cn,fixed=TRUE)
+  cn = gsub("-1i","-i",cn,fixed=TRUE)
+  cn = gsub("+0i","",cn,fixed=TRUE)
+  cn = gsub("-0i","",cn,fixed=TRUE)
+  if(nchar(cn)>1 && substr(cn, start = 1, stop = 2)=="0+"){cn = gsub("0+","",cn,fixed=TRUE)}
+  if(nchar(cn)>1 && substr(cn, start = 1, stop = 2)=="0-"){cn = gsub("0-","-",cn,fixed=TRUE)}
+  return(cn)
+}
+```
+
+
+
+### Question 1
+
+```{r,echo=F}
+psfs = rev((2:30)^2)
+
+# a*sqrt(b)/(c*sqrt(d))
+# a*sqrt(b*d)/(c*d)
+# A*sqrt(R)/(D)
+
+
+while(T){
+    canpass = T
+    a = 2 #sample(1:10,1)
+    b = 6 #sample(c(1,2,3,5,6,7,10),1)
+    c = 5 #sample(1:10,1)
+    d = 3 #sample(c(2,3,5,6,7,10),1)
+    if(gcd(c(a,c))>1 || b==d){
+        canpass = F
+    }
+    ex1 = paste0("\\frac{[",a,"]\\sqrt{",b,"}}{[",c,"]\\sqrt{",d,"}}")
+    ex1 = gsub("[1]\\sqrt{1}","1",ex1,fixed=T)
+    ex1 = gsub("[1]","",ex1,fixed=T)
+    ex1 = gsub("[","",ex1,fixed=T)
+    ex1 = gsub("]","",ex1,fixed=T)
+    ex1 = gsub("\\sqrt{1}","",ex1,fixed=T)
+    A1 = a
+    R1 = b*d
+    D1 = c*d
+    A2 = A1
+    R2 = R1
+    D2 = D1
+    for(psf in psfs){
+        if(R2%%psf==0){
+            A2 = round(A1*sqrt(psf))
+            R2 = round(R1/psf)
+        }
+    }
+    gg = gcd(c(A2,D2))
+    A3 = round(A2/gg)
+    D3 = round(D2/gg)
+    if(D3>1){
+        ans1 = paste0("\\frac{[",A3,"]\\sqrt{",R2,"}}{",D3,"}")
+    } else {
+        ans1 = paste0("[",A3,"]\\sqrt{",R2,"}")
+    }
+    ans1 = gsub("[1]\\sqrt{1}","1",ans1,fixed=T)
+    ans1 = gsub("[1]","",ans1,fixed=T)
+    ans1 = gsub("[","",ans1,fixed=T)
+    ans1 = gsub("]","",ans1,fixed=T)
+    ans1 = gsub("\\sqrt{1}","",ans1,fixed=T)
+    if(canpass){break}
+}
+
+```
+
+Rationalize denominator and simplify:
+$$`r ex1`$$
+
+```{r,echo=F,results='asis'}
+if(params$showsol){
+    cat("\\color{red}\n\n")
+    ex = paste0("\\frac{[",a,"]\\sqrt{",b,"}\\cdot\\sqrt{",d,"}}{[",c,"]\\sqrt{",d,"}\\cdot \\sqrt{",d,"}}")
+    ex = gsub("[1]\\sqrt{1}","1",ex,fixed=T)
+    ex = gsub("[1]","",ex,fixed=T)
+    ex = gsub("[","",ex,fixed=T)
+    ex = gsub("]","",ex,fixed=T)
+    ex = gsub("\\sqrt{1\\cdot","\\sqrt{",ex,fixed=T)
+    cat(paste0("$$",ex,"$$\n\n"))
+    
+    ex = paste0("\\frac{[",a,"]\\sqrt{",b*d,"}}{[",c,"]\\sqrt{",d*d,"}}")
+    ex = gsub("[1]\\sqrt{1}","1",ex,fixed=T)
+    ex = gsub("[1]","",ex,fixed=T)
+    ex = gsub("[","",ex,fixed=T)
+    ex = gsub("]","",ex,fixed=T)
+    cat(paste0("$$",ex,"$$\n\n"))
+    
+    ex = paste0("\\frac{[",a,"]\\sqrt{",b*d,"}}{",c,"\\cdot",d,"}")
+    ex = gsub("[1]","",ex,fixed=T)
+    ex = gsub("[","",ex,fixed=T)
+    ex = gsub("]","",ex,fixed=T)
+    cat(paste0("$$",ex,"$$\n\n"))
+    
+    cat(paste0("$$",ans1,"$$"))
+    cat("\n\n\\color{black}\n\n")
+
+}
+```
+
+\vfill
+
+### Question 2
+
+```{r,echo=F}
+while(T){
+    a = sample(1:9,1)*sample(c(-1,1),1)
+    b = sample(1:9,1)*sample(c(-1,1),1)
+    c = sample(c(2,3,5,6,7,10),1)
+    d = sample(1:9,1)*sample(c(-1,1),1)
+    e = sample(1:9,1)*sample(c(-1,1),1)
+    q = paste0("\\frac{",a,"+[",b,"]\\sqrt{",c,"}}{",d,"+[",e,"]\\sqrt{",c,"}}")
+    q = gsub("+[-1]","-",q,fixed=T)
+    q = gsub("+[1]","+",q,fixed=T)
+    q = gsub("[","",q,fixed=T)
+    q = gsub("]","",q,fixed=T)
+    q = gsub("+-","-",q,fixed=T)
+    A = a*d-b*e*c
+    B = b*d-a*e
+    D = d^2-e^2*c
+    gg = abs(gcd(c(A,B,D)))*sign(D)
+    if(gg != 0){
+        A = A/gg
+        B = B/gg
+        D = D/gg
+    }
+    answer = paste0("\\frac{",A,"+",B,"\\sqrt{",c,"}}{",D,"}")
+    if(D==1){
+        answer = paste0(A,"+",B,"\\sqrt{",c,"}")
+    }
+    answer = gsub("+-","-",answer,fixed=T)
+    answer = gsub("+1\\sqrt","+\\sqrt",answer,fixed=T)
+    answer = gsub("-1\\sqrt","-\\sqrt",answer,fixed=T)
+    if(A!=0 && B!=0 && D!=0 && abs(A)<11 && abs(B)<11 && abs(D)<11 && abs(b*e*c)<100 && abs(e^2*c)<100 && gg>1 && abs(gcd(c(a,b,d,e)))==1 && sum(sign(c(a,b,d,e)))>=0){
+        break
+    }
+}
+```
+
+Rationalize denominator and simplify:
+
+$$`r q`$$
+
+
+
+```{r,echo=F,results='asis'}
+if(params$showsol){
+    cat("\\color{red}\n\n")
+    ex = paste0("\\frac{",a,"+[",b,"]\\sqrt{",c,"}}{",d,"+[",e,"]\\sqrt{",c,"}}\\cdot\\frac{",d,"+[",-e,"]\\sqrt{",c,"}}{",d,"+[",-e,"]\\sqrt{",c,"}}")
+    ex = gsub("+[-1]","-",ex,fixed=T)
+    ex = gsub("+[1]","+",ex,fixed=T)
+    ex = gsub("[","",ex,fixed=T)
+    ex = gsub("]","",ex,fixed=T)
+    ex = gsub("+-","-",ex,fixed=T)
+    cat(paste0("$$",ex,"$$\n\n"))
+    
+    ex = paste0("\\frac{",a*d,"+[",-a*e,"]\\sqrt{",c,"}+[",b*d,"]\\sqrt{",c,"}+",-b*e*c,"}{",d^2,"+",-e^2*c,"}")
+    ex = gsub("+[-1]","-",ex,fixed=T)
+    ex = gsub("+[1]","+",ex,fixed=T)
+    ex = gsub("[","",ex,fixed=T)
+    ex = gsub("]","",ex,fixed=T)
+    ex = gsub("+-","-",ex,fixed=T)
+    cat(paste0("$$",ex,"$$\n\n"))
+    
+    ex = paste0("\\frac{",a*d-b*e*c,"+[",b*d-a*e,"]\\sqrt{",c,"}}{",d^2-e^2*c,"}")
+    ex = gsub("+[-1]","-",ex,fixed=T)
+    ex = gsub("+[1]","+",ex,fixed=T)
+    ex = gsub("[","",ex,fixed=T)
+    ex = gsub("]","",ex,fixed=T)
+    ex = gsub("+-","-",ex,fixed=T)
+    cat(paste0("$$",ex,"$$\n\n"))
+    
+    cat(paste0("$$",answer,"$$"))
+    cat("\n\n\\color{black}\n\n")
+
+}
+```
+
+
+\vfill
+
+\newpage
+
+### Question 3
+
+```{r,echo=F}
+n = 4
+qt = sample(c(sample(1:3,2),sample(4:6,2)))
+eqs = character()
+sols = character()
+for(qti in qt){
+    if(qti == 1){
+        a = sample(1:9,1)*sample(c(-1,1),1)
+        b = sample(2:10,1)
+        eq = paste0("\\sqrt{x+",a,"}=",b)
+        eq = gsub("+-","-",eq,fixed=T)
+        x = b^2-a
+    }
+    if(qti == 2){
+        b = sample(2:5,1)
+        a = sample(c(2:5,10),1)*sample(c(-1,1),1)
+        x = a*b^2
+        eq = paste0("\\sqrt{\\frac{x}{",a,"}}=",b)
+    }
+    if(qti == 3){
+        while(T){
+            b = sample(2:12,1)
+            a = sample(2:6,1)*sample(c(-1,1),1)
+            x = b^2/a
+            if(x%%1==0 && abs(a)!=abs(b)){break}
+        }
+        eq = paste0("\\sqrt{",a,"x}=",b)
+    }
+    if(qti == 4){
+        while(T){
+            a = sample(1:15,1)*sample(c(-1,1),1)
+            b = sample(1:15,1)*sample(c(-1,1),1)
+            if((b-a)>1 && (b-a)<13){
+                break
+                }
+        }
+        eq = paste0("\\sqrt{x}+",a,"=",b)
+        eq = gsub("+-","-",eq,fixed=T)
+        x = (b-a)^2
+    }
+    if(qti == 5){
+        while(T){
+            sab = sample(c(-1,1),1)
+            a = sample(2:6,1)*sab
+            b = sample(2:6,1)*sab
+            sqrtx = a*b
+            x = (a*b)^2
+            if(sqrtx<17){break}
+        }
+        eq = paste0("\\frac{\\sqrt{x}}{",a,"}=",b)
+    }
+    if(qti == 6){
+        while(T){
+            sab = sample(c(-1,1),1)
+            multer = sample(2:10,1)
+            a = sample(2:6,1)*sab
+            b = a*multer
+            x = (b/a)^2
+            if(x%%1==0 && abs(a)!=abs(b)){break}
+        }
+        eq = paste0(a,"\\sqrt{x}=",b)
+    }
+    eqs = c(eqs,eq)
+    sols = c(sols,paste0("x=",x))
+}
+
+```
+
+
+```{r,echo=F,results='asis'}
+for(i in 1:n){
+    cat("\\begin{minipage}[t][4in]{0.5\\textwidth}\n")
+    cat(paste0(letters[i],". "))
+    cat("Solve the radical equation.")
+    cat(paste0("\n$$",eqs[i],"$$\n\n"))
+    if(params$showsol){
+        cat("\\color{red}\n")
+        cat(paste0("$$",sols[i],"$$"))
+        cat("\n\n\\color{black}\n")
+    }
+    cat("\\end{minipage}")
+    if(i%%2==0){
+        cat("\n\n")
+    }
+}
+
+```
+
+\newpage
+
+### Question 4
+
+```{r,echo=F}
+nval = sample(0:2,1,F,c(1,2,1))
+
+while(T){
+    rs = sample(1:10,2)*sample(c(-1,1),2,T)
+    qea = 1
+    qeb = sum(-rs)
+    qec = prod(-rs)
+    psa = 1
+    psb = qeb+sample(2:9,1)*sample(c(-1,1),1)
+    if(psb%%2==1){
+        psb = psb+sample(c(-1,1),1)
+    }
+    psc = (psb/2)^2
+    
+    rm = psb-qeb
+    rb = psc-qec
+    
+    k = sample(1:9,1)*sample(c(-1,1),1)
+    
+    lm = sample(c(-1,1),1)
+    lb = (psb/2)*sign(lm)+k
+    
+    ra = sample(c(-1,1),1)
+    
+    eq = paste0(k,"+{",ra,"}\\sqrt{",rm,"x+",rb,"}=",lm,"x+",lb)
+    eq = gsub("+-","-",eq,fixed=T)
+    eq = gsub("+{-1}","-",eq,fixed=T)
+    eq = gsub("+{1}","+",eq,fixed=T)
+    eq = gsub("=1x","=x",eq,fixed=T)
+    eq = gsub("=-1x","=-x",eq,fixed=T)
+    psol1 = min(rs)
+    psol2 = max(rs)
+    val1 = (k+ra*sqrt(rm*psol1+rb)==lm*psol1+lb)
+    val2 = (k+ra*sqrt(rm*psol2+rb)==lm*psol2+lb)
+    if(k!=lb && abs(psb)<19 && abs(rm)>1 && rb!=0 && lb!=0 && (1*val1+1*val2)==nval && sum(sign(c(k,ra,rm,rb,lm,lb)))>=-1){break}
+}
+```
+
+Using algebra, determine both possible solutions to the equation below.
+
+$$`r eq`$$
+
+Then, determine whether each possible solution is valid or extraneous.
+
+```{r,echo=F,results='asis',eval=params$showsol}
+cat("\\color{red}\n\n")
+if(k<0){
+    cat(paste0("Add ",abs(k)," to both sides of the equation."))
+} else {
+    cat(paste0("Subtract ",abs(k)," from both sides of the equation."))
+}
+eq = paste0("{",ra,"}\\sqrt{",rm,"x+",rb,"}=",lm,"x+",lb-k)
+eq = gsub("+-","-",eq,fixed=T)
+eq = gsub("{-1}","-",eq,fixed=T)
+eq = gsub("{1}","",eq,fixed=T)
+eq = gsub("=1x","=x",eq,fixed=T)
+eq = gsub("=-1x","=-x",eq,fixed=T)
+cat(paste0("\n$$",eq,"$$\n"))
+
+if(ra<0){
+    cat("Multiply both sides by $-1$.")
+    eq = paste0("{",-ra,"}\\sqrt{",rm,"x+",rb,"}=",-lm,"x+",-(lb-k))
+    eq = gsub("+-","-",eq,fixed=T)
+    eq = gsub("{-1}","-",eq,fixed=T)
+    eq = gsub("{1}","",eq,fixed=T)
+    eq = gsub("=1x","=x",eq,fixed=T)
+    eq = gsub("=-1x","=-x",eq,fixed=T)
+    cat(paste0("\n$$",eq,"$$\n"))
+}
+
+cat("Square both sides of the equation. Remember, you'll need to FOIL the right side.")
+
+eq = paste0(rm,"x+",rb,"=",psa,"x^2+",psb,"x+",psc)
+eq = gsub("+-","-",eq,fixed=T)
+eq = gsub("=1x","=x",eq,fixed=T)
+eq = gsub("=-1x","=-x",eq,fixed=T)
+cat(paste0("\n$$",eq,"$$\n"))
+
+ls = paste0("{",rm,"}x+",rb)
+ls = gsub("+-","-",ls,fixed=T)
+ls = gsub("{1}","",ls,fixed=T)
+ls = gsub("{-1}","-",ls,fixed=T)
+ls = gsub("{","",ls,fixed=T)
+ls = gsub("}","",ls,fixed=T)
+
+cat("Subtract $(",ls,")$ from both sides.")
+
+eq = paste0("0={",qea,"}x^2+{",qeb,"}x+",qec)
+eq = gsub("{1}","",eq,fixed=T)
+eq = gsub("{-1}","-",eq,fixed=T)
+eq = gsub("{","",eq,fixed=T)
+eq = gsub("}","",eq,fixed=T)
+eq = gsub("+-","-",eq,fixed=T)
+cat(paste0("\n$$",eq,"$$\n"))
+
+cat("From here, you can either factor or use quadratic formula. It is easy enough to factor this one.")
+
+eq = paste0("0=(x+",-psol1,")(x+",-psol2,")")
+eq = gsub("+-","-",eq,fixed=T)
+cat(paste0("\n$$",eq,"$$\n"))
+
+cat(paste0("Use the zero-product property to identify the possible solutions are $x_1=",psol1,"$ and $x_2=",psol2,"$.\n"))
+
+cat(paste0("Check possible solution $x=",psol1,"$"))
+
+eq = paste0(k,"+{",ra,"}\\sqrt{",rm,"(",psol1,")+",rb,"}={",lm,"}(",psol1,")+",lb)
+eq = gsub("+-","-",eq,fixed=T)
+eq = gsub("+{-1}","-",eq,fixed=T)
+eq = gsub("+{1}","+",eq,fixed=T)
+eq = gsub("={1}","=",eq,fixed=T)
+eq = gsub("={-1}","=-",eq,fixed=T)
+eq = gsub("=","\\stackrel{?}{=}",eq,fixed=T)
+cat(paste0("\n$$",eq,"$$\n"))
+
+eq = paste0(k,"+{",ra,"}\\sqrt{",rm*psol1,"+",rb,"}=",lm*psol1,"+",lb)
+eq = gsub("+-","-",eq,fixed=T)
+eq = gsub("+{-1}","-",eq,fixed=T)
+eq = gsub("+{1}","+",eq,fixed=T)
+eq = gsub("=1x","=x",eq,fixed=T)
+eq = gsub("=-1x","=-x",eq,fixed=T)
+eq = gsub("=","\\stackrel{?}{=}",eq,fixed=T)
+cat(paste0("\n$$",eq,"$$\n"))
+
+eq = paste0(k,"+{",ra,"}\\sqrt{",rm*psol1+rb,"}=",lm*psol1+lb)
+eq = gsub("+-","-",eq,fixed=T)
+eq = gsub("+{-1}","-",eq,fixed=T)
+eq = gsub("+{1}","+",eq,fixed=T)
+eq = gsub("=1x","=x",eq,fixed=T)
+eq = gsub("=-1x","=-x",eq,fixed=T)
+eq = gsub("=","\\stackrel{?}{=}",eq,fixed=T)
+cat(paste0("\n$$",eq,"$$\n"))
+
+eq = paste0(k,"+{",ra,"}",sqrt(rm*psol1+rb),"=",lm*psol1+lb)
+eq = gsub("+-","-",eq,fixed=T)
+eq = gsub("+{-1}","-",eq,fixed=T)
+eq = gsub("+{1}","+",eq,fixed=T)
+eq = gsub("=1x","=x",eq,fixed=T)
+eq = gsub("=-1x","=-x",eq,fixed=T)
+eq = gsub("=","\\stackrel{?}{=}",eq,fixed=T)
+cat(paste0("\n$$",eq,"$$\n"))
+
+eq = paste0(k+ra*sqrt(rm*psol1+rb),"=",lm*psol1+lb)
+if(val1){
+    eq = gsub("=","=",eq,fixed=T)
+    cat(paste0("\n$$",eq,"$$\n"))
+    cat(paste0("So we see $x=",psol1,"$ is a valid solution."))
+} else {
+    eq = gsub("=","\\ne ",eq,fixed=T)
+    cat(paste0("\n$$",eq,"$$\n"))
+    cat(paste0("So we see $x=",psol1,"$ is an extraneous solution."))
+}
+
+
+cat(paste0("\n\n Check possible solution $x=",psol2,"$"))
+
+eq = paste0(k,"+{",ra,"}\\sqrt{",rm,"(",psol2,")+",rb,"}={",lm,"}(",psol2,")+",lb)
+eq = gsub("+-","-",eq,fixed=T)
+eq = gsub("+{-1}","-",eq,fixed=T)
+eq = gsub("+{1}","+",eq,fixed=T)
+eq = gsub("={1}","=",eq,fixed=T)
+eq = gsub("={-1}","=-",eq,fixed=T)
+eq = gsub("=","\\stackrel{?}{=}",eq,fixed=T)
+cat(paste0("\n$$",eq,"$$\n"))
+
+eq = paste0(k,"+{",ra,"}\\sqrt{",rm*psol2,"+",rb,"}=",lm*psol2,"+",lb)
+eq = gsub("+-","-",eq,fixed=T)
+eq = gsub("+{-1}","-",eq,fixed=T)
+eq = gsub("+{1}","+",eq,fixed=T)
+eq = gsub("=1x","=x",eq,fixed=T)
+eq = gsub("=-1x","=-x",eq,fixed=T)
+eq = gsub("=","\\stackrel{?}{=}",eq,fixed=T)
+cat(paste0("\n$$",eq,"$$\n"))
+
+eq = paste0(k,"+{",ra,"}\\sqrt{",rm*psol2+rb,"}=",lm*psol2+lb)
+eq = gsub("+-","-",eq,fixed=T)
+eq = gsub("+{-1}","-",eq,fixed=T)
+eq = gsub("+{1}","+",eq,fixed=T)
+eq = gsub("=1x","=x",eq,fixed=T)
+eq = gsub("=-1x","=-x",eq,fixed=T)
+eq = gsub("=","\\stackrel{?}{=}",eq,fixed=T)
+cat(paste0("\n$$",eq,"$$\n"))
+
+eq = paste0(k,"+{",ra,"}",sqrt(rm*psol2+rb),"=",lm*psol2+lb)
+eq = gsub("+-","-",eq,fixed=T)
+eq = gsub("+{-1}","-",eq,fixed=T)
+eq = gsub("+{1}","+",eq,fixed=T)
+eq = gsub("=1x","=x",eq,fixed=T)
+eq = gsub("=-1x","=-x",eq,fixed=T)
+eq = gsub("=","\\stackrel{?}{=}",eq,fixed=T)
+cat(paste0("\n$$",eq,"$$\n"))
+
+eq = paste0(k+ra*sqrt(rm*psol2+rb),"=",lm*psol2+lb)
+if(val2){
+    eq = gsub("=","=",eq,fixed=T)
+    cat(paste0("\n$$",eq,"$$\n"))
+    cat(paste0("So we see $x=",psol2,"$ is a valid solution."))
+} else {
+    eq = gsub("=","\\ne ",eq,fixed=T)
+    cat(paste0("\n$$",eq,"$$\n"))
+    cat(paste0("So we see $x=",psol2,"$ is an extraneous solution."))
+}
+
+cat("\\color{black}\n\n")
+```
+
+\newpage
+
+### Question 5
+
+```{r}
+
+fsimp = function(top,bot){
+    gg = abs(gcd(c(top,bot)))
+    top = round(abs(top)/gg*sign(top*bot))
+    bot = round(abs(mbot)/gg)
+    if(bot==1){
+        return(paste0(top))
+    } else {
+        return(paste0("\\frac{",top,"}{",bot,"}"))
+    }
+}
+
+xpar = c(0,1,4,9)
+ypar = c(0,1,2,3)
+xext = c(1,4,9)
+yext = c(-1,-2,-3)
+
+# horizontal shift before possible reflection
+
+# y = a*sqrt(bx-h)+k
+
+
+h = sample(c(-9:-1,1),1)
+a = sample(c(-3,-2,-1,1,2,3),1)
+k = sample(c(((-10+3*abs(a)):-1),(1:(10-3*abs(a)))),1)
+b = sample(c(-1,1),1)
+xc = (xpar+h)/b
+yc = a*ypar+k
+xd = (xext+h)/b
+yd = k+a*yext
+nvalold = nval
+
+while(T){
+   nval = sample(0:2,1)
+   if(nval != nvalold){break}
+}
+
+
+if(nval==0){
+    ii = sample(1:length(xd),2)
+    xi = xd[ii]
+    yi = yd[ii]
+    isval = c(F,F)
+    wrd = c("an extraneous","an extraneous")
+}
+if(nval==1){
+    while(T){
+        ic = sample(1:length(xc),1)
+        id = sample(1:length(xd),1)
+        xic = xc[ic]
+        yic = yc[ic]
+        xid = xd[id]
+        yid = yd[id]
+        ii = sample(1:2)
+        xi = c(xic,xid)[ii]
+        yi = c(yic,yid)[ii]
+        isval = c(T,F)[ii]
+        wrd = c("a valid","an extraneous")[ii]
+        if(xic!=xid){break}
+    }
+}
+if(nval==2){
+    ii = sample(1:length(xc),2)
+    xi = xc[ii]
+    yi = yc[ii]
+    isval = c(T,T)
+    wrd = c("a valid","a valid")
+}
+
+mtop = diff(yi)
+mbot = diff(xi)
+mf = fsimp(mtop,mbot)
+
+
+while(T){
+    xp = sample(-10:10,1)
+    yp = mtop*(xp-xi[1])/mbot+yi[1]
+    if(abs(yp)<=10 && abs(yp)%%1==0 && yp!=yi[1] && yp!=yi[2] && min(abs(c(xp,yp)))>0){break}
+}
+
+if(b==-1){
+    fx = paste0(k,"+[",a,"]\\sqrt{-x+",-h,"}")
+} else {
+    fx = paste0(k,"+[",a,"]\\sqrt{x+",-h,"}")
+}
+fx = gsub("[1]","",fx,fixed=T)
+fx = gsub("[-1]","-",fx,fixed=T)
+fx = gsub("[","",fx,fixed=T)
+fx = gsub("]","",fx,fixed=T)
+fx = gsub("+-","-",fx,fixed=T)
+Lx = paste0("[",mf,"](x+",-xp,")+",yp)
+Lx = gsub("+-","-",Lx,fixed=T)
+Lx = gsub("[1]","",Lx,fixed=T)
+Lx = gsub("[-1]","-",Lx,fixed=T)
+Lx = gsub("[","",Lx,fixed=T)
+Lx = gsub("]","",Lx,fixed=T)
+
+doit = function(i){
+    cat(paste0("On the $x,y$ plane below, accurately plot the following two functions:\n\n$$y=",fx,"$$\n$$y=",Lx,"$$\n\n"))
+    
+    par(pty="s",mar=c(0,0,0,0))
+    plot(0,0,"n",xlim=c(-10,10),ylim=c(-10,10),ann=F,axes=F)
+    
+    for(i in -10:10){
+        lines(c(i,i),c(-10,10),col="grey",lwd=0.5)
+        lines(c(-10,10),c(i,i),col="grey",lwd=0.5)
+    }
+    for(i in seq(-10,10,5)){
+        lines(c(i,i),c(-10,10),col="darkgrey",lwd=1)
+        lines(c(-10,10),c(i,i),col="darkgrey",lwd=1)
+    }
+    abline(h=0,lwd=2)
+    abline(v=0,lwd=2)
+    text(10,0,"x",adj=c(-0.2,-0.2))
+    text(0,10,"y",adj=c(-0.2,-0.2))
+    text(10,0,"10",adj=c(0.5,1.2),cex=0.7)
+    text(0,10,"10",adj=c(1.1,0.5),cex=0.7)
+    
+    if(params$showsol){
+        xx = seq(h*sign(b),10*sign(b),0.01*sign(b))
+        yy = a*sqrt(b*xx-h)+k
+        
+        xx = xx[abs(yy)<=10]
+        yy = yy[abs(yy)<=10]
+        
+        
+        lines(xx,yy,col="blue",lwd=2)
+        
+        x2 = (c(0,1,4,9,16)+h)/b
+        y2 = a*c(0,1,2,3,4)+k
+        x2 = x2[abs(y2)<=10]
+        y2 = y2[abs(y2)<=10]
+        
+        points(x2,y2,pch=19,col="blue")
+        
+        xl = seq(-10,10,0.1)
+        yl = mtop/mbot*(xl-xi[1])+yi[1]
+        xl = xl[abs(yl)<=10]
+        yl = yl[abs(yl)<=10]
+        lines(xl,yl,col="red",lwd=2)
+    
+        xx = seq(h*sign(b),10*sign(b),0.01*sign(b))
+        yy = -a*sqrt(b*xx-h)+k
+        
+        xx = xx[abs(yy)<=10]
+        yy = yy[abs(yy)<=10]
+        
+        lines(xx,yy,col="grey",lwd=2,lty=2)
+        
+        points(xi,yi,pch=19,col="red")
+        points(xp,yp,pch=19,col="red")
+    }
+    cat(paste0("\\\n\nIf the equation $",fx,"=",Lx,"$ was solved using algebra, what two possible solutions would be found? For each possible solution, state whether it would be a valid solution or an extraneous solution.\n\n"))
+    
+    if(params$showsol){
+        cat("\\color{red}")
+        cat("Possible solutions: ")
+        cat(paste0("$$x=",xi,"$$",collapse="\n"))
+        cat("\n\n\\color{black}\n\n")
+    }
+    if(params$showsol){
+        cat("\\color{red}")
+        cat("\n\n")
+        cat(paste0("$x=",xi,"$ is ",wrd," solution.",collapse="\n\n"))
+        cat("\n\n\\color{black}\n\n")
+    }
+    cat("\\vfill\n\n")
+}
+```
+
+```{r,echo=F,fig.dim=c(4,4),results="asis"}
+doit(1)
+```
+
+
+\newpage
+
+### Question 6
+
+```{r,echo=FALSE}
+
+# sqrt(x+a)+b = sqrt(x+c)
+# x+a + 2b*sqrt(x+a) + b^2 = x+c
+# sqrt(x+a) = (c-a-b^2)/(2b)
+# x+a = (c-a-b^2)^2/(4b^2)
+# x = (c-a-b^2)^2/(4b^2)-a
+
+isval = sample(c(T,F),1)
+if(isval){
+    ans2 = "valid"
+} else {
+    ans2 = "extraneous"
+}
+
+while(T){
+    abc = sample(1:9,3)*sample(c(-1,1),3,T)
+    a = abc[1]
+    b = abc[2]
+    c = abc[3]
+    xposs = (c-a-b^2)^2/(4*b^2)-a
+    ls = sqrt(xposs+a)+b
+    rs = sqrt(xposs+c)
+    if((ls==rs)==isval && xposs%%1==0 && abs(xposs)<100 && abs(c-a-b^2)>0){break}
+}
+eq = paste0("\\sqrt{x+",a,"}+",b,"=\\sqrt{x+",c,"}")
+eq = gsub("+-","-",eq,fixed=T)
+
+ans21 = ans2
+
+abc1 = abc
+
+```
+
+Using algebra, find the possible solution, and determine whether the solution is valid or extraneous.
+
+$$`r eq`$$
+
+\vspace{1in}
+
+```{r,echo=F,results="asis",eval=params$showsol}
+cat("\\color{red}")
+
+eq = paste0("(\\sqrt{x+",a,"}+",b,")^2=(\\sqrt{x+",c,"})^2")
+eq = gsub("+-","-",eq,fixed=T)
+cat(paste0("$$",eq,"$$\n\n"))
+
+# cat("\n\nThe left side will need to be FOILed. On the right side, the inverse operations cancel out.\n\n")
+
+eq = paste0("(\\sqrt{x+",a,"}+",b,")(\\sqrt{x+",a,"}+",b,")=x+",c)
+eq = gsub("+-","-",eq,fixed=T)
+cat(paste0("$$",eq,"$$\n\n"))
+
+eq = paste0("(x+",a,")+",2*b,"\\sqrt{x+",a,"}+(",b,")^2=x+",c)
+eq = gsub("+-","-",eq,fixed=T)
+cat(paste0("$$",eq,"$$\n\n"))
+
+eq = paste0("x+",a,"+",2*b,"\\sqrt{x+",a,"}+",b^2,"=x+",c)
+eq = gsub("+-","-",eq,fixed=T)
+cat(paste0("$$",eq,"$$\n\n"))
+
+# cat(paste0("Subtract $x+",a,"+",b^2,"$ from both sides.\n\n"))
+
+eq = paste0(2*b,"\\sqrt{x+",a,"}=",c-a-b^2)
+eq = gsub("+-","-",eq,fixed=T)
+cat(paste0("$$",eq,"$$\n\n"))
+
+# cat(paste0("Divide both sides by $",2*b,"$.\n\n"))
+
+eq = paste0("\\sqrt{x+",a,"}=",round((c-a-b^2)/(2*b)))
+eq = gsub("+-","-",eq,fixed=T)
+cat(paste0("$$",eq,"$$\n\n"))
+
+# cat("Square both sides.\n\n")
+
+eq = paste0("x+",a,"=",round((c-a-b^2)/(2*b))^2)
+eq = gsub("+-","-",eq,fixed=T)
+cat(paste0("$$",eq,"$$\n\n"))
+
+
+# if(a>0){
+#     cat("Subtract ",a," from both sides.")
+# } else {
+#     cat("Add ",-a," to both sides.")
+# }
+
+eq = paste0("x=",round((c-a-b^2)/(2*b))^2-a)
+eq = gsub("+-","-",eq,fixed=T)
+cat(paste0("$$",eq,"$$\n\n"))
+
+cat(paste0("So, our possible solution is $x=",round((c-a-b^2)/(2*b))^2-a,"$. We need to check if this satisfies the given equation."))
+
+
+eq = paste0("\\sqrt{",xposs,"+",a,"}+",b,"\\stackrel{?}{=}\\sqrt{",xposs,"+",c,"}")
+eq = gsub("+-","-",eq,fixed=T)
+cat(paste0("$$",eq,"$$\n\n"))
+
+eq = paste0("\\sqrt{",xposs+a,"}+",b,"\\stackrel{?}{=}\\sqrt{",xposs+c,"}")
+eq = gsub("+-","-",eq,fixed=T)
+cat(paste0("$$",eq,"$$\n\n"))
+
+eq = paste0(sqrt(xposs+a),"+",b,"\\stackrel{?}{=}",sqrt(xposs+c))
+eq = gsub("+-","-",eq,fixed=T)
+cat(paste0("$$",eq,"$$\n\n"))
+
+if(isval){
+    eq = paste0(sqrt(xposs+a)+b,"=",sqrt(xposs+c))
+    eq = gsub("+-","-",eq,fixed=T)
+    cat(paste0("$$",eq,"$$\n\n"))
+    cat(paste0("So, the possible solution $x=",xposs,"$ is valid."))
+} else {
+    eq = paste0(sqrt(xposs+a)+b,"\\ne ",sqrt(xposs+c))
+    eq = gsub("+-","-",eq,fixed=T)
+    cat(paste0("$$",eq,"$$\n\n"))
+    cat(paste0("So, the possible solution $x=",xposs,"$ is extraneous."))
+}
+
+```
+
+\color{black}
+
+\newpage
+
+### Question 7
+
+```{r,echo=FALSE}
+set.seed(4)
+
+while(T){
+    p = sample(1:9,1)*sample(c(-1,1),1)
+    q = sample(2:9,1)
+    psi = sample(1:9,1)*sample(c(-1,1),1)
+    # sqrt(mx+n)+k = x+psi+k
+    m = 2*psi-2*p
+    n = psi^2-p^2-q^2
+    k = sample(1:9,1)*sample(c(-1,1),1)
+    if(n!=0 && abs(m)>1 && abs(psi+k)>0){break}
+}
+
+p1 = p
+q1 = q
+
+fx = paste0("\\sqrt{",m,"x+",n,"}+",k)
+lx = paste0("x+",psi+k)
+fx = gsub("+-","-",fx,fixed=T)
+lx = gsub("+-","-",lx,fixed=T)
+gx = paste0("-\\sqrt{",m,"x+",n,"}+",k)
+gx = gsub("+-","-",gx,fixed=T)
+
+ach = -10:10
+ach2 = 1:10
+al = paste0("* ",ach,collapse="\n")
+al2 = paste0("* ",ach2,collapse="\n")
+sol1 = paste0(1*(ach==-p),collapse="")
+sol2 = paste0(1*(ach2==q),collapse="")
+```
+
+
+Find the complex possible solutions to the equation. Do not attempt to validate the possible solutions.
+
+$$`r fx`=`r lx`$$
+
+\vspace{1in}
+
+```{r,echo=F,results="asis",eval=params$showsol}
+cat("\\color{red}")
+
+eq2 = paste0("\\sqrt{",m,"x+",n,"}=x+",psi)
+eq2 = gsub("+-","-",eq2,fixed=T)
+cat(paste0("\n\n$$",eq2,"$$\n\n"))
+
+eq3 = paste0(m,"x+",n,"=x^2+",2*psi,"x+",psi^2)
+eq3 = gsub("+-","-",eq3,fixed=T)
+cat(paste0("\n\n$$",eq3,"$$\n\n"))
+
+eq4 = paste0("0=x^2+",2*psi-m,"x+",psi^2-n)
+eq4 = gsub("+-","-",eq4,fixed=T)
+cat(paste0("\n\n$$",eq4,"$$\n\n"))
+
+a = 1
+b = 2*psi-m
+c = psi^2-n
+qf1 = paste0("x=\\frac{-(",b,")\\pm\\sqrt{(",b,")^2-4(",a,")(",c,")}}{2(",a,")}")
+cat(paste0("\n\n$$",qf1,"$$\n"))
+
+qf2 = paste0("x=\\frac{",-b,"\\pm\\sqrt{",b^2,"-",4*a*c,"}}{",2*a,"}")
+cat(paste0("\n\n$$",qf2,"$$\n"))
+
+qf3 = paste0("x=\\frac{",-b,"\\pm\\sqrt{",b^2-4*a*c,"}}{",2*a,"}")
+cat(paste0("\n\n$$",qf3,"$$\n"))
+
+qf4 = paste0("x=\\frac{",-b,"\\pm",2*a*q,"i}{",2*a,"}")
+cat(paste0("\n\n$$",qf4,"$$\n"))
+
+qf5 = paste0("x=",-p,"\\pm",q,"i")
+cat(paste0("\n\n$$",qf5,"$$\n"))
+```

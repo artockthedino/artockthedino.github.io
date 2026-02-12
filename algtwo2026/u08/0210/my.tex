@@ -1,0 +1,64 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx,xcolor,verbatim,url,fancyvrb}
+\usepackage{amsmath,amssymb,booktabs,longtable,textcomp,eurosym,latexsym}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{multicol}
+
+\newenvironment{question}{\begin{minipage}[t][2in][t]{0.4\textwidth}\item  }{\end{minipage}\vfill}
+\newenvironment{solution}{\comment}{\endcomment}
+
+% \newenvironment{question}{\item \textbf{Problem}\newline}{\newline}
+% \newenvironment{solution}{\color{red}\textbf{Solution}\newline}{\color{black}}
+
+\newenvironment{answerlist}{\renewcommand{\labelenumii}{(\alph{enumii})}\begin{enumerate}}{\end{enumerate}}
+
+\DefineVerbatimEnvironment{Sinput}{Verbatim}{fontshape=sl}
+\DefineVerbatimEnvironment{Soutput}{Verbatim}{}
+\DefineVerbatimEnvironment{Scode}{Verbatim}{fontshape=sl}
+\newenvironment{Schunk}{}{}
+\setkeys{Gin}{width=0.8\textwidth}
+
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\providecommand{\pandocbounded}[1]{#1}
+\setkeys{Gin}{keepaspectratio}
+
+\makeatletter
+\newcommand{\ID}[1]{\def\@ID{#1}}
+\newcommand{\Date}[1]{\def\@Date{#1}}
+\ID{00001}
+\Date{YYYY-MM-DD}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+% \renewcommand{\headrulewidth}{0pt}
+
+%% \exinput{header}
+
+\newcommand{\myID}{\@ID}
+\newcommand{\myDate}{\@Date}
+\newcommand{\exnum}[9]{#1#2#3#4#5#6}
+\makeatother
+
+\fancyhead[L]{{\bf \myID}}
+\fancyhead[C]{{\bf Name:}}
+
+
+\begin{document}
+
+\begin{multicols}{2}
+
+\begin{enumerate}
+%% \exinput{exercises}
+\end{enumerate}
+
+\end{multicols}
+
+\newpage
+
+%% \exinput{questionnaire}
+
+\end{document}
