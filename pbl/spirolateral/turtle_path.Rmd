@@ -1,0 +1,103 @@
+```{r,echo=FALSE}
+# All right turns
+# Expressed with right, up, left, down
+
+n = 5
+
+while(T){
+    x = sample(2:5,n,T)
+    turns = sample(c(-1,1),n,T)
+    st = cumsum(turns)
+    # ths = c(0,pi/2,pi,3*pi/2)
+    # dis = c("East","North","West","South")
+    ths = c(pi/2,0,3*pi/2,pi)
+    dis = c("North","East","South","West")
+    j0 = sample(0:3,1)
+    jj = (j0+st)%%4+1
+    
+    tt = ths[jj]
+    dd = dis[jj]
+    
+    xx = c(0)
+    yy = c(0)
+    
+    for(i in 1:n){
+        xx = c(xx,xx[i]+x[i]*cos(tt[i]))
+        yy = c(yy,yy[i]+x[i]*sin(tt[i]))
+    }
+    if(max(abs(xx))<=10 && max(abs(yy))<=10 && length(unique(dd))>2 && length(unique(x))>1){break}
+}
+
+
+acho = dis
+ache = 1:5
+
+alo = paste0("* ",acho,collapse="\n")
+ale = paste0("* ",ache,collapse="\n")
+
+sols = character()
+for(i in 1:n){
+    solo = paste0(1*(dd[i]==acho),collapse="")
+    sole = paste0(1*(x[i]==ache),collapse="")
+    sols = c(sols,solo,sole)
+}
+
+```
+
+Question
+========
+
+A turtle starts at the star in the middle. By dragging markers along a grid, she makes `r n` line segments. The first segment is red, and then she changes color after each turn, following the progression of a rainbow.
+
+The distance between adjacent dots is 1 unit. The grid is oriented with North pointing up and East pointing right.
+
+```{r,echo=F,fig.dim=c(4,4)}
+par(mar=c(0,0,0,0),pty="s")
+plot(0,0,"n",xlim=c(-10,10),ylim=c(-10,10),axes=F,ann=F)
+
+for(i in -10:10){
+    points(rep(i,21),-10:10,pch=20,cex=0.6)
+    points(-10:10,rep(i,21),pch=20,cex=0.6)
+}
+points(0,0,pch=8,cex=1)
+
+# lines(xx,yy,lwd=2,col="blue")
+cols = hsv(seq(0,1,length.out=n+1),0.9,0.9)
+for(i in 1:n){
+    lines(c(xx[i],xx[i+1]),c(yy[i],yy[i+1]),col=cols[i],lwd=2)
+}
+```
+
+Describe the path taken by the turtle.
+
+```{r,echo=F,results='asis'}
+for(i in 1:n){
+    cat(paste0("* ##ANSWER",2*i-1,"## ##ANSWER",2*i,"##\n"))
+}
+```
+
+Answerlist
+--------
+
+
+```{r,echo=F,results='asis'}
+for(i in 1:n){
+    cat(alo)
+    cat("\n")
+    cat(ale)
+    cat("\n")
+}
+```
+
+Solution
+========
+
+`r paste0("* ",dd," ",x,collapse="\n")`
+
+
+Meta-information
+============
+extype: cloze
+exclozetype: `r paste0(rep("schoice",n*2),collapse="|")`
+exsolution: `r paste0(sols,collapse="|")`
+exname: turtle_path_01

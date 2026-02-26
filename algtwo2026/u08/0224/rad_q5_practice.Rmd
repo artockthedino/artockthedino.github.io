@@ -1,0 +1,705 @@
+---
+output: pdf_document
+params:
+    rseed: 2
+    showsol: true
+---
+
+```{r,echo=F,warning=FALSE,message=FALSE}
+options(scipen=999)
+if(params$rseed !=0){
+    set.seed(params$rseed)
+}
+knitr::opts_chunk$set(echo = FALSE)
+bn <- basename(knitr::current_input())
+bn = strsplit(bn,".",fixed=T)[[1]][1]
+```
+
+## `r bn`
+
+### Example 1
+
+```{r}
+gcd2 <- function(a, b) {
+  if (b == 0) a else Recall(b, a %% b)
+}
+gcd <- function(...) Reduce(gcd2, c(...))
+```
+
+
+
+```{r}
+fsimp = function(top,bot){
+    gg = abs(gcd(c(top,bot)))
+    top = round(abs(top)/gg*sign(top*bot))
+    bot = round(abs(mbot)/gg)
+    if(bot==1){
+        return(paste0(top))
+    } else {
+        return(paste0("\\frac{",top,"}{",bot,"}"))
+    }
+}
+
+xpar = c(0,1,4,9)
+ypar = c(0,1,2,3)
+xext = c(1,4,9)
+yext = c(-1,-2,-3)
+
+# horizontal shift before possible reflection
+
+# y = a*sqrt(bx-h)+k
+
+h = sample(c(-9:-1,1),1)
+a = sample(c(-3,-2,-1,1,2,3),1)
+k = sample(c(((-10+3*abs(a)):-1),(1:(10-3*abs(a)))),1)
+b = sample(c(-1,1),1)
+xc = (xpar+h)/b
+yc = a*ypar+k
+xd = (xext+h)/b
+yd = k+a*yext
+nval = 1
+
+if(nval==0){
+    ii = sample(1:length(xd),2)
+    xi = xd[ii]
+    yi = yd[ii]
+    isval = c(F,F)
+    wrd = c("an extraneous","an extraneous")
+}
+if(nval==1){
+    while(T){
+        ic = sample(1:length(xc),1)
+        id = sample(1:length(xd),1)
+        xic = xc[ic]
+        yic = yc[ic]
+        xid = xd[id]
+        yid = yd[id]
+        ii = sample(1:2)
+        xi = c(xic,xid)[ii]
+        yi = c(yic,yid)[ii]
+        isval = c(T,F)[ii]
+        wrd = c("a valid","an extraneous")[ii]
+        if(xic!=xid){break}
+    }
+}
+if(nval==2){
+    ii = sample(1:length(xc),2)
+    xi = xc[ii]
+    yi = yc[ii]
+    isval = c(T,T)
+    wrd = c("a valid","a valid")
+}
+
+mtop = diff(yi)
+mbot = diff(xi)
+mf = fsimp(mtop,mbot)
+
+
+while(T){
+    xp = sample(-10:10,1)
+    yp = mtop*(xp-xi[1])/mbot+yi[1]
+    if(abs(yp)<=10 && abs(yp)%%1==0 && yp!=yi[1] && yp!=yi[2] && min(abs(c(xp,yp)))>0){break}
+}
+
+if(b==-1){
+    fx = paste0(k,"+[",a,"]\\sqrt{-x+",-h,"}")
+} else {
+    fx = paste0(k,"+[",a,"]\\sqrt{x+",-h,"}")
+}
+fx = gsub("[1]","",fx,fixed=T)
+fx = gsub("[-1]","-",fx,fixed=T)
+fx = gsub("[","",fx,fixed=T)
+fx = gsub("]","",fx,fixed=T)
+fx = gsub("+-","-",fx,fixed=T)
+Lx = paste0("[",mf,"](x+",-xp,")+",yp)
+Lx = gsub("+-","-",Lx,fixed=T)
+Lx = gsub("[1]","",Lx,fixed=T)
+Lx = gsub("[-1]","-",Lx,fixed=T)
+Lx = gsub("[","",Lx,fixed=T)
+Lx = gsub("]","",Lx,fixed=T)
+
+doit = function(i){
+    cat(paste0("Accurately plot the following two functions (and also plot the extraneous half of the parabola):\n\n$$y=",fx,"$$\n$$y=",Lx,"$$\n\n"))
+    
+    cat("\\color{red}\n\nFor the radical equation, make an $x,y$ table; choose $x$ values to make the radicand 0, 1, 4, and 9.\n\n")
+    
+    cat(paste0("| $x$ | $y=",fx,"$ |\n|:---:|:---:|\n"))
+    x2 = (c(0,1,4,9)+h)/b
+    y2 = a*c(0,1,2,3)+k
+    cat(paste0("| ",x2," | ",y2," |",collapse="\n"))
+    cat("\n\n")
+    
+    cat("To complete the extraneous half of the parabola, reflect those dots over the line of symmetry.\n\n")
+    
+    cat(paste0("For the point-slope linear equation, recognize that $x=",xp,"$ makes the expression in parentheses equal 0, which leads to $y=",yp,"$. From slope, the rise is ",abs(mtop)/abs(gcd(c(mtop,mbot)))*sign(mtop*mbot)," and the run is ",abs(mbot)/abs(gcd(c(mtop,mbot))),".\n\n"))
+    
+    par(pty="s",mar=c(0,0,0,0),mfrow=c(1,2))
+    plot(0,0,"n",xlim=c(-10,10),ylim=c(-10,10),ann=F,axes=F)
+    
+    for(i in -10:10){
+        lines(c(i,i),c(-10,10),col="grey",lwd=0.5)
+        lines(c(-10,10),c(i,i),col="grey",lwd=0.5)
+    }
+    for(i in seq(-10,10,5)){
+        lines(c(i,i),c(-10,10),col="darkgrey",lwd=1)
+        lines(c(-10,10),c(i,i),col="darkgrey",lwd=1)
+    }
+    abline(h=0,lwd=2)
+    abline(v=0,lwd=2)
+    text(10,0,"x",adj=c(-0.2,-0.2))
+    text(0,10,"y",adj=c(-0.2,-0.2))
+    text(10,0,"10",adj=c(0.5,1.2),cex=0.7)
+    text(0,10,"10",adj=c(1.1,0.5),cex=0.7)
+    
+    if(params$showsol){
+        xx = seq(h*sign(b),10*sign(b),0.01*sign(b))
+        yy = -a*sqrt(b*xx-h)+k
+        
+        xx = xx[abs(yy)<=10]
+        yy = yy[abs(yy)<=10]
+        
+        lines(xx,yy,col="grey",lwd=2,lty=2)
+        
+        x2 = (c(0,1,4,9,16)+h)/b
+        y2 = -a*c(0,1,2,3,4)+k
+        x2 = x2[abs(y2)<=10]
+        y2 = y2[abs(y2)<=10]
+        
+        points(x2,y2,pch=19,col="grey")
+        
+        xx = seq(h*sign(b),10*sign(b),0.01*sign(b))
+        yy = a*sqrt(b*xx-h)+k
+        
+        xx = xx[abs(yy)<=10]
+        yy = yy[abs(yy)<=10]
+        abline(h=k,col="cyan",lty=2)
+        
+        lines(xx,yy,col="blue",lwd=2)
+        
+        x2 = (c(0,1,4,9,16)+h)/b
+        y2 = a*c(0,1,2,3,4)+k
+        x2 = x2[abs(y2)<=10]
+        y2 = y2[abs(y2)<=10]
+        
+        points(x2,y2,pch=19,col="blue")
+        
+        xl = seq(-10,10,0.1)
+        yl = mtop/mbot*(xl-xi[1])+yi[1]
+        xl = xl[abs(yl)<=10]
+        yl = yl[abs(yl)<=10]
+        lines(xl,yl,col="red",lwd=2)
+    
+        points(xi,yi,pch=19,col="red")
+        points(xp,yp,pch=19,col="red")
+        plot(0,0,"n",axes=F,ann=F)
+        legend("left",c("valid half of parabola","extraneous half of parabola","line"),col=c("blue","grey","red"),lwd=c(2,2,2),lty=c(1,2,1))
+        }
+    
+    cat(paste0("\\\n\n\\color{black}If the equation $",fx,"=",Lx,"$ was solved using algebra, what two possible solutions would be found? "))
+    cat("For each possible solution, state whether it would be a valid solution or an extraneous solution.\n\n\\vfill\n\n")
+    if(params$showsol){
+        cat("\\color{red}")
+        cat("\n\n")
+        cat(paste0("$x=",xi,"$ is ",wrd," solution.",collapse="\n\n"))
+        cat("\n\n\\color{black}\n\n")
+    }
+    cat("\\vfill\n\n")
+}
+```
+
+```{r,echo=F,fig.dim=c(8,4),results="asis"}
+doit(1)
+```
+
+
+\newpage
+
+
+### Example 2
+
+```{r}
+set.seed(50)
+fsimp = function(top,bot){
+    gg = abs(gcd(c(top,bot)))
+    top = round(abs(top)/gg*sign(top*bot))
+    bot = round(abs(mbot)/gg)
+    if(bot==1){
+        return(paste0(top))
+    } else {
+        return(paste0("\\frac{",top,"}{",bot,"}"))
+    }
+}
+
+xpar = c(0,1,4,9)
+ypar = c(0,1,2,3)
+xext = c(1,4,9)
+yext = c(-1,-2,-3)
+
+# horizontal shift before possible reflection
+
+# y = a*sqrt(bx-h)+k
+
+h = sample(c(-9:-1,1),1)
+a = sample(c(-3,-2,-1,1,2,3),1)
+k = sample(c(((-10+3*abs(a)):-1),(1:(10-3*abs(a)))),1)
+b = sample(c(-1,1),1)
+xc = (xpar+h)/b
+yc = a*ypar+k
+xd = (xext+h)/b
+yd = k+a*yext
+nval = 0
+
+if(nval==0){
+    ii = sample(1:length(xd),2)
+    xi = xd[ii]
+    yi = yd[ii]
+    isval = c(F,F)
+    wrd = c("an extraneous","an extraneous")
+}
+if(nval==1){
+    while(T){
+        ic = sample(1:length(xc),1)
+        id = sample(1:length(xd),1)
+        xic = xc[ic]
+        yic = yc[ic]
+        xid = xd[id]
+        yid = yd[id]
+        ii = sample(1:2)
+        xi = c(xic,xid)[ii]
+        yi = c(yic,yid)[ii]
+        isval = c(T,F)[ii]
+        wrd = c("a valid","an extraneous")[ii]
+        if(xic!=xid){break}
+    }
+}
+if(nval==2){
+    ii = sample(1:length(xc),2)
+    xi = xc[ii]
+    yi = yc[ii]
+    isval = c(T,T)
+    wrd = c("a valid","a valid")
+}
+
+mtop = diff(yi)
+mbot = diff(xi)
+mf = fsimp(mtop,mbot)
+
+while(T){
+    xp = sample(-10:10,1)
+    yp = mtop*(xp-xi[1])/mbot+yi[1]
+    if(abs(yp)<=10 && abs(yp)%%1==0 && yp!=yi[1] && yp!=yi[2] && min(abs(c(xp,yp)))>0){break}
+}
+
+if(b==-1){
+    fx = paste0(k,"+[",a,"]\\sqrt{-x+",-h,"}")
+} else {
+    fx = paste0(k,"+[",a,"]\\sqrt{x+",-h,"}")
+}
+fx = gsub("[1]","",fx,fixed=T)
+fx = gsub("[-1]","-",fx,fixed=T)
+fx = gsub("[","",fx,fixed=T)
+fx = gsub("]","",fx,fixed=T)
+fx = gsub("+-","-",fx,fixed=T)
+Lx = paste0("[",mf,"](x+",-xp,")+",yp)
+Lx = gsub("+-","-",Lx,fixed=T)
+Lx = gsub("[1]","",Lx,fixed=T)
+Lx = gsub("[-1]","-",Lx,fixed=T)
+Lx = gsub("[","",Lx,fixed=T)
+Lx = gsub("]","",Lx,fixed=T)
+
+doit = function(i){
+    cat(paste0("Accurately plot the following two functions (and also plot the extraneous half of the parabola):\n\n$$y=",fx,"$$\n$$y=",Lx,"$$\n\n"))
+    
+    cat("\\color{red}\n\nFor the radical equation, make an $x,y$ table; choose $x$ values to make the radicand 0, 1, 4, and 9.\n\n")
+    
+    cat(paste0("| $x$ | $y=",fx,"$ |\n|:---:|:---:|\n"))
+    x2 = (c(0,1,4,9)+h)/b
+    y2 = a*c(0,1,2,3)+k
+    cat(paste0("| ",x2," | ",y2," |",collapse="\n"))
+    cat("\n\n")
+    
+    cat("To complete the extraneous half of the parabola, reflect those dots over the line of symmetry.\n\n")
+    
+    cat(paste0("For the point-slope linear equation, recognize that $x=",xp,"$ makes the expression in parentheses equal 0, which leads to $y=",yp,"$. From slope, the rise is ",abs(mtop)/abs(gcd(c(mtop,mbot)))*sign(mtop*mbot)," and the run is ",abs(mbot)/abs(gcd(c(mtop,mbot))),".\n\n"))
+    
+    par(pty="s",mar=c(0,0,0,0),mfrow=c(1,2))
+    plot(0,0,"n",xlim=c(-10,10),ylim=c(-10,10),ann=F,axes=F)
+    
+    for(i in -10:10){
+        lines(c(i,i),c(-10,10),col="grey",lwd=0.5)
+        lines(c(-10,10),c(i,i),col="grey",lwd=0.5)
+    }
+    for(i in seq(-10,10,5)){
+        lines(c(i,i),c(-10,10),col="darkgrey",lwd=1)
+        lines(c(-10,10),c(i,i),col="darkgrey",lwd=1)
+    }
+    abline(h=0,lwd=2)
+    abline(v=0,lwd=2)
+    text(10,0,"x",adj=c(-0.2,-0.2))
+    text(0,10,"y",adj=c(-0.2,-0.2))
+    text(10,0,"10",adj=c(0.5,1.2),cex=0.7)
+    text(0,10,"10",adj=c(1.1,0.5),cex=0.7)
+    
+    if(params$showsol){
+        xx = seq(h*sign(b),10*sign(b),0.01*sign(b))
+        yy = -a*sqrt(b*xx-h)+k
+        
+        xx = xx[abs(yy)<=10]
+        yy = yy[abs(yy)<=10]
+        
+        lines(xx,yy,col="grey",lwd=2,lty=2)
+        
+        x2 = (c(0,1,4,9,16)+h)/b
+        y2 = -a*c(0,1,2,3,4)+k
+        x2 = x2[abs(y2)<=10]
+        y2 = y2[abs(y2)<=10]
+        
+        points(x2,y2,pch=19,col="grey")
+        
+        xx = seq(h*sign(b),10*sign(b),0.01*sign(b))
+        yy = a*sqrt(b*xx-h)+k
+        
+        xx = xx[abs(yy)<=10]
+        yy = yy[abs(yy)<=10]
+        abline(h=k,col="cyan",lty=2)
+        
+        lines(xx,yy,col="blue",lwd=2)
+        
+        x2 = (c(0,1,4,9,16)+h)/b
+        y2 = a*c(0,1,2,3,4)+k
+        x2 = x2[abs(y2)<=10]
+        y2 = y2[abs(y2)<=10]
+        
+        points(x2,y2,pch=19,col="blue")
+        
+        xl = seq(-10,10,0.1)
+        yl = mtop/mbot*(xl-xi[1])+yi[1]
+        xl = xl[abs(yl)<=10]
+        yl = yl[abs(yl)<=10]
+        lines(xl,yl,col="red",lwd=2)
+    
+        points(xi,yi,pch=19,col="red")
+        points(xp,yp,pch=19,col="red")
+        plot(0,0,"n",axes=F,ann=F)
+        legend("left",c("valid half of parabola","extraneous half of parabola","line"),col=c("blue","grey","red"),lwd=c(2,2,2),lty=c(1,2,1))
+        }
+    
+    cat(paste0("\\\n\n\\color{black}If the equation $",fx,"=",Lx,"$ was solved using algebra, what two possible solutions would be found? "))
+    cat("For each possible solution, state whether it would be a valid solution or an extraneous solution.\n\n\\vfill\n\n")
+    if(params$showsol){
+        cat("\\color{red}")
+        cat("\n\n")
+        cat(paste0("$x=",xi,"$ is ",wrd," solution.",collapse="\n\n"))
+        cat("\n\n\\color{black}\n\n")
+    }
+    cat("\\vfill\n\n")
+}
+```
+
+```{r,echo=F,fig.dim=c(8,4),results="asis"}
+doit(1)
+```
+
+
+\newpage
+
+```{r,echo=F}
+fxs = character()
+Lxs = character()
+ks = numeric()
+as = numeric()
+hs = numeric()
+bs = numeric()
+mtops = numeric()
+mbots = numeric()
+xis = list()
+yis = list()
+wrds = list()
+mfs = character()
+xps = numeric()
+yps = numeric()
+nvals = numeric()
+
+while(length(fxs)<9){
+    h = sample(c(-9:-1,1),1)
+    a = sample(c(-3,-2,-1,1,2,3),1)
+    k = sample(c(((-10+3*abs(a)):-1),(1:(10-3*abs(a)))),1)
+    b = sample(c(-1,1),1)
+    xc = (xpar+h)/b
+    yc = a*ypar+k
+    xd = (xext+h)/b
+    yd = k+a*yext
+    
+    nval = sample(0:2,1)
+    
+    if(nval==0){
+        ii = sample(1:length(xd),2)
+        xi = xd[ii]
+        yi = yd[ii]
+        isval = c(F,F)
+        wrd = c("an extraneous","an extraneous")
+    }
+    if(nval==1){
+        while(T){
+            ic = sample(1:length(xc),1)
+            id = sample(1:length(xd),1)
+            xic = xc[ic]
+            yic = yc[ic]
+            xid = xd[id]
+            yid = yd[id]
+            ii = sample(1:2)
+            xi = c(xic,xid)[ii]
+            yi = c(yic,yid)[ii]
+            isval = c(T,F)[ii]
+            wrd = c("a valid","an extraneous")[ii]
+            if(xic!=xid){break}
+        }
+    }
+    if(nval==2){
+        ii = sample(1:length(xc),2)
+        xi = xc[ii]
+        yi = yc[ii]
+        isval = c(T,T)
+        wrd = c("a valid","a valid")
+    }
+    
+    mtop = diff(yi)
+    mbot = diff(xi)
+    mf = fsimp(mtop,mbot)
+    
+    
+    while(T){
+        xp = sample(-10:10,1)
+        yp = mtop*(xp-xi[1])/mbot+yi[1]
+        if(abs(yp)<=10 && abs(yp)%%1==0 && yp!=yi[1] && yp!=yi[2] && min(abs(c(xp,yp)))>0){break}
+    }
+    
+    if(b==-1){
+        fx = paste0(k,"+[",a,"]\\sqrt{-x+",-h,"}")
+    } else {
+        fx = paste0(k,"+[",a,"]\\sqrt{x+",-h,"}")
+    }
+    fx = gsub("[1]","",fx,fixed=T)
+    fx = gsub("[-1]","-",fx,fixed=T)
+    fx = gsub("[","",fx,fixed=T)
+    fx = gsub("]","",fx,fixed=T)
+    fx = gsub("+-","-",fx,fixed=T)
+    Lx = paste0("[",mf,"](x+",-xp,")+",yp)
+    Lx = gsub("+-","-",Lx,fixed=T)
+    Lx = gsub("[1]","",Lx,fixed=T)
+    Lx = gsub("[-1]","-",Lx,fixed=T)
+    Lx = gsub("[","",Lx,fixed=T)
+    Lx = gsub("]","",Lx,fixed=T)
+    if(!(fx %in% fxs) && !(Lx %in% Lxs) && max(as.numeric(table(c(nvals,nval))))<=3 && max(as.numeric(table(c(sign(bs),sign(b)))))<=5 && max(as.numeric(table(c(sign(as),sign(a)))))<=5){
+        fxs = c(fxs,fx)
+        Lxs = c(Lxs,Lx)
+        ks = c(ks,k)
+        as = c(as,a)
+        hs = c(hs,h)
+        bs = c(bs,b)
+        mtops = c(mtops,mtop)
+        mbots = c(mbots,mbot)
+        xis[[length(xis)+1]] = xi
+        yis[[length(yis)+1]] = yi
+        wrds[[length(wrds)+1]] = wrd
+        mfs = c(mfs,mf)
+        xps = c(xps,xp)
+        yps = c(yps,yp)
+        nvals = c(nvals,nval)
+    }
+}
+
+doitA = function(JJ){
+    cat("Consider the two functions below.\n")
+    cat(paste0("$$y=",fxs[JJ],"$$\n$$y=",Lxs[JJ],"$$\n\n"))
+    cat(paste0("1. Graph the given valid half of the parabola. Label it.\n2. Graph the extraneous half of the parabola. Label it.\n3. Graph the given line.\n
+4. By inspecting the graph, list the possible solutions to  $",fxs[JJ],"=",Lxs[JJ],"$ that would be found algebraically.\n
+5. By inspecting the graph, determine whether each possible solution is valid or extraneous.
+\n\n"))
+    par(pty="s",mar=c(0,0,0,0))
+    plot(0,0,"n",xlim=c(-10,10),ylim=c(-10,10),ann=F,axes=F)
+    
+    for(i in -10:10){
+        lines(c(i,i),c(-10,10),col="grey",lwd=0.5)
+        lines(c(-10,10),c(i,i),col="grey",lwd=0.5)
+    }
+    for(i in seq(-10,10,5)){
+        lines(c(i,i),c(-10,10),col="darkgrey",lwd=1)
+        lines(c(-10,10),c(i,i),col="darkgrey",lwd=1)
+    }
+    abline(h=0,lwd=2)
+    abline(v=0,lwd=2)
+    text(10,0,"x",adj=c(-0.2,-0.2))
+    text(0,10,"y",adj=c(-0.2,-0.2))
+    text(10,0,"10",adj=c(0.5,1.2),cex=0.7)
+    text(0,10,"10",adj=c(1.1,0.5),cex=0.7)
+}
+doitB = function(JJ){
+    cat(paste0("$$y=",fxs[JJ],"$$\n$$y=",Lxs[JJ],"$$\n\n"))
+    
+    cat("\\color{red}\n\nFor the radical equation, make an $x,y$ table; choose $x$ values to make the radicand 0, 1, 4, and 9.\n\n")
+    
+    cat(paste0("| $x$ | $y=",fxs[JJ],"$ |\n|:---:|:---:|\n"))
+    x2 = (c(0,1,4,9)+hs[JJ])/bs[JJ]
+    y2 = as[JJ]*c(0,1,2,3)+ks[JJ]
+    cat(paste0("| ",x2," | ",y2," |",collapse="\n"))
+    cat("\n\n")
+    
+    cat("To complete the extraneous half of the parabola, reflect those dots over the line of symmetry.\n\n")
+    
+    cat(paste0("For the point-slope linear equation, recognize that $x=",xps[JJ],"$ makes the expression in parentheses equal 0, which leads to $y=",yps[JJ],"$. From slope, the rise is ",abs(mtops[JJ])/abs(gcd(c(mtops[JJ],mbots[JJ])))*sign(mtops[JJ]*mbots[JJ])," and the run is ",abs(mbots[JJ])/abs(gcd(c(mtops[JJ],mbots[JJ]))),".\n\n"))
+    
+    par(pty="s",mar=c(0,0,0,0),mfrow=c(1,2))
+    plot(0,0,"n",xlim=c(-10,10),ylim=c(-10,10),ann=F,axes=F)
+    
+    for(i in -10:10){
+        lines(c(i,i),c(-10,10),col="grey",lwd=0.5)
+        lines(c(-10,10),c(i,i),col="grey",lwd=0.5)
+    }
+    for(i in seq(-10,10,5)){
+        lines(c(i,i),c(-10,10),col="darkgrey",lwd=1)
+        lines(c(-10,10),c(i,i),col="darkgrey",lwd=1)
+    }
+    abline(h=0,lwd=2)
+    abline(v=0,lwd=2)
+    text(10,0,"x",adj=c(-0.2,-0.2))
+    text(0,10,"y",adj=c(-0.2,-0.2))
+    text(10,0,"10",adj=c(0.5,1.2),cex=0.7)
+    text(0,10,"10",adj=c(1.1,0.5),cex=0.7)
+    
+    if(params$showsol){
+        xx = seq(hs[JJ]*sign(bs[JJ]),10*sign(bs[JJ]),0.01*sign(bs[JJ]))
+        yy = -as[JJ]*sqrt(bs[JJ]*xx-hs[JJ])+ks[JJ]
+        
+        xx = xx[abs(yy)<=10]
+        yy = yy[abs(yy)<=10]
+        
+        lines(xx,yy,col="grey",lwd=2,lty=2)
+        
+        x2 = (c(0,1,4,9,16)+hs[JJ])/bs[JJ]
+        y2 = -as[JJ]*c(0,1,2,3,4)+ks[JJ]
+        x2 = x2[abs(y2)<=10]
+        y2 = y2[abs(y2)<=10]
+        
+        points(x2,y2,pch=19,col="grey")
+        
+        xx = seq(hs[JJ]*sign(bs[JJ]),10*sign(bs[JJ]),0.01*sign(bs[JJ]))
+        yy = as[JJ]*sqrt(bs[JJ]*xx-hs[JJ])+ks[JJ]
+        
+        xx = xx[abs(yy)<=10]
+        yy = yy[abs(yy)<=10]
+        abline(h=ks[JJ],col="cyan",lty=2)
+        
+        lines(xx,yy,col="blue",lwd=2)
+        
+        x2 = (c(0,1,4,9,16)+hs[JJ])/bs[JJ]
+        y2 = as[JJ]*c(0,1,2,3,4)+ks[JJ]
+        x2 = x2[abs(y2)<=10]
+        y2 = y2[abs(y2)<=10]
+        
+        points(x2,y2,pch=19,col="blue")
+        
+        xl = seq(-10,10,0.1)
+        yl = mtops[JJ]/mbots[JJ]*(xl-xis[[JJ]][1])+yis[[JJ]][1]
+        xl = xl[abs(yl)<=10]
+        yl = yl[abs(yl)<=10]
+        lines(xl,yl,col="red",lwd=2)
+    
+        points(xis[[JJ]],yis[[JJ]],pch=19,col="red")
+        points(xps[JJ],yps[JJ],pch=19,col="red")
+        plot(0,0,"n",axes=F,ann=F)
+        legend("left",c("valid half of parabola","extraneous half of parabola","line","LOS"),col=c("blue","grey","red","cyan"),lwd=c(2,2,2,1),lty=c(1,2,1,2))
+        }
+    
+    cat("\\color{red}")
+    cat("\n\n")
+    cat(paste0("$x=",xis[[JJ]],"$ is ",wrds[[JJ]]," solution.",collapse="\n\n"))
+    cat("\n\n\\color{black}\n\n")
+    cat("\\vfill\n\n")
+}
+```
+
+### Practice Problem 1
+
+```{r,echo=F,fig.dim=c(5,5),results='asis'}
+doitA(1)
+```
+
+\newpage
+
+### Solution to Practice Problem 1
+
+```{r,echo=F,fig.dim=c(8,4),results='asis'}
+doitB(1)
+```
+
+\newpage
+
+### Practice Problem 2
+
+```{r,echo=F,fig.dim=c(5,5),results='asis'}
+doitA(2)
+```
+
+\newpage
+
+### Solution to Practice Problem 2
+
+```{r,echo=F,fig.dim=c(8,4),results='asis'}
+doitB(2)
+```
+
+\newpage
+
+
+### Practice Problem 3
+
+```{r,echo=F,fig.dim=c(5,5),results='asis'}
+doitA(3)
+```
+
+\newpage
+
+### Solution to Practice Problem 3
+
+```{r,echo=F,fig.dim=c(8,4),results='asis'}
+doitB(3)
+```
+
+\newpage
+
+
+### Practice Problem 4
+
+```{r,echo=F,fig.dim=c(5,5),results='asis'}
+doitA(4)
+```
+
+\newpage
+
+### Solution to Practice Problem 4
+
+```{r,echo=F,fig.dim=c(8,4),results='asis'}
+doitB(4)
+```
+
+\newpage
+
+
+### Practice Problem 5
+
+```{r,echo=F,fig.dim=c(5,5),results='asis'}
+doitA(5)
+```
+
+\newpage
+
+### Solution to Practice Problem 5
+
+```{r,echo=F,fig.dim=c(8,4),results='asis'}
+doitB(5)
+```
+
+\newpage
+
+

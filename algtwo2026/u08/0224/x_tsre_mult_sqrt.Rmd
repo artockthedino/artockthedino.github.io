@@ -1,0 +1,53 @@
+```{r,echo=FALSE}
+# sqrt(ax) = b
+
+while(T){
+    b = sample(2:12,1)
+    a = sample(2:6,1)*sample(c(-1,1),1)
+    x = b^2/a
+    if(x%%1==0 && abs(a)!=abs(b)){break}
+}
+
+eq = paste0("\\sqrt{",a,"x}=",b)
+eq2 = paste0(a,"{x}=",b^2)
+
+eq3 = paste0("\\sqrt{",a,"\\cdot(",x,")}\\stackrel{?}{=}",b)
+eq3 = gsub("+-","-",eq3,fixed=T)
+
+eq4 = paste0("\\sqrt{",a*x,"}\\stackrel{?}{=}",b)
+eq4 = gsub("+-","-",eq4,fixed=T)
+
+```
+
+Question
+========
+
+Solve.
+
+$$`r eq`$$
+
+Solution
+========
+
+Square both sides.
+
+$$`r eq2`$$
+
+Divide both sides by `r a`.
+
+$$x=`r x`$$
+
+Check the solution in the original equation.
+
+$$`r eq3`$$
+
+$$`r eq4`$$
+
+Yup, that is true. So $x=`r x`$ is a solution to the given equation.
+
+
+Meta-information
+============
+extype: num
+exsolution: `r x`
+exname: tsre_mult_sqrt

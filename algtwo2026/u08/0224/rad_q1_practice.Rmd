@@ -1,0 +1,168 @@
+---
+output: pdf_document
+params:
+    rseed: 1
+    showsol: true
+header-includes:
+  - \usepackage{multicol}
+---
+
+```{r,echo=F,warning=FALSE,message=FALSE}
+options(scipen=999)
+if(params$rseed !=0){
+    set.seed(params$rseed)
+}
+knitr::opts_chunk$set(echo = FALSE)
+bn <- basename(knitr::current_input())
+bn = strsplit(bn,".",fixed=T)[[1]][1]
+```
+
+## `r bn`
+
+```{r}
+gcd2 <- function(a, b) {
+  if (b == 0) a else Recall(b, a %% b)
+}
+gcd <- function(...) Reduce(gcd2, c(...))
+```
+
+
+### Example
+
+Rationalize denominator and simplify:
+$$\frac{105\sqrt{15}}{6\sqrt{50}}$$
+
+\color{red}
+
+
+Use prime factorization. Also use the identity $\sqrt{a\cdot b}\equiv \sqrt{a}\cdot \sqrt{b}$.
+
+$$\frac{3\cdot 5\cdot 7 \cdot \sqrt{3} \cdot \sqrt{5}}{2\cdot 3 \cdot \sqrt{2} \cdot \sqrt{5} \cdot \sqrt{5}}$$
+
+Eliminate common factors. In this case we have $3$ and $\sqrt{5}$ as common factors.
+
+$$\frac{5\cdot 7 \cdot \sqrt{3}}{2 \cdot \sqrt{2} \cdot \sqrt{5}}$$
+
+
+Multiply numerator and denominator by the denominator's radical factors (which are $\sqrt{2}$ and $\sqrt{5}$ in this case.
+
+$$\frac{5\cdot 7\cdot \sqrt{3}\cdot \sqrt{2}\cdot\sqrt{5}}{2\cdot \sqrt{2}\cdot\sqrt{5}\cdot \sqrt{2}\cdot\sqrt{5}}$$
+
+Use the identity $\sqrt{a}\cdot\sqrt{a}\equiv a$. Specifically, this denominator has two factors of $\sqrt{2}$ and two factors of $\sqrt{5}$.
+
+$$\frac{5\cdot 7\cdot \sqrt{3}\cdot \sqrt{2}\cdot\sqrt{5}}{2\cdot 2 \cdot 5}$$
+
+Eliminate common factors. In this case we have a common factor of $5$.
+
+$$\frac{7 \cdot \sqrt{3}\cdot \sqrt{2}\cdot\sqrt{5}}{2\cdot 2}$$
+
+Evaluate products.
+$$\frac{7 \sqrt{30}}{4}$$
+
+
+
+\color{black}
+
+\newpage
+
+
+```{r,echo=F}
+psfs = rev((2:30)^2)
+
+# a*sqrt(b)/(c*sqrt(d))
+# a*sqrt(b*d)/(c*d)
+# A*sqrt(R)/(D)
+
+ex1s = c("\\frac{105\\sqrt{15}}{6\\sqrt{50}}","\\frac{2\\sqrt{3}}{5\\sqrt{7}}","\\frac{1}{\\sqrt{7}}","\\frac{3}{\\sqrt{3}}","\\frac{10}{3\\sqrt{5}}")
+ans1s = c("\\frac{7 \\sqrt{30}}{4}","\\frac{2\\sqrt{21}}{35}","\\frac{\\sqrt{7}}{7}","\\sqrt{3}","\\frac{2\\sqrt{5}}{3}")
+
+while(length(ex1s)<31){
+    while(T){
+        canpass = T
+        a = sample(c(1:10,12,14,15,16,18,20,24),1)
+        b = sample(c(1,2,3,5,6,7,10,14,15),1)
+        c = sample(c(1:10,12,14,15,16,18,20,24),1)
+        d = sample(c(2,3,5,6,7,10,14,15),1)
+        if(a==c || gcd(c(b,d))==d){
+            canpass = F
+        }
+        ex1 = paste0("\\frac{[",a,"]\\sqrt{",b,"}}{[",c,"]\\sqrt{",d,"}}")
+        ex1 = gsub("[1]\\sqrt{1}","1",ex1,fixed=T)
+        ex1 = gsub("[1]","",ex1,fixed=T)
+        ex1 = gsub("[","",ex1,fixed=T)
+        ex1 = gsub("]","",ex1,fixed=T)
+        ex1 = gsub("\\sqrt{1}","",ex1,fixed=T)
+        A1 = a
+        R1 = b*d
+        D1 = c*d
+        A2 = A1
+        R2 = R1
+        D2 = D1
+        for(psf in psfs){
+            if(R2%%psf==0){
+                A2 = round(A1*sqrt(psf))
+                R2 = round(R1/psf)
+            }
+        }
+        gg = gcd(c(A2,D2))
+        A3 = round(A2/gg)
+        D3 = round(D2/gg)
+        if(D3>1){
+            ans1 = paste0("\\frac{[",A3,"]\\sqrt{",R2,"}}{",D3,"}")
+        } else {
+            ans1 = paste0("[",A3,"]\\sqrt{",R2,"}")
+        }
+        ans1 = gsub("[1]\\sqrt{1}","1",ans1,fixed=T)
+        ans1 = gsub("[1]","",ans1,fixed=T)
+        ans1 = gsub("[","",ans1,fixed=T)
+        ans1 = gsub("]","",ans1,fixed=T)
+        ans1 = gsub("\\sqrt{1}","",ans1,fixed=T)
+        if(canpass && max(c(A3,D3,R2))<=100 && abs(gg)>1 && !(ex1 %in% ex1s) && !(ans1 %in% ans1s)){break}
+    }
+    ex1s = c(ex1s,ex1)
+    ans1s = c(ans1s,ans1)
+}
+
+```
+
+### Practice
+
+For each of the expressions below, rationalize the denominator and simplify.
+
+```{r,echo=F,results='asis'}
+
+s = ""
+for(i in 2:length(ex1s)){
+    s = paste0(s,ex1s[i])
+    if(i%%5==1 && i<length(ex1s)){
+        s = paste0(s," \\\\\n\\\\\n")
+    } else {
+        s = paste0(s," && ")
+    }
+}
+
+cat(paste0("\\begin{align*}\n"))
+cat(s)
+cat(paste0("\n\\end{align*}"))
+
+```
+
+\vfill
+
+```{r,echo=F,results='asis'}
+s = ""
+for(i in 2:length(ans1s)){
+    s = paste0(s,ans1s[i])
+    if(i%%5==1 && i<length(ex1s)){
+        s = paste0(s," \\\\\n\\\\\n")
+    } else {
+        s = paste0(s," && ")
+    }
+}
+cat("\\color{gray}\n")
+cat("### Answers\n\n")
+cat(paste0("\\begin{align*}\n"))
+cat(s)
+cat(paste0("\n\\end{align*}"))
+cat("\n\\color{black}\n")
+```

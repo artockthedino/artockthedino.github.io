@@ -1,0 +1,197 @@
+---
+output: pdf_document
+params:
+    rseed: 1
+    showsol: true
+header-includes:
+  - \usepackage{multicol}
+---
+
+```{r,echo=F,warning=FALSE,message=FALSE}
+options(scipen=999)
+if(params$rseed !=0){
+    set.seed(params$rseed)
+}
+knitr::opts_chunk$set(echo = FALSE)
+bn <- basename(knitr::current_input())
+bn = strsplit(bn,".",fixed=T)[[1]][1]
+```
+
+## `r bn`
+
+```{r}
+gcd2 <- function(a, b) {
+  if (b == 0) a else Recall(b, a %% b)
+}
+gcd <- function(...) Reduce(gcd2, c(...))
+```
+
+
+```{r,echo=FALSE}
+
+while(T){
+    p = sample(1:9,1)*sample(c(-1,1),1)
+    q = sample(2:9,1)
+    psi = sample(1:9,1)*sample(c(-1,1),1)
+    # sqrt(mx+n)+k = x+psi+k
+    m = 2*psi-2*p
+    n = psi^2-p^2-q^2
+    k = sample(1:9,1)*sample(c(-1,1),1)
+    if(n!=0 && abs(m)>1 && abs(psi+k)>0){break}
+}
+
+p1 = p
+q1 = q
+
+fx = paste0("\\sqrt{",m,"x+",n,"}+",k)
+lx = paste0("x+",psi+k)
+fx = gsub("+-","-",fx,fixed=T)
+lx = gsub("+-","-",lx,fixed=T)
+gx = paste0("-\\sqrt{",m,"x+",n,"}+",k)
+gx = gsub("+-","-",gx,fixed=T)
+
+eq = paste0(fx,"=",lx)
+
+ach = -10:10
+ach2 = 1:10
+al = paste0("* ",ach,collapse="\n")
+al2 = paste0("* ",ach2,collapse="\n")
+sol1 = paste0(1*(ach==-p),collapse="")
+sol2 = paste0(1*(ach2==q),collapse="")
+```
+
+
+Find the complex possible solutions to the equation. Do not attempt to validate the possible solutions.
+
+$$`r fx`=`r lx`$$
+
+\vspace{1in}
+
+```{r,echo=F,results="asis",eval=params$showsol}
+cat("\\color{red}")
+
+cat("\n\nIsolate the radical.")
+
+eq2 = paste0("\\sqrt{",m,"x+",n,"}=x+",psi)
+eq2 = gsub("+-","-",eq2,fixed=T)
+cat(paste0("\n\n$$",eq2,"$$\n\n"))
+
+cat("Square both sides. Remember to FOIL the right side!")
+
+eq3 = paste0(m,"x+",n,"=x^2+",2*psi,"x+",psi^2)
+eq3 = gsub("+-","-",eq3,fixed=T)
+cat(paste0("\n\n$$",eq3,"$$\n\n"))
+
+cat("Subtract or add terms to make left side zero.")
+
+eq4 = paste0("0=x^2+",2*psi-m,"x+",psi^2-n)
+eq4 = gsub("+-","-",eq4,fixed=T)
+cat(paste0("\n\n$$",eq4,"$$\n\n"))
+
+cat("Use the quadratic formula.\n\n")
+
+a = 1
+b = 2*psi-m
+c = psi^2-n
+qf1 = paste0("x=\\frac{-(",b,")\\pm\\sqrt{(",b,")^2-4(",a,")(",c,")}}{2(",a,")}")
+cat(paste0("\n\n$$",qf1,"$$\n"))
+
+qf2 = paste0("x=\\frac{",-b,"\\pm\\sqrt{",b^2,"-",4*a*c,"}}{",2*a,"}")
+cat(paste0("\n\n$$",qf2,"$$\n"))
+
+qf3 = paste0("x=\\frac{",-b,"\\pm\\sqrt{",b^2-4*a*c,"}}{",2*a,"}")
+cat(paste0("\n\n$$",qf3,"$$\n"))
+
+qf4 = paste0("x=\\frac{",-b,"\\pm",2*a*q,"i}{",2*a,"}")
+cat(paste0("\n\n$$",qf4,"$$\n"))
+
+qf5 = paste0("x=",-p,"\\pm",q,"i")
+cat(paste0("\n\n$$",qf5,"$$\n"))
+```
+
+\color{black}
+
+\newpage
+
+For each equation below, find the possible complex solutions, but do not attempt to validate the possible solutions.
+
+
+
+```{r,echo=FALSE}
+eqs = character()
+sols = character()
+
+while(length(eqs)<18){
+    while(T){
+        p = sample(1:9,1)*sample(c(-1,1),1)
+        q = sample(2:9,1)
+        psi = sample(1:9,1)*sample(c(-1,1),1)
+        # sqrt(mx+n)+k = x+psi+k
+        m = 2*psi-2*p
+        n = psi^2-p^2-q^2
+        k = sample(1:9,1)*sample(c(-1,1),1)
+        if(n!=0 && abs(m)>1 && abs(psi+k)>0){break}
+    }
+    p1 = p
+    q1 = q
+    fx = paste0("\\sqrt{",m,"x+",n,"}+",k)
+    lx = paste0("x+",psi+k)
+    fx = gsub("+-","-",fx,fixed=T)
+    lx = gsub("+-","-",lx,fixed=T)
+    gx = paste0("-\\sqrt{",m,"x+",n,"}+",k)
+    gx = gsub("+-","-",gx,fixed=T)
+    eq = paste0(fx,"=",lx)
+    sol = paste0(-p,"+",q,"i")
+    sol = gsub("+-","-",sol,fixed=T)
+    if(!(eq %in% eqs) && !(sol %in% sols)){
+        eqs = c(eqs,eq)
+        sols = c(sols,sol)
+    }
+}
+
+```
+
+
+
+```{r,echo=F,results='asis'}
+
+s = ""
+for(i in 1:length(eqs)){
+    s = paste0(s,eqs[i])
+    if(i%%2==0 && i<length(eqs)){
+        s = paste0(s," \\\\\n\\\\\n")
+    } else {
+        s = paste0(s," && ")
+    }
+}
+
+cat(paste0("\\begin{align*}\n"))
+cat(s)
+cat(paste0("\n\\end{align*}"))
+
+```
+
+\vfill
+
+```{r,echo=F,results='asis'}
+s = ""
+for(i in 1:length(sols)){
+    s = paste0(s,sols[i])
+    if(i%%2==0 && i<length(sols)){
+        s = paste0(s," \\\\\n\\\\\n")
+    } else {
+        s = paste0(s," && ")
+    }
+}
+cat("\\color{gray}\n")
+cat("### Answers\n\n")
+cat(paste0("\\begin{align*}\n"))
+cat(s)
+cat(paste0("\n\\end{align*}"))
+cat("\n\\color{black}\n")
+```
+
+
+
+
+
