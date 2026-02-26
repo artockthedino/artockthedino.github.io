@@ -7,9 +7,9 @@ pm = list("turtle_path_A.Rmd","turtle_path_B.Rmd")
 exams2canvas(pm,
              n=n,
              dir=outdir,
-             points=rep(5,length(pm)),
+             points=c(10,9),
              maxattempts = 8,
-             name="m0226_ET",
+             name="pbl_0226_ET",
              template = "canvas_qti12.xml",
              cloze = list(enumerate = FALSE))
 

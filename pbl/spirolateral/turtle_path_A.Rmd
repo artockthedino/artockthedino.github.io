@@ -29,9 +29,9 @@ while(T){
         xx = c(xx,xnew)
         yy = c(yy,ynew)
         if(dd[i] %in% c("East","West")){
-            handles = c(handles,paste0("h",ynew))
+            handles = c(handles,paste0("h",round(ynew)))
         } else {
-            handles = c(handles,paste0("v",xnew))
+            handles = c(handles,paste0("v",round(xnew)))
         }
     }
     if(max(abs(xx))<=10 && max(abs(yy))<=10 && length(unique(dd))>2 && length(unique(x))>1 && length(unique(handles))==length(handles)){break}

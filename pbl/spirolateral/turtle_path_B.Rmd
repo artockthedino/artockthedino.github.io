@@ -22,14 +22,14 @@ while(T){
     xx = c(0)
     yy = c(0)
     for(i in 1:n){
-        xnew = xx[i]+x[i]*cos(tt[i])
-        ynew = yy[i]+x[i]*sin(tt[i])
+        xnew = round(xx[i]+x[i]*cos(tt[i]))
+        ynew = round(yy[i]+x[i]*sin(tt[i]))
         xx = c(xx,xnew)
         yy = c(yy,ynew)
         if(i%%2==0){
-            handles = c(handles,paste0("e",ynew))
+            handles = c(handles,paste0("e",round(ynew)))
         } else {
-            handles = c(handles,paste0("o",xnew))
+            handles = c(handles,paste0("o",round(xnew)))
         }
     }
     
