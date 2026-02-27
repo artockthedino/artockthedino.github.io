@@ -3,10 +3,14 @@ output:
   pdf_document:
     includes:
       in_header: "preamble.tex"
-geometry: margin=1in
+geometry:
+  - top=1.5in
+  - bottom=1in
+  - left=1in
+  - right=1in
 params:
     rseed: 0
-    showsol: true
+    showsol: false
     useseed: false
 ---
 
@@ -249,7 +253,7 @@ if(params$showsol){
     * Up-Right (Northeast)
 * Distances are 1, 2, 3, 4, 5
 
-```{r,echo=F,fig.dim=c(5,5)}
+```{r,echo=F,fig.dim=c(5,5),fig.align='center'}
 par(mar=c(0,0,0,0),pty="s")
 turn = -2*pi/3
 a1 = -pi/2

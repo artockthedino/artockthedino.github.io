@@ -1,0 +1,118 @@
+```{r,echo=FALSE}
+# All 60-deg turns
+n = 6
+
+th0 = pi/2
+while(T){
+    x = 0
+    y = 0
+    ends = character()
+    dists = sample(1:5,n,T)
+    turns = sample(c(-1,1),n-1,T)
+    sumturn = cumsum(turns)
+    ths = c(th0,th0+sumturn*pi/3+8*pi)%%(2*pi)
+    for(i in 1:n){
+        xnew = x[i]+dists[i]*cos(ths[i])
+        ynew = y[i]+dists[i]*sin(ths[i])
+        x = c(x,xnew)
+        y = c(y,ynew)
+    }
+    ends = paste0(x,",",y)
+    if(max(abs(x))<=12 && max(abs(y))<=12 && length(unique(turns))>1 && length(unique(dists))>1 && length(ends)==length(unique(ends))){break}
+}
+
+acho = 1:5
+ache = c("right","left")
+turnnames = ache[round(turns/2+1.5)]
+
+sols = paste0(1*(acho==dists[1]),collapse="")
+
+for(i in 2:n){
+    sols = c(sols,paste0(1*(ache==turnnames[i-1]),collapse=""))
+    sols = c(sols,paste0(1*(acho==dists[i]),collapse=""))
+}
+
+alo = paste0("* ",acho,collapse="\n")
+ale = paste0("* ",ache,collapse="\n")
+
+```
+
+Question
+========
+
+A turtle starts at the star in the middle, facing North. She walks forward for a while, then turns 60° either to her right (clockwise) or to her left (counterclockwise). She repeats this, marking her path with various colors, until she has drawn `r n` segments.
+
+The distance between adjacent dots is 1 unit.
+
+```{r,echo=F,fig.dim=c(4,4)}
+par(mar=c(0,0,0,0),pty="s")
+plot(0,0,"n",xlim=c(-12,12),ylim=c(-12,12),axes=F,ann=F)
+# 
+# for(i in -10:10){
+#     points(rep(i,21),-10:10,pch=20,cex=0.6)
+#     points(-10:10,rep(i,21),pch=20,cex=0.6)
+# }
+points(0,0,pch=8,cex=1)
+
+# lines(xx,yy,lwd=2,col="blue")
+cols = hsv(seq(0,1,length.out=n+1),0.9,0.9)
+for(i in 1:n){
+    lines(c(x[i],x[i+1]),c(y[i],y[i+1]),col=cols[i],lwd=2)
+}
+
+for(i in -20:20){
+    for(j in -20:20){
+        points(i*cos(pi/6),j+0.5*(i%%2),pch=19,cex=0.2)
+    }
+}
+points(0,0,pch=8,cex=0.8)
+```
+\
+
+
+Describe the path taken by the turtle.
+
+```{r,echo=F,results='asis'}
+cat(paste0("* Go ##ANSWER1##\n"))
+for(i in 2:n){
+    cat(paste0("* Turn ##ANSWER",i*2-2,"##\n"))
+    cat(paste0("* Go ##ANSWER",i*2-1,"##\n"))
+}
+
+```
+
+
+Answerlist
+--------
+
+`r alo`
+```{r,echo=F,results='asis'}
+for(i in 2:n){
+    cat(ale)
+    cat("\n")
+    cat(alo)
+    cat("\n")
+}
+```
+
+
+
+Solution
+========
+
+```{r,echo=F,results='asis'}
+cat(paste0("* Go ",dists[1],"\n"))
+for(i in 2:n){
+    cat(paste0("* Turn ",turnnames[i-1],"\n"))
+    cat(paste0("* Go ",dists[i],"\n"))
+}
+```
+
+
+
+Meta-information
+============
+extype: cloze
+exclozetype: `r paste0(rep("schoice",n*2-1),collapse="|")`
+exsolution: `r paste0(sols,collapse="|")`
+exname: turtle_path_C

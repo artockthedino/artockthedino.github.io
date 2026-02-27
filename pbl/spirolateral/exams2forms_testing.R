@@ -2,7 +2,7 @@ library("exams2forms")
 n = 10
 
 ### Entrance ticket
-pm = list("turtle_path_A.Rmd","turtle_path_B.Rmd")
+pm = list("turtle_path_A.Rmd","turtle_path_B.Rmd","turtle_path_C.Rmd")
 
 exams2webquiz(pm,
              n=n,

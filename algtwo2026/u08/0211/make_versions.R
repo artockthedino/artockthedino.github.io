@@ -1,7 +1,7 @@
-fn = "a0211b_example_test.Rmd"
+fn = "a0211_RADICAL_TEST.Rmd"
 shortfn = strsplit(fn,"_")[[1]][1]
-nlow = 1
-nhigh = 10
+nlow = 901
+nhigh = 940
 
 sss44 = "<!DOCTYPE html>
 <html lang='en'>

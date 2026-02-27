@@ -1,5 +1,5 @@
 ```{r,echo=FALSE}
-# All right turns
+# All 90-deg turns
 # Expressed with right, up, left, down
 
 n = 5
@@ -87,6 +87,7 @@ for(i in 1:n){
     lines(c(xx[i],xx[i+1]),c(yy[i],yy[i+1]),col=cols[i],lwd=2)
 }
 ```
+\
 
 Describe the path taken by the turtle.
 
