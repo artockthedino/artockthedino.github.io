@@ -27,7 +27,7 @@ set.seed(params$rseed)
 * Start at the star.
 ```{r,echo=F,results="asis"}
 nums = 1:5
-dirs = c("North","East","South","West")
+dirs = c("Right","Down","Left","Up")
 
 N = 20
 for(i in 0:(N-1)){
@@ -46,7 +46,7 @@ pch = 8
 
 par(mar=c(0,0,0,0),pty="s")
 turn = -pi/2
-a1 = pi/2
+a1 = 0
 lengths = 1:5
 n = 50
 a = a1
@@ -107,7 +107,7 @@ Notice: four directions and five numbers took **4 cycles** of counting to return
 * Start at the star.
 ```{r,echo=F,results="asis"}
 nums = 1:6
-dirs = c("North","East","South","West")
+dirs = c("Right","Down","Left","Up")
 
 N = 12
 for(i in 0:(N-1)){
@@ -126,7 +126,7 @@ pch = 8
 
 par(mar=c(0,0,0,0),pty="s")
 turn = -pi/2
-a1 = pi/2
+a1 = 0
 lengths = 1:6
 n = 50
 a = a1
@@ -179,18 +179,18 @@ Notice: four directions and six numbers took **2 cycles** of counting to return 
 
 \newpage
 
-### Practice $9_{90^{\circ}}$
+### Practice $7_{90^{\circ}}$
 
 * Start at the star
-* For direction use North, East, South, West (turning clockwise)
-* For length use 1, 2, 3, 4, 5, 6, 7, 8, 9 (count from 1 to 9)
+* For direction use right, down, left, up (turning clockwise)
+* For length use 1, 2, 3, 4, 5, 6, 7 (count from 1 to 7)
 
-```{r,echo=F,fig.dim=c(6,6),fig.align='center'}
+```{r,echo=F,fig.dim=c(5,5),fig.align='center'}
 pch = 8
 par(mar=c(0,0,0,0),pty="s")
 turn = -pi/2
-a1 = pi/2
-lengths = 1:9
+a1 = 0
+lengths = 1:7
 n = 50
 a = a1
 x = 0
@@ -246,17 +246,17 @@ if(params$showsol){
 
 ## Practice $5_{60^{\circ}}$
 
-* Start at star heading North.
+* Start at star heading down.
 * Turn **120° clockwise** after each segment.
-    * Up (North)
-    * Down-Right (Southeast)
-    * Down-Left (Southwest)
+    * Down (South)
+    * Up-Left (Northwest)
+    * Up-Right (Northeast)
 * Distances are 1, 2, 3, 4, 5
 
 ```{r,echo=F,fig.dim=c(5,5),fig.align='center'}
 par(mar=c(0,0,0,0),pty="s")
 turn = -2*pi/3
-a1 = pi/2
+a1 = -pi/2
 lengths = 1:5
 n = 50
 a = a1
@@ -313,20 +313,20 @@ if(params$showsol){
 
 ## Practice $5_{120^{\circ}}$
 
-* Start at star heading North.
+* Start at star heading down.
 * Turn **60° clockwise** after each segment.
-    * Up (North)
-    * Up-Right (Northeast)
-    * Down-Right (Southeast)
     * Down (South)
     * Down-Left (Southwest)
     * Up-Left (Northwest)
+    * Up (North)
+    * Up-Right (Northeast)
+    * Down-Right (Southeast)
 * Distances are 1, 2, 3, 4, 5
 
 ```{r,echo=F,fig.dim=c(5,5),fig.align='center'}
 par(mar=c(0,0,0,0),pty="s")
 turn = -pi/3
-a1 = pi/2
+a1 = -pi/2
 lengths = 1:5
 n = 50
 a = a1

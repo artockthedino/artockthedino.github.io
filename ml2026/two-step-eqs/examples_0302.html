@@ -11,7 +11,7 @@
 
 
 
-<title>et01_EZ_two-step_equations.knit</title>
+<title>examples_0302</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -252,6 +252,252 @@ if (window.hljs) {
 
 
 
+<style type="text/css">:root {
+--incorrect: #983E82;
+--incorrect_alpha: #edaddd;
+--correct: #59935B;
+--correct_alpha: #c0edc2;
+--highlight: #467AAC;
+--highlight_alpha: #D1E4FF;
+--highlight_gray: #C3C3C3;
+--background_question: #7f7f7f0d;
+--background_input: white;
+--text_input: black;
+--webex-reveal-main-font-size: 1.5rem; 
+--webex-reveal-main-color: var(--r-main-color);
+}
+
+
+:root .quarto-dark, :root .color-theme-2 {
+--highlight: #5687B9;
+--background_input: black;
+--text_input: white;
+}
+
+.reveal .webex-question * {
+font-size: var(--webex-reveal-main-font-size) !important;
+color: var(--webex-reveal-main-color) !important;
+} 
+
+.webex-group .webex-question {
+display: none;
+}
+.webex-group .webex-question.active {
+display: block;
+}
+.webex-check {}
+.webex-box {
+border: 2px solid var(--highlight);
+padding: 0.5em;
+margin: 1em 0;
+border-radius: .25em;
+background-color: var(--background_question);
+}
+.webex-filename {
+display: block;
+font-family: "Lucida Console", "Courier New", monospace;
+color: gray;
+text-align: right;
+}
+.webex-filename > p { margin: 0; }
+.webex-total_correct {
+margin-left: 1em;
+}
+.unchecked .webex-total_correct {
+display: none;
+}
+.unchecked .webex-incorrect,
+.unchecked .webex-correct {
+border: 2px solid transparent !important;
+background-color: transparent !important;
+}
+
+.unchecked select.webex-incorrect,
+.unchecked select.webex-correct,
+.unchecked input.webex-incorrect,
+.unchecked input.webex-correct {
+border: 2px solid var(--highlight) !important;
+background-color: var(--background_input) !important;
+color: var(--text_input) !important;
+}
+
+.webex-select, .webex-solveme,
+.unchecked .webex-radiogroup > .webex-incorrect,
+.unchecked .webex-radiogroup > .webex-correct{
+border: 2px solid var(--highlight);
+background-color: var(--background_input);
+color: var(--text_input) !important;
+border-radius: 0.25em;
+width: auto;
+max-width: 90%;
+}
+.webex-question .tolerance + .webex-solveme {
+border-top-left-radius: 0;
+border-bottom-left-radius: 0;
+border-left: none;
+padding-left: 0.5em;
+}
+.webex-question .tolerance {
+border-color: var(--highlight);
+border-radius: 0.25em;
+background-color: #CECECE;
+color: gray;
+text-align: right;
+border-top-right-radius: 0;
+border-bottom-right-radius: 0;
+border-style: solid;
+border-right: none;
+padding-right: .5em;
+padding-left: .25em;
+}
+.webex-check:not(.unchecked) .tolerance:has(+ .webex-solveme.webex-incorrect) {
+border-color: var(--incorrect);
+color: var(--incorrect);
+}
+.webex-check:not(.unchecked) .tolerance:has(+ .webex-solveme.webex-correct) {
+border-color: var(--correct);
+color: var(--correct);
+}
+.webex-incorrect, .webex-checkboxgroup, .webex-solveme. .webex-radiogroup {
+
+border-radius: 0.25em;
+}
+.webex-checkboxgroup {
+margin-bottom: 1em;
+}
+.webex-incorrect,
+.webex-checkboxgroup > .webex-incorrect,
+.webex-solveme.webex-incorrect,
+.webex-radiogroup > .webex-incorrect {
+border: 2px solid var(--incorrect);
+background-color: var(--incorrect_alpha);
+}
+.webex-correct, .webex-checkboxgroup > .webex-correct,
+.webex-solveme.webex-correct,
+.webex-radiogroup >.webex-correct {
+border: 2px solid var(--correct);
+background-color: var(--correct_alpha);
+}
+.unchecked .webex-incorrect > span::after,
+.unchecked .webex-incorrect + .webex-icon::after,
+.unchecked .webex-correct > span::after,
+.unchecked .webex-correct + .webex-icon::after {
+content: "";
+}
+
+.webex-incorrect > span::after,
+.webex-incorrect + .webex-icon::after {
+content: "\00a0\00a0\2715";
+}
+.webex-correct > span::after,
+.webex-correct + .webex-icon::after {
+content: "\00a0\00a0\2713";
+}
+
+
+
+.webex-solution {
+display: none;
+padding: 0.5em;
+margin-bottom: 10px;
+border: 2px solid var(--highlight_gray);
+border-radius: 5px;
+}
+.webex-solution.visible {
+display: block;
+}
+.webex-solution > ul {
+padding-left: 2em;
+}
+
+ul.webex-button-list {
+display: flex;
+flex-wrap: wrap;
+width: 100%;
+list-style: none;
+padding: 0 !important; 
+margin: 0 !important; 
+}
+ul.webex-button-list > li {
+padding: 0;
+}
+ul.webex-button-list > li {
+margin-bottom: 0 !important; 
+}
+ul.webex-button-list > li:first-child {
+margin-right: auto;
+margin-top: 0; 
+}
+.webex-solution button,
+.webex-box .webex-button {
+height: 2em;
+min-width: 2em;
+margin-bottom: 0;
+margin-right: 0.25em;
+border-radius: 0.5em;
+background-color: transparent;
+border-color: var(--highlight);
+color: var(--highlight);
+padding: 0 0.5em;
+font-size: 1.2em;
+white-space: nowrap;
+}
+.webex-button:hover {
+background-color: var(--highlight_alpha);
+}
+.webex-solution pre.sourceCode {
+border-color: var(--correct);
+}
+ul.webex-button-list > li:last-child > .webex-button { margin-right: 0;
+}
+
+.webex-checkboxgroup > label,
+.unchecked .webex-checkboxgroup > label,
+.webex-radiogroup label {
+font-weight: 400;
+display: block;
+border: 2px solid transparent;
+background-color: inherit;
+border-radius: 0.25em;
+}
+.webex-checkboxgroup label > input[type=checkbox],
+.webex-radiogroup label > input[type=radio] {
+margin: 0.1em 0.5em 0 0.25em;
+position: relative;
+top: 0.125em;
+}
+.webex-radiogroup {
+margin: 1em 0;
+}
+
+.webex-box > ul:not(.webex-button-list) {
+list-style: none;
+margin: 0;
+padding: 0 0 1em 0.25em;
+}
+.webex-box > ul:not(.webex-button-list) > li {
+margin: 0 0 0.25em 0;
+}
+.webex-box > ul:not(.webex-button-list) > li > select {
+margin: 0 0.5em 0 0;
+}
+
+.webex-checkboxgroup > label {
+display: block;
+}
+.webex-checkboxgroup > label > span {
+font-weight: normal;
+}
+.unchecked .webex-checkboxgroup .webex-incorrect,
+.unchecked .webex-checkboxgroup .webex-correct {
+border: 2px solid transparent !important;
+background-color: transparent !important;
+}
+.unchecked .webex-checkboxgroup > label.webex-correct,
+.unchecked .webex-checkboxgroup > label.webex-incorrect {
+background-color: transparent;
+}
+</style>
 
 
 
@@ -348,17 +594,1248 @@ display: none;
 
 
 
+<h1 class="title toc-ignore">examples_0302</h1>
 
 </div>
 
 
-<div id="question" class="section level1">
-<h1>Question</h1>
-<p>Solve the equation below. <span class="math display">\[4=\frac{x}{3}+2\]</span></p>
+<div class="webex-group">
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[63=(x+2)\cdot
+9\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-6147f18766866d77a3906a3f8991d4d1" data-tol="0" size="20" data-answer="bRMBFTs="></input></p>
 </div>
-<div id="solution" class="section level1">
-<h1>Solution</h1>
-<p>Rewrite the given equation. <span class="math display">\[4=\frac{x}{3}+2\]</span> Subtract 2 from both
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[63=(x+2)\cdot 9\]</span> Divide both sides of the
+equation by 9.</p>
+<p><span class="math display">\[7=x+2\]</span></p>
+<p>Subtract 2 from both sides of the equation.</p>
+<p><span class="math display">\[5=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=5\]</span></p>
+<p>You can check your possible answer by substituting 5 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[63\stackrel{?}{=}((5)+2)\cdot
+9\]</span></p>
+<p><span class="math display">\[63 \stackrel{?}{=} 7\cdot 9\]</span></p>
+<p><span class="math display">\[63 \stackrel{\checkmark}{=}
+63\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=5\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[20=(x+4)\cdot
+2\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-ca15abd4eef0179a2b27fabf479b3e45" data-tol="0" size="20" data-answer="OEMHFzw="></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[20=(x+4)\cdot 2\]</span> Divide both sides of the
+equation by 2.</p>
+<p><span class="math display">\[10=x+4\]</span></p>
+<p>Subtract 4 from both sides of the equation.</p>
+<p><span class="math display">\[6=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=6\]</span></p>
+<p>You can check your possible answer by substituting 6 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[20\stackrel{?}{=}((6)+4)\cdot
+2\]</span></p>
+<p><span class="math display">\[20 \stackrel{?}{=} 10\cdot
+2\]</span></p>
+<p><span class="math display">\[20 \stackrel{\checkmark}{=}
+20\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=6\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[36=(x+2)\cdot
+3\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-2e57a1426a16c3b2dcb3b158901c1713" data-tol="0" size="20" data-answer="aUcEB0Ns"></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[36=(x+2)\cdot 3\]</span> Divide both sides of the
+equation by 3.</p>
+<p><span class="math display">\[12=x+2\]</span></p>
+<p>Subtract 2 from both sides of the equation.</p>
+<p><span class="math display">\[10=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=10\]</span></p>
+<p>You can check your possible answer by substituting 10 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[36\stackrel{?}{=}((10)+2)\cdot
+3\]</span></p>
+<p><span class="math display">\[36 \stackrel{?}{=} 12\cdot
+3\]</span></p>
+<p><span class="math display">\[36 \stackrel{\checkmark}{=}
+36\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=10\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[30=(x+6)\cdot
+3\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-0c3c8b371f43b663e078478340a0cb24" data-tol="0" size="20" data-answer="a0EHQWU="></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[30=(x+6)\cdot 3\]</span> Divide both sides of the
+equation by 3.</p>
+<p><span class="math display">\[10=x+6\]</span></p>
+<p>Subtract 6 from both sides of the equation.</p>
+<p><span class="math display">\[4=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=4\]</span></p>
+<p>You can check your possible answer by substituting 4 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[30\stackrel{?}{=}((4)+6)\cdot
+3\]</span></p>
+<p><span class="math display">\[30 \stackrel{?}{=} 10\cdot
+3\]</span></p>
+<p><span class="math display">\[30 \stackrel{\checkmark}{=}
+30\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=4\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[32=(x+6)\cdot
+2\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-91134f858b0992b2263d4df42c1dadfe" data-tol="0" size="20" data-answer="YhMAAxY7"></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[32=(x+6)\cdot 2\]</span> Divide both sides of the
+equation by 2.</p>
+<p><span class="math display">\[16=x+6\]</span></p>
+<p>Subtract 6 from both sides of the equation.</p>
+<p><span class="math display">\[10=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=10\]</span></p>
+<p>You can check your possible answer by substituting 10 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[32\stackrel{?}{=}((10)+6)\cdot
+2\]</span></p>
+<p><span class="math display">\[32 \stackrel{?}{=} 16\cdot
+2\]</span></p>
+<p><span class="math display">\[32 \stackrel{\checkmark}{=}
+32\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=10\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[54=(x+2)\cdot
+9\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-914cd53882c836d91ccfee87c1aead59" data-tol="0" size="20" data-answer="YhMAQTk="></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[54=(x+2)\cdot 9\]</span> Divide both sides of the
+equation by 9.</p>
+<p><span class="math display">\[6=x+2\]</span></p>
+<p>Subtract 2 from both sides of the equation.</p>
+<p><span class="math display">\[4=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=4\]</span></p>
+<p>You can check your possible answer by substituting 4 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[54\stackrel{?}{=}((4)+2)\cdot
+9\]</span></p>
+<p><span class="math display">\[54 \stackrel{?}{=} 6\cdot 9\]</span></p>
+<p><span class="math display">\[54 \stackrel{\checkmark}{=}
+54\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=4\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[63=(x+6)\cdot
+7\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-1b41760402ed20a61b77862090123354" data-tol="0" size="20" data-answer="akAHE2o="></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[63=(x+6)\cdot 7\]</span> Divide both sides of the
+equation by 7.</p>
+<p><span class="math display">\[9=x+6\]</span></p>
+<p>Subtract 6 from both sides of the equation.</p>
+<p><span class="math display">\[3=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=3\]</span></p>
+<p>You can check your possible answer by substituting 3 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[63\stackrel{?}{=}((3)+6)\cdot
+7\]</span></p>
+<p><span class="math display">\[63 \stackrel{?}{=} 9\cdot 7\]</span></p>
+<p><span class="math display">\[63 \stackrel{\checkmark}{=}
+63\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=3\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[14=(x+3)\cdot
+2\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-f2cd1fcdfbf42122dc0c6e488d1f36d4" data-tol="0" size="20" data-answer="PRBXRmw="></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[14=(x+3)\cdot 2\]</span> Divide both sides of the
+equation by 2.</p>
+<p><span class="math display">\[7=x+3\]</span></p>
+<p>Subtract 3 from both sides of the equation.</p>
+<p><span class="math display">\[4=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=4\]</span></p>
+<p>You can check your possible answer by substituting 4 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[14\stackrel{?}{=}((4)+3)\cdot
+2\]</span></p>
+<p><span class="math display">\[14 \stackrel{?}{=} 7\cdot 2\]</span></p>
+<p><span class="math display">\[14 \stackrel{\checkmark}{=}
+14\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=4\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[33=(x+5)\cdot
+3\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-0d89372fa77abc6a3122ff1a4da24a78" data-tol="0" size="20" data-answer="a0YOG24="></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[33=(x+5)\cdot 3\]</span> Divide both sides of the
+equation by 3.</p>
+<p><span class="math display">\[11=x+5\]</span></p>
+<p>Subtract 5 from both sides of the equation.</p>
+<p><span class="math display">\[6=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=6\]</span></p>
+<p>You can check your possible answer by substituting 6 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[33\stackrel{?}{=}((6)+5)\cdot
+3\]</span></p>
+<p><span class="math display">\[33 \stackrel{?}{=} 11\cdot
+3\]</span></p>
+<p><span class="math display">\[33 \stackrel{\checkmark}{=}
+33\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=6\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[27=(x+4)\cdot
+3\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-4f76bae7e5815cdc72599d5809388f5e" data-tol="0" size="20" data-answer="b0QCFD8="></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[27=(x+4)\cdot 3\]</span> Divide both sides of the
+equation by 3.</p>
+<p><span class="math display">\[9=x+4\]</span></p>
+<p>Subtract 4 from both sides of the equation.</p>
+<p><span class="math display">\[5=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=5\]</span></p>
+<p>You can check your possible answer by substituting 5 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[27\stackrel{?}{=}((5)+4)\cdot
+3\]</span></p>
+<p><span class="math display">\[27 \stackrel{?}{=} 9\cdot 3\]</span></p>
+<p><span class="math display">\[27 \stackrel{\checkmark}{=}
+27\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=5\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+</div>
+<div class="webex-group">
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[5=\frac{x+9}{4}\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-ff749ad09dbbefbd5474a30c41e715e4" data-tol="0" size="20" data-answer="PUQGBRs8"></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[5=\frac{x+9}{4}\]</span> Multiply both sides of
+the equation by 4.</p>
+<p><span class="math display">\[20=x+9\]</span></p>
+<p>Subtract 9 from both sides of the equation.</p>
+<p><span class="math display">\[11=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=11\]</span></p>
+<p>You can check your possible answer by substituting 11 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[5\stackrel{?}{=}\frac{(11)+9}{4}\]</span></p>
+<p><span class="math display">\[5 \stackrel{?}{=}
+\frac{20}{4}\]</span></p>
+<p><span class="math display">\[5 \stackrel{\checkmark}{=}
+5\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=11\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[5=\frac{x+4}{3}\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-9fd3b62b183183d4b27705b750edeece" data-tol="0" size="20" data-answer="YkRVAkBr"></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[5=\frac{x+4}{3}\]</span> Multiply both sides of
+the equation by 3.</p>
+<p><span class="math display">\[15=x+4\]</span></p>
+<p>Subtract 4 from both sides of the equation.</p>
+<p><span class="math display">\[11=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=11\]</span></p>
+<p>You can check your possible answer by substituting 11 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[5\stackrel{?}{=}\frac{(11)+4}{3}\]</span></p>
+<p><span class="math display">\[5 \stackrel{?}{=}
+\frac{15}{3}\]</span></p>
+<p><span class="math display">\[5 \stackrel{\checkmark}{=}
+5\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=11\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[2=\frac{x+7}{8}\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-4cb6290f076b885724878bcceab2efa2" data-tol="0" size="20" data-answer="b0FbFG8="></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[2=\frac{x+7}{8}\]</span> Multiply both sides of
+the equation by 8.</p>
+<p><span class="math display">\[16=x+7\]</span></p>
+<p>Subtract 7 from both sides of the equation.</p>
+<p><span class="math display">\[9=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=9\]</span></p>
+<p>You can check your possible answer by substituting 9 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[2\stackrel{?}{=}\frac{(9)+7}{8}\]</span></p>
+<p><span class="math display">\[2 \stackrel{?}{=}
+\frac{16}{8}\]</span></p>
+<p><span class="math display">\[2 \stackrel{\checkmark}{=}
+2\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=9\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[3=\frac{x+7}{5}\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-9bac6efa7c09acc691276721930f0ec5" data-tol="0" size="20" data-answer="YkBZQWs="></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[3=\frac{x+7}{5}\]</span> Multiply both sides of
+the equation by 5.</p>
+<p><span class="math display">\[15=x+7\]</span></p>
+<p>Subtract 7 from both sides of the equation.</p>
+<p><span class="math display">\[8=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=8\]</span></p>
+<p>You can check your possible answer by substituting 8 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[3\stackrel{?}{=}\frac{(8)+7}{5}\]</span></p>
+<p><span class="math display">\[3 \stackrel{?}{=}
+\frac{15}{5}\]</span></p>
+<p><span class="math display">\[3 \stackrel{\checkmark}{=}
+3\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=8\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[3=\frac{x+2}{4}\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-95707271231d5068e5666c2fb917a6d2" data-tol="0" size="20" data-answer="YhcGABVv"></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[3=\frac{x+2}{4}\]</span> Multiply both sides of
+the equation by 4.</p>
+<p><span class="math display">\[12=x+2\]</span></p>
+<p>Subtract 2 from both sides of the equation.</p>
+<p><span class="math display">\[10=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=10\]</span></p>
+<p>You can check your possible answer by substituting 10 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[3\stackrel{?}{=}\frac{(10)+2}{4}\]</span></p>
+<p><span class="math display">\[3 \stackrel{?}{=}
+\frac{12}{4}\]</span></p>
+<p><span class="math display">\[3 \stackrel{\checkmark}{=}
+3\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=10\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[4=\frac{x+4}{3}\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-6818f1e36e43e2d0e732eac754f6bd4a" data-tol="0" size="20" data-answer="bRoJGjs="></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[4=\frac{x+4}{3}\]</span> Multiply both sides of
+the equation by 3.</p>
+<p><span class="math display">\[12=x+4\]</span></p>
+<p>Subtract 4 from both sides of the equation.</p>
+<p><span class="math display">\[8=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=8\]</span></p>
+<p>You can check your possible answer by substituting 8 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[4\stackrel{?}{=}\frac{(8)+4}{3}\]</span></p>
+<p><span class="math display">\[4 \stackrel{?}{=}
+\frac{12}{3}\]</span></p>
+<p><span class="math display">\[4 \stackrel{\checkmark}{=}
+4\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=8\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[5=\frac{x+8}{3}\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-e1f0fb620ca71fec7849e283d6f5a5fe" data-tol="0" size="20" data-answer="PhNREjs="></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[5=\frac{x+8}{3}\]</span> Multiply both sides of
+the equation by 3.</p>
+<p><span class="math display">\[15=x+8\]</span></p>
+<p>Subtract 8 from both sides of the equation.</p>
+<p><span class="math display">\[7=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=7\]</span></p>
+<p>You can check your possible answer by substituting 7 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[5\stackrel{?}{=}\frac{(7)+8}{3}\]</span></p>
+<p><span class="math display">\[5 \stackrel{?}{=}
+\frac{15}{3}\]</span></p>
+<p><span class="math display">\[5 \stackrel{\checkmark}{=}
+5\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=7\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[3=\frac{x+2}{3}\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-714be890494362ef81db305be9b0bd66" data-tol="0" size="20" data-answer="bBMDQDg="></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[3=\frac{x+2}{3}\]</span> Multiply both sides of
+the equation by 3.</p>
+<p><span class="math display">\[9=x+2\]</span></p>
+<p>Subtract 2 from both sides of the equation.</p>
+<p><span class="math display">\[7=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=7\]</span></p>
+<p>You can check your possible answer by substituting 7 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[3\stackrel{?}{=}\frac{(7)+2}{3}\]</span></p>
+<p><span class="math display">\[3 \stackrel{?}{=}
+\frac{9}{3}\]</span></p>
+<p><span class="math display">\[3 \stackrel{\checkmark}{=}
+3\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=7\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[3=\frac{x+4}{5}\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-86cccc4354bc94f4adfe289c6e1a56d7" data-tol="0" size="20" data-answer="YxRSUkE+"></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[3=\frac{x+4}{5}\]</span> Multiply both sides of
+the equation by 5.</p>
+<p><span class="math display">\[15=x+4\]</span></p>
+<p>Subtract 4 from both sides of the equation.</p>
+<p><span class="math display">\[11=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=11\]</span></p>
+<p>You can check your possible answer by substituting 11 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[3\stackrel{?}{=}\frac{(11)+4}{5}\]</span></p>
+<p><span class="math display">\[3 \stackrel{?}{=}
+\frac{15}{5}\]</span></p>
+<p><span class="math display">\[3 \stackrel{\checkmark}{=}
+3\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=11\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[5=\frac{x+3}{2}\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-7cca13d2cf5e478b87fe43a7ea9cac25" data-tol="0" size="20" data-answer="bEFUQ2w="></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[5=\frac{x+3}{2}\]</span> Multiply both sides of
+the equation by 2.</p>
+<p><span class="math display">\[10=x+3\]</span></p>
+<p>Subtract 3 from both sides of the equation.</p>
+<p><span class="math display">\[7=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=7\]</span></p>
+<p>You can check your possible answer by substituting 7 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[5\stackrel{?}{=}\frac{(7)+3}{2}\]</span></p>
+<p><span class="math display">\[5 \stackrel{?}{=}
+\frac{10}{2}\]</span></p>
+<p><span class="math display">\[5 \stackrel{\checkmark}{=}
+5\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=7\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+</div>
+<div class="webex-group">
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[5=(x-9)\cdot
+5\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-4be5a03631e3beacf3045ee1763021ca" data-tol="0" size="20" data-answer="b0BUBUNt"></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[5=(x-9)\cdot
+5\]</span> Divide both sides of the equation by 5.</p>
+<p><span class="math display">\[1=x-9\]</span></p>
+<p>Add 9 to both sides of the equation.</p>
+<p><span class="math display">\[10=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=10\]</span></p>
+<p>You can check your possible answer by substituting 10 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[5\stackrel{?}{=}((10)-9)\cdot
+5\]</span></p>
+<p><span class="math display">\[5 \stackrel{?}{=} 1\cdot 5\]</span></p>
+<p><span class="math display">\[5 \stackrel{\checkmark}{=}
+5\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=10\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[56=(x-5)\cdot
+8\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-79f6889c6788077bb745ab5eae653440" data-tol="0" size="20" data-answer="bBtXBBpl"></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[56=(x-5)\cdot 8\]</span> Divide both sides of the
+equation by 8.</p>
+<p><span class="math display">\[7=x-5\]</span></p>
+<p>Add 5 to both sides of the equation.</p>
+<p><span class="math display">\[12=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=12\]</span></p>
+<p>You can check your possible answer by substituting 12 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[56\stackrel{?}{=}((12)-5)\cdot
+8\]</span></p>
+<p><span class="math display">\[56 \stackrel{?}{=} 7\cdot 8\]</span></p>
+<p><span class="math display">\[56 \stackrel{\checkmark}{=}
+56\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=12\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[21=(x-2)\cdot
+3\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-60ef95afb1da5515285c5365ef259d3e" data-tol="0" size="20" data-answer="bRJcRGQ="></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[21=(x-2)\cdot 3\]</span> Divide both sides of the
+equation by 3.</p>
+<p><span class="math display">\[7=x-2\]</span></p>
+<p>Add 2 to both sides of the equation.</p>
+<p><span class="math display">\[9=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=9\]</span></p>
+<p>You can check your possible answer by substituting 9 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[21\stackrel{?}{=}((9)-2)\cdot
+3\]</span></p>
+<p><span class="math display">\[21 \stackrel{?}{=} 7\cdot 3\]</span></p>
+<p><span class="math display">\[21 \stackrel{\checkmark}{=}
+21\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=9\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[10=(x-2)\cdot
+5\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-201ccb4bf6d5e586ddb8538a54b0a394" data-tol="0" size="20" data-answer="aRIFQT4="></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[10=(x-2)\cdot 5\]</span> Divide both sides of the
+equation by 5.</p>
+<p><span class="math display">\[2=x-2\]</span></p>
+<p>Add 2 to both sides of the equation.</p>
+<p><span class="math display">\[4=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=4\]</span></p>
+<p>You can check your possible answer by substituting 4 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[10\stackrel{?}{=}((4)-2)\cdot
+5\]</span></p>
+<p><span class="math display">\[10 \stackrel{?}{=} 2\cdot 5\]</span></p>
+<p><span class="math display">\[10 \stackrel{\checkmark}{=}
+10\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=4\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[36=(x-3)\cdot
+6\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-4bcc2275d8ffe0201ee3768c029701c3" data-tol="0" size="20" data-answer="b0BaQW8="></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[36=(x-3)\cdot 6\]</span> Divide both sides of the
+equation by 6.</p>
+<p><span class="math display">\[6=x-3\]</span></p>
+<p>Add 3 to both sides of the equation.</p>
+<p><span class="math display">\[9=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=9\]</span></p>
+<p>You can check your possible answer by substituting 9 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[36\stackrel{?}{=}((9)-3)\cdot
+6\]</span></p>
+<p><span class="math display">\[36 \stackrel{?}{=} 6\cdot 6\]</span></p>
+<p><span class="math display">\[36 \stackrel{\checkmark}{=}
+36\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=9\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[15=(x-3)\cdot
+5\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-79b04478a5ff4118a5ad2a8e9a15ab9b" data-tol="0" size="20" data-answer="bBtUEmk="></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[15=(x-3)\cdot 5\]</span> Divide both sides of the
+equation by 5.</p>
+<p><span class="math display">\[3=x-3\]</span></p>
+<p>Add 3 to both sides of the equation.</p>
+<p><span class="math display">\[6=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=6\]</span></p>
+<p>You can check your possible answer by substituting 6 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[15\stackrel{?}{=}((6)-3)\cdot
+5\]</span></p>
+<p><span class="math display">\[15 \stackrel{?}{=} 3\cdot 5\]</span></p>
+<p><span class="math display">\[15 \stackrel{\checkmark}{=}
+15\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=6\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[56=(x-3)\cdot
+8\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-4778fa3fa18fbd51b93d0ff761f02dab" data-tol="0" size="20" data-answer="bxUGCEQ8"></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[56=(x-3)\cdot 8\]</span> Divide both sides of the
+equation by 8.</p>
+<p><span class="math display">\[7=x-3\]</span></p>
+<p>Add 3 to both sides of the equation.</p>
+<p><span class="math display">\[10=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=10\]</span></p>
+<p>You can check your possible answer by substituting 10 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[56\stackrel{?}{=}((10)-3)\cdot
+8\]</span></p>
+<p><span class="math display">\[56 \stackrel{?}{=} 7\cdot 8\]</span></p>
+<p><span class="math display">\[56 \stackrel{\checkmark}{=}
+56\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=10\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[4=(x-7)\cdot
+4\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-3e392c50b57c3fb7bb32d89991d43f50" data-tol="0" size="20" data-answer="aEcLG28="></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[4=(x-7)\cdot
+4\]</span> Divide both sides of the equation by 4.</p>
+<p><span class="math display">\[1=x-7\]</span></p>
+<p>Add 7 to both sides of the equation.</p>
+<p><span class="math display">\[8=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=8\]</span></p>
+<p>You can check your possible answer by substituting 8 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[4\stackrel{?}{=}((8)-7)\cdot
+4\]</span></p>
+<p><span class="math display">\[4 \stackrel{?}{=} 1\cdot 4\]</span></p>
+<p><span class="math display">\[4 \stackrel{\checkmark}{=}
+4\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=8\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[18=(x-5)\cdot
+6\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-a67f53ad4e13a42f2b146059a16fdf6a" data-tol="0" size="20" data-answer="OhQPRGg="></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[18=(x-5)\cdot 6\]</span> Divide both sides of the
+equation by 6.</p>
+<p><span class="math display">\[3=x-5\]</span></p>
+<p>Add 5 to both sides of the equation.</p>
+<p><span class="math display">\[8=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=8\]</span></p>
+<p>You can check your possible answer by substituting 8 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[18\stackrel{?}{=}((8)-5)\cdot
+6\]</span></p>
+<p><span class="math display">\[18 \stackrel{?}{=} 3\cdot 6\]</span></p>
+<p><span class="math display">\[18 \stackrel{\checkmark}{=}
+18\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=8\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[40=(x-7)\cdot
+8\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-fe1579834ed64cd284d8c1dc0863c07d" data-tol="0" size="20" data-answer="PUcABxVk"></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[40=(x-7)\cdot 8\]</span> Divide both sides of the
+equation by 8.</p>
+<p><span class="math display">\[5=x-7\]</span></p>
+<p>Add 7 to both sides of the equation.</p>
+<p><span class="math display">\[12=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=12\]</span></p>
+<p>You can check your possible answer by substituting 12 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[40\stackrel{?}{=}((12)-7)\cdot
+8\]</span></p>
+<p><span class="math display">\[40 \stackrel{?}{=} 5\cdot 8\]</span></p>
+<p><span class="math display">\[40 \stackrel{\checkmark}{=}
+40\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=12\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+</div>
+<div class="webex-group">
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[3=\frac{x-5}{2}\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-58554bd92c8a27a334b9b54ba458d4ce" data-tol="0" size="20" data-answer="bhoEBBY/"></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[3=\frac{x-5}{2}\]</span> Multiply both sides of
+the equation by 2.</p>
+<p><span class="math display">\[6=x-5\]</span></p>
+<p>Add 5 to both sides of the equation.</p>
+<p><span class="math display">\[11=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=11\]</span></p>
+<p>You can check your possible answer by substituting 11 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[3\stackrel{?}{=}\frac{(11)-5}{2}\]</span></p>
+<p><span class="math display">\[3 \stackrel{?}{=}
+\frac{6}{2}\]</span></p>
+<p><span class="math display">\[3 \stackrel{\checkmark}{=}
+3\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=11\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[2=\frac{x-8}{2}\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-424898dc1de06d94de430c596529272d" data-tol="0" size="20" data-answer="bxAFChtl"></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[2=\frac{x-8}{2}\]</span> Multiply both sides of
+the equation by 2.</p>
+<p><span class="math display">\[4=x-8\]</span></p>
+<p>Add 8 to both sides of the equation.</p>
+<p><span class="math display">\[12=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=12\]</span></p>
+<p>You can check your possible answer by substituting 12 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[2\stackrel{?}{=}\frac{(12)-8}{2}\]</span></p>
+<p><span class="math display">\[2 \stackrel{?}{=}
+\frac{4}{2}\]</span></p>
+<p><span class="math display">\[2 \stackrel{\checkmark}{=}
+2\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=12\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[3=\frac{x-3}{2}\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-be75216c979aa1f42e1adfe9fb87be6a" data-tol="0" size="20" data-answer="OUcOF28="></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[3=\frac{x-3}{2}\]</span> Multiply both sides of
+the equation by 2.</p>
+<p><span class="math display">\[6=x-3\]</span></p>
+<p>Add 3 to both sides of the equation.</p>
+<p><span class="math display">\[9=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=9\]</span></p>
+<p>You can check your possible answer by substituting 9 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[3\stackrel{?}{=}\frac{(9)-3}{2}\]</span></p>
+<p><span class="math display">\[3 \stackrel{?}{=}
+\frac{6}{2}\]</span></p>
+<p><span class="math display">\[3 \stackrel{\checkmark}{=}
+3\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=9\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[2=\frac{x-4}{2}\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-780a764e21e3026c6fb596d6b2ec46ca" data-tol="0" size="20" data-answer="bBoIQ2o="></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[2=\frac{x-4}{2}\]</span> Multiply both sides of
+the equation by 2.</p>
+<p><span class="math display">\[4=x-4\]</span></p>
+<p>Add 4 to both sides of the equation.</p>
+<p><span class="math display">\[8=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=8\]</span></p>
+<p>You can check your possible answer by substituting 8 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[2\stackrel{?}{=}\frac{(8)-4}{2}\]</span></p>
+<p><span class="math display">\[2 \stackrel{?}{=}
+\frac{4}{2}\]</span></p>
+<p><span class="math display">\[2 \stackrel{\checkmark}{=}
+2\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=8\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[3=\frac{x-2}{3}\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-4f3997f6a4c039622ffe3f3e6505a2fd" data-tol="0" size="20" data-answer="b0QCCBtq"></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[3=\frac{x-2}{3}\]</span> Multiply both sides of
+the equation by 3.</p>
+<p><span class="math display">\[9=x-2\]</span></p>
+<p>Add 2 to both sides of the equation.</p>
+<p><span class="math display">\[11=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=11\]</span></p>
+<p>You can check your possible answer by substituting 11 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[3\stackrel{?}{=}\frac{(11)-2}{3}\]</span></p>
+<p><span class="math display">\[3 \stackrel{?}{=}
+\frac{9}{3}\]</span></p>
+<p><span class="math display">\[3 \stackrel{\checkmark}{=}
+3\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=11\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[2=\frac{x-3}{4}\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-a65dc966b2af20e78c68e32f4d19c35b" data-tol="0" size="20" data-answer="OhQEVUFk"></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[2=\frac{x-3}{4}\]</span> Multiply both sides of
+the equation by 4.</p>
+<p><span class="math display">\[8=x-3\]</span></p>
+<p>Add 3 to both sides of the equation.</p>
+<p><span class="math display">\[11=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=11\]</span></p>
+<p>You can check your possible answer by substituting 11 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[2\stackrel{?}{=}\frac{(11)-3}{4}\]</span></p>
+<p><span class="math display">\[2 \stackrel{?}{=}
+\frac{8}{4}\]</span></p>
+<p><span class="math display">\[2 \stackrel{\checkmark}{=}
+2\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=11\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[2=\frac{x-3}{2}\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-0f629d209d02de55fb05abda3c92c6d0" data-tol="0" size="20" data-answer="a0QBEGQ="></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[2=\frac{x-3}{2}\]</span> Multiply both sides of
+the equation by 2.</p>
+<p><span class="math display">\[4=x-3\]</span></p>
+<p>Add 3 to both sides of the equation.</p>
+<p><span class="math display">\[7=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=7\]</span></p>
+<p>You can check your possible answer by substituting 7 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[2\stackrel{?}{=}\frac{(7)-3}{2}\]</span></p>
+<p><span class="math display">\[2 \stackrel{?}{=}
+\frac{4}{2}\]</span></p>
+<p><span class="math display">\[2 \stackrel{\checkmark}{=}
+2\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=7\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[2=\frac{x-6}{3}\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-cd9553bf8a2d7e958e709d13c4075ed2" data-tol="0" size="20" data-answer="OEYIBxdu"></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[2=\frac{x-6}{3}\]</span> Multiply both sides of
+the equation by 3.</p>
+<p><span class="math display">\[6=x-6\]</span></p>
+<p>Add 6 to both sides of the equation.</p>
+<p><span class="math display">\[12=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=12\]</span></p>
+<p>You can check your possible answer by substituting 12 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[2\stackrel{?}{=}\frac{(12)-6}{3}\]</span></p>
+<p><span class="math display">\[2 \stackrel{?}{=}
+\frac{6}{3}\]</span></p>
+<p><span class="math display">\[2 \stackrel{\checkmark}{=}
+2\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=12\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[2=\frac{x-7}{2}\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-5ea9398c90e3be8b318a0536c5a6c97b" data-tol="0" size="20" data-answer="bkdQCBFk"></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[2=\frac{x-7}{2}\]</span> Multiply both sides of
+the equation by 2.</p>
+<p><span class="math display">\[4=x-7\]</span></p>
+<p>Add 7 to both sides of the equation.</p>
+<p><span class="math display">\[11=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=11\]</span></p>
+<p>You can check your possible answer by substituting 11 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[2\stackrel{?}{=}\frac{(11)-7}{2}\]</span></p>
+<p><span class="math display">\[2 \stackrel{?}{=}
+\frac{4}{2}\]</span></p>
+<p><span class="math display">\[2 \stackrel{\checkmark}{=}
+2\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=11\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[2=\frac{x-7}{2}\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-ea65d8076fd717275f136a1478c423ef" data-tol="0" size="20" data-answer="PkMHBEZl"></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[2=\frac{x-7}{2}\]</span> Multiply both sides of
+the equation by 2.</p>
+<p><span class="math display">\[4=x-7\]</span></p>
+<p>Add 7 to both sides of the equation.</p>
+<p><span class="math display">\[11=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=11\]</span></p>
+<p>You can check your possible answer by substituting 11 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[2\stackrel{?}{=}\frac{(11)-7}{2}\]</span></p>
+<p><span class="math display">\[2 \stackrel{?}{=}
+\frac{4}{2}\]</span></p>
+<p><span class="math display">\[2 \stackrel{\checkmark}{=}
+2\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=11\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+</div>
+<div class="webex-group">
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[46=6
+x+4\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-b8029ca52fed84c83f512dfff522081e" data-tol="0" size="20" data-answer="ORoHEGQ="></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[46=6
+x+4\]</span> Subtract 4 from both sides of the equation.</p>
+<p><span class="math display">\[42=6 x\]</span></p>
+<p>Divide both sides of the equation by 6.</p>
+<p><span class="math display">\[7=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=7\]</span></p>
+<p>You can check your possible answer by substituting 7 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[46\stackrel{?}{=}6 (7)+4\]</span></p>
+<p><span class="math display">\[46 \stackrel{?}{=} 42+4\]</span></p>
+<p><span class="math display">\[46 \stackrel{\checkmark}{=}
+46\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=7\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[19=4
+x+7\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-d2c3c86449481be48ffcea1701da3fa9" data-tol="0" size="20" data-answer="PxBQET4="></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[19=4
+x+7\]</span> Subtract 7 from both sides of the equation.</p>
+<p><span class="math display">\[12=4 x\]</span></p>
+<p>Divide both sides of the equation by 4.</p>
+<p><span class="math display">\[3=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=3\]</span></p>
+<p>You can check your possible answer by substituting 3 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[19\stackrel{?}{=}4 (3)+7\]</span></p>
+<p><span class="math display">\[19 \stackrel{?}{=} 12+7\]</span></p>
+<p><span class="math display">\[19 \stackrel{\checkmark}{=}
+19\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=3\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[27=3
+x+9\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-cedea49310addae50a3375253a479311" data-tol="0" size="20" data-answer="OEdSRzw="></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[27=3
+x+9\]</span> Subtract 9 from both sides of the equation.</p>
+<p><span class="math display">\[18=3 x\]</span></p>
+<p>Divide both sides of the equation by 3.</p>
+<p><span class="math display">\[6=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=6\]</span></p>
+<p>You can check your possible answer by substituting 6 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[27\stackrel{?}{=}3 (6)+9\]</span></p>
+<p><span class="math display">\[27 \stackrel{?}{=} 18+9\]</span></p>
+<p><span class="math display">\[27 \stackrel{\checkmark}{=}
+27\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=6\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[34=8
+x+2\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-194edae676ad8c9661638f3607703f8a" data-tol="0" size="20" data-answer="ahsARzk="></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[34=8
+x+2\]</span> Subtract 2 from both sides of the equation.</p>
+<p><span class="math display">\[32=8 x\]</span></p>
+<p>Divide both sides of the equation by 8.</p>
+<p><span class="math display">\[4=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=4\]</span></p>
+<p>You can check your possible answer by substituting 4 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[34\stackrel{?}{=}8 (4)+2\]</span></p>
+<p><span class="math display">\[34 \stackrel{?}{=} 32+2\]</span></p>
+<p><span class="math display">\[34 \stackrel{\checkmark}{=}
+34\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=4\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[48=5
+x+3\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-a6d8e36fbadb20f1c0710b15d0ae6071" data-tol="0" size="20" data-answer="OhRdGjg="></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[48=5
+x+3\]</span> Subtract 3 from both sides of the equation.</p>
+<p><span class="math display">\[45=5 x\]</span></p>
+<p>Divide both sides of the equation by 5.</p>
+<p><span class="math display">\[9=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=9\]</span></p>
+<p>You can check your possible answer by substituting 9 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[48\stackrel{?}{=}5 (9)+3\]</span></p>
+<p><span class="math display">\[48 \stackrel{?}{=} 45+3\]</span></p>
+<p><span class="math display">\[48 \stackrel{\checkmark}{=}
+48\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=9\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[49=9
+x+4\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-c4710cae174a56368aa444dbd1495053" data-tol="0" size="20" data-answer="OBYCE20="></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[49=9
+x+4\]</span> Subtract 4 from both sides of the equation.</p>
+<p><span class="math display">\[45=9 x\]</span></p>
+<p>Divide both sides of the equation by 9.</p>
+<p><span class="math display">\[5=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=5\]</span></p>
+<p>You can check your possible answer by substituting 5 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[49\stackrel{?}{=}9 (5)+4\]</span></p>
+<p><span class="math display">\[49 \stackrel{?}{=} 45+4\]</span></p>
+<p><span class="math display">\[49 \stackrel{\checkmark}{=}
+49\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=5\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[47=4
+x+3\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-135196de7a6e32dd6890f0807395bd25" data-tol="0" size="20" data-answer="ahEEABtr"></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[47=4
+x+3\]</span> Subtract 3 from both sides of the equation.</p>
+<p><span class="math display">\[44=4 x\]</span></p>
+<p>Divide both sides of the equation by 4.</p>
+<p><span class="math display">\[11=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=11\]</span></p>
+<p>You can check your possible answer by substituting 11 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[47\stackrel{?}{=}4 (11)+3\]</span></p>
+<p><span class="math display">\[47 \stackrel{?}{=} 44+3\]</span></p>
+<p><span class="math display">\[47 \stackrel{\checkmark}{=}
+47\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=11\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[43=3
+x+7\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-7e58be064232081096e726ee505ea0c4" data-tol="0" size="20" data-answer="bEcECkA4"></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[43=3
+x+7\]</span> Subtract 7 from both sides of the equation.</p>
+<p><span class="math display">\[36=3 x\]</span></p>
+<p>Divide both sides of the equation by 3.</p>
+<p><span class="math display">\[12=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=12\]</span></p>
+<p>You can check your possible answer by substituting 12 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[43\stackrel{?}{=}3 (12)+7\]</span></p>
+<p><span class="math display">\[43 \stackrel{?}{=} 36+7\]</span></p>
+<p><span class="math display">\[43 \stackrel{\checkmark}{=}
+43\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=12\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[33=4
+x+9\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-ffcfa7f39cbb57c6768c8cba72f7c675" data-tol="0" size="20" data-answer="PURVRDw="></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[33=4
+x+9\]</span> Subtract 9 from both sides of the equation.</p>
+<p><span class="math display">\[24=4 x\]</span></p>
+<p>Divide both sides of the equation by 4.</p>
+<p><span class="math display">\[6=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=6\]</span></p>
+<p>You can check your possible answer by substituting 6 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[33\stackrel{?}{=}4 (6)+9\]</span></p>
+<p><span class="math display">\[33 \stackrel{?}{=} 24+9\]</span></p>
+<p><span class="math display">\[33 \stackrel{\checkmark}{=}
+33\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=6\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[19=3
+x+4\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-08e0a4ec846f7df425bf89c769e32867" data-tol="0" size="20" data-answer="axpQEjw="></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[19=3
+x+4\]</span> Subtract 4 from both sides of the equation.</p>
+<p><span class="math display">\[15=3 x\]</span></p>
+<p>Divide both sides of the equation by 3.</p>
+<p><span class="math display">\[5=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=5\]</span></p>
+<p>You can check your possible answer by substituting 5 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[19\stackrel{?}{=}3 (5)+4\]</span></p>
+<p><span class="math display">\[19 \stackrel{?}{=} 15+4\]</span></p>
+<p><span class="math display">\[19 \stackrel{\checkmark}{=}
+19\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=5\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+</div>
+<div class="webex-group">
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[10=\frac{x}{2}+4\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-72adc038c573f4ba96b7aa6872c475fc" data-tol="0" size="20" data-answer="bBBQVkFt"></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[10=\frac{x}{2}+4\]</span> Subtract 4 from both
+sides of the equation.</p>
+<p><span class="math display">\[6=\frac{x}{2}\]</span></p>
+<p>Multiply both sides of the equation by 2.</p>
+<p><span class="math display">\[12=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=12\]</span></p>
+<p>You can check your possible answer by substituting 12 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[10\stackrel{?}{=}\frac{(12)}{2}+4\]</span></p>
+<p><span class="math display">\[10 \stackrel{?}{=} 6+4\]</span></p>
+<p><span class="math display">\[10 \stackrel{\checkmark}{=}
+10\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=12\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[11=\frac{x}{3}+7\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-d218594e3e75eebd6448fb9b11203eba" data-tol="0" size="20" data-answer="PxAAChdk"></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[11=\frac{x}{3}+7\]</span> Subtract 7 from both
+sides of the equation.</p>
+<p><span class="math display">\[4=\frac{x}{3}\]</span></p>
+<p>Multiply both sides of the equation by 3.</p>
+<p><span class="math display">\[12=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=12\]</span></p>
+<p>You can check your possible answer by substituting 12 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[11\stackrel{?}{=}\frac{(12)}{3}+7\]</span></p>
+<p><span class="math display">\[11 \stackrel{?}{=} 4+7\]</span></p>
+<p><span class="math display">\[11 \stackrel{\checkmark}{=}
+11\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=12\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[10=\frac{x}{3}+8\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-fa92ff06e3e4b646fdce5a81fc3b7f34" data-tol="0" size="20" data-answer="PUMPEDs="></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[10=\frac{x}{3}+8\]</span> Subtract 8 from both
 sides of the equation.</p>
 <p><span class="math display">\[2=\frac{x}{3}\]</span></p>
 <p>Multiply both sides of the equation by 3.</p>
@@ -366,18 +1843,1209 @@ sides of the equation.</p>
 <p>Switch sides (which is allowed because equality is commutative).</p>
 <p><span class="math display">\[x=6\]</span></p>
 <p>You can check your possible answer by substituting 6 for <span class="math inline">\(x\)</span> in the original equation.</p>
-<p><span class="math display">\[4\stackrel{?}{=}\frac{(6)}{3}+2\]</span></p>
-<p><span class="math display">\[4 \stackrel{?}{=} 2+2\]</span></p>
-<p><span class="math display">\[4 \stackrel{\checkmark}{=}
-4\]</span></p>
+<p><span class="math display">\[10\stackrel{?}{=}\frac{(6)}{3}+8\]</span></p>
+<p><span class="math display">\[10 \stackrel{?}{=} 2+8\]</span></p>
+<p><span class="math display">\[10 \stackrel{\checkmark}{=}
+10\]</span></p>
 <p>So, indeed we see that <span class="math inline">\(x=6\)</span> is a
 solution to the equation.</p>
 </div>
-<div id="meta-information" class="section level1">
-<h1>Meta-information</h1>
-<p>extype: num exsolution: 6 exname: two-step_equations</p>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[12=\frac{x}{2}+9\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-92130b0a26f72fe98dc410581f1b3cdb" data-tol="0" size="20" data-answer="YhAHEW0="></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[12=\frac{x}{2}+9\]</span> Subtract 9 from both
+sides of the equation.</p>
+<p><span class="math display">\[3=\frac{x}{2}\]</span></p>
+<p>Multiply both sides of the equation by 2.</p>
+<p><span class="math display">\[6=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=6\]</span></p>
+<p>You can check your possible answer by substituting 6 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[12\stackrel{?}{=}\frac{(6)}{2}+9\]</span></p>
+<p><span class="math display">\[12 \stackrel{?}{=} 3+9\]</span></p>
+<p><span class="math display">\[12 \stackrel{\checkmark}{=}
+12\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=6\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[12=\frac{x}{2}+7\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-59cb2225dc54ee4053044a51e4bd4757" data-tol="0" size="20" data-answer="bhtSUhBv"></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[12=\frac{x}{2}+7\]</span> Subtract 7 from both
+sides of the equation.</p>
+<p><span class="math display">\[5=\frac{x}{2}\]</span></p>
+<p>Multiply both sides of the equation by 2.</p>
+<p><span class="math display">\[10=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=10\]</span></p>
+<p>You can check your possible answer by substituting 10 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[12\stackrel{?}{=}\frac{(10)}{2}+7\]</span></p>
+<p><span class="math display">\[12 \stackrel{?}{=} 5+7\]</span></p>
+<p><span class="math display">\[12 \stackrel{\checkmark}{=}
+12\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=10\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[11=\frac{x}{3}+8\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-ea47cce2a89d429ce5f49e2470aaa55c" data-tol="0" size="20" data-answer="PkMNFT4="></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[11=\frac{x}{3}+8\]</span> Subtract 8 from both
+sides of the equation.</p>
+<p><span class="math display">\[3=\frac{x}{3}\]</span></p>
+<p>Multiply both sides of the equation by 3.</p>
+<p><span class="math display">\[9=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=9\]</span></p>
+<p>You can check your possible answer by substituting 9 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[11\stackrel{?}{=}\frac{(9)}{3}+8\]</span></p>
+<p><span class="math display">\[11 \stackrel{?}{=} 3+8\]</span></p>
+<p><span class="math display">\[11 \stackrel{\checkmark}{=}
+11\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=9\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[15=\frac{x}{2}+9\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-2f53d00cd05cf3b1a3e4070dd01f8455" data-tol="0" size="20" data-answer="aUQEAUZt"></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[15=\frac{x}{2}+9\]</span> Subtract 9 from both
+sides of the equation.</p>
+<p><span class="math display">\[6=\frac{x}{2}\]</span></p>
+<p>Multiply both sides of the equation by 2.</p>
+<p><span class="math display">\[12=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=12\]</span></p>
+<p>You can check your possible answer by substituting 12 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[15\stackrel{?}{=}\frac{(12)}{2}+9\]</span></p>
+<p><span class="math display">\[15 \stackrel{?}{=} 6+9\]</span></p>
+<p><span class="math display">\[15 \stackrel{\checkmark}{=}
+15\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=12\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[12=\frac{x}{2}+9\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-7df36cb0b7ec8449043f226f3fdfb49d" data-tol="0" size="20" data-answer="bEZQEWs="></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[12=\frac{x}{2}+9\]</span> Subtract 9 from both
+sides of the equation.</p>
+<p><span class="math display">\[3=\frac{x}{2}\]</span></p>
+<p>Multiply both sides of the equation by 2.</p>
+<p><span class="math display">\[6=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=6\]</span></p>
+<p>You can check your possible answer by substituting 6 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[12\stackrel{?}{=}\frac{(6)}{2}+9\]</span></p>
+<p><span class="math display">\[12 \stackrel{?}{=} 3+9\]</span></p>
+<p><span class="math display">\[12 \stackrel{\checkmark}{=}
+12\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=6\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[5=\frac{x}{5}+3\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-3eb0bffcbad68eee4f672ce41dffcde0" data-tol="0" size="20" data-answer="aEdTAEA7"></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[5=\frac{x}{5}+3\]</span> Subtract 3 from both
+sides of the equation.</p>
+<p><span class="math display">\[2=\frac{x}{5}\]</span></p>
+<p>Multiply both sides of the equation by 5.</p>
+<p><span class="math display">\[10=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=10\]</span></p>
+<p>You can check your possible answer by substituting 10 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[5\stackrel{?}{=}\frac{(10)}{5}+3\]</span></p>
+<p><span class="math display">\[5 \stackrel{?}{=} 2+3\]</span></p>
+<p><span class="math display">\[5 \stackrel{\checkmark}{=}
+5\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=10\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[8=\frac{x}{4}+5\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-2353f353623681c9264af3ad7192a80a" data-tol="0" size="20" data-answer="aREEAURu"></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[8=\frac{x}{4}+5\]</span> Subtract 5 from both
+sides of the equation.</p>
+<p><span class="math display">\[3=\frac{x}{4}\]</span></p>
+<p>Multiply both sides of the equation by 4.</p>
+<p><span class="math display">\[12=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=12\]</span></p>
+<p>You can check your possible answer by substituting 12 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[8\stackrel{?}{=}\frac{(12)}{4}+5\]</span></p>
+<p><span class="math display">\[8 \stackrel{?}{=} 3+5\]</span></p>
+<p><span class="math display">\[8 \stackrel{\checkmark}{=}
+8\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=12\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+</div>
+<div class="webex-group">
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[31=5
+x-9\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-7ef1f88c4e7b6137c6498ec71589124b" data-tol="0" size="20" data-answer="bEdeEzs="></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[31=5
+x-9\]</span> Add 9 to both sides of the equation.</p>
+<p><span class="math display">\[40=5 x\]</span></p>
+<p>Divide both sides of the equation by 5.</p>
+<p><span class="math display">\[8=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=8\]</span></p>
+<p>You can check your possible answer by substituting 8 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[31\stackrel{?}{=}5 (8)-9\]</span></p>
+<p><span class="math display">\[31 \stackrel{?}{=} 40-9\]</span></p>
+<p><span class="math display">\[31 \stackrel{\checkmark}{=}
+31\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=8\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[57=6
+x-9\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-91baed9fb18405770ed77ffdf6cef66c" data-tol="0" size="20" data-answer="YhNTUEc5"></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[57=6
+x-9\]</span> Add 9 to both sides of the equation.</p>
+<p><span class="math display">\[66=6 x\]</span></p>
+<p>Divide both sides of the equation by 6.</p>
+<p><span class="math display">\[11=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=11\]</span></p>
+<p>You can check your possible answer by substituting 11 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[57\stackrel{?}{=}6 (11)-9\]</span></p>
+<p><span class="math display">\[57 \stackrel{?}{=} 66-9\]</span></p>
+<p><span class="math display">\[57 \stackrel{\checkmark}{=}
+57\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=11\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[31=4
+x-9\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-e490019733f5958a31379c67c7774e43" data-tol="0" size="20" data-answer="PhYIABJs"></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[31=4
+x-9\]</span> Add 9 to both sides of the equation.</p>
+<p><span class="math display">\[40=4 x\]</span></p>
+<p>Divide both sides of the equation by 4.</p>
+<p><span class="math display">\[10=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=10\]</span></p>
+<p>You can check your possible answer by substituting 10 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[31\stackrel{?}{=}4 (10)-9\]</span></p>
+<p><span class="math display">\[31 \stackrel{?}{=} 40-9\]</span></p>
+<p><span class="math display">\[31 \stackrel{\checkmark}{=}
+31\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=10\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[50=7
+x-6\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-ccd6ad127d332ed385f6b9c763e408bb" data-tol="0" size="20" data-answer="OEFcFDw="></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[50=7
+x-6\]</span> Add 6 to both sides of the equation.</p>
+<p><span class="math display">\[56=7 x\]</span></p>
+<p>Divide both sides of the equation by 7.</p>
+<p><span class="math display">\[8=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=8\]</span></p>
+<p>You can check your possible answer by substituting 8 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[50\stackrel{?}{=}7 (8)-6\]</span></p>
+<p><span class="math display">\[50 \stackrel{?}{=} 56-6\]</span></p>
+<p><span class="math display">\[50 \stackrel{\checkmark}{=}
+50\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=8\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[11=4
+x-9\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-cfad98595d81e84adefd6faf4aaa0e71" data-tol="0" size="20" data-answer="OERURmQ="></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[11=4
+x-9\]</span> Add 9 to both sides of the equation.</p>
+<p><span class="math display">\[20=4 x\]</span></p>
+<p>Divide both sides of the equation by 4.</p>
+<p><span class="math display">\[5=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=5\]</span></p>
+<p>You can check your possible answer by substituting 5 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[11\stackrel{?}{=}4 (5)-9\]</span></p>
+<p><span class="math display">\[11 \stackrel{?}{=} 20-9\]</span></p>
+<p><span class="math display">\[11 \stackrel{\checkmark}{=}
+11\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=5\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[27=5
+x-8\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-2acdf04b67056aa603698f00937566d3" data-tol="0" size="20" data-answer="aUNURjs="></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[27=5
+x-8\]</span> Add 8 to both sides of the equation.</p>
+<p><span class="math display">\[35=5 x\]</span></p>
+<p>Divide both sides of the equation by 5.</p>
+<p><span class="math display">\[7=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=7\]</span></p>
+<p>You can check your possible answer by substituting 7 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[27\stackrel{?}{=}5 (7)-8\]</span></p>
+<p><span class="math display">\[27 \stackrel{?}{=} 35-8\]</span></p>
+<p><span class="math display">\[27 \stackrel{\checkmark}{=}
+27\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=7\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[3=2
+x-9\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-c0a59b46487fa7ae1c2420c9329e079b" data-tol="0" size="20" data-answer="OBJXF2Q="></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[3=2
+x-9\]</span> Add 9 to both sides of the equation.</p>
+<p><span class="math display">\[12=2 x\]</span></p>
+<p>Divide both sides of the equation by 2.</p>
+<p><span class="math display">\[6=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=6\]</span></p>
+<p>You can check your possible answer by substituting 6 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[3\stackrel{?}{=}2 (6)-9\]</span></p>
+<p><span class="math display">\[3 \stackrel{?}{=} 12-9\]</span></p>
+<p><span class="math display">\[3 \stackrel{\checkmark}{=}
+3\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=6\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[44=8
+x-4\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-48f54e558ad503320d1245f2e4ec436a" data-tol="0" size="20" data-answer="bxpQF2k="></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[44=8
+x-4\]</span> Add 4 to both sides of the equation.</p>
+<p><span class="math display">\[48=8 x\]</span></p>
+<p>Divide both sides of the equation by 8.</p>
+<p><span class="math display">\[6=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=6\]</span></p>
+<p>You can check your possible answer by substituting 6 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[44\stackrel{?}{=}8 (6)-4\]</span></p>
+<p><span class="math display">\[44 \stackrel{?}{=} 48-4\]</span></p>
+<p><span class="math display">\[44 \stackrel{\checkmark}{=}
+44\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=6\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[16=2
+x-8\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-335198fbf9748fd7729351505a380144" data-tol="0" size="20" data-answer="aBEEAxtl"></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[16=2
+x-8\]</span> Add 8 to both sides of the equation.</p>
+<p><span class="math display">\[24=2 x\]</span></p>
+<p>Divide both sides of the equation by 2.</p>
+<p><span class="math display">\[12=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=12\]</span></p>
+<p>You can check your possible answer by substituting 12 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[16\stackrel{?}{=}2 (12)-8\]</span></p>
+<p><span class="math display">\[16 \stackrel{?}{=} 24-8\]</span></p>
+<p><span class="math display">\[16 \stackrel{\checkmark}{=}
+16\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=12\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[38=5
+x-2\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-3dbf076fe537de0753505c7b05ce1ac5" data-tol="0" size="20" data-answer="aEZaRG0="></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[38=5
+x-2\]</span> Add 2 to both sides of the equation.</p>
+<p><span class="math display">\[40=5 x\]</span></p>
+<p>Divide both sides of the equation by 5.</p>
+<p><span class="math display">\[8=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=8\]</span></p>
+<p>You can check your possible answer by substituting 8 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[38\stackrel{?}{=}5 (8)-2\]</span></p>
+<p><span class="math display">\[38 \stackrel{?}{=} 40-2\]</span></p>
+<p><span class="math display">\[38 \stackrel{\checkmark}{=}
+38\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=8\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+</div>
+<div class="webex-group">
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[2=\frac{x}{2}-3\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-a92424a8886ee2ae787dc0c84e2f2c79" data-tol="0" size="20" data-answer="OhsDBBBp"></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[2=\frac{x}{2}-3\]</span> Add 3 to both sides of
+the equation.</p>
+<p><span class="math display">\[5=\frac{x}{2}\]</span></p>
+<p>Multiply both sides of the equation by 2.</p>
+<p><span class="math display">\[10=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=10\]</span></p>
+<p>You can check your possible answer by substituting 10 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[2\stackrel{?}{=}\frac{(10)}{2}-3\]</span></p>
+<p><span class="math display">\[2 \stackrel{?}{=} 5-3\]</span></p>
+<p><span class="math display">\[2 \stackrel{\checkmark}{=}
+2\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=10\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[3=\frac{x}{2}-3\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-07b981fc5500cfbd0d940aa97bb550ac" data-tol="0" size="20" data-answer="axVTCxps"></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[3=\frac{x}{2}-3\]</span> Add 3 to both sides of
+the equation.</p>
+<p><span class="math display">\[6=\frac{x}{2}\]</span></p>
+<p>Multiply both sides of the equation by 2.</p>
+<p><span class="math display">\[12=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=12\]</span></p>
+<p>You can check your possible answer by substituting 12 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[3\stackrel{?}{=}\frac{(12)}{2}-3\]</span></p>
+<p><span class="math display">\[3 \stackrel{?}{=} 6-3\]</span></p>
+<p><span class="math display">\[3 \stackrel{\checkmark}{=}
+3\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=12\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[3=\frac{x}{2}-3\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-9aab1c60a42f675b2082d25992ff86f0" data-tol="0" size="20" data-answer="YkNQUBM+"></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[3=\frac{x}{2}-3\]</span> Add 3 to both sides of
+the equation.</p>
+<p><span class="math display">\[6=\frac{x}{2}\]</span></p>
+<p>Multiply both sides of the equation by 2.</p>
+<p><span class="math display">\[12=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=12\]</span></p>
+<p>You can check your possible answer by substituting 12 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[3\stackrel{?}{=}\frac{(12)}{2}-3\]</span></p>
+<p><span class="math display">\[3 \stackrel{?}{=} 6-3\]</span></p>
+<p><span class="math display">\[3 \stackrel{\checkmark}{=}
+3\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=12\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[2=\frac{x}{2}-3\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-8cb72e3fa5f86b0c7011142bc95a80e2" data-tol="0" size="20" data-answer="Y0FTBxA4"></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[2=\frac{x}{2}-3\]</span> Add 3 to both sides of
+the equation.</p>
+<p><span class="math display">\[5=\frac{x}{2}\]</span></p>
+<p>Multiply both sides of the equation by 2.</p>
+<p><span class="math display">\[10=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=10\]</span></p>
+<p>You can check your possible answer by substituting 10 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[2\stackrel{?}{=}\frac{(10)}{2}-3\]</span></p>
+<p><span class="math display">\[2 \stackrel{?}{=} 5-3\]</span></p>
+<p><span class="math display">\[2 \stackrel{\checkmark}{=}
+2\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=10\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[2=\frac{x}{2}-3\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-f438f84061a749fbeb4f0dc4c102c37d" data-tol="0" size="20" data-answer="PRYCCERl"></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[2=\frac{x}{2}-3\]</span> Add 3 to both sides of
+the equation.</p>
+<p><span class="math display">\[5=\frac{x}{2}\]</span></p>
+<p>Multiply both sides of the equation by 2.</p>
+<p><span class="math display">\[10=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=10\]</span></p>
+<p>You can check your possible answer by substituting 10 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[2\stackrel{?}{=}\frac{(10)}{2}-3\]</span></p>
+<p><span class="math display">\[2 \stackrel{?}{=} 5-3\]</span></p>
+<p><span class="math display">\[2 \stackrel{\checkmark}{=}
+2\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=10\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[2=\frac{x}{3}-2\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-87535415d6d56725a304af443c5d34c9" data-tol="0" size="20" data-answer="YxUEARdp"></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[2=\frac{x}{3}-2\]</span> Add 2 to both sides of
+the equation.</p>
+<p><span class="math display">\[4=\frac{x}{3}\]</span></p>
+<p>Multiply both sides of the equation by 3.</p>
+<p><span class="math display">\[12=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=12\]</span></p>
+<p>You can check your possible answer by substituting 12 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[2\stackrel{?}{=}\frac{(12)}{3}-2\]</span></p>
+<p><span class="math display">\[2 \stackrel{?}{=} 4-2\]</span></p>
+<p><span class="math display">\[2 \stackrel{\checkmark}{=}
+2\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=12\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[2=\frac{x}{2}-3\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-698a69e78194c4361a0d0bd1d21b300b" data-tol="0" size="20" data-answer="bRsJURRk"></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[2=\frac{x}{2}-3\]</span> Add 3 to both sides of
+the equation.</p>
+<p><span class="math display">\[5=\frac{x}{2}\]</span></p>
+<p>Multiply both sides of the equation by 2.</p>
+<p><span class="math display">\[10=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=10\]</span></p>
+<p>You can check your possible answer by substituting 10 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[2\stackrel{?}{=}\frac{(10)}{2}-3\]</span></p>
+<p><span class="math display">\[2 \stackrel{?}{=} 5-3\]</span></p>
+<p><span class="math display">\[2 \stackrel{\checkmark}{=}
+2\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=10\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[2=\frac{x}{3}-2\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-15464396fa2ecee2a35548838ba2e153" data-tol="0" size="20" data-answer="ahcFBBZu"></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[2=\frac{x}{3}-2\]</span> Add 2 to both sides of
+the equation.</p>
+<p><span class="math display">\[4=\frac{x}{3}\]</span></p>
+<p>Multiply both sides of the equation by 3.</p>
+<p><span class="math display">\[12=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=12\]</span></p>
+<p>You can check your possible answer by substituting 12 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[2\stackrel{?}{=}\frac{(12)}{3}-2\]</span></p>
+<p><span class="math display">\[2 \stackrel{?}{=} 4-2\]</span></p>
+<p><span class="math display">\[2 \stackrel{\checkmark}{=}
+2\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=12\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[2=\frac{x}{3}-2\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-68ed6ac9d0168691440318af1adb0b2f" data-tol="0" size="20" data-answer="bRpUVhQ8"></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[2=\frac{x}{3}-2\]</span> Add 2 to both sides of
+the equation.</p>
+<p><span class="math display">\[4=\frac{x}{3}\]</span></p>
+<p>Multiply both sides of the equation by 3.</p>
+<p><span class="math display">\[12=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=12\]</span></p>
+<p>You can check your possible answer by substituting 12 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[2\stackrel{?}{=}\frac{(12)}{3}-2\]</span></p>
+<p><span class="math display">\[2 \stackrel{?}{=} 4-2\]</span></p>
+<p><span class="math display">\[2 \stackrel{\checkmark}{=}
+2\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=12\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[3=\frac{x}{2}-3\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-d5fb1eea5fd0299f325aebc1002a9b6f" data-tol="0" size="20" data-answer="PxdXUBM4"></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[3=\frac{x}{2}-3\]</span> Add 3 to both sides of
+the equation.</p>
+<p><span class="math display">\[6=\frac{x}{2}\]</span></p>
+<p>Multiply both sides of the equation by 2.</p>
+<p><span class="math display">\[12=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=12\]</span></p>
+<p>You can check your possible answer by substituting 12 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[3\stackrel{?}{=}\frac{(12)}{2}-3\]</span></p>
+<p><span class="math display">\[3 \stackrel{?}{=} 6-3\]</span></p>
+<p><span class="math display">\[3 \stackrel{\checkmark}{=}
+3\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=12\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
 </div>
 
+<script>
+
+/* definition of content for the buttons */
+const webex_buttons = {check_hidden:          "<b>&check;</b>",
+                       check_hidden_alt:      "Check answer",
+                       check_shown:           "<b>&lsh;</b>",
+                       check_shown_alt:       "Hide check",
+                       check_of_total:        "/",
+                       solution:              "<b>&quest;</b>",
+                       solution_alt:          "Correct solution",
+                       question_next:         "<b>&#8634;</b>",
+                       question_next_alt:     "Next question",
+                       question_previous:     "",
+                       question_previous_alt: ""}
+
+
+/* update total correct if #webex-total_correct exists */
+update_total_correct = function() {
+  console.log("webex: update total_correct");
+
+  document.querySelectorAll(".webex-total_correct").forEach(total => {
+    p = total.closest(".webex-box");
+    var correct = p.getElementsByClassName("webex-correct").length;
+    var solvemes = p.getElementsByClassName("webex-solveme").length;
+    var radiogroups = p.getElementsByClassName("webex-radiogroup").length;
+    var selects = p.getElementsByClassName("webex-select").length;
+    /* no specific class on input node, thus searching via query selector */
+    var checkboxgroups = p.querySelectorAll("div[class=webex-checkboxgroup] input[type=checkbox]").length
+
+    /* show number of correct / total number of answers */
+    total.innerHTML = correct + "&nbsp;" + webex_buttons.check_of_total + "&nbsp;" + (solvemes + radiogroups + checkboxgroups + selects);
+  });
+}
+
+/* check answers */
+check_func = function() {
+  console.log("webex: check answer");
+
+  //var cl = elem.parentElement.classList;
+  var cl = this.closest(".webex-box").classList;
+  if (cl.contains("unchecked")) {
+    cl.remove("unchecked");
+    this.innerHTML = webex_buttons.check_shown; //"Hide check";
+    if (webex_buttons.check_shown_alt.length > 0) this.setAttribute("title", webex_buttons.check_shown_alt);
+  } else {
+    cl.add("unchecked");
+    this.innerHTML = webex_buttons.check_hidden; //"Check answer";
+    if (webex_buttons.check_hidden_alt.length > 0) this.setAttribute("title", webex_buttons.check_hidden_alt);
+  }
+}
+
+/* helper functions for checking the webex ID */
+const id_checker = {"fmt": new RegExp("[g-zG-Z]"),
+                    "load": function(e) { return e.getAttribute("id").match("(?<=(-)).*$")[0]; },
+                    "eval": new TextEncoder(),
+                    "dval": new TextDecoder()}
+
+/* Show/hide correct solution */
+solution_func = function() {
+  console.log("webex: show/hide solution");
+
+  var div = this.closest(".webex-question").querySelector(".webex-solution");
+  var cl = div.classList;
+
+  if (cl.contains("visible")) {
+    cl.remove("visible");
+  } else {
+    cl.add("visible");
+  }
+}
+
+/* function to check if the real answer is numeric */
+convert_to_numeric = function(x) {
+  if (typeof x == "string") {
+    /* do nothing */
+  } else if (x.length == 1) {
+    /* take first element */
+    x = x[0]
+  } else {
+    return NaN;
+  }
+
+  /* remove spaces for easier parsing */
+  x = x.replace(/\s/g, "");
+
+  /* Define patterns for different formats, note that spaces have been removed above */
+  const patterns = [
+    {regex: /^[+-]?\d+(\.\d{3})*,\d+$/, decimal: ",", thousand: "." },  // Format: "1.100.100.100,3"
+    {regex: /^[+-]?\d+(,\d{3})*\.\d+$/, decimal: ".", thousand: "," },  // Format: "1,100,100,100.3"
+    {regex: /^[+-]?\d+(\.|\.\d+)?$/, decimal: "." },                    // Format: "1100100100.5" or "1100100100."
+    {regex: /^[+-]?\d+(,|,\d+)$/, decimal: "," }                        // Format: "1100100100,5" or "1100100100,"
+  ];
+
+
+  /* testing all regular expressions, convert to float if possible */
+  for (const { regex, decimal, thousand } of patterns) {
+    if (regex.test(x)) {
+      let numeric = x;
+      if (thousand) numeric = numeric.replace(new RegExp(`\\${thousand}`, "g"), "");
+      numeric = numeric.replace(decimal, ".");
+      return parseFloat(numeric);
+    }
+  }
+
+  /* input of length 1 but none of the known formats, return NaN */
+  return NaN;
+}
+
+/* Checking webex ID, returns formalsol */
+check_id = function(e) {
+  /* loading webex ID */
+  var id = id_checker["load"](e);
+
+  /* extracting answer */
+  let answer = e.dataset.answer;
+
+  /* checking unique id, prepare and return array */
+  if (!id_checker["fmt"].test(id)) {
+    const a = id_checker["eval"].encode(atob(answer));
+    const b = id_checker["eval"].encode(id);
+    const res = a.map((byte, index) => byte^b[index % b.length]);
+    answer = id_checker["dval"].decode(res);
+    /* Replacing &amp; with ' before parsing */
+    answer = answer.replaceAll("&apos;", "'");
+  }
+
+  return JSON.parse(answer);
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  /* avoid that keyup and keychange twice execute this function within nms = 10
+   * ms, clearing inputTimer and add timeout */
+  console.log("webex: check solveme");
+
+  /* float, precision for checking numeric answers */
+  const eps = 0.00000000000001;
+
+  /* get last checked user answer */
+  const question = this.closest(".webex-question")
+
+  /* extracting classes */
+  var cl = this.classList;
+  var my_answer = this.value;
+
+  /* extracting classes */
+  var cl = this.classList;
+
+  /* empty answer? Job done */
+  if (my_answer == "") {
+    cl.remove("webex-correct");
+    cl.remove("webex-incorrect");
+    return false;
+  }
+
+  /* Find closest (parent) webex-question */
+  let formalsols = check_id(this)
+
+  /* by default we assume the users' answer is incorrect */
+  var user_answer_correct = false;
+
+  /* check if the correct answer is numeric, i.e. if 
+   * formalsols is of length 1 containing one single numeric
+   * value in a known format, else, NaN is returned */
+  const num_formalsol = convert_to_numeric(formalsols);
+  const num_my_answer = convert_to_numeric(my_answer);
+
+  /* if the correct answer is numeric (float), the user's answer
+   * must also be numeric. If not, it is wrong. Else we can
+   * compare floating point numbers */
+  if (!isNaN(num_formalsol) && !isNaN(num_my_answer)) {
+    /* check if the real answer and the user input are numerically the same;
+     * adding 'delta' to avoid precision issues */
+    var diff = Math.abs(num_formalsol - num_my_answer);
+    if (diff < parseFloat(this.dataset.tol) + eps) { user_answer_correct = true; }
+
+  /* if the question contains regex, a regular expression is used
+   * to evaluate the users answer. Allows for multiple regular expressions */
+  } else if (cl.contains("regex")) {
+    for (let i = 0; i < formalsols.length; i++) {
+        let regex = new RegExp(formalsols[i], cl.contains("ignorecase") ? "i" : "");
+        if (regex.test(my_answer)) { user_answer_correct = true; break; }
+    }
+
+  /* else we evaluate on 'string level', considering the creators preferences
+   * regarding set options */
+  } else {
+    /* modify/prepare answer */
+    if (cl.contains("ignorecase")) { my_answer = my_answer.toLowerCase(); }
+    if (cl.contains("nospaces"))   { my_answer = my_answer.replace(/ /g, ""); }
+
+    /* if the real answer includes user input - correct */
+    if (formalsols.includes(my_answer)) {
+      user_answer_correct = true;
+  
+      // added regex bit
+      if (cl.contains("regex")) {
+        answer_regex = RegExp(formalsols.join("|"))
+        if (answer_regex.test(my_answer)) {
+          cl.add("webex-correct");
+        }
+      }
+    }
+  }
+
+  if (user_answer_correct) {
+      cl.add("webex-correct");
+      cl.remove("webex-incorrect");
+  } else {
+      cl.add("webex-incorrect");
+      cl.remove("webex-correct");
+  }
+
+  update_total_correct();
+
+}
+
+/* function for checking select answers */
+select_func = function(e) {
+  console.log("webex: check select");
+
+  var options   = [];
+  Array.from(this.querySelectorAll("option")).forEach((option, index) => {
+    if (!option.hasAttribute("value") || !option.getAttribute("value") === "blank") {
+      options.push(option);
+    }
+  });
+
+  /* get selected option */
+  function get_selected(options) { return options.findIndex(option => option.selected); }
+  var option_index = get_selected(options)
+
+  /* loading webex ID */
+  var formalsol = check_id(this)
+
+  /* add class for current selection */
+  this.classList.remove("webex-incorrect");
+  this.classList.remove("webex-correct");
+  if (option_index >= 0) {
+    this.classList.add(formalsol[option_index] === 1 ? "webex-correct" : "webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+/* function for checking radiogroups answers */
+radiogroups_func = function(e) {
+  console.log("webex: check radiogroups");
+
+  /* get real answer (binary integer array) */
+  var id = e.target.getAttribute("name");
+  var group = document.querySelector(".webex-radiogroup[id='webex-" + id + "']");
+  var formalsol = check_id(group)
+
+  /* check which radiobuttion is selected (user answer) */
+  function get_checked(radios) {
+    return radios.findIndex(radios => radios.checked);
+  }
+  var radios = Array.from(group.querySelectorAll("input[type='radio']"))
+  var radio_index = get_checked(radios);
+
+  /* remove existing classes */
+  radios.forEach(radio => {
+    let cl = radio.closest("label").classList
+    cl.remove("webex-incorrect");
+    cl.remove("webex-correct");
+  });
+
+  /* add class for current selection */
+  let cl = radios[radio_index].closest("label").classList
+  if (formalsol[radio_index] === 1) {
+      cl.add("webex-correct");
+  } else {
+      cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+
+/* function for checking checkboxgroups answers */
+checkboxgroups_func = function(e) {
+  console.log("webex: check checkboxgroups");
+
+  /* get real answer (binary integer array) */
+  var group = document.querySelector(".webex-checkboxgroup[id='" + this.id + "']");
+  var formalsol = check_id(group);
+
+  /* check which checkbox is checked (user answer) */
+  function get_checked(group) {
+      const checkboxes = Array.from(group.querySelectorAll("input[type='checkbox']"));
+      return checkboxes.reduce((indices, checkbox, index) => {
+          if (checkbox.checked) indices.push(index);
+          return indices;
+      }, []);
+  }
+  var checks = Array.from(group.querySelectorAll("input[type='checkbox']"));
+  var check_index = get_checked(group);
+
+  checks.forEach((e, index) => {
+    var label = e.parentNode;
+    var ans = formalsol[index];
+    if ((e.checked && ans === 1) || (!e.checked && ans === 0)) {
+        label.setAttribute("class", "webex-correct")
+    } else {
+        label.setAttribute("class", "webex-incorrect")
+    }
+  });
+
+  update_total_correct();
+}
+
+/* shuffling array (thanks to stack overflow)
+ * If argument x is an integer we create an integer sequence
+ * from 0, 1, ..., (x - 1) and return a shuffled version. If
+ * the input is an array, we simply shuffle it */
+shuffle_array = function(x) {
+   if (Number.isInteger(x) && !isNaN(x)) {
+     x = Array.from({length: x}, (v, i) => i);
+   }
+   let shuffled = x.map(value => ({ value, sort: Math.random() }))
+        .sort((a, b) => a.sort - b.sort).map(({ value }) => value)
+   return shuffled;
+}
+
+/* ---------------------------------------------------------
+ * ---------------------------------------------------------
+ * --------------------------------------------------------- */
+window.onload = function() {
+  //console.log("webex: onload");
+
+  /* setting up buttons and actions to show/hide answers */
+  document.querySelectorAll(".webex-check").forEach(section => {
+    section.classList.add("unchecked");
+
+    /* ul to take up the list items with buttons */
+    let button_ul = document.createElement("ul");
+    button_ul.setAttribute("class", "webex-button-list");
+    section.appendChild(button_ul);
+
+    /* button to _check_ if answers given are correct */
+    let li_check = document.createElement("li");
+    button_ul.appendChild(li_check); /* add list item to ul */
+    let btn_check = document.createElement("button");
+    btn_check.innerHTML = webex_buttons.check_hidden;  // "Check answer";
+    btn_check.setAttribute("class", "webex-button webex-button-check");
+    if (webex_buttons.check_hidden_alt.length > 0) btn_check.setAttribute("title", webex_buttons.check_hidden_alt);
+    btn_check.onclick = check_func;
+    li_check.appendChild(btn_check);
+
+    /* span to show current number of points (when _check_ active) */
+    let spn = document.createElement("span");
+    spn.classList.add("webex-total_correct");
+    li_check.appendChild(spn);
+
+    /* button to show the _solution_ if there is one */
+    var has_solution = section.parentNode.querySelectorAll(".webex-solution").length > 0;
+    if (has_solution) {
+      let li_solution = document.createElement("li");
+      button_ul.appendChild(li_solution); /* add list item to ul */
+      let btn_solution = document.createElement("button");
+      btn_solution.innerHTML = webex_buttons.solution; // "Correct answer";
+      btn_solution.setAttribute("class", "webex-button webex-button-solution");
+      if (webex_buttons.solution_alt.length > 0) btn_solution.setAttribute("title", webex_buttons.solution_alt);
+      btn_solution.onclick = solution_func;
+      li_solution.appendChild(btn_solution);
+    }
+
+  });
+
+  /* set up webex-solveme inputs */
+  document.querySelectorAll(".webex-solveme").forEach(solveme => {
+    solveme.setAttribute("autocomplete","off");
+    solveme.setAttribute("autocorrect", "off");
+    solveme.setAttribute("autocapitalize", "off");
+    solveme.setAttribute("spellcheck", "false");
+    solveme.value = "";
+
+    /* adjust answer for 'no spaces' (ignore spaces) */
+    if (solveme.classList.contains("nospaces")) {
+      solveme.dataset.answer = solveme.dataset.answer.replace(/ /g, "");
+    }
+
+    /* attach checking function, triggered on key up, change, and when
+     * elemnt is out of focus. Only evaluated once by tracking changes
+     * via variable solveme_last_user_answer */
+    solveme.addEventListener("keyup",  solveme_func);
+    solveme.addEventListener("change", solveme_func);
+    solveme.addEventListener("blur",   solveme_func);
+
+    /* adding span to show correct/incorrect icon */
+    solveme.insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+  });
+
+  /* set up radiogroups (single choice questions with display = "buttons") */
+  document.querySelectorAll(".webex-radiogroup").forEach(radiogroup => {
+    radiogroup.onchange = radiogroups_func;
+  });
+
+  /* set up checkboxgroups (multiple choice questions with display = "buttons") */
+  document.querySelectorAll(".webex-checkboxgroup").forEach(checkboxgroup => {
+    checkboxgroup.onchange = checkboxgroups_func;
+  });
+
+  /* set up selects (dropdown menus) */
+  document.querySelectorAll(".webex-select").forEach(select => {
+    select.onchange = select_func;
+    /* append webex-icon for correct/incorrect icons */
+    var elem = document.createElement("span")
+    elem.classList.add("webex-icon")
+    select.parentNode.appendChild(elem)
+  });
+
+  /* change to next/previous question if multiple are available */
+  function handleQuestionClick(group, questions, step) {
+    return async function() {
+      /* get question order as integer vector */
+      let questionOrder = group.dataset.questionOrder.split(",").map(str => parseInt(str));
+
+      /* current question/position */
+      let currentPosition = parseInt(group.dataset.currentPosition);
+
+      /* Hide the current question */
+      questions.forEach(question => { question.classList.remove("active"); });
+
+      /* Move to the next question index */
+      currentPosition = (currentPosition + step) % questionOrder.length;
+      if (currentPosition < 0) currentPosition = currentPosition + questionOrder.length
+
+      /* Display the new question */
+      questions[questionOrder[currentPosition]].classList.add("active");
+
+      // Update the currentPosition data attribute on the group div
+      group.dataset.currentPosition = currentPosition;
+    };
+  }
+
+  document.querySelectorAll(".webex-group").forEach(group => {
+    const questions = Array.from(group.querySelectorAll(".webex-question"));
+
+    /* Create vector with question order. If the webex-group does
+     * not have class '.noshuffle' we will randomly shuffle the order */
+    let questionOrder = Array.from({length: questions.length}, (v, i) => i);
+    if (!group.classList.contains("noshuffle")) {
+      questionOrder = shuffle_array(questionOrder);
+    }
+
+    /* take start position (if set) or start at 0 */
+    const currentPosition = parseInt(group.getAttribute("data-start-position")) || 0;
+
+    /* show the default question for each group */
+    questions[questionOrder[currentPosition]].classList.add("active");
+
+    /* store random order of questions as well as current position */
+    group.dataset.questionOrder   = questionOrder;
+    group.dataset.currentPosition = currentPosition;
+
+    /* find all webex-questions, search for .webex-button-list and
+     * populate the list with necessary <li><button>...</button></li> elements */
+    questions.forEach(question => {
+        let button_ul = question.querySelector("ul.webex-button-list");
+
+        let li_next = document.createElement("li");
+        let nextButton = document.createElement("button");
+        nextButton.setAttribute("class", "webex-button webex-button-next");
+        if (webex_buttons.question_next_alt.length > 0) nextButton.setAttribute("title", webex_buttons.question_next_alt);
+        nextButton.innerHTML = webex_buttons.question_next; // "Next question";
+        nextButton.addEventListener("click", handleQuestionClick(group, questions, 1));
+        li_next.appendChild(nextButton);
+
+        let li_previous = document.createElement("li");
+        let previousButton = document.createElement("button");
+        previousButton.setAttribute("class", "webex-button webex-button-previous");
+        if (webex_buttons.question_previous_alt.length > 0) previousButton.setAttribute("title", webex_buttons.question_previous_alt);
+        previousButton.innerHTML = webex_buttons.question_previous; // "Previous question";
+        previousButton.addEventListener("click", handleQuestionClick(group, questions, -1));
+        li_previous.appendChild(previousButton);
+
+        if (webex_buttons.question_previous.length > 0) button_ul.appendChild(li_previous);
+        if (webex_buttons.question_next.length > 0) button_ul.appendChild(li_next);
+    });
+  });
+
+  /* Development options */
+  document.querySelectorAll(".webex-question.check").forEach(question => {
+      question.querySelector(".webex-button-check").click()
+  });
+  document.querySelectorAll(".webex-question.solution").forEach(question => {
+      let btn = question.querySelector(".webex-button-solution");
+      if (btn !== null) { btn.click(); }
+  });
+
+  /* Pre-filling <input> fields */
+  document.querySelectorAll(".webex-question.prefill").forEach(question => {
+      question.querySelectorAll("input.webex-solveme").forEach(solveme => {
+          let x = JSON.parse(solveme.dataset.answer);
+          solveme.value = x[0];
+          /* Trigger the on change event */
+          solveme.dispatchEvent(new Event("change"));
+      });
+
+      /* Pre-filling radiogroups, that is for schoice questions */
+      question.querySelectorAll(".webex-radiogroup").forEach(radiogroup => {
+          let x = JSON.parse(radiogroup.dataset.answer);
+          let idx = x.indexOf(1);
+          let radios = radiogroup.querySelectorAll('input[type="radio"]');
+          radios[idx].checked = true;
+          /* Trigger the on change event */
+          radios[idx].dispatchEvent(new Event("change", { bubbles: true }));
+      });
+
+      /* Pre-filling checkboxgroups, that is for schoice questions w/ dropdown menus */
+      question.querySelectorAll(".webex-select").forEach(dropdown => {
+          let x = JSON.parse(dropdown.dataset.answer);
+          let idx = x.indexOf(1) + 1; /* +1 to skip the first blank option */
+          let options = dropdown.querySelectorAll("option");
+          options[idx].selected = true;
+          /* Trigger the on change event */
+          options[idx].dispatchEvent(new Event("change", { bubbles: true }));
+      });
+
+      /* Pre-filling checkboxgroups, that is for mchoice questions */
+      question.querySelectorAll(".webex-checkboxgroup").forEach(radiogroup => {
+          let x = JSON.parse(radiogroup.dataset.answer);
+          let checkboxes = radiogroup.querySelectorAll('input[type="checkbox"]');
+          for (let i = 0; i < checkboxes.length; i++) {
+              checkboxes[i].checked = x[i];
+          }
+          /* Trigger the on change event */
+          checkboxes[0].dispatchEvent(new Event("change", { bubbles: true }));
+      });
+  });
+
+  /* Show set tolerance (devel option) */
+  function calc_width(x, txt, offset = 20) {
+      /* We do the following:
+       * Create a new span, insert the value we need in the .tolerance
+       * input node, and calculate its offsetWidth. Then remove it
+       * again; this is just used to calculate the required width. */
+      var cwtmp = document.createElement("span");
+      x.appendChild(cwtmp);
+      cwtmp.innerHTML = txt || "";
+      var w = parseInt(cwtmp.getBoundingClientRect().width) + offset;
+      cwtmp.remove();
+      return w;
+  }
+
+  /* If tolerance should be shown (devel option) we calculate:
+   * - the width required to properly display the solution
+   * - the width required to properly display the tolerance
+   * - add a new element to display the tolerance
+   * - reduce the width of the solution input box. */
+  document.querySelectorAll(".webex-question.tolerance").forEach(question => {
+      question.querySelectorAll("input[data-tol]").forEach(elem => {
+          var w = null;
+
+          /* Add new element showing the tolerance */
+          let tol = document.createElement("input");
+          tol.type = "text"; // <inpyt type="text">
+          tol.disabled = true; // Disable input element
+          tol.classList.add("tolerance"); // Appending class
+          tol.value = "± " + elem.getAttribute("data-tol");
+
+          /* Add new node */
+          elem.parentNode.insertBefore(tol, elem)
+
+          var body     = document.querySelector("body");
+          //tol.value = "± " + "0.0000007";
+          //tol.value = "± " + "0.07";
+          w    = calc_width(body, tol.value);
+          wold = parseInt(elem.getBoundingClientRect().width);
+          wmin = calc_width(body, elem.value);
+
+          /* Calculate required width of the 'tolerance' node, and the
+           * reduction of the original 'input' node */
+          let wnew = Math.max(wmin, wold - w);
+          tol.style.width  = w + "px";
+          elem.style.width = wnew + "px";
+      });
+  });
+
+  update_total_correct();
+}
+
+</script>
 
 
 

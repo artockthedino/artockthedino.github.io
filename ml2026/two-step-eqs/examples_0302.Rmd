@@ -1,0 +1,15 @@
+---
+title: "examples_0302"
+output: exams2forms::webquiz
+---
+
+```{r exams2forms-setup, include = FALSE}
+## package and exercises
+library("exams2forms")
+exm <- list("tse_1.Rmd", "tse_2.Rmd", "tse_3.Rmd", "tse_4.Rmd", "tse_5.Rmd", 
+    "tse_6.Rmd", "tse_7.Rmd", "tse_8.Rmd")
+```
+
+```{r exams2forms-include, echo = FALSE, message = FALSE, results="asis"}
+exams2forms(exm,  n = 10, nsamp = NULL)
+```

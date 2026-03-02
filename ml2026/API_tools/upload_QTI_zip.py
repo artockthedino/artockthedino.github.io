@@ -6,7 +6,7 @@ with open("//Users/chad.worley@bartcharter.org/Documents/canvasAPItests/acctok.t
 
 # Variables
 course_id = '1945'  ## ML=1945... PBL_Q2_ACE=1703... PBL_Q2_BD=1698
-file_path_list = ["outcanvas/m0209c_right_tri_trig.zip"]
+file_path_list = ["outcanvas/m0302_two-step_equations.zip"]
 
 ######## FOR UPLOADING ETS
 
