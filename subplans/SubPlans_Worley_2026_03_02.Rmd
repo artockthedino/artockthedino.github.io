@@ -1,0 +1,59 @@
+---
+title: "Sub Plans for Worley on Mon Mar 02"
+output: 
+    html_document:
+        toc: true
+urlcolor: blue
+---
+
+## Algebra 2 8:00-9:05 in Marquez 409
+
+* Some students are still preparing for the Radical Test.
+* Link to today's Canvas assignment:
+    * [https://bart.instructure.com/courses/2110/assignments/30791](https://bart.instructure.com/courses/2110/assignments/30791)
+    * They get points as long as they seem like they are engaging in Math practice of some form. They should already have all the printed items.
+    * Please let me know if you feel any students do not deserve full credit (if they are creating distractions that make it harder for their peers to focus on studying math).
+
+## Math Literacy 10:06 - 11:01 in Marquez 409
+
+* Each student gets 1 page (front and back) of m0302_PAPER_two-steps (the pdf is attached in subplan email)
+    * [https://bart.instructure.com/courses/1945/assignments/30799](https://bart.instructure.com/courses/1945/assignments/30799)
+    * Students should help each other.
+    * Students must show work for full credit.
+    * Each student's page should be written in their own writing (but other students can tell them what to write).
+* At 10:30 AM, an online quiz will be available on Canvas. Students should attempt the quiz.
+    * [https://bart.instructure.com/courses/1945/quizzes/3468](https://bart.instructure.com/courses/1945/quizzes/3468)
+* Remind students they can use the examples linked in the assignment.
+    * [https://artockthedino.github.io/ml2026/two-step-eqs/examples_0302.html](https://artockthedino.github.io/ml2026/two-step-eqs/examples_0302.html)
+    * These examples can be used while students take the online quiz.
+    * Students should recognize that there are 8 types of these two-step equations. So, for each problem they can find a corresponding example.
+
+## Algebra 2 11:04-12:01 in Carson 301
+
+* Some students are still preparing for the Radical Test.
+* Link to today's Canvas assignment:
+    * [https://bart.instructure.com/courses/2110/assignments/30791](https://bart.instructure.com/courses/2110/assignments/30791)
+    * They get points as long as they seem like they are engaging in Math practice of some form.
+    * Please let me know if you feel any students do not deserve full credit (if they are creating distractions that make it harder for their peers to focus on studying math).
+
+    
+## Crew 12:04 - 12:31 in Holiday 206
+
+* Hang out with some Juniors.
+
+## Project Based Learning 2:02-2:57 in Mondrian 205
+
+* Entrance ticket on Canvas.
+    * [https://bart.instructure.com/courses/1789/quizzes/3469](https://bart.instructure.com/courses/1789/quizzes/3469)
+* Math-facts quiz on Canvas.
+    * [https://bart.instructure.com/courses/1789/quizzes/3470](https://bart.instructure.com/courses/1789/quizzes/3470)
+* PAPER minesweeper puzzles.
+    * [https://bart.instructure.com/courses/1789/assignments/30803](https://bart.instructure.com/courses/1789/assignments/30803)
+    * If students go to the Canvas assignment, they can find the solutions to some of them.
+    * Please collect these sheets at the end of class.
+    
+## Flex 3:00-3:42 in L'Engle 410
+
+* Quiet Study Hall
+
+

@@ -1,0 +1,164 @@
+```{r,echo=F}
+myorder = sample(1:4)
+wrds = c("translation","rotation","glide","mirror")
+mywrds = wrds[myorder]
+
+al = paste0("* ",wrds,collapse="\n")
+sol1 = paste0(1*(myorder[1]==1:4),collapse="")
+sol2 = paste0(1*(myorder[2]==1:4),collapse="")
+sol3 = paste0(1*(myorder[3]==1:4),collapse="")
+sol4 = paste0(1*(myorder[4]==1:4),collapse="")
+
+getbasedots = function(fg=1,n=4){
+    x = runif(2*n,0.05,0.95)
+    y = runif(2*n)-0.5
+    h = runif(2*n)
+    p = sample(c(15,16,18,19,20),2*n,T)
+    dots = data.frame(x,y,h,p)
+    return(dots)
+}
+
+translate = function(dots,dx=1){
+    tdots = data.frame(dots)
+    tdots$x = dots$x+dx
+    return(tdots)
+}
+rotate = function(dots,xr){
+    tdots = data.frame(dots)
+    tdots$x = tdots$x-xr
+    tdots$x = -tdots$x+xr
+    tdots$y = -tdots$y
+    return(tdots)
+}
+glide = function(dots,dx){
+    tdots = data.frame(dots)
+    tdots$x = tdots$x+dx
+    tdots$y = -tdots$y
+    return(tdots)
+}
+mirror = function(dots,xr){
+    tdots = data.frame(dots)
+    tdots$x = tdots$x-xr
+    tdots$x = -tdots$x+xr
+    return(tdots)
+}
+
+```
+
+Question
+========
+
+Label the four transformations below:
+
+## Transformation 1
+
+```{r,echo=F,fig.dim=c(4,2)}
+lwd=2
+col = "grey"
+par(mar=c(0,0,0,0))
+dots = getbasedots(1,10)
+funcs = list(translate(dots,1),rotate(dots,1),glide(dots,1),mirror(dots,1))
+d2 = funcs[[myorder[1]]]
+plot(0,0,type="n",xlim=c(0,2),ylim=c(-0.5,0.5),axes=F,ann=F)
+lines(dots$x,dots$y,lwd=lwd,col=col)
+lines(d2$x,d2$y,lwd=lwd,col=col)
+# cols = hsv(runif(length(dots$x),0,1),0.7,0.7)
+cols = hsv(abs((dots$x)*(dots$y+0.5)+runif(1))%%1,0.7,0.7)
+points(dots$x,dots$y,col=cols,pch=dots$p,cex=2)
+points(d2$x,d2$y,col=cols,pch=dots$p,cex=2)
+abline(v=seq(-0.1,2,1.1),lty=2)
+```
+\
+
+* ##ANSWER1##
+
+
+## Transformation 2
+
+```{r,echo=F,fig.dim=c(4,2)}
+par(mar=c(0,0,0,0))
+dots = getbasedots(1,10)
+funcs = list(translate(dots,1),rotate(dots,1),glide(dots,1),mirror(dots,1))
+d2 = funcs[[myorder[2]]]
+plot(0,0,type="n",xlim=c(0,2),ylim=c(-0.5,0.5),axes=F,ann=F)
+lines(dots$x,dots$y,lwd=lwd,col=col)
+lines(d2$x,d2$y,lwd=lwd,col=col)
+# cols = hsv(runif(length(dots$x),0,1),0.7,0.7)
+cols = hsv(abs((dots$x)*(dots$y+0.5)+runif(1))%%1,0.7,0.7)
+points(dots$x,dots$y,col=cols,pch=dots$p,cex=2)
+points(d2$x,d2$y,col=cols,pch=dots$p,cex=2)
+abline(v=seq(-0.1,2,1.1),lty=2)
+```
+\
+
+* ##ANSWER2##
+
+
+## Transformation 3
+
+```{r,echo=F,fig.dim=c(4,2)}
+par(mar=c(0,0,0,0))
+dots = getbasedots(1,10)
+funcs = list(translate(dots,1),rotate(dots,1),glide(dots,1),mirror(dots,1))
+d2 = funcs[[myorder[3]]]
+plot(0,0,type="n",xlim=c(0,2),ylim=c(-0.5,0.5),axes=F,ann=F)
+lines(dots$x,dots$y,lwd=lwd,col=col)
+lines(d2$x,d2$y,lwd=lwd,col=col)
+# cols = hsv(runif(length(dots$x),0,1),0.7,0.7)
+cols = hsv(abs((dots$x)*(dots$y+0.5)+runif(1))%%1,0.7,0.7)
+points(dots$x,dots$y,col=cols,pch=dots$p,cex=2)
+points(d2$x,d2$y,col=cols,pch=dots$p,cex=2)
+abline(v=seq(-0.1,2,1.1),lty=2)
+```
+\
+
+* ##ANSWER3##
+
+## Transformation 4
+
+```{r,echo=F,fig.dim=c(4,2)}
+par(mar=c(0,0,0,0))
+dots = getbasedots(1,10)
+funcs = list(translate(dots,1),rotate(dots,1),glide(dots,1),mirror(dots,1))
+d2 = funcs[[myorder[4]]]
+plot(0,0,type="n",xlim=c(0,2),ylim=c(-0.5,0.5),axes=F,ann=F)
+lines(dots$x,dots$y,lwd=lwd,col=col)
+lines(d2$x,d2$y,lwd=lwd,col=col)
+# cols = hsv(runif(length(dots$x),0,1),0.7,0.7)
+cols = hsv(abs((dots$x)*(dots$y+0.5)+runif(1))%%1,0.7,0.7)
+points(dots$x,dots$y,col=cols,pch=dots$p,cex=2)
+points(d2$x,d2$y,col=cols,pch=dots$p,cex=2)
+abline(v=seq(-0.1,2,1.1),lty=2)
+```
+\
+
+* ##ANSWER4##
+
+
+
+
+Answerlist
+--------
+
+`r al`
+`r al`
+`r al`
+`r al`
+
+
+Solution
+========
+
+* Transformation 1: `r mywrds[1]`.
+* Transformation 2: `r mywrds[2]`.
+* Transformation 3: `r mywrds[3]`.
+* Transformation 4: `r mywrds[4]`.
+
+`r myorder`
+
+Meta-information
+============
+extype: cloze
+exclozetype: schoice|schoice|schoice|schoice
+exsolution: `r sol1`|`r sol2`|`r sol3`|`r sol4`
+exname: trarotglimir_rainbownet

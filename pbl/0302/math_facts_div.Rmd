@@ -1,0 +1,21 @@
+```{r,echo=FALSE}
+a = sample(1:10,1)
+b = sample(1:10,1)
+c = a*b
+```
+
+Question
+========
+
+$$`r c`\div`r b`$$
+
+Solution
+========
+
+$$`r c`\div`r b`=`r a`$$
+
+Meta-information
+============
+extype: num
+exsolution: `r a`
+exname: math_facts_div
