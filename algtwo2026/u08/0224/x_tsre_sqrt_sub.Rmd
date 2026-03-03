@@ -1,7 +1,7 @@
 ```{r,echo=FALSE}
 # sqrt(x)+a = b
 while(T){
-    a = sample(1:15,1)*1 #sample(c(-1,1),1)
+    a = -sample(1:15,1) #sample(c(-1,1),1)
     b = sample(1:15,1)*sample(c(-1,1),1)
     if((b-a)>1 && (b-a)<13){
         break

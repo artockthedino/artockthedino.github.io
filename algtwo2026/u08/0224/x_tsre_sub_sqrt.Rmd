@@ -1,15 +1,15 @@
 ```{r,echo=FALSE}
-# sqrt(x)+a = b
-while(T){
-    a = sample(1:15,1)*1 #sample(c(-1,1),1)
-    b = sample(1:15,1)*sample(c(-1,1),1)
-    if((b-a)>1 && (b-a)<13){
-        break
-        }
-}
-eq = paste0("\\sqrt{x}+",a,"=",b)
+# sqrt(x+a) = b
+a = -sample(1:9,1) #sample(c(-1,1),1)
+b = sample(2:10,1)
+
+eq = paste0("\\sqrt{x+",a,"}=",b)
 eq = gsub("+-","-",eq,fixed=T)
-x = (b-a)^2
+
+x = b^2-a
+
+eq2 = paste0("x+",a,"=",b^2)
+eq2 = gsub("+-","-",eq2,fixed=T)
 
 if(a>0){
     wrd = paste0("Subtract ",abs(a)," from both sides.")
@@ -17,15 +17,8 @@ if(a>0){
     wrd = paste0("Add ",abs(a)," to both sides.")
 }
 
-eq2 = paste0("\\sqrt{x}=",b-a)
-
-
-eq3 = paste0("\\sqrt{",x,"}+",a,"\\stackrel{?}{=}",b)
+eq3 = paste0("\\sqrt{",x,"+",a,"}\\stackrel{?}{=}",b)
 eq3 = gsub("+-","-",eq3,fixed=T)
-
-
-eq4 = paste0(round(sqrt(x)),"+",a,"\\stackrel{?}{=}",b)
-eq4 = gsub("+-","-",eq4,fixed=T)
 
 ```
 
@@ -39,12 +32,11 @@ $$`r eq`$$
 Solution
 ========
 
-
-`r wrd`
+Square both sides.
 
 $$`r eq2`$$
 
-Square both sides.
+`r wrd`
 
 $$x=`r x`$$
 
@@ -52,7 +44,7 @@ Check the solution in the original equation.
 
 $$`r eq3`$$
 
-$$`r eq4`$$
+$$\sqrt{`r x+a`}=`r b`$$
 
 Yup, that is true. So $x=`r x`$ is a solution to the given equation.
 
@@ -61,4 +53,4 @@ Meta-information
 ============
 extype: num
 exsolution: `r x`
-exname: tsre_sqrt_add
+exname: tsre_add_sqrt

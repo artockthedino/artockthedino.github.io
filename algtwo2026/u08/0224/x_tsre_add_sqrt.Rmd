@@ -1,6 +1,6 @@
 ```{r,echo=FALSE}
 # sqrt(x+a) = b
-a = sample(1:9,1)*sample(c(-1,1),1)
+a = sample(1:9,1)*1 #sample(c(-1,1),1)
 b = sample(2:10,1)
 
 eq = paste0("\\sqrt{x+",a,"}=",b)

@@ -1,0 +1,16 @@
+---
+title: "examples_0303"
+output: exams2forms::webquiz
+---
+
+```{r exams2forms-setup, include = FALSE}
+## package and exercises
+library("exams2forms")
+exm <- list("x_tsre_add_sqrt.Rmd", "x_tsre_sqrt_add.Rmd", "x_tsre_sub_sqrt.Rmd", 
+    "x_tsre_sqrt_sub.Rmd", "x_tsre_mult_sqrt.Rmd", "x_tsre_sqrt_mult.Rmd", 
+    "x_tsre_div_sqrt.Rmd", "x_tsre_sqrt_div.Rmd")
+```
+
+```{r exams2forms-include, echo = FALSE, message = FALSE, results="asis"}
+exams2forms(exm,  n = 6, nsamp = NULL)
+```
