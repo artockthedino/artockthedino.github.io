@@ -1,29 +1,29 @@
 library("exams")
-n = 15
+n = 30
 outdir = "outcanvas"
 
 ### Entrance ticket
-# pm = list("foil_get_b.Rmd")
-# exams2canvas(pm,
-#              n=n,
-#              dir=outdir,
-#              points=rep(5,length(pm)),
-#              maxattempts = 5,
-#              name="a0305_ET",
-#              converter = "tex2image",
-#              template = "canvas_qti12.xml",
-#              cloze = list(enumerate = FALSE))
-
-pm = list("x_multiply_linear_quadratic.Rmd","x_multiply_linear_quadratic.Rmd")
+pm = list("simp_frac.Rmd","simp_frac.Rmd","simp_frac.Rmd")
 exams2canvas(pm,
              n=n,
              dir=outdir,
-             points=rep(1,length(pm)),
-             maxattempts = 6,
-             name="a0305_mult_linear_quadratic",
-             converter = "pandoc-mathjax",
+             points=rep(3,length(pm)),
+             maxattempts = 5,
+             name="pbl_0305_ET",
              template = "canvas_qti12.xml",
              cloze = list(enumerate = FALSE))
+
+# 
+# pm = list("x_multiply_linear_quadratic.Rmd","x_multiply_linear_quadratic.Rmd")
+# exams2canvas(pm,
+#              n=n,
+#              dir=outdir,
+#              points=rep(1,length(pm)),
+#              maxattempts = 6,
+#              name="a0305_mult_linear_quadratic",
+#              converter = "pandoc-mathjax",
+#              template = "canvas_qti12.xml",
+#              cloze = list(enumerate = FALSE))
 
 
 # pm = list("standard_from_graph.Rmd",
