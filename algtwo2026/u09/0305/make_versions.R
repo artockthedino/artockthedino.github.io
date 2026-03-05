@@ -1,7 +1,7 @@
-fn = "a0122p_new_practice_test.Rmd"
+fn = "a0127p_sqrt_eq_2_sols.Rmd"
 shortfn = strsplit(fn,"_")[[1]][1]
-nlow = 440
-nhigh = 475
+nlow = 100
+nhigh = 140
 
 sss44 = "<!DOCTYPE html>
 <html lang='en'>

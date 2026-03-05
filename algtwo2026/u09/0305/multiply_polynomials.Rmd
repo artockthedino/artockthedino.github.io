@@ -1,0 +1,300 @@
+---
+output: pdf_document
+params:
+    rseed: 2
+    showsol: true
+header-includes:
+  - \usepackage{multicol}
+---
+
+```{r,echo=F,warning=FALSE,message=FALSE}
+options(scipen=999)
+if(params$rseed !=0){
+    set.seed(params$rseed)
+}
+knitr::opts_chunk$set(echo = FALSE)
+bn <- basename(knitr::current_input())
+bn = strsplit(bn,".",fixed=T)[[1]][1]
+
+pn = function(c,d){
+    p = paste0("{",c,"}x^{",d,"}",collapse="+")
+    p = gsub("x^{0}","",p,fixed=T)
+    p = gsub("x^{1}","x",p,fixed=T)
+    p = gsub("+{-","-{",p,fixed=T)
+    p = gsub("+{1}x","+x",p,fixed=T)
+    p = gsub("-{1}x","-x",p,fixed=T)
+    p = gsub("{-1}x","-x",p,fixed=T)
+    p = gsub("{1}x","x",p,fixed=T)
+    p = gsub("-{1i}","-i",p,fixed=T)
+    p = gsub("+{1i}","+i",p,fixed=T)
+    return(p)
+}
+
+gcd2 <- function(a, b) {
+  if (b == 0) a else Recall(b, a %% b)
+}
+gcd <- function(...) Reduce(gcd2, c(...))
+```
+
+## `r bn`
+
+# Example 1
+
+```{r}
+
+p1s = character()
+p2s = character()
+p3s = character()
+p4s = character()
+
+maxn = 6
+maxc = 9
+# while(T){
+#     nt1 = sample(2:4,1)
+#     nt2 = sample(2:4,1)
+#     nt3 = nt1*nt2
+#     if(nt3<=9 && nt3>4){break}
+# }
+nt1 = 4
+nt2 = 2
+nt3 = 8
+
+while(T){
+    n1 = rev(sort(sample(0:maxn,nt1)))
+    n2 = rev(sort(sample(0:maxn,nt2)))
+    c1 = sample(1:maxc,nt1,T)*sample(c(-1,1),nt1,T)
+    c2 = sample(1:maxc,nt2,T)*sample(c(-1,1),nt2,T)
+    n3 = numeric()
+    c3 = numeric()
+    for(i in 1:nt1){
+        for(j in 1:nt2){
+            n3 = c(n3,n1[i]+n2[j])
+            c3 = c(c3,c1[i]*c2[j])
+        }
+    }
+    n3poss = 0:(2*maxn)
+    c3sums = rep(0,2*maxn+1)
+    for(i in n3poss){
+        for(j in 1:length(n3)){
+            if(i==n3[j]){
+                c3sums[i+1] = c3sums[i+1]+c3[j]
+            }
+        }
+    }
+    n3poss = rev(n3poss)
+    c3sums = rev(c3sums)
+    n4 = n3poss[c3sums!=0]
+    c4 = c3sums[c3sums!=0]
+    if(length(c4)<length(c3) && sum(sign(c1))>=0 && sum(sign(c2))>=0){break}
+}
+p1s = c(p1s,pn(c1,n1))
+p2s = c(p2s,pn(c2,n2))
+p3s = c(p3s,pn(c3,n3))
+p4s = c(p4s,pn(c4,n4))
+
+```
+
+Expand the product into standard form.
+
+$$\left(`r pn(c1,n1)`\right)\cdot\left(`r pn(c2,n2)`\right)$$
+
+\color{red}
+
+Multiply each term of the first polynomial by each term of the second polynomial.
+
+```{r,results='asis',warning=F}
+
+terms1 = character()
+terms2 = character()
+terms3 = character()
+
+for(i in 1:length(c1)){
+    terms1 = c(terms1,paste0("$",pn(c1[i],n1[i]),"$"))
+}
+for(i in 1:length(c2)){
+    terms2 = c(terms2,paste0("$",pn(c2[i],n2[i]),"$"))
+}
+for(i in 1:length(c1)){
+    for(j in 1:length(c2)){
+        terms3 = c(terms3,paste0("$",pn(c1[i]*c2[j],n1[i]+n2[j]),"$"))
+    }
+}
+M <- matrix(terms3, nrow=nt2, ncol=nt1, byrow = TRUE,dimnames = list(terms2, terms1))
+
+library(kableExtra)
+kable(M, format = "latex", escape = F, booktabs = TRUE) %>%
+  column_spec(1, border_right = TRUE, border_left = T) %>%
+  column_spec(nt1+1, border_right = TRUE)
+
+```
+
+
+$$`r pn(c3,n3)`$$
+
+Combine like terms.
+
+$$`r pn(c4,n4)`$$
+
+
+\color{black}
+
+
+
+
+# Example 2
+
+```{r}
+# while(T){
+#     nt1 = sample(2:4,1)
+#     nt2 = sample(2:4,1)
+#     nt3 = nt1*nt2
+#     if(nt3<=9 && nt3>4){break}
+# }
+
+nt1 = 3
+nt2 = 3
+nt3 = 9
+
+while(T){
+    n1 = rev(sort(sample(0:maxn,nt1)))
+    n2 = rev(sort(sample(0:maxn,nt2)))
+    c1 = sample(1:maxc,nt1,T)*sample(c(-1,1),nt1,T)
+    c2 = sample(1:maxc,nt2,T)*sample(c(-1,1),nt2,T)
+    n3 = numeric()
+    c3 = numeric()
+    for(i in 1:nt1){
+        for(j in 1:nt2){
+            n3 = c(n3,n1[i]+n2[j])
+            c3 = c(c3,c1[i]*c2[j])
+        }
+    }
+    n3poss = 0:(2*maxn)
+    c3sums = rep(0,2*maxn+1)
+    for(i in n3poss){
+        for(j in 1:length(n3)){
+            if(i==n3[j]){
+                c3sums[i+1] = c3sums[i+1]+c3[j]
+            }
+        }
+    }
+    n3poss = rev(n3poss)
+    c3sums = rev(c3sums)
+    n4 = n3poss[c3sums!=0]
+    c4 = c3sums[c3sums!=0]
+    p1 = pn(c1,n1)
+    p2 = pn(c2,n2)
+    p3 = pn(c3,n3)
+    p4 = pn(c4,n4)
+    if(length(c4)<length(c3) && sum(sign(c1))>=0 && sum(sign(c2))>=0 && !(p4 %in% p4s)){break}
+}
+p1s = c(p1s,p1)
+p2s = c(p2s,p2)
+p3s = c(p3s,p3)
+p4s = c(p4s,p4)
+
+```
+
+Expand the product into standard form.
+
+$$\left(`r pn(c1,n1)`\right)\cdot\left(`r pn(c2,n2)`\right)$$
+
+\color{red}
+
+Multiply each term of the first polynomial by each term of the second polynomial.
+
+```{r,results='asis',warning=F}
+
+terms1 = character()
+terms2 = character()
+terms3 = character()
+
+for(i in 1:length(c1)){
+    terms1 = c(terms1,paste0("$",pn(c1[i],n1[i]),"$"))
+}
+for(i in 1:length(c2)){
+    terms2 = c(terms2,paste0("$",pn(c2[i],n2[i]),"$"))
+}
+for(i in 1:length(c1)){
+    for(j in 1:length(c2)){
+        terms3 = c(terms3,paste0("$",pn(c1[i]*c2[j],n1[i]+n2[j]),"$"))
+    }
+}
+M <- matrix(terms3, nrow=nt2, ncol=nt1, byrow = TRUE,dimnames = list(terms2, terms1))
+
+library(kableExtra)
+kable(M, format = "latex", escape = F, booktabs = TRUE) %>%
+  column_spec(1, border_right = TRUE, border_left = T) %>%
+  column_spec(nt1+1, border_right = TRUE)
+
+```
+
+
+$$`r pn(c3,n3)`$$
+
+Combine like terms.
+
+$$`r pn(c4,n4)`$$
+
+
+\color{black}
+
+\newpage
+
+```{r}
+for(i in 1:19){
+    while(T){
+        nt1 = sample(2:4,1)
+        nt2 = sample(2:4,1)
+        nt3 = nt1*nt2
+        if(nt3<=9 && nt3>4){break}
+    }
+    while(T){
+        n1 = rev(sort(sample(0:maxn,nt1)))
+        n2 = rev(sort(sample(0:maxn,nt2)))
+        c1 = sample(1:maxc,nt1,T)*sample(c(-1,1),nt1,T)
+        c2 = sample(1:maxc,nt2,T)*sample(c(-1,1),nt2,T)
+        n3 = numeric()
+        c3 = numeric()
+        for(i in 1:nt1){
+            for(j in 1:nt2){
+                n3 = c(n3,n1[i]+n2[j])
+                c3 = c(c3,c1[i]*c2[j])
+            }
+        }
+        n3poss = 0:(2*maxn)
+        c3sums = rep(0,2*maxn+1)
+        for(i in n3poss){
+            for(j in 1:length(n3)){
+                if(i==n3[j]){
+                    c3sums[i+1] = c3sums[i+1]+c3[j]
+                }
+            }
+        }
+        n3poss = rev(n3poss)
+        c3sums = rev(c3sums)
+        n4 = n3poss[c3sums!=0]
+        c4 = c3sums[c3sums!=0]
+        p1 = pn(c1,n1)
+        p2 = pn(c2,n2)
+        p3 = pn(c3,n3)
+        p4 = pn(c4,n4)
+        if(length(c4)<length(c3) && sum(sign(c1))>=0 && sum(sign(c2))>=0 && !(p4 %in% p4s)){break}
+    }
+    p1s = c(p1s,p1)
+    p2s = c(p2s,p2)
+    p3s = c(p3s,p3)
+    p4s = c(p4s,p4)
+}
+prods = paste0("\\left(",p1s,"\\right)\\cdot\\left(",p2s,"\\right)")
+```
+
+Expand the following products of polynomials into standard form.
+
+\begin{align*}
+```{r,results='asis'}
+for(i in 3:length(prods)){
+    cat(paste0("&",prods[i],"&&&\\color{gray}",p4s[i],"\\color{black}\\\\\\\\\n"))
+}
+```
+\end{align*}
+

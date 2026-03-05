@@ -34,4 +34,3 @@ date: "2026 March 03"
 
 ![](ss_06.png){width=70%}
 
-
