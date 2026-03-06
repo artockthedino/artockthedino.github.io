@@ -119,7 +119,7 @@ for(i in 1:length(c1)){
         terms3 = c(terms3,paste0("$",pn(c1[i]*c2[j],n1[i]+n2[j]),"$"))
     }
 }
-M <- matrix(terms3, nrow=nt2, ncol=nt1, byrow = TRUE,dimnames = list(terms2, terms1))
+M <- matrix(terms3, nrow=nt2, ncol=nt1, byrow = F,dimnames = list(terms2, terms1))
 
 library(kableExtra)
 kable(M, format = "latex", escape = F, booktabs = TRUE) %>%
@@ -219,7 +219,7 @@ for(i in 1:length(c1)){
         terms3 = c(terms3,paste0("$",pn(c1[i]*c2[j],n1[i]+n2[j]),"$"))
     }
 }
-M <- matrix(terms3, nrow=nt2, ncol=nt1, byrow = TRUE,dimnames = list(terms2, terms1))
+M <- matrix(terms3, nrow=nt2, ncol=nt1, byrow = F,dimnames = list(terms2, terms1))
 
 library(kableExtra)
 kable(M, format = "latex", escape = F, booktabs = TRUE) %>%
