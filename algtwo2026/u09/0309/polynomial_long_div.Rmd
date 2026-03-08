@@ -1,0 +1,130 @@
+---
+output: pdf_document
+params:
+    rseed: 1
+    showsol: true
+header-includes:
+  - \usepackage{multicol}
+---
+
+```{r,echo=F,warning=FALSE,message=FALSE}
+options(scipen=999)
+if(params$rseed !=0){
+    set.seed(params$rseed)
+}
+knitr::opts_chunk$set(echo = FALSE)
+bn <- basename(knitr::current_input())
+bn = strsplit(bn,".",fixed=T)[[1]][1]
+
+pfix = function(c,d){
+    p = paste0("{",c,"}x^{",d,"}",collapse="+")
+    p = gsub("x^{0}","",p,fixed=T)
+    p = gsub("x^{1}","x",p,fixed=T)
+    p = gsub("+{-","-{",p,fixed=T)
+    p = gsub("+{1}x","+x",p,fixed=T)
+    p = gsub("-{1}x","-x",p,fixed=T)
+    p = gsub("{-1}x","-x",p,fixed=T)
+    p = gsub("{1}x","x",p,fixed=T)
+    p = gsub("-{1i}","-i",p,fixed=T)
+    p = gsub("+{1i}","+i",p,fixed=T)
+    return(p)
+}
+
+pfixmid = function(c,d){
+    p = paste0("+{",c,"}x^{",d,"}",collapse="")
+    p = gsub("x^{0}","",p,fixed=T)
+    p = gsub("x^{1}","x",p,fixed=T)
+    p = gsub("+{-","-{",p,fixed=T)
+    p = gsub("+{1}x","+x",p,fixed=T)
+    p = gsub("-{1}x","-x",p,fixed=T)
+    p = gsub("{-1}x","-x",p,fixed=T)
+    p = gsub("{1}x","x",p,fixed=T)
+    p = gsub("-{","-",p,fixed=T)
+    p = gsub("{","",p,fixed=T)
+    p = gsub("}","",p,fixed=T)
+    return(p)
+}
+
+
+gcd2 <- function(a, b) {
+  if (b == 0) a else Recall(b, a %% b)
+}
+gcd <- function(...) Reduce(gcd2, c(...))
+```
+
+## `r bn`
+
+
+### Example 1
+
+```{r}
+a = sample(2:8,1)*sample(c(-1,1),1)
+qc = sample(2:9,3)*c(1,sample(c(-1,1),2,T))
+A = qc[1]
+B = qc[2]
+C = qc[3]
+cc = c(A,A*a+B,B*a+C,a*C)
+pc = pfix(cc,3:0)
+lb = pfix(c(1,a),c(1,0))
+handles = paste0(qc,collapse="&")
+```
+
+Use polynomial long division to divide $`r pc`$ by the linear binomial $`r lb`$. (Copy work from board.)
+
+\vfill
+
+### Example 2
+
+```{r}
+a = sample(2:8,1)*sample(c(-1,1),1)
+qc = sample(2:9,3)*c(-1,sample(c(-1,1),2,T))
+A = qc[1]
+B = qc[2]
+C = qc[3]
+cc = c(A,A*a+B,B*a+C,a*C)
+pc = pfix(cc,3:0)
+lb = pfix(c(1,a),c(1,0))
+handles = c(handles,paste0(qc,collapse="&"))
+```
+
+Use polynomial long division to divide $`r pc`$ by the linear binomial $`r lb`$. (Copy work from board.)
+
+\vfill
+
+
+\newpage
+
+Use polynomial long division to find the quotient and remainder.
+
+```{r,echo=F}
+Ns = character() #numerator
+Ds = character() #denominator
+Qs = character() #quotient
+Rs = character() #remainder
+# (ax^2+bx+c)*(x+d) = ax^3 + (ad+b)x^2 + (bd+c)x + cd
+while(length(Ns)<14){
+    cQ = sample(1:9,3)*sample(c(-1,1),3,T) # ax^2 + bx + c
+    cD = sample(1:9,1)*sample(c(-1,1),1) #x+d
+    R = sample(1:9,1)*sample(c(-1,1),1)
+    cN = c(cQ[1],cQ[1]*cD+cQ[2],cQ[2]*cD+cQ[3],cQ[3]*cD+R)
+    Q = pfix(cQ,2:0)
+    D = pfix(c(1,cD),1:0)
+    N = pfix(cN,3:0)
+    if(min(abs(cN))>0){
+        Ns = c(Ns,N)
+        Ds = c(Ds,D)
+        Qs = c(Qs,Q)
+        Rs = c(Rs,R)
+    }
+}
+```
+
+```{r,results='asis'}
+cat("\\begin{align*}\n")
+for(i in 1:length(Ns)){
+    cat(paste0("& \\frac{",Ns[i],"}{",Ds[i],"} &&&&& \\color{gray} ",Qs[i],"+\\frac{",Rs[i],"}{",Ds[i],"} \\color{black} \\\\\\\\\n"))
+}
+cat("\\end{align*}")
+```
+
+
