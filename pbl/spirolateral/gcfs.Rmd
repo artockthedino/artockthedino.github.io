@@ -1,0 +1,67 @@
+```{r,echo=FALSE}
+gcd2 <- function(a, b) {
+    if (b == 0) a else Recall(b, a %% b)
+}
+gcd <- function(...) Reduce(gcd2, c(...))
+
+
+n = 5
+ach = 1:10
+hands = character()
+gcds = sample(ach,n)
+qstrs = character()
+sols = character()
+
+for(i in 1:n){
+    thegcd = gcds[i]
+    while(T){
+        while(T){
+            ab = sample(2:10,2)
+            a = ab[1]*thegcd
+            b = ab[2]*thegcd
+            G = gcd(a,b)
+            if(G==thegcd){break}
+        }
+        hand = paste0(sort(c(a,b)),collapse="&")
+        if(!(hand %in% hands)){
+            hands = c(hands,hand)
+            break
+        }
+    }
+    qstr = paste0("What is the greatest common factor of ",a," and ",b,"?")
+    sol = paste0(1*(ach==thegcd),collapse="")
+    qstrs = c(qstrs,qstr)
+    sols = c(sols,sol)
+}
+
+al = paste0("* ",ach,collapse="\n")
+
+```
+
+Question
+========
+
+```{r,echo=F,results='asis'}
+for(i in 1:n){
+    cat(paste0(qstrs[i]," ##ANSWER",i,"##\n\n"))
+}
+```
+
+
+Answerlist
+--------
+
+`r paste0(rep(al,n),collapse="\n")`
+
+
+Solution
+========
+
+
+
+Meta-information
+============
+extype: cloze
+exclozetype: `r paste0(rep("schoice",n),collapse="|")`
+exsolution: `r paste0(sols,collapse="|")`
+exname: turtle_path_01

@@ -162,9 +162,10 @@
 
             // Generate points for the pattern
             for (let i = 0; i < num_reps; i++) {
-                let count_val = countdown_max;
-                while (count_val > 0) {
+                let count_val = 0;
+                while (count_val < countdown_max) {
                     const current_angle_rad = current_angle_deg * Math.PI / 180;
+                    count_val++;
                     
                     // Move forward 'count_val' units
                     current_x += count_val * Math.cos(current_angle_rad);
@@ -173,7 +174,6 @@
 
                     // Turn 'turn_angle' degrees clockwise
                     current_angle_deg -= turn_angle; 
-                    count_val--;
                 }
                 document.getElementById('nrContainer').value = "The number of cycles: "+(i+1);
                 document.getElementById('nrContainer').innerHTML = "The number of cycles: "+(i+1);

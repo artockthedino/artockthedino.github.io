@@ -45,7 +45,6 @@ while(T){
     if(nloop>1 && nloop<99 && (180*turna/turnb)%%1==0){break}
 }
 
-
 angles = c(turna/turnb*pi)
 degs = c(turna/turnb*180)
 cdms = c(cdm)
@@ -60,7 +59,7 @@ while(length(angles)<8){
     nloop = B/gcd(c(B,cc))
     deg= c(aa/bb*180)
     handle = c(paste0(deg,cc,collapse="#"))
-    if(!(handle %in% handles) && nloop>1 && nloop<99 && (180*aa/bb)%%1==0){
+    if(!(handle %in% handles) && nloop>1 && nloop<99 && (180*aa/bb)%%1==0 && deg>10){
         angles = c(angles,aa/bb*pi)
         cdms = c(cdms,cc)
         degs = c(degs,degs)
@@ -83,7 +82,7 @@ Question
 
 Let's say you want to make a [spirolateral](https://en.wikipedia.org/wiki/Spirolateral).
 
-If the turn angle is $\theta=`r turna/turnb*180`^{\circ}$ and the maximum segment length is $n=`r cdm`$, then which [spirolateral](https://en.wikipedia.org/wiki/Spirolateral) is created?
+If the turn angle is $\theta=`r turna/turnb*180`^{\circ}$ and the maximum segment length is $n=`r cdm`$, then which spirolateral is created?
 
 You can use this tool:
 
@@ -125,7 +124,6 @@ for(i in 1:8){
 }
 ```
 \
-
 
 
 Meta-information

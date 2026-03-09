@@ -81,7 +81,8 @@ qc = sample(2:9,3)*c(-1,sample(c(-1,1),2,T))
 A = qc[1]
 B = qc[2]
 C = qc[3]
-cc = c(A,A*a+B,B*a+C,a*C)
+R = 2
+cc = c(A,A*a+B,B*a+C,a*C+R)
 pc = pfix(cc,3:0)
 lb = pfix(c(1,a),c(1,0))
 handles = c(handles,paste0(qc,collapse="&"))

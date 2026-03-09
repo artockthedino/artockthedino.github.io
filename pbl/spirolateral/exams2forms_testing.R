@@ -2,12 +2,12 @@ library("exams2forms")
 n = 10
 
 ### Entrance ticket
-pm = list("turtle_path_A.Rmd","turtle_path_B.Rmd","turtle_path_C.Rmd")
+pm = list("which_spirolateral.Rmd","gcfs.Rmd")
 
 exams2webquiz(pm,
              n=n,
-             title = "turtle_path_practice",
+             title = "examples_0309",
              dir = ".",
-             name="turtle_path_practice")
+             name="examples_0309")
 
 
