@@ -116,16 +116,12 @@
 
     <div id="controls">
         <div>
-            <label for="turn_angle">Turn Angle (exterior angle in degrees):</label>
+            <label for="turn_angle">(θ) Turn Angle (exterior angle in degrees):</label>
             <input type="number" id="turn_angle" value="60" min="0" step="any">
         </div>
         <div>
-            <label for="countdown_max">Maximum Segment Length:</label>
+            <label for="countdown_max">(n) Maximum Segment Length:</label>
             <input type="number" id="countdown_max" value="19" min="1" step="1">
-        </div>
-        <div>
-            <label for="num_reps">Maximum Number of Cycles:</label>
-            <input type="number" id="num_reps" value="666" min="1" step="1">
         </div>
         <button onclick="generatePattern()">Generate SVG</button>
     </div>
@@ -149,7 +145,7 @@
         function generatePattern() {
             const turn_angle = parseFloat(document.getElementById('turn_angle').value);
             const countdown_max = parseInt(document.getElementById('countdown_max').value);
-            const num_reps = parseInt(document.getElementById('num_reps').value);
+            const num_reps = 999;
 
             // Input validation
             if (isNaN(turn_angle) || isNaN(countdown_max) || isNaN(num_reps) || countdown_max < 1 || num_reps < 1) {

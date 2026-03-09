@@ -83,7 +83,7 @@ Question
 
 Let's say you want to make a [spirolateral](https://en.wikipedia.org/wiki/Spirolateral).
 
-If the turn angle is $`r turna/turnb*180`^{\circ}$ and the maximum segment length is $`r cdm`$, then which [spirolateral](https://en.wikipedia.org/wiki/Spirolateral) is created?
+If the turn angle is $\theta=`r turna/turnb*180`^{\circ}$ and the maximum segment length is $n=`r cdm`$, then which [spirolateral](https://en.wikipedia.org/wiki/Spirolateral) is created?
 
 You can use this tool:
 
