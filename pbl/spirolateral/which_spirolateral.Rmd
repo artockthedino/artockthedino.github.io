@@ -112,7 +112,6 @@ Below I've listed the parameters used to generate all patterns:
 
 ```{r,echo=F,fig.dim=c(2,2),results="asis"}
 
-
 par(mar=c(0,0,0,0),pty="s")
 for(i in 1:8){
     cat(paste0("* ",LETTERS[i],": \n"))

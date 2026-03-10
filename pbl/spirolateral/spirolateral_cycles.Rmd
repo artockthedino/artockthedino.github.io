@@ -1,0 +1,94 @@
+```{r,echo=F}
+options(scipen=999)
+gcd2 <- function(a, b) {
+    if (b == 0) a else Recall(b, a %% b)
+}
+gcd <- function(...) Reduce(gcd2, c(...))
+
+drawit = function(L=16,dD=-pi/2,D=pi/2,n=10000,lwd=1,col="blue"){
+    x = c(0)
+    y = c(0)
+    l = L
+    for(i in 1:n){
+        x0 = x[i]
+        y0 = y[i]
+        x2 = x[i]+l*cos(D)
+        y2 = y[i]+l*sin(D)
+        l = (l-2)%%L+1
+        D = D+dD
+        x = c(x,x2)
+        y = c(y,y2)
+        if(abs(x2)<0.001 && abs(y2)<0.001){break}
+    }
+    xmin = min(x)
+    xmax = max(x)
+    xmid = mean(c(xmin,xmax))
+    ymin = min(y)
+    ymax = max(y)
+    ymid = mean(c(ymin,ymax))
+    r = max(c(xmax-xmid,ymax-ymid))
+    xlo = xmid-r
+    xhi = xmid+r
+    ylo = ymid-r
+    yhi = ymid+r
+    plot(0,0,"n",ann=F,xlim=c(xlo,xhi),ylim=c(ylo,yhi),axes=F)
+    lines(x,y,lwd=lwd,col=col)
+}
+
+# Define p and q such that p/q=360/(180-θ).
+
+while(T){
+    n = sample(5:20,1)
+    p = sample(6:180,1)
+    q = sample(1:round(p/2-1),1)
+    gg = gcd(c(p,q))
+    p = p/gg
+    q = q/gg
+    th = 360*q/p
+    
+    # if the fraction (p-2q)(n-2k)/2p is reduced fully to a/b, then the figure repeats after b cycles
+    
+    numer = (p-2*q)*(n)
+    denom = 2*p
+    
+    a = numer/gcd(c(numer,denom))
+    b = denom/gcd(c(numer,denom))
+    if(b!=1 && th%%1==0){break}
+}
+cycles = b
+
+```
+
+
+
+Question
+========
+
+Let's say you want to make a [spirolateral](https://en.wikipedia.org/wiki/Spirolateral) with a turn angle  $\theta=`r th`^{\circ}$ and the maximum segment length $n=`r n`$.
+
+Using [this tool](https://artockthedino.github.io/pbl/spirolateral/spirolateral_generator.html) determine the number of cycles needed to complete the spirolateral.
+
+Solution
+========
+
+$$q=`r q`$$
+$$p=`r p`$$
+$$(p-2q)(n)=`r numer`$$
+$$2p=`r denom`$$
+$$a=`r a`$$
+$$b=`r b`$$
+
+The resulting spirolateral should look like:
+
+```{r,echo=F,fig.dim=c(3,3),results="asis"}
+par(mar=c(0,0,0,0),pty="s")
+drawit(n,-th/180*pi)
+```
+\
+
+
+Meta-information
+============
+extype: num
+exsolution: `r cycles`
+exname: spirolateral_cycles

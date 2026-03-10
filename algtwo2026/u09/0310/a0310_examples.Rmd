@@ -1,0 +1,126 @@
+---
+output: pdf_document
+params:
+    rseed: 1
+    showsol: false
+header-includes:
+  - \usepackage{multicol}
+---
+
+```{r,echo=F,warning=FALSE,message=FALSE}
+options(scipen=999)
+if(params$rseed !=0){
+    set.seed(params$rseed)
+}
+knitr::opts_chunk$set(echo = FALSE)
+bn <- basename(knitr::current_input())
+bn = strsplit(bn,".",fixed=T)[[1]][1]
+
+pn = function(c,d){
+    p = paste0("{",c,"}x^{",d,"}",collapse="+")
+    p = gsub("x^{0}","",p,fixed=T)
+    p = gsub("x^{1}","x",p,fixed=T)
+    p = gsub("+{-","-{",p,fixed=T)
+    p = gsub("+{1}x","+x",p,fixed=T)
+    p = gsub("-{1}x","-x",p,fixed=T)
+    p = gsub("{-1}x","-x",p,fixed=T)
+    p = gsub("{1}x","x",p,fixed=T)
+    p = gsub("-{1i}","-i",p,fixed=T)
+    p = gsub("+{1i}","+i",p,fixed=T)
+    return(p)
+}
+
+gcd2 <- function(a, b) {
+  if (b == 0) a else Recall(b, a %% b)
+}
+gcd <- function(...) Reduce(gcd2, c(...))
+```
+
+## `r bn`
+
+### Multiply.
+
+Expand the product and combine like terms to create an equivalent polynomial in standard form.
+
+```{r}
+while(T){
+    ca = sample(1:6,3)*c(1,sample(c(-1,1),2,T))
+    cb = sample(1:6,3)*c(1,sample(c(-1,1),2,T))
+    c4 = ca[1]*cb[1]
+    c3 = ca[1]*cb[2]+ca[2]*cb[1]
+    c2 = ca[1]*cb[3]+ca[2]*cb[2]+ca[3]*cb[1]
+    c1 = ca[2]*cb[3]+ca[3]*cb[2]
+    c0 = ca[3]*cb[3]
+    cr = c(c4,c3,c2,c1,c0)
+    if(min(abs(cr))>0){break}
+}
+A = pn(ca,2:0)
+B = pn(cb,2:0)
+R = pn(cr,4:0)
+
+```
+
+$$\left(`r A`\right)\cdot\left(`r B`\right)$$
+\vfill 
+
+\color{red}
+
+```{r,results='asis'}
+cE = numeric()
+dE = numeric()
+
+for(i in 2:0){
+    for(j in 2:0){
+        cE = c(cE,ca[3-i]*cb[3-j])
+        dE = c(dE,i+j)
+    }
+}
+
+if(params$showsol){
+    cat(paste0("$$",pn(cE,dE),"$$\n\n"))
+    cat(paste0("$$",R,"$$"))
+}
+```
+
+\color{black}
+
+\vfill
+
+\newpage
+
+## `r bn`
+
+### Divide.
+
+Use **polynomial long division** to find an equivalent expression in the form $p(x)+\frac{R}{d(x)}$, where $p(x)$ is a polynomial, $R$ is the remainder, and $d(x)$ is the divisor.
+
+```{r}
+while(T){
+    cQ = sample(2:6,3)*c(1,sample(c(-1,1),2,T)) # ax^2 + bx + c
+    cD = sample(1:6,1)*sample(c(-1,1),1) #x+d
+    R = sample(1:9,1)*sample(c(-1,1),1)
+    cN = c(cQ[1],cQ[1]*cD+cQ[2],cQ[2]*cD+cQ[3],cQ[3]*cD+R)
+    Q = pn(cQ,2:0)
+    D = pn(c(1,cD),1:0)
+    N = pn(cN,3:0)
+    if(min(abs(cN))>0){
+        break
+    }
+}
+```
+
+$$\frac{`r N`}{`r D`}$$
+
+\vfill
+
+\color{red}
+
+```{r,results='asis'}
+if(params$showsol){
+    cat(paste0("$$",Q,"+\\frac{",R,"}{",D,"}$$"))
+}
+```
+
+\color{black}
+
+\vfill

@@ -41,7 +41,6 @@ gcd <- function(...) Reduce(gcd2, c(...))
 # Example 1
 
 ```{r}
-
 p1s = character()
 p2s = character()
 p3s = character()
