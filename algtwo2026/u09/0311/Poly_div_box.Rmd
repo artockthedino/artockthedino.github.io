@@ -1,0 +1,275 @@
+---
+output: pdf_document
+params:
+    rseed: 0
+    showsol: true
+---
+
+```{r,echo=F,warning=FALSE,message=FALSE}
+options(scipen=999)
+if(params$rseed !=0){
+    set.seed(params$rseed)
+}
+knitr::opts_chunk$set(echo = FALSE)
+bn <- basename(knitr::current_input())
+bn = strsplit(bn,".",fixed=T)[[1]][1]
+
+pn = function(coeffs,pows){
+    pows = pows[coeffs!=0]
+    coeffs = coeffs[coeffs!=0]
+    ex1 = paste0("{",coeffs,"}x^{",pows,"}",collapse="+")
+    ex1 = gsub("+{-","-{",ex1,fixed=T)
+    ex1 = gsub("{1}x^{0}","1",ex1,fixed=T)
+    ex1 = gsub("{-1}x^{0}","-1",ex1,fixed=T)
+    ex1 = gsub("{1}x","x",ex1,fixed=T)
+    ex1 = gsub("{-1}x","-x",ex1,fixed=T)
+    ex1 = gsub("x^{0}","",ex1,fixed=T)
+    ex1 = gsub("x^{1}","x",ex1,fixed=T)
+    ex1 = gsub("+-","-",ex1,fixed=T)
+    if(ex1 == ""){
+        ex1 = "0"
+    }
+    return(ex1)
+}
+```
+
+## `r bn`
+
+### Example
+
+```{r,echo}
+while(T){
+    R = sample(1:9,1)*sample(c(-1,1),1)
+    c3 = sample(2:9,4)*c(1,sample(c(-1,1),3,T))
+    c1 = c(1,sample(2:9,1)*sample(c(-1,1),1))
+    d3 = 3:0
+    d1 = 1:0
+    c4 = rep(0,5)
+    for(i in 1:4){
+        di = 4-i
+        for(j in 1:2){
+            dj = 2-j
+            dk = di+dj
+            k = 5-dk
+            c4[k] = c4[k]+c3[i]*c1[j]
+        }
+    }
+    c4[5] = c4[5]+R
+    if(min(abs(c4))>0 && abs(R)!=abs(c1[2])){break}
+}
+
+```
+
+Use the box method to divide $`r pn(c4,4:0)`$ (the dividend) by the linear binomial $`r pn(c1,1:0)`$ (the divisor). You will produce a new polynomial (the quotient) and a remainder.
+
+\vfill
+
+\begin{minipage}[t]{0.45\textwidth}
+
+1. Make a box. Put the divisor's terms as row labels. The resulting quotient polynomial's terms will be the column labels. The inner elements will need to add up to the dividend polynomial (minus the remainder).
+
+\begin{center}
+\begin{tabular}{c | c  c  c  c }
+$\cdot$ & & & &\\ \hline
+$x$ & & & & \\ 
+`r c1[2]` & & & & \\ 
+\end{tabular}
+\end{center}
+
+2. Put the highest degree term of the dividend in the top-left entry.
+
+\begin{center}
+\begin{tabular}{c | c  c  c  c }
+$\cdot$ & & & & \\ \hline
+$x$ & $`r c4[1]`x^4$ & & & \\ 
+`r c1[2]` & & & & \\ 
+\end{tabular}
+\end{center}
+
+3. We need to get $`r c4[1]`x^4$ as the product of $x$ and the highest-degree term of the quotient. 
+
+\begin{center}
+\begin{tabular}{c | c  c  c  c }
+$\cdot$ & $`r c3[1]`x^3$ & & & \\ \hline
+$x$ & $`r c4[1]`x^4$ & & & \\ 
+`r c1[2]` & & & & \\ 
+\end{tabular}
+\end{center}
+
+
+4. Multiply $`r c1[2]`$ and $`r c3[1]`x^3$ to complete the column.
+
+\begin{center}
+\begin{tabular}{c | c  c  c  c }
+$\cdot$ & $`r c3[1]`x^3$ & & & \\ \hline
+$x$ & $`r c4[1]`x^4$ & & & \\ 
+`r c1[2]` & $`r c1[2]*c3[1]`x^3$ & & & \\ 
+\end{tabular}
+\end{center}
+
+5. To get the dividend's $`r c4[2]`x^3$ term, we need to add $`r c4[2]-c1[2]*c3[1]`x^3$. Place it in the table.
+
+\begin{center}
+\begin{tabular}{c | c  c  c  c }
+$\cdot$ & $`r c3[1]`x^3$ & & & \\ \hline
+$x$ & $`r c4[1]`x^4$ & $`r c4[2]-c1[2]*c3[1]`x^3$ & & \\ 
+`r c1[2]` & $`r c1[2]*c3[1]`x^3$ & & & \\ 
+\end{tabular}
+\end{center}
+
+\end{minipage} \hfill
+\begin{minipage}[t]{0.45\textwidth}
+
+6. Now, we can fill out the rest of that column.
+
+\begin{center}
+\begin{tabular}{c | c  c  c  c }
+$\cdot$ & $`r c3[1]`x^3$ & $`r c3[2]`x^2$  & & \\ \hline
+$x$ & $`r c4[1]`x^4$ & $`r c4[2]-c1[2]*c3[1]`x^3$ & & \\ 
+`r c1[2]` & $`r c1[2]*c3[1]`x^3$ & $`r c1[2]*c3[2]`x^2$ & & \\ 
+\end{tabular}
+\end{center}
+
+
+7. To get the dividend's $`r c4[3]`x^2$ term, we need to add $`r c4[3]-c1[2]*c3[2]`x^2$. Place it in the table.
+
+\begin{center}
+\begin{tabular}{c | c  c  c  c }
+$\cdot$ & $`r c3[1]`x^3$ & $`r c3[2]`x^2$  & & \\ \hline
+$x$ & $`r c4[1]`x^4$ & $`r c4[2]-c1[2]*c3[1]`x^3$ & $`r c4[3]-c1[2]*c3[2]`x^2$ & \\ 
+`r c1[2]` & $`r c1[2]*c3[1]`x^3$ & $`r c1[2]*c3[2]`x^2$ & & \\ 
+\end{tabular}
+\end{center}
+
+8. Complete the column.
+
+\begin{center}
+\begin{tabular}{c | c  c  c  c }
+$\cdot$ & $`r c3[1]`x^3$ & $`r c3[2]`x^2$  & $`r c3[3]`x$ & \\ \hline
+$x$ & $`r c4[1]`x^4$ & $`r c4[2]-c1[2]*c3[1]`x^3$ & $`r c4[3]-c1[2]*c3[2]`x^2$ & \\ 
+`r c1[2]` & $`r c1[2]*c3[1]`x^3$ & $`r c1[2]*c3[2]`x^2$ & $`r c1[2]*c3[3]`x$ & \\ 
+\end{tabular}
+\end{center}
+
+9. To get the dividend's $`r c4[4]`x$ term, we need to add $`r c4[4]-c1[2]*c3[3]`x$. Place it in the table.
+
+\begin{center}
+\begin{tabular}{c | c  c  c  c }
+$\cdot$ & $`r c3[1]`x^3$ & $`r c3[2]`x^2$  & $`r c3[3]`x$ & \\ \hline
+$x$ & $`r c4[1]`x^4$ & $`r c4[2]-c1[2]*c3[1]`x^3$ & $`r c4[3]-c1[2]*c3[2]`x^2$ & $`r c4[4]-c1[2]*c3[3]`x$ \\ 
+`r c1[2]` & $`r c1[2]*c3[1]`x^3$ & $`r c1[2]*c3[2]`x^2$ & $`r c1[2]*c3[3]`x$ & \\ 
+\end{tabular}
+\end{center}
+
+10. Complete the column.
+
+\begin{center}
+\begin{tabular}{c | c  c  c  c }
+$\cdot$ & $`r c3[1]`x^3$ & $`r c3[2]`x^2$  & $`r c3[3]`x$ & $`r c3[4]`$ \\ \hline
+$x$ & $`r c4[1]`x^4$ & $`r c4[2]-c1[2]*c3[1]`x^3$ & $`r c4[3]-c1[2]*c3[2]`x^2$ & $`r c4[4]-c1[2]*c3[3]`x$ \\
+`r c1[2]` & $`r c1[2]*c3[1]`x^3$ & $`r c1[2]*c3[2]`x^2$ & $`r c1[2]*c3[3]`x$ & $`r c1[2]*c3[4]`$ \\ 
+\end{tabular}
+\end{center}
+
+11. Notice the divisor's constant term is `r c4[5]`, but we have one constant term, `r c1[2]*c3[4]`, in the box. This means the remainder is `r R`.
+
+\end{minipage}
+
+\vfill
+
+
+Thus, for all $x$ (except $x\ne `r -c1[2]`$),
+
+$$\frac{`r pn(c4,4:0)`}{`r pn(c1,1:0)`}~\equiv~`r pn(c3,3:0)`+\frac{`r R`}{`r pn(c1,1:0)`}$$
+
+When using this method, I often forget how to determine the remainder. I think this helps me:
+
+$$\frac{`r pn(c4,4:0)`}{`r pn(c1,1:0)`}~\equiv~\frac{`r pn(c4-c(0,0,0,0,R),4:0)`}{`r pn(c1,1:0)`}+\frac{`r R`}{`r pn(c1,1:0)`}~\equiv~`r pn(c3,3:0)`+\frac{`r R`}{`r pn(c1,1:0)`}$$
+
+In short, the result can be expressed as:
+
+$$`r pn(c3,3:0)`+\frac{`r R`}{`r pn(c1,1:0)`}$$
+
+
+\newpage
+
+Use the box method (AND SHOW YOUR WORK) to divide.
+
+
+```{r}
+ts = character()
+qs = character()
+ans = character()
+
+c1s = sample(c(-9:-1,1:9))
+
+while(length(ts)<12){
+    while(T){
+        R = sample(1:9,1)*sample(c(-1,1),1)
+        c3 = sample(2:9,4)*c(1,sample(c(-1,1),3,T))
+        c1 = c(1,c1s[length(ts)+1]) #c(1,sample(2:9,1)*sample(c(-1,1),1))
+        d3 = 3:0
+        d1 = 1:0
+        c4 = rep(0,5)
+        for(i in 1:4){
+            di = 4-i
+            for(j in 1:2){
+                dj = 2-j
+                dk = di+dj
+                k = 5-dk
+                c4[k] = c4[k]+c3[i]*c1[j]
+            }
+        }
+        c4[5] = c4[5]+R
+        if(min(abs(c4))>0 && abs(R)!=abs(c1[2])){break}
+    }
+    ta = paste0("\\begin{tabular}{c | c  c  c  c }
+    $\\cdot$ & $",c3[1],"x^3$ & $",c3[2],"x^2$  & $",c3[3],"x$ & $",c3[4],"$ \\\\ \\hline \n $x$ & $",c4[1],"x^4$ & $",c4[2]-c1[2]*c3[1],"x^3$ & $",c4[3]-c1[2]*c3[2],"x^2$ & $",c4[4]-c1[2]*c3[3],"x$ \\\\ \n ",c1[2]," & $",c1[2]*c3[1],"x^3$ & $",c1[2]*c3[2],"x^2$ & $",c1[2]*c3[3],"x$ & $",c1[2]*c3[4],"$ \n \\end{tabular}")
+    qu = paste0("\\cfrac{",pn(c4,4:0),"}{",pn(c1,1:0),"}")
+    answer = paste0("$$",pn(c3,3:0),"+\\frac{",R,"}{",pn(c1,1:0),"}$$")
+    if(!(qu %in% qs)){
+        ts = c(ts,ta)
+        qs = c(qs,qu)
+        ans = c(ans,answer)
+    }
+}
+```
+
+```{r,echo=F,results='asis'}
+for(i in 1:6){
+    cat(paste0(i,". Divide $",qs[i],"$.\n\n\\vfill\n"))
+}
+```
+
+\newpage
+
+
+```{r,echo=F,results='asis'}
+for(i in 7:12){
+    cat(paste0(i,". Divide $",qs[i],"$.\n\n\\vfill\n"))
+}
+```
+
+\newpage
+
+Answers
+
+\begin{minipage}[t][8.5in]{0.45\linewidth}
+
+```{r,echo=F,results='asis'}
+for(i in 1:length(qs)){
+    cat(paste0(i,". ",ts[i],"\n\n\\vfill\n\n"))
+}
+```
+
+\end{minipage} \hfill
+\begin{minipage}[t][8.5in]{0.45\linewidth}
+```{r,echo=F,results='asis'}
+for(i in 1:length(qs)){
+    cat(paste0(ans[i],"\n\n\\vfill\n\n"))
+}
+```
+\vfill
+
+\end{minipage}
+

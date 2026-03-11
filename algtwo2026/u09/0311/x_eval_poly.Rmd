@@ -1,0 +1,82 @@
+```{r,echo=F}
+options(scipen=999)
+pfix = function(c,d){
+    p = paste0("{",c,"}x^{",d,"}",collapse="+")
+    p = gsub("x^{0}","",p,fixed=T)
+    p = gsub("x^{1}","x",p,fixed=T)
+    p = gsub("+{-","-{",p,fixed=T)
+    p = gsub("+{1}x","+x",p,fixed=T)
+    p = gsub("-{1}x","-x",p,fixed=T)
+    p = gsub("{-1}x","-x",p,fixed=T)
+    p = gsub("{1}x","x",p,fixed=T)
+    p = gsub("{","",p,fixed=T)
+    p = gsub("}","",p,fixed=T)
+    return(p)
+}
+
+x = sample(2:5,1)*sample(c(-1,1),1)
+while(T){
+    cfs = sample(2:9,4)*c(1,sample(c(-1,1),3,T))
+    f = cfs[1]*x^3+cfs[2]*x^2+cfs[3]*x+cfs[4]
+    if(abs(f)<1000 && abs(f)>0){
+        break
+    }
+}
+
+```
+
+
+
+Question
+========
+
+Let function $f$ be defined by the cubic polynomial shown below.
+
+$$f(x)~=~`r pfix(cfs,3:0)`$$
+
+Evaluate $f(`r x`)$.
+
+
+Solution
+========
+
+Replace all instances of $x$ with $`r x`$.
+
+```{r,echo=F}
+step1 = gsub("x",paste0("(",x,")"),pfix(cfs,3:0),fixed=T)
+```
+
+$$f(`r x`)~=~`r step1`$$
+
+Evaluate the powers.
+
+```{r,echo=F}
+step2 = paste0(cfs,c(paste0("(",x^(3:1),")"),""),collapse="+")
+step2 = gsub("+-","-",step2,fixed=T)
+```
+
+
+$$f(`r x`)~=~`r step2`$$
+
+Evaluate the products.
+
+```{r,echo=F}
+step3 = paste0(cfs*x^(3:0),collapse="+")
+step3 = gsub("+-","-",step3,fixed=T)
+```
+
+
+$$f(`r x`)~=~`r step3`$$
+
+Add/subtract the terms.
+
+
+$$f(`r x`)~=~`r f`$$
+
+Thus, the answer is `r f`.
+
+Meta-information
+============
+extype: num
+exsolution: `r f`
+exname: eval_poly
