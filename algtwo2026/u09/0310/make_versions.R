@@ -1,7 +1,7 @@
 fn = "a0310_pop_quiz.Rmd"
 shortfn = strsplit(fn,"_")[[1]][1]
-nlow = 200
-nhigh = 240
+nlow = 300
+nhigh = 330
 
 sss44 = "<!DOCTYPE html>
 <html lang='en'>

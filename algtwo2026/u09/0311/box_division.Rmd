@@ -1,7 +1,7 @@
 ---
 output: pdf_document
 params:
-    rseed: 0
+    rseed: 3
     showsol: true
 ---
 
@@ -173,23 +173,24 @@ $x$ & $`r c4[1]`x^4$ & $`r c4[2]-c1[2]*c3[1]`x^3$ & $`r c4[3]-c1[2]*c3[2]`x^2$ &
 
 11. Notice the divisor's constant term is `r c4[5]`, but we have one constant term, `r c1[2]*c3[4]`, in the box. This means the remainder is `r R`.
 
+\begin{center}
+\begin{tabular}{c | c  c  c  c | c }
+$\cdot$ & $`r c3[1]`x^3$ & $`r c3[2]`x^2$  & $`r c3[3]`x$ & $`r c3[4]`$  & \\ \cline{1-5}
+$x$ & $`r c4[1]`x^4$ & $`r c4[2]-c1[2]*c3[1]`x^3$ & $`r c4[3]-c1[2]*c3[2]`x^2$ & $`r c4[4]-c1[2]*c3[3]`x$ & `r R` \\
+`r c1[2]` & $`r c1[2]*c3[1]`x^3$ & $`r c1[2]*c3[2]`x^2$ & $`r c1[2]*c3[3]`x$ & $`r c1[2]*c3[4]`$ & \\ 
+\end{tabular}
+\end{center}
+
 \end{minipage}
 
 \vfill
 
 
-Thus, for all $x$ (except $x\ne `r -c1[2]`$),
-
-$$\frac{`r pn(c4,4:0)`}{`r pn(c1,1:0)`}~\equiv~`r pn(c3,3:0)`+\frac{`r R`}{`r pn(c1,1:0)`}$$
-
-When using this method, I often forget how to determine the remainder. I think this helps me:
-
-$$\frac{`r pn(c4,4:0)`}{`r pn(c1,1:0)`}~\equiv~\frac{`r pn(c4-c(0,0,0,0,R),4:0)`}{`r pn(c1,1:0)`}+\frac{`r R`}{`r pn(c1,1:0)`}~\equiv~`r pn(c3,3:0)`+\frac{`r R`}{`r pn(c1,1:0)`}$$
-
-In short, the result can be expressed as:
+The result can be expressed as:
 
 $$`r pn(c3,3:0)`+\frac{`r R`}{`r pn(c1,1:0)`}$$
 
+\vfill
 
 \newpage
 
@@ -223,8 +224,8 @@ while(length(ts)<12){
         c4[5] = c4[5]+R
         if(min(abs(c4))>0 && abs(R)!=abs(c1[2])){break}
     }
-    ta = paste0("\\begin{tabular}{c | c  c  c  c }
-    $\\cdot$ & $",c3[1],"x^3$ & $",c3[2],"x^2$  & $",c3[3],"x$ & $",c3[4],"$ \\\\ \\hline \n $x$ & $",c4[1],"x^4$ & $",c4[2]-c1[2]*c3[1],"x^3$ & $",c4[3]-c1[2]*c3[2],"x^2$ & $",c4[4]-c1[2]*c3[3],"x$ \\\\ \n ",c1[2]," & $",c1[2]*c3[1],"x^3$ & $",c1[2]*c3[2],"x^2$ & $",c1[2]*c3[3],"x$ & $",c1[2]*c3[4],"$ \n \\end{tabular}")
+    ta = paste0("\\begin{tabular}{c | c  c  c  c | c}
+    $\\cdot$ & $",c3[1],"x^3$ & $",c3[2],"x^2$  & $",c3[3],"x$ & $",c3[4],"$ & \\\\ \\cline{1-5} \n $x$ & $",c4[1],"x^4$ & $",c4[2]-c1[2]*c3[1],"x^3$ & $",c4[3]-c1[2]*c3[2],"x^2$ & $",c4[4]-c1[2]*c3[3],"x$ & ",R," \\\\ \n ",c1[2]," & $",c1[2]*c3[1],"x^3$ & $",c1[2]*c3[2],"x^2$ & $",c1[2]*c3[3],"x$ & $",c1[2]*c3[4],"$ & \n \\end{tabular}")
     qu = paste0("\\cfrac{",pn(c4,4:0),"}{",pn(c1,1:0),"}")
     answer = paste0("$$",pn(c3,3:0),"+\\frac{",R,"}{",pn(c1,1:0),"}$$")
     if(!(qu %in% qs)){
