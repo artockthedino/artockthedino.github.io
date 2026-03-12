@@ -11,7 +11,7 @@
 
 
 
-<title>x_eval_poly.knit</title>
+<title>examples_0312</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -252,6 +252,252 @@ if (window.hljs) {
 
 
 
+<style type="text/css">:root {
+--incorrect: #983E82;
+--incorrect_alpha: #edaddd;
+--correct: #59935B;
+--correct_alpha: #c0edc2;
+--highlight: #467AAC;
+--highlight_alpha: #D1E4FF;
+--highlight_gray: #C3C3C3;
+--background_question: #7f7f7f0d;
+--background_input: white;
+--text_input: black;
+--webex-reveal-main-font-size: 1.5rem; 
+--webex-reveal-main-color: var(--r-main-color);
+}
+
+
+:root .quarto-dark, :root .color-theme-2 {
+--highlight: #5687B9;
+--background_input: black;
+--text_input: white;
+}
+
+.reveal .webex-question * {
+font-size: var(--webex-reveal-main-font-size) !important;
+color: var(--webex-reveal-main-color) !important;
+} 
+
+.webex-group .webex-question {
+display: none;
+}
+.webex-group .webex-question.active {
+display: block;
+}
+.webex-check {}
+.webex-box {
+border: 2px solid var(--highlight);
+padding: 0.5em;
+margin: 1em 0;
+border-radius: .25em;
+background-color: var(--background_question);
+}
+.webex-filename {
+display: block;
+font-family: "Lucida Console", "Courier New", monospace;
+color: gray;
+text-align: right;
+}
+.webex-filename > p { margin: 0; }
+.webex-total_correct {
+margin-left: 1em;
+}
+.unchecked .webex-total_correct {
+display: none;
+}
+.unchecked .webex-incorrect,
+.unchecked .webex-correct {
+border: 2px solid transparent !important;
+background-color: transparent !important;
+}
+
+.unchecked select.webex-incorrect,
+.unchecked select.webex-correct,
+.unchecked input.webex-incorrect,
+.unchecked input.webex-correct {
+border: 2px solid var(--highlight) !important;
+background-color: var(--background_input) !important;
+color: var(--text_input) !important;
+}
+
+.webex-select, .webex-solveme,
+.unchecked .webex-radiogroup > .webex-incorrect,
+.unchecked .webex-radiogroup > .webex-correct{
+border: 2px solid var(--highlight);
+background-color: var(--background_input);
+color: var(--text_input) !important;
+border-radius: 0.25em;
+width: auto;
+max-width: 90%;
+}
+.webex-question .tolerance + .webex-solveme {
+border-top-left-radius: 0;
+border-bottom-left-radius: 0;
+border-left: none;
+padding-left: 0.5em;
+}
+.webex-question .tolerance {
+border-color: var(--highlight);
+border-radius: 0.25em;
+background-color: #CECECE;
+color: gray;
+text-align: right;
+border-top-right-radius: 0;
+border-bottom-right-radius: 0;
+border-style: solid;
+border-right: none;
+padding-right: .5em;
+padding-left: .25em;
+}
+.webex-check:not(.unchecked) .tolerance:has(+ .webex-solveme.webex-incorrect) {
+border-color: var(--incorrect);
+color: var(--incorrect);
+}
+.webex-check:not(.unchecked) .tolerance:has(+ .webex-solveme.webex-correct) {
+border-color: var(--correct);
+color: var(--correct);
+}
+.webex-incorrect, .webex-checkboxgroup, .webex-solveme. .webex-radiogroup {
+
+border-radius: 0.25em;
+}
+.webex-checkboxgroup {
+margin-bottom: 1em;
+}
+.webex-incorrect,
+.webex-checkboxgroup > .webex-incorrect,
+.webex-solveme.webex-incorrect,
+.webex-radiogroup > .webex-incorrect {
+border: 2px solid var(--incorrect);
+background-color: var(--incorrect_alpha);
+}
+.webex-correct, .webex-checkboxgroup > .webex-correct,
+.webex-solveme.webex-correct,
+.webex-radiogroup >.webex-correct {
+border: 2px solid var(--correct);
+background-color: var(--correct_alpha);
+}
+.unchecked .webex-incorrect > span::after,
+.unchecked .webex-incorrect + .webex-icon::after,
+.unchecked .webex-correct > span::after,
+.unchecked .webex-correct + .webex-icon::after {
+content: "";
+}
+
+.webex-incorrect > span::after,
+.webex-incorrect + .webex-icon::after {
+content: "\00a0\00a0\2715";
+}
+.webex-correct > span::after,
+.webex-correct + .webex-icon::after {
+content: "\00a0\00a0\2713";
+}
+
+
+
+.webex-solution {
+display: none;
+padding: 0.5em;
+margin-bottom: 10px;
+border: 2px solid var(--highlight_gray);
+border-radius: 5px;
+}
+.webex-solution.visible {
+display: block;
+}
+.webex-solution > ul {
+padding-left: 2em;
+}
+
+ul.webex-button-list {
+display: flex;
+flex-wrap: wrap;
+width: 100%;
+list-style: none;
+padding: 0 !important; 
+margin: 0 !important; 
+}
+ul.webex-button-list > li {
+padding: 0;
+}
+ul.webex-button-list > li {
+margin-bottom: 0 !important; 
+}
+ul.webex-button-list > li:first-child {
+margin-right: auto;
+margin-top: 0; 
+}
+.webex-solution button,
+.webex-box .webex-button {
+height: 2em;
+min-width: 2em;
+margin-bottom: 0;
+margin-right: 0.25em;
+border-radius: 0.5em;
+background-color: transparent;
+border-color: var(--highlight);
+color: var(--highlight);
+padding: 0 0.5em;
+font-size: 1.2em;
+white-space: nowrap;
+}
+.webex-button:hover {
+background-color: var(--highlight_alpha);
+}
+.webex-solution pre.sourceCode {
+border-color: var(--correct);
+}
+ul.webex-button-list > li:last-child > .webex-button { margin-right: 0;
+}
+
+.webex-checkboxgroup > label,
+.unchecked .webex-checkboxgroup > label,
+.webex-radiogroup label {
+font-weight: 400;
+display: block;
+border: 2px solid transparent;
+background-color: inherit;
+border-radius: 0.25em;
+}
+.webex-checkboxgroup label > input[type=checkbox],
+.webex-radiogroup label > input[type=radio] {
+margin: 0.1em 0.5em 0 0.25em;
+position: relative;
+top: 0.125em;
+}
+.webex-radiogroup {
+margin: 1em 0;
+}
+
+.webex-box > ul:not(.webex-button-list) {
+list-style: none;
+margin: 0;
+padding: 0 0 1em 0.25em;
+}
+.webex-box > ul:not(.webex-button-list) > li {
+margin: 0 0 0.25em 0;
+}
+.webex-box > ul:not(.webex-button-list) > li > select {
+margin: 0 0.5em 0 0;
+}
+
+.webex-checkboxgroup > label {
+display: block;
+}
+.webex-checkboxgroup > label > span {
+font-weight: normal;
+}
+.unchecked .webex-checkboxgroup .webex-incorrect,
+.unchecked .webex-checkboxgroup .webex-correct {
+border: 2px solid transparent !important;
+background-color: transparent !important;
+}
+.unchecked .webex-checkboxgroup > label.webex-correct,
+.unchecked .webex-checkboxgroup > label.webex-incorrect {
+background-color: transparent;
+}
+</style>
 
 
 
@@ -348,35 +594,3123 @@ display: none;
 
 
 
+<h1 class="title toc-ignore">examples_0312</h1>
 
 </div>
 
 
-<div id="question" class="section level1">
-<h1>Question</h1>
+<div class="webex-group">
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Show how to fill out the box to divide <span class="math inline">\(2x⁴-15x³+19x²+30x-14\)</span> by the linear
+binomial <span class="math inline">\(x-3\)</span>.</p>
+<style type="text/css">
+.boxy td {
+padding: 2em;
+border: 1px solid black;
+text-align: center;
+font-size: 1em;
+color: black;
+background-color: white;
+}
+.boxy th {
+background-color: rgb(200, 200, 200);
+color: black;
+padding: 2em;
+font-size: 1em;
+text-align: center;
+border: 1px solid black;
+}
+.boxy td:first-child {
+background-color: rgb(200, 200, 200);
+color: black;
+padding: 2em;
+font-size: 1em;
+text-align: center;
+border: 1px solid black;
+}
+.boxy select {
+width: 7em;
+margin-bottom: 0.8em;
+margin-top: 0.8em;
+margin-right: 0.8em;
+margin-left: 0.8em;
+}
+</style>
+<div class="boxy">
+<table>
+<colgroup>
+<col width="15%" />
+<col width="15%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">*</th>
+<th align="center"><select class="webex-select" id="webex-275f6ba2cf786653b64b5ae0210b1438" data-answer="aQcZVhpSTQJPVhsIGgYZA04GGFMZUUkAHgEcUh0Ebg=="><option value="blank"></option><option>-18</option><option>-3</option><option>-6x³</option><option>-8x</option><option>-8x²</option><option>-9x²</option><option>-9x³</option><option>24x</option><option>27x²</option><option>2x³</option><option>2x⁴</option><option>4</option><option>6</option><option>6x</option><option>x</option></select></th>
+<th align="center"><select class="webex-select" id="webex-ffeeee10cb9a8ac9630d182782667903" data-answer="PVZJVUlVHQBPUhVQFFFPCRoDHFQdCB4HFAIaBhsJbQ=="><option value="blank"></option><option>-18</option><option>-3</option><option>-6x³</option><option>-8x</option><option>-8x²</option><option>-9x²</option><option>-9x³</option><option>24x</option><option>27x²</option><option>2x³</option><option>2x⁴</option><option>4</option><option>6</option><option>6x</option><option>x</option></select></th>
+<th align="center"><select class="webex-select" id="webex-3f2c700b4cf028977e3d72c4bf922c93" data-answer="aFYeUxsAHFMYU0oAHggVBxtVH1QbAk8ETlYVAh5TZA=="><option value="blank"></option><option>-18</option><option>-3</option><option>-6x³</option><option>-8x</option><option>-8x²</option><option>-9x²</option><option>-9x³</option><option>24x</option><option>27x²</option><option>2x³</option><option>2x⁴</option><option>4</option><option>6</option><option>6x</option><option>x</option></select></th>
+<th align="center"><select class="webex-select" id="webex-9209e43da3c277e82fb5f5a52cdadedf" data-answer="YgIcCUkEH1RNA08CGwdJCB5WTgVKBU0FHlJIUUhVOQ=="><option value="blank"></option><option>-18</option><option>-3</option><option>-6x³</option><option>-8x</option><option>-8x²</option><option>-9x²</option><option>-9x³</option><option>24x</option><option>27x²</option><option>2x³</option><option>2x⁴</option><option>4</option><option>6</option><option>6x</option><option>x</option></select></th>
+<th align="center">Remainder</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><select class="webex-select" id="webex-d9843640d66ed636d6b143a3ce58eb73" data-answer="PwkUBB8GGABIBhpVSAYfBkgGTgEYA00DT1UZCElTag=="><option value="blank"></option><option>-18</option><option>-3</option><option>-6x³</option><option>-8x</option><option>-8x²</option><option>-9x²</option><option>-9x³</option><option>24x</option><option>27x²</option><option>2x³</option><option>2x⁴</option><option>4</option><option>6</option><option>6x</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-46ad00d0a1413bc359b42015651b0d51" data-answer="bwZNVBwASABNARgBH1JPAxkJTgQeAR0FGgUdUhxUaA=="><option value="blank"></option><option>-18</option><option>-3</option><option>-6x³</option><option>-8x</option><option>-8x²</option><option>-9x²</option><option>-9x³</option><option>24x</option><option>27x²</option><option>2x³</option><option>2x⁴</option><option>4</option><option>6</option><option>6x</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-df9e2f2461fb2b65ccdc7bd89a387443" data-answer="P1YVVR5WHgQaAUpSHlMaBU9TSFMbUkgIFVEfCBsEaQ=="><option value="blank"></option><option>-18</option><option>-3</option><option>-6x³</option><option>-8x</option><option>-8x²</option><option>-9x²</option><option>-9x³</option><option>24x</option><option>27x²</option><option>2x³</option><option>2x⁴</option><option>4</option><option>6</option><option>6x</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-ab8ae40a98b888367d9b80a04155b579" data-answer="OlIUUUkEHFEVCU4IFAgfBhtUFVIUAE0AGAEZBU4Fag=="><option value="blank"></option><option>-18</option><option>-3</option><option>-6x³</option><option>-8x</option><option>-8x²</option><option>-9x²</option><option>-9x³</option><option>24x</option><option>27x²</option><option>2x³</option><option>2x⁴</option><option>4</option><option>6</option><option>6x</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-69ad168ca12d4f40528a10cc719d4ea5" data-answer="bQlNVB0GFFNNAR5UGFYYABkCFFEdAE9TGwEVVRhVPA=="><option value="blank"></option><option>-18</option><option>-3</option><option>-6x³</option><option>-8x</option><option>-8x²</option><option>-9x²</option><option>-9x³</option><option>24x</option><option>27x²</option><option>2x³</option><option>2x⁴</option><option>4</option><option>6</option><option>6x</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-f66aa030b2bb672dac860acffdcaa6a5" data-answer="PQYaUU0AHwBOAk5SGgceVE1TFAYcUU9XSlRPUU0GPA=="><option value="blank"></option><option>-18</option><option>-3</option><option>-6x³</option><option>-8x</option><option>-8x²</option><option>-9x²</option><option>-9x³</option><option>24x</option><option>27x²</option><option>2x³</option><option>2x⁴</option><option>4</option><option>6</option><option>6x</option><option>x</option></select></td>
+</tr>
+<tr class="even">
+<td align="center"><select class="webex-select" id="webex-f0ecca4e2e34c4feeb07ef552a369558" data-answer="PQBJUk9RGFUeVR8ETwRKVUlSHAdJVhkFHlEfBhUFaA=="><option value="blank"></option><option>-18</option><option>-3</option><option>-6x³</option><option>-8x</option><option>-8x²</option><option>-9x²</option><option>-9x³</option><option>24x</option><option>27x²</option><option>2x³</option><option>2x⁴</option><option>4</option><option>6</option><option>6x</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-9dfa09cabf23ae401eccfc068edb27db" data-answer="YlRKURwIT1FOVh4DTVUYAB1VT1NKUxwGFFVIUh4HOQ=="><option value="blank"></option><option>-18</option><option>-3</option><option>-6x³</option><option>-8x</option><option>-8x²</option><option>-9x²</option><option>-9x³</option><option>24x</option><option>27x²</option><option>2x³</option><option>2x⁴</option><option>4</option><option>6</option><option>6x</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-260041acf9319a0aff51147b052d1164" data-answer="aQYcABgBTVNKCR8BFVEcUUpXGQEdBBtSHAUeVB0Baw=="><option value="blank"></option><option>-18</option><option>-3</option><option>-6x³</option><option>-8x</option><option>-8x²</option><option>-9x²</option><option>-9x³</option><option>24x</option><option>27x²</option><option>2x³</option><option>2x⁴</option><option>4</option><option>6</option><option>6x</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-6aba51113eebd18fcf2457f28f24e28b" data-answer="bVFOURkBHQEfVUlSSAEUV09WHgQZB0oCFFYeBEkCZQ=="><option value="blank"></option><option>-18</option><option>-3</option><option>-6x³</option><option>-8x</option><option>-8x²</option><option>-9x²</option><option>-9x³</option><option>24x</option><option>27x²</option><option>2x³</option><option>2x⁴</option><option>4</option><option>6</option><option>6x</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-29611634185bc6e14ce02023b9e2c757" data-answer="aQgaAR0GHwQdCBlSTwZJARhTSQAeAB4DTglJAk8HaA=="><option value="blank"></option><option>-18</option><option>-3</option><option>-6x³</option><option>-8x</option><option>-8x²</option><option>-9x²</option><option>-9x³</option><option>24x</option><option>27x²</option><option>2x³</option><option>2x⁴</option><option>4</option><option>6</option><option>6x</option><option>x</option></select></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="webex-solution">
+<style type="text/css">
+.boxy td {
+padding: 2em;
+border: 1px solid black;
+text-align: center;
+font-size: 1em;
+color: black;
+background-color: white;
+}
+.boxy th {
+background-color: rgb(200, 200, 200);
+color: black;
+padding: 2em;
+font-size: 1em;
+text-align: center;
+border: 1px solid black;
+}
+.boxy td:first-child {
+background-color: rgb(200, 200, 200);
+color: black;
+padding: 2em;
+font-size: 1em;
+text-align: center;
+border: 1px solid black;
+}
+.boxy select {
+width: 7em;
+margin-bottom: 0.8em;
+margin-top: 0.8em;
+margin-right: 0.8em;
+margin-left: 0.8em;
+}
+</style>
+<div class="boxy">
+<table>
+<colgroup>
+<col width="15%" />
+<col width="15%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">*</th>
+<th align="center">2x³</th>
+<th align="center">-9x²</th>
+<th align="center">-8x</th>
+<th align="center">6</th>
+<th align="center">Remainder</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">x</td>
+<td align="center">2x⁴</td>
+<td align="center">-9x³</td>
+<td align="center">-8x²</td>
+<td align="center">6x</td>
+<td align="center">4</td>
+</tr>
+<tr class="even">
+<td align="center">-3</td>
+<td align="center">-6x³</td>
+<td align="center">27x²</td>
+<td align="center">24x</td>
+<td align="center">-18</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Show how to fill out the box to divide <span class="math inline">\(7x⁴-44x³+9x²+12x+38\)</span> by the linear
+binomial <span class="math inline">\(x-6\)</span>.</p>
+<style type="text/css">
+.boxy td {
+padding: 2em;
+border: 1px solid black;
+text-align: center;
+font-size: 1em;
+color: black;
+background-color: white;
+}
+.boxy th {
+background-color: rgb(200, 200, 200);
+color: black;
+padding: 2em;
+font-size: 1em;
+text-align: center;
+border: 1px solid black;
+}
+.boxy td:first-child {
+background-color: rgb(200, 200, 200);
+color: black;
+padding: 2em;
+font-size: 1em;
+text-align: center;
+border: 1px solid black;
+}
+.boxy select {
+width: 7em;
+margin-bottom: 0.8em;
+margin-top: 0.8em;
+margin-right: 0.8em;
+margin-left: 0.8em;
+}
+</style>
+<div class="boxy">
+<table>
+<colgroup>
+<col width="15%" />
+<col width="15%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">*</th>
+<th align="center"><select class="webex-select" id="webex-908eb9a13a5060f13c729823dc1e552e" data-answer="YgAUVU4JTQEfURkAGgBKAR9TGwIVCB4CSFMdVWg="><option value="blank"></option><option>-2x²</option><option>-2x³</option><option>-3x</option><option>-3x²</option><option>-42x³</option><option>-6</option><option>-6x</option><option>12x²</option><option>18x</option><option>2</option><option>36</option><option>7x³</option><option>7x⁴</option><option>x</option></select></th>
+<th align="center"><select class="webex-select" id="webex-f96272299025a4852f6bafc2de46ac93" data-answer="PQgaAhsCHgkVAB4FTQQUBR5WGlJNVk8CSFUYBjw="><option value="blank"></option><option>-2x²</option><option>-2x³</option><option>-3x</option><option>-3x²</option><option>-42x³</option><option>-6</option><option>-6x</option><option>12x²</option><option>18x</option><option>2</option><option>36</option><option>7x³</option><option>7x⁴</option><option>x</option></select></th>
+<th align="center"><select class="webex-select" id="webex-920b859ac006ff6e9067bbd733a0112a" data-answer="YgIcUhQEFVFPABwGSlYaVRUAGgdOUkgHHwNNAGw="><option value="blank"></option><option>-2x²</option><option>-2x³</option><option>-3x</option><option>-3x²</option><option>-42x³</option><option>-6</option><option>-6x</option><option>12x²</option><option>18x</option><option>2</option><option>36</option><option>7x³</option><option>7x⁴</option><option>x</option></select></th>
+<th align="center"><select class="webex-select" id="webex-629fb9b9161d7dbeaf782cd8aa0274e8" data-answer="bQIVVk4JTgkdBh1VG1ROVU1WGwgeU0gITVEcAmo="><option value="blank"></option><option>-2x²</option><option>-2x³</option><option>-3x</option><option>-3x²</option><option>-42x³</option><option>-6</option><option>-6x</option><option>12x²</option><option>18x</option><option>2</option><option>36</option><option>7x³</option><option>7x⁴</option><option>x</option></select></th>
+<th align="center">Remainder</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><select class="webex-select" id="webex-dc5ac60806b002c1f8dadc41fb54447e" data-answer="P1MZUU8GHAgcBk4AHAJPAUoISFFIUxgBSlIZBWk="><option value="blank"></option><option>-2x²</option><option>-2x³</option><option>-3x</option><option>-3x²</option><option>-42x³</option><option>-6</option><option>-6x</option><option>12x²</option><option>18x</option><option>2</option><option>36</option><option>7x³</option><option>7x⁴</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-9def1565c922eacf863fe6a6503e9506" data-answer="YlRJVh0FGgVPCR4CSVFPVhQGH1ZJBk0GGQEfVWQ="><option value="blank"></option><option>-2x²</option><option>-2x³</option><option>-3x</option><option>-3x²</option><option>-42x³</option><option>-6</option><option>-6x</option><option>12x²</option><option>18x</option><option>2</option><option>36</option><option>7x³</option><option>7x⁴</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-1f066445aa12125df7e1448e8313d3a7" data-answer="alYcBxoEGAVNUR0CHQIZVEoHSQEYBBRVFAMdAzk="><option value="blank"></option><option>-2x²</option><option>-2x³</option><option>-3x</option><option>-3x²</option><option>-42x³</option><option>-6</option><option>-6x</option><option>12x²</option><option>18x</option><option>2</option><option>36</option><option>7x³</option><option>7x⁴</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-b437b0852b9496292482d7f50b004b16" data-answer="OQQfB04AFAQeUhUEFQYeCR4EFAJIB0oFHFIcAGk="><option value="blank"></option><option>-2x²</option><option>-2x³</option><option>-3x</option><option>-3x²</option><option>-42x³</option><option>-6</option><option>-6x</option><option>12x²</option><option>18x</option><option>2</option><option>36</option><option>7x³</option><option>7x⁴</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-25702c2c7e5821654db888ebc928eae1" data-answer="aQUbAB5THlMbVRkIHgAaBRhUTggUCElSTwkeCDg="><option value="blank"></option><option>-2x²</option><option>-2x³</option><option>-3x</option><option>-3x²</option><option>-42x³</option><option>-6</option><option>-6x</option><option>12x²</option><option>18x</option><option>2</option><option>36</option><option>7x³</option><option>7x⁴</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-af98d3e1279efbf885a0d3bb6a285f45" data-answer="OlYVCEgDSQEeBxVVSlJKCBQFTQFIA05SGlEeCGg="><option value="blank"></option><option>-2x²</option><option>-2x³</option><option>-3x</option><option>-3x²</option><option>-42x³</option><option>-6</option><option>-6x</option><option>12x²</option><option>18x</option><option>2</option><option>36</option><option>7x³</option><option>7x⁴</option><option>x</option></select></td>
+</tr>
+<tr class="even">
+<td align="center"><select class="webex-select" id="webex-5f1a55d510491a3158ae00d03b098909" data-answer="blYdURkFSAUdABgIHVEfARkITVUcAEgAH1IcCWU="><option value="blank"></option><option>-2x²</option><option>-2x³</option><option>-3x</option><option>-3x²</option><option>-42x³</option><option>-6</option><option>-6x</option><option>12x²</option><option>18x</option><option>2</option><option>36</option><option>7x³</option><option>7x⁴</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-d720ee93cff5fe2a250050cea9277f11" data-answer="PwceAElVFQNPV0oFSlUeUR4FHAAZAE9VTQkeB2o="><option value="blank"></option><option>-2x²</option><option>-2x³</option><option>-3x</option><option>-3x²</option><option>-42x³</option><option>-6</option><option>-6x</option><option>12x²</option><option>18x</option><option>2</option><option>36</option><option>7x³</option><option>7x⁴</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-4d8427f247dddc3287428c7edf3afe15" data-answer="b1QUBB4HSgIYB0hUSFMfAxQHGAIUUxtVSFYfUTs="><option value="blank"></option><option>-2x²</option><option>-2x³</option><option>-3x</option><option>-3x²</option><option>-42x³</option><option>-6</option><option>-6x</option><option>12x²</option><option>18x</option><option>2</option><option>36</option><option>7x³</option><option>7x⁴</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-f21cd5bd0042701bcca572bb1291e876" data-answer="PQIdU0gFTlQcABgCGwAdUk9STQUbAk5SHQIVATg="><option value="blank"></option><option>-2x²</option><option>-2x³</option><option>-3x</option><option>-3x²</option><option>-42x³</option><option>-6</option><option>-6x</option><option>12x²</option><option>18x</option><option>2</option><option>36</option><option>7x³</option><option>7x⁴</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-c0737d47f7304d66765b85a77ee83df3" data-answer="OAAbAxtUGAdKBx8AGFQaBhsGGVIUBE0HG1VJCG4="><option value="blank"></option><option>-2x²</option><option>-2x³</option><option>-3x</option><option>-3x²</option><option>-42x³</option><option>-6</option><option>-6x</option><option>12x²</option><option>18x</option><option>2</option><option>36</option><option>7x³</option><option>7x⁴</option><option>x</option></select></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="webex-solution">
+<style type="text/css">
+.boxy td {
+padding: 2em;
+border: 1px solid black;
+text-align: center;
+font-size: 1em;
+color: black;
+background-color: white;
+}
+.boxy th {
+background-color: rgb(200, 200, 200);
+color: black;
+padding: 2em;
+font-size: 1em;
+text-align: center;
+border: 1px solid black;
+}
+.boxy td:first-child {
+background-color: rgb(200, 200, 200);
+color: black;
+padding: 2em;
+font-size: 1em;
+text-align: center;
+border: 1px solid black;
+}
+.boxy select {
+width: 7em;
+margin-bottom: 0.8em;
+margin-top: 0.8em;
+margin-right: 0.8em;
+margin-left: 0.8em;
+}
+</style>
+<div class="boxy">
+<table>
+<colgroup>
+<col width="15%" />
+<col width="15%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">*</th>
+<th align="center">7x³</th>
+<th align="center">-2x²</th>
+<th align="center">-3x</th>
+<th align="center">-6</th>
+<th align="center">Remainder</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">x</td>
+<td align="center">7x⁴</td>
+<td align="center">-2x³</td>
+<td align="center">-3x²</td>
+<td align="center">-6x</td>
+<td align="center">2</td>
+</tr>
+<tr class="even">
+<td align="center">-6</td>
+<td align="center">-42x³</td>
+<td align="center">12x²</td>
+<td align="center">18x</td>
+<td align="center">36</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Show how to fill out the box to divide <span class="math inline">\(9x⁴-68x³-40x²+62x+7\)</span> by the linear
+binomial <span class="math inline">\(x-8\)</span>.</p>
+<style type="text/css">
+.boxy td {
+padding: 2em;
+border: 1px solid black;
+text-align: center;
+font-size: 1em;
+color: black;
+background-color: white;
+}
+.boxy th {
+background-color: rgb(200, 200, 200);
+color: black;
+padding: 2em;
+font-size: 1em;
+text-align: center;
+border: 1px solid black;
+}
+.boxy td:first-child {
+background-color: rgb(200, 200, 200);
+color: black;
+padding: 2em;
+font-size: 1em;
+text-align: center;
+border: 1px solid black;
+}
+.boxy select {
+width: 7em;
+margin-bottom: 0.8em;
+margin-top: 0.8em;
+margin-right: 0.8em;
+margin-left: 0.8em;
+}
+</style>
+<div class="boxy">
+<table>
+<colgroup>
+<col width="15%" />
+<col width="15%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">*</th>
+<th align="center"><select class="webex-select" id="webex-4011c51ab9e707b9f9b498fece91d51a" data-answer="bwAdAU8FHVFOCUkHHAdOCUoJTgQVCEpVT1QVAUgFbA=="><option value="blank"></option><option>-2</option><option>-2x</option><option>-32x²</option><option>-72x³</option><option>-8</option><option>-8x</option><option>-8x²</option><option>-9</option><option>16</option><option>4x²</option><option>4x³</option><option>64x</option><option>9x³</option><option>9x⁴</option><option>x</option></select></th>
+<th align="center"><select class="webex-select" id="webex-6669ec1f14f67953b1517569a97800c9" data-answer="bQYaCUlTHVYdBEoGGwkZA04BGQAbBRoJTQkbCBwAPg=="><option value="blank"></option><option>-2</option><option>-2x</option><option>-32x²</option><option>-72x³</option><option>-8</option><option>-8x</option><option>-8x²</option><option>-9</option><option>16</option><option>4x²</option><option>4x³</option><option>64x</option><option>9x³</option><option>9x⁴</option><option>x</option></select></th>
+<th align="center"><select class="webex-select" id="webex-65be369398353ba2381c8b45ee5fe814" data-answer="bQVOVR8GFQMVCB8EH1JNAh8IHVMUUhgFSVUZVkkIbA=="><option value="blank"></option><option>-2</option><option>-2x</option><option>-32x²</option><option>-72x³</option><option>-8</option><option>-8x</option><option>-8x²</option><option>-9</option><option>16</option><option>4x²</option><option>4x³</option><option>64x</option><option>9x³</option><option>9x⁴</option><option>x</option></select></th>
+<th align="center"><select class="webex-select" id="webex-76ccd5a1f442446fb9e2a0de004559a2" data-answer="bAdPU0gFTQFKBBgCGAQaVk4JSQJNAEhVHAAYBRkJPA=="><option value="blank"></option><option>-2</option><option>-2x</option><option>-32x²</option><option>-72x³</option><option>-8</option><option>-8x</option><option>-8x²</option><option>-9</option><option>16</option><option>4x²</option><option>4x³</option><option>64x</option><option>9x³</option><option>9x⁴</option><option>x</option></select></th>
+<th align="center">Remainder</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><select class="webex-select" id="webex-ca378fba27debf9db9e99bf620914f1c" data-answer="OFEfBxRWTlEeB0hVTlYVVE4JSQkVUkoGHgAVARhXbA=="><option value="blank"></option><option>-2</option><option>-2x</option><option>-32x²</option><option>-72x³</option><option>-8</option><option>-8x</option><option>-8x²</option><option>-9</option><option>16</option><option>4x²</option><option>4x³</option><option>64x</option><option>9x³</option><option>9x⁴</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-484b11028a26a0b1836e9b517dd69faf" data-answer="bwgYUh0BHAIUUR4GTQBOARQDGlUVUhkBG1RIBxVWPA=="><option value="blank"></option><option>-2</option><option>-2x</option><option>-32x²</option><option>-72x³</option><option>-8</option><option>-8x</option><option>-8x²</option><option>-9</option><option>16</option><option>4x²</option><option>4x³</option><option>64x</option><option>9x³</option><option>9x⁴</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-b627bb8e411535a353624696c35425d1" data-answer="OQYeB05SFFUYAR0FHwVNAxkDGgIYBxUGTwMZBB4FOQ=="><option value="blank"></option><option>-2</option><option>-2x</option><option>-32x²</option><option>-72x³</option><option>-8</option><option>-8x</option><option>-8x²</option><option>-9</option><option>16</option><option>4x²</option><option>4x³</option><option>64x</option><option>9x³</option><option>9x⁴</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-f72d6c15d680e93346d7f09ebb4d4baf" data-answer="PQceVBpTHQVIBhQASQgfAxgGSAdKABVVTlIYVBhSPA=="><option value="blank"></option><option>-2</option><option>-2x</option><option>-32x²</option><option>-72x³</option><option>-8</option><option>-8x</option><option>-8x²</option><option>-9</option><option>16</option><option>4x²</option><option>4x³</option><option>64x</option><option>9x³</option><option>9x⁴</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-b1f7bf537d7ebc69777903e746b5669e" data-answer="OQFKBk5WGQMbVBtVTlMaCRsHGwkcA0kHGAZOBRoGZA=="><option value="blank"></option><option>-2</option><option>-2x</option><option>-32x²</option><option>-72x³</option><option>-8</option><option>-8x</option><option>-8x²</option><option>-9</option><option>16</option><option>4x²</option><option>4x³</option><option>64x</option><option>9x³</option><option>9x⁴</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-826515174d91c6d88f746fea40962c62" data-answer="YwIaBR0FHQcYVBUBTwZICRRWGwQaVklRGAAVBh5Taw=="><option value="blank"></option><option>-2</option><option>-2x</option><option>-32x²</option><option>-72x³</option><option>-8</option><option>-8x</option><option>-8x²</option><option>-9</option><option>16</option><option>4x²</option><option>4x³</option><option>64x</option><option>9x³</option><option>9x⁴</option><option>x</option></select></td>
+</tr>
+<tr class="even">
+<td align="center"><select class="webex-select" id="webex-63cbe095d5c2b742d92077909c67c12c" data-answer="bQNPUkkAFQVIBE8CTgcYAkgJHgAbBxUAFVMaB08Bbw=="><option value="blank"></option><option>-2</option><option>-2x</option><option>-32x²</option><option>-72x³</option><option>-8</option><option>-8x</option><option>-8x²</option><option>-9</option><option>16</option><option>4x²</option><option>4x³</option><option>64x</option><option>9x³</option><option>9x⁴</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-96e04ee7711a156dc958b25b6b39b30a" data-answer="YgZJABhVSQYbAR1RHQUaVE8JGQhOAhlSGlIfCU4DbQ=="><option value="blank"></option><option>-2</option><option>-2x</option><option>-32x²</option><option>-72x³</option><option>-8</option><option>-8x</option><option>-8x²</option><option>-9</option><option>16</option><option>4x²</option><option>4x³</option><option>64x</option><option>9x³</option><option>9x⁴</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-4b997fbf22a879d9e9b078a3a9eed5ac" data-answer="b1IVCRtXTlYeAk0IGwlICUkJTgAbCE0DTQlJVUgFPA=="><option value="blank"></option><option>-2</option><option>-2x</option><option>-32x²</option><option>-72x³</option><option>-8</option><option>-8x</option><option>-8x²</option><option>-9</option><option>16</option><option>4x²</option><option>4x³</option><option>64x</option><option>9x³</option><option>9x⁴</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-7c14436057ef3b827e23384ba47f5056" data-answer="bFMdBBgDGgAZB0lWH1IUAhtVHgMfCBhTTQQbVhkAaA=="><option value="blank"></option><option>-2</option><option>-2x</option><option>-32x²</option><option>-72x³</option><option>-8</option><option>-8x</option><option>-8x²</option><option>-9</option><option>16</option><option>4x²</option><option>4x³</option><option>64x</option><option>9x³</option><option>9x⁴</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-95ac01879d77fdfd86e4b2765bca8132" data-answer="YgVNUxwBFAcVVBsHSlRKVBQHSQROAhsGGVJPURQBbg=="><option value="blank"></option><option>-2</option><option>-2x</option><option>-32x²</option><option>-72x³</option><option>-8</option><option>-8x</option><option>-8x²</option><option>-9</option><option>16</option><option>4x²</option><option>4x³</option><option>64x</option><option>9x³</option><option>9x⁴</option><option>x</option></select></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="webex-solution">
+<style type="text/css">
+.boxy td {
+padding: 2em;
+border: 1px solid black;
+text-align: center;
+font-size: 1em;
+color: black;
+background-color: white;
+}
+.boxy th {
+background-color: rgb(200, 200, 200);
+color: black;
+padding: 2em;
+font-size: 1em;
+text-align: center;
+border: 1px solid black;
+}
+.boxy td:first-child {
+background-color: rgb(200, 200, 200);
+color: black;
+padding: 2em;
+font-size: 1em;
+text-align: center;
+border: 1px solid black;
+}
+.boxy select {
+width: 7em;
+margin-bottom: 0.8em;
+margin-top: 0.8em;
+margin-right: 0.8em;
+margin-left: 0.8em;
+}
+</style>
+<div class="boxy">
+<table>
+<colgroup>
+<col width="15%" />
+<col width="15%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">*</th>
+<th align="center">9x³</th>
+<th align="center">4x²</th>
+<th align="center">-8x</th>
+<th align="center">-2</th>
+<th align="center">Remainder</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">x</td>
+<td align="center">9x⁴</td>
+<td align="center">4x³</td>
+<td align="center">-8x²</td>
+<td align="center">-2x</td>
+<td align="center">-9</td>
+</tr>
+<tr class="even">
+<td align="center">-8</td>
+<td align="center">-72x³</td>
+<td align="center">-32x²</td>
+<td align="center">64x</td>
+<td align="center">16</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Show how to fill out the box to divide <span class="math inline">\(3x⁴+26x³+33x²-23x-60\)</span> by the linear
+binomial <span class="math inline">\(x+7\)</span>.</p>
+<style type="text/css">
+.boxy td {
+padding: 2em;
+border: 1px solid black;
+text-align: center;
+font-size: 1em;
+color: black;
+background-color: white;
+}
+.boxy th {
+background-color: rgb(200, 200, 200);
+color: black;
+padding: 2em;
+font-size: 1em;
+text-align: center;
+border: 1px solid black;
+}
+.boxy td:first-child {
+background-color: rgb(200, 200, 200);
+color: black;
+padding: 2em;
+font-size: 1em;
+text-align: center;
+border: 1px solid black;
+}
+.boxy select {
+width: 7em;
+margin-bottom: 0.8em;
+margin-top: 0.8em;
+margin-right: 0.8em;
+margin-left: 0.8em;
+}
+</style>
+<div class="boxy">
+<table>
+<colgroup>
+<col width="15%" />
+<col width="15%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">*</th>
+<th align="center"><select class="webex-select" id="webex-be0e1f0c9c0ed1558b68b7ddbefbeff0" data-answer="OVUcVR1WHFMVUxxVSAEZBRRSGglOB0hUTlVKUklWOw=="><option value="blank"></option><option>-14x</option><option>-2x</option><option>-2x²</option><option>-63</option><option>-9</option><option>-9x</option><option>21x³</option><option>3</option><option>35x²</option><option>3x³</option><option>3x⁴</option><option>5x²</option><option>5x³</option><option>7</option><option>x</option></select></th>
+<th align="center"><select class="webex-select" id="webex-683148de7a6eb0f691c9908b95171ab5" data-answer="bQgfARgISFUbURpVTgBKBhUBTwkVABRTFQUdBx1RPw=="><option value="blank"></option><option>-14x</option><option>-2x</option><option>-2x²</option><option>-63</option><option>-9</option><option>-9x</option><option>21x³</option><option>3</option><option>35x²</option><option>3x³</option><option>3x⁴</option><option>5x²</option><option>5x³</option><option>7</option><option>x</option></select></th>
+<th align="center"><select class="webex-select" id="webex-df55363b7dbbf3e6873479262ca387e3" data-answer="P1YZBB8GH1IbVE5SSgNJBhQHHwQbCR4GHlNNAxQHOA=="><option value="blank"></option><option>-14x</option><option>-2x</option><option>-2x²</option><option>-63</option><option>-9</option><option>-9x</option><option>21x³</option><option>3</option><option>35x²</option><option>3x³</option><option>3x⁴</option><option>5x²</option><option>5x³</option><option>7</option><option>x</option></select></th>
+<th align="center"><select class="webex-select" id="webex-0fe705e8978a751b695fb0f1d29fd011" data-answer="a1ZJBxwFSQgVBhRRGwUdUhoJGVZOAEoBSAIVVkgAbA=="><option value="blank"></option><option>-14x</option><option>-2x</option><option>-2x²</option><option>-63</option><option>-9</option><option>-9x</option><option>21x³</option><option>3</option><option>35x²</option><option>3x³</option><option>3x⁴</option><option>5x²</option><option>5x³</option><option>7</option><option>x</option></select></th>
+<th align="center">Remainder</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><select class="webex-select" id="webex-01c4e539f8f277418dae4c5abff49655" data-answer="awFPBEkFHwlKCEoCGwcYARRUTVUYUxlRTlZKBBUHaA=="><option value="blank"></option><option>-14x</option><option>-2x</option><option>-2x²</option><option>-63</option><option>-9</option><option>-9x</option><option>21x³</option><option>3</option><option>35x²</option><option>3x³</option><option>3x⁴</option><option>5x²</option><option>5x³</option><option>7</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-4a990113449483b02928ed2194d9ca75" data-answer="b1EVCRwBHQMYBBUEFANOAB4JHghJVR4BFQRICU9Rag=="><option value="blank"></option><option>-14x</option><option>-2x</option><option>-2x²</option><option>-63</option><option>-9</option><option>-9x</option><option>21x³</option><option>3</option><option>35x²</option><option>3x³</option><option>3x⁴</option><option>5x²</option><option>5x³</option><option>7</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-ffd860596aecbe2c28ff25e20a1d2544" data-answer="PVZICBoAGQkaUUlTTlUeUx4ISlYeBUkCHFAdVB4FaQ=="><option value="blank"></option><option>-14x</option><option>-2x</option><option>-2x²</option><option>-63</option><option>-9</option><option>-9x</option><option>21x³</option><option>3</option><option>35x²</option><option>3x³</option><option>3x⁴</option><option>5x²</option><option>5x³</option><option>7</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-c998c658cfcbf129b7596312cc75b46e" data-answer="OAkVCE8HGQhPVk9SSgEeCU4HGQkaAx0CT1MbBU4Eaw=="><option value="blank"></option><option>-14x</option><option>-2x</option><option>-2x²</option><option>-63</option><option>-9</option><option>-9x</option><option>21x³</option><option>3</option><option>35x²</option><option>3x³</option><option>3x⁴</option><option>5x²</option><option>5x³</option><option>7</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-701ef0c2b8de16cbbd597e62acf77b69" data-answer="bAAdVUoATwJOCEhUHQZPUk5UGQkbVRoCTVNKBxtSaw=="><option value="blank"></option><option>-14x</option><option>-2x</option><option>-2x²</option><option>-63</option><option>-9</option><option>-9x</option><option>21x³</option><option>3</option><option>35x²</option><option>3x³</option><option>3x⁴</option><option>5x²</option><option>5x³</option><option>7</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-07553d19514a180d4942eb3071e5cf27" data-answer="awcZBR9UHQkZARhRHQgcVRgJGAJJUh8AGwFJBU9Wbw=="><option value="blank"></option><option>-14x</option><option>-2x</option><option>-2x²</option><option>-63</option><option>-9</option><option>-9x</option><option>21x³</option><option>3</option><option>35x²</option><option>3x³</option><option>3x⁴</option><option>5x²</option><option>5x³</option><option>7</option><option>x</option></select></td>
+</tr>
+<tr class="even">
+<td align="center"><select class="webex-select" id="webex-238303c603f0f9ecd3a172e0faccc9aa" data-answer="aQMUAxwDTwYcA0oASglJU0gDTQEbAkkASlFPUk8JPA=="><option value="blank"></option><option>-14x</option><option>-2x</option><option>-2x²</option><option>-63</option><option>-9</option><option>-9x</option><option>21x³</option><option>3</option><option>35x²</option><option>3x³</option><option>3x⁴</option><option>5x²</option><option>5x³</option><option>7</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-23009d459dfc744b0a5ace4ac19445be" data-answer="aQMcABVUGAUVVEpTGwUYUhxRGVFPVRhRTwEVBBgFPw=="><option value="blank"></option><option>-14x</option><option>-2x</option><option>-2x²</option><option>-63</option><option>-9</option><option>-9x</option><option>21x³</option><option>3</option><option>35x²</option><option>3x³</option><option>3x⁴</option><option>5x²</option><option>5x³</option><option>7</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-13b9ac9df154b0db616775016d87c866" data-answer="agNOCU1TFVRKARkETgBIUhoAGgcbBRwBGlQUB08Iaw=="><option value="blank"></option><option>-14x</option><option>-2x</option><option>-2x²</option><option>-63</option><option>-9</option><option>-9x</option><option>21x³</option><option>3</option><option>35x²</option><option>3x³</option><option>3x⁴</option><option>5x²</option><option>5x³</option><option>7</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-b9ad68a62dfaead3d6e03336d68460d2" data-answer="OQhNVBoITQYeVEpRSVFIA0gGSQAfAx8GSAYUBBoAOQ=="><option value="blank"></option><option>-14x</option><option>-2x</option><option>-2x²</option><option>-63</option><option>-9</option><option>-9x</option><option>21x³</option><option>3</option><option>35x²</option><option>3x³</option><option>3x⁴</option><option>5x²</option><option>5x³</option><option>7</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-03772ff35bfa05c26a0cc9f6778440d0" data-answer="awMbBx5WSgIZUkpRHAVPAhpRHFNPCUoGGwcUBBgAOQ=="><option value="blank"></option><option>-14x</option><option>-2x</option><option>-2x²</option><option>-63</option><option>-9</option><option>-9x</option><option>21x³</option><option>3</option><option>35x²</option><option>3x³</option><option>3x⁴</option><option>5x²</option><option>5x³</option><option>7</option><option>x</option></select></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="webex-solution">
+<style type="text/css">
+.boxy td {
+padding: 2em;
+border: 1px solid black;
+text-align: center;
+font-size: 1em;
+color: black;
+background-color: white;
+}
+.boxy th {
+background-color: rgb(200, 200, 200);
+color: black;
+padding: 2em;
+font-size: 1em;
+text-align: center;
+border: 1px solid black;
+}
+.boxy td:first-child {
+background-color: rgb(200, 200, 200);
+color: black;
+padding: 2em;
+font-size: 1em;
+text-align: center;
+border: 1px solid black;
+}
+.boxy select {
+width: 7em;
+margin-bottom: 0.8em;
+margin-top: 0.8em;
+margin-right: 0.8em;
+margin-left: 0.8em;
+}
+</style>
+<div class="boxy">
+<table>
+<colgroup>
+<col width="15%" />
+<col width="15%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">*</th>
+<th align="center">3x³</th>
+<th align="center">5x²</th>
+<th align="center">-2x</th>
+<th align="center">-9</th>
+<th align="center">Remainder</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">x</td>
+<td align="center">3x⁴</td>
+<td align="center">5x³</td>
+<td align="center">-2x²</td>
+<td align="center">-9x</td>
+<td align="center">3</td>
+</tr>
+<tr class="even">
+<td align="center">7</td>
+<td align="center">21x³</td>
+<td align="center">35x²</td>
+<td align="center">-14x</td>
+<td align="center">-63</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Show how to fill out the box to divide <span class="math inline">\(6x⁴+20x³-24x²-23x+44\)</span> by the linear
+binomial <span class="math inline">\(x+4\)</span>.</p>
+<style type="text/css">
+.boxy td {
+padding: 2em;
+border: 1px solid black;
+text-align: center;
+font-size: 1em;
+color: black;
+background-color: white;
+}
+.boxy th {
+background-color: rgb(200, 200, 200);
+color: black;
+padding: 2em;
+font-size: 1em;
+text-align: center;
+border: 1px solid black;
+}
+.boxy td:first-child {
+background-color: rgb(200, 200, 200);
+color: black;
+padding: 2em;
+font-size: 1em;
+text-align: center;
+border: 1px solid black;
+}
+.boxy select {
+width: 7em;
+margin-bottom: 0.8em;
+margin-top: 0.8em;
+margin-right: 0.8em;
+margin-left: 0.8em;
+}
+</style>
+<div class="boxy">
+<table>
+<colgroup>
+<col width="15%" />
+<col width="15%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">*</th>
+<th align="center"><select class="webex-select" id="webex-d34ce3335b0cd8410ac0fff018450d47" data-answer="PwMYU0kDHwMZUhxTSAgYARxRTwFKVkoAHQgYBRxUaQ=="><option value="blank"></option><option>-16x²</option><option>-32x</option><option>-4x²</option><option>-4x³</option><option>-8x</option><option>-8x²</option><option>24x³</option><option>36</option><option>4</option><option>6x³</option><option>6x⁴</option><option>8</option><option>9</option><option>9x</option><option>x</option></select></th>
+<th align="center"><select class="webex-select" id="webex-dc7fd24db22b9a55734e5fe0ffc58fed" data-answer="P1MbVkgDGFROAh5SFVEZBRsDGFUZVkkASlZPBRRWOA=="><option value="blank"></option><option>-16x²</option><option>-32x</option><option>-4x²</option><option>-4x³</option><option>-8x</option><option>-8x²</option><option>24x³</option><option>36</option><option>4</option><option>6x³</option><option>6x⁴</option><option>8</option><option>9</option><option>9x</option><option>x</option></select></th>
+<th align="center"><select class="webex-select" id="webex-111985450299085eadd8edb6e3616122" data-answer="agEdCRQFGAUcAxUJHAgZVU1USAhJVE4GSQMaARoBbw=="><option value="blank"></option><option>-16x²</option><option>-32x</option><option>-4x²</option><option>-4x³</option><option>-8x</option><option>-8x²</option><option>24x³</option><option>36</option><option>4</option><option>6x³</option><option>6x⁴</option><option>8</option><option>9</option><option>9x</option><option>x</option></select></th>
+<th align="center"><select class="webex-select" id="webex-e59bc4035f4946f96aab861a0ef7d2eb" data-answer="PgUVUk8EHAMZVhgJGAZKCRpRTVIUBh1RHFRKB0gCOA=="><option value="blank"></option><option>-16x²</option><option>-32x</option><option>-4x²</option><option>-4x³</option><option>-8x</option><option>-8x²</option><option>24x³</option><option>36</option><option>4</option><option>6x³</option><option>6x⁴</option><option>8</option><option>9</option><option>9x</option><option>x</option></select></th>
+<th align="center">Remainder</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><select class="webex-select" id="webex-92ca9ddcdf66a01ed32c86db6511679d" data-answer="YgJPURVUSFNIVhoGTQAdVUgDHlMUBkhSGgUdARoGZA=="><option value="blank"></option><option>-16x²</option><option>-32x</option><option>-4x²</option><option>-4x³</option><option>-8x</option><option>-8x²</option><option>24x³</option><option>36</option><option>4</option><option>6x³</option><option>6x⁴</option><option>8</option><option>9</option><option>9x</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-807b21b57d7c06ab9a92c5f3ef3264ac" data-answer="YwAbUh4BTgUbVBtTHAZNUhVRFQJPBEoDSVYfAhoEPA=="><option value="blank"></option><option>-16x²</option><option>-32x</option><option>-4x²</option><option>-4x³</option><option>-8x</option><option>-8x²</option><option>24x³</option><option>36</option><option>4</option><option>6x³</option><option>6x⁴</option><option>8</option><option>9</option><option>9x</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-a56e08d65d0eccf3ee07deff0272ad6f" data-answer="OgUaVRwISAcZVBxVT1NKA0lVHAdIVUpWHAIbAk1Uaw=="><option value="blank"></option><option>-16x²</option><option>-32x</option><option>-4x²</option><option>-4x³</option><option>-8x</option><option>-8x²</option><option>24x³</option><option>36</option><option>4</option><option>6x³</option><option>6x⁴</option><option>8</option><option>9</option><option>9x</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-ee28e6127c88f71445d19851749904e8" data-answer="PlUeCEkGHQIbUxQJSgcdBBgFSAEVCBkBGwQVCRwEOA=="><option value="blank"></option><option>-16x²</option><option>-32x</option><option>-4x²</option><option>-4x³</option><option>-8x</option><option>-8x²</option><option>24x³</option><option>36</option><option>4</option><option>6x³</option><option>6x⁴</option><option>8</option><option>9</option><option>9x</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-51c3ff72c55507ead40135994b2571ba" data-answer="bgFPA0pWGwJPBRkFHAdJUUgEHAEfBRUJGFIeBBsBPw=="><option value="blank"></option><option>-16x²</option><option>-32x</option><option>-4x²</option><option>-4x³</option><option>-8x</option><option>-8x²</option><option>24x³</option><option>36</option><option>4</option><option>6x³</option><option>6x⁴</option><option>8</option><option>9</option><option>9x</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-59eb8e94f129c80cc82de753949750dd" data-answer="bglJUhRVFQRKAR4JTwgcU08IHlRJBxkCFQQVBxkAOQ=="><option value="blank"></option><option>-16x²</option><option>-32x</option><option>-4x²</option><option>-4x³</option><option>-8x</option><option>-8x²</option><option>24x³</option><option>36</option><option>4</option><option>6x³</option><option>6x⁴</option><option>8</option><option>9</option><option>9x</option><option>x</option></select></td>
+</tr>
+<tr class="even">
+<td align="center"><select class="webex-select" id="webex-8e85587048709d89bda81757abf0b2cd" data-answer="Y1UUBRkIGwAYCBsAFVQUCU5VTQgdBxkHTVJKAE4CPg=="><option value="blank"></option><option>-16x²</option><option>-32x</option><option>-4x²</option><option>-4x³</option><option>-8x</option><option>-8x²</option><option>24x³</option><option>36</option><option>4</option><option>6x³</option><option>6x⁴</option><option>8</option><option>9</option><option>9x</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-e2288a43023abb39994c122fd05631f7" data-answer="PgIeCBRRGAMcAh9RTlMfCRUJGFMdAh5WSAAZBh8BOw=="><option value="blank"></option><option>-16x²</option><option>-32x</option><option>-4x²</option><option>-4x³</option><option>-8x</option><option>-8x²</option><option>24x³</option><option>36</option><option>4</option><option>6x³</option><option>6x⁴</option><option>8</option><option>9</option><option>9x</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-412806a1c2a2861cc98433439ed559f1" data-answer="bwAeCBwGTQFPAk0CFAYdU08JFAQfAxgDFVVIBRkJOw=="><option value="blank"></option><option>-16x²</option><option>-32x</option><option>-4x²</option><option>-4x³</option><option>-8x</option><option>-8x²</option><option>24x³</option><option>36</option><option>4</option><option>6x³</option><option>6x⁴</option><option>8</option><option>9</option><option>9x</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-1c73277048281945b0b85c20a38908cc" data-answer="alMbAh4HGwAYCB4IHQkYBU4ATggZUx4ATQMUCRwIPg=="><option value="blank"></option><option>-16x²</option><option>-32x</option><option>-4x²</option><option>-4x³</option><option>-8x</option><option>-8x²</option><option>24x³</option><option>36</option><option>4</option><option>6x³</option><option>6x⁴</option><option>8</option><option>9</option><option>9x</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-5812f9f653568bf90d442a25aa43ce3d" data-answer="bggdAkoJSgYZAxkGFFJKCBxUGAQeUR4FTVEYA09Vbg=="><option value="blank"></option><option>-16x²</option><option>-32x</option><option>-4x²</option><option>-4x³</option><option>-8x</option><option>-8x²</option><option>24x³</option><option>36</option><option>4</option><option>6x³</option><option>6x⁴</option><option>8</option><option>9</option><option>9x</option><option>x</option></select></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="webex-solution">
+<style type="text/css">
+.boxy td {
+padding: 2em;
+border: 1px solid black;
+text-align: center;
+font-size: 1em;
+color: black;
+background-color: white;
+}
+.boxy th {
+background-color: rgb(200, 200, 200);
+color: black;
+padding: 2em;
+font-size: 1em;
+text-align: center;
+border: 1px solid black;
+}
+.boxy td:first-child {
+background-color: rgb(200, 200, 200);
+color: black;
+padding: 2em;
+font-size: 1em;
+text-align: center;
+border: 1px solid black;
+}
+.boxy select {
+width: 7em;
+margin-bottom: 0.8em;
+margin-top: 0.8em;
+margin-right: 0.8em;
+margin-left: 0.8em;
+}
+</style>
+<div class="boxy">
+<table>
+<colgroup>
+<col width="15%" />
+<col width="15%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">*</th>
+<th align="center">6x³</th>
+<th align="center">-4x²</th>
+<th align="center">-8x</th>
+<th align="center">9</th>
+<th align="center">Remainder</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">x</td>
+<td align="center">6x⁴</td>
+<td align="center">-4x³</td>
+<td align="center">-8x²</td>
+<td align="center">9x</td>
+<td align="center">8</td>
+</tr>
+<tr class="even">
+<td align="center">4</td>
+<td align="center">24x³</td>
+<td align="center">-16x²</td>
+<td align="center">-32x</td>
+<td align="center">36</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Show how to fill out the box to divide <span class="math inline">\(8x⁴-71x³+60x²-23x-70\)</span> by the linear
+binomial <span class="math inline">\(x-8\)</span>.</p>
+<style type="text/css">
+.boxy td {
+padding: 2em;
+border: 1px solid black;
+text-align: center;
+font-size: 1em;
+color: black;
+background-color: white;
+}
+.boxy th {
+background-color: rgb(200, 200, 200);
+color: black;
+padding: 2em;
+font-size: 1em;
+text-align: center;
+border: 1px solid black;
+}
+.boxy td:first-child {
+background-color: rgb(200, 200, 200);
+color: black;
+padding: 2em;
+font-size: 1em;
+text-align: center;
+border: 1px solid black;
+}
+.boxy select {
+width: 7em;
+margin-bottom: 0.8em;
+margin-top: 0.8em;
+margin-right: 0.8em;
+margin-left: 0.8em;
+}
+</style>
+<div class="boxy">
+<table>
+<colgroup>
+<col width="15%" />
+<col width="15%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">*</th>
+<th align="center"><select class="webex-select" id="webex-6bc4171ff1f5e881eec0552b2c58524c" data-answer="bVJPBB0HHVZKAUoFSQgUAUlVTwAZBB5SHlMZCBkCaQ=="><option value="blank"></option><option>-32x</option><option>-64x³</option><option>-72</option><option>-7x²</option><option>-7x³</option><option>-8</option><option>2</option><option>4x</option><option>4x²</option><option>56x²</option><option>8x³</option><option>8x⁴</option><option>9</option><option>9x</option><option>x</option></select></th>
+<th align="center"><select class="webex-select" id="webex-60dbd9e25f63dda516f0ed679200aeac" data-answer="bQBIUkgJSQMZVhoDSFRNBR0GSgBJVBoHFQIcAE1VPA=="><option value="blank"></option><option>-32x</option><option>-64x³</option><option>-72</option><option>-7x²</option><option>-7x³</option><option>-8</option><option>2</option><option>4x</option><option>4x²</option><option>56x²</option><option>8x³</option><option>8x⁴</option><option>9</option><option>9x</option><option>x</option></select></th>
+<th align="center"><select class="webex-select" id="webex-01924e4370d33979a9e1357cef8e6a82" data-answer="awEVAhhVGAMbAEgDHwkbCE0JSQEfBRtTSVYUVRpRZQ=="><option value="blank"></option><option>-32x</option><option>-64x³</option><option>-72</option><option>-7x²</option><option>-7x³</option><option>-8</option><option>2</option><option>4x</option><option>4x²</option><option>56x²</option><option>8x³</option><option>8x⁴</option><option>9</option><option>9x</option><option>x</option></select></th>
+<th align="center"><select class="webex-select" id="webex-cb1c73d62089f47d9d0c921e83da246b" data-answer="OFIdUxsDSAYeABQJSgQbVBVUHFMVAh1VFAJIUR4Eaw=="><option value="blank"></option><option>-32x</option><option>-64x³</option><option>-72</option><option>-7x²</option><option>-7x³</option><option>-8</option><option>2</option><option>4x</option><option>4x²</option><option>56x²</option><option>8x³</option><option>8x⁴</option><option>9</option><option>9x</option><option>x</option></select></th>
+<th align="center">Remainder</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><select class="webex-select" id="webex-d80bd836041e0f6046d5881a24e22e4e" data-answer="PwgcUkgIHwYcBB1VHFYaABgGSAUUCB1RHgRJAh5UaQ=="><option value="blank"></option><option>-32x</option><option>-64x³</option><option>-72</option><option>-7x²</option><option>-7x³</option><option>-8</option><option>2</option><option>4x</option><option>4x²</option><option>56x²</option><option>8x³</option><option>8x⁴</option><option>9</option><option>9x</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-bedaf9a91df11a8b9c390e4f928992c5" data-answer="OVVIUUoJTQkdVEoBHVEUUhVTHwkcVRhXFQIUCRUCPg=="><option value="blank"></option><option>-32x</option><option>-64x³</option><option>-72</option><option>-7x²</option><option>-7x³</option><option>-8</option><option>2</option><option>4x</option><option>4x²</option><option>56x²</option><option>8x³</option><option>8x⁴</option><option>9</option><option>9x</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-8cbdcfba4174b3dfddf64b8d272e7eeb" data-answer="Y1NOVE9WTlEYABsETgNIVkhUSgYYUhRUHgceVRtVOA=="><option value="blank"></option><option>-32x</option><option>-64x³</option><option>-72</option><option>-7x²</option><option>-7x³</option><option>-8</option><option>2</option><option>4x</option><option>4x²</option><option>56x²</option><option>8x³</option><option>8x⁴</option><option>9</option><option>9x</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-0a6d45945fa1fa4205d6242efb4a8200" data-answer="a1EaVBgFFQQZVk0BSlEYAhwESAYeBB5VSlIYURQCbQ=="><option value="blank"></option><option>-32x</option><option>-64x³</option><option>-72</option><option>-7x²</option><option>-7x³</option><option>-8</option><option>2</option><option>4x</option><option>4x²</option><option>56x²</option><option>8x³</option><option>8x⁴</option><option>9</option><option>9x</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-2f1f8779538fc76c5c6f9c8cf02be969" data-answer="aVYdVhQHGwkZAxRWTwcaUxlTGlYVUxRTSgAeU0kJaw=="><option value="blank"></option><option>-32x</option><option>-64x³</option><option>-72</option><option>-7x²</option><option>-7x³</option><option>-8</option><option>2</option><option>4x</option><option>4x²</option><option>56x²</option><option>8x³</option><option>8x⁴</option><option>9</option><option>9x</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-fca2bee474e7c9f2066fa0427dc5f76f" data-answer="PVNNAk5VSQQbBEkHTwhKAhwGGlZNABgCG1RPBUoHaw=="><option value="blank"></option><option>-32x</option><option>-64x³</option><option>-72</option><option>-7x²</option><option>-7x³</option><option>-8</option><option>2</option><option>4x</option><option>4x²</option><option>56x²</option><option>8x³</option><option>8x⁴</option><option>9</option><option>9x</option><option>x</option></select></td>
+</tr>
+<tr class="even">
+<td align="center"><select class="webex-select" id="webex-14f3a88760a5c8b1fe431d4bfa50a798" data-answer="agRKA00IFAcaAE0ETwhOAUpVGAMdVBhSSlEZAE0HZA=="><option value="blank"></option><option>-32x</option><option>-64x³</option><option>-72</option><option>-7x²</option><option>-7x³</option><option>-8</option><option>2</option><option>4x</option><option>4x²</option><option>56x²</option><option>8x³</option><option>8x⁴</option><option>9</option><option>9x</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-3bd294f59a9c628ab363053148b63f48" data-answer="aFJIAxUESgUVURVTGgIUUU4DGgMcBR8BGAhOBh9WaQ=="><option value="blank"></option><option>-32x</option><option>-64x³</option><option>-72</option><option>-7x²</option><option>-7x³</option><option>-8</option><option>2</option><option>4x</option><option>4x²</option><option>56x²</option><option>8x³</option><option>8x⁴</option><option>9</option><option>9x</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-848dfc159d30b7cd93c7b086220cecea" data-answer="YwQUVEpTHQUVVB8ATgdPVBUDTwZOABQGHgIcU0lTOA=="><option value="blank"></option><option>-32x</option><option>-64x³</option><option>-72</option><option>-7x²</option><option>-7x³</option><option>-8</option><option>2</option><option>4x</option><option>4x²</option><option>56x²</option><option>8x³</option><option>8x⁴</option><option>9</option><option>9x</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-0bfb9dfcc2b80e52ade1376130e26e19" data-answer="a1NKUhVUSlNPAk4IHFUZAk1USQEfBxoBHwBJAhpVbA=="><option value="blank"></option><option>-32x</option><option>-64x³</option><option>-72</option><option>-7x²</option><option>-7x³</option><option>-8</option><option>2</option><option>4x</option><option>4x²</option><option>56x²</option><option>8x³</option><option>8x⁴</option><option>9</option><option>9x</option><option>x</option></select></td>
+<td align="center"><select class="webex-select" id="webex-c8d137756889ee0bd50ac6cf5d1de46b" data-answer="OAhIAR8GGwUaCBQJSVUcUkgFHFFPBk9WGVQdVEkEaw=="><option value="blank"></option><option>-32x</option><option>-64x³</option><option>-72</option><option>-7x²</option><option>-7x³</option><option>-8</option><option>2</option><option>4x</option><option>4x²</option><option>56x²</option><option>8x³</option><option>8x⁴</option><option>9</option><option>9x</option><option>x</option></select></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="webex-solution">
+<style type="text/css">
+.boxy td {
+padding: 2em;
+border: 1px solid black;
+text-align: center;
+font-size: 1em;
+color: black;
+background-color: white;
+}
+.boxy th {
+background-color: rgb(200, 200, 200);
+color: black;
+padding: 2em;
+font-size: 1em;
+text-align: center;
+border: 1px solid black;
+}
+.boxy td:first-child {
+background-color: rgb(200, 200, 200);
+color: black;
+padding: 2em;
+font-size: 1em;
+text-align: center;
+border: 1px solid black;
+}
+.boxy select {
+width: 7em;
+margin-bottom: 0.8em;
+margin-top: 0.8em;
+margin-right: 0.8em;
+margin-left: 0.8em;
+}
+</style>
+<div class="boxy">
+<table>
+<colgroup>
+<col width="15%" />
+<col width="15%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">*</th>
+<th align="center">8x³</th>
+<th align="center">-7x²</th>
+<th align="center">4x</th>
+<th align="center">9</th>
+<th align="center">Remainder</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">x</td>
+<td align="center">8x⁴</td>
+<td align="center">-7x³</td>
+<td align="center">4x²</td>
+<td align="center">9x</td>
+<td align="center">2</td>
+</tr>
+<tr class="even">
+<td align="center">-8</td>
+<td align="center">-64x³</td>
+<td align="center">56x²</td>
+<td align="center">-32x</td>
+<td align="center">-72</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="webex-group">
+<div class="webex-question">
+<div class="webex-check webex-box">
 <p>Let function <span class="math inline">\(f\)</span> be defined by the
 cubic polynomial shown below.</p>
-<p><span class="math display">\[f(x)~=~2x^3+6x^2-5x+3\]</span></p>
-<p>Evaluate <span class="math inline">\(f(-4)\)</span>.</p>
+<p><span class="math display">\[f(x)~=~8x^3+4x^2+6x+2\]</span></p>
+<p>Evaluate <span class="math inline">\(f(-3)\)</span>.</p>
+<p><input class="webex-solveme nospaces" id="webex-b087d052168cff4b9f45a760a11c6705" data-tol="0" size="20" data-answer="ORIVBl0GF28="></input></p>
 </div>
-<div id="solution" class="section level1">
-<h1>Solution</h1>
+<div class="webex-solution">
+<p>Replace all instances of <span class="math inline">\(x\)</span> with
+<span class="math inline">\(-3\)</span>.</p>
+<p><span class="math display">\[f(-3)~=~8(-3)^3+4(-3)^2+6(-3)+2\]</span></p>
+<p>Evaluate the powers.</p>
+<p><span class="math display">\[f(-3)~=~8(-27)+4(9)+6(-3)+2\]</span></p>
+<p>Evaluate the products.</p>
+<p><span class="math display">\[f(-3)~=~-216+36-18+2\]</span></p>
+<p>Add/subtract the terms.</p>
+<p><span class="math display">\[f(-3)~=~-196\]</span></p>
+<p>Thus, the answer is -196.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Let function <span class="math inline">\(f\)</span> be defined by the
+cubic polynomial shown below.</p>
+<p><span class="math display">\[f(x)~=~6x^3-3x^2-5x+4\]</span></p>
+<p>Evaluate <span class="math inline">\(f(-5)\)</span>.</p>
+<p><input class="webex-solveme nospaces" id="webex-1326c618685eb4ea693d4aef21f77c9b" data-tol="0" size="20" data-answer="ahEfAVoAE2U="></input></p>
+</div>
+<div class="webex-solution">
+<p>Replace all instances of <span class="math inline">\(x\)</span> with
+<span class="math inline">\(-5\)</span>.</p>
+<p><span class="math display">\[f(-5)~=~6(-5)^3-3(-5)^2-5(-5)+4\]</span></p>
+<p>Evaluate the powers.</p>
+<p><span class="math display">\[f(-5)~=~6(-125)-3(25)-5(-5)+4\]</span></p>
+<p>Evaluate the products.</p>
+<p><span class="math display">\[f(-5)~=~-750-75+25+4\]</span></p>
+<p>Add/subtract the terms.</p>
+<p><span class="math display">\[f(-5)~=~-796\]</span></p>
+<p>Thus, the answer is -796.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Let function <span class="math inline">\(f\)</span> be defined by the
+cubic polynomial shown below.</p>
+<p><span class="math display">\[f(x)~=~6x^3-3x^2+4x+2\]</span></p>
+<p>Evaluate <span class="math inline">\(f(2)\)</span>.</p>
+<p><input class="webex-solveme nospaces" id="webex-4f3847f7ba3ff229fcb6a0a911b1a24f" data-tol="0" size="20" data-answer="b0QHDhZq"></input></p>
+</div>
+<div class="webex-solution">
+<p>Replace all instances of <span class="math inline">\(x\)</span> with
+<span class="math inline">\(2\)</span>.</p>
+<p><span class="math display">\[f(2)~=~6(2)^3-3(2)^2+4(2)+2\]</span></p>
+<p>Evaluate the powers.</p>
+<p><span class="math display">\[f(2)~=~6(8)-3(4)+4(2)+2\]</span></p>
+<p>Evaluate the products.</p>
+<p><span class="math display">\[f(2)~=~48-12+8+2\]</span></p>
+<p>Add/subtract the terms.</p>
+<p><span class="math display">\[f(2)~=~46\]</span></p>
+<p>Thus, the answer is 46.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Let function <span class="math inline">\(f\)</span> be defined by the
+cubic polynomial shown below.</p>
+<p><span class="math display">\[f(x)~=~6x^3-3x^2-7x+2\]</span></p>
+<p>Evaluate <span class="math inline">\(f(4)\)</span>.</p>
+<p><input class="webex-solveme nospaces" id="webex-7f3bb47ba9d2afb80df6d3eba2b5af11" data-tol="0" size="20" data-answer="bEQAU1IWag=="></input></p>
+</div>
+<div class="webex-solution">
+<p>Replace all instances of <span class="math inline">\(x\)</span> with
+<span class="math inline">\(4\)</span>.</p>
+<p><span class="math display">\[f(4)~=~6(4)^3-3(4)^2-7(4)+2\]</span></p>
+<p>Evaluate the powers.</p>
+<p><span class="math display">\[f(4)~=~6(64)-3(16)-7(4)+2\]</span></p>
+<p>Evaluate the products.</p>
+<p><span class="math display">\[f(4)~=~384-48-28+2\]</span></p>
+<p>Add/subtract the terms.</p>
+<p><span class="math display">\[f(4)~=~310\]</span></p>
+<p>Thus, the answer is 310.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Let function <span class="math inline">\(f\)</span> be defined by the
+cubic polynomial shown below.</p>
+<p><span class="math display">\[f(x)~=~6x^3-5x^2+8x-7\]</span></p>
+<p>Evaluate <span class="math inline">\(f(-5)\)</span>.</p>
+<p><input class="webex-solveme nospaces" id="webex-8f0504a2c68059ef96f7e1fc68c184f4" data-tol="0" size="20" data-answer="Y0QdDAIGQ28="></input></p>
+</div>
+<div class="webex-solution">
+<p>Replace all instances of <span class="math inline">\(x\)</span> with
+<span class="math inline">\(-5\)</span>.</p>
+<p><span class="math display">\[f(-5)~=~6(-5)^3-5(-5)^2+8(-5)-7\]</span></p>
+<p>Evaluate the powers.</p>
+<p><span class="math display">\[f(-5)~=~6(-125)-5(25)+8(-5)-7\]</span></p>
+<p>Evaluate the products.</p>
+<p><span class="math display">\[f(-5)~=~-750-125-40-7\]</span></p>
+<p>Add/subtract the terms.</p>
+<p><span class="math display">\[f(-5)~=~-922\]</span></p>
+<p>Thus, the answer is -922.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Let function <span class="math inline">\(f\)</span> be defined by the
+cubic polynomial shown below.</p>
+<p><span class="math display">\[f(x)~=~9x^3+7x^2+4x+5\]</span></p>
+<p>Evaluate <span class="math inline">\(f(-4)\)</span>.</p>
+<p><input class="webex-solveme nospaces" id="webex-7351be176157c806aee8354665a14183" data-tol="0" size="20" data-answer="bBEYBVVQE2o="></input></p>
+</div>
+<div class="webex-solution">
 <p>Replace all instances of <span class="math inline">\(x\)</span> with
 <span class="math inline">\(-4\)</span>.</p>
-<p><span class="math display">\[f(-4)~=~2(-4)^3+6(-4)^2-5(-4)+3\]</span></p>
+<p><span class="math display">\[f(-4)~=~9(-4)^3+7(-4)^2+4(-4)+5\]</span></p>
 <p>Evaluate the powers.</p>
-<p><span class="math display">\[f(-4)~=~2(-64)+6(16)-5(-4)+3\]</span></p>
+<p><span class="math display">\[f(-4)~=~9(-64)+7(16)+4(-4)+5\]</span></p>
 <p>Evaluate the products.</p>
-<p><span class="math display">\[f(-4)~=~-128+96+20+3\]</span></p>
+<p><span class="math display">\[f(-4)~=~-576+112-16+5\]</span></p>
 <p>Add/subtract the terms.</p>
-<p><span class="math display">\[f(-4)~=~-9\]</span></p>
-<p>Thus, the answer is -9.</p>
+<p><span class="math display">\[f(-4)~=~-475\]</span></p>
+<p>Thus, the answer is -475.</p>
 </div>
-<div id="meta-information" class="section level1">
-<h1>Meta-information</h1>
-<p>extype: num exsolution: -9 exname: eval_poly</p>
+</div>
+</div>
+<div class="webex-group">
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>An object in motion stays in motion unless acted upon by an external
+force. So, ideally, a spaceship in deep space, after accelerating, could
+cruise at a constant velocity without needing to run its thrusters.</p>
+<p>However, an <a href="https://en.wikipedia.org/wiki/Car">automobile</a> on Earth&#39;s
+surface, even on flat ground, needs to constantly burn fuel (or use its
+battery) to overcome countervailing external forces. The major force
+pushing against an automobile&#39;s motion (other than gravity when going up
+hill) is <a href="https://en.wikipedia.org/wiki/Drag_(physics)#Aerodynamics">air
+resistance</a>.</p>
+<p>The <a href="https://en.wikipedia.org/wiki/Force">force</a> from the
+aerodynamic drag is proportional to the square of velocity. The
+quadratic coefficient can be estimated by looking up the <a href="https://en.wikipedia.org/wiki/Automobile_drag_coefficient#Drag_area">drag
+area</a> and estimating the <a href="https://en.wikipedia.org/wiki/Density_of_air">density of
+air</a>.</p>
+<p>If we pick a car with a drag area of 2.041 <span class="math inline">\(\mathrm{m^2}\)</span> (basically a large box) and
+say the density of air is approximately 1.225 <span class="math inline">\(\mathrm{\frac{kg}{m^2}}\)</span>, then we predict
+the force (<span class="math inline">\(F\)</span> in <a href="https://en.wikipedia.org/wiki/Newton_(unit)">newtons</a>) is
+related to velocity (<span class="math inline">\(v\)</span> in meters
+per second) by the equation below:</p>
+<p><span class="math display">\[F = 1.25\cdot v^2\]</span></p>
+<p>The engine&#39;s output <a href="https://en.wikipedia.org/wiki/Power_(physics)">power</a> (<span class="math inline">\(P\)</span> in <a href="https://en.wikipedia.org/wiki/Watt">watts</a>) is approximately
+proportional to the cube of velocity, using the same coefficient.</p>
+<p><span class="math display">\[P = 1.25\cdot v^3\]</span></p>
+<p>Complete the table below:</p>
+<style type="text/css">
+.tabl td {
+border: 1px solid black;
+text-align: center;
+padding: 15px;
+margin: 1em;
+}
+.tabl th {
+border: 2px solid black;
+border-bottom: 2px solid black;
+text-align: center;
+background-color: #227;
+padding: 15px;
+color: white;
+}
+</style>
+<div class="tabl">
+<table>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(v\)</span> (in m/s)</th>
+<th align="center"><span class="math inline">\(F\)</span> (in N)</th>
+<th align="center"><span class="math inline">\(P\)</span> (in W)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(15.8\)</span></td>
+<td align="center"><select class="webex-select" id="webex-2b4e408226140d732d108eaf0c1c4da5" data-answer="aVIYVBgAFAIeBmw="><option value="blank"></option><option>284</option><option>312</option><option>343</option><option>378</option><option>415</option></select></td>
+<td align="center"><select class="webex-select" id="webex-5ff25addc312076956f1dfebdf6d68a6" data-answer="blZKAhlQSFRPA2w="><option value="blank"></option><option>4070</option><option>4480</option><option>4930</option><option>5420</option><option>5970</option></select></td>
+</tr>
+<tr class="even">
+<td align="center"><select class="webex-select" id="webex-592726bc9c44d07907797076b4a838bf" data-answer="bgkeBx4HTlMVU2k="><option value="blank"></option><option>15</option><option>16.5</option><option>18.2</option><option>20</option><option>22</option></select></td>
+<td align="center"><span class="math inline">\(414\)</span></td>
+<td align="center"><select class="webex-select" id="webex-6bfa804b10e9bc41945b934abe8690c3" data-answer="bVNKURQAGFIdADg="><option value="blank"></option><option>7540</option><option>8290</option><option>9120</option><option>10000</option><option>11000</option></select></td>
+</tr>
+<tr class="odd">
+<td align="center"><select class="webex-select" id="webex-8bfc7170d65b1b172127d35c7f8f5a73" data-answer="Y1NKUxsBGwBIBmg="><option value="blank"></option><option>34.9</option><option>38.4</option><option>42.2</option><option>46.5</option><option>51.1</option></select></td>
+<td align="center"><select class="webex-select" id="webex-63e7e07f12f600e72fd9548d5d44cd41" data-answer="bQJJB0kAG1YdAjs="><option value="blank"></option><option>1520</option><option>1670</option><option>1840</option><option>2020</option><option>2230</option></select></td>
+<td align="center"><span class="math inline">\(53100\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="webex-solution">
+<style type="text/css">
+.tabl td {
+border: 1px solid black;
+text-align: center;
+padding: 15px;
+margin: 1em;
+}
+.tabl th {
+border: 2px solid black;
+border-bottom: 2px solid black;
+text-align: center;
+background-color: #227;
+padding: 15px;
+color: white;
+}
+</style>
+<div class="tabl">
+<table>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(v\)</span> (in m/s)</th>
+<th align="center"><span class="math inline">\(F\)</span> (in N)</th>
+<th align="center"><span class="math inline">\(P\)</span> (in W)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(15.8\)</span></td>
+<td align="center"><span class="math inline">\(312\)</span></td>
+<td align="center"><span class="math inline">\(4930\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(18.2\)</span></td>
+<td align="center"><span class="math inline">\(414\)</span></td>
+<td align="center"><span class="math inline">\(7540\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(34.9\)</span></td>
+<td align="center"><span class="math inline">\(1520\)</span></td>
+<td align="center"><span class="math inline">\(53100\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="row-1" class="section level3">
+<h3>Row 1</h3>
+<p>Use the formulas with <span class="math inline">\(v=15.8\)</span>.</p>
+<p><span class="math display">\[F=1.25\cdot(15.8)^2=312\]</span> <span class="math display">\[P=1.25\cdot(15.8)^3=4930\]</span></p>
+</div>
+<div id="row-2" class="section level3">
+<h3>Row 2</h3>
+<p>First, use <span class="math inline">\(F=414\)</span> to find <span class="math inline">\(v\)</span>.</p>
+<p><span class="math display">\[414=1.25\cdot v^2\]</span></p>
+<p>Divide both sides by 1.25.</p>
+<p><span class="math display">\[\frac{414}{1.25}=v^2\]</span></p>
+<p>Take the square root of both sides. In this context, we are only
+interested in the positive velocity.</p>
+<p><span class="math display">\[\sqrt{\frac{414}{1.25}}=v\]</span></p>
+<p>If your calculator does not have a square-root button, you can also
+raise the quotient to the power of 1/2.</p>
+<p><span class="math display">\[v~=~\left(\frac{414}{1.25}\right)^{1/2}\]</span></p>
+<p>Evaluate.</p>
+<p><span class="math display">\[v=18.2\]</span></p>
+<p>Use that value to find the power.</p>
+<p><span class="math display">\[P=1.25\cdot(18.2)^3\]</span> <span class="math display">\[P=7540\]</span></p>
+</div>
+<div id="row-3" class="section level3">
+<h3>Row 3</h3>
+<p>First, use <span class="math inline">\(P=53100\)</span> to find <span class="math inline">\(v\)</span>.</p>
+<p><span class="math display">\[53100=1.25\cdot v^3\]</span></p>
+<p>Divide both sides by 1.25.</p>
+<p><span class="math display">\[\frac{53100}{1.25}=v^3\]</span></p>
+<p>Take the cube root of both sides.</p>
+<p><span class="math display">\[\sqrt[3]{\frac{53100}{1.25}}=v\]</span></p>
+<p>If your calculator does not have a cube-root button, you can also
+raise the quotient to the power of 1/3.</p>
+<p><span class="math display">\[v=\left(\frac{53100}{1.25}\right)^{1/3}\]</span></p>
+<p>Evaluate.</p>
+<p><span class="math display">\[v=34.9\]</span></p>
+<p>Use that value to find the force.</p>
+<p><span class="math display">\[F=1.25\cdot(34.9)^2\]</span></p>
+<p><span class="math display">\[F=1520\]</span></p>
+</div>
+<div id="further-considerations" class="section level3">
+<h3>Further considerations</h3>
+<p>If you are interested, we can convert these values to <a href="https://en.wikipedia.org/wiki/Imperial_units">imperial
+units</a>.</p>
+<div class="tabl">
+<table>
+<thead>
+<tr class="header">
+<th align="center">velocity in miles per hour</th>
+<th align="center">force in pounds</th>
+<th align="center">power in horsepower</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(35.3\)</span></td>
+<td align="center"><span class="math inline">\(70.1\)</span></td>
+<td align="center"><span class="math inline">\(6.61\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(40.7\)</span></td>
+<td align="center"><span class="math inline">\(93.1\)</span></td>
+<td align="center"><span class="math inline">\(10.1\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(78.1\)</span></td>
+<td align="center"><span class="math inline">\(342\)</span></td>
+<td align="center"><span class="math inline">\(71.2\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>We could also use the fact the engines are about 20% efficient at
+converting the chemical potential energy of gasoline into motion. A
+gallon of gasoline burning with oxygen has a potential of <span class="math inline">\(1.25\cdot 10^8\)</span> joules of energy (and a
+watt equals 1 joule/second). This allows you to estimate the gallons of
+gasoline per hour and the miles per gallon.</p>
+<div class="tabl">
+<table>
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">miles per hour</th>
+<th align="center">horsepower (output)</th>
+<th align="center">gallons per hour</th>
+<th align="center">miles per gallon</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(35.3\)</span></td>
+<td align="center"><span class="math inline">\(6.61\)</span></td>
+<td align="center"><span class="math inline">\(0.71\)</span></td>
+<td align="center"><span class="math inline">\(49.7\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(40.7\)</span></td>
+<td align="center"><span class="math inline">\(10.1\)</span></td>
+<td align="center"><span class="math inline">\(1.09\)</span></td>
+<td align="center"><span class="math inline">\(37.3\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(78.1\)</span></td>
+<td align="center"><span class="math inline">\(71.2\)</span></td>
+<td align="center"><span class="math inline">\(7.65\)</span></td>
+<td align="center"><span class="math inline">\(10.2\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Of course, all of this is estimated and ignores some important
+details (like engine tuning, rolling resistance, and the complexities of
+<a href="https://en.wikipedia.org/wiki/Fluid_dynamics">fluid
+dynamics</a>). But it does highlight how drastically speed can influence
+gas mileage. This was part of the reason for a <a href="https://en.wikipedia.org/wiki/National_Maximum_Speed_Law">national
+speed limit of 55 mph in 1974</a> to help lower the demand for
+gasoline.</p>
+</div>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>An object in motion stays in motion unless acted upon by an external
+force. So, ideally, a spaceship in deep space, after accelerating, could
+cruise at a constant velocity without needing to run its thrusters.</p>
+<p>However, an <a href="https://en.wikipedia.org/wiki/Car">automobile</a> on Earth&#39;s
+surface, even on flat ground, needs to constantly burn fuel (or use its
+battery) to overcome countervailing external forces. The major force
+pushing against an automobile&#39;s motion (other than gravity when going up
+hill) is <a href="https://en.wikipedia.org/wiki/Drag_(physics)#Aerodynamics">air
+resistance</a>.</p>
+<p>The <a href="https://en.wikipedia.org/wiki/Force">force</a> from the
+aerodynamic drag is proportional to the square of velocity. The
+quadratic coefficient can be estimated by looking up the <a href="https://en.wikipedia.org/wiki/Automobile_drag_coefficient#Drag_area">drag
+area</a> and estimating the <a href="https://en.wikipedia.org/wiki/Density_of_air">density of
+air</a>.</p>
+<p>If we pick a car with a drag area of 1.96 <span class="math inline">\(\mathrm{m^2}\)</span> (basically a large box) and
+say the density of air is approximately 1.225 <span class="math inline">\(\mathrm{\frac{kg}{m^2}}\)</span>, then we predict
+the force (<span class="math inline">\(F\)</span> in <a href="https://en.wikipedia.org/wiki/Newton_(unit)">newtons</a>) is
+related to velocity (<span class="math inline">\(v\)</span> in meters
+per second) by the equation below:</p>
+<p><span class="math display">\[F = 1.201\cdot v^2\]</span></p>
+<p>The engine&#39;s output <a href="https://en.wikipedia.org/wiki/Power_(physics)">power</a> (<span class="math inline">\(P\)</span> in <a href="https://en.wikipedia.org/wiki/Watt">watts</a>) is approximately
+proportional to the cube of velocity, using the same coefficient.</p>
+<p><span class="math display">\[P = 1.201\cdot v^3\]</span></p>
+<p>Complete the table below:</p>
+<style type="text/css">
+.tabl td {
+border: 1px solid black;
+text-align: center;
+padding: 15px;
+margin: 1em;
+}
+.tabl th {
+border: 2px solid black;
+border-bottom: 2px solid black;
+text-align: center;
+background-color: #227;
+padding: 15px;
+color: white;
+}
+</style>
+<div class="tabl">
+<table>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(v\)</span> (in m/s)</th>
+<th align="center"><span class="math inline">\(F\)</span> (in N)</th>
+<th align="center"><span class="math inline">\(P\)</span> (in W)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(8.25\)</span></td>
+<td align="center"><select class="webex-select" id="webex-a28edb438adb3514f5677160a8a77575" data-answer="OgMUVUhSGAMUUTk="><option value="blank"></option><option>81.7</option><option>89.9</option><option>98.9</option><option>109</option><option>120</option></select></td>
+<td align="center"><select class="webex-select" id="webex-300f566c3384f36850c6fadb8c84d1fd" data-answer="aAAcVhkHGlMfA2U="><option value="blank"></option><option>557</option><option>613</option><option>674</option><option>741</option><option>816</option></select></td>
+</tr>
+<tr class="even">
+<td align="center"><select class="webex-select" id="webex-0969f5c7aa3d890dd570d4e89da98ef6" data-answer="awkaCUoETwdNUW4="><option value="blank"></option><option>9.5</option><option>10.5</option><option>11.5</option><option>12.6</option><option>13.9</option></select></td>
+<td align="center"><span class="math inline">\(159\)</span></td>
+<td align="center"><select class="webex-select" id="webex-33395e4ef9bd0350f6a86a063b65eb9e" data-answer="aAMfCRlVGFVKCD8="><option value="blank"></option><option>1250</option><option>1370</option><option>1510</option><option>1660</option><option>1830</option></select></td>
+</tr>
+<tr class="odd">
+<td align="center"><select class="webex-select" id="webex-001173224a078112b696080edfb1ac2a" data-answer="awAdARsCHgIYUW0="><option value="blank"></option><option>28.6</option><option>31.5</option><option>34.6</option><option>38.1</option><option>41.9</option></select></td>
+<td align="center"><select class="webex-select" id="webex-82905ce281dbb00c60ecdd096bc82a1a" data-answer="YwIVARlTSQIUATk="><option value="blank"></option><option>1310</option><option>1440</option><option>1580</option><option>1740</option><option>1920</option></select></td>
+<td align="center"><span class="math inline">\(49700\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="webex-solution">
+<style type="text/css">
+.tabl td {
+border: 1px solid black;
+text-align: center;
+padding: 15px;
+margin: 1em;
+}
+.tabl th {
+border: 2px solid black;
+border-bottom: 2px solid black;
+text-align: center;
+background-color: #227;
+padding: 15px;
+color: white;
+}
+</style>
+<div class="tabl">
+<table>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(v\)</span> (in m/s)</th>
+<th align="center"><span class="math inline">\(F\)</span> (in N)</th>
+<th align="center"><span class="math inline">\(P\)</span> (in W)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(8.25\)</span></td>
+<td align="center"><span class="math inline">\(81.7\)</span></td>
+<td align="center"><span class="math inline">\(674\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(11.5\)</span></td>
+<td align="center"><span class="math inline">\(159\)</span></td>
+<td align="center"><span class="math inline">\(1830\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(34.6\)</span></td>
+<td align="center"><span class="math inline">\(1440\)</span></td>
+<td align="center"><span class="math inline">\(49700\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="row-1-1" class="section level3">
+<h3>Row 1</h3>
+<p>Use the formulas with <span class="math inline">\(v=8.25\)</span>.</p>
+<p><span class="math display">\[F=1.201\cdot(8.25)^2=81.7\]</span> <span class="math display">\[P=1.201\cdot(8.25)^3=674\]</span></p>
+</div>
+<div id="row-2-1" class="section level3">
+<h3>Row 2</h3>
+<p>First, use <span class="math inline">\(F=159\)</span> to find <span class="math inline">\(v\)</span>.</p>
+<p><span class="math display">\[159=1.201\cdot v^2\]</span></p>
+<p>Divide both sides by 1.201.</p>
+<p><span class="math display">\[\frac{159}{1.201}=v^2\]</span></p>
+<p>Take the square root of both sides. In this context, we are only
+interested in the positive velocity.</p>
+<p><span class="math display">\[\sqrt{\frac{159}{1.201}}=v\]</span></p>
+<p>If your calculator does not have a square-root button, you can also
+raise the quotient to the power of 1/2.</p>
+<p><span class="math display">\[v~=~\left(\frac{159}{1.201}\right)^{1/2}\]</span></p>
+<p>Evaluate.</p>
+<p><span class="math display">\[v=11.5\]</span></p>
+<p>Use that value to find the power.</p>
+<p><span class="math display">\[P=1.201\cdot(11.5)^3\]</span> <span class="math display">\[P=1830\]</span></p>
+</div>
+<div id="row-3-1" class="section level3">
+<h3>Row 3</h3>
+<p>First, use <span class="math inline">\(P=49700\)</span> to find <span class="math inline">\(v\)</span>.</p>
+<p><span class="math display">\[49700=1.201\cdot v^3\]</span></p>
+<p>Divide both sides by 1.201.</p>
+<p><span class="math display">\[\frac{49700}{1.201}=v^3\]</span></p>
+<p>Take the cube root of both sides.</p>
+<p><span class="math display">\[\sqrt[3]{\frac{49700}{1.201}}=v\]</span></p>
+<p>If your calculator does not have a cube-root button, you can also
+raise the quotient to the power of 1/3.</p>
+<p><span class="math display">\[v=\left(\frac{49700}{1.201}\right)^{1/3}\]</span></p>
+<p>Evaluate.</p>
+<p><span class="math display">\[v=34.6\]</span></p>
+<p>Use that value to find the force.</p>
+<p><span class="math display">\[F=1.201\cdot(34.6)^2\]</span></p>
+<p><span class="math display">\[F=1440\]</span></p>
+</div>
+<div id="further-considerations-1" class="section level3">
+<h3>Further considerations</h3>
+<p>If you are interested, we can convert these values to <a href="https://en.wikipedia.org/wiki/Imperial_units">imperial
+units</a>.</p>
+<div class="tabl">
+<table>
+<thead>
+<tr class="header">
+<th align="center">velocity in miles per hour</th>
+<th align="center">force in pounds</th>
+<th align="center">power in horsepower</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(18.5\)</span></td>
+<td align="center"><span class="math inline">\(18.4\)</span></td>
+<td align="center"><span class="math inline">\(0.904\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(25.7\)</span></td>
+<td align="center"><span class="math inline">\(35.7\)</span></td>
+<td align="center"><span class="math inline">\(2.45\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(77.4\)</span></td>
+<td align="center"><span class="math inline">\(324\)</span></td>
+<td align="center"><span class="math inline">\(66.6\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>We could also use the fact the engines are about 20% efficient at
+converting the chemical potential energy of gasoline into motion. A
+gallon of gasoline burning with oxygen has a potential of <span class="math inline">\(1.25\cdot 10^8\)</span> joules of energy (and a
+watt equals 1 joule/second). This allows you to estimate the gallons of
+gasoline per hour and the miles per gallon.</p>
+<div class="tabl">
+<table>
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">miles per hour</th>
+<th align="center">horsepower (output)</th>
+<th align="center">gallons per hour</th>
+<th align="center">miles per gallon</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(18.5\)</span></td>
+<td align="center"><span class="math inline">\(0.904\)</span></td>
+<td align="center"><span class="math inline">\(0.0971\)</span></td>
+<td align="center"><span class="math inline">\(191\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(25.7\)</span></td>
+<td align="center"><span class="math inline">\(2.45\)</span></td>
+<td align="center"><span class="math inline">\(0.264\)</span></td>
+<td align="center"><span class="math inline">\(97.3\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(77.4\)</span></td>
+<td align="center"><span class="math inline">\(66.6\)</span></td>
+<td align="center"><span class="math inline">\(7.16\)</span></td>
+<td align="center"><span class="math inline">\(10.8\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Of course, all of this is estimated and ignores some important
+details (like engine tuning, rolling resistance, and the complexities of
+<a href="https://en.wikipedia.org/wiki/Fluid_dynamics">fluid
+dynamics</a>). But it does highlight how drastically speed can influence
+gas mileage. This was part of the reason for a <a href="https://en.wikipedia.org/wiki/National_Maximum_Speed_Law">national
+speed limit of 55 mph in 1974</a> to help lower the demand for
+gasoline.</p>
+</div>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>An object in motion stays in motion unless acted upon by an external
+force. So, ideally, a spaceship in deep space, after accelerating, could
+cruise at a constant velocity without needing to run its thrusters.</p>
+<p>However, an <a href="https://en.wikipedia.org/wiki/Car">automobile</a> on Earth&#39;s
+surface, even on flat ground, needs to constantly burn fuel (or use its
+battery) to overcome countervailing external forces. The major force
+pushing against an automobile&#39;s motion (other than gravity when going up
+hill) is <a href="https://en.wikipedia.org/wiki/Drag_(physics)#Aerodynamics">air
+resistance</a>.</p>
+<p>The <a href="https://en.wikipedia.org/wiki/Force">force</a> from the
+aerodynamic drag is proportional to the square of velocity. The
+quadratic coefficient can be estimated by looking up the <a href="https://en.wikipedia.org/wiki/Automobile_drag_coefficient#Drag_area">drag
+area</a> and estimating the <a href="https://en.wikipedia.org/wiki/Density_of_air">density of
+air</a>.</p>
+<p>If we pick a car with a drag area of 1.262 <span class="math inline">\(\mathrm{m^2}\)</span> (not very aerodynamic) and
+say the density of air is approximately 1.225 <span class="math inline">\(\mathrm{\frac{kg}{m^2}}\)</span>, then we predict
+the force (<span class="math inline">\(F\)</span> in <a href="https://en.wikipedia.org/wiki/Newton_(unit)">newtons</a>) is
+related to velocity (<span class="math inline">\(v\)</span> in meters
+per second) by the equation below:</p>
+<p><span class="math display">\[F = 0.773\cdot v^2\]</span></p>
+<p>The engine&#39;s output <a href="https://en.wikipedia.org/wiki/Power_(physics)">power</a> (<span class="math inline">\(P\)</span> in <a href="https://en.wikipedia.org/wiki/Watt">watts</a>) is approximately
+proportional to the cube of velocity, using the same coefficient.</p>
+<p><span class="math display">\[P = 0.773\cdot v^3\]</span></p>
+<p>Complete the table below:</p>
+<style type="text/css">
+.tabl td {
+border: 1px solid black;
+text-align: center;
+padding: 15px;
+margin: 1em;
+}
+.tabl th {
+border: 2px solid black;
+border-bottom: 2px solid black;
+text-align: center;
+background-color: #227;
+padding: 15px;
+color: white;
+}
+</style>
+<div class="tabl">
+<table>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(v\)</span> (in m/s)</th>
+<th align="center"><span class="math inline">\(F\)</span> (in N)</th>
+<th align="center"><span class="math inline">\(P\)</span> (in W)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(27.1\)</span></td>
+<td align="center"><select class="webex-select" id="webex-720b5133e1dceaa87939e0bb62fd761a" data-answer="bAIcUhkBHwNJADk="><option value="blank"></option><option>388</option><option>427</option><option>469</option><option>516</option><option>568</option></select></td>
+<td align="center"><select class="webex-select" id="webex-ee165ec3ad7f7d5ac809d6a1596fbbe1" data-answer="PlQdBhlVTwNNVGo="><option value="blank"></option><option>15400</option><option>16900</option><option>18600</option><option>20500</option><option>22500</option></select></td>
+</tr>
+<tr class="even">
+<td align="center"><select class="webex-select" id="webex-e60e5054ed41a67620b32423865f3562" data-answer="PgccVRkAGQRJVGk="><option value="blank"></option><option>30</option><option>33</option><option>36.3</option><option>39.9</option><option>43.9</option></select></td>
+<td align="center"><span class="math inline">\(696\)</span></td>
+<td align="center"><select class="webex-select" id="webex-1c7c2bd598f3fcea54d2fac352f8fd6c" data-answer="alMbUx5TSAUVCDs="><option value="blank"></option><option>17300</option><option>19000</option><option>20900</option><option>23000</option><option>25300</option></select></td>
+</tr>
+<tr class="odd">
+<td align="center"><select class="webex-select" id="webex-9c3d656759f208bb6c6c2864de6f74b9" data-answer="YlMfVBoFGgcZCDs="><option value="blank"></option><option>23.7</option><option>26.1</option><option>28.7</option><option>31.5</option><option>34.7</option></select></td>
+<td align="center"><select class="webex-select" id="webex-149d569549c2342713cba45daac2d41e" data-answer="agUVVBkGFQUYCT4="><option value="blank"></option><option>931</option><option>1020</option><option>1130</option><option>1240</option><option>1360</option></select></td>
+<td align="center"><span class="math inline">\(32300\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="webex-solution">
+<style type="text/css">
+.tabl td {
+border: 1px solid black;
+text-align: center;
+padding: 15px;
+margin: 1em;
+}
+.tabl th {
+border: 2px solid black;
+border-bottom: 2px solid black;
+text-align: center;
+background-color: #227;
+padding: 15px;
+color: white;
+}
+</style>
+<div class="tabl">
+<table>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(v\)</span> (in m/s)</th>
+<th align="center"><span class="math inline">\(F\)</span> (in N)</th>
+<th align="center"><span class="math inline">\(P\)</span> (in W)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(27.1\)</span></td>
+<td align="center"><span class="math inline">\(568\)</span></td>
+<td align="center"><span class="math inline">\(15400\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(30\)</span></td>
+<td align="center"><span class="math inline">\(696\)</span></td>
+<td align="center"><span class="math inline">\(20900\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(34.7\)</span></td>
+<td align="center"><span class="math inline">\(931\)</span></td>
+<td align="center"><span class="math inline">\(32300\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="row-1-2" class="section level3">
+<h3>Row 1</h3>
+<p>Use the formulas with <span class="math inline">\(v=27.1\)</span>.</p>
+<p><span class="math display">\[F=0.773\cdot(27.1)^2=568\]</span> <span class="math display">\[P=0.773\cdot(27.1)^3=15400\]</span></p>
+</div>
+<div id="row-2-2" class="section level3">
+<h3>Row 2</h3>
+<p>First, use <span class="math inline">\(F=696\)</span> to find <span class="math inline">\(v\)</span>.</p>
+<p><span class="math display">\[696=0.773\cdot v^2\]</span></p>
+<p>Divide both sides by 0.773.</p>
+<p><span class="math display">\[\frac{696}{0.773}=v^2\]</span></p>
+<p>Take the square root of both sides. In this context, we are only
+interested in the positive velocity.</p>
+<p><span class="math display">\[\sqrt{\frac{696}{0.773}}=v\]</span></p>
+<p>If your calculator does not have a square-root button, you can also
+raise the quotient to the power of 1/2.</p>
+<p><span class="math display">\[v~=~\left(\frac{696}{0.773}\right)^{1/2}\]</span></p>
+<p>Evaluate.</p>
+<p><span class="math display">\[v=30\]</span></p>
+<p>Use that value to find the power.</p>
+<p><span class="math display">\[P=0.773\cdot(30)^3\]</span> <span class="math display">\[P=20900\]</span></p>
+</div>
+<div id="row-3-2" class="section level3">
+<h3>Row 3</h3>
+<p>First, use <span class="math inline">\(P=32300\)</span> to find <span class="math inline">\(v\)</span>.</p>
+<p><span class="math display">\[32300=0.773\cdot v^3\]</span></p>
+<p>Divide both sides by 0.773.</p>
+<p><span class="math display">\[\frac{32300}{0.773}=v^3\]</span></p>
+<p>Take the cube root of both sides.</p>
+<p><span class="math display">\[\sqrt[3]{\frac{32300}{0.773}}=v\]</span></p>
+<p>If your calculator does not have a cube-root button, you can also
+raise the quotient to the power of 1/3.</p>
+<p><span class="math display">\[v=\left(\frac{32300}{0.773}\right)^{1/3}\]</span></p>
+<p>Evaluate.</p>
+<p><span class="math display">\[v=34.7\]</span></p>
+<p>Use that value to find the force.</p>
+<p><span class="math display">\[F=0.773\cdot(34.7)^2\]</span></p>
+<p><span class="math display">\[F=931\]</span></p>
+</div>
+<div id="further-considerations-2" class="section level3">
+<h3>Further considerations</h3>
+<p>If you are interested, we can convert these values to <a href="https://en.wikipedia.org/wiki/Imperial_units">imperial
+units</a>.</p>
+<div class="tabl">
+<table>
+<thead>
+<tr class="header">
+<th align="center">velocity in miles per hour</th>
+<th align="center">force in pounds</th>
+<th align="center">power in horsepower</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(60.6\)</span></td>
+<td align="center"><span class="math inline">\(128\)</span></td>
+<td align="center"><span class="math inline">\(20.7\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(67.1\)</span></td>
+<td align="center"><span class="math inline">\(156\)</span></td>
+<td align="center"><span class="math inline">\(28\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(77.6\)</span></td>
+<td align="center"><span class="math inline">\(209\)</span></td>
+<td align="center"><span class="math inline">\(43.3\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>We could also use the fact the engines are about 20% efficient at
+converting the chemical potential energy of gasoline into motion. A
+gallon of gasoline burning with oxygen has a potential of <span class="math inline">\(1.25\cdot 10^8\)</span> joules of energy (and a
+watt equals 1 joule/second). This allows you to estimate the gallons of
+gasoline per hour and the miles per gallon.</p>
+<div class="tabl">
+<table>
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">miles per hour</th>
+<th align="center">horsepower (output)</th>
+<th align="center">gallons per hour</th>
+<th align="center">miles per gallon</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(60.6\)</span></td>
+<td align="center"><span class="math inline">\(20.7\)</span></td>
+<td align="center"><span class="math inline">\(2.22\)</span></td>
+<td align="center"><span class="math inline">\(27.3\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(67.1\)</span></td>
+<td align="center"><span class="math inline">\(28\)</span></td>
+<td align="center"><span class="math inline">\(3.01\)</span></td>
+<td align="center"><span class="math inline">\(22.3\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(77.6\)</span></td>
+<td align="center"><span class="math inline">\(43.3\)</span></td>
+<td align="center"><span class="math inline">\(4.65\)</span></td>
+<td align="center"><span class="math inline">\(16.7\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Of course, all of this is estimated and ignores some important
+details (like engine tuning, rolling resistance, and the complexities of
+<a href="https://en.wikipedia.org/wiki/Fluid_dynamics">fluid
+dynamics</a>). But it does highlight how drastically speed can influence
+gas mileage. This was part of the reason for a <a href="https://en.wikipedia.org/wiki/National_Maximum_Speed_Law">national
+speed limit of 55 mph in 1974</a> to help lower the demand for
+gasoline.</p>
+</div>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>An object in motion stays in motion unless acted upon by an external
+force. So, ideally, a spaceship in deep space, after accelerating, could
+cruise at a constant velocity without needing to run its thrusters.</p>
+<p>However, an <a href="https://en.wikipedia.org/wiki/Car">automobile</a> on Earth&#39;s
+surface, even on flat ground, needs to constantly burn fuel (or use its
+battery) to overcome countervailing external forces. The major force
+pushing against an automobile&#39;s motion (other than gravity when going up
+hill) is <a href="https://en.wikipedia.org/wiki/Drag_(physics)#Aerodynamics">air
+resistance</a>.</p>
+<p>The <a href="https://en.wikipedia.org/wiki/Force">force</a> from the
+aerodynamic drag is proportional to the square of velocity. The
+quadratic coefficient can be estimated by looking up the <a href="https://en.wikipedia.org/wiki/Automobile_drag_coefficient#Drag_area">drag
+area</a> and estimating the <a href="https://en.wikipedia.org/wiki/Density_of_air">density of
+air</a>.</p>
+<p>If we pick a car with a drag area of 0.878 <span class="math inline">\(\mathrm{m^2}\)</span> (moderately aerodynamic) and
+say the density of air is approximately 1.225 <span class="math inline">\(\mathrm{\frac{kg}{m^2}}\)</span>, then we predict
+the force (<span class="math inline">\(F\)</span> in <a href="https://en.wikipedia.org/wiki/Newton_(unit)">newtons</a>) is
+related to velocity (<span class="math inline">\(v\)</span> in meters
+per second) by the equation below:</p>
+<p><span class="math display">\[F = 0.538\cdot v^2\]</span></p>
+<p>The engine&#39;s output <a href="https://en.wikipedia.org/wiki/Power_(physics)">power</a> (<span class="math inline">\(P\)</span> in <a href="https://en.wikipedia.org/wiki/Watt">watts</a>) is approximately
+proportional to the cube of velocity, using the same coefficient.</p>
+<p><span class="math display">\[P = 0.538\cdot v^3\]</span></p>
+<p>Complete the table below:</p>
+<style type="text/css">
+.tabl td {
+border: 1px solid black;
+text-align: center;
+padding: 15px;
+margin: 1em;
+}
+.tabl th {
+border: 2px solid black;
+border-bottom: 2px solid black;
+text-align: center;
+background-color: #227;
+padding: 15px;
+color: white;
+}
+</style>
+<div class="tabl">
+<table>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(v\)</span> (in m/s)</th>
+<th align="center"><span class="math inline">\(F\)</span> (in N)</th>
+<th align="center"><span class="math inline">\(P\)</span> (in W)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(8.19\)</span></td>
+<td align="center"><select class="webex-select" id="webex-6a69340df61563604e3c68a115bb0816" data-answer="bVAaCR8EHFRKBmw="><option value="blank"></option><option>36.1</option><option>39.7</option><option>43.7</option><option>48</option><option>52.9</option></select></td>
+<td align="center"><select class="webex-select" id="webex-d13d65643cb11e14a8b27ee327beb172" data-answer="PwEfVBoFGgQfUj8="><option value="blank"></option><option>202</option><option>222</option><option>245</option><option>269</option><option>296</option></select></td>
+</tr>
+<tr class="even">
+<td align="center"><select class="webex-select" id="webex-8965b84d919248490cb39a48cfe03314" data-answer="YwkaBE4IGFQVAWQ="><option value="blank"></option><option>25.3</option><option>27.8</option><option>30.6</option><option>33.6</option><option>37</option></select></td>
+<td align="center"><span class="math inline">\(416\)</span></td>
+<td align="center"><select class="webex-select" id="webex-b79d6ec662f8e21042e0bdc6d42917fb" data-answer="OQcVVBpVTwYaAzs="><option value="blank"></option><option>7920</option><option>8720</option><option>9590</option><option>10500</option><option>11600</option></select></td>
+</tr>
+<tr class="odd">
+<td align="center"><select class="webex-select" id="webex-4e575b4374cc9f47ebb8fa35da5552d0" data-answer="b1UZBhlSGAMbBD4="><option value="blank"></option><option>29.7</option><option>32.7</option><option>36</option><option>39.6</option><option>43.5</option></select></td>
+<td align="center"><select class="webex-select" id="webex-e7f28de379addd2f33b043fe9e06dc14" data-answer="PgdKAhRVSQMbCTw="><option value="blank"></option><option>475</option><option>523</option><option>575</option><option>632</option><option>696</option></select></td>
+<td align="center"><span class="math inline">\(18800\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="webex-solution">
+<style type="text/css">
+.tabl td {
+border: 1px solid black;
+text-align: center;
+padding: 15px;
+margin: 1em;
+}
+.tabl th {
+border: 2px solid black;
+border-bottom: 2px solid black;
+text-align: center;
+background-color: #227;
+padding: 15px;
+color: white;
+}
+</style>
+<div class="tabl">
+<table>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(v\)</span> (in m/s)</th>
+<th align="center"><span class="math inline">\(F\)</span> (in N)</th>
+<th align="center"><span class="math inline">\(P\)</span> (in W)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(8.19\)</span></td>
+<td align="center"><span class="math inline">\(36.1\)</span></td>
+<td align="center"><span class="math inline">\(296\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(27.8\)</span></td>
+<td align="center"><span class="math inline">\(416\)</span></td>
+<td align="center"><span class="math inline">\(11600\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(32.7\)</span></td>
+<td align="center"><span class="math inline">\(575\)</span></td>
+<td align="center"><span class="math inline">\(18800\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="row-1-3" class="section level3">
+<h3>Row 1</h3>
+<p>Use the formulas with <span class="math inline">\(v=8.19\)</span>.</p>
+<p><span class="math display">\[F=0.538\cdot(8.19)^2=36.1\]</span> <span class="math display">\[P=0.538\cdot(8.19)^3=296\]</span></p>
+</div>
+<div id="row-2-3" class="section level3">
+<h3>Row 2</h3>
+<p>First, use <span class="math inline">\(F=416\)</span> to find <span class="math inline">\(v\)</span>.</p>
+<p><span class="math display">\[416=0.538\cdot v^2\]</span></p>
+<p>Divide both sides by 0.538.</p>
+<p><span class="math display">\[\frac{416}{0.538}=v^2\]</span></p>
+<p>Take the square root of both sides. In this context, we are only
+interested in the positive velocity.</p>
+<p><span class="math display">\[\sqrt{\frac{416}{0.538}}=v\]</span></p>
+<p>If your calculator does not have a square-root button, you can also
+raise the quotient to the power of 1/2.</p>
+<p><span class="math display">\[v~=~\left(\frac{416}{0.538}\right)^{1/2}\]</span></p>
+<p>Evaluate.</p>
+<p><span class="math display">\[v=27.8\]</span></p>
+<p>Use that value to find the power.</p>
+<p><span class="math display">\[P=0.538\cdot(27.8)^3\]</span> <span class="math display">\[P=11600\]</span></p>
+</div>
+<div id="row-3-3" class="section level3">
+<h3>Row 3</h3>
+<p>First, use <span class="math inline">\(P=18800\)</span> to find <span class="math inline">\(v\)</span>.</p>
+<p><span class="math display">\[18800=0.538\cdot v^3\]</span></p>
+<p>Divide both sides by 0.538.</p>
+<p><span class="math display">\[\frac{18800}{0.538}=v^3\]</span></p>
+<p>Take the cube root of both sides.</p>
+<p><span class="math display">\[\sqrt[3]{\frac{18800}{0.538}}=v\]</span></p>
+<p>If your calculator does not have a cube-root button, you can also
+raise the quotient to the power of 1/3.</p>
+<p><span class="math display">\[v=\left(\frac{18800}{0.538}\right)^{1/3}\]</span></p>
+<p>Evaluate.</p>
+<p><span class="math display">\[v=32.7\]</span></p>
+<p>Use that value to find the force.</p>
+<p><span class="math display">\[F=0.538\cdot(32.7)^2\]</span></p>
+<p><span class="math display">\[F=575\]</span></p>
+</div>
+<div id="further-considerations-3" class="section level3">
+<h3>Further considerations</h3>
+<p>If you are interested, we can convert these values to <a href="https://en.wikipedia.org/wiki/Imperial_units">imperial
+units</a>.</p>
+<div class="tabl">
+<table>
+<thead>
+<tr class="header">
+<th align="center">velocity in miles per hour</th>
+<th align="center">force in pounds</th>
+<th align="center">power in horsepower</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(18.3\)</span></td>
+<td align="center"><span class="math inline">\(8.12\)</span></td>
+<td align="center"><span class="math inline">\(0.397\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(62.2\)</span></td>
+<td align="center"><span class="math inline">\(93.5\)</span></td>
+<td align="center"><span class="math inline">\(15.6\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(73.1\)</span></td>
+<td align="center"><span class="math inline">\(129\)</span></td>
+<td align="center"><span class="math inline">\(25.2\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>We could also use the fact the engines are about 20% efficient at
+converting the chemical potential energy of gasoline into motion. A
+gallon of gasoline burning with oxygen has a potential of <span class="math inline">\(1.25\cdot 10^8\)</span> joules of energy (and a
+watt equals 1 joule/second). This allows you to estimate the gallons of
+gasoline per hour and the miles per gallon.</p>
+<div class="tabl">
+<table>
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">miles per hour</th>
+<th align="center">horsepower (output)</th>
+<th align="center">gallons per hour</th>
+<th align="center">miles per gallon</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(18.3\)</span></td>
+<td align="center"><span class="math inline">\(0.397\)</span></td>
+<td align="center"><span class="math inline">\(0.0426\)</span></td>
+<td align="center"><span class="math inline">\(430\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(62.2\)</span></td>
+<td align="center"><span class="math inline">\(15.6\)</span></td>
+<td align="center"><span class="math inline">\(1.67\)</span></td>
+<td align="center"><span class="math inline">\(37.2\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(73.1\)</span></td>
+<td align="center"><span class="math inline">\(25.2\)</span></td>
+<td align="center"><span class="math inline">\(2.71\)</span></td>
+<td align="center"><span class="math inline">\(27\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Of course, all of this is estimated and ignores some important
+details (like engine tuning, rolling resistance, and the complexities of
+<a href="https://en.wikipedia.org/wiki/Fluid_dynamics">fluid
+dynamics</a>). But it does highlight how drastically speed can influence
+gas mileage. This was part of the reason for a <a href="https://en.wikipedia.org/wiki/National_Maximum_Speed_Law">national
+speed limit of 55 mph in 1974</a> to help lower the demand for
+gasoline.</p>
+</div>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>An object in motion stays in motion unless acted upon by an external
+force. So, ideally, a spaceship in deep space, after accelerating, could
+cruise at a constant velocity without needing to run its thrusters.</p>
+<p>However, an <a href="https://en.wikipedia.org/wiki/Car">automobile</a> on Earth&#39;s
+surface, even on flat ground, needs to constantly burn fuel (or use its
+battery) to overcome countervailing external forces. The major force
+pushing against an automobile&#39;s motion (other than gravity when going up
+hill) is <a href="https://en.wikipedia.org/wiki/Drag_(physics)#Aerodynamics">air
+resistance</a>.</p>
+<p>The <a href="https://en.wikipedia.org/wiki/Force">force</a> from the
+aerodynamic drag is proportional to the square of velocity. The
+quadratic coefficient can be estimated by looking up the <a href="https://en.wikipedia.org/wiki/Automobile_drag_coefficient#Drag_area">drag
+area</a> and estimating the <a href="https://en.wikipedia.org/wiki/Density_of_air">density of
+air</a>.</p>
+<p>If we pick a car with a drag area of 2.195 <span class="math inline">\(\mathrm{m^2}\)</span> (basically a large box) and
+say the density of air is approximately 1.225 <span class="math inline">\(\mathrm{\frac{kg}{m^2}}\)</span>, then we predict
+the force (<span class="math inline">\(F\)</span> in <a href="https://en.wikipedia.org/wiki/Newton_(unit)">newtons</a>) is
+related to velocity (<span class="math inline">\(v\)</span> in meters
+per second) by the equation below:</p>
+<p><span class="math display">\[F = 1.344\cdot v^2\]</span></p>
+<p>The engine&#39;s output <a href="https://en.wikipedia.org/wiki/Power_(physics)">power</a> (<span class="math inline">\(P\)</span> in <a href="https://en.wikipedia.org/wiki/Watt">watts</a>) is approximately
+proportional to the cube of velocity, using the same coefficient.</p>
+<p><span class="math display">\[P = 1.344\cdot v^3\]</span></p>
+<p>Complete the table below:</p>
+<style type="text/css">
+.tabl td {
+border: 1px solid black;
+text-align: center;
+padding: 15px;
+margin: 1em;
+}
+.tabl th {
+border: 2px solid black;
+border-bottom: 2px solid black;
+text-align: center;
+background-color: #227;
+padding: 15px;
+color: white;
+}
+</style>
+<div class="tabl">
+<table>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(v\)</span> (in m/s)</th>
+<th align="center"><span class="math inline">\(F\)</span> (in N)</th>
+<th align="center"><span class="math inline">\(P\)</span> (in W)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(7.66\)</span></td>
+<td align="center"><select class="webex-select" id="webex-53ccd173565579e91171aa0f3bb62a0d" data-answer="bgJPU0gBGwMZBmg="><option value="blank"></option><option>78.9</option><option>86.8</option><option>95.5</option><option>105</option><option>116</option></select></td>
+<td align="center"><select class="webex-select" id="webex-8d2b48e6928468ffc672266303f70e59" data-answer="Y1QeUxgISQYVAmU="><option value="blank"></option><option>549</option><option>604</option><option>664</option><option>731</option><option>804</option></select></td>
+</tr>
+<tr class="even">
+<td align="center"><select class="webex-select" id="webex-a5a0dd02428e75191cee8d1110f38013" data-answer="OgVNAEhUHAIYA2U="><option value="blank"></option><option>8.06</option><option>8.87</option><option>9.75</option><option>10.7</option><option>11.8</option></select></td>
+<td align="center"><span class="math inline">\(187\)</span></td>
+<td align="center"><select class="webex-select" id="webex-1d2a6c13fb3b72830ddb708f8fbc8654" data-answer="alQeURpSHQNKUm4="><option value="blank"></option><option>1830</option><option>2010</option><option>2210</option><option>2430</option><option>2670</option></select></td>
+</tr>
+<tr class="odd">
+<td align="center"><select class="webex-select" id="webex-18ebc00d5d5b6129f5a9d0654b97812b" data-answer="aghJUk8AHFUZVGg="><option value="blank"></option><option>22.5</option><option>24.7</option><option>27.2</option><option>29.9</option><option>32.9</option></select></td>
+<td align="center"><select class="webex-select" id="webex-0812f70a89497162704be4a41dffd859" data-answer="awgdAkoHHFAUCWk="><option value="blank"></option><option>902</option><option>992</option><option>1090</option><option>1200</option><option>1320</option></select></td>
+<td align="center"><span class="math inline">\(35900\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="webex-solution">
+<style type="text/css">
+.tabl td {
+border: 1px solid black;
+text-align: center;
+padding: 15px;
+margin: 1em;
+}
+.tabl th {
+border: 2px solid black;
+border-bottom: 2px solid black;
+text-align: center;
+background-color: #227;
+padding: 15px;
+color: white;
+}
+</style>
+<div class="tabl">
+<table>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(v\)</span> (in m/s)</th>
+<th align="center"><span class="math inline">\(F\)</span> (in N)</th>
+<th align="center"><span class="math inline">\(P\)</span> (in W)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(7.66\)</span></td>
+<td align="center"><span class="math inline">\(78.9\)</span></td>
+<td align="center"><span class="math inline">\(604\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(11.8\)</span></td>
+<td align="center"><span class="math inline">\(187\)</span></td>
+<td align="center"><span class="math inline">\(2210\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(29.9\)</span></td>
+<td align="center"><span class="math inline">\(1200\)</span></td>
+<td align="center"><span class="math inline">\(35900\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="row-1-4" class="section level3">
+<h3>Row 1</h3>
+<p>Use the formulas with <span class="math inline">\(v=7.66\)</span>.</p>
+<p><span class="math display">\[F=1.344\cdot(7.66)^2=78.9\]</span> <span class="math display">\[P=1.344\cdot(7.66)^3=604\]</span></p>
+</div>
+<div id="row-2-4" class="section level3">
+<h3>Row 2</h3>
+<p>First, use <span class="math inline">\(F=187\)</span> to find <span class="math inline">\(v\)</span>.</p>
+<p><span class="math display">\[187=1.344\cdot v^2\]</span></p>
+<p>Divide both sides by 1.344.</p>
+<p><span class="math display">\[\frac{187}{1.344}=v^2\]</span></p>
+<p>Take the square root of both sides. In this context, we are only
+interested in the positive velocity.</p>
+<p><span class="math display">\[\sqrt{\frac{187}{1.344}}=v\]</span></p>
+<p>If your calculator does not have a square-root button, you can also
+raise the quotient to the power of 1/2.</p>
+<p><span class="math display">\[v~=~\left(\frac{187}{1.344}\right)^{1/2}\]</span></p>
+<p>Evaluate.</p>
+<p><span class="math display">\[v=11.8\]</span></p>
+<p>Use that value to find the power.</p>
+<p><span class="math display">\[P=1.344\cdot(11.8)^3\]</span> <span class="math display">\[P=2210\]</span></p>
+</div>
+<div id="row-3-4" class="section level3">
+<h3>Row 3</h3>
+<p>First, use <span class="math inline">\(P=35900\)</span> to find <span class="math inline">\(v\)</span>.</p>
+<p><span class="math display">\[35900=1.344\cdot v^3\]</span></p>
+<p>Divide both sides by 1.344.</p>
+<p><span class="math display">\[\frac{35900}{1.344}=v^3\]</span></p>
+<p>Take the cube root of both sides.</p>
+<p><span class="math display">\[\sqrt[3]{\frac{35900}{1.344}}=v\]</span></p>
+<p>If your calculator does not have a cube-root button, you can also
+raise the quotient to the power of 1/3.</p>
+<p><span class="math display">\[v=\left(\frac{35900}{1.344}\right)^{1/3}\]</span></p>
+<p>Evaluate.</p>
+<p><span class="math display">\[v=29.9\]</span></p>
+<p>Use that value to find the force.</p>
+<p><span class="math display">\[F=1.344\cdot(29.9)^2\]</span></p>
+<p><span class="math display">\[F=1200\]</span></p>
+</div>
+<div id="further-considerations-4" class="section level3">
+<h3>Further considerations</h3>
+<p>If you are interested, we can convert these values to <a href="https://en.wikipedia.org/wiki/Imperial_units">imperial
+units</a>.</p>
+<div class="tabl">
+<table>
+<thead>
+<tr class="header">
+<th align="center">velocity in miles per hour</th>
+<th align="center">force in pounds</th>
+<th align="center">power in horsepower</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(17.1\)</span></td>
+<td align="center"><span class="math inline">\(17.7\)</span></td>
+<td align="center"><span class="math inline">\(0.81\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(26.4\)</span></td>
+<td align="center"><span class="math inline">\(42\)</span></td>
+<td align="center"><span class="math inline">\(2.96\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(66.9\)</span></td>
+<td align="center"><span class="math inline">\(270\)</span></td>
+<td align="center"><span class="math inline">\(48.1\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>We could also use the fact the engines are about 20% efficient at
+converting the chemical potential energy of gasoline into motion. A
+gallon of gasoline burning with oxygen has a potential of <span class="math inline">\(1.25\cdot 10^8\)</span> joules of energy (and a
+watt equals 1 joule/second). This allows you to estimate the gallons of
+gasoline per hour and the miles per gallon.</p>
+<div class="tabl">
+<table>
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">miles per hour</th>
+<th align="center">horsepower (output)</th>
+<th align="center">gallons per hour</th>
+<th align="center">miles per gallon</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(17.1\)</span></td>
+<td align="center"><span class="math inline">\(0.81\)</span></td>
+<td align="center"><span class="math inline">\(0.087\)</span></td>
+<td align="center"><span class="math inline">\(197\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(26.4\)</span></td>
+<td align="center"><span class="math inline">\(2.96\)</span></td>
+<td align="center"><span class="math inline">\(0.318\)</span></td>
+<td align="center"><span class="math inline">\(83\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(66.9\)</span></td>
+<td align="center"><span class="math inline">\(48.1\)</span></td>
+<td align="center"><span class="math inline">\(5.17\)</span></td>
+<td align="center"><span class="math inline">\(12.9\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Of course, all of this is estimated and ignores some important
+details (like engine tuning, rolling resistance, and the complexities of
+<a href="https://en.wikipedia.org/wiki/Fluid_dynamics">fluid
+dynamics</a>). But it does highlight how drastically speed can influence
+gas mileage. This was part of the reason for a <a href="https://en.wikipedia.org/wiki/National_Maximum_Speed_Law">national
+speed limit of 55 mph in 1974</a> to help lower the demand for
+gasoline.</p>
+</div>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>An object in motion stays in motion unless acted upon by an external
+force. So, ideally, a spaceship in deep space, after accelerating, could
+cruise at a constant velocity without needing to run its thrusters.</p>
+<p>However, an <a href="https://en.wikipedia.org/wiki/Car">automobile</a> on Earth&#39;s
+surface, even on flat ground, needs to constantly burn fuel (or use its
+battery) to overcome countervailing external forces. The major force
+pushing against an automobile&#39;s motion (other than gravity when going up
+hill) is <a href="https://en.wikipedia.org/wiki/Drag_(physics)#Aerodynamics">air
+resistance</a>.</p>
+<p>The <a href="https://en.wikipedia.org/wiki/Force">force</a> from the
+aerodynamic drag is proportional to the square of velocity. The
+quadratic coefficient can be estimated by looking up the <a href="https://en.wikipedia.org/wiki/Automobile_drag_coefficient#Drag_area">drag
+area</a> and estimating the <a href="https://en.wikipedia.org/wiki/Density_of_air">density of
+air</a>.</p>
+<p>If we pick a car with a drag area of 0.888 <span class="math inline">\(\mathrm{m^2}\)</span> (moderately aerodynamic) and
+say the density of air is approximately 1.225 <span class="math inline">\(\mathrm{\frac{kg}{m^2}}\)</span>, then we predict
+the force (<span class="math inline">\(F\)</span> in <a href="https://en.wikipedia.org/wiki/Newton_(unit)">newtons</a>) is
+related to velocity (<span class="math inline">\(v\)</span> in meters
+per second) by the equation below:</p>
+<p><span class="math display">\[F = 0.544\cdot v^2\]</span></p>
+<p>The engine&#39;s output <a href="https://en.wikipedia.org/wiki/Power_(physics)">power</a> (<span class="math inline">\(P\)</span> in <a href="https://en.wikipedia.org/wiki/Watt">watts</a>) is approximately
+proportional to the cube of velocity, using the same coefficient.</p>
+<p><span class="math display">\[P = 0.544\cdot v^3\]</span></p>
+<p>Complete the table below:</p>
+<style type="text/css">
+.tabl td {
+border: 1px solid black;
+text-align: center;
+padding: 15px;
+margin: 1em;
+}
+.tabl th {
+border: 2px solid black;
+border-bottom: 2px solid black;
+text-align: center;
+background-color: #227;
+padding: 15px;
+color: white;
+}
+</style>
+<div class="tabl">
+<table>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(v\)</span> (in m/s)</th>
+<th align="center"><span class="math inline">\(F\)</span> (in N)</th>
+<th align="center"><span class="math inline">\(P\)</span> (in W)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(7.2\)</span></td>
+<td align="center"><select class="webex-select" id="webex-f640d370e69245e2293adf862aff4679" data-answer="PQcYAEgDGwBJBmQ="><option value="blank"></option><option>28.2</option><option>31</option><option>34.1</option><option>37.5</option><option>41.3</option></select></td>
+<td align="center"><select class="webex-select" id="webex-9a55f95454f08130ea2467ebb5bcaae2" data-answer="YlEZBEoJGQQZBDs="><option value="blank"></option><option>185</option><option>203</option><option>223</option><option>246</option><option>270</option></select></td>
+</tr>
+<tr class="even">
+<td align="center"><select class="webex-select" id="webex-37d03a3a0c9dcfbea5bc5aeb2d1fe86d" data-answer="aAZIAB9RH1EcU2Q="><option value="blank"></option><option>13.1</option><option>14.4</option><option>15.9</option><option>17.4</option><option>19.2</option></select></td>
+<td align="center"><span class="math inline">\(93.4\)</span></td>
+<td align="center"><select class="webex-select" id="webex-ce4a7b95c2ca19988d87ac16ae554e23" data-answer="OFQYURtSFQVPAj4="><option value="blank"></option><option>1220</option><option>1340</option><option>1480</option><option>1620</option><option>1790</option></select></td>
+</tr>
+<tr class="odd">
+<td align="center"><select class="webex-select" id="webex-365f29c97c6cf3f88e72a00e83a917c8" data-answer="aAYZVh4JTwkbUms="><option value="blank"></option><option>18</option><option>19.8</option><option>21.7</option><option>23.9</option><option>26.3</option></select></td>
+<td align="center"><select class="webex-select" id="webex-7cede0a5a19fb13ab71511d51f21cb67" data-answer="bFNJVEkATQVNAGQ="><option value="blank"></option><option>257</option><option>282</option><option>311</option><option>342</option><option>376</option></select></td>
+<td align="center"><span class="math inline">\(9900\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="webex-solution">
+<style type="text/css">
+.tabl td {
+border: 1px solid black;
+text-align: center;
+padding: 15px;
+margin: 1em;
+}
+.tabl th {
+border: 2px solid black;
+border-bottom: 2px solid black;
+text-align: center;
+background-color: #227;
+padding: 15px;
+color: white;
+}
+</style>
+<div class="tabl">
+<table>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(v\)</span> (in m/s)</th>
+<th align="center"><span class="math inline">\(F\)</span> (in N)</th>
+<th align="center"><span class="math inline">\(P\)</span> (in W)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(7.2\)</span></td>
+<td align="center"><span class="math inline">\(28.2\)</span></td>
+<td align="center"><span class="math inline">\(203\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(13.1\)</span></td>
+<td align="center"><span class="math inline">\(93.4\)</span></td>
+<td align="center"><span class="math inline">\(1220\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(26.3\)</span></td>
+<td align="center"><span class="math inline">\(376\)</span></td>
+<td align="center"><span class="math inline">\(9900\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="row-1-5" class="section level3">
+<h3>Row 1</h3>
+<p>Use the formulas with <span class="math inline">\(v=7.2\)</span>.</p>
+<p><span class="math display">\[F=0.544\cdot(7.2)^2=28.2\]</span> <span class="math display">\[P=0.544\cdot(7.2)^3=203\]</span></p>
+</div>
+<div id="row-2-5" class="section level3">
+<h3>Row 2</h3>
+<p>First, use <span class="math inline">\(F=93.4\)</span> to find <span class="math inline">\(v\)</span>.</p>
+<p><span class="math display">\[93.4=0.544\cdot v^2\]</span></p>
+<p>Divide both sides by 0.544.</p>
+<p><span class="math display">\[\frac{93.4}{0.544}=v^2\]</span></p>
+<p>Take the square root of both sides. In this context, we are only
+interested in the positive velocity.</p>
+<p><span class="math display">\[\sqrt{\frac{93.4}{0.544}}=v\]</span></p>
+<p>If your calculator does not have a square-root button, you can also
+raise the quotient to the power of 1/2.</p>
+<p><span class="math display">\[v~=~\left(\frac{93.4}{0.544}\right)^{1/2}\]</span></p>
+<p>Evaluate.</p>
+<p><span class="math display">\[v=13.1\]</span></p>
+<p>Use that value to find the power.</p>
+<p><span class="math display">\[P=0.544\cdot(13.1)^3\]</span> <span class="math display">\[P=1220\]</span></p>
+</div>
+<div id="row-3-5" class="section level3">
+<h3>Row 3</h3>
+<p>First, use <span class="math inline">\(P=9900\)</span> to find <span class="math inline">\(v\)</span>.</p>
+<p><span class="math display">\[9900=0.544\cdot v^3\]</span></p>
+<p>Divide both sides by 0.544.</p>
+<p><span class="math display">\[\frac{9900}{0.544}=v^3\]</span></p>
+<p>Take the cube root of both sides.</p>
+<p><span class="math display">\[\sqrt[3]{\frac{9900}{0.544}}=v\]</span></p>
+<p>If your calculator does not have a cube-root button, you can also
+raise the quotient to the power of 1/3.</p>
+<p><span class="math display">\[v=\left(\frac{9900}{0.544}\right)^{1/3}\]</span></p>
+<p>Evaluate.</p>
+<p><span class="math display">\[v=26.3\]</span></p>
+<p>Use that value to find the force.</p>
+<p><span class="math display">\[F=0.544\cdot(26.3)^2\]</span></p>
+<p><span class="math display">\[F=376\]</span></p>
+</div>
+<div id="further-considerations-5" class="section level3">
+<h3>Further considerations</h3>
+<p>If you are interested, we can convert these values to <a href="https://en.wikipedia.org/wiki/Imperial_units">imperial
+units</a>.</p>
+<div class="tabl">
+<table>
+<thead>
+<tr class="header">
+<th align="center">velocity in miles per hour</th>
+<th align="center">force in pounds</th>
+<th align="center">power in horsepower</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(16.1\)</span></td>
+<td align="center"><span class="math inline">\(6.34\)</span></td>
+<td align="center"><span class="math inline">\(0.272\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(29.3\)</span></td>
+<td align="center"><span class="math inline">\(21\)</span></td>
+<td align="center"><span class="math inline">\(1.64\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(58.8\)</span></td>
+<td align="center"><span class="math inline">\(84.5\)</span></td>
+<td align="center"><span class="math inline">\(13.3\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>We could also use the fact the engines are about 20% efficient at
+converting the chemical potential energy of gasoline into motion. A
+gallon of gasoline burning with oxygen has a potential of <span class="math inline">\(1.25\cdot 10^8\)</span> joules of energy (and a
+watt equals 1 joule/second). This allows you to estimate the gallons of
+gasoline per hour and the miles per gallon.</p>
+<div class="tabl">
+<table>
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">miles per hour</th>
+<th align="center">horsepower (output)</th>
+<th align="center">gallons per hour</th>
+<th align="center">miles per gallon</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(16.1\)</span></td>
+<td align="center"><span class="math inline">\(0.272\)</span></td>
+<td align="center"><span class="math inline">\(0.0292\)</span></td>
+<td align="center"><span class="math inline">\(551\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(29.3\)</span></td>
+<td align="center"><span class="math inline">\(1.64\)</span></td>
+<td align="center"><span class="math inline">\(0.176\)</span></td>
+<td align="center"><span class="math inline">\(166\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(58.8\)</span></td>
+<td align="center"><span class="math inline">\(13.3\)</span></td>
+<td align="center"><span class="math inline">\(1.43\)</span></td>
+<td align="center"><span class="math inline">\(41.1\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Of course, all of this is estimated and ignores some important
+details (like engine tuning, rolling resistance, and the complexities of
+<a href="https://en.wikipedia.org/wiki/Fluid_dynamics">fluid
+dynamics</a>). But it does highlight how drastically speed can influence
+gas mileage. This was part of the reason for a <a href="https://en.wikipedia.org/wiki/National_Maximum_Speed_Law">national
+speed limit of 55 mph in 1974</a> to help lower the demand for
+gasoline.</p>
+</div>
+</div>
+</div>
 </div>
 
+<script>
+
+/* definition of content for the buttons */
+const webex_buttons = {check_hidden:          "<b>&check;</b>",
+                       check_hidden_alt:      "Check answer",
+                       check_shown:           "<b>&lsh;</b>",
+                       check_shown_alt:       "Hide check",
+                       check_of_total:        "/",
+                       solution:              "<b>&quest;</b>",
+                       solution_alt:          "Correct solution",
+                       question_next:         "<b>&#8634;</b>",
+                       question_next_alt:     "Next question",
+                       question_previous:     "",
+                       question_previous_alt: ""}
+
+
+/* update total correct if #webex-total_correct exists */
+update_total_correct = function() {
+  console.log("webex: update total_correct");
+
+  document.querySelectorAll(".webex-total_correct").forEach(total => {
+    p = total.closest(".webex-box");
+    var correct = p.getElementsByClassName("webex-correct").length;
+    var solvemes = p.getElementsByClassName("webex-solveme").length;
+    var radiogroups = p.getElementsByClassName("webex-radiogroup").length;
+    var selects = p.getElementsByClassName("webex-select").length;
+    /* no specific class on input node, thus searching via query selector */
+    var checkboxgroups = p.querySelectorAll("div[class=webex-checkboxgroup] input[type=checkbox]").length
+
+    /* show number of correct / total number of answers */
+    total.innerHTML = correct + "&nbsp;" + webex_buttons.check_of_total + "&nbsp;" + (solvemes + radiogroups + checkboxgroups + selects);
+  });
+}
+
+/* check answers */
+check_func = function() {
+  console.log("webex: check answer");
+
+  //var cl = elem.parentElement.classList;
+  var cl = this.closest(".webex-box").classList;
+  if (cl.contains("unchecked")) {
+    cl.remove("unchecked");
+    this.innerHTML = webex_buttons.check_shown; //"Hide check";
+    if (webex_buttons.check_shown_alt.length > 0) this.setAttribute("title", webex_buttons.check_shown_alt);
+  } else {
+    cl.add("unchecked");
+    this.innerHTML = webex_buttons.check_hidden; //"Check answer";
+    if (webex_buttons.check_hidden_alt.length > 0) this.setAttribute("title", webex_buttons.check_hidden_alt);
+  }
+}
+
+/* helper functions for checking the webex ID */
+const id_checker = {"fmt": new RegExp("[g-zG-Z]"),
+                    "load": function(e) { return e.getAttribute("id").match("(?<=(-)).*$")[0]; },
+                    "eval": new TextEncoder(),
+                    "dval": new TextDecoder()}
+
+/* Show/hide correct solution */
+solution_func = function() {
+  console.log("webex: show/hide solution");
+
+  var div = this.closest(".webex-question").querySelector(".webex-solution");
+  var cl = div.classList;
+
+  if (cl.contains("visible")) {
+    cl.remove("visible");
+  } else {
+    cl.add("visible");
+  }
+}
+
+/* function to check if the real answer is numeric */
+convert_to_numeric = function(x) {
+  if (typeof x == "string") {
+    /* do nothing */
+  } else if (x.length == 1) {
+    /* take first element */
+    x = x[0]
+  } else {
+    return NaN;
+  }
+
+  /* remove spaces for easier parsing */
+  x = x.replace(/\s/g, "");
+
+  /* Define patterns for different formats, note that spaces have been removed above */
+  const patterns = [
+    {regex: /^[+-]?\d+(\.\d{3})*,\d+$/, decimal: ",", thousand: "." },  // Format: "1.100.100.100,3"
+    {regex: /^[+-]?\d+(,\d{3})*\.\d+$/, decimal: ".", thousand: "," },  // Format: "1,100,100,100.3"
+    {regex: /^[+-]?\d+(\.|\.\d+)?$/, decimal: "." },                    // Format: "1100100100.5" or "1100100100."
+    {regex: /^[+-]?\d+(,|,\d+)$/, decimal: "," }                        // Format: "1100100100,5" or "1100100100,"
+  ];
+
+
+  /* testing all regular expressions, convert to float if possible */
+  for (const { regex, decimal, thousand } of patterns) {
+    if (regex.test(x)) {
+      let numeric = x;
+      if (thousand) numeric = numeric.replace(new RegExp(`\\${thousand}`, "g"), "");
+      numeric = numeric.replace(decimal, ".");
+      return parseFloat(numeric);
+    }
+  }
+
+  /* input of length 1 but none of the known formats, return NaN */
+  return NaN;
+}
+
+/* Checking webex ID, returns formalsol */
+check_id = function(e) {
+  /* loading webex ID */
+  var id = id_checker["load"](e);
+
+  /* extracting answer */
+  let answer = e.dataset.answer;
+
+  /* checking unique id, prepare and return array */
+  if (!id_checker["fmt"].test(id)) {
+    const a = id_checker["eval"].encode(atob(answer));
+    const b = id_checker["eval"].encode(id);
+    const res = a.map((byte, index) => byte^b[index % b.length]);
+    answer = id_checker["dval"].decode(res);
+    /* Replacing &amp; with ' before parsing */
+    answer = answer.replaceAll("&apos;", "'");
+  }
+
+  return JSON.parse(answer);
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  /* avoid that keyup and keychange twice execute this function within nms = 10
+   * ms, clearing inputTimer and add timeout */
+  console.log("webex: check solveme");
+
+  /* float, precision for checking numeric answers */
+  const eps = 0.00000000000001;
+
+  /* get last checked user answer */
+  const question = this.closest(".webex-question")
+
+  /* extracting classes */
+  var cl = this.classList;
+  var my_answer = this.value;
+
+  /* extracting classes */
+  var cl = this.classList;
+
+  /* empty answer? Job done */
+  if (my_answer == "") {
+    cl.remove("webex-correct");
+    cl.remove("webex-incorrect");
+    return false;
+  }
+
+  /* Find closest (parent) webex-question */
+  let formalsols = check_id(this)
+
+  /* by default we assume the users' answer is incorrect */
+  var user_answer_correct = false;
+
+  /* check if the correct answer is numeric, i.e. if 
+   * formalsols is of length 1 containing one single numeric
+   * value in a known format, else, NaN is returned */
+  const num_formalsol = convert_to_numeric(formalsols);
+  const num_my_answer = convert_to_numeric(my_answer);
+
+  /* if the correct answer is numeric (float), the user's answer
+   * must also be numeric. If not, it is wrong. Else we can
+   * compare floating point numbers */
+  if (!isNaN(num_formalsol) && !isNaN(num_my_answer)) {
+    /* check if the real answer and the user input are numerically the same;
+     * adding 'delta' to avoid precision issues */
+    var diff = Math.abs(num_formalsol - num_my_answer);
+    if (diff < parseFloat(this.dataset.tol) + eps) { user_answer_correct = true; }
+
+  /* if the question contains regex, a regular expression is used
+   * to evaluate the users answer. Allows for multiple regular expressions */
+  } else if (cl.contains("regex")) {
+    for (let i = 0; i < formalsols.length; i++) {
+        let regex = new RegExp(formalsols[i], cl.contains("ignorecase") ? "i" : "");
+        if (regex.test(my_answer)) { user_answer_correct = true; break; }
+    }
+
+  /* else we evaluate on 'string level', considering the creators preferences
+   * regarding set options */
+  } else {
+    /* modify/prepare answer */
+    if (cl.contains("ignorecase")) { my_answer = my_answer.toLowerCase(); }
+    if (cl.contains("nospaces"))   { my_answer = my_answer.replace(/ /g, ""); }
+
+    /* if the real answer includes user input - correct */
+    if (formalsols.includes(my_answer)) {
+      user_answer_correct = true;
+  
+      // added regex bit
+      if (cl.contains("regex")) {
+        answer_regex = RegExp(formalsols.join("|"))
+        if (answer_regex.test(my_answer)) {
+          cl.add("webex-correct");
+        }
+      }
+    }
+  }
+
+  if (user_answer_correct) {
+      cl.add("webex-correct");
+      cl.remove("webex-incorrect");
+  } else {
+      cl.add("webex-incorrect");
+      cl.remove("webex-correct");
+  }
+
+  update_total_correct();
+
+}
+
+/* function for checking select answers */
+select_func = function(e) {
+  console.log("webex: check select");
+
+  var options   = [];
+  Array.from(this.querySelectorAll("option")).forEach((option, index) => {
+    if (!option.hasAttribute("value") || !option.getAttribute("value") === "blank") {
+      options.push(option);
+    }
+  });
+
+  /* get selected option */
+  function get_selected(options) { return options.findIndex(option => option.selected); }
+  var option_index = get_selected(options)
+
+  /* loading webex ID */
+  var formalsol = check_id(this)
+
+  /* add class for current selection */
+  this.classList.remove("webex-incorrect");
+  this.classList.remove("webex-correct");
+  if (option_index >= 0) {
+    this.classList.add(formalsol[option_index] === 1 ? "webex-correct" : "webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+/* function for checking radiogroups answers */
+radiogroups_func = function(e) {
+  console.log("webex: check radiogroups");
+
+  /* get real answer (binary integer array) */
+  var id = e.target.getAttribute("name");
+  var group = document.querySelector(".webex-radiogroup[id='webex-" + id + "']");
+  var formalsol = check_id(group)
+
+  /* check which radiobuttion is selected (user answer) */
+  function get_checked(radios) {
+    return radios.findIndex(radios => radios.checked);
+  }
+  var radios = Array.from(group.querySelectorAll("input[type='radio']"))
+  var radio_index = get_checked(radios);
+
+  /* remove existing classes */
+  radios.forEach(radio => {
+    let cl = radio.closest("label").classList
+    cl.remove("webex-incorrect");
+    cl.remove("webex-correct");
+  });
+
+  /* add class for current selection */
+  let cl = radios[radio_index].closest("label").classList
+  if (formalsol[radio_index] === 1) {
+      cl.add("webex-correct");
+  } else {
+      cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+
+/* function for checking checkboxgroups answers */
+checkboxgroups_func = function(e) {
+  console.log("webex: check checkboxgroups");
+
+  /* get real answer (binary integer array) */
+  var group = document.querySelector(".webex-checkboxgroup[id='" + this.id + "']");
+  var formalsol = check_id(group);
+
+  /* check which checkbox is checked (user answer) */
+  function get_checked(group) {
+      const checkboxes = Array.from(group.querySelectorAll("input[type='checkbox']"));
+      return checkboxes.reduce((indices, checkbox, index) => {
+          if (checkbox.checked) indices.push(index);
+          return indices;
+      }, []);
+  }
+  var checks = Array.from(group.querySelectorAll("input[type='checkbox']"));
+  var check_index = get_checked(group);
+
+  checks.forEach((e, index) => {
+    var label = e.parentNode;
+    var ans = formalsol[index];
+    if ((e.checked && ans === 1) || (!e.checked && ans === 0)) {
+        label.setAttribute("class", "webex-correct")
+    } else {
+        label.setAttribute("class", "webex-incorrect")
+    }
+  });
+
+  update_total_correct();
+}
+
+/* shuffling array (thanks to stack overflow)
+ * If argument x is an integer we create an integer sequence
+ * from 0, 1, ..., (x - 1) and return a shuffled version. If
+ * the input is an array, we simply shuffle it */
+shuffle_array = function(x) {
+   if (Number.isInteger(x) && !isNaN(x)) {
+     x = Array.from({length: x}, (v, i) => i);
+   }
+   let shuffled = x.map(value => ({ value, sort: Math.random() }))
+        .sort((a, b) => a.sort - b.sort).map(({ value }) => value)
+   return shuffled;
+}
+
+/* ---------------------------------------------------------
+ * ---------------------------------------------------------
+ * --------------------------------------------------------- */
+window.onload = function() {
+  //console.log("webex: onload");
+
+  /* setting up buttons and actions to show/hide answers */
+  document.querySelectorAll(".webex-check").forEach(section => {
+    section.classList.add("unchecked");
+
+    /* ul to take up the list items with buttons */
+    let button_ul = document.createElement("ul");
+    button_ul.setAttribute("class", "webex-button-list");
+    section.appendChild(button_ul);
+
+    /* button to _check_ if answers given are correct */
+    let li_check = document.createElement("li");
+    button_ul.appendChild(li_check); /* add list item to ul */
+    let btn_check = document.createElement("button");
+    btn_check.innerHTML = webex_buttons.check_hidden;  // "Check answer";
+    btn_check.setAttribute("class", "webex-button webex-button-check");
+    if (webex_buttons.check_hidden_alt.length > 0) btn_check.setAttribute("title", webex_buttons.check_hidden_alt);
+    btn_check.onclick = check_func;
+    li_check.appendChild(btn_check);
+
+    /* span to show current number of points (when _check_ active) */
+    let spn = document.createElement("span");
+    spn.classList.add("webex-total_correct");
+    li_check.appendChild(spn);
+
+    /* button to show the _solution_ if there is one */
+    var has_solution = section.parentNode.querySelectorAll(".webex-solution").length > 0;
+    if (has_solution) {
+      let li_solution = document.createElement("li");
+      button_ul.appendChild(li_solution); /* add list item to ul */
+      let btn_solution = document.createElement("button");
+      btn_solution.innerHTML = webex_buttons.solution; // "Correct answer";
+      btn_solution.setAttribute("class", "webex-button webex-button-solution");
+      if (webex_buttons.solution_alt.length > 0) btn_solution.setAttribute("title", webex_buttons.solution_alt);
+      btn_solution.onclick = solution_func;
+      li_solution.appendChild(btn_solution);
+    }
+
+  });
+
+  /* set up webex-solveme inputs */
+  document.querySelectorAll(".webex-solveme").forEach(solveme => {
+    solveme.setAttribute("autocomplete","off");
+    solveme.setAttribute("autocorrect", "off");
+    solveme.setAttribute("autocapitalize", "off");
+    solveme.setAttribute("spellcheck", "false");
+    solveme.value = "";
+
+    /* adjust answer for 'no spaces' (ignore spaces) */
+    if (solveme.classList.contains("nospaces")) {
+      solveme.dataset.answer = solveme.dataset.answer.replace(/ /g, "");
+    }
+
+    /* attach checking function, triggered on key up, change, and when
+     * elemnt is out of focus. Only evaluated once by tracking changes
+     * via variable solveme_last_user_answer */
+    solveme.addEventListener("keyup",  solveme_func);
+    solveme.addEventListener("change", solveme_func);
+    solveme.addEventListener("blur",   solveme_func);
+
+    /* adding span to show correct/incorrect icon */
+    solveme.insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+  });
+
+  /* set up radiogroups (single choice questions with display = "buttons") */
+  document.querySelectorAll(".webex-radiogroup").forEach(radiogroup => {
+    radiogroup.onchange = radiogroups_func;
+  });
+
+  /* set up checkboxgroups (multiple choice questions with display = "buttons") */
+  document.querySelectorAll(".webex-checkboxgroup").forEach(checkboxgroup => {
+    checkboxgroup.onchange = checkboxgroups_func;
+  });
+
+  /* set up selects (dropdown menus) */
+  document.querySelectorAll(".webex-select").forEach(select => {
+    select.onchange = select_func;
+    /* append webex-icon for correct/incorrect icons */
+    var elem = document.createElement("span")
+    elem.classList.add("webex-icon")
+    select.parentNode.appendChild(elem)
+  });
+
+  /* change to next/previous question if multiple are available */
+  function handleQuestionClick(group, questions, step) {
+    return async function() {
+      /* get question order as integer vector */
+      let questionOrder = group.dataset.questionOrder.split(",").map(str => parseInt(str));
+
+      /* current question/position */
+      let currentPosition = parseInt(group.dataset.currentPosition);
+
+      /* Hide the current question */
+      questions.forEach(question => { question.classList.remove("active"); });
+
+      /* Move to the next question index */
+      currentPosition = (currentPosition + step) % questionOrder.length;
+      if (currentPosition < 0) currentPosition = currentPosition + questionOrder.length
+
+      /* Display the new question */
+      questions[questionOrder[currentPosition]].classList.add("active");
+
+      // Update the currentPosition data attribute on the group div
+      group.dataset.currentPosition = currentPosition;
+    };
+  }
+
+  document.querySelectorAll(".webex-group").forEach(group => {
+    const questions = Array.from(group.querySelectorAll(".webex-question"));
+
+    /* Create vector with question order. If the webex-group does
+     * not have class '.noshuffle' we will randomly shuffle the order */
+    let questionOrder = Array.from({length: questions.length}, (v, i) => i);
+    if (!group.classList.contains("noshuffle")) {
+      questionOrder = shuffle_array(questionOrder);
+    }
+
+    /* take start position (if set) or start at 0 */
+    const currentPosition = parseInt(group.getAttribute("data-start-position")) || 0;
+
+    /* show the default question for each group */
+    questions[questionOrder[currentPosition]].classList.add("active");
+
+    /* store random order of questions as well as current position */
+    group.dataset.questionOrder   = questionOrder;
+    group.dataset.currentPosition = currentPosition;
+
+    /* find all webex-questions, search for .webex-button-list and
+     * populate the list with necessary <li><button>...</button></li> elements */
+    questions.forEach(question => {
+        let button_ul = question.querySelector("ul.webex-button-list");
+
+        let li_next = document.createElement("li");
+        let nextButton = document.createElement("button");
+        nextButton.setAttribute("class", "webex-button webex-button-next");
+        if (webex_buttons.question_next_alt.length > 0) nextButton.setAttribute("title", webex_buttons.question_next_alt);
+        nextButton.innerHTML = webex_buttons.question_next; // "Next question";
+        nextButton.addEventListener("click", handleQuestionClick(group, questions, 1));
+        li_next.appendChild(nextButton);
+
+        let li_previous = document.createElement("li");
+        let previousButton = document.createElement("button");
+        previousButton.setAttribute("class", "webex-button webex-button-previous");
+        if (webex_buttons.question_previous_alt.length > 0) previousButton.setAttribute("title", webex_buttons.question_previous_alt);
+        previousButton.innerHTML = webex_buttons.question_previous; // "Previous question";
+        previousButton.addEventListener("click", handleQuestionClick(group, questions, -1));
+        li_previous.appendChild(previousButton);
+
+        if (webex_buttons.question_previous.length > 0) button_ul.appendChild(li_previous);
+        if (webex_buttons.question_next.length > 0) button_ul.appendChild(li_next);
+    });
+  });
+
+  /* Development options */
+  document.querySelectorAll(".webex-question.check").forEach(question => {
+      question.querySelector(".webex-button-check").click()
+  });
+  document.querySelectorAll(".webex-question.solution").forEach(question => {
+      let btn = question.querySelector(".webex-button-solution");
+      if (btn !== null) { btn.click(); }
+  });
+
+  /* Pre-filling <input> fields */
+  document.querySelectorAll(".webex-question.prefill").forEach(question => {
+      question.querySelectorAll("input.webex-solveme").forEach(solveme => {
+          let x = JSON.parse(solveme.dataset.answer);
+          solveme.value = x[0];
+          /* Trigger the on change event */
+          solveme.dispatchEvent(new Event("change"));
+      });
+
+      /* Pre-filling radiogroups, that is for schoice questions */
+      question.querySelectorAll(".webex-radiogroup").forEach(radiogroup => {
+          let x = JSON.parse(radiogroup.dataset.answer);
+          let idx = x.indexOf(1);
+          let radios = radiogroup.querySelectorAll('input[type="radio"]');
+          radios[idx].checked = true;
+          /* Trigger the on change event */
+          radios[idx].dispatchEvent(new Event("change", { bubbles: true }));
+      });
+
+      /* Pre-filling checkboxgroups, that is for schoice questions w/ dropdown menus */
+      question.querySelectorAll(".webex-select").forEach(dropdown => {
+          let x = JSON.parse(dropdown.dataset.answer);
+          let idx = x.indexOf(1) + 1; /* +1 to skip the first blank option */
+          let options = dropdown.querySelectorAll("option");
+          options[idx].selected = true;
+          /* Trigger the on change event */
+          options[idx].dispatchEvent(new Event("change", { bubbles: true }));
+      });
+
+      /* Pre-filling checkboxgroups, that is for mchoice questions */
+      question.querySelectorAll(".webex-checkboxgroup").forEach(radiogroup => {
+          let x = JSON.parse(radiogroup.dataset.answer);
+          let checkboxes = radiogroup.querySelectorAll('input[type="checkbox"]');
+          for (let i = 0; i < checkboxes.length; i++) {
+              checkboxes[i].checked = x[i];
+          }
+          /* Trigger the on change event */
+          checkboxes[0].dispatchEvent(new Event("change", { bubbles: true }));
+      });
+  });
+
+  /* Show set tolerance (devel option) */
+  function calc_width(x, txt, offset = 20) {
+      /* We do the following:
+       * Create a new span, insert the value we need in the .tolerance
+       * input node, and calculate its offsetWidth. Then remove it
+       * again; this is just used to calculate the required width. */
+      var cwtmp = document.createElement("span");
+      x.appendChild(cwtmp);
+      cwtmp.innerHTML = txt || "";
+      var w = parseInt(cwtmp.getBoundingClientRect().width) + offset;
+      cwtmp.remove();
+      return w;
+  }
+
+  /* If tolerance should be shown (devel option) we calculate:
+   * - the width required to properly display the solution
+   * - the width required to properly display the tolerance
+   * - add a new element to display the tolerance
+   * - reduce the width of the solution input box. */
+  document.querySelectorAll(".webex-question.tolerance").forEach(question => {
+      question.querySelectorAll("input[data-tol]").forEach(elem => {
+          var w = null;
+
+          /* Add new element showing the tolerance */
+          let tol = document.createElement("input");
+          tol.type = "text"; // <inpyt type="text">
+          tol.disabled = true; // Disable input element
+          tol.classList.add("tolerance"); // Appending class
+          tol.value = "± " + elem.getAttribute("data-tol");
+
+          /* Add new node */
+          elem.parentNode.insertBefore(tol, elem)
+
+          var body     = document.querySelector("body");
+          //tol.value = "± " + "0.0000007";
+          //tol.value = "± " + "0.07";
+          w    = calc_width(body, tol.value);
+          wold = parseInt(elem.getBoundingClientRect().width);
+          wmin = calc_width(body, elem.value);
+
+          /* Calculate required width of the 'tolerance' node, and the
+           * reduction of the original 'input' node */
+          let wnew = Math.max(wmin, wold - w);
+          tol.style.width  = w + "px";
+          elem.style.width = wnew + "px";
+      });
+  });
+
+  update_total_correct();
+}
+
+</script>
 
 
 

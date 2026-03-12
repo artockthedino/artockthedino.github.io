@@ -11,7 +11,7 @@
 
 
 
-<title>x_eval_poly.knit</title>
+<title>x_car_force_power.knit</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -354,27 +354,284 @@ display: none;
 
 <div id="question" class="section level1">
 <h1>Question</h1>
-<p>Let function <span class="math inline">\(f\)</span> be defined by the
-cubic polynomial shown below.</p>
-<p><span class="math display">\[f(x)~=~2x^3+6x^2-5x+3\]</span></p>
-<p>Evaluate <span class="math inline">\(f(-4)\)</span>.</p>
+<p>An object in motion stays in motion unless acted upon by an external
+force. So, ideally, a spaceship in deep space, after accelerating, could
+cruise at a constant velocity without needing to run its thrusters.</p>
+<p>However, an <a href="https://en.wikipedia.org/wiki/Car">automobile</a> on Earth’s
+surface, even on flat ground, needs to constantly burn fuel (or use its
+battery) to overcome countervailing external forces. The major force
+pushing against an automobile’s motion (other than gravity when going up
+hill) is <a href="https://en.wikipedia.org/wiki/Drag_(physics)#Aerodynamics">air
+resistance</a>.</p>
+<p>The <a href="https://en.wikipedia.org/wiki/Force">force</a> from the
+aerodynamic drag is proportional to the square of velocity. The
+quadratic coefficient can be estimated by looking up the <a href="https://en.wikipedia.org/wiki/Automobile_drag_coefficient#Drag_area">drag
+area</a> and estimating the <a href="https://en.wikipedia.org/wiki/Density_of_air">density of
+air</a>.</p>
+<p>If we pick a car with a drag area of 1.578 <span class="math inline">\(\mathrm{m^2}\)</span> (basically a large box) and
+say the density of air is approximately 1.225 <span class="math inline">\(\mathrm{\frac{kg}{m^2}}\)</span>, then we predict
+the force (<span class="math inline">\(F\)</span> in <a href="https://en.wikipedia.org/wiki/Newton_(unit)">newtons</a>) is
+related to velocity (<span class="math inline">\(v\)</span> in meters
+per second) by the equation below:</p>
+<p><span class="math display">\[F = 0.967\cdot v^2\]</span></p>
+<p>The engine’s output <a href="https://en.wikipedia.org/wiki/Power_(physics)">power</a> (<span class="math inline">\(P\)</span> in <a href="https://en.wikipedia.org/wiki/Watt">watts</a>) is approximately
+proportional to the cube of velocity, using the same coefficient.</p>
+<p><span class="math display">\[P = 0.967\cdot v^3\]</span></p>
+<p>Complete the table below:</p>
+<style type="text/css">
+.tabl td {
+border: 1px solid black;
+text-align: center;
+padding: 15px;
+margin: 1em;
+}
+.tabl th {
+border: 2px solid black;
+border-bottom: 2px solid black;
+text-align: center;
+background-color: #227;
+padding: 15px;
+color: white;
+}
+</style>
+<div class="tabl">
+<table>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(v\)</span> (in m/s)</th>
+<th align="center"><span class="math inline">\(F\)</span> (in N)</th>
+<th align="center"><span class="math inline">\(P\)</span> (in W)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(20\)</span></td>
+<td align="center">##ANSWER1##</td>
+<td align="center">##ANSWER2##</td>
+</tr>
+<tr class="even">
+<td align="center">##ANSWER3##</td>
+<td align="center"><span class="math inline">\(785\)</span></td>
+<td align="center">##ANSWER4##</td>
+</tr>
+<tr class="odd">
+<td align="center">##ANSWER5##</td>
+<td align="center">##ANSWER6##</td>
+<td align="center"><span class="math inline">\(37700\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="answerlist" class="section level2">
+<h2>Answerlist</h2>
+<ul>
+<li>352</li>
+<li>387</li>
+<li>426</li>
+<li>468</li>
+<li>515</li>
+<li>7040</li>
+<li>7740</li>
+<li>8510</li>
+<li>9370</li>
+<li>10300</li>
+<li>25.9</li>
+<li>28.5</li>
+<li>31.4</li>
+<li>34.5</li>
+<li>37.9</li>
+<li>15300</li>
+<li>16800</li>
+<li>18500</li>
+<li>20400</li>
+<li>22400</li>
+<li>33.9</li>
+<li>37.3</li>
+<li>41</li>
+<li>45.1</li>
+<li>49.6</li>
+<li>834</li>
+<li>917</li>
+<li>1010</li>
+<li>1110</li>
+<li>1220</li>
+</ul>
+</div>
 </div>
 <div id="solution" class="section level1">
 <h1>Solution</h1>
-<p>Replace all instances of <span class="math inline">\(x\)</span> with
-<span class="math inline">\(-4\)</span>.</p>
-<p><span class="math display">\[f(-4)~=~2(-4)^3+6(-4)^2-5(-4)+3\]</span></p>
-<p>Evaluate the powers.</p>
-<p><span class="math display">\[f(-4)~=~2(-64)+6(16)-5(-4)+3\]</span></p>
-<p>Evaluate the products.</p>
-<p><span class="math display">\[f(-4)~=~-128+96+20+3\]</span></p>
-<p>Add/subtract the terms.</p>
-<p><span class="math display">\[f(-4)~=~-9\]</span></p>
-<p>Thus, the answer is -9.</p>
+<style type="text/css">
+.tabl td {
+border: 1px solid black;
+text-align: center;
+padding: 15px;
+margin: 1em;
+}
+.tabl th {
+border: 2px solid black;
+border-bottom: 2px solid black;
+text-align: center;
+background-color: #227;
+padding: 15px;
+color: white;
+}
+</style>
+<div class="tabl">
+<table>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(v\)</span> (in m/s)</th>
+<th align="center"><span class="math inline">\(F\)</span> (in N)</th>
+<th align="center"><span class="math inline">\(P\)</span> (in W)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(20\)</span></td>
+<td align="center"><span class="math inline">\(387\)</span></td>
+<td align="center"><span class="math inline">\(7740\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(28.5\)</span></td>
+<td align="center"><span class="math inline">\(785\)</span></td>
+<td align="center"><span class="math inline">\(22400\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(33.9\)</span></td>
+<td align="center"><span class="math inline">\(1110\)</span></td>
+<td align="center"><span class="math inline">\(37700\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="row-1" class="section level3">
+<h3>Row 1</h3>
+<p>Use the formulas with <span class="math inline">\(v=20\)</span>.</p>
+<p><span class="math display">\[F=0.967\cdot(20)^2=387\]</span> <span class="math display">\[P=0.967\cdot(20)^3=7740\]</span></p>
+</div>
+<div id="row-2" class="section level3">
+<h3>Row 2</h3>
+<p>First, use <span class="math inline">\(F=785\)</span> to find <span class="math inline">\(v\)</span>.</p>
+<p><span class="math display">\[785=0.967\cdot v^2\]</span></p>
+<p>Divide both sides by 0.967.</p>
+<p><span class="math display">\[\frac{785}{0.967}=v^2\]</span></p>
+<p>Take the square root of both sides. In this context, we are only
+interested in the positive velocity.</p>
+<p><span class="math display">\[\sqrt{\frac{785}{0.967}}=v\]</span></p>
+<p>If your calculator does not have a square-root button, you can also
+raise the quotient to the power of 1/2.</p>
+<p><span class="math display">\[v~=~\left(\frac{785}{0.967}\right)^{1/2}\]</span></p>
+<p>Evaluate.</p>
+<p><span class="math display">\[v=28.5\]</span></p>
+<p>Use that value to find the power.</p>
+<p><span class="math display">\[P=0.967\cdot(28.5)^3\]</span> <span class="math display">\[P=22400\]</span></p>
+</div>
+<div id="row-3" class="section level3">
+<h3>Row 3</h3>
+<p>First, use <span class="math inline">\(P=37700\)</span> to find <span class="math inline">\(v\)</span>.</p>
+<p><span class="math display">\[37700=0.967\cdot v^3\]</span></p>
+<p>Divide both sides by 0.967.</p>
+<p><span class="math display">\[\frac{37700}{0.967}=v^3\]</span></p>
+<p>Take the cube root of both sides.</p>
+<p><span class="math display">\[\sqrt[3]{\frac{37700}{0.967}}=v\]</span></p>
+<p>If your calculator does not have a cube-root button, you can also
+raise the quotient to the power of 1/3.</p>
+<p><span class="math display">\[v=\left(\frac{37700}{0.967}\right)^{1/3}\]</span></p>
+<p>Evaluate.</p>
+<p><span class="math display">\[v=33.9\]</span></p>
+<p>Use that value to find the force.</p>
+<p><span class="math display">\[F=0.967\cdot(33.9)^2\]</span></p>
+<p><span class="math display">\[F=1110\]</span></p>
+</div>
+<div id="further-considerations" class="section level3">
+<h3>Further considerations</h3>
+<p>If you are interested, we can convert these values to <a href="https://en.wikipedia.org/wiki/Imperial_units">imperial
+units</a>.</p>
+<div class="tabl">
+<table>
+<thead>
+<tr class="header">
+<th align="center">velocity in miles per hour</th>
+<th align="center">force in pounds</th>
+<th align="center">power in horsepower</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(44.7\)</span></td>
+<td align="center"><span class="math inline">\(87\)</span></td>
+<td align="center"><span class="math inline">\(10.4\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(63.8\)</span></td>
+<td align="center"><span class="math inline">\(176\)</span></td>
+<td align="center"><span class="math inline">\(30\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(75.8\)</span></td>
+<td align="center"><span class="math inline">\(250\)</span></td>
+<td align="center"><span class="math inline">\(50.6\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>We could also use the fact the engines are about 20% efficient at
+converting the chemical potential energy of gasoline into motion. A
+gallon of gasoline burning with oxygen has a potential of <span class="math inline">\(1.25\cdot 10^8\)</span> joules of energy (and a
+watt equals 1 joule/second). This allows you to estimate the gallons of
+gasoline per hour and the miles per gallon.</p>
+<div class="tabl">
+<table>
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">miles per hour</th>
+<th align="center">horsepower (output)</th>
+<th align="center">gallons per hour</th>
+<th align="center">miles per gallon</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(44.7\)</span></td>
+<td align="center"><span class="math inline">\(10.4\)</span></td>
+<td align="center"><span class="math inline">\(1.11\)</span></td>
+<td align="center"><span class="math inline">\(40.3\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(63.8\)</span></td>
+<td align="center"><span class="math inline">\(30\)</span></td>
+<td align="center"><span class="math inline">\(3.23\)</span></td>
+<td align="center"><span class="math inline">\(19.8\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(75.8\)</span></td>
+<td align="center"><span class="math inline">\(50.6\)</span></td>
+<td align="center"><span class="math inline">\(5.43\)</span></td>
+<td align="center"><span class="math inline">\(14\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Of course, all of this is estimated and ignores some important
+details (like engine tuning, rolling resistance, and the complexities of
+<a href="https://en.wikipedia.org/wiki/Fluid_dynamics">fluid
+dynamics</a>). But it does highlight how drastically speed can influence
+gas mileage. This was part of the reason for a <a href="https://en.wikipedia.org/wiki/National_Maximum_Speed_Law">national
+speed limit of 55 mph in 1974</a> to help lower the demand for
+gasoline.</p>
+</div>
 </div>
 <div id="meta-information" class="section level1">
 <h1>Meta-information</h1>
-<p>extype: num exsolution: -9 exname: eval_poly</p>
+<p>extype: cloze exclozetype:
+schoice|schoice|schoice|schoice|schoice|schoice exsolution:
+01000|01000|01000|00001|10000|00010 exname: car_force_power</p>
 </div>
 
 
