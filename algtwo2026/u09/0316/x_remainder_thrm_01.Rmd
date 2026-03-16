@@ -1,0 +1,105 @@
+```{r,echo=F}
+options(scipen=999)
+pn = function(c,d){
+    d = d[c!=0]
+    c = c[c!=0]
+    p = paste0("{",c,"}x^{",d,"}",collapse="+")
+    p = gsub("x^{0}","",p,fixed=T)
+    p = gsub("x^{1}","x",p,fixed=T)
+    p = gsub("+{-","-{",p,fixed=T)
+    p = gsub("+{1}x","+x",p,fixed=T)
+    p = gsub("-{1}x","-x",p,fixed=T)
+    p = gsub("{-1}x","-x",p,fixed=T)
+    p = gsub("{1}x","x",p,fixed=T)
+    p = gsub("{","",p,fixed=T)
+    p = gsub("}","",p,fixed=T)
+    return(p)
+}
+
+D = 4
+while(T){
+    c2 = sample(c(1:9),D+1)*c(1,sample(c(-1,1),D,T))
+    c1 = c(1,sample(c(-9:-2,2:9),1))
+    R = sample(1:20,1)*sample(c(-1,1),1)
+    d2 = D:0
+    d1 = 1:0
+    c3 = rep(0,D+2)
+    for(i in 1:(D+1)){
+        di = D+1-i
+        for(j in 1:2){
+            dj = 2-j
+            dk = di+dj
+            k = D+2-dk
+            c3[k] = c3[k]+c2[i]*c1[j]
+        }
+    }
+    c3[D+2] = c3[D+2]+R
+    xx = -c1[2]
+    if(max(abs(c3))<100 && abs(R)!=abs(xx)){break}
+}
+
+
+p1 = pn(c1,1:0)
+p2 = pn(c2,(D+1):0)
+p3 = pn(c3,(D+2):0)
+pr = paste0(p2,"+\\frac{",R,"}{",p1,"}",collapse="")
+
+```
+
+
+
+Question
+========
+
+1. Review the [remainder theorem](https://en.wikipedia.org/wiki/Polynomial_remainder_theorem).
+
+2. When $f(x)=`r p3`$ is divided by $g(x)=`r p1`$ the result is $h(x)=`r pr`$.
+
+3. Evaluate $f(`r -c1[2]`)$.
+
+
+
+Solution
+========
+
+The trick is to realize that since $\frac{f(x)}{g(x)}=h(x)$ we know $f(x)=g(x)\cdot h(x)$, so:
+
+$$f(x)~=~\left(`r p1`\right) \cdot \left(`r pr`\right)$$
+
+We can partially distribute the linear binomial to clean up that nasty denominator under the remainder.
+
+```{r,echo=F}
+px2 = paste0("\\left(",p1,"\\right) \\cdot \\left(",p2,"\\right) +",R)
+px2 = gsub("+-","-",px2,fixed=T)
+```
+
+$$f(x)~=~`r px2`$$
+
+Now it becomes pretty easy to find $f(`r xx`)$.
+
+```{r,echo=F}
+px3 = paste0("\\left(",xx,"+",c1[2],"\\right) \\cdot \\left(\\text{something}\\right) +",R)
+px3 = gsub("+-","-",px3,fixed=T)
+px4 = paste0("0\\cdot \\left(\\text{something}\\right) +",R)
+px4 = gsub("+-","-",px4,fixed=T)
+# px4 = gsub("x",paste0("(",xx,")",collapse=""),px4,fixed=T)
+px5 = paste0("0 +",R)
+px5 = gsub("+-","-",px5,fixed=T)
+```
+
+$$f(`r xx`)=`r px3`$$
+
+$$f(`r xx`)=`r px4`$$
+
+$$f(`r xx`)=`r px5`$$
+
+$$f(`r xx`)=`r R`$$
+
+In other words, $f(`r xx`)$ equals the remainder when $f(x)$ is divided by $`r p1`$, as promised by [the remainder theorem](https://en.wikipedia.org/wiki/Polynomial_remainder_theorem).
+
+
+Meta-information
+============
+extype: num
+exsolution: `r R`
+exname: remainder_thrm_01
