@@ -27,7 +27,7 @@ $$2^{`r n`}-1=`r 2^n-1`$$
 
 We could get fancy...
 
-$$n(\{A|A\subseteq S\})~=~2^{n(S)}-1$$
+$$n(\{A|A\subset S\})~=~2^{n(S)}-1$$
 
 
 

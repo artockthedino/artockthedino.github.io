@@ -1,0 +1,86 @@
+```{r,echo=FALSE}
+nAnB_target = sample(2:6,1)
+nA_and_nB = sample((nAnB_target+1):10,2)
+nA = nA_and_nB[1]
+nB = nA_and_nB[2]
+while(T){
+    A = sample(letters,nA)
+    B = sample(letters,nB)
+    AuB = unique(c(A,B))
+    AnB = character()
+    for(i in A){
+        if(i %in% B){
+            AnB = c(AnB,i)
+        }
+    }
+    AuB = sample(AuB)
+    AnB = sample(AnB)
+    nAuB = length(AuB)
+    nAnB = length(AnB)
+    if(nAnB==nAnB_target){break}
+}
+ach = 0:26
+
+al = paste0("* ",ach,collapse="\n")
+sol1 = paste0(1*(nA==ach),collapse="")
+sol2 = paste0(1*(nB==ach),collapse="")
+sol3 = paste0(1*(nAnB==ach),collapse="")
+sol4 = paste0(1*(nAuB==ach),collapse="")
+
+```
+
+Question
+========
+
+Let set $A$ and set $B$ represent collections of lower-case letters:
+
+$$A=\{`r paste0(A,collapse=",\\,")`\}$$
+$$B=\{`r paste0(B,collapse=",\\,")`\}$$
+
+Calculate the following [cardinalities](https://en.wikipedia.org/wiki/Cardinality):
+
+* $n(A)=$ ##ANSWER1##
+* $n(B)=$ ##ANSWER2##
+* $n(A\cap B)=$ ##ANSWER3##
+* $n(A\cup B)=$ ##ANSWER4##
+
+Answerlist
+--------
+
+`r al`
+`r al`
+`r al`
+`r al`
+
+Solution
+========
+
+Set $A$ has `r nA` elements. $$n(A)=`r nA`$$
+
+Set $B$ has `r nB` elements. $$n(B)=`r nB`$$
+
+Next, identify the intersection. What elements are common to both sets?
+
+$$A\cap B ~=~ \{`r paste0(AnB,collapse=",\\,")`\}$$
+
+
+Set $A\cap B$ has `r nAnB` elements. $$n(A\cap B)=`r nAnB`$$
+
+Next, you could try writing out all elements of the union.
+
+$$A\cup B ~=~ \{`r paste0(AuB,collapse=",\\,")`\}$$
+
+However, it is probably easier to use the [inclusion-exclusion principle](https://en.wikipedia.org/wiki/Inclusion%E2%80%93exclusion_principle):
+
+$$n(A\cup B)~=~n(A)+n(B)-n(A\cap B)$$
+$$n(A\cup B)~=~`r nA`+`r nB`-`r nAnB`$$
+$$n(A\cup B)~=~`r nAuB`$$
+
+
+
+Meta-information
+============
+extype: cloze
+exclozetype: schoice|schoice|schoice|schoice
+exsolution: `r sol1`|`r sol2`|`r sol3`|`r sol4`
+exname: inclusion-exclusion
