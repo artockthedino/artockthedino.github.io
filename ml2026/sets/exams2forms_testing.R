@@ -1,14 +1,14 @@
 library("exams2forms")
-n = 6
+n = 20
 
 ### Entrance ticket
-pm = list("x_number_proper_subsets.Rmd","x_nA_nB_nAuB_nAnB.Rmd")
+pm = list("x_3_sets_regions.Rmd")
 
 exams2webquiz(pm,
              n=n,
-             title = "examples_0316",
+             title = "examples_0317",
              dir = ".",
-             name="examples_0316")
+             name="examples_0317")
 
 
 

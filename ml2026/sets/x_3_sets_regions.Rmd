@@ -1,0 +1,172 @@
+```{r,echo=FALSE}
+while(T){
+    N = sample(40:100,1)
+    A = sample(c(F,T),N,T)
+    B = sample(c(F,T),N,T)
+    C = sample(c(F,T),N,T)
+    # basic regions: abc, abnc, anbc, nabc, anbnc, nabnc, nanbc, nanbnc
+    # by binary...
+    # na_nb_nc, a_nb_nc, na_b_nc, a_b_nc, na_nb_c, a_nb_c, na_b_c, a_b_c
+    cnts = rep(0,8)
+    for(i in 1:N){
+        wo = 1*A[i]+2*B[i]+4*C[i]
+        cnts[wo+1] = cnts[wo+1]+1
+    }
+    if(min(cnts)>0 && length(unique(cnts))==8){break}
+}
+
+# single regions
+sr = c("A'\\cap B' \\cap C'", # na_nb_nc
+       "A \\cap B' \\cap C'", # a_nb_nc
+       "A'\\cap B  \\cap C'", # na_b_nc
+       "A\\cap B \\cap C'", # a_b_nc
+       "A'\\cap B' \\cap C", # na_nb_c
+       "A \\cap B' \\cap C", # a_nb_c
+       "A' \\cap B \\cap C", # na_b_c
+       "A \\cap B \\cap C" # a_b_c
+)
+nsr = cnts
+
+na_nb_nc = nsr[1]
+a_nb_nc = nsr[2]
+na_b_nc = nsr[3]
+a_b_nc = nsr[4]
+na_nb_c = nsr[5]
+a_nb_c = nsr[6]
+na_b_c = nsr[7]
+a_b_c = nsr[8]
+
+a = a_nb_nc+a_b_nc+a_nb_c+a_b_c
+b = na_b_nc+a_b_nc+na_b_c+a_b_c
+c = na_nb_c+a_nb_c+na_b_c+a_b_c
+
+aIb = a_b_nc+a_b_c
+aIc = a_nb_c+a_b_c
+bIc = na_b_c+a_b_c
+
+aUb = a+b-aIb
+aUc = a+c-aIc
+bUc = b+c-bIc
+
+# 1na_nb_nc, 2a_nb_nc, 3na_b_nc, 4a_b_nc, 5na_nb_c, 6a_nb_c, 7na_b_c, 8a_b_c
+dr = c("A \\cap B","B \\cap C","A \\cap C",
+       "A \\cap B'","B \\cap C'","A \\cap C'",
+       "A' \\cap B","B' \\cap C","A' \\cap C",
+       "A' \\cap B'","B' \\cap C'","A' \\cap C'")
+ndr = c(aIb,bIc,aIc,
+        a_nb_nc+a_nb_c,na_b_nc+a_b_nc,a_nb_nc+a_b_nc,
+        na_b_nc+na_b_c,na_nb_c+a_nb_c,na_nb_c+na_b_c,
+        na_nb_c+na_nb_nc,a_nb_nc+na_nb_nc,na_b_nc+na_nb_nc)
+
+si = c("A","B","C","A'","B'","C'")
+nsi = c(a,b,c,N-a,N-b,N-c)
+
+us = c("A \\cup B","A \\cup C","B \\cup C",
+       "A \\cup B'","A \\cup C'","B \\cup C'",
+       "A' \\cup B","A' \\cup C","B' \\cup C",
+       "A' \\cup B'","A' \\cup C'","B' \\cup C'")
+nus = c(aUb,aUc,bUc,
+        a+na_nb_c+na_nb_nc,a+na_b_nc+na_nb_nc,b+a_nb_nc+na_nb_nc,
+        b+na_nb_c+na_nb_nc,c+na_b_nc+na_nb_nc,c+a_nb_nc+na_nb_nc,
+        N-aIb,N-aIc,N-bIc)
+
+nu = c("(A \\cup B)'","(A \\cup C)'","(B \\cup C)'",
+       "(A \\cap B)'","(A \\cap C)'","(B \\cap C)'")
+nnu = c(na_nb_c+na_nb_nc,na_b_nc+na_nb_nc,a_nb_nc+na_nb_nc,
+        N-aIb,N-aIc,N-bIc)
+
+exs = c(sr,dr,si,us,nu)
+nums = c(nsr,ndr,nsi,nus,nnu)
+
+wi = sample(1:length(exs),1)
+
+ex1 = exs[wi]
+num1 = nums[wi]
+
+```
+
+Question
+========
+
+Let the cardinality of the universal set be `r N`.
+
+$$n(U)=`r N`$$
+
+Three subsets, $A$, $B$, and $C$ are visualized with a Venn diagram below. Each region's cardinality is shown.
+
+```{r,echo=F,fig.dim=c(5,5)}
+par(mar=c(0,0,0,0),pty="s")
+plot(0,0,"n",axes=F,ann=F,xlim=c(-1,1),ylim=c(-1,1))
+R1 = 0.4
+R2 = 1-R1
+x1c = cos(pi/6)*R1
+y1c = sin(pi/6)*R1
+x2c = cos(5*pi/6)*R1
+y2c = sin(5*pi/6)*R1
+x3c = cos(9*pi/6)*R1
+y3c = sin(9*pi/6)*R1
+th = seq(0,2*pi,pi/100)
+x1 = x1c+R2*cos(th)
+y1 = y1c+R2*sin(th)
+x2 = x2c+R2*cos(th)
+y2 = y2c+R2*sin(th)
+x3 = x3c+R2*cos(th)
+y3 = y3c+R2*sin(th)
+for(i in 1:10){
+    polygon(x1,y1,col=rgb(1,0,0,0.01))
+    polygon(x2,y2,col=rgb(0,1,0,0.01))
+    polygon(x3,y3,col=rgb(0,0,1,0.01))
+}
+text((R1+R2)*cos(5*pi/6),(R1+R2)*sin(5*pi/6),"A",col=rgb(0,0.5,0),adj=c(0.5,-2.5))
+text((R1+R2)*cos(pi/6),(R1+R2)*sin(pi/6),"B",col=rgb(0.5,0,0),adj=c(0.5,-2.5))
+text(0,-(R1+R2),"C",col=rgb(0,0,0.5),adj=c(-5.5,0))
+
+xs = c(x1,x2,x3)
+ys = c(y1,y2,y3)
+b = 0.03
+polygon(c(min(xs)-b,min(xs)-b,max(xs)+b,max(xs)+b),c(min(ys)-b,max(ys)+b,max(ys)+b,min(ys)-b))
+
+text(min(xs)+2*b,max(ys)+3*b,"U")
+
+# na_nb_nc, a_nb_nc, na_b_nc, a_b_nc, na_nb_c, a_nb_c, na_b_c, a_b_c
+
+r1 = 0.6
+r2 = 0.4
+xts = c(min(xs)+3*b, # na_nb_nc
+        r1*cos(5*pi/6), #a_nb_nc
+        r1*cos(pi/6), #na_b_nc
+        r2*cos(pi/2), #a_b_nc
+        r1*cos(3*pi/2), #na_nb_c
+        r2*cos(7*pi/6), #a_nb_c
+        r2*cos(11*pi/6),
+        0)
+
+yts = c(min(ys)+3*b, # na_nb_nc
+        r1*sin(5*pi/6), #a_nb_nc
+        r1*sin(pi/6), #na_b_nc
+        r2*sin(pi/2), #a_b_nc
+        r1*sin(3*pi/2), #na_nb_c
+        r2*sin(7*pi/6), #a_nb_c
+        r2*sin(11*pi/6),
+        0)
+
+for(i in 1:8){
+    text(xts[i],yts[i],cnts[i],cex=1.2)
+}
+
+```
+\
+
+Find $n(`r ex1`)$.
+
+
+Solution
+========
+
+The answer is `r num1`.
+
+Meta-information
+============
+extype: num
+exsolution: `r num1`
+exname: inclusion-exclusion
