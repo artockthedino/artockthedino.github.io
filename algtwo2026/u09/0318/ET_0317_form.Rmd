@@ -1,0 +1,15 @@
+---
+title: "ET_0317_form"
+output: exams2forms::webquiz
+---
+
+```{r exams2forms-setup, include = FALSE}
+## package and exercises
+library("exams2forms")
+exm <- c("07_313.Rmd", "01_429.Rmd", "03_307.Rmd", "04_412.Rmd", "07_310.Rmd", 
+"08_311.Rmd", "09_427.Rmd", "12_122.Rmd")
+```
+
+```{r exams2forms-include, echo = FALSE, message = FALSE, results="asis"}
+exams2forms(exm,  n = 1, nsamp = NULL)
+```
