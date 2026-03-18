@@ -1,0 +1,10 @@
+How many in (A ∩ B')∪(A' ∩ B) ?
+How many in (A ∩ B)' ?
+How many in A' ∪ B ?
+How many in (A ∩ B)' ?
+How many in A' ∩ B ?
+How many in (A' ∪ B')' ?
+How many in B' ?
+How many in A ?
+How many in A ∩ B ?
+How many in A ∩ B' ?

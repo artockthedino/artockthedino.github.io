@@ -1,0 +1,22 @@
+```{r,echo=FALSE}
+a = sample(1:10,1)
+b = sample(1:10,1)
+c = a*b
+```
+
+Question
+========
+
+$$`r a`\times`r b`$$
+
+Solution
+========
+
+
+$$`r a`\times`r b`=`r c`$$
+
+Meta-information
+============
+extype: num
+exsolution: `r c`
+exname: math_facts_mul
