@@ -1,0 +1,200 @@
+How many A ∪ B ?
+How many B' ?
+How many A' ∪ B' ?
+How many (A ∪ B)' ?
+How many (A ∩ B)∪(A' ∩ B') ?
+How many B' ?
+How many (A ∩ B')∪(A' ∩ B) ?
+How many A' ∩ B' ?
+How many (A ∩ B)∪(A' ∩ B') ?
+How many A ∪ B ?
+How many A ∩ B ?
+How many B' ?
+How many B ?
+How many A' ?
+How many A' ∪ B ?
+How many (A' ∪ B')' ?
+How many B ?
+How many (A' ∩ B')' ?
+How many A ∩ B' ?
+How many (A' ∩ B')' ?
+How many A' ?
+How many A ∪ B ?
+How many (A ∪ B')' ?
+How many (A' ∪ B')' ?
+How many (A ∩ B)∪(A' ∩ B') ?
+How many A ∩ B ?
+How many B' ?
+How many (A ∪ B)' ?
+How many (A ∩ B)' ?
+How many (A' ∩ B')' ?
+How many (A' ∪ B')' ?
+How many A ∩ B' ?
+How many (A' ∪ B')' ?
+How many A ∪ B ?
+How many (A ∩ B)' ?
+How many A ?
+How many A ?
+How many B ?
+How many A ?
+How many (A ∪ B')' ?
+How many A ∩ B ?
+How many A' ?
+How many A ?
+How many (A' ∪ B')' ?
+How many (A ∩ B)∪(A' ∩ B') ?
+How many (A ∩ B)∪(A' ∩ B') ?
+How many A' ∪ B' ?
+How many (A ∩ B')' ?
+How many A' ∩ B' ?
+How many (A' ∪ B')' ?
+How many (A' ∩ B')' ?
+How many (A ∩ B)∪(A' ∩ B') ?
+How many A' ∪ B ?
+How many A' ∪ B' ?
+How many A' ?
+How many (A ∪ B)' ?
+How many B' ?
+How many A ∪ B ?
+How many A ∩ B ?
+How many A' ?
+How many (A ∩ B')' ?
+How many (A ∩ B)' ?
+How many (A' ∪ B')' ?
+How many (A ∩ B)' ?
+How many A ∪ B ?
+How many B' ?
+How many A ∪ B ?
+How many (A ∪ B')' ?
+How many (A ∪ B)' ?
+How many B' ?
+How many B' ?
+How many A' ∪ B' ?
+How many (A' ∪ B)' ?
+How many A ∪ B' ?
+How many A ∩ B ?
+How many (A ∩ B)' ?
+How many A' ∩ B ?
+How many (A' ∩ B)' ?
+How many B' ?
+How many A' ∩ B' ?
+How many A' ∩ B ?
+How many (A ∪ B)' ?
+How many (A' ∩ B)' ?
+How many (A ∩ B)' ?
+How many A ?
+How many (A' ∩ B)' ?
+How many A ∩ B' ?
+How many (A' ∪ B')' ?
+How many (A ∩ B)' ?
+How many (A ∩ B)' ?
+How many A' ∪ B ?
+How many (A ∪ B)' ?
+How many (A ∩ B)' ?
+How many (A' ∪ B)' ?
+How many A' ?
+How many (A ∪ B)' ?
+How many (A' ∪ B)' ?
+How many B' ?
+How many (A' ∪ B')' ?
+How many (A ∩ B)∪(A' ∩ B') ?
+How many (A' ∩ B)' ?
+How many B ?
+How many A' ∪ B' ?
+How many (A' ∪ B')' ?
+How many A' ∪ B' ?
+How many A ∪ B ?
+How many A' ∪ B' ?
+How many (A ∩ B')' ?
+How many A' ∪ B' ?
+How many A ∩ B ?
+How many (A ∪ B')' ?
+How many A ∪ B ?
+How many (A ∩ B')' ?
+How many (A' ∩ B')' ?
+How many (A ∩ B')∪(A' ∩ B) ?
+How many (A' ∪ B)' ?
+How many A' ∪ B ?
+How many (A' ∩ B')' ?
+How many A' ∪ B' ?
+How many (A ∩ B')' ?
+How many A' ∪ B ?
+How many (A ∩ B)∪(A' ∩ B') ?
+How many A' ∩ B' ?
+How many A' ∪ B ?
+How many (A ∪ B')' ?
+How many (A' ∪ B)' ?
+How many (A ∩ B)' ?
+How many A ∩ B ?
+How many A ∩ B ?
+How many A ∪ B ?
+How many (A ∩ B')∪(A' ∩ B) ?
+How many B' ?
+How many (A ∩ B')' ?
+How many A ∪ B' ?
+How many A ∪ B' ?
+How many (A' ∩ B')' ?
+How many A' ∩ B' ?
+How many (A' ∪ B')' ?
+How many B ?
+How many (A ∩ B)∪(A' ∩ B') ?
+How many A' ∩ B ?
+How many A' ∩ B ?
+How many A ∪ B ?
+How many A ∪ B ?
+How many A' ∪ B' ?
+How many A' ∪ B' ?
+How many A' ∩ B ?
+How many A ∪ B ?
+How many A' ∩ B' ?
+How many A' ?
+How many (A' ∩ B')' ?
+How many A' ?
+How many B ?
+How many (A ∩ B)∪(A' ∩ B') ?
+How many (A ∩ B)∪(A' ∩ B') ?
+How many A' ∩ B' ?
+How many A' ?
+How many (A ∩ B)' ?
+How many A' ∪ B' ?
+How many A ∪ B' ?
+How many (A ∩ B')∪(A' ∩ B) ?
+How many A' ∩ B ?
+How many A ∩ B ?
+How many A ∪ B' ?
+How many A ∩ B ?
+How many B ?
+How many A ∩ B ?
+How many A' ?
+How many (A' ∩ B')' ?
+How many A' ∪ B ?
+How many A ?
+How many A ?
+How many A ∩ B ?
+How many (A ∩ B')' ?
+How many A' ∩ B ?
+How many A ?
+How many (A ∪ B')' ?
+How many A' ∩ B' ?
+How many A' ?
+How many (A ∩ B')' ?
+How many A' ∪ B ?
+How many A' ∩ B ?
+How many A' ∩ B ?
+How many A ∩ B' ?
+How many A' ∩ B ?
+How many (A ∪ B)' ?
+How many A ∩ B ?
+How many (A' ∪ B')' ?
+How many (A' ∩ B')' ?
+How many A' ∩ B' ?
+How many A' ∪ B ?
+How many (A' ∪ B)' ?
+How many A' ∩ B' ?
+How many A' ∪ B' ?
+How many (A' ∩ B')' ?
+How many (A' ∪ B')' ?
+How many A' ∩ B' ?
+How many (A ∩ B)' ?
+How many (A ∪ B')' ?
+How many B ?

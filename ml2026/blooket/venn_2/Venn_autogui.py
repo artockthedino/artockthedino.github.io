@@ -6,71 +6,19 @@ import time
 pag.PAUSE = 0.2 #wait after each click
 # pyautogui.FAILSAFE = True #KEEP THIS TRUE
 
-file = open("p1/data.txt", "r")
+file = open("p2/atex.txt", "r")
 lines = file.readlines()
-data = []
+atex = []
 for line in lines:
-    data.append(line.strip())
+    atex.append(line.strip())
 file.close()
 
-#1  abs(x)
-#2  sqrt(x)
-#3  x^2
-#4  cbrt(x)
-#5  x^3
-#6  2^x
-#7  3^x
-#8  log2(x)
-#9  log3(x)
-#10 1/x
-#11 cos(x)
-#12 sin(x)
-def typeeq(i):
-    time.sleep(0.01)
-    pag.keyUp("fn")
-    time.sleep(0.01)
-    if(i=="1"):
-        pag.typewrite("y=|x|")
-    elif(i=="2"):
-        pag.typewrite("y=")
-        pag.click(pag.Point(273,507))
-        pag.typewrite("x")
-    elif(i=="3"):
-        pag.typewrite("y=x^2")
-    elif(i=="4"):
-        pag.typewrite("y=")
-        pag.click(pag.Point(153,562))
-        pag.typewrite("3")
-        pag.press("right")
-        pag.typewrite("x")
-    elif(i=="5"):
-        pag.typewrite("y=x^3")
-    elif(i=="6"):
-        pag.typewrite("y=2^x")
-    elif(i=="7"):
-        pag.typewrite("y=3^x")
-    elif(i=="8"):
-        pag.typewrite("y=")
-        pag.click(pag.Point(213,741))
-        pag.typewrite("2")
-        pag.press("right")
-        pag.typewrite("(x)")
-    elif(i=="9"):
-        pag.typewrite("y=")
-        pag.click(pag.Point(213,741))
-        pag.typewrite("3")
-        pag.press("right")
-        pag.typewrite("(x)")
-    elif(i=="10"):
-        pag.typewrite("y=")
-        pag.click(pag.Point(272,445))
-        pag.typewrite("1")
-        pag.press("right")
-        pag.typewrite("x")
-    elif(i=="11"):
-        pag.typewrite("y=cos(x)")
-    elif(i=="12"):
-        pag.typewrite("y=sin(x)")
+file = open("p2/qtex.txt", "r")
+lines = file.readlines()
+qtex = []
+for line in lines:
+    qtex.append(line.strip())
+file.close()
 
 switch_win_pos = pag.Point(339,525)
 add_q_pos = pag.Point(98,760)

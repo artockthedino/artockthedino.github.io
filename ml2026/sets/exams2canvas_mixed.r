@@ -3,15 +3,13 @@ n = 30
 outdir = "outcanvas"
 
 ### Entrance ticket
-pm = list("x_3_sets_regions.Rmd","x_3_sets_regions.Rmd",
-          "x_3_sets_regions.Rmd","x_3_sets_regions.Rmd",
-          "x_3_sets_regions.Rmd")
+pm = list("x_venn_2_dots.Rmd","x_venn_2_dots.Rmd","x_venn_2_dots.Rmd","x_3_sets_regions.Rmd","x_3_sets_regions.Rmd")
 exams2canvas(pm,
              n=n,
              dir=outdir,
              points=c(2,2,2,2,2),
              maxattempts = 10,
-             name="a0317_ET",
+             name="m0319_Venn_Mastery",
              template = "canvas_qti12.xml",
              cloze = list(enumerate = FALSE))
 

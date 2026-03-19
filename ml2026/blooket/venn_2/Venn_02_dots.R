@@ -7,17 +7,19 @@ qtexts = character()
 atexts = character()
 
 
-mkdots = function(n,xc=0,yc=0,scale=0.1,radius=0.05){
+mkdots = function(n,xc=0,yc=0,scale=0.13,radius=0.05){
     th = seq(0,2*pi,pi/30)
-    nrow = ceiling(sqrt(n))
     ncol = floor(sqrt(n))
+    nrow = ceiling(n/ncol)
+    pchlist = 0:13
     for(i in 0:(n-1)){
         hue1 = runif(1,0,1)
         hue2 = runif(1,0,1)
+        hue3 = runif(1,0,1)
         r = i%/%ncol
         c = i%%ncol
         x = xc-ncol/2*scale+scale/2+c*scale
-        y = yc+nrow/2*scale+scale/2-r*scale
+        y = yc+nrow/2*scale-scale/2-r*scale
         rrrs = seq(radius,0,length.out=100)
         dir = sample(c(-1,1),1)
         for(kk in 1:length(rrrs)){
@@ -26,12 +28,13 @@ mkdots = function(n,xc=0,yc=0,scale=0.1,radius=0.05){
             polygon(x+rrr*cos(th),y+rrr*sin(th),col=hsv(hhh,1,1),border=F)
         }
         lines(x+radius*cos(th),y+radius*sin(th))
+        points(x,y,pch=sample(pchlist,1),cex=1.2,col=hsv(hue3,1,0.5),lwd=2)
     }
 }
 
 
-for(i in 1:10){
-    nums = sample(1:9,4)
+for(i in 1:500){
+    nums = sample(1:12,4) #c(12,12,12,12) #
     a_nb = nums[1]
     na_b = nums[2]
     a_b = nums[3]
@@ -68,7 +71,7 @@ for(i in 1:10){
     
     png(paste0("p2/p_",sprintf("%04d",i),".png"),500,300)
     par(mar=c(0,0,0,0),pty="s")
-    plot(0,0,"n",axes=F,ann=F,xlim=c(-1,1),ylim=c(-1,1))
+    plot(0,0,"n",axes=F,ann=F,xlim=c(-1,1.5),ylim=c(-1.5,1))
     co = 0.3
     ra = 0.6
     xc1 = co
@@ -82,19 +85,20 @@ for(i in 1:10){
     }
     text(-0.7,0.55,"A",col=rgb(0,0,0.8),cex=1.2)
     text(0.7,0.55,"B",col=rgb(0.8,0,0),cex=1.2)
-    polygon(c(-1,1,1,-1),c(-0.7,-0.7,0.7,0.7))
-    text(-0.9,0.8,paste0("n[universal set] = ",u),adj=0,cex=1.3)
-    mkdots(a_nb,-0.55,0)
-    mkdots(na_b,0.55,0)
-    mkdots(a_b,0,0)
-    text(-0.55,-0.4,a_nb,cex=2)
-    text(0.55,-0.4,na_b,cex=2)
-    text(0,-0.4,a_b,cex=2)
-    text(0.9,-0.5,na_nb,cex=2)
+    polygon(c(-1,1.5,1.5,-1),c(-0.7,-0.7,0.7,0.7))
+    text(-0.9,0.95,paste0("n[universal set] = ",u),adj=c(0,1),cex=1.3)
+    mkdots(a_nb,-0.55,0.1)
+    mkdots(na_b,0.55,0.1)
+    mkdots(a_b,0,0.1)
+    mkdots(na_nb,1.2,0.1)
+    text(-0.55,-0.35,a_nb,cex=2)
+    text(0.55,-0.35,na_b,cex=2)
+    text(0,-0.35,a_b,cex=2)
+    text(1.2,-0.35,na_nb,cex=2)
     q = TeX(paste0("Find  $n\\left[\\,",ll,"\\,\\right]$"))
-    text(0,-0.85,q,cex=1.7)
+    text(0.25,-1.1,q,cex=1.8)
     dev.off()
-    qtexts = c(qtexts,paste0("How many in ",ee," ?"))
+    qtexts = c(qtexts,paste0("How many ",ee," ?"))
     atexts = c(atexts,nn)
     # s = paste0(c(ns,which(ns==nc)),collapse="&")
     # sols = paste0(sols,s,"\n")
