@@ -1,0 +1,72 @@
+```{r,echo=F}
+options(scipen=999)
+pn = function(c,d){
+    d = d[c!=0]
+    c = c[c!=0]
+    p = paste0("{",c,"}x^{",d,"}",collapse="+")
+    p = gsub("x^{0}","",p,fixed=T)
+    p = gsub("x^{1}","x",p,fixed=T)
+    p = gsub("+{-","-{",p,fixed=T)
+    p = gsub("+{1}x","+x",p,fixed=T)
+    p = gsub("-{1}x","-x",p,fixed=T)
+    p = gsub("{-1}x","-x",p,fixed=T)
+    p = gsub("{1}x","x",p,fixed=T)
+    p = gsub("{","",p,fixed=T)
+    p = gsub("}","",p,fixed=T)
+    return(p)
+}
+
+x = -6:6
+y = sample(x)
+root = x[y==0]
+f = pn(c(1,-root),1:0)
+
+ach = character()
+
+for(i in 1:length(x)){
+    ach = c(ach,pn(c(1,x[i]),1:0))
+}
+
+al = paste0("* $",ach,"$",collapse="\n")
+
+sol = paste0(1*(f==ach),collapse="")
+
+df = data.frame(x,y)
+
+```
+
+
+
+Question
+========
+
+A high-degree polynomial, $p$, when graphed as $y=p(x)$, contains the points in the table below:
+
+```{r,echo=F,warning=FALSE}
+library(kableExtra)
+kable_styling(kable(df),bootstrap_options = c("striped", "bordered"),full_width = FALSE)
+
+```
+
+Which of the following linear binomials is a factor of the polynomial?
+
+
+Answerlist
+--------
+
+`r al`
+
+
+Solution
+========
+
+See the [factor theorem](https://en.wikipedia.org/wiki/Factor_theorem).
+
+If a polynomial has an $x$ intercept at $(a,0)$, then it has a factor $(x-a)$. In this case, there was an $x$ intercept at $`r root`$, so the known factor is $`r f`$.
+
+
+Meta-information
+============
+extype: schoice
+exsolution: `r sol`
+exname: factor_theorem_01

@@ -1,0 +1,154 @@
+---
+output: pdf_document
+params:
+    rseed: 0
+    showsol: true
+---
+
+```{r,echo=F,warning=FALSE,message=FALSE}
+options(scipen=999)
+if(params$rseed !=0){
+    set.seed(params$rseed)
+}
+knitr::opts_chunk$set(echo = FALSE)
+bn <- basename(knitr::current_input())
+bn = strsplit(bn,".",fixed=T)[[1]][1]
+
+pn = function(coeffs,pows){
+    pows = pows[coeffs!=0]
+    coeffs = coeffs[coeffs!=0]
+    ex1 = paste0("{",coeffs,"}x^{",pows,"}",collapse="+")
+    ex1 = gsub("+{-","-{",ex1,fixed=T)
+    ex1 = gsub("{1}x^{0}","1",ex1,fixed=T)
+    ex1 = gsub("{-1}x^{0}","-1",ex1,fixed=T)
+    ex1 = gsub("{1}x","x",ex1,fixed=T)
+    ex1 = gsub("{-1}x","-x",ex1,fixed=T)
+    ex1 = gsub("x^{0}","",ex1,fixed=T)
+    ex1 = gsub("x^{1}","x",ex1,fixed=T)
+    ex1 = gsub("+-","-",ex1,fixed=T)
+    if(ex1 == ""){
+        ex1 = "0"
+    }
+    return(ex1)
+}
+```
+
+## `r bn`
+
+To factor cubic polynomials, you need to find factors that divide into the polynomial with a remainder of 0. Once one factor is known, there will still be a quadratic factor that might itself have factors. On this worksheet, each cubic polynomial can be factored fully to be expressed as $(x-a)(x-b)(x-c)$, where $a$, $b$, and $c$ are integers.
+
+### Example
+
+```{r,echo=F}
+
+while(T){
+    r = sample(c(-8:-1,1:8),3)
+    a = 1
+    b = -sum(r)
+    c = r[1]*r[2]+r[2]*r[3]+r[1]*r[3]
+    d = -r[1]*r[2]*r[3]
+    A = a
+    B = b+r[1]*a
+    C = c+r[1]*(b+r[1]*a)
+    if(min(abs(c(a,b,c,d,A,B,C)))>0){break}
+}
+```
+
+Factor the polynomial $f(x)=`r pn(c(a,b,c,d),3:0)`$. Hint: one factor is $`r pn(c(1,-r[1]),1:0)`$. 
+
+\vfill
+
+\color{red}
+
+### Example solution
+
+Use synthetic division to divide $`r pn(c(a,b,c,d),3:0)`$ by $`r pn(c(1,-r[1]),1:0)`$.
+
+\begin{center}
+\begin{tabular}{c|c c c c}
+          & `r a` & `r b`       & `r c`                 & `r d` \\
+`r r[1]` &       & `r r[1]*a` & `r r[1]*(b+r[1]*a)`  & `r r[1]*(c+r[1]*(b+r[1]*a))` \\ \hline
+          & `r a` & `r b+r[1]*a`& `r c+r[1]*(b+r[1]*a)` & `r d+r[1]*(c+r[1]*(b+r[1]*a))`
+\end{tabular}
+\end{center}
+
+Notice the remainder is 0, as promised, because $`r pn(c(1,-r[1]),1:0)`$ is a factor. We can write the semi-factored form.
+
+$$f(x)~=~(`r pn(c(1,-r[1]),1:0)`)(`r pn(c(a,b+r[1]*a,c+r[1]*(b+r[1]*a)),2:0)`)$$
+
+Now we should try to further factor the quadratic factor into two linear binomials. You can use guess-and-check... looking for two numbers with a product of `r c+r[1]*(b+r[1]*a)` and a sum of `r b+r[1]*a`. If you struggle with that, you can also use the quadratic formula to find $x$-intercepts, and produce the factors from those.
+
+Anyway,
+
+$$f(x)~=~(`r pn(c(1,-r[1]),1:0)`)(`r pn(c(1,-r[2]),1:0)`)(`r pn(c(1,-r[3]),1:0)`)$$
+
+Notice this function has $x$-intercepts at $x=`r r[1]`$ and $x=`r r[2]`$ and $x=`r r[3]`$.
+
+
+\color{black}
+
+\vfill
+
+If the hint is not given, you will have to guess until finding a factor. You might find the [Rational Root Theorem](https://en.wikipedia.org/wiki/Rational_root_theorem) helpful (specifically the Integral Root Theorem).
+
+
+\newpage
+
+
+
+```{r,echo=F}
+probs = c(paste0("Factor $",pn(c(a,b,c,d),3:0),"$."))
+hints = c(paste0("Hint, $",pn(c(1,-r[1]),1:0),"$ is a factor."))
+solutions = c(paste0("$(",pn(c(1,-r[1]),1:0),")(",pn(c(1,-r[2]),1:0),")(",pn(c(1,-r[3]),1:0),")$"))
+
+while(length(probs)<=20){
+    while(T){
+        r = sample(c(-9:-1,1:9),3)
+        a = 1
+        b = -sum(r)
+        c = r[1]*r[2]+r[2]*r[3]+r[1]*r[3]
+        d = -r[1]*r[2]*r[3]
+        A = a
+        B = b+r[1]*a
+        C = c+r[1]*(b+r[1]*a)
+        prob = paste0("Factor $",pn(c(a,b,c,d),3:0),"$.")
+        hint = paste0("Hint, $",pn(c(1,-r[1]),1:0),"$ is a factor.")
+        solution = paste0("$(",pn(c(1,-r[1]),1:0),")(",pn(c(1,-r[2]),1:0),")(",pn(c(1,-r[3]),1:0),")$")
+        if(min(abs(c(a,b,c,d,A,B,C)))>0 && !(prob %in% probs)){break}
+    }
+    probs = c(probs,prob)
+    hints = c(hints,hint)
+    solutions = c(solutions,solution)
+}
+
+```
+
+```{r,echo=F,results="asis"}
+for(i in 1:10){
+    cat(paste0(i,". ",probs[i+1]," ",hints[i+1],"\n\n\\vfill\n\n"))
+}
+
+cat("\n\n\\newpage\n\n")
+
+for(i in 11:20){
+    cat(paste0(i,". ",probs[i+1],"\n\n\\vfill\n\n"))
+}
+
+cat("\n\n\\newpage\n\n")
+
+for(i in 1:20){
+    cat(paste0(i,". Factored form: ",solutions[i+1],"\n\n\\vfill\n\n"))
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+

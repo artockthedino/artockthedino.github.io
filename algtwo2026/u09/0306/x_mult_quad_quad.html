@@ -11,7 +11,7 @@
 
 
 
-<title>x_poly_long_div_remain.knit</title>
+<title>x_mult_quad_quad.knit</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -354,217 +354,293 @@ display: none;
 
 <div id="question" class="section level1">
 <h1>Question</h1>
+<p>The product of a quadratic polynomial times a quadratic polynomial is
+a quartic polynomial. Find the product of the quadratic trinomials shown
+below.</p>
+<p><span class="math display">\[r(x)~~=~~\left({-3}x^{2}-{8}x-{5}\right)
+\cdot \left({8}x^{2}+x+{6}\right)\]</span></p>
+<p>Write the resulting quartic polynomial in standard form.</p>
 <style type="text/css">
-.longdivtab select {
-width: 6em;
+.boxy td {
+padding: 2em;
+border: 1px solid black;
+text-align: center;
+font-size: 1em;
+color: black;
+background-color: white;
 }
-.longdivtab td {
-width: 6em;
+.boxy th {
+background-color: rgb(200, 200, 200);
+color: black;
+padding: 2em;
+font-size: 1em;
+text-align: center;
+border: 1px solid black;
 }
-.longdivtab select {
-width: 6em;
-
--moz-appearance: none;
-
--webkit-appearance: none;
+.boxy td:first-child {
+background-color: rgb(200, 200, 200);
+color: black;
+padding: 2em;
+font-size: 1em;
+text-align: center;
+border: 1px solid black;
 }
-
-.longdivtab select::-ms-expand {
-display: none;
+.boxy select {
+width: 5em;
 }
 </style>
-<p>Use polynomial long division to <strong>find the remainder</strong>
-when <span class="math inline">\(6x³-31x²-37x+39\)</span> is divided by
-<span class="math inline">\(x-6\)</span>.</p>
+<div class="boxy">
+<ul>
+<li><span class="math inline">\(r(x)~=\)</span> ##ANSWER1##<span class="math inline">\(x^4\)</span> ##ANSWER2##<span class="math inline">\(x^3\)</span> ##ANSWER3##<span class="math inline">\(x^2\)</span> ##ANSWER4##<span class="math inline">\(x\)</span> ##ANSWER5##</li>
+</ul>
+</div>
+<div id="answerlist" class="section level2">
+<h2>Answerlist</h2>
+<ul>
+<li>-67</li>
+<li>-66</li>
+<li>-64</li>
+<li>-60</li>
+<li>-53</li>
+<li>-48</li>
+<li>-47</li>
+<li>-40</li>
+<li>-39</li>
+<li>-30</li>
+<li>-24</li>
+<li>-18</li>
+<li>-8</li>
+<li>-5</li>
+<li>-3</li>
+<li>-2</li>
+<li>-1</li>
+<li>0</li>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>5</li>
+<li>8</li>
+<li>18</li>
+<li>24</li>
+<li>30</li>
+<li>39</li>
+<li>40</li>
+<li>47</li>
+<li>48</li>
+<li>53</li>
+<li>60</li>
+<li>64</li>
+<li>66</li>
+<li>67</li>
+<li>-67</li>
+<li>-66</li>
+<li>-64</li>
+<li>-60</li>
+<li>-53</li>
+<li>-48</li>
+<li>-47</li>
+<li>-40</li>
+<li>-39</li>
+<li>-30</li>
+<li>-24</li>
+<li>-18</li>
+<li>-8</li>
+<li>-5</li>
+<li>-3</li>
+<li>-2</li>
+<li>-1</li>
+<li>+0</li>
+<li>+1</li>
+<li>+2</li>
+<li>+3</li>
+<li>+5</li>
+<li>+8</li>
+<li>+18</li>
+<li>+24</li>
+<li>+30</li>
+<li>+39</li>
+<li>+40</li>
+<li>+47</li>
+<li>+48</li>
+<li>+53</li>
+<li>+60</li>
+<li>+64</li>
+<li>+66</li>
+<li>+67</li>
+<li>-67</li>
+<li>-66</li>
+<li>-64</li>
+<li>-60</li>
+<li>-53</li>
+<li>-48</li>
+<li>-47</li>
+<li>-40</li>
+<li>-39</li>
+<li>-30</li>
+<li>-24</li>
+<li>-18</li>
+<li>-8</li>
+<li>-5</li>
+<li>-3</li>
+<li>-2</li>
+<li>-1</li>
+<li>+0</li>
+<li>+1</li>
+<li>+2</li>
+<li>+3</li>
+<li>+5</li>
+<li>+8</li>
+<li>+18</li>
+<li>+24</li>
+<li>+30</li>
+<li>+39</li>
+<li>+40</li>
+<li>+47</li>
+<li>+48</li>
+<li>+53</li>
+<li>+60</li>
+<li>+64</li>
+<li>+66</li>
+<li>+67</li>
+<li>-67</li>
+<li>-66</li>
+<li>-64</li>
+<li>-60</li>
+<li>-53</li>
+<li>-48</li>
+<li>-47</li>
+<li>-40</li>
+<li>-39</li>
+<li>-30</li>
+<li>-24</li>
+<li>-18</li>
+<li>-8</li>
+<li>-5</li>
+<li>-3</li>
+<li>-2</li>
+<li>-1</li>
+<li>+0</li>
+<li>+1</li>
+<li>+2</li>
+<li>+3</li>
+<li>+5</li>
+<li>+8</li>
+<li>+18</li>
+<li>+24</li>
+<li>+30</li>
+<li>+39</li>
+<li>+40</li>
+<li>+47</li>
+<li>+48</li>
+<li>+53</li>
+<li>+60</li>
+<li>+64</li>
+<li>+66</li>
+<li>+67</li>
+<li>-67</li>
+<li>-66</li>
+<li>-64</li>
+<li>-60</li>
+<li>-53</li>
+<li>-48</li>
+<li>-47</li>
+<li>-40</li>
+<li>-39</li>
+<li>-30</li>
+<li>-24</li>
+<li>-18</li>
+<li>-8</li>
+<li>-5</li>
+<li>-3</li>
+<li>-2</li>
+<li>-1</li>
+<li>+0</li>
+<li>+1</li>
+<li>+2</li>
+<li>+3</li>
+<li>+5</li>
+<li>+8</li>
+<li>+18</li>
+<li>+24</li>
+<li>+30</li>
+<li>+39</li>
+<li>+40</li>
+<li>+47</li>
+<li>+48</li>
+<li>+53</li>
+<li>+60</li>
+<li>+64</li>
+<li>+66</li>
+<li>+67</li>
+</ul>
+</div>
 </div>
 <div id="solution" class="section level1">
 <h1>Solution</h1>
 <style type="text/css">
-.longdivtab select {
-width: 6em;
+.boxy td {
+border: 1px solid black;
+color: black;
+background-color: white;
 }
-.longdivtab td {
-width: 6em;
+.boxy th {
+background-color: rgb(200, 200, 200);
+color: black;
+border: 1px solid black;
 }
-.longdivtab select {
-width: 6em;
-
--moz-appearance: none;
-
--webkit-appearance: none;
+.boxy td:first-child {
+background-color: rgb(200, 200, 200);
+color: black;
+border: 1px solid black;
 }
-
-.longdivtab select::-ms-expand {
-display: none;
+.boxy select {
+width: 5em;
 }
 </style>
-<p>Fill out the polynomial long division shown below to divide <span class="math inline">\(6x³-31x²-37x+39\)</span> by <span class="math inline">\(x-6\)</span>.</p>
-<table class="longdivtab">
-<tr>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-6x²
-</td>
-<td>
-+5x
-</td>
-<td>
--7
-</td>
-<td>
-</td>
+<div class="boxy">
+<table>
+<thead>
+<tr class="header">
+<th align="center">*</th>
+<th align="center"><span class="math inline">\(-3x^2\)</span></th>
+<th align="center"><span class="math inline">\(-8x\)</span></th>
+<th align="center"><span class="math inline">\(-5\)</span></th>
 </tr>
-<tr>
-<td>
-x
-</td>
-<td>
--6
-</td>
-<td style="border-left:1px solid black;border-top:1px solid black;">
-6x³
-</td>
-<td style="border-top:1px solid black;">
--31x²
-</td>
-<td style="border-top:1px solid black;">
--37x
-</td>
-<td style="border-top:1px solid black;">
-+39
-</td>
-<td>
-</td>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(8x^2\)</span></td>
+<td align="center"><span class="math inline">\(-24x^4\)</span></td>
+<td align="center"><span class="math inline">\(-64x^3\)</span></td>
+<td align="center"><span class="math inline">\(-40x^2\)</span></td>
 </tr>
-<tr>
-<td>
-</td>
-<td style="border-bottom:1px solid black;text-align: right;">
-<span class="math inline">\(-(\)</span>
-</td>
-<td style="border-bottom:1px solid black;">
-6x³
-</td>
-<td style="border-bottom:1px solid black;">
--36x²
-</td>
-<td style="border-bottom:1px solid black;text-align: left;">
-<span class="math inline">\()\)</span>
-</td>
-<td>
-</td>
-<td>
-</td>
+<tr class="even">
+<td align="center"><span class="math inline">\(1x\)</span></td>
+<td align="center"><span class="math inline">\(-3x^3\)</span></td>
+<td align="center"><span class="math inline">\(-8x^2\)</span></td>
+<td align="center"><span class="math inline">\(-5x\)</span></td>
 </tr>
-<tr>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-5x²
-</td>
-<td>
--37x
-</td>
-<td>
-</td>
-<td>
-</td>
+<tr class="odd">
+<td align="center"><span class="math inline">\(6\)</span></td>
+<td align="center"><span class="math inline">\(-18x^2\)</span></td>
+<td align="center"><span class="math inline">\(-48x\)</span></td>
+<td align="center"><span class="math inline">\(-30\)</span></td>
 </tr>
-<tr>
-<td>
-</td>
-<td>
-</td>
-<td style="border-bottom:1px solid black;text-align: right;">
-<span class="math inline">\(-(\)</span>
-</td>
-<td style="border-bottom:1px solid black;">
-5x²
-</td>
-<td style="border-bottom:1px solid black;">
--30x
-</td>
-<td style="border-bottom:1px solid black;text-align: left;">
-<span class="math inline">\()\)</span>
-</td>
-<td>
-</td>
-<td>
-</td>
-</tr>
-<tr>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
--7x
-</td>
-<td>
-+39
-</td>
-<td>
-</td>
-</tr>
-<tr>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td style="border-bottom:1px solid black;text-align: right;">
-<span class="math inline">\(-(\)</span>
-</td>
-<td style="border-bottom:1px solid black;">
--7x
-</td>
-<td style="border-bottom:1px solid black;">
-+42
-</td>
-<td style="border-bottom:1px solid black;text-align: left;">
-<span class="math inline">\()\)</span>
-</td>
-</tr>
-<tr>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
--3
-</td>
-<td>
-</td>
-</tr>
+</tbody>
 </table>
-<p>Thus, the following identity holds true for all values of <span class="math inline">\(x\)</span> (but <span class="math inline">\(x\ne
-6\)</span>):</p>
-<p><span class="math display">\[\frac{6x^3-31x^2-37x+39}{x-6}~=~6x^2+5x-7+\frac{-3}{x-6}\]</span></p>
-<p>And the remainder is <span class="math inline">\(-3\)</span>.</p>
+</div>
+<p><span class="math display">\[r(x)~~=~~
+{-24}x^{4}-{3}x^{3}-{18}x^{2}-{64}x^{3}-{8}x^{2}-{48}x-{40}x^{2}-{5}x-{30}\]</span></p>
+<p>Combine like terms.</p>
+<p><span class="math display">\[r(x)~~=~~
+{-24}x^{4}-{67}x^{3}-{66}x^{2}-{53}x-{30}\]</span></p>
 </div>
 <div id="meta-information" class="section level1">
 <h1>Meta-information</h1>
-<p>extype: num exsolution: -3 exname: poly_long_div_remain</p>
+<p>extype: cloze exclozetype: schoice|schoice|schoice|schoice|schoice
+exsolution:
+00000000001000000000000000000000000|10000000000000000000000000000000000|01000000000000000000000000000000000|00001000000000000000000000000000000|00000000010000000000000000000000000
+exname: mult_quad_quad</p>
 </div>
 
 

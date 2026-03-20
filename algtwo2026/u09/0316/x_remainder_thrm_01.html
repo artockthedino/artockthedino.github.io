@@ -357,36 +357,36 @@ display: none;
 <ol style="list-style-type: decimal">
 <li><p>Review the <a href="https://en.wikipedia.org/wiki/Polynomial_remainder_theorem">remainder
 theorem</a>.</p></li>
-<li><p>When <span class="math inline">\(f(x)=x^6-12x^5+45x^4-56x^3+8x^2+43x+1\)</span> is
-divided by <span class="math inline">\(g(x)=x-6\)</span> the result is
-<span class="math inline">\(h(x)=x^5-6x^4+9x^3-2x^2-4x+1+\frac{19}{x-6}\)</span>.</p></li>
-<li><p>Evaluate <span class="math inline">\(f(6)\)</span>.</p></li>
+<li><p>When <span class="math inline">\(f(x)=9x^6+14x^5-10x^4-7x^3-12x^2-13x+9\)</span> is
+divided by <span class="math inline">\(g(x)=x+2\)</span> the result is
+<span class="math inline">\(h(x)=9x^5-4x^4-2x^3-3x^2-6x+9+\frac{-1}{x+2}\)</span>.</p></li>
+<li><p>Evaluate <span class="math inline">\(f(-2)\)</span>.</p></li>
 </ol>
 </div>
 <div id="solution" class="section level1">
 <h1>Solution</h1>
 <p>The trick is to realize that since <span class="math inline">\(\frac{f(x)}{g(x)}=h(x)\)</span> we know <span class="math inline">\(f(x)=g(x)\cdot h(x)\)</span>, so:</p>
-<p><span class="math display">\[f(x)~=~\left(x-6\right) \cdot
-\left(x^5-6x^4+9x^3-2x^2-4x+1+\frac{19}{x-6}\right)\]</span></p>
+<p><span class="math display">\[f(x)~=~\left(x+2\right) \cdot
+\left(9x^5-4x^4-2x^3-3x^2-6x+9+\frac{-1}{x+2}\right)\]</span></p>
 <p>We can partially distribute the linear binomial to clean up that
 nasty denominator under the remainder.</p>
-<p><span class="math display">\[f(x)~=~\left(x-6\right) \cdot
-\left(x^5-6x^4+9x^3-2x^2-4x+1\right) +19\]</span></p>
-<p>Now it becomes pretty easy to find <span class="math inline">\(f(6)\)</span>.</p>
-<p><span class="math display">\[f(6)=\left(6-6\right) \cdot
-\left(\text{something}\right) +19\]</span></p>
-<p><span class="math display">\[f(6)=0\cdot
-\left(\text{something}\right) +19\]</span></p>
-<p><span class="math display">\[f(6)=0 +19\]</span></p>
-<p><span class="math display">\[f(6)=19\]</span></p>
-<p>In other words, <span class="math inline">\(f(6)\)</span> equals the
+<p><span class="math display">\[f(x)~=~\left(x+2\right) \cdot
+\left(9x^5-4x^4-2x^3-3x^2-6x+9\right) -1\]</span></p>
+<p>Now it becomes pretty easy to find <span class="math inline">\(f(-2)\)</span>.</p>
+<p><span class="math display">\[f(-2)=\left(-2+2\right) \cdot
+\left(\text{something}\right) -1\]</span></p>
+<p><span class="math display">\[f(-2)=0\cdot
+\left(\text{something}\right) -1\]</span></p>
+<p><span class="math display">\[f(-2)=0 -1\]</span></p>
+<p><span class="math display">\[f(-2)=-1\]</span></p>
+<p>In other words, <span class="math inline">\(f(-2)\)</span> equals the
 remainder when <span class="math inline">\(f(x)\)</span> is divided by
-<span class="math inline">\(x-6\)</span>, as promised by <a href="https://en.wikipedia.org/wiki/Polynomial_remainder_theorem">the
+<span class="math inline">\(x+2\)</span>, as promised by <a href="https://en.wikipedia.org/wiki/Polynomial_remainder_theorem">the
 remainder theorem</a>.</p>
 </div>
 <div id="meta-information" class="section level1">
 <h1>Meta-information</h1>
-<p>extype: num exsolution: 19 exname: remainder_thrm_01</p>
+<p>extype: num exsolution: -1 exname: remainder_thrm_01</p>
 </div>
 
 

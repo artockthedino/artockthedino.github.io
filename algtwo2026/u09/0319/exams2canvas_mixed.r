@@ -3,30 +3,23 @@ n = 30
 outdir = "outcanvas"
 
 ### Entrance ticket
-pm = list("x_lsys_string.Rmd","x_lsys_string_long.Rmd")
+pm = list("x_factor_theorem_01.Rmd","x_poly_remainder.Rmd")
 exams2canvas(pm,
              n=n,
              dir=outdir,
              points=c(3,3),
              maxattempts = 8,
-             name="pbl_0319_ET",
+             name="a0319_ET",
              template = "canvas_qti12.xml",
              cloze = list(enumerate = FALSE))
 
-# pm = c("math_facts_add.Rmd",
-#        "math_facts_sub.Rmd",
-#        "math_facts_mul.Rmd",
-#        "math_facts_div.Rmd")
-# 
-# pm = c(pm,sample(pm),sample(pm))
-# 
+# pm = list("x_poly_remainder.Rmd","x_factor_theorem_01.Rmd")
 # exams2canvas(pm,
 #              n=n,
 #              dir=outdir,
-#              points=rep(2,length(pm)),
-#              maxattempts = 6,
-#              name="pbl_0302_math_facts",
-#              converter = "tex2image",
+#              points=rep(1,length(pm)),
+#              maxattempts = 5,
+#              name="a0316_synth_div",
 #              template = "canvas_qti12.xml",
 #              cloze = list(enumerate = FALSE))
 
