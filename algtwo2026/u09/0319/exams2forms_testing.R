@@ -6,9 +6,9 @@ pm = list("x_factor_theorem_01.Rmd","x_poly_remainder.Rmd")
 
 exams2webquiz(pm,
              n=n,
-             title = "examples_0319",
+             title = "examples_0320",
              dir = ".",
-             name="examples_0319")
+             name="examples_0320")
 
 
 
