@@ -1,0 +1,1007 @@
+"Blooket
+Import Template",,,,,,,
+Question #,Question Text,Answer 1,Answer 2,"Answer 3 
+(Optional)","Answer 4
+(Optional)","Time Limit (sec)
+(Max: 300 seconds)","Correct Answer(s)
+(Only include Answer #)"
+1,"Consider the logical statement (p) defined below.
+
+ p: Set P is a subset of set U.
+
+Which option represents ~p, the negation of p?",Set P and set U are disjoint.,Set P is not a subset of set U.,Set P is a subset of set U.,The intersection of set P and set U is not empty.,30,2
+2,"Consider the logical statement (p) defined below.
+
+ p: Set N is a subset of set M.
+
+Which option represents ~p, the negation of p?",Set N is not a subset of set M.,Set N and set M are disjoint.,Set N is a subset of set M.,The intersection of set N and set M is not empty.,30,1
+3,"Consider the logical statement (p) defined below.
+
+ p: Set Z and set C are disjoint.
+
+Which option represents ~p, the negation of p?",Set Z is not a subset of set C.,Set Z is a subset of set C.,Set Z and set C are disjoint.,The intersection of set Z and set C is not empty.,30,4
+4,"Consider the logical statement (p) defined below.
+
+ p: Set L is a subset of set Z.
+
+Which option represents ~p, the negation of p?",Set L and set Z are disjoint.,The intersection of set L and set Z is not empty.,Set L is not a subset of set Z.,Set L is a subset of set Z.,30,3
+5,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set Y and set T is not empty.
+
+Which option represents ~p, the negation of p?",Set Y is not a subset of set T.,Set Y and set T are disjoint.,Set Y is a subset of set T.,The intersection of set Y and set T is not empty.,30,2
+6,"Consider the logical statement (p) defined below.
+
+ p: Set Z is a subset of set K.
+
+Which option represents ~p, the negation of p?",Set Z and set K are disjoint.,The intersection of set Z and set K is not empty.,Set Z is a subset of set K.,Set Z is not a subset of set K.,30,4
+7,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set X and set F is not empty.
+
+Which option represents ~p, the negation of p?",Set X and set F are disjoint.,Set X is a subset of set F.,The intersection of set X and set F is not empty.,Set X is not a subset of set F.,30,1
+8,"Consider the logical statement (p) defined below.
+
+ p: Set R is not a subset of set C.
+
+Which option represents ~p, the negation of p?",Set R and set C are disjoint.,Set R is not a subset of set C.,The intersection of set R and set C is not empty.,Set R is a subset of set C.,30,4
+9,"Consider the logical statement (p) defined below.
+
+ p: Set R and set L are disjoint.
+
+Which option represents ~p, the negation of p?",The intersection of set R and set L is not empty.,Set R is not a subset of set L.,Set R is a subset of set L.,Set R and set L are disjoint.,30,1
+10,"Consider the logical statement (p) defined below.
+
+ p: Set J is not a subset of set B.
+
+Which option represents ~p, the negation of p?",Set J is a subset of set B.,The intersection of set J and set B is not empty.,Set J is not a subset of set B.,Set J and set B are disjoint.,30,1
+11,"Consider the logical statement (p) defined below.
+
+ p: Set K and set M are disjoint.
+
+Which option represents ~p, the negation of p?",Set K and set M are disjoint.,Set K is a subset of set M.,The intersection of set K and set M is not empty.,Set K is not a subset of set M.,30,3
+12,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set P and set K is not empty.
+
+Which option represents ~p, the negation of p?",The intersection of set P and set K is not empty.,Set P and set K are disjoint.,Set P is not a subset of set K.,Set P is a subset of set K.,30,2
+13,"Consider the logical statement (p) defined below.
+
+ p: Set C and set E are disjoint.
+
+Which option represents ~p, the negation of p?",Set C is not a subset of set E.,Set C is a subset of set E.,Set C and set E are disjoint.,The intersection of set C and set E is not empty.,30,4
+14,"Consider the logical statement (p) defined below.
+
+ p: Set Q is a subset of set C.
+
+Which option represents ~p, the negation of p?",The intersection of set Q and set C is not empty.,Set Q is a subset of set C.,Set Q and set C are disjoint.,Set Q is not a subset of set C.,30,4
+15,"Consider the logical statement (p) defined below.
+
+ p: Set Z is a subset of set I.
+
+Which option represents ~p, the negation of p?",The intersection of set Z and set I is not empty.,Set Z and set I are disjoint.,Set Z is a subset of set I.,Set Z is not a subset of set I.,30,4
+16,"Consider the logical statement (p) defined below.
+
+ p: Set D and set W are disjoint.
+
+Which option represents ~p, the negation of p?",Set D is not a subset of set W.,Set D and set W are disjoint.,The intersection of set D and set W is not empty.,Set D is a subset of set W.,30,3
+17,"Consider the logical statement (p) defined below.
+
+ p: Set E and set U are disjoint.
+
+Which option represents ~p, the negation of p?",The intersection of set E and set U is not empty.,Set E is not a subset of set U.,Set E and set U are disjoint.,Set E is a subset of set U.,30,1
+18,"Consider the logical statement (p) defined below.
+
+ p: Set G is not a subset of set E.
+
+Which option represents ~p, the negation of p?",Set G is not a subset of set E.,Set G and set E are disjoint.,The intersection of set G and set E is not empty.,Set G is a subset of set E.,30,4
+19,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set R and set E is not empty.
+
+Which option represents ~p, the negation of p?",Set R is a subset of set E.,Set R is not a subset of set E.,Set R and set E are disjoint.,The intersection of set R and set E is not empty.,30,3
+20,"Consider the logical statement (p) defined below.
+
+ p: Set J is a subset of set I.
+
+Which option represents ~p, the negation of p?",The intersection of set J and set I is not empty.,Set J is not a subset of set I.,Set J and set I are disjoint.,Set J is a subset of set I.,30,2
+21,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set C and set U is not empty.
+
+Which option represents ~p, the negation of p?",Set C and set U are disjoint.,Set C is not a subset of set U.,Set C is a subset of set U.,The intersection of set C and set U is not empty.,30,1
+22,"Consider the logical statement (p) defined below.
+
+ p: Set X is not a subset of set R.
+
+Which option represents ~p, the negation of p?",Set X is not a subset of set R.,The intersection of set X and set R is not empty.,Set X and set R are disjoint.,Set X is a subset of set R.,30,4
+23,"Consider the logical statement (p) defined below.
+
+ p: Set G and set D are disjoint.
+
+Which option represents ~p, the negation of p?",Set G is a subset of set D.,Set G is not a subset of set D.,The intersection of set G and set D is not empty.,Set G and set D are disjoint.,30,3
+24,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set M and set C is not empty.
+
+Which option represents ~p, the negation of p?",The intersection of set M and set C is not empty.,Set M and set C are disjoint.,Set M is a subset of set C.,Set M is not a subset of set C.,30,2
+25,"Consider the logical statement (p) defined below.
+
+ p: Set B is not a subset of set V.
+
+Which option represents ~p, the negation of p?",The intersection of set B and set V is not empty.,Set B is not a subset of set V.,Set B and set V are disjoint.,Set B is a subset of set V.,30,4
+26,"Consider the logical statement (p) defined below.
+
+ p: Set L is not a subset of set S.
+
+Which option represents ~p, the negation of p?",The intersection of set L and set S is not empty.,Set L and set S are disjoint.,Set L is not a subset of set S.,Set L is a subset of set S.,30,4
+27,"Consider the logical statement (p) defined below.
+
+ p: Set A is a subset of set X.
+
+Which option represents ~p, the negation of p?",Set A and set X are disjoint.,Set A is not a subset of set X.,The intersection of set A and set X is not empty.,Set A is a subset of set X.,30,2
+28,"Consider the logical statement (p) defined below.
+
+ p: Set Z and set B are disjoint.
+
+Which option represents ~p, the negation of p?",Set Z is a subset of set B.,Set Z and set B are disjoint.,The intersection of set Z and set B is not empty.,Set Z is not a subset of set B.,30,3
+29,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set P and set M is not empty.
+
+Which option represents ~p, the negation of p?",Set P is a subset of set M.,Set P is not a subset of set M.,Set P and set M are disjoint.,The intersection of set P and set M is not empty.,30,3
+30,"Consider the logical statement (p) defined below.
+
+ p: Set E is not a subset of set O.
+
+Which option represents ~p, the negation of p?",Set E and set O are disjoint.,Set E is not a subset of set O.,The intersection of set E and set O is not empty.,Set E is a subset of set O.,30,4
+31,"Consider the logical statement (p) defined below.
+
+ p: Set N is a subset of set Y.
+
+Which option represents ~p, the negation of p?",Set N is not a subset of set Y.,The intersection of set N and set Y is not empty.,Set N is a subset of set Y.,Set N and set Y are disjoint.,30,1
+32,"Consider the logical statement (p) defined below.
+
+ p: Set A is a subset of set F.
+
+Which option represents ~p, the negation of p?",Set A is a subset of set F.,The intersection of set A and set F is not empty.,Set A and set F are disjoint.,Set A is not a subset of set F.,30,4
+33,"Consider the logical statement (p) defined below.
+
+ p: Set A is a subset of set M.
+
+Which option represents ~p, the negation of p?",Set A is not a subset of set M.,Set A and set M are disjoint.,The intersection of set A and set M is not empty.,Set A is a subset of set M.,30,1
+34,"Consider the logical statement (p) defined below.
+
+ p: Set V is a subset of set P.
+
+Which option represents ~p, the negation of p?",Set V and set P are disjoint.,Set V is not a subset of set P.,Set V is a subset of set P.,The intersection of set V and set P is not empty.,30,2
+35,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set V and set Q is not empty.
+
+Which option represents ~p, the negation of p?",The intersection of set V and set Q is not empty.,Set V is not a subset of set Q.,Set V is a subset of set Q.,Set V and set Q are disjoint.,30,4
+36,"Consider the logical statement (p) defined below.
+
+ p: Set I is a subset of set P.
+
+Which option represents ~p, the negation of p?",Set I is not a subset of set P.,Set I and set P are disjoint.,The intersection of set I and set P is not empty.,Set I is a subset of set P.,30,1
+37,"Consider the logical statement (p) defined below.
+
+ p: Set N and set X are disjoint.
+
+Which option represents ~p, the negation of p?",Set N is not a subset of set X.,Set N and set X are disjoint.,The intersection of set N and set X is not empty.,Set N is a subset of set X.,30,3
+38,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set E and set C is not empty.
+
+Which option represents ~p, the negation of p?",Set E is not a subset of set C.,Set E is a subset of set C.,The intersection of set E and set C is not empty.,Set E and set C are disjoint.,30,4
+39,"Consider the logical statement (p) defined below.
+
+ p: Set U is not a subset of set F.
+
+Which option represents ~p, the negation of p?",The intersection of set U and set F is not empty.,Set U and set F are disjoint.,Set U is a subset of set F.,Set U is not a subset of set F.,30,3
+40,"Consider the logical statement (p) defined below.
+
+ p: Set L is a subset of set I.
+
+Which option represents ~p, the negation of p?",The intersection of set L and set I is not empty.,Set L is a subset of set I.,Set L is not a subset of set I.,Set L and set I are disjoint.,30,3
+41,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set U and set P is not empty.
+
+Which option represents ~p, the negation of p?",Set U and set P are disjoint.,The intersection of set U and set P is not empty.,Set U is a subset of set P.,Set U is not a subset of set P.,30,1
+42,"Consider the logical statement (p) defined below.
+
+ p: Set D is a subset of set Y.
+
+Which option represents ~p, the negation of p?",Set D and set Y are disjoint.,Set D is a subset of set Y.,The intersection of set D and set Y is not empty.,Set D is not a subset of set Y.,30,4
+43,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set V and set X is not empty.
+
+Which option represents ~p, the negation of p?",Set V and set X are disjoint.,Set V is not a subset of set X.,Set V is a subset of set X.,The intersection of set V and set X is not empty.,30,1
+44,"Consider the logical statement (p) defined below.
+
+ p: Set A is a subset of set L.
+
+Which option represents ~p, the negation of p?",Set A is a subset of set L.,The intersection of set A and set L is not empty.,Set A and set L are disjoint.,Set A is not a subset of set L.,30,4
+45,"Consider the logical statement (p) defined below.
+
+ p: Set B is a subset of set D.
+
+Which option represents ~p, the negation of p?",Set B and set D are disjoint.,Set B is not a subset of set D.,The intersection of set B and set D is not empty.,Set B is a subset of set D.,30,2
+46,"Consider the logical statement (p) defined below.
+
+ p: Set Q is not a subset of set J.
+
+Which option represents ~p, the negation of p?",Set Q is a subset of set J.,Set Q is not a subset of set J.,Set Q and set J are disjoint.,The intersection of set Q and set J is not empty.,30,1
+47,"Consider the logical statement (p) defined below.
+
+ p: Set W is a subset of set H.
+
+Which option represents ~p, the negation of p?",Set W and set H are disjoint.,Set W is a subset of set H.,Set W is not a subset of set H.,The intersection of set W and set H is not empty.,30,3
+48,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set J and set E is not empty.
+
+Which option represents ~p, the negation of p?",Set J and set E are disjoint.,Set J is not a subset of set E.,Set J is a subset of set E.,The intersection of set J and set E is not empty.,30,1
+49,"Consider the logical statement (p) defined below.
+
+ p: Set K is a subset of set E.
+
+Which option represents ~p, the negation of p?",Set K is a subset of set E.,The intersection of set K and set E is not empty.,Set K and set E are disjoint.,Set K is not a subset of set E.,30,4
+50,"Consider the logical statement (p) defined below.
+
+ p: Set V is a subset of set X.
+
+Which option represents ~p, the negation of p?",Set V is not a subset of set X.,Set V is a subset of set X.,Set V and set X are disjoint.,The intersection of set V and set X is not empty.,30,1
+51,"Consider the logical statement (p) defined below.
+
+ p: Set L and set U are disjoint.
+
+Which option represents ~p, the negation of p?",Set L is a subset of set U.,The intersection of set L and set U is not empty.,Set L and set U are disjoint.,Set L is not a subset of set U.,30,2
+52,"Consider the logical statement (p) defined below.
+
+ p: Set D is not a subset of set A.
+
+Which option represents ~p, the negation of p?",Set D and set A are disjoint.,Set D is a subset of set A.,Set D is not a subset of set A.,The intersection of set D and set A is not empty.,30,2
+53,"Consider the logical statement (p) defined below.
+
+ p: Set T is not a subset of set I.
+
+Which option represents ~p, the negation of p?",Set T is a subset of set I.,The intersection of set T and set I is not empty.,Set T is not a subset of set I.,Set T and set I are disjoint.,30,1
+54,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set C and set W is not empty.
+
+Which option represents ~p, the negation of p?",The intersection of set C and set W is not empty.,Set C is a subset of set W.,Set C is not a subset of set W.,Set C and set W are disjoint.,30,4
+55,"Consider the logical statement (p) defined below.
+
+ p: Set B is a subset of set L.
+
+Which option represents ~p, the negation of p?",Set B is not a subset of set L.,Set B and set L are disjoint.,The intersection of set B and set L is not empty.,Set B is a subset of set L.,30,1
+56,"Consider the logical statement (p) defined below.
+
+ p: Set L and set Z are disjoint.
+
+Which option represents ~p, the negation of p?",Set L is not a subset of set Z.,The intersection of set L and set Z is not empty.,Set L is a subset of set Z.,Set L and set Z are disjoint.,30,2
+57,"Consider the logical statement (p) defined below.
+
+ p: Set H is a subset of set I.
+
+Which option represents ~p, the negation of p?",Set H and set I are disjoint.,The intersection of set H and set I is not empty.,Set H is not a subset of set I.,Set H is a subset of set I.,30,3
+58,"Consider the logical statement (p) defined below.
+
+ p: Set E and set H are disjoint.
+
+Which option represents ~p, the negation of p?",Set E and set H are disjoint.,Set E is a subset of set H.,The intersection of set E and set H is not empty.,Set E is not a subset of set H.,30,3
+59,"Consider the logical statement (p) defined below.
+
+ p: Set R is a subset of set O.
+
+Which option represents ~p, the negation of p?",Set R is not a subset of set O.,Set R and set O are disjoint.,The intersection of set R and set O is not empty.,Set R is a subset of set O.,30,1
+60,"Consider the logical statement (p) defined below.
+
+ p: Set E and set Z are disjoint.
+
+Which option represents ~p, the negation of p?",Set E is a subset of set Z.,Set E and set Z are disjoint.,The intersection of set E and set Z is not empty.,Set E is not a subset of set Z.,30,3
+61,"Consider the logical statement (p) defined below.
+
+ p: Set B and set F are disjoint.
+
+Which option represents ~p, the negation of p?",The intersection of set B and set F is not empty.,Set B is not a subset of set F.,Set B is a subset of set F.,Set B and set F are disjoint.,30,1
+62,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set N and set T is not empty.
+
+Which option represents ~p, the negation of p?",Set N and set T are disjoint.,Set N is not a subset of set T.,Set N is a subset of set T.,The intersection of set N and set T is not empty.,30,1
+63,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set L and set X is not empty.
+
+Which option represents ~p, the negation of p?",Set L is not a subset of set X.,Set L is a subset of set X.,The intersection of set L and set X is not empty.,Set L and set X are disjoint.,30,4
+64,"Consider the logical statement (p) defined below.
+
+ p: Set B is a subset of set W.
+
+Which option represents ~p, the negation of p?",The intersection of set B and set W is not empty.,Set B and set W are disjoint.,Set B is not a subset of set W.,Set B is a subset of set W.,30,3
+65,"Consider the logical statement (p) defined below.
+
+ p: Set W and set B are disjoint.
+
+Which option represents ~p, the negation of p?",Set W is not a subset of set B.,Set W and set B are disjoint.,Set W is a subset of set B.,The intersection of set W and set B is not empty.,30,4
+66,"Consider the logical statement (p) defined below.
+
+ p: Set K is a subset of set B.
+
+Which option represents ~p, the negation of p?",Set K is a subset of set B.,The intersection of set K and set B is not empty.,Set K is not a subset of set B.,Set K and set B are disjoint.,30,3
+67,"Consider the logical statement (p) defined below.
+
+ p: Set C is a subset of set I.
+
+Which option represents ~p, the negation of p?",Set C and set I are disjoint.,The intersection of set C and set I is not empty.,Set C is not a subset of set I.,Set C is a subset of set I.,30,3
+68,"Consider the logical statement (p) defined below.
+
+ p: Set P and set V are disjoint.
+
+Which option represents ~p, the negation of p?",Set P is not a subset of set V.,The intersection of set P and set V is not empty.,Set P is a subset of set V.,Set P and set V are disjoint.,30,2
+69,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set M and set A is not empty.
+
+Which option represents ~p, the negation of p?",Set M is a subset of set A.,Set M is not a subset of set A.,Set M and set A are disjoint.,The intersection of set M and set A is not empty.,30,3
+70,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set J and set U is not empty.
+
+Which option represents ~p, the negation of p?",Set J is a subset of set U.,Set J and set U are disjoint.,Set J is not a subset of set U.,The intersection of set J and set U is not empty.,30,2
+71,"Consider the logical statement (p) defined below.
+
+ p: Set F and set T are disjoint.
+
+Which option represents ~p, the negation of p?",Set F is a subset of set T.,Set F is not a subset of set T.,Set F and set T are disjoint.,The intersection of set F and set T is not empty.,30,4
+72,"Consider the logical statement (p) defined below.
+
+ p: Set D and set A are disjoint.
+
+Which option represents ~p, the negation of p?",Set D and set A are disjoint.,The intersection of set D and set A is not empty.,Set D is a subset of set A.,Set D is not a subset of set A.,30,2
+73,"Consider the logical statement (p) defined below.
+
+ p: Set P and set L are disjoint.
+
+Which option represents ~p, the negation of p?",Set P is a subset of set L.,The intersection of set P and set L is not empty.,Set P and set L are disjoint.,Set P is not a subset of set L.,30,2
+74,"Consider the logical statement (p) defined below.
+
+ p: Set L is a subset of set T.
+
+Which option represents ~p, the negation of p?",The intersection of set L and set T is not empty.,Set L and set T are disjoint.,Set L is not a subset of set T.,Set L is a subset of set T.,30,3
+75,"Consider the logical statement (p) defined below.
+
+ p: Set Y is a subset of set Z.
+
+Which option represents ~p, the negation of p?",Set Y and set Z are disjoint.,The intersection of set Y and set Z is not empty.,Set Y is a subset of set Z.,Set Y is not a subset of set Z.,30,4
+76,"Consider the logical statement (p) defined below.
+
+ p: Set V is a subset of set N.
+
+Which option represents ~p, the negation of p?",Set V and set N are disjoint.,Set V is a subset of set N.,Set V is not a subset of set N.,The intersection of set V and set N is not empty.,30,3
+77,"Consider the logical statement (p) defined below.
+
+ p: Set M and set J are disjoint.
+
+Which option represents ~p, the negation of p?",The intersection of set M and set J is not empty.,Set M and set J are disjoint.,Set M is a subset of set J.,Set M is not a subset of set J.,30,1
+78,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set B and set U is not empty.
+
+Which option represents ~p, the negation of p?",Set B is not a subset of set U.,The intersection of set B and set U is not empty.,Set B and set U are disjoint.,Set B is a subset of set U.,30,3
+79,"Consider the logical statement (p) defined below.
+
+ p: Set Y is not a subset of set V.
+
+Which option represents ~p, the negation of p?",Set Y and set V are disjoint.,Set Y is not a subset of set V.,Set Y is a subset of set V.,The intersection of set Y and set V is not empty.,30,3
+80,"Consider the logical statement (p) defined below.
+
+ p: Set O is a subset of set C.
+
+Which option represents ~p, the negation of p?",Set O is not a subset of set C.,The intersection of set O and set C is not empty.,Set O and set C are disjoint.,Set O is a subset of set C.,30,1
+81,"Consider the logical statement (p) defined below.
+
+ p: Set J and set D are disjoint.
+
+Which option represents ~p, the negation of p?",Set J is not a subset of set D.,The intersection of set J and set D is not empty.,Set J and set D are disjoint.,Set J is a subset of set D.,30,2
+82,"Consider the logical statement (p) defined below.
+
+ p: Set D is a subset of set V.
+
+Which option represents ~p, the negation of p?",Set D is not a subset of set V.,The intersection of set D and set V is not empty.,Set D is a subset of set V.,Set D and set V are disjoint.,30,1
+83,"Consider the logical statement (p) defined below.
+
+ p: Set K is a subset of set G.
+
+Which option represents ~p, the negation of p?",Set K is not a subset of set G.,The intersection of set K and set G is not empty.,Set K and set G are disjoint.,Set K is a subset of set G.,30,1
+84,"Consider the logical statement (p) defined below.
+
+ p: Set V and set U are disjoint.
+
+Which option represents ~p, the negation of p?",The intersection of set V and set U is not empty.,Set V and set U are disjoint.,Set V is not a subset of set U.,Set V is a subset of set U.,30,1
+85,"Consider the logical statement (p) defined below.
+
+ p: Set Q and set I are disjoint.
+
+Which option represents ~p, the negation of p?",Set Q and set I are disjoint.,The intersection of set Q and set I is not empty.,Set Q is a subset of set I.,Set Q is not a subset of set I.,30,2
+86,"Consider the logical statement (p) defined below.
+
+ p: Set N and set F are disjoint.
+
+Which option represents ~p, the negation of p?",Set N is not a subset of set F.,The intersection of set N and set F is not empty.,Set N is a subset of set F.,Set N and set F are disjoint.,30,2
+87,"Consider the logical statement (p) defined below.
+
+ p: Set M and set X are disjoint.
+
+Which option represents ~p, the negation of p?",Set M is not a subset of set X.,The intersection of set M and set X is not empty.,Set M and set X are disjoint.,Set M is a subset of set X.,30,2
+88,"Consider the logical statement (p) defined below.
+
+ p: Set D and set C are disjoint.
+
+Which option represents ~p, the negation of p?",The intersection of set D and set C is not empty.,Set D and set C are disjoint.,Set D is a subset of set C.,Set D is not a subset of set C.,30,1
+89,"Consider the logical statement (p) defined below.
+
+ p: Set U is not a subset of set C.
+
+Which option represents ~p, the negation of p?",The intersection of set U and set C is not empty.,Set U and set C are disjoint.,Set U is not a subset of set C.,Set U is a subset of set C.,30,4
+90,"Consider the logical statement (p) defined below.
+
+ p: Set Z is not a subset of set G.
+
+Which option represents ~p, the negation of p?",Set Z and set G are disjoint.,Set Z is not a subset of set G.,Set Z is a subset of set G.,The intersection of set Z and set G is not empty.,30,3
+91,"Consider the logical statement (p) defined below.
+
+ p: Set A is not a subset of set K.
+
+Which option represents ~p, the negation of p?",Set A is a subset of set K.,The intersection of set A and set K is not empty.,Set A is not a subset of set K.,Set A and set K are disjoint.,30,1
+92,"Consider the logical statement (p) defined below.
+
+ p: Set X and set R are disjoint.
+
+Which option represents ~p, the negation of p?",Set X is not a subset of set R.,Set X and set R are disjoint.,Set X is a subset of set R.,The intersection of set X and set R is not empty.,30,4
+93,"Consider the logical statement (p) defined below.
+
+ p: Set S and set X are disjoint.
+
+Which option represents ~p, the negation of p?",Set S is not a subset of set X.,The intersection of set S and set X is not empty.,Set S and set X are disjoint.,Set S is a subset of set X.,30,2
+94,"Consider the logical statement (p) defined below.
+
+ p: Set V and set J are disjoint.
+
+Which option represents ~p, the negation of p?",Set V is a subset of set J.,Set V is not a subset of set J.,The intersection of set V and set J is not empty.,Set V and set J are disjoint.,30,3
+95,"Consider the logical statement (p) defined below.
+
+ p: Set X is not a subset of set I.
+
+Which option represents ~p, the negation of p?",The intersection of set X and set I is not empty.,Set X is a subset of set I.,Set X is not a subset of set I.,Set X and set I are disjoint.,30,2
+96,"Consider the logical statement (p) defined below.
+
+ p: Set F is not a subset of set D.
+
+Which option represents ~p, the negation of p?",Set F is a subset of set D.,Set F is not a subset of set D.,Set F and set D are disjoint.,The intersection of set F and set D is not empty.,30,1
+97,"Consider the logical statement (p) defined below.
+
+ p: Set L and set F are disjoint.
+
+Which option represents ~p, the negation of p?",Set L and set F are disjoint.,Set L is not a subset of set F.,Set L is a subset of set F.,The intersection of set L and set F is not empty.,30,4
+98,"Consider the logical statement (p) defined below.
+
+ p: Set C is not a subset of set G.
+
+Which option represents ~p, the negation of p?",Set C is not a subset of set G.,The intersection of set C and set G is not empty.,Set C and set G are disjoint.,Set C is a subset of set G.,30,4
+99,"Consider the logical statement (p) defined below.
+
+ p: Set L is a subset of set X.
+
+Which option represents ~p, the negation of p?",Set L is a subset of set X.,Set L is not a subset of set X.,The intersection of set L and set X is not empty.,Set L and set X are disjoint.,30,2
+100,"Consider the logical statement (p) defined below.
+
+ p: Set T and set U are disjoint.
+
+Which option represents ~p, the negation of p?",Set T and set U are disjoint.,Set T is a subset of set U.,Set T is not a subset of set U.,The intersection of set T and set U is not empty.,30,4
+101,"Consider the logical statement (p) defined below.
+
+ p: Set Y and set Q are disjoint.
+
+Which option represents ~p, the negation of p?",Set Y and set Q are disjoint.,The intersection of set Y and set Q is not empty.,Set Y is a subset of set Q.,Set Y is not a subset of set Q.,30,2
+102,"Consider the logical statement (p) defined below.
+
+ p: Set E and set O are disjoint.
+
+Which option represents ~p, the negation of p?",Set E is a subset of set O.,Set E is not a subset of set O.,Set E and set O are disjoint.,The intersection of set E and set O is not empty.,30,4
+103,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set R and set I is not empty.
+
+Which option represents ~p, the negation of p?",Set R and set I are disjoint.,The intersection of set R and set I is not empty.,Set R is a subset of set I.,Set R is not a subset of set I.,30,1
+104,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set P and set U is not empty.
+
+Which option represents ~p, the negation of p?",The intersection of set P and set U is not empty.,Set P is a subset of set U.,Set P is not a subset of set U.,Set P and set U are disjoint.,30,4
+105,"Consider the logical statement (p) defined below.
+
+ p: Set K and set W are disjoint.
+
+Which option represents ~p, the negation of p?",Set K is not a subset of set W.,The intersection of set K and set W is not empty.,Set K is a subset of set W.,Set K and set W are disjoint.,30,2
+106,"Consider the logical statement (p) defined below.
+
+ p: Set C is a subset of set X.
+
+Which option represents ~p, the negation of p?",The intersection of set C and set X is not empty.,Set C is a subset of set X.,Set C is not a subset of set X.,Set C and set X are disjoint.,30,3
+107,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set H and set N is not empty.
+
+Which option represents ~p, the negation of p?",Set H and set N are disjoint.,Set H is not a subset of set N.,The intersection of set H and set N is not empty.,Set H is a subset of set N.,30,1
+108,"Consider the logical statement (p) defined below.
+
+ p: Set B and set D are disjoint.
+
+Which option represents ~p, the negation of p?",Set B and set D are disjoint.,Set B is a subset of set D.,Set B is not a subset of set D.,The intersection of set B and set D is not empty.,30,4
+109,"Consider the logical statement (p) defined below.
+
+ p: Set N and set U are disjoint.
+
+Which option represents ~p, the negation of p?",The intersection of set N and set U is not empty.,Set N is not a subset of set U.,Set N is a subset of set U.,Set N and set U are disjoint.,30,1
+110,"Consider the logical statement (p) defined below.
+
+ p: Set D is not a subset of set W.
+
+Which option represents ~p, the negation of p?",The intersection of set D and set W is not empty.,Set D is not a subset of set W.,Set D is a subset of set W.,Set D and set W are disjoint.,30,3
+111,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set A and set M is not empty.
+
+Which option represents ~p, the negation of p?",The intersection of set A and set M is not empty.,Set A is a subset of set M.,Set A and set M are disjoint.,Set A is not a subset of set M.,30,3
+112,"Consider the logical statement (p) defined below.
+
+ p: Set B is not a subset of set M.
+
+Which option represents ~p, the negation of p?",Set B is not a subset of set M.,The intersection of set B and set M is not empty.,Set B and set M are disjoint.,Set B is a subset of set M.,30,4
+113,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set G and set Z is not empty.
+
+Which option represents ~p, the negation of p?",Set G and set Z are disjoint.,The intersection of set G and set Z is not empty.,Set G is not a subset of set Z.,Set G is a subset of set Z.,30,1
+114,"Consider the logical statement (p) defined below.
+
+ p: Set E is not a subset of set A.
+
+Which option represents ~p, the negation of p?",The intersection of set E and set A is not empty.,Set E is a subset of set A.,Set E is not a subset of set A.,Set E and set A are disjoint.,30,2
+115,"Consider the logical statement (p) defined below.
+
+ p: Set F is a subset of set Y.
+
+Which option represents ~p, the negation of p?",Set F is not a subset of set Y.,Set F and set Y are disjoint.,Set F is a subset of set Y.,The intersection of set F and set Y is not empty.,30,1
+116,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set S and set J is not empty.
+
+Which option represents ~p, the negation of p?",Set S and set J are disjoint.,The intersection of set S and set J is not empty.,Set S is not a subset of set J.,Set S is a subset of set J.,30,1
+117,"Consider the logical statement (p) defined below.
+
+ p: Set U is not a subset of set S.
+
+Which option represents ~p, the negation of p?",Set U is a subset of set S.,Set U is not a subset of set S.,Set U and set S are disjoint.,The intersection of set U and set S is not empty.,30,1
+118,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set Y and set U is not empty.
+
+Which option represents ~p, the negation of p?",Set Y is not a subset of set U.,Set Y and set U are disjoint.,Set Y is a subset of set U.,The intersection of set Y and set U is not empty.,30,2
+119,"Consider the logical statement (p) defined below.
+
+ p: Set S and set I are disjoint.
+
+Which option represents ~p, the negation of p?",Set S and set I are disjoint.,Set S is not a subset of set I.,The intersection of set S and set I is not empty.,Set S is a subset of set I.,30,3
+120,"Consider the logical statement (p) defined below.
+
+ p: Set F and set R are disjoint.
+
+Which option represents ~p, the negation of p?",The intersection of set F and set R is not empty.,Set F is not a subset of set R.,Set F is a subset of set R.,Set F and set R are disjoint.,30,1
+121,"Consider the logical statement (p) defined below.
+
+ p: Set A is a subset of set V.
+
+Which option represents ~p, the negation of p?",Set A is not a subset of set V.,The intersection of set A and set V is not empty.,Set A and set V are disjoint.,Set A is a subset of set V.,30,1
+122,"Consider the logical statement (p) defined below.
+
+ p: Set M and set W are disjoint.
+
+Which option represents ~p, the negation of p?",Set M is not a subset of set W.,Set M and set W are disjoint.,The intersection of set M and set W is not empty.,Set M is a subset of set W.,30,3
+123,"Consider the logical statement (p) defined below.
+
+ p: Set E is a subset of set C.
+
+Which option represents ~p, the negation of p?",Set E is not a subset of set C.,Set E is a subset of set C.,Set E and set C are disjoint.,The intersection of set E and set C is not empty.,30,1
+124,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set V and set L is not empty.
+
+Which option represents ~p, the negation of p?",Set V and set L are disjoint.,The intersection of set V and set L is not empty.,Set V is not a subset of set L.,Set V is a subset of set L.,30,1
+125,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set F and set Q is not empty.
+
+Which option represents ~p, the negation of p?",Set F is not a subset of set Q.,Set F is a subset of set Q.,Set F and set Q are disjoint.,The intersection of set F and set Q is not empty.,30,3
+126,"Consider the logical statement (p) defined below.
+
+ p: Set W is a subset of set G.
+
+Which option represents ~p, the negation of p?",The intersection of set W and set G is not empty.,Set W is not a subset of set G.,Set W and set G are disjoint.,Set W is a subset of set G.,30,2
+127,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set F and set S is not empty.
+
+Which option represents ~p, the negation of p?",The intersection of set F and set S is not empty.,Set F is not a subset of set S.,Set F and set S are disjoint.,Set F is a subset of set S.,30,3
+128,"Consider the logical statement (p) defined below.
+
+ p: Set N and set Y are disjoint.
+
+Which option represents ~p, the negation of p?",Set N and set Y are disjoint.,The intersection of set N and set Y is not empty.,Set N is not a subset of set Y.,Set N is a subset of set Y.,30,2
+129,"Consider the logical statement (p) defined below.
+
+ p: Set H and set N are disjoint.
+
+Which option represents ~p, the negation of p?",The intersection of set H and set N is not empty.,Set H and set N are disjoint.,Set H is not a subset of set N.,Set H is a subset of set N.,30,1
+130,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set O and set I is not empty.
+
+Which option represents ~p, the negation of p?",The intersection of set O and set I is not empty.,Set O is not a subset of set I.,Set O is a subset of set I.,Set O and set I are disjoint.,30,4
+131,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set D and set Z is not empty.
+
+Which option represents ~p, the negation of p?",Set D and set Z are disjoint.,Set D is not a subset of set Z.,The intersection of set D and set Z is not empty.,Set D is a subset of set Z.,30,1
+132,"Consider the logical statement (p) defined below.
+
+ p: Set I and set R are disjoint.
+
+Which option represents ~p, the negation of p?",Set I and set R are disjoint.,Set I is a subset of set R.,The intersection of set I and set R is not empty.,Set I is not a subset of set R.,30,3
+133,"Consider the logical statement (p) defined below.
+
+ p: Set V and set H are disjoint.
+
+Which option represents ~p, the negation of p?",Set V is not a subset of set H.,Set V and set H are disjoint.,Set V is a subset of set H.,The intersection of set V and set H is not empty.,30,4
+134,"Consider the logical statement (p) defined below.
+
+ p: Set F is a subset of set Y.
+
+Which option represents ~p, the negation of p?",Set F and set Y are disjoint.,Set F is not a subset of set Y.,Set F is a subset of set Y.,The intersection of set F and set Y is not empty.,30,2
+135,"Consider the logical statement (p) defined below.
+
+ p: Set W is a subset of set L.
+
+Which option represents ~p, the negation of p?",The intersection of set W and set L is not empty.,Set W is a subset of set L.,Set W is not a subset of set L.,Set W and set L are disjoint.,30,3
+136,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set D and set J is not empty.
+
+Which option represents ~p, the negation of p?",Set D and set J are disjoint.,Set D is a subset of set J.,The intersection of set D and set J is not empty.,Set D is not a subset of set J.,30,1
+137,"Consider the logical statement (p) defined below.
+
+ p: Set V is a subset of set T.
+
+Which option represents ~p, the negation of p?",Set V is not a subset of set T.,The intersection of set V and set T is not empty.,Set V and set T are disjoint.,Set V is a subset of set T.,30,1
+138,"Consider the logical statement (p) defined below.
+
+ p: Set Q and set J are disjoint.
+
+Which option represents ~p, the negation of p?",Set Q is not a subset of set J.,Set Q and set J are disjoint.,The intersection of set Q and set J is not empty.,Set Q is a subset of set J.,30,3
+139,"Consider the logical statement (p) defined below.
+
+ p: Set C and set L are disjoint.
+
+Which option represents ~p, the negation of p?",The intersection of set C and set L is not empty.,Set C and set L are disjoint.,Set C is a subset of set L.,Set C is not a subset of set L.,30,1
+140,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set R and set C is not empty.
+
+Which option represents ~p, the negation of p?",Set R is a subset of set C.,Set R and set C are disjoint.,The intersection of set R and set C is not empty.,Set R is not a subset of set C.,30,2
+141,"Consider the logical statement (p) defined below.
+
+ p: Set W is a subset of set V.
+
+Which option represents ~p, the negation of p?",Set W and set V are disjoint.,Set W is not a subset of set V.,The intersection of set W and set V is not empty.,Set W is a subset of set V.,30,2
+142,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set E and set O is not empty.
+
+Which option represents ~p, the negation of p?",Set E is not a subset of set O.,The intersection of set E and set O is not empty.,Set E is a subset of set O.,Set E and set O are disjoint.,30,4
+143,"Consider the logical statement (p) defined below.
+
+ p: Set S and set F are disjoint.
+
+Which option represents ~p, the negation of p?",Set S is not a subset of set F.,The intersection of set S and set F is not empty.,Set S is a subset of set F.,Set S and set F are disjoint.,30,2
+144,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set F and set Z is not empty.
+
+Which option represents ~p, the negation of p?",Set F and set Z are disjoint.,Set F is not a subset of set Z.,Set F is a subset of set Z.,The intersection of set F and set Z is not empty.,30,1
+145,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set F and set S is not empty.
+
+Which option represents ~p, the negation of p?",Set F is a subset of set S.,The intersection of set F and set S is not empty.,Set F and set S are disjoint.,Set F is not a subset of set S.,30,3
+146,"Consider the logical statement (p) defined below.
+
+ p: Set A is a subset of set G.
+
+Which option represents ~p, the negation of p?",Set A is not a subset of set G.,Set A and set G are disjoint.,Set A is a subset of set G.,The intersection of set A and set G is not empty.,30,1
+147,"Consider the logical statement (p) defined below.
+
+ p: Set W and set G are disjoint.
+
+Which option represents ~p, the negation of p?",Set W is not a subset of set G.,The intersection of set W and set G is not empty.,Set W is a subset of set G.,Set W and set G are disjoint.,30,2
+148,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set W and set Z is not empty.
+
+Which option represents ~p, the negation of p?",Set W and set Z are disjoint.,Set W is a subset of set Z.,Set W is not a subset of set Z.,The intersection of set W and set Z is not empty.,30,1
+149,"Consider the logical statement (p) defined below.
+
+ p: Set Q is a subset of set E.
+
+Which option represents ~p, the negation of p?",Set Q is a subset of set E.,Set Q and set E are disjoint.,Set Q is not a subset of set E.,The intersection of set Q and set E is not empty.,30,3
+150,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set C and set J is not empty.
+
+Which option represents ~p, the negation of p?",Set C and set J are disjoint.,Set C is a subset of set J.,The intersection of set C and set J is not empty.,Set C is not a subset of set J.,30,1
+151,"Consider the logical statement (p) defined below.
+
+ p: Set H is not a subset of set B.
+
+Which option represents ~p, the negation of p?",The intersection of set H and set B is not empty.,Set H is a subset of set B.,Set H and set B are disjoint.,Set H is not a subset of set B.,30,2
+152,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set W and set G is not empty.
+
+Which option represents ~p, the negation of p?",Set W is not a subset of set G.,Set W and set G are disjoint.,The intersection of set W and set G is not empty.,Set W is a subset of set G.,30,2
+153,"Consider the logical statement (p) defined below.
+
+ p: Set N is a subset of set H.
+
+Which option represents ~p, the negation of p?",Set N is a subset of set H.,Set N and set H are disjoint.,The intersection of set N and set H is not empty.,Set N is not a subset of set H.,30,4
+154,"Consider the logical statement (p) defined below.
+
+ p: Set P is a subset of set W.
+
+Which option represents ~p, the negation of p?",The intersection of set P and set W is not empty.,Set P and set W are disjoint.,Set P is a subset of set W.,Set P is not a subset of set W.,30,4
+155,"Consider the logical statement (p) defined below.
+
+ p: Set Q and set P are disjoint.
+
+Which option represents ~p, the negation of p?",The intersection of set Q and set P is not empty.,Set Q is a subset of set P.,Set Q is not a subset of set P.,Set Q and set P are disjoint.,30,1
+156,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set F and set Y is not empty.
+
+Which option represents ~p, the negation of p?",The intersection of set F and set Y is not empty.,Set F is a subset of set Y.,Set F is not a subset of set Y.,Set F and set Y are disjoint.,30,4
+157,"Consider the logical statement (p) defined below.
+
+ p: Set U and set N are disjoint.
+
+Which option represents ~p, the negation of p?",The intersection of set U and set N is not empty.,Set U and set N are disjoint.,Set U is a subset of set N.,Set U is not a subset of set N.,30,1
+158,"Consider the logical statement (p) defined below.
+
+ p: Set X is not a subset of set K.
+
+Which option represents ~p, the negation of p?",Set X is a subset of set K.,Set X and set K are disjoint.,The intersection of set X and set K is not empty.,Set X is not a subset of set K.,30,1
+159,"Consider the logical statement (p) defined below.
+
+ p: Set C and set U are disjoint.
+
+Which option represents ~p, the negation of p?",Set C and set U are disjoint.,Set C is a subset of set U.,The intersection of set C and set U is not empty.,Set C is not a subset of set U.,30,3
+160,"Consider the logical statement (p) defined below.
+
+ p: Set B and set U are disjoint.
+
+Which option represents ~p, the negation of p?",Set B is a subset of set U.,Set B and set U are disjoint.,The intersection of set B and set U is not empty.,Set B is not a subset of set U.,30,3
+161,"Consider the logical statement (p) defined below.
+
+ p: Set B is a subset of set T.
+
+Which option represents ~p, the negation of p?",Set B is a subset of set T.,Set B is not a subset of set T.,Set B and set T are disjoint.,The intersection of set B and set T is not empty.,30,2
+162,"Consider the logical statement (p) defined below.
+
+ p: Set Z is a subset of set F.
+
+Which option represents ~p, the negation of p?",The intersection of set Z and set F is not empty.,Set Z and set F are disjoint.,Set Z is a subset of set F.,Set Z is not a subset of set F.,30,4
+163,"Consider the logical statement (p) defined below.
+
+ p: Set V is a subset of set U.
+
+Which option represents ~p, the negation of p?",The intersection of set V and set U is not empty.,Set V is a subset of set U.,Set V and set U are disjoint.,Set V is not a subset of set U.,30,4
+164,"Consider the logical statement (p) defined below.
+
+ p: Set S and set R are disjoint.
+
+Which option represents ~p, the negation of p?",Set S is not a subset of set R.,The intersection of set S and set R is not empty.,Set S and set R are disjoint.,Set S is a subset of set R.,30,2
+165,"Consider the logical statement (p) defined below.
+
+ p: Set E is a subset of set Y.
+
+Which option represents ~p, the negation of p?",Set E is a subset of set Y.,Set E is not a subset of set Y.,The intersection of set E and set Y is not empty.,Set E and set Y are disjoint.,30,2
+166,"Consider the logical statement (p) defined below.
+
+ p: Set E and set N are disjoint.
+
+Which option represents ~p, the negation of p?",Set E and set N are disjoint.,Set E is a subset of set N.,Set E is not a subset of set N.,The intersection of set E and set N is not empty.,30,4
+167,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set U and set C is not empty.
+
+Which option represents ~p, the negation of p?",Set U is not a subset of set C.,Set U is a subset of set C.,Set U and set C are disjoint.,The intersection of set U and set C is not empty.,30,3
+168,"Consider the logical statement (p) defined below.
+
+ p: Set A is a subset of set W.
+
+Which option represents ~p, the negation of p?",Set A and set W are disjoint.,Set A is not a subset of set W.,Set A is a subset of set W.,The intersection of set A and set W is not empty.,30,2
+169,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set O and set T is not empty.
+
+Which option represents ~p, the negation of p?",Set O is not a subset of set T.,The intersection of set O and set T is not empty.,Set O and set T are disjoint.,Set O is a subset of set T.,30,3
+170,"Consider the logical statement (p) defined below.
+
+ p: Set L is not a subset of set Z.
+
+Which option represents ~p, the negation of p?",Set L is a subset of set Z.,The intersection of set L and set Z is not empty.,Set L is not a subset of set Z.,Set L and set Z are disjoint.,30,1
+171,"Consider the logical statement (p) defined below.
+
+ p: Set N is a subset of set Q.
+
+Which option represents ~p, the negation of p?",Set N is not a subset of set Q.,Set N is a subset of set Q.,The intersection of set N and set Q is not empty.,Set N and set Q are disjoint.,30,1
+172,"Consider the logical statement (p) defined below.
+
+ p: Set B and set Y are disjoint.
+
+Which option represents ~p, the negation of p?",Set B is not a subset of set Y.,Set B is a subset of set Y.,The intersection of set B and set Y is not empty.,Set B and set Y are disjoint.,30,3
+173,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set P and set U is not empty.
+
+Which option represents ~p, the negation of p?",Set P is a subset of set U.,The intersection of set P and set U is not empty.,Set P is not a subset of set U.,Set P and set U are disjoint.,30,4
+174,"Consider the logical statement (p) defined below.
+
+ p: Set H is not a subset of set A.
+
+Which option represents ~p, the negation of p?",Set H is not a subset of set A.,Set H is a subset of set A.,Set H and set A are disjoint.,The intersection of set H and set A is not empty.,30,2
+175,"Consider the logical statement (p) defined below.
+
+ p: Set S is a subset of set N.
+
+Which option represents ~p, the negation of p?",Set S is a subset of set N.,The intersection of set S and set N is not empty.,Set S and set N are disjoint.,Set S is not a subset of set N.,30,4
+176,"Consider the logical statement (p) defined below.
+
+ p: Set N is a subset of set J.
+
+Which option represents ~p, the negation of p?",The intersection of set N and set J is not empty.,Set N and set J are disjoint.,Set N is not a subset of set J.,Set N is a subset of set J.,30,3
+177,"Consider the logical statement (p) defined below.
+
+ p: Set R is a subset of set B.
+
+Which option represents ~p, the negation of p?",The intersection of set R and set B is not empty.,Set R and set B are disjoint.,Set R is not a subset of set B.,Set R is a subset of set B.,30,3
+178,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set K and set W is not empty.
+
+Which option represents ~p, the negation of p?",Set K is not a subset of set W.,The intersection of set K and set W is not empty.,Set K and set W are disjoint.,Set K is a subset of set W.,30,3
+179,"Consider the logical statement (p) defined below.
+
+ p: Set Z is a subset of set M.
+
+Which option represents ~p, the negation of p?",Set Z is a subset of set M.,Set Z and set M are disjoint.,Set Z is not a subset of set M.,The intersection of set Z and set M is not empty.,30,3
+180,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set Q and set V is not empty.
+
+Which option represents ~p, the negation of p?",The intersection of set Q and set V is not empty.,Set Q is not a subset of set V.,Set Q and set V are disjoint.,Set Q is a subset of set V.,30,3
+181,"Consider the logical statement (p) defined below.
+
+ p: Set U is a subset of set T.
+
+Which option represents ~p, the negation of p?",Set U is not a subset of set T.,The intersection of set U and set T is not empty.,Set U and set T are disjoint.,Set U is a subset of set T.,30,1
+182,"Consider the logical statement (p) defined below.
+
+ p: Set M is not a subset of set A.
+
+Which option represents ~p, the negation of p?",Set M and set A are disjoint.,The intersection of set M and set A is not empty.,Set M is a subset of set A.,Set M is not a subset of set A.,30,3
+183,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set H and set I is not empty.
+
+Which option represents ~p, the negation of p?",The intersection of set H and set I is not empty.,Set H is a subset of set I.,Set H is not a subset of set I.,Set H and set I are disjoint.,30,4
+184,"Consider the logical statement (p) defined below.
+
+ p: Set A and set X are disjoint.
+
+Which option represents ~p, the negation of p?",The intersection of set A and set X is not empty.,Set A and set X are disjoint.,Set A is a subset of set X.,Set A is not a subset of set X.,30,1
+185,"Consider the logical statement (p) defined below.
+
+ p: Set T is not a subset of set G.
+
+Which option represents ~p, the negation of p?",Set T is a subset of set G.,Set T is not a subset of set G.,The intersection of set T and set G is not empty.,Set T and set G are disjoint.,30,1
+186,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set U and set L is not empty.
+
+Which option represents ~p, the negation of p?",Set U and set L are disjoint.,Set U is not a subset of set L.,Set U is a subset of set L.,The intersection of set U and set L is not empty.,30,1
+187,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set N and set H is not empty.
+
+Which option represents ~p, the negation of p?",The intersection of set N and set H is not empty.,Set N is not a subset of set H.,Set N is a subset of set H.,Set N and set H are disjoint.,30,4
+188,"Consider the logical statement (p) defined below.
+
+ p: Set M is a subset of set Q.
+
+Which option represents ~p, the negation of p?",Set M is not a subset of set Q.,Set M and set Q are disjoint.,Set M is a subset of set Q.,The intersection of set M and set Q is not empty.,30,1
+189,"Consider the logical statement (p) defined below.
+
+ p: Set Z and set C are disjoint.
+
+Which option represents ~p, the negation of p?",Set Z is a subset of set C.,The intersection of set Z and set C is not empty.,Set Z is not a subset of set C.,Set Z and set C are disjoint.,30,2
+190,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set N and set R is not empty.
+
+Which option represents ~p, the negation of p?",Set N is a subset of set R.,Set N and set R are disjoint.,Set N is not a subset of set R.,The intersection of set N and set R is not empty.,30,2
+191,"Consider the logical statement (p) defined below.
+
+ p: Set Q and set N are disjoint.
+
+Which option represents ~p, the negation of p?",The intersection of set Q and set N is not empty.,Set Q is a subset of set N.,Set Q and set N are disjoint.,Set Q is not a subset of set N.,30,1
+192,"Consider the logical statement (p) defined below.
+
+ p: Set U and set E are disjoint.
+
+Which option represents ~p, the negation of p?",The intersection of set U and set E is not empty.,Set U is a subset of set E.,Set U and set E are disjoint.,Set U is not a subset of set E.,30,1
+193,"Consider the logical statement (p) defined below.
+
+ p: Set G and set A are disjoint.
+
+Which option represents ~p, the negation of p?",Set G is not a subset of set A.,Set G is a subset of set A.,The intersection of set G and set A is not empty.,Set G and set A are disjoint.,30,3
+194,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set X and set Y is not empty.
+
+Which option represents ~p, the negation of p?",The intersection of set X and set Y is not empty.,Set X is not a subset of set Y.,Set X is a subset of set Y.,Set X and set Y are disjoint.,30,4
+195,"Consider the logical statement (p) defined below.
+
+ p: Set W is a subset of set Y.
+
+Which option represents ~p, the negation of p?",Set W is not a subset of set Y.,Set W and set Y are disjoint.,The intersection of set W and set Y is not empty.,Set W is a subset of set Y.,30,1
+196,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set H and set N is not empty.
+
+Which option represents ~p, the negation of p?",Set H is a subset of set N.,The intersection of set H and set N is not empty.,Set H is not a subset of set N.,Set H and set N are disjoint.,30,4
+197,"Consider the logical statement (p) defined below.
+
+ p: The intersection of set O and set M is not empty.
+
+Which option represents ~p, the negation of p?",Set O is not a subset of set M.,Set O and set M are disjoint.,Set O is a subset of set M.,The intersection of set O and set M is not empty.,30,2
+198,"Consider the logical statement (p) defined below.
+
+ p: Set U is a subset of set T.
+
+Which option represents ~p, the negation of p?",The intersection of set U and set T is not empty.,Set U and set T are disjoint.,Set U is a subset of set T.,Set U is not a subset of set T.,30,4
+199,"Consider the logical statement (p) defined below.
+
+ p: Set R is not a subset of set E.
+
+Which option represents ~p, the negation of p?",Set R and set E are disjoint.,Set R is a subset of set E.,Set R is not a subset of set E.,The intersection of set R and set E is not empty.,30,2
+200,"Consider the logical statement (p) defined below.
+
+ p: Set J and set S are disjoint.
+
+Which option represents ~p, the negation of p?",Set J is not a subset of set S.,Set J is a subset of set S.,Set J and set S are disjoint.,The intersection of set J and set S is not empty.,30,4
