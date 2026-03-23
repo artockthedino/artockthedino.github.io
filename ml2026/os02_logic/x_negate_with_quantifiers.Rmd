@@ -67,6 +67,6 @@ $$\sim p: \text{ `r p2`}$$
 
 Meta-information
 ============
-extype: num
-exsolution: 
+extype: schoice
+exsolution: `r sol`
 exname: negation_with_quatifiers
