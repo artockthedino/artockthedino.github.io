@@ -6,44 +6,52 @@
     <style>
         body { font-family: sans-serif; margin: 20px; display: flex; gap: 20px; height: 95vh; }
         #controls { width: 320px; display: flex; flex-direction: column; gap: 8px; overflow-y: auto; padding-right: 10px; }
-        input, textarea, button { width: 100%; box-sizing: border-box; padding: 5px; }
-        #output { flex-grow: 1; border: 1px solid #ccc; background: #fff; display: flex; justify-content: center; align-items: center; }
-        svg { width: 100%; height: 100%; display: block; }
-        label { font-weight: bold; font-size: 0.85em; margin-top: 5px; }
+        input, textarea, button { width: 100%; box-sizing: border-box; padding: 6px; border: 1px solid #ccc; border-radius: 4px; }
+        #output { flex-grow: 1; border: 1px solid #ccc; background: #eee; display: flex; justify-content: center; align-items: center; }
+        svg { width: 100%; height: 100%; display: block; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        label { font-weight: bold; font-size: 0.85em; margin-top: 5px; color: #444; }
         .row { display: flex; gap: 5px; align-items: center; }
         .row > * { flex: 1; }
+        #stats { font-size: 0.8em; color: #666; margin-top: 10px; }
     </style>
 </head>
 <body>
 
 <div id="controls">
-    <h3>L-System Generator</h3>
+    <h3 style="margin-top:0">L-System Generator</h3>
+    
     <label>Axiom (Start String)</label>
     <input id="axiom" value="F">
-    <label>Rules (e.g., F>F+G+F)</label>
-    <textarea id="rules" rows="4">F>F-G+F+G-F&#10;G>GG</textarea>
+    
+    <label>Rules (e.g., F > F-G+F+G-F)</label>
+    <textarea id="rules" rows="5">F > G-F-G&#10;G > F+G+F</textarea>
+    
     <label>Iterations</label>
     <input type="number" id="iters" value="4">
+    
     <label>Angles (Turn / Initial)</label>
     <div class="row">
         <input type="number" id="angle" value="60" title="Turn Angle">
         <input type="number" id="startAngle" value="0" title="Initial Direction">
     </div>
+    
     <label>Appearance (Stroke / BG / Width)</label>
     <div class="row">
         <input type="color" id="strokeColor" value="#000000">
         <input type="color" id="bgColor" value="#ffffff">
         <input type="number" id="thickness" value="1" step="0.1">
     </div>
-    <button onclick="generate()" style="background: #e0f0ff; font-weight: bold;">Generate</button>
-    <button onclick="downloadSVG()">Download SVG</button>
-    <div id="stats" style="font-size: 0.8em; color: #666; margin-top: 10px;"></div>
+    
+    <button onclick="generate()" style="background: #e0f0ff; font-weight: bold; cursor: pointer; margin-top:10px;">Generate Pattern</button>
+    <button onclick="downloadSVG()" style="cursor: pointer;">Download SVG</button>
+    
+    <div id="stats"></div>
 </div>
 
 <div id="output">
+    <!-- SVG is generated here -->
     <svg id="svg" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
-        <rect id="bg" width="100%" height="100%" fill="#ffffff" />
-        <path id="path" fill="none" stroke="black" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+        <path id="path" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
 </div>
 
@@ -51,18 +59,18 @@
 function generate() {
     const axiom = document.getElementById('axiom').value;
     const rulesText = document.getElementById('rules').value;
-    const iters = parseInt(document.getElementById('iters').value);
+    const iters = parseInt(document.getElementById('iters').value) || 0;
     const angleStep = parseFloat(document.getElementById('angle').value) * Math.PI / 180;
     const startAngle = parseFloat(document.getElementById('startAngle').value) * Math.PI / 180;
     
-    // Parse Rules (Format: char>replacement)
+    // Parse Rules
     const rules = {};
     rulesText.split('\n').forEach(line => {
         const parts = line.split('>');
         if (parts.length === 2) rules[parts[0].trim()] = parts[1].trim();
     });
 
-    // Expand
+    // Expand Axiom
     let current = axiom;
     for (let i = 0; i < iters; i++) {
         let next = "";
@@ -70,7 +78,7 @@ function generate() {
         current = next;
     }
 
-    // Turtle
+    // Turtle Logic
     let x = 0, y = 0, angle = startAngle;
     let stack = [], d = `M ${x} ${y} `;
     let minX = 0, minY = 0, maxX = 0, maxY = 0;
@@ -81,44 +89,63 @@ function generate() {
     };
 
     for (let char of current) {
-        if (char >= 'A' && char <= 'L') {
-            x += Math.cos(angle) * 10; y += Math.sin(angle) * 10;
+        if (char >= 'A' && char <= 'L') { // Draw forward
+            x += Math.cos(angle) * 10;
+            y += Math.sin(angle) * 10;
             d += `L ${x} ${y} `;
             updateBounds(x, y);
-        } else if (char >= 'M' && char <= 'Z') {
-            x += Math.cos(angle) * 10; y += Math.sin(angle) * 10;
+        } else if (char >= 'M' && char <= 'Z') { // Move forward
+            x += Math.cos(angle) * 10;
+            y += Math.sin(angle) * 10;
             d += `M ${x} ${y} `;
             updateBounds(x, y);
-        } else if (char === '+') angle += angleStep;
-        else if (char === '-') angle -= angleStep;
-        else if (char === '[') stack.push({x, y, angle});
-        else if (char === ']') {
+        } else if (char === '+') {
+            angle += angleStep;
+        } else if (char === '-') {
+            angle -= angleStep;
+        } else if (char === '[') {
+            stack.push({x, y, angle});
+        } else if (char === ']') {
             let s = stack.pop();
             if (s) { x = s.x; y = s.y; angle = s.angle; d += `M ${x} ${y} `; }
         }
     }
 
-    // Update Styles
-    document.getElementById('bg').setAttribute('fill', document.getElementById('bgColor').value);
+    // Update Styles and Background
+    const svg = document.getElementById('svg');
     const pathEl = document.getElementById('path');
+    const bgColor = document.getElementById('bgColor').value;
+    
+    svg.style.backgroundColor = bgColor;
     pathEl.setAttribute('d', d);
     pathEl.setAttribute('stroke', document.getElementById('strokeColor').value);
     pathEl.setAttribute('stroke-width', document.getElementById('thickness').value);
     
-    // 1:1 Aspect Ratio Logic
-    const width = maxX - minX, height = maxY - minY;
+    // Calculate 1:1 ViewBox centered on pattern
+    const width = maxX - minX;
+    const height = maxY - minY;
     const size = Math.max(width, height) || 10;
-    const centerX = minX + width / 2, centerY = minY + height / 2;
-    const margin = size * 0.05 + 2; 
-    const finalSize = size + margin * 2;
+    const centerX = minX + width / 2;
+    const centerY = minY + height / 2;
     
-    const svg = document.getElementById('svg');
+    // Add small padding
+    const padding = size * 0.05 + 2;
+    const finalSize = size + padding * 2;
+    
     svg.setAttribute('viewBox', `${centerX - finalSize/2} ${centerY - finalSize/2} ${finalSize} ${finalSize}`);
     document.getElementById('stats').innerText = `Nodes: ${current.length.toLocaleString()}`;
 }
 
 function downloadSVG() {
-    const svgData = document.getElementById('svg').outerHTML;
+    const svg = document.getElementById('svg');
+    // For download, we need the background color inside the file as a rect
+    const bgColor = document.getElementById('bgColor').value;
+    const viewBox = svg.getAttribute('viewBox').split(' ');
+    
+    const bgRect = `<rect x="${viewBox[0]}" y="${viewBox[1]}" width="${viewBox[2]}" height="${viewBox[3]}" fill="${bgColor}" />`;
+    const innerContent = bgRect + svg.innerHTML;
+    
+    const svgData = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${svg.getAttribute('viewBox')}" preserveAspectRatio="xMidYMid meet">${innerContent}</svg>`;
     const blob = new Blob([`<?xml version="1.0" standalone="no"?>\r\n${svgData}`], {type:"image/svg+xml;charset=utf-8"});
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
@@ -128,7 +155,9 @@ function downloadSVG() {
     URL.revokeObjectURL(url);
 }
 
+// Initial Run
 generate();
 </script>
+
 </body>
 </html>
