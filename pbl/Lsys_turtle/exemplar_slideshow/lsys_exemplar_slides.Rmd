@@ -236,7 +236,9 @@ catinfo(angle,start,rules,N)
 ```
 ```
 
-## Example 5
+## Spiraling hexagons
+
+Twisting and turning, twisting a turning, smaller and smaller as they grow from each other, these hexagons surely spin a spiral at scales super and small.
 
 ```{r,echo=F,fig.dim=c(5,5),cache=T}
 par(mar=c(0,0,0,0),oma=c(0,0,0,0),pty="s")
@@ -258,7 +260,9 @@ catinfo(angle,start,rules,N)
 ```
 ```
 
-## Example 6
+## Stars aligned
+
+
 
 ```{r,echo=F,fig.dim=c(5,5),cache=T}
 par(mar=c(0,0,0,0),oma=c(0,0,0,0),pty="s")
