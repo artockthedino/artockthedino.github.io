@@ -1,0 +1,96 @@
+```{r,echo=F}
+options(scipen=999)
+pn = function(c,d){
+    d = d[c!=0]
+    c = c[c!=0]
+    p = paste0("{",c,"}x^{",d,"}",collapse="+")
+    p = gsub("x^{0}","",p,fixed=T)
+    p = gsub("x^{1}","x",p,fixed=T)
+    p = gsub("+{-","-{",p,fixed=T)
+    p = gsub("+{1}x","+x",p,fixed=T)
+    p = gsub("-{1}x","-x",p,fixed=T)
+    p = gsub("{-1}x","-x",p,fixed=T)
+    p = gsub("{1}x","x",p,fixed=T)
+    p = gsub("{","",p,fixed=T)
+    p = gsub("}","",p,fixed=T)
+    return(p)
+}
+
+while(T){
+    r = sample(c(-10:-1,1:10),3)
+    a = 1
+    b = -sum(r)
+    c = r[1]*r[2]+r[2]*r[3]+r[1]*r[3]
+    d = -r[1]*r[2]*r[3]
+    A = a
+    B = b+r[1]*a
+    C = c+r[1]*(b+r[1]*a)
+    prob = paste0("Factor $",pn(c(a,b,c,d),3:0),"$.")
+    hint = paste0("Hint, $",pn(c(1,-r[1]),1:0),"$ is a factor.")
+    solution = paste0("$(",pn(c(1,-r[1]),1:0),")(",pn(c(1,-r[2]),1:0),")(",pn(c(1,-r[3]),1:0),")$")
+    if(min(abs(c(a,b,c,d,A,B,C)))>0 && max(abs(c(a,b,c,d,A,B,C)))<1000){break}
+}
+
+cubic = pn(c(a,b,c,d),3:0)
+
+rch = -10:10
+
+ach = character()
+for(i in 1:length(rch)){
+    ach = c(ach,pn(c(1,-rch[i]),1:0))
+}
+f1 = pn(c(1,-r[1]),1:0)
+f2 = pn(c(1,-r[2]),1:0)
+f3 = pn(c(1,-r[3]),1:0)
+
+sol1 = f1==ach
+sol2 = f2==ach
+sol3 = f3==ach
+sol = sol1+sol2+sol3
+sol = paste0(1*(sol!=0),collapse="")
+
+al = paste0("* $x=",rch,"$",collapse="\n")
+
+```
+
+
+
+Question
+========
+
+The cubic equation 
+
+$$`r cubic`=0$$
+
+Has 3 integer solutions. One solution is $x=`r r[1]`$. What are all 3 solutions?
+
+Answerlist
+--------
+
+`r al`
+
+
+Solution
+========
+
+Start with the given cubic equation.
+
+$$`r cubic`=0$$
+
+We were told that $x=`r r[1]`$ is a solution. The FACTOR THEOREM promises that means $`r pn(c(1,-r[1]),1:0)`$ is a factor. So, divide $`r cubic`$ by $`r pn(c(1,-r[1]),1:0)`$ to get $`r pn(c(A,B,C),2:0)`$. Thus, the cubic polynomial can be written in semi-factored form as the product of the linear and quadratic factors.
+
+$$(`r pn(c(1,-r[1]),1:0)`)\cdot(`r pn(c(A,B,C),2:0)`)=0$$
+
+Factor the quadratic by finding two numbers with a product of `r C` and a sum of `r B`.
+
+
+$$(`r pn(c(1,-r[1]),1:0)`)\cdot(`r pn(c(1,-r[2]),1:0)`)\cdot(`r pn(c(1,-r[3]),1:0)`)=0$$
+
+You can use the ZERO PRODUCT PROPERTY to know the solutions are $x=`r r[1]`$ and $x=`r r[2]`$ and $x=`r r[3]`$.
+
+
+Meta-information
+============
+extype: mchoice
+exsolution: `r sol`
+exname: solve_cubic_EZ_1

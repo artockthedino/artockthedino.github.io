@@ -1,0 +1,214 @@
+---
+output: pdf_document
+params:
+    rseed: 4
+    showsol: true
+---
+
+```{r,echo=F,warning=FALSE,message=FALSE}
+options(scipen=999)
+if(params$rseed !=0){
+    set.seed(params$rseed)
+}
+knitr::opts_chunk$set(echo = FALSE)
+bn <- basename(knitr::current_input())
+bn = strsplit(bn,".",fixed=T)[[1]][1]
+
+pn = function(coeffs,pows){
+    pows = pows[coeffs!=0]
+    coeffs = coeffs[coeffs!=0]
+    ex1 = paste0("{",coeffs,"}x^{",pows,"}",collapse="+")
+    ex1 = gsub("+{-","-{",ex1,fixed=T)
+    ex1 = gsub("{1}x^{0}","1",ex1,fixed=T)
+    ex1 = gsub("{-1}x^{0}","-1",ex1,fixed=T)
+    ex1 = gsub("{1}x","x",ex1,fixed=T)
+    ex1 = gsub("{-1}x","-x",ex1,fixed=T)
+    ex1 = gsub("x^{0}","",ex1,fixed=T)
+    ex1 = gsub("x^{1}","x",ex1,fixed=T)
+    ex1 = gsub("+-","-",ex1,fixed=T)
+    if(ex1 == ""){
+        ex1 = "0"
+    }
+    ex1 = gsub("{","",ex1,fixed=T)
+    ex1 = gsub("}","",ex1,fixed=T)
+    return(ex1)
+}
+```
+
+## `r bn`
+
+In this packet, you will practice factoring and solving cubic equations that have 3 distinct rational solutions. To aide the process, one rational solution, $x=\frac{a}{b}$, will be given, which implies $bx-a$ is a factor. You will fully factor the cubic by using polynomial division followed by the quadratic formula, and then you'll have the 3 solutions.
+
+### Example
+
+```{r,echo=F}
+rat_pairs = list(c(1,1),c(1,2),c(1,3),c(1,4),c(1,5),c(1,6),
+                 c(2,1),c(2,3),c(2,5),
+                 c(3,1),c(3,2),c(3,4),c(3,5),
+                 c(4,1),c(4,3),c(4,5),
+                 c(5,1),c(5,2),c(5,3),c(5,4),c(5,6),
+                 c(6,1),c(6,5))
+while(T){
+    rps = sample(rat_pairs,3)
+    a = rps[[1]][1]
+    b = rps[[1]][2]*sample(c(-1,1),1)
+    c = rps[[2]][1]
+    d = rps[[2]][2]*sample(c(-1,1),1)
+    e = rps[[3]][1]
+    f = rps[[3]][2]*sample(c(-1,1),1)
+    A = a*c*e
+    B = a*c*f+a*d*e+b*c*e
+    C = a*d*f+b*c*f+b*d*e
+    D = b*d*f
+    p = c*e
+    q = c*f+d*e
+    r = d*f
+    cfs = c(a,b,c,d,e,f,A,B,C,D,p,q,r)
+    if(min(abs(cfs))>0 && max(abs(cfs))<1000 && max(c(c,e))>1){break}
+}
+cubic = pn(c(A,B,C,D),3:0)
+
+mkfrac = function(top,bot){
+    if(bot>1){
+        return(paste0("\\frac{",top,"}{",bot,"}"))
+    } else {
+        return(paste0(top))
+    }
+}
+f1 = pn(c(a,b),1:0)
+f2 = pn(c(c,d),1:0)
+f3 = pn(c(e,f),1:0)
+frac1 = mkfrac(-b,a)
+frac2 = mkfrac(-d,c)
+frac3 = mkfrac(-f,e)
+```
+
+Solve the cubic equation.  
+
+$$`r cubic`=0$$
+
+Hint: one solution is $x=`r frac1`$.
+
+\vfill
+
+\color{red}
+
+### Example solution
+
+Because the given solution is $x=`r frac1`$, we know that $`r f1`$ is a factor of the cubic polynomial. Divide $`r cubic`$ by $`r f1`$ to get semi-factored form. I'll show the work using the box method:
+
+\begin{center}
+\begin{tabular}{c|c c c | c}
+ $\times$ & $`r pn(p,2)`$ & $`r pn(q,1)`$ &$`r r`$ & remainder \\ \hline
+$`r pn(a,1)`$ & $`r pn(A,3)`$ & $`r pn(B-p*b,2)`$ & $`r pn(C-b*q,1)`$ & $`r D-b*r`$ \\
+$`r pn(b,0)`$ & $`r pn(b*p,2)`$ & $`r pn(b*q,1)`$ & $`r b*r`$ &
+\end{tabular}
+\end{center}
+
+$$(`r f1`)(`r pn(c(p,q,r),2:0)`)=0$$
+
+To find the last two solutions, you can use the quadratic formula.
+
+$$\text{roots}~=~ \frac{-(`r q`)\pm\sqrt{(`r q`)^2-4(`r p`)(`r r`)}}{2(`r p`)}$$
+
+$$\text{roots}~=~ \frac{`r -q`\pm\sqrt{`r q^2-4*p*r`}}{`r 2*p`}$$
+
+$$\text{roots}~=~ \frac{`r -q`\pm`r sqrt(q^2-4*p*r)`}{`r 2*p`}$$
+
+
+$$\text{root 1}~=~ \frac{`r -q-sqrt(q^2-4*p*r)`}{`r 2*p`}$$
+
+$$\text{root 2}~=~ \frac{`r -q+sqrt(q^2-4*p*r)`}{`r 2*p`}$$
+
+The two roots simplify to $\frac{`r -d`}{`r c`}$ and $\frac{`r -f`}{`r e`}$. Thus, from the factor theorem and zero-product property, the cubic polynomial in factored form:
+
+$$(`r f1`)(`r f2`)(`r f3`)=0$$
+
+And we have the three solutions: $x=`r frac1`$ and $x=`r frac2`$ and $x=`r frac3`$.
+
+
+
+\color{black}
+
+\vfill
+
+If the hint is not given, you will have to guess until finding a factor. You might find the [Rational Root Theorem](https://en.wikipedia.org/wiki/Rational_root_theorem) and [Descartes' Rule of Signs](https://en.wikipedia.org/wiki/Descartes%27_rule_of_signs) helpful.
+
+
+\newpage
+
+
+
+```{r,echo=F}
+probs = c(paste0("Factor and solve $",pn(c(A,B,C,D),3:0),"=0$."))
+hints = c(paste0("Hint, $",pn(c(b,-a),1:0),"$ is a factor."))
+solutions = c(paste0("$(",pn(c(1,-r[1]),1:0),")(",pn(c(1,-r[2]),1:0),")(",pn(c(1,-r[3]),1:0),")$"))
+cubics = c(cubic)
+
+while(length(probs)<=20){
+    while(T){
+        rps = sample(rat_pairs,3)
+        a = rps[[1]][1]
+        b = rps[[1]][2]*sample(c(-1,1),1)
+        c = rps[[2]][1]
+        d = rps[[2]][2]*sample(c(-1,1),1)
+        e = rps[[3]][1]
+        f = rps[[3]][2]*sample(c(-1,1),1)
+        A = a*c*e
+        B = a*c*f+a*d*e+b*c*e
+        C = a*d*f+b*c*f+b*d*e
+        D = b*d*f
+        p = c*e
+        q = c*f+d*e
+        r = d*f
+        cfs = c(a,b,c,d,e,f,A,B,C,D,p,q,r)
+        cubic = pn(c(A,B,C,D),3:0)
+        f1 = pn(c(a,b),1:0)
+        f2 = pn(c(c,d),1:0)
+        f3 = pn(c(e,f),1:0)
+        frac1 = mkfrac(-b,a)
+        frac2 = mkfrac(-d,c)
+        frac3 = mkfrac(-f,e)
+        if(min(abs(cfs))>0 && max(abs(cfs))<100 && max(c(c,e))>1 && !(cubic %in% cubics)){break}
+    }
+    cubics = c(cubics,cubic)
+    prob = paste0("Factor and solve $",cubic,"=0$.")
+    hint = paste0("Hint, $",pn(c(a,b),1:0),"$ is a factor.")
+    solution = paste0("$(",f1,")(",f2,")(",f3,")=0$, so $x=",frac1,"$ and $x=",frac2,"$ and $x=",frac3,"$.")
+    probs = c(probs,prob)
+    hints = c(hints,hint)
+    solutions = c(solutions,solution)
+}
+
+```
+
+```{r,echo=F,results="asis"}
+for(i in 1:10){
+    cat(paste0(i,". ",probs[i+1]," ",hints[i+1],"\n\n\\vfill\n\n"))
+}
+
+cat("\n\n\\newpage\n\n")
+
+for(i in 11:20){
+    # cat(paste0(i,". ",probs[i+1],"\n\n\\vfill\n\n"))
+    cat(paste0(i,". ",probs[i+1]," ",hints[i+1],"\n\n\\vfill\n\n"))
+}
+
+cat("\n\n\\newpage\n\n")
+
+for(i in 1:20){
+    cat(paste0(i,". Factored form: ",solutions[i+1],"\n\n\\vfill\n\n"))
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+

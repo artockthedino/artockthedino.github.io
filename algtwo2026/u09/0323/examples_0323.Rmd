@@ -1,0 +1,15 @@
+---
+title: "examples_0323"
+output: exams2forms::webquiz
+---
+
+```{r exams2forms-setup, include = FALSE}
+## package and exercises
+library("exams2forms")
+exm <- list("x_factor_cubic_EZ_1.Rmd", "x_factor_cubic_rational.Rmd", 
+    "x_solve_cubic_rational.Rmd")
+```
+
+```{r exams2forms-include, echo = FALSE, message = FALSE, results="asis"}
+exams2forms(exm,  n = 6, nsamp = NULL)
+```

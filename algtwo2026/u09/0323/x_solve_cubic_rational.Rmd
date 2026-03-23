@@ -1,0 +1,136 @@
+```{r,echo=F}
+options(scipen=999)
+pn = function(c,d){
+    d = d[c!=0]
+    c = c[c!=0]
+    p = paste0("{",c,"}x^{",d,"}",collapse="+")
+    p = gsub("x^{0}","",p,fixed=T)
+    p = gsub("x^{1}","x",p,fixed=T)
+    p = gsub("+{-","-{",p,fixed=T)
+    p = gsub("+{1}x","+x",p,fixed=T)
+    p = gsub("-{1}x","-x",p,fixed=T)
+    p = gsub("{-1}x","-x",p,fixed=T)
+    p = gsub("{1}x","x",p,fixed=T)
+    p = gsub("{","",p,fixed=T)
+    p = gsub("}","",p,fixed=T)
+    return(p)
+}
+
+rat_pairs = list(c(1,1),c(1,2),c(1,3),c(1,4),c(1,5),c(1,6),
+                 c(2,1),c(2,3),c(2,5),
+                 c(3,1),c(3,2),c(3,4),c(3,5),
+                 c(4,1),c(4,3),c(4,5),
+                 c(5,1),c(5,2),c(5,3),c(5,4),c(5,6),
+                 c(6,1),c(6,5))
+
+# (ax+b)(cx+d)(ex+f)
+# (ax+b)(cex^2+(cf+de)x+df)
+# ace*x^3+(acf+ade+bce)*x^2+(adf+bcf+bde)*x+bdf
+
+while(T){
+    rps = sample(rat_pairs,3)
+    a = rps[[1]][1]
+    b = rps[[1]][2]*sample(c(-1,1),1)
+    c = rps[[2]][1]
+    d = rps[[2]][2]*sample(c(-1,1),1)
+    e = rps[[3]][1]
+    f = rps[[3]][2]*sample(c(-1,1),1)
+    A = a*c*e
+    B = a*c*f+a*d*e+b*c*e
+    C = a*d*f+b*c*f+b*d*e
+    D = b*d*f
+    p = c*e
+    q = c*f+d*e
+    r = d*f
+    cfs = c(a,b,c,d,e,f,A,B,C,D,p,q,r)
+    if(min(abs(cfs))>0 && max(abs(cfs))<1000 && max(c(c,e))>1){break}
+}
+
+cubic = pn(c(A,B,C,D),3:0)
+ach = character()
+
+for(rp in rat_pairs){
+    if(rp[1]>1){
+        aa = paste0("\\frac{",rp[2],"}{",rp[1],"}")
+        bb = paste0("\\frac{",-rp[2],"}{",rp[1],"}")
+    } else {
+        aa = paste0(rp[2])
+        bb = paste0(-rp[2])
+    }
+    ach = c(ach,aa,bb)
+}
+
+al = paste0("* $x=",ach,"$",collapse="\n")
+
+f1 = pn(c(a,b),1:0)
+f2 = pn(c(c,d),1:0)
+f3 = pn(c(e,f),1:0)
+
+mkfrac = function(top,bot){
+    if(bot>1){
+        return(paste0("\\frac{",top,"}{",bot,"}"))
+    } else {
+        return(paste0(top))
+    }
+}
+
+frac1 = mkfrac(-b,a)
+frac2 = mkfrac(-d,c)
+frac3 = mkfrac(-f,e)
+
+sol1 = frac1==ach
+sol2 = frac2==ach
+sol3 = frac3==ach
+sol = sol1+sol2+sol3
+sol = paste0(1*(sol!=0),collapse="")
+```
+
+Question
+========
+
+The equation below has 3 rational solutions.
+
+$$`r cubic`=0$$
+
+One solution is $x=`r frac1`$. Find all three solutions.
+
+Answerlist
+--------
+
+`r al`
+
+
+Solution
+========
+
+Because the given solution is $x=`r frac1`$, we know that $`r f1`$ is a factor of the cubic polynomial. Divide $`r cubic`$ by $`r f1`$ to get semi-factored form.
+
+$$(`r f1`)(`r pn(c(p,q,r),2:0)`)$$
+
+To further factor the quadratic, you can guess-and-check or you can use quadratic formula. Keep in mind the quadratic formula will give roots, from which the factors can be determined.
+
+$$\text{roots}~=~ \frac{-(`r q`)\pm\sqrt{(`r q`)^2-4(`r p`)(`r r`)}}{2(`r p`)}$$
+
+$$\text{roots}~=~ \frac{`r -q`\pm\sqrt{`r q^2-4*p*r`}}{`r 2*p`}$$
+
+$$\text{roots}~=~ \frac{`r -q`\pm`r sqrt(q^2-4*p*r)`}{`r 2*p`}$$
+
+
+$$\text{root_1}~=~ \frac{`r -q-sqrt(q^2-4*p*r)`}{`r 2*p`}$$
+
+$$\text{root_2}~=~ \frac{`r -q+sqrt(q^2-4*p*r)`}{`r 2*p`}$$
+
+The two roots simplify to $\frac{`r -d`}{`r c`}$ and $\frac{`r -f`}{`r e`}$. Thus, from the factor theorem and zero-product property, the cubic polynomial in factored form:
+
+$$(`r f1`)(`r f2`)(`r f3`)$$
+
+Use the zero-product property to find the solutions.
+
+Solutions: $x=`r frac1`$ and $x=`r frac2`$ and $x=`r frac3`$.
+
+
+Meta-information
+============
+extype: mchoice
+exsolution: `r sol`
+exname: factor_cubic_rational
