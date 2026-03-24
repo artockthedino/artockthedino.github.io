@@ -1,60 +1,32 @@
 library("exams")
-n = 50
+n = 30
 outdir = "outcanvas"
 
 ### Entrance ticket
-pm = list("x_negate_with_quantifiers.Rmd",
-          "x_negate_with_quantifiers.Rmd",
-          "x_negate_with_quantifiers.Rmd",
-          "x_negate_with_quantifiers.Rmd",
-          "x_negate_with_quantifiers.Rmd")
-exams2canvas(pm,
-             n=n,
-             dir=outdir,
-             points=rep(1,length(pm)),
-             maxattempts = 6,
-             name="m0323_ET",
-             template = "canvas_qti12.xml",
-             cloze = list(enumerate = FALSE))
-
-# pm = list(c("x_tsre_add_sqrt.Rmd",
-#             "x_tsre_sqrt_add.Rmd",
-#             "x_tsre_mult_sqrt.Rmd",
-#             "x_tsre_sqrt_mult.Rmd",
-#             "x_tsre_div_sqrt.Rmd",
-#             "x_tsre_sqrt_div.Rmd"),
-#           c("x_tsre_add_sqrt.Rmd",
-#             "x_tsre_sqrt_add.Rmd",
-#             "x_tsre_mult_sqrt.Rmd",
-#             "x_tsre_sqrt_mult.Rmd",
-#             "x_tsre_div_sqrt.Rmd",
-#             "x_tsre_sqrt_div.Rmd"),
-#           c("x_tsre_add_sqrt.Rmd",
-#             "x_tsre_sqrt_add.Rmd",
-#             "x_tsre_mult_sqrt.Rmd",
-#             "x_tsre_sqrt_mult.Rmd",
-#             "x_tsre_div_sqrt.Rmd",
-#             "x_tsre_sqrt_div.Rmd"),
-#           c("x_tsre_add_sqrt.Rmd",
-#             "x_tsre_sqrt_add.Rmd",
-#             "x_tsre_mult_sqrt.Rmd",
-#             "x_tsre_sqrt_mult.Rmd",
-#             "x_tsre_div_sqrt.Rmd",
-#             "x_tsre_sqrt_div.Rmd"),
-#           c("x_tsre_add_sqrt.Rmd",
-#             "x_tsre_sqrt_add.Rmd",
-#             "x_tsre_mult_sqrt.Rmd",
-#             "x_tsre_sqrt_mult.Rmd",
-#             "x_tsre_div_sqrt.Rmd",
-#             "x_tsre_sqrt_div.Rmd"))
+# pm = list("x_negate_with_quantifiers.Rmd",
+#           "x_negate_with_quantifiers.Rmd",
+#           "x_negate_with_quantifiers.Rmd",
+#           "x_negate_with_quantifiers.Rmd",
+#           "x_negate_with_quantifiers.Rmd")
 # exams2canvas(pm,
 #              n=n,
 #              dir=outdir,
-#              points=rep(2,length(pm)),
+#              points=rep(1,length(pm)),
 #              maxattempts = 6,
-#              name="a0128c_solve_radical_eqs",
+#              name="m0324_ET",
 #              template = "canvas_qti12.xml",
 #              cloze = list(enumerate = FALSE))
+
+pm = list("x_truth_table_01.Rmd",
+          "x_truth_table_01.Rmd")
+exams2canvas(pm,
+             n=n,
+             dir=outdir,
+             points=rep(4,length(pm)),
+             maxattempts = 6,
+             name="m0324c_truth_tables",
+             template = "canvas_qti12.xml",
+             cloze = list(enumerate = FALSE))
 
 
 # pm = list("standard_from_graph.Rmd",

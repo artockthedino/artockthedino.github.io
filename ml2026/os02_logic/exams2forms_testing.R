@@ -2,12 +2,12 @@ library("exams2forms")
 n = 10
 
 ### Entrance ticket
-pm = list("x_negate_with_quantifiers.Rmd")
+pm = list("x_truth_table_01.Rmd")
 
 exams2webquiz(pm,
              n=n,
-             title = "examples_0323",
+             title = "examples_0324",
              dir = ".",
-             name="examples_0323")
+             name="examples_0324")
 
 
