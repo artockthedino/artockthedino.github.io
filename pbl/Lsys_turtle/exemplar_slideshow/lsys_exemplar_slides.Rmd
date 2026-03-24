@@ -262,6 +262,7 @@ catinfo(angle,start,rules,N)
 
 ## Stars aligned
 
+The stars are stacked into the shape of a star.
 
 ```{r,echo=F,fig.dim=c(5,5),cache=T}
 par(mar=c(0,0,0,0),oma=c(0,0,0,0),pty="s")
@@ -283,7 +284,9 @@ catinfo(angle,start,rules,N)
 ```
 ```
 
-## Example 7
+## Fuzzy Fern
+
+This strand of fuzzy fern hangs delicately.
 
 ```{r,echo=F,fig.dim=c(5,5),cache=T}
 par(mar=c(0,0,0,0),oma=c(0,0,0,0),pty="s")
@@ -305,7 +308,9 @@ catinfo(angle,start,rules,N)
 ```
 
 
-## Example 8
+## Checkered Clouds
+
+Variously sized clouds are puffing in an orderly array.
 
 ```{r,echo=F,fig.dim=c(5,5),cache=T}
 par(mar=c(0,0,0,0),oma=c(0,0,0,0),pty="s")
@@ -325,7 +330,9 @@ catinfo(angle,start,rules,N)
 ```
 ```
 
-## Example 9
+## Wheels
+
+This is reminiscent of nautical imagery, the helm (steering wheel) or a compass come to mind.
 
 ```{r,echo=F,fig.dim=c(5,5),cache=T}
 par(mar=c(0,0,0,0),oma=c(0,0,0,0),pty="s")
@@ -347,7 +354,9 @@ catinfo(angle,start,rules,N)
 ```
 ```
 
-## Example 10
+## Scary skull
+
+An intimidating face menaces in the shadows.
 
 ```{r,echo=F,fig.dim=c(5,5),cache=T}
 par(mar=c(0,0,0,0),oma=c(0,0,0,0),pty="s")
@@ -368,7 +377,9 @@ catinfo(angle,start,rules,N)
 ```
 ```
 
-## Example 11
+## Mustache of mustaches
+
+The handlebar mustache shape is composed of many little mustaches, all the way down.
 
 ```{r,echo=F,fig.dim=c(5,5),cache=T}
 par(mar=c(0,0,0,0),oma=c(0,0,0,0),pty="s")
@@ -389,7 +400,9 @@ catinfo(angle,start,rules,N)
 ```
 ```
 
-## Example 12
+## Exploding Heart
+
+The heart throbs faster and harder until it explodes in a splatter of broken pieces.
 
 ```{r,echo=F,fig.dim=c(5,5),cache=T}
 par(mar=c(0,0,0,0),oma=c(0,0,0,0),pty="s")
@@ -411,7 +424,9 @@ catinfo(angle,start,rules,N)
 ```
 ```
 
-## Example 13
+## Barnsley fern example
+
+I got this one from the [wikipedia on Lindenmayer Systems](https://en.wikipedia.org/wiki/L-system).
 
 ```{r,echo=F,fig.dim=c(5,5),cache=T}
 par(mar=c(0,0,0,0),oma=c(0,0,0,0),pty="s")
@@ -432,7 +447,9 @@ catinfo(angle,start,rules,N)
 ```
 ```
 
-## Example 14
+## Castle fortifications
+
+I can imagine a castle with this footprint.
 
 ```{r,echo=F,fig.dim=c(5,5),cache=T}
 par(mar=c(0,0,0,0),oma=c(0,0,0,0),pty="s")
@@ -453,7 +470,9 @@ catinfo(angle,start,rules,N)
 ```
 ```
 
-## Example 15
+## Broken Earth
+
+This lush valley is filled with crags and lush forest fed by a convoluted river.
 
 ```{r,echo=F,fig.dim=c(5,5),cache=T}
 par(mar=c(0,0,0,0),oma=c(0,0,0,0),pty="s")
@@ -473,7 +492,9 @@ catinfo(angle,start,rules,N)
 ```
 ```
 
-## Example 16
+## Robot God
+
+The robot god glitches into form as it appears to its followers.
 
 ```{r,echo=F,fig.dim=c(5,5),cache=T}
 par(mar=c(0,0,0,0),oma=c(0,0,0,0),pty="s")
@@ -494,7 +515,9 @@ catinfo(angle,start,rules,N)
 ```
 ```
 
-## Example 17
+## Tree
+
+What a beautiful tree with beautiful leaves.
 
 ```{r,echo=F,fig.dim=c(5,5),cache=T}
 par(mar=c(0,0,0,0),oma=c(0,0,0,0),pty="s")
