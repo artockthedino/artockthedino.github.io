@@ -263,7 +263,6 @@ catinfo(angle,start,rules,N)
 ## Stars aligned
 
 
-
 ```{r,echo=F,fig.dim=c(5,5),cache=T}
 par(mar=c(0,0,0,0),oma=c(0,0,0,0),pty="s")
 start = "A"
