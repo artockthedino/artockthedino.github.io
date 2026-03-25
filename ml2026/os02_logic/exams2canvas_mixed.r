@@ -3,28 +3,25 @@ n = 30
 outdir = "outcanvas"
 
 ### Entrance ticket
-# pm = list("x_negate_with_quantifiers.Rmd",
-#           "x_negate_with_quantifiers.Rmd",
-#           "x_negate_with_quantifiers.Rmd",
-#           "x_negate_with_quantifiers.Rmd",
-#           "x_negate_with_quantifiers.Rmd")
-# exams2canvas(pm,
-#              n=n,
-#              dir=outdir,
-#              points=rep(1,length(pm)),
-#              maxattempts = 6,
-#              name="m0324_ET",
-#              template = "canvas_qti12.xml",
-#              cloze = list(enumerate = FALSE))
-
-pm = list("x_truth_table_01.Rmd",
+pm = list("x_negate_with_quantifiers.Rmd",
           "x_truth_table_01.Rmd")
+exams2canvas(pm,
+             n=n,
+             dir=outdir,
+             points=rep(2,length(pm)),
+             maxattempts = 6,
+             name="m0325_ET",
+             template = "canvas_qti12.xml",
+             cloze = list(enumerate = FALSE))
+
+pm = list("x_cond_cp_con_inv.Rmd",
+          "x_cond_cp_con_inv.Rmd")
 exams2canvas(pm,
              n=n,
              dir=outdir,
              points=rep(4,length(pm)),
              maxattempts = 6,
-             name="m0324c_truth_tables",
+             name="m0325c_conditional_variations",
              template = "canvas_qti12.xml",
              cloze = list(enumerate = FALSE))
 

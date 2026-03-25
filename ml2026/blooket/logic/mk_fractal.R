@@ -93,11 +93,11 @@ makeplot = function(xyc,lwd=1){
     }
 }
 
-g105= list("A",
-           list("A"="CAA[--CAB][++CAB]",
+g105= list("A+A+A",
+           list("A"="CAB[--CA][++CA]",
                 "B"="C[-CC-CA][+CC+CA]",
                 "C"="CC"),
-           6,
+           4,
            90)
 
 fn = paste0(g105[[1]],"_",paste0(names(g105[[2]]),"=",g105[[2]],collapse="_"),"_",g105[[3]],"_",g105[4],".png",collapse="")

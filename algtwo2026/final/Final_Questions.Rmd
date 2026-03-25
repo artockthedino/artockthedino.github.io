@@ -1,0 +1,51 @@
+---
+output: pdf_document
+params:
+    rseed: 0
+    showsol: true
+header-includes:
+  - \usepackage{multicol}
+---
+
+```{r,echo=F,warning=FALSE,message=FALSE}
+options(scipen=999)
+if(params$rseed !=0){
+    set.seed(params$rseed)
+}
+knitr::opts_chunk$set(echo = FALSE)
+bn <- basename(knitr::current_input())
+bn = strsplit(bn,".",fixed=T)[[1]][1]
+```
+
+Name: \vspace{5pt} \hrule
+
+# `r bn` (v`r params$rseed`)
+
+```{r}
+gcd2 <- function(a, b) {
+  if (b == 0) a else Recall(b, a %% b)
+}
+gcd <- function(...) Reduce(gcd2, c(...))
+```
+
+## Factor from solution
+
+```{r,echo=F}
+rat_pairs = list(c(2,3),c(2,5),c(2,7),c(2,9),
+                 c(3,2),c(3,4),c(3,5),c(3,7),c(3,8),
+                 c(4,3),c(4,5),c(4,7),c(4,9),
+                 c(5,2),c(5,3),c(5,4),c(5,6),c(5,7),c(5,8),c(5,9),
+                 c(6,5),c(6,7),
+                 c(7,2),c(7,3),c(7,4),c(7,5),c(7,6),c(7,8),c(7,9),
+                 c(8,3),c(8,5),c(8,7),c(8,9),
+                 c(9,2),c(9,4),c(9,5),c(9,7),c(9,8))
+rpi = sample(1:length(rat_pairs),1)
+rp = rat_pairs[[i]]
+
+
+```
+
+
+
+
+

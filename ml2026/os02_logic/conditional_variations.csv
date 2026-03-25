@@ -1,0 +1,37 @@
+"Blooket
+Import Template",,,,,,,
+Question #,Question Text,Answer 1,Answer 2,"Answer 3 
+(Optional)","Answer 4
+(Optional)","Time Limit (sec)
+(Max: 300 seconds)","Correct Answer(s)
+(Only include Answer #)"
+1,"If zebras are killers, then insects are indigo.
+
+What is the contrapositive?",If zebras are NOT killers, then insects are NOT indigo.,If insects are indigo, then zebras are killers.,If insects are NOT indigo, then zebras are NOT killers.,If insects are indigo, then zebras are NOT killers.,30,3
+2,"If snakes are indigo, then flowers are NOT queens.
+
+What is the contrapositive?",If flowers are queens, then snakes are NOT indigo.,If flowers are NOT queens, then snakes are indigo.,If flowers are NOT queens, then snakes are NOT indigo.,If snakes are NOT indigo, then flowers are queens.,30,1
+3,"If tulips are blue, then hawks are NOT red.
+
+What is the converse?",If hawks are red, then tulips are NOT blue.,If tulips are NOT blue, then hawks are red.,If hawks are NOT red, then tulips are blue.,If tulips are NOT blue, then hawks are NOT red.,30,3
+4,"If quokkas are furious, then violins are green.
+
+What is the converse?",If violins are NOT green, then quokkas are NOT furious.,If quokkas are NOT furious, then violins are NOT green.,If violins are green, then quokkas are NOT furious.,If violins are green, then quokkas are furious.,30,4
+5,"If narwhals are furious, then quokkas are NOT sly.
+
+What is the converse?",If quokkas are sly, then narwhals are NOT furious.,If narwhals are furious, then quokkas are sly.,If narwhals are NOT furious, then quokkas are sly.,If quokkas are NOT sly, then narwhals are furious.,30,4
+6,"If flowers are enigmatic, then umbrellas are dangerous.
+
+What is the converse?",If umbrellas are dangerous, then flowers are enigmatic.,If flowers are NOT enigmatic, then umbrellas are NOT dangerous.,If flowers are NOT enigmatic, then umbrellas are dangerous.,If umbrellas are NOT dangerous, then flowers are NOT enigmatic.,30,1
+7,"If violins are violent, then owls are NOT curious.
+
+What is the contrapositive?",If owls are curious, then violins are NOT violent.,If owls are curious, then violins are violent.,If owls are NOT curious, then violins are violent.,If violins are NOT violent, then owls are curious.,30,1
+8,"If kangaroos are killers, then zebras are NOT dangerous.
+
+What is the converse?",If kangaroos are NOT killers, then zebras are NOT dangerous.,If zebras are NOT dangerous, then kangaroos are killers.,If zebras are dangerous, then kangaroos are NOT killers.,If kangaroos are NOT killers, then zebras are dangerous.,30,2
+9,"If zebras are outgoing, then ponies are NOT happy.
+
+What is the inverse?",If ponies are happy, then zebras are NOT outgoing.,If ponies are NOT happy, then zebras are outgoing.,If zebras are NOT outgoing, then ponies are happy.,If zebras are NOT outgoing, then ponies are NOT happy.,30,3
+10,"If giraffes are NOT awesome, then zebras are NOT jealous.
+
+What is the contrapositive?",If zebras are jealous, then giraffes are awesome.,If giraffes are awesome, then zebras are jealous.,If zebras are NOT jealous, then giraffes are NOT awesome.,If zebras are NOT jealous, then giraffes are awesome.,30,1

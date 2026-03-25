@@ -1,0 +1,101 @@
+```{r,echo=FALSE}
+
+nouns = c("apples","bugs","cats","dogs","elephants","flowers","giraffes","hawks","insects","jaguars","kangaroos","llamas","mice","narwhals","owls","ponies","quokkas","snakes","tulips","umbrellas","violins","whales","xylophones","zebras")
+
+adjectives = c("awesome","blue","curious","dangerous","enigmatic","furious","green","happy","indigo","jealous","killers","lame","menacing","nice","outgoing","pious","queens","red","sly","transient","umpires","violent","weak","xenophobic","yellow","zombies")
+
+ns = sample(nouns,2)
+as = sample(adjectives,2)
+yess = sample(c(F,T),2,T)
+
+mkit = function(n,a,yes){
+    if(yes){
+        s = paste0(n," are ",a,collapse="")
+    } else {
+        s = paste0(n," are NOT ",a,collapse="")
+    }
+}
+
+cd = paste0("If ",mkit(ns[1],as[1],yess[1]),", then ",mkit(ns[2],as[2],yess[2]),".")
+cp = paste0("If ",mkit(ns[2],as[2],!yess[2]),", then ",mkit(ns[1],as[1],!yess[1]),".")
+cv = paste0("If ",mkit(ns[2],as[2],yess[2]),", then ",mkit(ns[1],as[1],yess[1]),".")
+iv = paste0("If ",mkit(ns[1],as[1],!yess[1]),", then ",mkit(ns[2],as[2],!yess[2]),".")
+
+ord = sample(1:3)
+statements = c(cp,cv,iv)[ord]
+types = c("contrapositive","converse","inverse")[ord]
+
+ach1 = sample(c("contrapositive","converse","inverse"))
+ach2 = sample(c("contrapositive","converse","inverse"))
+ach3 = sample(c("contrapositive","converse","inverse"))
+ach4 = paste0("variation ",c(1,2,3))
+
+al1 = paste0("* ",ach1,collapse="\n")
+al2 = paste0("* ",ach2,collapse="\n")
+al3 = paste0("* ",ach3,collapse="\n")
+al4 = paste0("* ",ach4,collapse="\n")
+
+sol1 = paste0(1*(ach1==types[1]),collapse="")
+sol2 = paste0(1*(ach2==types[2]),collapse="")
+sol3 = paste0(1*(ach3==types[3]),collapse="")
+wo = which(types=="contrapositive")
+sol4 = paste0(1*((1:3)==wo),collapse="")
+
+```
+
+Question
+========
+
+A conditional statement is stated below:
+
+>- `r cd`
+
+Label each of the [variations](https://en.wikipedia.org/wiki/Contraposition):
+
+1. `r statements[1]` ##ANSWER1##
+2. `r statements[2]` ##ANSWER2##
+3. `r statements[3]` ##ANSWER3##
+
+* Which variation is logically equivalent to the original? ##ANSWER4##
+
+
+Answerlist
+--------
+
+`r al1`
+`r al2`
+`r al3`
+`r al4`
+
+
+
+Solution
+========
+
+If the original conditional statement is $p\to q$, then:
+
+* Contrapositive is $\sim q \to \sim p$
+* Converse is $q \to p$
+* Inverse is $\sim p \to \sim q$
+
+And the contrapositive is always logically equivalent to the original conditional statement.
+
+In this case the original conditional statement was:
+
+>- `r cd`
+
+* The contrapositive would be:
+    * `r cp`
+* The converse would be:
+    * `r cv`
+* The inverse would be:
+    * `r iv`
+
+Thus, (1) is the `r types[1]`, and (2) is the `r types[2]`, and (3) is the `r types[3]`. And so (`r wo`) is the logically equivalent statement.
+
+Meta-information
+============
+extype: cloze
+exclozetype: schoice|schoice|schoice|schoice
+exsolution: `r sol1`|`r sol2`|`r sol3`|`r sol4`
+exname: conditional_variations
