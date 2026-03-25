@@ -1,0 +1,71 @@
+```{r,echo=F}
+options(scipen=999)
+pn = function(c,d){
+    d = d[c!=0]
+    c = c[c!=0]
+    p = paste0("{",c,"}x^{",d,"}",collapse="+")
+    p = gsub("x^{0}","",p,fixed=T)
+    p = gsub("x^{1}","x",p,fixed=T)
+    p = gsub("+{-","-{",p,fixed=T)
+    p = gsub("+{1}x","+x",p,fixed=T)
+    p = gsub("-{1}x","-x",p,fixed=T)
+    p = gsub("{-1}x","-x",p,fixed=T)
+    p = gsub("{1}x","x",p,fixed=T)
+    p = gsub("{","",p,fixed=T)
+    p = gsub("}","",p,fixed=T)
+    return(p)
+}
+rat_pairs = list(c(2,3),c(2,5),c(2,7),c(2,9),
+                 c(3,2),c(3,4),c(3,5),c(3,7),c(3,8),
+                 c(4,3),c(4,5),c(4,7),c(4,9),
+                 c(5,2),c(5,3),c(5,4),c(5,6),c(5,7),c(5,8),c(5,9),
+                 c(6,5),c(6,7),
+                 c(7,2),c(7,3),c(7,4),c(7,5),c(7,6),c(7,8),c(7,9),
+                 c(8,3),c(8,5),c(8,7),c(8,9),
+                 c(9,2),c(9,4),c(9,5),c(9,7),c(9,8))
+
+mkfrac = function(top,bot){
+    if(bot>1){
+        return(paste0("\\frac{",top,"}{",bot,"}"))
+    } else {
+        return(paste0(top))
+    }
+}
+
+nn = sample(1:length(rat_pairs),1)
+rp = rat_pairs[[nn]]
+a = rp[1]
+b = rp[2]*sample(c(-1,1),1)
+frac1 = mkfrac(b,a)
+factor1 = pn(c(a,-b),1:0)
+badfactor = pn(c(-a,b),1:0)
+
+```
+
+Question
+========
+
+Let function $f$ represent a cubic polynomial. One solution to the equation $f(x)=0$ is $x=`r frac1`$. This solution implies $ax+b$ is a factor of the polynomial, where $a$ and $b$ are integers and $a$ is positive. Find those integers to express the known factor.
+
+*Please type your answer without spaces, without explicit multiplication, and in the standard form, like `2x+3` or `5x-4`.*
+
+
+Solution
+========
+
+Solutions to $f(x)=0$ correspond to the factors of $f$ equaling zero. So, if a factor of $f$ is $ax+b$, then we know $ax+b=0$, which if we solve for $x$ gives us $x=\frac{-b}{a}$.
+
+If we take this logic backwards, a solution of $x=\frac{c}{d}$ implies $dx-c$ is a factor. In this case, we were told the solution is:
+
+$$x=`r frac1`$$
+
+Which implies that the linear binomial $`r factor1`$ is a factor. We can check that this factor gives that solution by solving $`r factor1`=0$.
+
+You should type your answer like ``r factor1``. Notice the problem told us to use a positive leading coefficient for our factor. So, although dividing the polynomial by $`r badfactor`$ would also give a remainder of 0, the question will mark ``r badfactor`` wrong.
+
+
+Meta-information
+============
+extype: string
+exsolution: `r factor1`
+exname: rat_fact_from_root
