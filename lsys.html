@@ -19,6 +19,21 @@
 
 <div id="controls">
     <h3 style="margin-top:0">L-System Generator</h3>
+    <details style="font-size: 0.8em; background: #f9f9f9; padding: 10px; border-radius: 4px; cursor: pointer;">
+    <summary><b>View Instructions</b></summary>
+    <div style="margin-top: 10px;">
+        See <a href="https://en.wikipedia.org/wiki/L-system">L-system on wikipedia</a> 
+        <p><b>Commands:</b></p>
+        <ul style="padding-left: 20px;">
+            <li><b>A-L:</b> Move and Draw</li>
+            <li><b>M-Z:</b> Move only (No Draw)</li>
+            <li><b>+ / -:</b> Turn Right/Left</li>
+            <li><b>[ :</b> Save Position (Branch Start)</li>
+            <li><b>] :</b> Return to Position (Branch End)</li>
+        </ul>
+        <p><b>Tips:</b> High iterations will crash your browser.</p>
+    </div>
+</details>
     <label>Axiom (Start String)</label>
     <input id="axiom" value="F">
     <label>Rules (Char > Result)</label>
@@ -37,6 +52,12 @@
         <input type="number" id="thickness" value="1" step="0.1">
     </div>
     <button onclick="generate()" style="background: #2ecc71; color:white; font-weight: bold; cursor: pointer; margin-top:10px; border:none;">Generate</button>
+    <label>Share/Import Config (JSON)</label>
+<textarea id="configBox" rows="3" placeholder="Paste config here..."></textarea>
+<div class="row">
+    <button onclick="exportConfig()">Copy Config</button>
+    <button onclick="importConfig()">Load Config</button>
+</div>
     <button onclick="downloadSVG()">Download SVG</button>
     <div id="stats"></div>
 </div>
@@ -50,6 +71,39 @@
 <script>
 let minX, minY, maxX, maxY, x, y, angle, angleStep, rules, pathSegments, stack;
 
+function exportConfig() {
+    const config = {
+        axiom: document.getElementById('axiom').value,
+        rules: document.getElementById('rules').value,
+        iters: document.getElementById('iters').value,
+        angle: document.getElementById('angle').value,
+        startAngle: document.getElementById('startAngle').value,
+        stroke: document.getElementById('strokeColor').value,
+        bg: document.getElementById('bgColor').value,
+        thickness: document.getElementById('thickness').value
+    };
+    const json = JSON.stringify(config, null, 2);
+    document.getElementById('configBox').value = json;
+    navigator.clipboard.writeText(json);
+    alert("Config copied to clipboard!");
+}
+
+function importConfig() {
+    try {
+        const config = JSON.parse(document.getElementById('configBox').value);
+        document.getElementById('axiom').value = config.axiom || "F";
+        document.getElementById('rules').value = config.rules || "";
+        document.getElementById('iters').value = config.iters || 1;
+        document.getElementById('angle').value = config.angle || 90;
+        document.getElementById('startAngle').value = config.startAngle || 0;
+        document.getElementById('strokeColor').value = config.stroke || "#000000";
+        document.getElementById('bgColor').value = config.bg || "#ffffff";
+        document.getElementById('thickness').value = config.thickness || 1;
+        generate();
+    } catch (e) {
+        alert("Invalid JSON format.");
+    }
+}
 function generate() {
     const axiom = document.getElementById('axiom').value;
     const rulesText = document.getElementById('rules').value;
