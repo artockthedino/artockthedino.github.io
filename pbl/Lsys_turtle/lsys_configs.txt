@@ -255,4 +255,54 @@ spiky mandala
   "thickness": "2"
 }
 
+strength
+{
+  "axiom": "[A][B][+++A][---B]",
+  "rules": "A > [+CA]C+[A][B]\nB > [-CB]C-[A][B]\nC > CC[A][B]",
+  "iters": "8",
+  "angle": "60",
+  "startAngle": "90",
+  "stroke": "#000000",
+  "bg": "#ffffff",
+  "thickness": "8"
+}
+
+strange flame
+{
+  "axiom": "A",
+  "rules": "A > A-B++C---D+++C--B+A\nB > B++A-C+A--B\nC > C++++D----C\nD > D--B++D",
+  "iters": "9",
+  "angle": "60",
+  "startAngle": "0",
+  "stroke": "#ffccf1",
+  "bg": "#000000",
+  "thickness": "2000"
+}
+
+boxes
+{
+  "axiom": "A",
+  "rules": "A > D[-DB][+DB][DDB]\nB > DD[--DC][++DC]\nC > [+++DDA][---DDA]\nD > XD\nX > A",
+  "iters": "10",
+  "angle": "120",
+  "startAngle": "90",
+  "stroke": "#99ffa5",
+  "bg": "#000000",
+  "thickness": "5"
+}
+
+space dog
+{
+  "axiom": "A",
+  "rules": "A > D[-DB][+DB][DDB]\nB > DD[--DC][++DC]\nC > [+++DDA][---DDA]\nD > XD\nX > A",
+  "iters": "11",
+  "angle": "135",
+  "startAngle": "90",
+  "stroke": "#99ffa5",
+  "bg": "#000000",
+  "thickness": "5"
+}
+
+
+
 

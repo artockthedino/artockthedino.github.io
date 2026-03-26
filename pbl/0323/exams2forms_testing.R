@@ -6,8 +6,8 @@ pm = list("x_which_lsys_fractal.Rmd")
 
 exams2webquiz(pm,
              n=n,
-             title = "examples_0325",
+             title = "examples_0326",
              dir = ".",
-             name="examples_0325")
+             name="examples_0326")
 
 

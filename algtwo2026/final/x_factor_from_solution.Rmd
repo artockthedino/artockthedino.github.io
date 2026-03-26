@@ -47,7 +47,7 @@ ach = c(pn(c(a,-b),1:0),
 ach = sample(ach)
 al = paste0("* $",ach,"$",collapse="\n")
 
-sol = paste0(1*(ach==factor1))
+sol = paste0(1*(ach==factor1),collapse="")
 
 ```
 
