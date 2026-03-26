@@ -1,0 +1,80 @@
+```{r,echo=FALSE}
+
+## T T
+## T F
+## F T
+## F F
+
+logics = list(list("p \\land q",c(T,F,F,F)),
+              list("p \\lor q",c(T,T,T,F)),
+              list("\\sim p \\land q",c(F,F,T,F)),
+              list("p \\land \\sim q",c(F,T,F,F)),
+              list("\\sim p \\land \\sim q",c(F,F,F,T)),
+              list("\\sim p \\lor q",c(T,F,T,T)),
+              list("p \\lor \\sim q",c(T,T,F,T)),
+              list("\\sim p \\lor \\sim q",c(F,T,T,T))
+              )
+n1 = length(logics)
+for(i in 1:n1){
+    s = logics[[i]][[1]]
+    s = paste0("\\sim (",s,")")
+    tv = logics[[i]][[2]]
+    tv = !tv
+    logics[[i+n1]] = list(s,tv)
+}
+
+
+wo = sample(1:length(logics),1)
+s = logics[[wo]][[1]]
+tv = logics[[wo]][[2]]
+
+sol1 = paste0(1*(c(F,T)==tv[1]),collapse="")
+sol2 = paste0(1*(c(F,T)==tv[2]),collapse="")
+sol3 = paste0(1*(c(F,T)==tv[3]),collapse="")
+sol4 = paste0(1*(c(F,T)==tv[4]),collapse="")
+
+```
+
+Question
+========
+
+Complete the truth table for $`r s`$.
+
+| $p$ | $q$ | $`r s`$ |
+|:---:|:---:|:-------:|
+|  T  |  T  | ##ANSWER1## |
+|  T  |  F  | ##ANSWER2## |
+|  F  |  T  | ##ANSWER3## |
+|  F  |  F  | ##ANSWER4## |
+
+
+Answerlist
+--------
+
+* F
+* T
+* F
+* T
+* F
+* T
+* F
+* T
+
+
+Solution
+========
+
+| $p$ | $q$ | $`r s`$ |
+|:---:|:---:|:-------:|
+|  T  |  T  | `r tv[1]` |
+|  T  |  F  | `r tv[2]` |
+|  F  |  T  | `r tv[3]` |
+|  F  |  F  | `r tv[4]` |
+
+
+Meta-information
+============
+extype: cloze
+exclozetype: schoice|schoice|schoice|schoice
+exsolution: `r sol1`|`r sol2`|`r sol3`|`r sol4`
+exname: truth_table_basic

@@ -1,8 +1,8 @@
 ---
 output: pdf_document
 params:
-    rseed: 3
-    showsol: true
+    rseed: 0
+    showsol: false
 ---
 
 \renewcommand{\arraystretch}{1.2}
@@ -37,9 +37,11 @@ pn = function(coeffs,pows){
 }
 ```
 
-## `r bn`
+Name: \vspace{0.1in} \hrule
 
-### Standard-form cubic equation from solutions
+## `r bn` (v_`r params$rseed`)
+
+### Question 1: standard-form cubic equation from solutions (10 points)
 
 ```{r,echo=F}
 rat_pairs = list(c(1,1),c(1,2),c(1,3),c(1,4),c(1,5),c(1,6),c(1,7),c(1,8),c(1,9),
@@ -53,12 +55,12 @@ rat_pairs = list(c(1,1),c(1,2),c(1,3),c(1,4),c(1,5),c(1,6),c(1,7),c(1,8),c(1,9),
                  c(9,1),c(9,2),c(9,4),c(9,5),c(9,7),c(9,8))
 while(T){
     rps = sample(rat_pairs,3)
-    a = 1 #rps[[1]][1]
-    b = 3 #rps[[1]][2]*sample(c(-1,1),1)
-    c = 2 #rps[[2]][1]
-    d = 7 #rps[[2]][2]*sample(c(-1,1),1)
-    e = 4 #rps[[3]][1]
-    f = -5 #rps[[3]][2]*sample(c(-1,1),1)
+    a = rps[[1]][1]
+    b = rps[[1]][2]*sample(c(-1,1),1)
+    c = rps[[2]][1]
+    d = rps[[2]][2]*sample(c(-1,1),1)
+    e = rps[[3]][1]
+    f = rps[[3]][2]*sample(c(-1,1),1)
     A = a*c*e
     B = a*c*f+a*d*e+b*c*e
     C = a*d*f+b*c*f+b*d*e
@@ -73,9 +75,10 @@ while(T){
     q3 = a*d+b*c
     r3 = b*d
     cfs = c(a,b,c,d,e,f,A,B,C,D,p,q,r)
-    if(T){break} #min(abs(cfs))>0 && max(abs(cfs))<1000 && max(c(c,e))>1 && a>1 && A!=D){break}
+    cubic = pn(c(A,B,C,D),3:0)
+    if(min(abs(cfs))>0 && max(abs(cfs))<1000 && max(c(c,e))>1 && a>1 && A!=D && abs(sum(sign(c(b,d,f))))<3 && cubic != "8x^3+42x^2+19x-105"){break}
 }
-cubic = pn(c(A,B,C,D),3:0)
+
 cubic1 = cubic
 
 mkfrac = function(top,bot){
@@ -107,7 +110,7 @@ $$\text{solution 3}:~~~x=`r frac1`$$
 ```{r,echo=F,results='asis',eval=params$showsol}
 cat("First, express the equation in factored form.\n\n")
 cat(paste0("$$(",f3,")(",f2,")(",f1,")=0$$\n\n"))
-cat("FOIL two of the factors. You could use a box to do this. Notice, there are 3 possible pairs to pick at this step. YOU DO NOT NEED TO FIND ALL 3 OF THE EQUATIONS BELOW!\n\n")
+cat("FOIL two of the factors.\n\n")
 cat(paste0("\\begin{align*}(",pn(c(p,q,r),2:0),")(",f1,")&=0 &&\\text{or}& (",pn(c(p2,q2,r2),2:0),")(",f2,")&=0 &&\\text{or}& (",pn(c(p3,q3,r3),2:0),")(",f3,")&=0 \\end{align*}\n\n"))
 cat("Expand (with a box).\n\n")
 
@@ -128,7 +131,6 @@ cat(tab_lin_qua(c(e,f),c(p3,q3,r3)))
 cat("\n\nWhichever of the 3 paths you take, you should end up at the same equation by combining like terms.\n\n")
 cat(paste0("\\begin{center}\\begin{tabular}{|c|}\\hline \n $",cubic,"~=~0$ \\\\ \\hline \n\\end{tabular}\\end{center}"))
 
-cat("\n\nTechnically, you could multiply this equation by any integer to find an equivalent cubic equation with the same solutions and integer coefficients. But, like... that'd make grading your test more annoying, and I do not feel like specifying the directions further.")
 ```
 
 \color{black}
@@ -138,7 +140,7 @@ cat("\n\nTechnically, you could multiply this equation by any integer to find an
 
 \newpage
 
-### Solutions from standard-form cubic equation
+### Question 2: rational solutions from standard-form cubic equation (10 points)
 
 
 ```{r,echo=F}
@@ -168,7 +170,7 @@ while(T){
     r = d*f
     cfs = c(a,b,c,d,e,f,A,B,C,D,p,q,r)
     cubic = pn(c(A,B,C,D),3:0)
-    if(min(abs(cfs))>0 && max(abs(cfs))<100 && max(c(c,e))>1 && cubic != cubic1 && a==1 && abs(b)>1){break}
+    if(min(abs(cfs))>0 && max(abs(cfs))<100 && max(c(c,e))>1 && cubic != cubic1 && a==1 && abs(b)>1 && cubic!="35x^3-53x^2-70x+72"){break}
 }
 
 mkfrac = function(top,bot){
@@ -184,10 +186,9 @@ f3 = pn(c(e,f),1:0)
 frac1 = mkfrac(-b,a)
 frac2 = mkfrac(-d,c)
 frac3 = mkfrac(-f,e)
-
 ```
 
-Find the three distinct rational solutions (as integers or reduced fractions [improper not mixed if relevant]) to the given cubic equation.
+Find the three distinct rational solutions (as integers or reduced fractions [improper not mixed if relevant]) to the given cubic equation.  
 
 $$`r cubic`=0$$
 
@@ -198,28 +199,31 @@ Hint: one factor of the cubic polynomial is $`r f1`$.
 \color{red}
 
 ```{r,echo=F,eval=params$showsol,results='asis'}
-cat(paste0("Factor out $",f1,"$ from the cubic polynomial. Use your favorite method of polynomial division to do this. Notice, I will give a factor with linear coefficient 1, so basic synthetic division will be available.\n\n"))
+cat(paste0("Factor out $",f1,"$ from the cubic polynomial.\n\n"))
 cat("If you use synthetic division:\n\n")
 cat("\\begin{center}\\begin{tabular}{c | c c c c}\n & ",paste0(c(A,B,C,D),collapse=" & "),"\\\\ \n")
 cat(paste0(-b," & & ",paste0(c(p,q,r)*-b/a,collapse=" & "),"\\\\ \\cline{2-5} \n"))
 cat(paste0(" & ",paste0(c(p,q,r,0),collapse=" & "),"\n\\end{tabular}\\end{center}"))
 cat("\n\n")
 cat("If you use the box method of division:\n\n")
+cat("\\renewcommand{\\arraystretch}{1.2}\n\n")
 cat(paste0("\\begin{center}\\begin{tabular}{ | c | c c c | c}\\cline{1-4}\n"))
 cat(paste0("$\\cdot$ & ",paste0("$",c(p,q,r),c("x^2","x",""),"$",collapse=" & ")," & remainder \\\\ \\cline{1-4} \n"))
 cat("$x$ & ",paste0("$",c(p,q,r),c("x^3","x^2","x"),"$",collapse=" & "), "& 0 \\\\ \n")
 cat("$",b,"$ & ",paste0("$",c(p,q,r)*b,c("x^2","x",""),"$",collapse=" & ")," & \\\\ \\cline{1-4}")
 cat("\\end{tabular}\\end{center}\n\n")
-cat("If you use polynomial long division... I'll curse you a little bit and mumble as I check your work.\n\n")
 cat("However you do the work, you can now write an equivalent equation in semi-factored form.\n\n")
 cat(paste0("$$(",f1,")(",pn(c(p,q,r),2:0),")=0$$\n\n"))
 cat("Use the zero-product property. One solution is found by setting the given linear factor equal to 0. If ")
-cat(paste0("$",f1,"=0$ then we know a solution is "))
-cat(paste0("$x=",-b,"$.\n\n"))
+cat(paste0("$",f1,"=0$ then we know a solution is $x=",-b,"$. "))
 cat("The other solutions are found by setting the quadratic factor to 0.")
 cat(paste0("$$",pn(c(p,q,r),2:0),"=0$$"))
-cat("You could probably further factor the quadratic expression with enough guess-and-check (checking with FOIL). However, you'll probably opt for using the quadratic formula.\n\n")
 cat(paste0("$$x~=~\\frac{-(",q,")\\pm\\sqrt{(",q,")^2-4(",p,")(",r,")}}{2(",p,")}$$\n\n"))
+if(4*p*r>=0){
+    cat(paste0("$$x~=~\\frac{",-q,"\\pm\\sqrt{",q^2,"-",4*p*r,"}}{",2*p,"}$$\n\n"))
+} else {
+    cat(paste0("$$x~=~\\frac{",-q,"\\pm\\sqrt{",q^2,"-(",4*p*r,")}}{",2*p,"}$$\n\n"))
+}
 cat(paste0("$$x~=~\\frac{",-q,"\\pm\\sqrt{",q^2-4*p*r,"}}{",2*p,"}$$\n\n"))
 cat(paste0("$$x~=~\\frac{",-q,"\\pm ",sqrt(q^2-4*p*r),"}{",2*p,"}$$\n\n"))
 cat(paste0("\\begin{align*}x&=",frac2,"&&\\text{or}& x&=",frac3,"\\end{align*}\n\n"))

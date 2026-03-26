@@ -1,0 +1,258 @@
+Cool flower mandala
+{
+  "axiom": "FFFFFFFFF",
+  "rules": "F > G-F++X++F-G\nG > F+G-F-G+F\nX > FG+[-C][+C]+FG\nC > CC",
+  "iters": "5",
+  "angle": "160",
+  "startAngle": "0",
+  "stroke": "#000000",
+  "bg": "#ffffff",
+  "thickness": "1"
+}
+
+
+Strong man
+{
+  "axiom": "A",
+  "rules": "A > B--A+DCD+A--B\nB > A+B-D-B+A\nC > D+++B+++D\nD > DD-A-DD",
+  "iters": "8",
+  "angle": "30",
+  "startAngle": "-60",
+  "stroke": "#000000",
+  "bg": "#ffffff",
+  "thickness": "2"
+}
+
+
+Robot angel
+{
+  "axiom": "A",
+  "rules": "A > B--A+DCD+A--B\nB > A+B-D-B+A\nC > D+++B+++D\nD > DD-A-DD",
+  "iters": "8",
+  "angle": "135",
+  "startAngle": "-90",
+  "stroke": "#000000",
+  "bg": "#ffffff",
+  "thickness": "4"
+}
+
+Lobster
+{
+  "axiom": "A",
+  "rules": "A > B--A+DCD+A--B\nB > A+B-D-B+A\nC > D+++B+++D\nD > DD-ABA-DD",
+  "iters": "6",
+  "angle": "100",
+  "startAngle": "20",
+  "stroke": "#000000",
+  "bg": "#ffffff",
+  "thickness": "4"
+}
+
+skull robot
+{
+  "axiom": "A",
+  "rules": "A > B--A+DCD+A--B\nB > A+B-D-B+A\nC > D+++B+++D\nD > DD-ABA-DD",
+  "iters": "7",
+  "angle": "90",
+  "startAngle": "0",
+  "stroke": "#000000",
+  "bg": "#ffffff",
+  "thickness": "8"
+}
+
+
+Ant man
+{
+  "axiom": "F",
+  "rules": "F > G-F++++F-G\nG > F+G-F-G+F",
+  "iters": "7",
+  "angle": "160",
+  "startAngle": "20",
+  "stroke": "#000000",
+  "bg": "#ffffff",
+  "thickness": "0.4"
+}
+
+
+Organic hex
+{
+  "axiom": "A-A-A-A-A-A",
+  "rules": "A > B--C-A-C--B\nB > C+A++A+C\nC > B-A+C+A-B",
+  "iters": "8",
+  "angle": "60",
+  "startAngle": "0",
+  "stroke": "#000000",
+  "bg": "#ffffff",
+  "thickness": "16"
+}
+
+Another hex
+{
+  "axiom": "AAAAAA",
+  "rules": "A > B--C-A-C--B\nB > C+A++A+C\nC > B-A+C+A-B",
+  "iters": "7",
+  "angle": "30",
+  "startAngle": "0",
+  "stroke": "#000000",
+  "bg": "#ffffff",
+  "thickness": "20"
+}
+
+
+Empty haunted cross
+{
+  "axiom": "A--A--A--A",
+  "rules": "A > B--C-A-C--B\nB > C+A++A+C\nC > B-A+C+A-B",
+  "iters": "8",
+  "angle": "135",
+  "startAngle": "0",
+  "stroke": "#000000",
+  "bg": "#ffffff",
+  "thickness": "5"
+}
+
+Haunted cross
+{
+  "axiom": "A--A--A--A",
+  "rules": "A > B--C-A-C--B\nB > C+A+B+A+C\nC > B-A+C+A-B",
+  "iters": "8",
+  "angle": "135",
+  "startAngle": "0",
+  "stroke": "#000000",
+  "bg": "#ffffff",
+  "thickness": "1"
+}
+
+moth
+{
+  "axiom": "F",
+  "rules": "F > GG-FF-GG\nG > F+G+F",
+  "iters": "9",
+  "angle": "45",
+  "startAngle": "-45",
+  "stroke": "#000000",
+  "bg": "#ffffff",
+  "thickness": "15"
+}
+
+supernova
+{
+  "axiom": "F+++F+++F+++F+++F+++F+++F+++F",
+  "rules": "F > GG-FHF-GG\nG > F+G+F\nH > HH",
+  "iters": "8",
+  "angle": "45",
+  "startAngle": "-45",
+  "stroke": "#000000",
+  "bg": "#ffffff",
+  "thickness": "8"
+}
+
+crane
+{
+  "axiom": "F",
+  "rules": "F > GG-FHF-GG\nG > F--F+G+F--F\nH > HH",
+  "iters": "8",
+  "angle": "45",
+  "startAngle": "135",
+  "stroke": "#000000",
+  "bg": "#ffffff",
+  "thickness": "5"
+}
+
+fern
+{
+  "axiom": "ABC",
+  "rules": "A > AA[+AA+A]\nB > BB[-BB-B]\nC > CC[+CC+C]",
+  "iters": "7",
+  "angle": "30",
+  "startAngle": "-90",
+  "stroke": "#000000",
+  "bg": "#ffffff",
+  "thickness": "5"
+}
+
+juniper
+{
+  "axiom": "A",
+  "rules": "A > AB[+AA+AB]\nB > BA[-BB-BA]",
+  "iters": "7",
+  "angle": "15",
+  "startAngle": "-90",
+  "stroke": "#000000",
+  "bg": "#ffffff",
+  "thickness": "5"
+}
+
+shrub2
+{
+  "axiom": "A",
+  "rules": "A > AB[+AA+BA]\nB > BA[-BB-AB]",
+  "iters": "7",
+  "angle": "15",
+  "startAngle": "-90",
+  "stroke": "#000000",
+  "bg": "#ffffff",
+  "thickness": "5"
+}
+
+shrub3
+{
+  "axiom": "A",
+  "rules": "A > AB[+AB+BA]\nB > BA[-BA-AB]",
+  "iters": "7",
+  "angle": "15",
+  "startAngle": "-90",
+  "stroke": "#000000",
+  "bg": "#ffffff",
+  "thickness": "5"
+}
+
+crab plant
+{
+  "axiom": "[A][B]",
+  "rules": "A > AB[+CAB+CA]\nB > BA[-CBA-CB]\nC > CC",
+  "iters": "8",
+  "angle": "48",
+  "startAngle": "-90",
+  "stroke": "#000000",
+  "bg": "#ffffff",
+  "thickness": "10"
+}
+
+deteriorating squares
+{
+  "axiom": "[A][B]",
+  "rules": "A > [+CA]C+[A][B]\nB > [-CB]C-[A][B]\nC > CC[A][B]",
+  "iters": "8",
+  "angle": "90",
+  "startAngle": "-90",
+  "stroke": "#000000",
+  "bg": "#ffffff",
+  "thickness": "9"
+}
+
+spiral branches
+{
+  "axiom": "AAAAAAAAAAAAA",
+  "rules": "A > [+CA]C+[A][B]\nB > [-CB]C-[A][B]\nC > CC[A][B]",
+  "iters": "7",
+  "angle": "150",
+  "startAngle": "-90",
+  "stroke": "#000000",
+  "bg": "#ffffff",
+  "thickness": "9"
+}
+
+spiky mandala
+{
+  "axiom": "A++A++A++A++A++A++A++A++A++A++A++A++A++A++A++A++A++A++A++A++A++A++A++A",
+  "rules": "A > [+CA]C+[A][B]\nB > [-CB]C-[A][B]\nC > CC[A][B]",
+  "iters": "7",
+  "angle": "145",
+  "startAngle": "-90",
+  "stroke": "#000000",
+  "bg": "#ffffff",
+  "thickness": "2"
+}
+
+

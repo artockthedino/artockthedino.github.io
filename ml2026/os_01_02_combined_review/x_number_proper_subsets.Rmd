@@ -1,0 +1,38 @@
+```{r,echo=FALSE}
+
+n = sample(3:10,1)
+S = sample(letters,n)
+
+```
+
+Question
+========
+
+Let set $S$ represent a collection of lower-case letters:
+
+$$S=\{`r paste0(S,collapse=",\\,")`\}$$
+
+Calculate the number of **proper** subsets of $S$.
+
+Solution
+========
+
+Set $S$ has `r n` elements.
+
+$$n(S)~=~`r n`$$
+
+The formula for the number of subsets is $2^{n(S)}$. But that includes $S$, which is not a proper subset of itself, so we need to subtract 1 to find the number of **proper** subsets.
+
+$$2^{`r n`}-1=`r 2^n-1`$$
+
+We could get fancy...
+
+$$n(\{A|A\subset S\})~=~2^{n(S)}-1$$
+
+
+
+Meta-information
+============
+extype: num
+exsolution: `r 2^n-1`
+exname: number_subsets

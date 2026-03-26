@@ -1,0 +1,31 @@
+```{r,echo=FALSE}
+n = sample(3:10,1)
+S = sample(letters,n)
+```
+
+Question
+========
+
+Let set $S$ represent a collection of lower-case letters:
+
+$$S=\{`r paste0(S,collapse=",\\,")`\}$$
+
+Calculate the number of subsets of $S$.
+
+Solution
+========
+
+Set $S$ has `r n` elements.
+
+$$n(S)~=~`r n`$$
+
+The formula for the number of subsets is $2^{n(S)}$.
+
+$$2^{`r n`}=`r 2^n`$$
+
+
+Meta-information
+============
+extype: num
+exsolution: `r 2^n`
+exname: number_subsets

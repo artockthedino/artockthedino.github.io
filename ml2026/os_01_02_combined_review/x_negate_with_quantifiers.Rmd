@@ -1,0 +1,72 @@
+```{r,echo=FALSE}
+
+nouns = c("apples","bugs","cats","dogs","elephants","flowers","giraffes","hawks","insects","jaguars","kangaroos","llamas","mice","narwhals","owls","ponies","quokkas","snakes","tulips","umbrellas","violins","whales","xylophones","zebras")
+
+adjectives = c("awesome","blue","curious","dangerous","enigmatic","furious","green","happy","indigo","jealous","killers","lame","menacing","nice","outgoing","pious","queens","red","sly","transient","umpires","violent","weak","xenophobic","yellow","zombies")
+
+phrases = c("All XXX are YYY.","No XXX are YYY.","Some XXX are YYY.","Some XXX are not YYY.")
+
+explains = c("$A$ is a subset of $B$.","$A$ and $B$ are disjoint.","the intersection of $A$ and $B$ is not empty.","$A$ is not a subset of $B$.")
+
+n = sample(nouns,1)
+a = sample(adjectives,1)
+
+phrases = gsub("XXX",n,phrases,fixed=T)
+phrases = gsub("YYY",a,phrases,fixed=T)
+
+
+explains = gsub("XXX",n,explains,fixed=T)
+explains = gsub("YYY",a,explains,fixed=T)
+
+i1 = sample(1:4,1)
+p1 = phrases[i1]
+p2 = phrases[5-i1]
+
+e1 = explains[i1]
+e2 = explains[5-i1]
+
+ach = sample(phrases)
+al = paste0("* ",ach,collapse="\n")
+sol = paste0(1*(ach==p2),collapse="")
+
+
+```
+
+Question
+========
+
+Let $p$ represent the quantified logical statement below.
+
+$$p: \text{ `r p1`}$$
+
+Which of the following represents the [negation](https://en.wikipedia.org/wiki/Negation#Negations_of_quantifiers) of $p$? In other words, which represents $\sim p$?
+
+Answerlist
+--------
+
+`r al`
+
+
+Solution
+========
+
+Let set $A$ represent the set of all things classified as `r n`.
+
+Let set $B$ represent the set of all things classified as `r a`.
+
+Statement $p$ says that `r e1`
+
+The logical negation, $\sim p$ would be that `r e2`
+
+Thus,
+
+$$\sim p: \text{ `r p2`}$$
+
+
+
+
+Meta-information
+============
+extype: schoice
+exsolution: `r sol`
+exname: negation_with_quatifiers
