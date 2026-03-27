@@ -1,0 +1,16 @@
+---
+title: "examples_0326"
+output: exams2forms::webquiz
+---
+
+```{r exams2forms-setup, include = FALSE}
+## package and exercises
+library("exams2forms")
+exm <- list("x_trarotglimir_rainbownet.Rmd", "x_recognize_Frieze_group.Rmd", 
+    "x_turtle_path_60.Rmd", "x_which_spirolateral.Rmd", "x_lsys_string_long.Rmd", 
+    "x_turtle_commands_A.Rmd", "x_which_lsys_fractal.Rmd")
+```
+
+```{r exams2forms-include, echo = FALSE, message = FALSE, results="asis"}
+exams2forms(exm,  n = 4, nsamp = NULL)
+```

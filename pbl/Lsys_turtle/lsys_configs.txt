@@ -303,6 +303,185 @@ space dog
   "thickness": "5"
 }
 
+radiation
+{
+  "axiom": "F++F++F",
+  "rules": "F > GGG-FF+G+FF-GGG\nG > F++G-F-G++F",
+  "iters": "6",
+  "angle": "60",
+  "startAngle": "0",
+  "stroke": "#febdff",
+  "bg": "#000000",
+  "thickness": "5"
+}
+
+frog
+{
+  "axiom": "F++F++F",
+  "rules": "F > GGG-FF+G+FF-GGG\nG > F++G-F-G++F",
+  "iters": "6",
+  "angle": "60",
+  "startAngle": "0",
+  "stroke": "#febdff",
+  "bg": "#000000",
+  "thickness": "5"
+}
+
+powerplant
+{
+  "axiom": "F",
+  "rules": "F > GGG-FF+G+FF-GGG\nG > F++GG-FFGFF-GG++F",
+  "iters": "6",
+  "angle": "90",
+  "startAngle": "90",
+  "stroke": "#d7e4fe",
+  "bg": "#000000",
+  "thickness": "10"
+}
+
+6 point start
+{
+  "axiom": "GGGGGG",
+  "rules": "F > GGG-FF+G+FF-GGG\nG > F++GG-FFGFF-GG++F",
+  "iters": "5",
+  "angle": "30",
+  "startAngle": "90",
+  "stroke": "#d7e4fe",
+  "bg": "#000000",
+  "thickness": "2"
+}
+
+diatom
+{
+  "axiom": "GGGGG",
+  "rules": "F > GGG-FF+G+FF-GGG\nG > F++GG-FFGFF-GG++F",
+  "iters": "5",
+  "angle": "72",
+  "startAngle": "0",
+  "stroke": "#d7e4fe",
+  "bg": "#000000",
+  "thickness": "8"
+}
+
+deteriorating perfection
+{
+  "axiom": "GGG",
+  "rules": "F > GGG-FF+G+FF-GGG\nG > F++GG-FFGGFF-GG++F",
+  "iters": "4",
+  "angle": "60",
+  "startAngle": "0",
+  "stroke": "#fbffc7",
+  "bg": "#000000",
+  "thickness": "4"
+}
+
+open arms
+{
+  "axiom": "G",
+  "rules": "F > GGG-FF+G+FF-GGG\nG > F++GG-FFGGFF-GG++F",
+  "iters": "5",
+  "angle": "45",
+  "startAngle": "-45",
+  "stroke": "#e3c7ff",
+  "bg": "#000000",
+  "thickness": "4"
+}
+
+reactor
+{
+  "axiom": "FFFFFFFFFFFF",
+  "rules": "F > GGG--FF+G+FF--GGG\nG > F++GG-FFG+GFF-GG++F",
+  "iters": "4",
+  "angle": "30",
+  "startAngle": "0",
+  "stroke": "#e3c7ff",
+  "bg": "#000000",
+  "thickness": "20"
+}
+
+smoke demon
+{
+  "axiom": "F",
+  "rules": "F > G-FF++HHH++FF-G\nG > FF+++H----GGGG----H+++FF\nH > HHH-----F++GG++F-----HHH",
+  "iters": "6",
+  "angle": "170",
+  "startAngle": "100",
+  "stroke": "#ffd6d6",
+  "bg": "#000000",
+  "thickness": "1"
+}
+
+electric watchers
+{
+  "axiom": "GGGGGGG",
+  "rules": "F > G-FF++HHH++FF-G\nG > FF+++H----GGGG----H+++FF\nH > HHH-----F++GG++F-----HHH",
+  "iters": "5",
+  "angle": "170",
+  "startAngle": "-10",
+  "stroke": "#d6faff",
+  "bg": "#000000",
+  "thickness": "5"
+}
+
+ritualistic artifact
+{
+  "axiom": "HH",
+  "rules": "F > G-FF++HHH++FF-G\nG > FF+++H----GGGG----H+++FF\nH > HHH-----F++GG++F-----HHH",
+  "iters": "5",
+  "angle": "170",
+  "startAngle": "0",
+  "stroke": "#f6ffd6",
+  "bg": "#000000",
+  "thickness": "5"
+}
+
+four brains on chains
+{
+  "axiom": "HHHH",
+  "rules": "F > G-FF++HHH++FF-G\nG > FF+++H----GGGG----H+++FF\nH > HHH-----F++GG++F-----HHH",
+  "iters": "5",
+  "angle": "165",
+  "startAngle": "0",
+  "stroke": "#ffffff",
+  "bg": "#000000",
+  "thickness": "3"
+}
+
+stellar
+{
+  "axiom": "F-F-F-F-F-F-F-F",
+  "rules": "F > G-FF++HHH++FF-G\nG > FF+++H----GGGG----H+++FF\nH > HHH-----F++GG++F-----HHH",
+  "iters": "5",
+  "angle": "165",
+  "startAngle": "7.5",
+  "stroke": "#ffffff",
+  "bg": "#000000",
+  "thickness": "2"
+}
+
+four skulls
+{
+  "axiom": "F++F++F++F",
+  "rules": "F > G-FF++HHH++FF-G\nG > FF+++H----GGGG----H+++FF\nH > HHH-----F++GG++F-----HHH",
+  "iters": "5",
+  "angle": "165",
+  "startAngle": "-15",
+  "stroke": "#ffffff",
+  "bg": "#000000",
+  "thickness": "3"
+}
+
+space station
+{
+  "axiom": "FFF",
+  "rules": "F > G-FF++HHH++FF-G\nG > FF+++H----GGGG----H+++FF\nH > HHH-----F++GG++F-----HHH",
+  "iters": "5",
+  "angle": "150",
+  "startAngle": "0",
+  "stroke": "#ffffff",
+  "bg": "#000000",
+  "thickness": "3"
+}
 
 
 
