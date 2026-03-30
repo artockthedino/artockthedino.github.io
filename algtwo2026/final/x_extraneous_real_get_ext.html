@@ -11,7 +11,7 @@
 
 
 
-<title>x_sqrt_line_one_extran.knit</title>
+<title>x_extraneous_real_get_ext.knit</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -355,7 +355,7 @@ display: none;
 <div id="question" class="section level1">
 <h1>Question</h1>
 <p>Consider the equation.</p>
-<p><span class="math display">\[\sqrt{-3x+31}-9=-1x-2\]</span></p>
+<p><span class="math display">\[\sqrt{-2x-5}+9=-x+5\]</span></p>
 <p>By using algebra, find both possible solutions. Try validating both
 possible solutions to determine whether each is extraneous or valid.</p>
 <p>Let <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span> represent the two possible solutions
@@ -430,38 +430,37 @@ solution.</li>
 </div>
 <div id="solution" class="section level1">
 <h1>Solution</h1>
-<p><span class="math display">\[-9+\sqrt{-3x+31}=-1x-2\]</span></p>
-<p>Add 9 to both sides.</p>
-<p><span class="math display">\[\sqrt{-3x+31}=-1x+7\]</span></p>
+<p><span class="math display">\[9+\sqrt{-2x-5}=-1x+5\]</span></p>
+<p>Subtract 9 from both sides.</p>
+<p><span class="math display">\[\sqrt{-2x-5}=-1x-4\]</span></p>
 <p>Square both sides.</p>
-<p><span class="math display">\[-3x+31=1x^2-14x+49\]</span></p>
-<p>Subtract <span class="math inline">\(-3x+31\)</span> from both
+<p><span class="math display">\[-2x-5=1x^2+8x+16\]</span></p>
+<p>Subtract <span class="math inline">\(-2x-5\)</span> from both
 sides.</p>
-<p><span class="math display">\[0=1x^2-11x+18\]</span></p>
+<p><span class="math display">\[0=1x^2+10x+21\]</span></p>
 <p>Factor the quadratic expression (or you can use quadratic formula to
 find <em>possible</em> solutions).</p>
-<p><span class="math display">\[y=(x-2)(x-9)\]</span></p>
-<p>So the two possible solutions are <span class="math inline">\(x_1=2\)</span> and <span class="math inline">\(x_2=9\)</span>. Notice <span class="math inline">\(x_1&lt;x_2\)</span>, as required. But, we need to
+<p><span class="math display">\[y=(x+7)(x+3)\]</span></p>
+<p>So the two possible solutions are <span class="math inline">\(x_1=-7\)</span> and <span class="math inline">\(x_2=-3\)</span>. Notice <span class="math inline">\(x_1&lt;x_2\)</span>, as required. But, we need to
 check these, because it is possible one (or both) of them is an <a href="https://en.wikipedia.org/wiki/Extraneous_and_missing_solutions">extraneous
 solution</a>.</p>
-<p>First substitute <span class="math inline">\(2\)</span> for <span class="math inline">\(x\)</span> in the original equation. Simplify both
+<p>First substitute <span class="math inline">\(-7\)</span> for <span class="math inline">\(x\)</span> in the original equation. Simplify both
 sides to check if solution is valid.</p>
-<p><span class="math display">\[-9+\sqrt{-3(2)+31}\stackrel{?}{=}-1(2)-2\]</span>
-<span class="math display">\[-9+\sqrt{25}\stackrel{?}{=}-4\]</span>
-<span class="math display">\[-9+5\stackrel{?}{=}-4\]</span> <span class="math display">\[-4\stackrel{?}{=}-4\]</span></p>
-<p>Yes! So 2 is a valid solution.</p>
-<p>Now substitute <span class="math inline">\(9\)</span> for <span class="math inline">\(x\)</span> in the original equation. Simplify both
+<p><span class="math display">\[9+\sqrt{-2(-7)-5}\stackrel{?}{=}-1(-7)+5\]</span>
+<span class="math display">\[9+\sqrt{9}\stackrel{?}{=}12\]</span> <span class="math display">\[9+3\stackrel{?}{=}12\]</span> <span class="math display">\[12\stackrel{?}{=}12\]</span></p>
+<p>Yes! So -7 is a valid solution.</p>
+<p>Now substitute <span class="math inline">\(-3\)</span> for <span class="math inline">\(x\)</span> in the original equation. Simplify both
 sides to check if solution is valid.</p>
-<p><span class="math display">\[-9+\sqrt{-3(9)+31}\stackrel{?}{=}-1(9)-2\]</span></p>
-<p><span class="math display">\[-9+\sqrt{4}\stackrel{?}{=}-11\]</span></p>
-<p><span class="math display">\[-9+2\stackrel{?}{=}-11\]</span></p>
-<p><span class="math display">\[-7\stackrel{?}{=}-11\]</span></p>
-<p>Nope! So 9 is an extraneous solution.</p>
+<p><span class="math display">\[9+\sqrt{-2(-3)-5}\stackrel{?}{=}-1(-3)+5\]</span></p>
+<p><span class="math display">\[9+\sqrt{1}\stackrel{?}{=}8\]</span></p>
+<p><span class="math display">\[9+1\stackrel{?}{=}8\]</span></p>
+<p><span class="math display">\[10\stackrel{?}{=}8\]</span></p>
+<p>Nope! So -3 is an extraneous solution.</p>
 </div>
 <div id="meta-information" class="section level1">
 <h1>Meta-information</h1>
 <p>extype: cloze exclozetype: schoice|schoice|schoice|schoice
-exsolution: 0000000000000010000000000|0000000000000000000001000|01|10
+exsolution: 0000010000000000000000000|0000000001000000000000000|01|10
 exname: sqrt_line_one_extran</p>
 </div>
 

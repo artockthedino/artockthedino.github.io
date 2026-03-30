@@ -1,0 +1,14 @@
+---
+title: "examples_0330"
+output: exams2forms::webquiz
+---
+
+```{r exams2forms-setup, include = FALSE}
+## package and exercises
+library("exams2forms")
+exm <- list("x_quadratic_from_zeros.Rmd", "x_poly_sketch.Rmd", "x_poly_sketch_dubs.Rmd")
+```
+
+```{r exams2forms-include, echo = FALSE, message = FALSE, results="asis"}
+exams2forms(exm,  n = 12, nsamp = NULL)
+```

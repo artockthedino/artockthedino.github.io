@@ -1,0 +1,159 @@
+```{r,echo=FALSE}
+n = sample(2:5,1)
+while(T){
+    root = sort(sample(1:8,n)*sample(c(-1,1),n,T))
+    if(min(diff(root))>1 && max(diff(root))<7){break}
+}
+a = sample(c(-1,1),1)
+
+rmix = sample(root)
+if(a==1){
+    exp1 = paste0("(x+",-rmix,")",collapse="")
+    exp2 = paste0("(x+",rmix,")",collapse="")
+    exp3 = paste0("-",paste0("(x+",-rmix,")",collapse=""))
+    exp4 = paste0("-",paste0("(x+",rmix,")",collapse=""))
+    exp5 = paste0("(x+",-root,")",collapse="")
+    exp6 = paste0("a",paste0("(x+",-root,")",collapse=""))
+} else {
+    exp1 = paste0("-",paste0("(x+",-rmix,")",collapse=""))
+    exp2 = paste0("-",paste0("(x+",rmix,")",collapse=""))
+    exp3 = paste0("(x+",-rmix,")",collapse="")
+    exp4 = paste0("(x+",rmix,")",collapse="")
+    exp5 = paste0("-",paste0("(x+",-root,")",collapse=""))
+    exp6 = paste0("a",paste0("(x+",-root,")",collapse=""))
+}
+exp1 = gsub("+-","-",exp1,fixed=T)
+exp2 = gsub("+-","-",exp2,fixed=T)
+exp3 = gsub("+-","-",exp3,fixed=T)
+exp4 = gsub("+-","-",exp4,fixed=T)
+exp5 = gsub("+-","-",exp5,fixed=T)
+exp6 = gsub("+-","-",exp6,fixed=T)
+
+exps = sample(c(exp1,exp2,exp3,exp4))
+al = paste0("* $y=",exps,"$",collapse="\n")
+sol = paste0(1*(exps==exp1),collapse="")
+
+```
+
+Question
+========
+
+A polynomial is sketched below.
+
+```{r,echo=F,fig.dim=c(4,4)}
+par(mar=c(0,0,0,0))
+plot(0,0,"n",axes=F,ann=F,xlim=c(-10,10),ylim=c(-2,2))
+abline(v=0,lwd=1)
+abline(h=0,lwd=2)
+for(i in -10:10){
+    if(i%%5==0 && i!=0){
+        lines(c(i,i),c(-0.1,0.1))
+        text(i,-0.2,i)
+    } else {
+        lines(c(i,i),c(-0.05,0.05))
+    }
+}
+xs = root
+ts = rev(-(0:(n-1))*pi)
+xwave = seq(min(xs),max(xs),0.01)
+daslope = 1.2
+sf = splinefunH(xs,ts,rep(daslope,n))
+# print(typeof(sf))
+# print(sf)
+lines(xwave,a*sin(sf(xwave)),col="blue",lwd=3)
+points(root,rep(0,n),pch=19,col="blue")
+
+# lines(c(max(root),max(root)+2),c(0,2*a),col="blue",lwd=3)
+# lines(c(min(root),min(root)-2),c(0,2*a*(-1)^n),col="blue",lwd=3)
+arrows(max(root),0,max(root)+1.5,1.5*a*daslope,col="blue",lwd=3,length=0.1,angle=15)
+arrows(min(root),0,min(root)-1.5,1.5*a*(-1)^n*daslope,col="blue",lwd=3,length=0.1,angle=15)
+
+```
+\
+
+Which polynomial (in factored form) best matches the sketch?
+
+Answerlist
+--------
+
+`r al`
+
+
+Solution
+========
+
+If a polynomial has a factor of $(x-r)$, then there will be an $x$-intercept at $(r,0)$.
+
+In this case, the roots (the $x$-intercepts) are at:
+
+$$`r paste0(root, collapse=",\\,")`$$
+
+```{r,echo=F}
+ss = paste0("$x+",-root,"$",collapse=" and ")
+ss = gsub("+-","-",ss,fixed=T)
+```
+
+Thus, the factors are `r ss`. So, we know that the function could be written as:
+
+$$y=`r exp6`$$
+
+where $a$ is some constant.
+
+Lastly, we need to determine whether $a$ should be positive or negative. In this problem, either $a=1$ or $a=-1$. To determine this, look at the right side of the graph. Specifically, we are considering the [end behavior of polynomials](https://www.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89:poly-graphs/x2ec2f6f830c9fb89:poly-end-behavior/a/end-behavior-of-polynomials). Notice that once $x$ is larger than $`r max(root)`$, all the factors will be positive, so only $a$ will dictate whether the function on the right side is positive or negative.
+
+```{r,echo=F,fig.dim=c(4,4)}
+par(mar=c(0,0,0,0))
+plot(0,0,"n",axes=F,ann=F,xlim=c(-10,10),ylim=c(-2,2))
+abline(v=0,lwd=1)
+abline(h=0,lwd=2)
+for(i in -10:10){
+    if(i%%5==0 && i!=0){
+        lines(c(i,i),c(-0.1,0.1))
+        text(i,-0.2,i)
+    } else {
+        lines(c(i,i),c(-0.05,0.05))
+    }
+}
+xs = root
+ts = rev(-(0:(n-1))*pi)
+xwave = seq(min(xs),max(xs),0.01)
+sf = splinefunH(xs,ts,rep(1,n))
+# print(typeof(sf))
+# print(sf)
+lines(xwave,a*sin(sf(xwave)),col="grey",lwd=3)
+points(root,rep(0,n),pch=19,col="grey")
+
+# lines(c(max(root),max(root)+2),c(0,2*a),col="blue",lwd=3)
+# lines(c(min(root),min(root)-2),c(0,2*a*(-1)^n),col="blue",lwd=3)
+arrows(max(root),0,max(root)+2,2*a,col="red",lwd=3,length=0.1,angle=15)
+arrows(min(root),0,min(root)-2,2*a*(-1)^n,col="grey",lwd=3,length=0.1,angle=15)
+
+if(a>0){
+    wrd1 = "up"
+    wrd2 = "positive"
+} else {
+    wrd1 = "down"
+    wrd2 = "negative"
+}
+
+```
+\
+
+Notice, on the right side, the function is heading `r wrd1`. I guess more importantly, as $x\to \infty$ we see the function is `r wrd2`. This implies that $a$ is `r wrd2`. So, in this case, $a=`r a`$.
+
+$$y=`r exp5`$$
+
+```{r,echo=F,results="asis"}
+if(exp5!=exp1){
+    cat("And then, since multiplication is commutative, the factors can be written in any order. In this case, the correct answer is:")
+    cat(paste0("\n\n$$y=",exp1,"$$"))
+}
+```
+
+
+
+Meta-information
+============
+extype: schoice
+exsolution: `r sol`
+exname: poly_sketch

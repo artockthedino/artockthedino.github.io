@@ -41,8 +41,8 @@ badfactor = pn(c(-a,b),1:0)
 
 ach = c(pn(c(a,-b),1:0),
         pn(c(a,b),1:0),
-        pn(c(b,a),1:0),
-        pn(c(b,-a),1:0))
+        pn(c(abs(b),a),1:0),
+        pn(c(abs(b),-a),1:0))
 
 ach = sample(ach)
 al = paste0("* $",ach,"$",collapse="\n")

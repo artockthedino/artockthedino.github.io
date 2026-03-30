@@ -6,7 +6,7 @@ library(latex2exp)
 qtexts = character()
 atexts = character()
 
-nroot = sample(2:4,1)
+nroot = sample(2:5,1)
 mult = sample(1:2,nroot,T)
 xint = sample(1:5,nroot)*sample(c(-1,1),nroot,T)
 
