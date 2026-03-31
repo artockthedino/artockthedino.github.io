@@ -1,32 +1,26 @@
 library("exams")
-n = 10
+n = 30
 outdir = "outcanvas"
 
 ### Entrance ticket
-pm = list("x_which_lsys_fractal.Rmd")
+pm = list("x_vote_ranked_choice.Rmd")
 exams2canvas(pm,
              n=n,
              dir=outdir,
-             points=rep(10,length(pm)),
-             maxattempts = 3,
-             name="pbl_0330_ET",
+             points=rep(12,length(pm)),
+             maxattempts = 6,
+             name="m0331_ET",
              template = "canvas_qti12.xml",
              cloze = list(enumerate = FALSE))
 
-# pm = c("math_facts_add.Rmd",
-#        "math_facts_sub.Rmd",
-#        "math_facts_mul.Rmd",
-#        "math_facts_div.Rmd")
-# 
-# pm = c(pm,sample(pm),sample(pm))
-# 
+# pm = list("x_cond_cp_con_inv.Rmd",
+#           "x_cond_cp_con_inv.Rmd")
 # exams2canvas(pm,
 #              n=n,
 #              dir=outdir,
-#              points=rep(2,length(pm)),
+#              points=rep(4,length(pm)),
 #              maxattempts = 6,
-#              name="pbl_0302_math_facts",
-#              converter = "tex2image",
+#              name="m0325c_conditional_variations",
 #              template = "canvas_qti12.xml",
 #              cloze = list(enumerate = FALSE))
 

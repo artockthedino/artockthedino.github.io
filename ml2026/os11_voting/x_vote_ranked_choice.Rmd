@@ -1,0 +1,174 @@
+```{r,echo=FALSE,warning=FALSE}
+ncand = 4
+npref = 5
+nvote = 101
+
+borda = function(counts,prefs){
+    np = length(prefs)
+    nc = length(prefs[[1]])
+    bps = rep(0,nc)
+    for(i in 1:np){
+        for(j in 1:nc){
+            bp = nc-prefs[[i]][j]
+            bps[j] = bps[j]+bp
+        }
+    }
+    win = which(bps==max(bps))
+    if(length(win)>1){
+        return(0)
+    } else {
+        return(win)
+    }
+}
+
+rcv = function(counts,prefs){
+    nrounds = 0
+    whowon = 0
+    N = sum(counts)
+    np = length(prefs)
+    nc = length(prefs[[1]])
+    majority = N%/%2+1
+    winner = F
+    cannies = 1:nc
+    while(winner==F){
+        # print(cannies)
+        nrounds = nrounds+1
+        vcs = rep(0,length(cannies))
+        for(i in 1:np){
+            p = prefs[[i]]
+            jj = which(p==min(p[cannies]))
+            vcs[which(cannies==jj)] = vcs[which(cannies==jj)]+counts[i]
+        }
+        # print(vcs)
+        if(max(vcs)>=majority){
+            winner=T
+            whowon = cannies[which(vcs==max(vcs))]
+        } else {
+            if(length(cannies)==2){
+                return(c(0,nrounds))
+            }
+            jj = which(vcs==min(vcs))
+            if(length(jj)>1){
+                return(c(0,nrounds))
+            }
+            # print(jj)
+            cannies = cannies[-jj]
+        }
+    }
+    return(c(whowon,nrounds))
+}
+
+most1s = function(counts,prefs){
+    np = length(prefs)
+    nc = length(prefs[[1]])
+    vcs = rep(0,nc)
+    for(i in 1:np){
+        p = prefs[[i]]
+        j = which(p==min(p))
+        vcs[j] = vcs[j]+counts[i]
+    }
+    jj = which(vcs==max(vcs))
+    if(length(jj)>1){
+        return(0)
+    } else {
+        return(jj)
+    }
+}
+
+while(T){
+    prefs = list()
+    while(length(prefs)<npref){
+        pref = sample(1:ncand)
+        if(!(list(pref)%in%prefs)){
+            prefs[[length(prefs)+1]] = pref
+        }
+    }
+    cuts = sort(c(0,sample(1:(nvote-1),npref-1),nvote))
+    counts = diff(cuts)
+    allgot1 = T
+    for(i in 1:ncand){
+        got1 = F
+        for(j in 1:npref){
+            if(prefs[[j]][i]==1){
+                got1 = T
+            }
+        }
+        if(got1 == F){
+            allgot1 = F
+            break
+        }
+    }
+    RCV = rcv(counts,prefs)
+    BORDA = borda(counts,prefs)
+    m1 = most1s(counts,prefs)
+    if(RCV[2]>1 && allgot1 && RCV[1]>0 && RCV[1]!=m1 && BORDA!=0 && BORDA!=m1 && BORDA != RCV[1] && m1!=0){break}
+}
+
+ach = paste0("Candidate ",LETTERS[1:ncand])
+al = paste0("* ",ach,collapse="\n")
+sol1 = paste0(1*(1:ncand==m1),collapse="")
+sol2 = paste0(1*(1:ncand==RCV[1]),collapse="")
+sol3 = paste0(1*(1:ncand==BORDA),collapse="")
+
+# prefs = list()
+# while(length(prefs)<npref){
+#     pref = sample(1:ncand)
+#     if(!(list(pref)%in%prefs)){
+#         prefs[[length(prefs)+1]] = pref
+#     }
+# }
+# cuts = sort(c(0,sample(1:(nvote-1),npref-1),nvote))
+# counts = diff(cuts)
+
+```
+
+Question
+========
+
+In an election, `r nvote` voters filled out ranked preferences for `r ncand` candidates. Luckily, although there are `r factorial(ncand)` possible rankings, only `r npref` rankings were cast.
+
+| candidate | `r paste0(counts," voters | ",collapse="")`
+|:---:|`r paste0(rep(":---:|",npref),collapse="")`
+```{r,echo=F,results='asis'}
+for(i in 1:ncand){
+    cat(paste0("| candidate ",LETTERS[i]," | "))
+    for(j in 1:npref){
+        cat(paste0(prefs[[j]][i]," | "))
+    }
+    cat("\n")
+}
+```
+
+1. Who won the most 1st-place votes?
+##ANSWER1##
+2. Who won using ranked-choice (instant runoff) voting system?
+##ANSWER2##
+3. Who won using Borda count voting system?
+##ANSWER3##
+
+Answerlist
+--------
+
+`r al`
+`r al`
+`r al`
+
+
+
+Solution
+========
+
+
+Sorry, I'm still working on an explanation.
+
+* The winner of most first-place votes is `r ach[m1]`.
+* The winner of RCV is `r ach[RCV[1]]`.
+* The winner of Borda voting is `r ach[BORDA]`.
+
+
+Meta-information
+============
+extype: cloze
+exclozetype: schoice|schoice|schoice
+exsolution: `r sol1`|`r sol2`|`r sol3`
+exname: voting_methods

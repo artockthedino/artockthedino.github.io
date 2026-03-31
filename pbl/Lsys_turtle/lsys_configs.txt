@@ -484,4 +484,84 @@ space station
 }
 
 
+fortress
+{
+  "axiom": "GGGGGG",
+  "rules": "F > G-FF++HHH++FF-G\nG > FF+++H----GGGG----H+++FF\nH > HHH-----F++GFG++F-----HHH",
+  "iters": "5",
+  "angle": "150",
+  "startAngle": "0",
+  "stroke": "#ffffff",
+  "bg": "#000000",
+  "thickness": "3"
+}
+
+sand dollar
+{
+  "axiom": "GGGGG",
+  "rules": "F > G-FF++HHGHH++FF-G\nG > FF+++H----GGGG----H+++FF\nH > HHH-----F++GFG++F-----HHH",
+  "iters": "5",
+  "angle": "108",
+  "startAngle": "0",
+  "stroke": "#ffffff",
+  "bg": "#000000",
+  "thickness": "3"
+}
+
+virus
+{
+  "axiom": "G",
+  "rules": "F > G-FF++HHGHH++FF-G\nG > FF+++H----GGGG----H+++FF\nH > HHH-----F++GFG++F-----HHH",
+  "iters": "6",
+  "angle": "135",
+  "startAngle": "45",
+  "stroke": "#ffffff",
+  "bg": "#000000",
+  "thickness": "10"
+}
+
+moth
+{
+  "axiom": "H",
+  "rules": "F > G-FF++HH+G+HH++FF-G\nG > FF+++H----GGG----H+++FF\nH > HHH-----F++GFG++F-----HHH",
+  "iters": "6",
+  "angle": "135",
+  "startAngle": "45",
+  "stroke": "#ffffff",
+  "bg": "#000000",
+  "thickness": "5"
+}
+
+skull with rings
+{
+  "axiom": "F",
+  "rules": "F > H---GG++FFFF++GG---H\nG > FFF++++HH-----HH++++FFF\nH > G++HHHHH-FFF-HHHHH++G",
+  "iters": "5",
+  "angle": "30",
+  "startAngle": "90",
+  "stroke": "#ffffff",
+  "bg": "#000000",
+  "thickness": "10"
+}
+
+bug-eyed fluffball
+{
+  "axiom": "H",
+  "rules": "F > H---GG++FFFF++GG---H\nG > FFF++++HH-----HH++++FFF\nH > G++HHHHH-FFGFF-HHHHH++G",
+  "iters": "5",
+  "angle": "170",
+  "startAngle": "-105",
+  "stroke": "#ffffff",
+  "bg": "#000000",
+  "thickness": "10"
+}
+
+
+Here: 
+
+Katie Minish
+Darrius Roberts-Labshere
+Simon Wallis
+Eliza Erwin
+
 
