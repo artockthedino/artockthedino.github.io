@@ -557,11 +557,33 @@ bug-eyed fluffball
 }
 
 
-Here: 
+chandelier
+{
+  "axiom": "A",
+  "rules": "A > CC[++C+A][--C-A]\nB > C[---CCB][+++CCB]\nC > CAB",
+  "iters": "9",
+  "angle": "60",
+  "startAngle": "90",
+  "stroke": "#f6ffd6",
+  "bg": "#000000",
+  "thickness": "20"
+}
 
-Katie Minish
-Darrius Roberts-Labshere
-Simon Wallis
-Eliza Erwin
+snowflake
+{
+  "axiom": "[C][++C][--C]+[C][++C][--C]",
+  "rules": "A > CC[++C+A][--C-A]\nB > C[---CCB][+++CCB]\nC > BAC",
+  "iters": "8",
+  "angle": "60",
+  "startAngle": "90",
+  "stroke": "#ffffff",
+  "bg": "#00abc2",
+  "thickness": "30"
+}
+
+
+
+
+4th degree polynomial... give a complex root.
 
 

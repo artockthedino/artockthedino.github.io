@@ -1,6 +1,8 @@
 ```{r,echo=FALSE,warning=FALSE}
-ncand = 4
-npref = 5
+## ALSO NEED 2-round runoff
+
+ncand = 6
+npref = 10
 nvote = 101
 
 borda = function(counts,prefs){
