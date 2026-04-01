@@ -11,7 +11,7 @@
 
 
 
-<title>x_vote_ranked_choice.knit</title>
+<title>examples_0401</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -252,6 +252,252 @@ if (window.hljs) {
 
 
 
+<style type="text/css">:root {
+--incorrect: #983E82;
+--incorrect_alpha: #edaddd;
+--correct: #59935B;
+--correct_alpha: #c0edc2;
+--highlight: #467AAC;
+--highlight_alpha: #D1E4FF;
+--highlight_gray: #C3C3C3;
+--background_question: #7f7f7f0d;
+--background_input: white;
+--text_input: black;
+--webex-reveal-main-font-size: 1.5rem; 
+--webex-reveal-main-color: var(--r-main-color);
+}
+
+
+:root .quarto-dark, :root .color-theme-2 {
+--highlight: #5687B9;
+--background_input: black;
+--text_input: white;
+}
+
+.reveal .webex-question * {
+font-size: var(--webex-reveal-main-font-size) !important;
+color: var(--webex-reveal-main-color) !important;
+} 
+
+.webex-group .webex-question {
+display: none;
+}
+.webex-group .webex-question.active {
+display: block;
+}
+.webex-check {}
+.webex-box {
+border: 2px solid var(--highlight);
+padding: 0.5em;
+margin: 1em 0;
+border-radius: .25em;
+background-color: var(--background_question);
+}
+.webex-filename {
+display: block;
+font-family: "Lucida Console", "Courier New", monospace;
+color: gray;
+text-align: right;
+}
+.webex-filename > p { margin: 0; }
+.webex-total_correct {
+margin-left: 1em;
+}
+.unchecked .webex-total_correct {
+display: none;
+}
+.unchecked .webex-incorrect,
+.unchecked .webex-correct {
+border: 2px solid transparent !important;
+background-color: transparent !important;
+}
+
+.unchecked select.webex-incorrect,
+.unchecked select.webex-correct,
+.unchecked input.webex-incorrect,
+.unchecked input.webex-correct {
+border: 2px solid var(--highlight) !important;
+background-color: var(--background_input) !important;
+color: var(--text_input) !important;
+}
+
+.webex-select, .webex-solveme,
+.unchecked .webex-radiogroup > .webex-incorrect,
+.unchecked .webex-radiogroup > .webex-correct{
+border: 2px solid var(--highlight);
+background-color: var(--background_input);
+color: var(--text_input) !important;
+border-radius: 0.25em;
+width: auto;
+max-width: 90%;
+}
+.webex-question .tolerance + .webex-solveme {
+border-top-left-radius: 0;
+border-bottom-left-radius: 0;
+border-left: none;
+padding-left: 0.5em;
+}
+.webex-question .tolerance {
+border-color: var(--highlight);
+border-radius: 0.25em;
+background-color: #CECECE;
+color: gray;
+text-align: right;
+border-top-right-radius: 0;
+border-bottom-right-radius: 0;
+border-style: solid;
+border-right: none;
+padding-right: .5em;
+padding-left: .25em;
+}
+.webex-check:not(.unchecked) .tolerance:has(+ .webex-solveme.webex-incorrect) {
+border-color: var(--incorrect);
+color: var(--incorrect);
+}
+.webex-check:not(.unchecked) .tolerance:has(+ .webex-solveme.webex-correct) {
+border-color: var(--correct);
+color: var(--correct);
+}
+.webex-incorrect, .webex-checkboxgroup, .webex-solveme. .webex-radiogroup {
+
+border-radius: 0.25em;
+}
+.webex-checkboxgroup {
+margin-bottom: 1em;
+}
+.webex-incorrect,
+.webex-checkboxgroup > .webex-incorrect,
+.webex-solveme.webex-incorrect,
+.webex-radiogroup > .webex-incorrect {
+border: 2px solid var(--incorrect);
+background-color: var(--incorrect_alpha);
+}
+.webex-correct, .webex-checkboxgroup > .webex-correct,
+.webex-solveme.webex-correct,
+.webex-radiogroup >.webex-correct {
+border: 2px solid var(--correct);
+background-color: var(--correct_alpha);
+}
+.unchecked .webex-incorrect > span::after,
+.unchecked .webex-incorrect + .webex-icon::after,
+.unchecked .webex-correct > span::after,
+.unchecked .webex-correct + .webex-icon::after {
+content: "";
+}
+
+.webex-incorrect > span::after,
+.webex-incorrect + .webex-icon::after {
+content: "\00a0\00a0\2715";
+}
+.webex-correct > span::after,
+.webex-correct + .webex-icon::after {
+content: "\00a0\00a0\2713";
+}
+
+
+
+.webex-solution {
+display: none;
+padding: 0.5em;
+margin-bottom: 10px;
+border: 2px solid var(--highlight_gray);
+border-radius: 5px;
+}
+.webex-solution.visible {
+display: block;
+}
+.webex-solution > ul {
+padding-left: 2em;
+}
+
+ul.webex-button-list {
+display: flex;
+flex-wrap: wrap;
+width: 100%;
+list-style: none;
+padding: 0 !important; 
+margin: 0 !important; 
+}
+ul.webex-button-list > li {
+padding: 0;
+}
+ul.webex-button-list > li {
+margin-bottom: 0 !important; 
+}
+ul.webex-button-list > li:first-child {
+margin-right: auto;
+margin-top: 0; 
+}
+.webex-solution button,
+.webex-box .webex-button {
+height: 2em;
+min-width: 2em;
+margin-bottom: 0;
+margin-right: 0.25em;
+border-radius: 0.5em;
+background-color: transparent;
+border-color: var(--highlight);
+color: var(--highlight);
+padding: 0 0.5em;
+font-size: 1.2em;
+white-space: nowrap;
+}
+.webex-button:hover {
+background-color: var(--highlight_alpha);
+}
+.webex-solution pre.sourceCode {
+border-color: var(--correct);
+}
+ul.webex-button-list > li:last-child > .webex-button { margin-right: 0;
+}
+
+.webex-checkboxgroup > label,
+.unchecked .webex-checkboxgroup > label,
+.webex-radiogroup label {
+font-weight: 400;
+display: block;
+border: 2px solid transparent;
+background-color: inherit;
+border-radius: 0.25em;
+}
+.webex-checkboxgroup label > input[type=checkbox],
+.webex-radiogroup label > input[type=radio] {
+margin: 0.1em 0.5em 0 0.25em;
+position: relative;
+top: 0.125em;
+}
+.webex-radiogroup {
+margin: 1em 0;
+}
+
+.webex-box > ul:not(.webex-button-list) {
+list-style: none;
+margin: 0;
+padding: 0 0 1em 0.25em;
+}
+.webex-box > ul:not(.webex-button-list) > li {
+margin: 0 0 0.25em 0;
+}
+.webex-box > ul:not(.webex-button-list) > li > select {
+margin: 0 0.5em 0 0;
+}
+
+.webex-checkboxgroup > label {
+display: block;
+}
+.webex-checkboxgroup > label > span {
+font-weight: normal;
+}
+.unchecked .webex-checkboxgroup .webex-incorrect,
+.unchecked .webex-checkboxgroup .webex-correct {
+border: 2px solid transparent !important;
+background-color: transparent !important;
+}
+.unchecked .webex-checkboxgroup > label.webex-correct,
+.unchecked .webex-checkboxgroup > label.webex-incorrect {
+background-color: transparent;
+}
+</style>
 
 
 
@@ -348,13 +594,735 @@ display: none;
 
 
 
+<h1 class="title toc-ignore">examples_0401</h1>
 
 </div>
 
 
-<div id="question" class="section level1">
-<h1>Question</h1>
-<p>In an election, 55 voters filled out ranked preferences for 6
+<div class="webex-group">
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>In an election, 147 voters filled out ranked preferences for 6
+candidates. Luckily, although there are 720 possible rankings, only 10
+rankings were cast.</p>
+<table>
+<colgroup>
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">candidate</th>
+<th align="center">ranking of 2 voters</th>
+<th align="center">ranking of 6 voters</th>
+<th align="center">ranking of 18 voters</th>
+<th align="center">ranking of 4 voters</th>
+<th align="center">ranking of 8 voters</th>
+<th align="center">ranking of 19 voters</th>
+<th align="center">ranking of 18 voters</th>
+<th align="center">ranking of 32 voters</th>
+<th align="center">ranking of 26 voters</th>
+<th align="center">ranking of 14 voters</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">candidate A</td>
+<td align="center">6</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">6</td>
+<td align="center">3</td>
+<td align="center">3</td>
+<td align="center">3</td>
+<td align="center">6</td>
+<td align="center">6</td>
+<td align="center">3</td>
+</tr>
+<tr class="even">
+<td align="center">candidate B</td>
+<td align="center">5</td>
+<td align="center">4</td>
+<td align="center">3</td>
+<td align="center">3</td>
+<td align="center">5</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">5</td>
+<td align="center">5</td>
+</tr>
+<tr class="odd">
+<td align="center">candidate C</td>
+<td align="center">1</td>
+<td align="center">6</td>
+<td align="center">6</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="center">6</td>
+<td align="center">5</td>
+<td align="center">3</td>
+<td align="center">3</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="center">candidate D</td>
+<td align="center">3</td>
+<td align="center">3</td>
+<td align="center">5</td>
+<td align="center">4</td>
+<td align="center">6</td>
+<td align="center">4</td>
+<td align="center">1</td>
+<td align="center">5</td>
+<td align="center">4</td>
+<td align="center">2</td>
+</tr>
+<tr class="odd">
+<td align="center">candidate E</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">4</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">4</td>
+</tr>
+<tr class="even">
+<td align="center">candidate F</td>
+<td align="center">4</td>
+<td align="center">5</td>
+<td align="center">1</td>
+<td align="center">5</td>
+<td align="center">1</td>
+<td align="center">5</td>
+<td align="center">6</td>
+<td align="center">4</td>
+<td align="center">1</td>
+<td align="center">6</td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: decimal">
+<li>Who won the plurality of most 1st-place votes?
+<select class="webex-select" id="webex-2d49e76884b0fc407ff3b488cb29fc71" data-answer="aVQYCUkHGggUBE4BOw=="><option value="blank"></option><option>Candidate
+A</option><option>Candidate B</option><option>Candidate
+C</option><option>Candidate D</option><option>Candidate
+E</option><option>Candidate F</option></select></li>
+<li>Who won using ranked-choice (<a href="https://en.wikipedia.org/wiki/Instant-runoff_voting">instant
+runoff</a>) voting system?
+<select class="webex-select" id="webex-c37910f9c0f629bb96321cd8a64b02ce" data-answer="OAMbCB0ASglPAEoGbw=="><option value="blank"></option><option>Candidate
+A</option><option>Candidate B</option><option>Candidate
+C</option><option>Candidate D</option><option>Candidate
+E</option><option>Candidate F</option></select></li>
+<li>Who won using <a href="https://en.wikipedia.org/wiki/Borda_count">Borda count</a> voting
+system?
+<select class="webex-select" id="webex-c766e198874e596df8e7f425d4be9887" data-answer="OAcaBkkBFQgUBhhVaA=="><option value="blank"></option><option>Candidate
+A</option><option>Candidate B</option><option>Candidate
+C</option><option>Candidate D</option><option>Candidate
+E</option><option>Candidate F</option></select></li>
+</ol>
+</div>
+<div class="webex-solution">
+<p>Sorry, I&#39;m still working on an explanation.</p>
+<ul>
+<li>The winner of most first-place votes is Candidate F.</li>
+<li>The winner of RCV is Candidate B.</li>
+<li>The winner of Borda voting is Candidate E.</li>
+</ul>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>In an election, 187 voters filled out ranked preferences for 6
+candidates. Luckily, although there are 720 possible rankings, only 10
+rankings were cast.</p>
+<table>
+<colgroup>
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">candidate</th>
+<th align="center">ranking of 10 voters</th>
+<th align="center">ranking of 7 voters</th>
+<th align="center">ranking of 32 voters</th>
+<th align="center">ranking of 1 voters</th>
+<th align="center">ranking of 53 voters</th>
+<th align="center">ranking of 12 voters</th>
+<th align="center">ranking of 7 voters</th>
+<th align="center">ranking of 22 voters</th>
+<th align="center">ranking of 22 voters</th>
+<th align="center">ranking of 21 voters</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">candidate A</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="center">3</td>
+<td align="center">5</td>
+<td align="center">1</td>
+<td align="center">5</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">5</td>
+<td align="center">5</td>
+</tr>
+<tr class="even">
+<td align="center">candidate B</td>
+<td align="center">6</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="center">4</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">4</td>
+</tr>
+<tr class="odd">
+<td align="center">candidate C</td>
+<td align="center">3</td>
+<td align="center">5</td>
+<td align="center">2</td>
+<td align="center">6</td>
+<td align="center">4</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">4</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="center">candidate D</td>
+<td align="center">5</td>
+<td align="center">2</td>
+<td align="center">5</td>
+<td align="center">2</td>
+<td align="center">6</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="center">5</td>
+<td align="center">6</td>
+<td align="center">6</td>
+</tr>
+<tr class="odd">
+<td align="center">candidate E</td>
+<td align="center">2</td>
+<td align="center">6</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">6</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">3</td>
+</tr>
+<tr class="even">
+<td align="center">candidate F</td>
+<td align="center">4</td>
+<td align="center">3</td>
+<td align="center">6</td>
+<td align="center">1</td>
+<td align="center">5</td>
+<td align="center">6</td>
+<td align="center">5</td>
+<td align="center">6</td>
+<td align="center">2</td>
+<td align="center">2</td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: decimal">
+<li>Who won the plurality of most 1st-place votes?
+<select class="webex-select" id="webex-c6acd48f2134117653cd1baab0eaf8f7" data-answer="OAdNU0gEFFYeAR8EbA=="><option value="blank"></option><option>Candidate
+A</option><option>Candidate B</option><option>Candidate
+C</option><option>Candidate D</option><option>Candidate
+E</option><option>Candidate F</option></select></li>
+<li>Who won using ranked-choice (<a href="https://en.wikipedia.org/wiki/Instant-runoff_voting">instant
+runoff</a>) voting system?
+<select class="webex-select" id="webex-136c2fc91bd25eb9deeeb0531294aa03" data-answer="agMaUx5WTwkdU0gCaA=="><option value="blank"></option><option>Candidate
+A</option><option>Candidate B</option><option>Candidate
+C</option><option>Candidate D</option><option>Candidate
+E</option><option>Candidate F</option></select></li>
+<li>Who won using <a href="https://en.wikipedia.org/wiki/Borda_count">Borda count</a> voting
+system?
+<select class="webex-select" id="webex-529b40e84447e5adb86cbc57f0e8001b" data-answer="bgIVUxgASQgYBBgHOA=="><option value="blank"></option><option>Candidate
+A</option><option>Candidate B</option><option>Candidate
+C</option><option>Candidate D</option><option>Candidate
+E</option><option>Candidate F</option></select></li>
+</ol>
+</div>
+<div class="webex-solution">
+<p>Sorry, I&#39;m still working on an explanation.</p>
+<ul>
+<li>The winner of most first-place votes is Candidate A.</li>
+<li>The winner of RCV is Candidate E.</li>
+<li>The winner of Borda voting is Candidate B.</li>
+</ul>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>In an election, 196 voters filled out ranked preferences for 6
+candidates. Luckily, although there are 720 possible rankings, only 10
+rankings were cast.</p>
+<table>
+<colgroup>
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">candidate</th>
+<th align="center">ranking of 7 voters</th>
+<th align="center">ranking of 13 voters</th>
+<th align="center">ranking of 25 voters</th>
+<th align="center">ranking of 4 voters</th>
+<th align="center">ranking of 35 voters</th>
+<th align="center">ranking of 19 voters</th>
+<th align="center">ranking of 45 voters</th>
+<th align="center">ranking of 32 voters</th>
+<th align="center">ranking of 3 voters</th>
+<th align="center">ranking of 13 voters</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">candidate A</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">6</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="center">3</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="center">6</td>
+</tr>
+<tr class="even">
+<td align="center">candidate B</td>
+<td align="center">6</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">2</td>
+<td align="center">4</td>
+</tr>
+<tr class="odd">
+<td align="center">candidate C</td>
+<td align="center">5</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">3</td>
+<td align="center">5</td>
+<td align="center">4</td>
+<td align="center">5</td>
+<td align="center">3</td>
+<td align="center">5</td>
+</tr>
+<tr class="even">
+<td align="center">candidate D</td>
+<td align="center">4</td>
+<td align="center">4</td>
+<td align="center">4</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">5</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">3</td>
+</tr>
+<tr class="odd">
+<td align="center">candidate E</td>
+<td align="center">1</td>
+<td align="center">5</td>
+<td align="center">2</td>
+<td align="center">6</td>
+<td align="center">5</td>
+<td align="center">2</td>
+<td align="center">6</td>
+<td align="center">6</td>
+<td align="center">5</td>
+<td align="center">2</td>
+</tr>
+<tr class="even">
+<td align="center">candidate F</td>
+<td align="center">3</td>
+<td align="center">6</td>
+<td align="center">5</td>
+<td align="center">5</td>
+<td align="center">6</td>
+<td align="center">6</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">6</td>
+<td align="center">1</td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: decimal">
+<li>Who won the plurality of most 1st-place votes?
+<select class="webex-select" id="webex-f70590e572bbdeac2663106274ce890e" data-answer="PQccBRUASQUbAk5TOQ=="><option value="blank"></option><option>Candidate
+A</option><option>Candidate B</option><option>Candidate
+C</option><option>Candidate D</option><option>Candidate
+E</option><option>Candidate F</option></select></li>
+<li>Who won using ranked-choice (<a href="https://en.wikipedia.org/wiki/Instant-runoff_voting">instant
+runoff</a>) voting system?
+<select class="webex-select" id="webex-b006a8c9d383adfd74d6f21b61a4cbe5" data-answer="OQEcBk0ITwlIAxQDPA=="><option value="blank"></option><option>Candidate
+A</option><option>Candidate B</option><option>Candidate
+C</option><option>Candidate D</option><option>Candidate
+E</option><option>Candidate F</option></select></li>
+<li>Who won using <a href="https://en.wikipedia.org/wiki/Borda_count">Borda count</a> voting
+system?
+<select class="webex-select" id="webex-698318833b973034aeb2ad834474ea0b" data-answer="bQkUAx0IFAIfUhUHbg=="><option value="blank"></option><option>Candidate
+A</option><option>Candidate B</option><option>Candidate
+C</option><option>Candidate D</option><option>Candidate
+E</option><option>Candidate F</option></select></li>
+</ol>
+</div>
+<div class="webex-solution">
+<p>Sorry, I&#39;m still working on an explanation.</p>
+<ul>
+<li>The winner of most first-place votes is Candidate F.</li>
+<li>The winner of RCV is Candidate A.</li>
+<li>The winner of Borda voting is Candidate D.</li>
+</ul>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>In an election, 71 voters filled out ranked preferences for 6
+candidates. Luckily, although there are 720 possible rankings, only 10
+rankings were cast.</p>
+<table>
+<colgroup>
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">candidate</th>
+<th align="center">ranking of 27 voters</th>
+<th align="center">ranking of 17 voters</th>
+<th align="center">ranking of 3 voters</th>
+<th align="center">ranking of 5 voters</th>
+<th align="center">ranking of 4 voters</th>
+<th align="center">ranking of 1 voters</th>
+<th align="center">ranking of 1 voters</th>
+<th align="center">ranking of 1 voters</th>
+<th align="center">ranking of 2 voters</th>
+<th align="center">ranking of 10 voters</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">candidate A</td>
+<td align="center">2</td>
+<td align="center">5</td>
+<td align="center">5</td>
+<td align="center">4</td>
+<td align="center">1</td>
+<td align="center">5</td>
+<td align="center">3</td>
+<td align="center">5</td>
+<td align="center">6</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="center">candidate B</td>
+<td align="center">3</td>
+<td align="center">2</td>
+<td align="center">6</td>
+<td align="center">1</td>
+<td align="center">6</td>
+<td align="center">6</td>
+<td align="center">4</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">2</td>
+</tr>
+<tr class="odd">
+<td align="center">candidate C</td>
+<td align="center">1</td>
+<td align="center">6</td>
+<td align="center">2</td>
+<td align="center">5</td>
+<td align="center">2</td>
+<td align="center">4</td>
+<td align="center">5</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">4</td>
+</tr>
+<tr class="even">
+<td align="center">candidate D</td>
+<td align="center">4</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="center">6</td>
+<td align="center">5</td>
+<td align="center">3</td>
+<td align="center">6</td>
+<td align="center">4</td>
+<td align="center">3</td>
+<td align="center">3</td>
+</tr>
+<tr class="odd">
+<td align="center">candidate E</td>
+<td align="center">6</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">4</td>
+<td align="center">5</td>
+</tr>
+<tr class="even">
+<td align="center">candidate F</td>
+<td align="center">5</td>
+<td align="center">4</td>
+<td align="center">3</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">6</td>
+<td align="center">5</td>
+<td align="center">6</td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: decimal">
+<li>Who won the plurality of most 1st-place votes?
+<select class="webex-select" id="webex-2873744d42274f8151eef1b2649ee6f3" data-answer="aQgbAxsFGFQYAh4HaQ=="><option value="blank"></option><option>Candidate
+A</option><option>Candidate B</option><option>Candidate
+C</option><option>Candidate D</option><option>Candidate
+E</option><option>Candidate F</option></select></li>
+<li>Who won using ranked-choice (<a href="https://en.wikipedia.org/wiki/Instant-runoff_voting">instant
+runoff</a>) voting system?
+<select class="webex-select" id="webex-f09b92b3204078f4f8cc80da1e1bbbd7" data-answer="PQEVUhUCTgMeABgAag=="><option value="blank"></option><option>Candidate
+A</option><option>Candidate B</option><option>Candidate
+C</option><option>Candidate D</option><option>Candidate
+E</option><option>Candidate F</option></select></li>
+<li>Who won using <a href="https://en.wikipedia.org/wiki/Borda_count">Borda count</a> voting
+system?
+<select class="webex-select" id="webex-0abadd901b3b08f5a8ff9c732286067a" data-answer="a1FOUUhUFQAdUx9SbQ=="><option value="blank"></option><option>Candidate
+A</option><option>Candidate B</option><option>Candidate
+C</option><option>Candidate D</option><option>Candidate
+E</option><option>Candidate F</option></select></li>
+</ol>
+</div>
+<div class="webex-solution">
+<p>Sorry, I&#39;m still working on an explanation.</p>
+<ul>
+<li>The winner of most first-place votes is Candidate C.</li>
+<li>The winner of RCV is Candidate A.</li>
+<li>The winner of Borda voting is Candidate E.</li>
+</ul>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>In an election, 187 voters filled out ranked preferences for 6
+candidates. Luckily, although there are 720 possible rankings, only 10
+rankings were cast.</p>
+<table>
+<colgroup>
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">candidate</th>
+<th align="center">ranking of 21 voters</th>
+<th align="center">ranking of 17 voters</th>
+<th align="center">ranking of 5 voters</th>
+<th align="center">ranking of 20 voters</th>
+<th align="center">ranking of 16 voters</th>
+<th align="center">ranking of 18 voters</th>
+<th align="center">ranking of 2 voters</th>
+<th align="center">ranking of 30 voters</th>
+<th align="center">ranking of 17 voters</th>
+<th align="center">ranking of 41 voters</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">candidate A</td>
+<td align="center">4</td>
+<td align="center">4</td>
+<td align="center">5</td>
+<td align="center">5</td>
+<td align="center">6</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">5</td>
+</tr>
+<tr class="even">
+<td align="center">candidate B</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">5</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">6</td>
+<td align="center">6</td>
+</tr>
+<tr class="odd">
+<td align="center">candidate C</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">6</td>
+<td align="center">1</td>
+<td align="center">6</td>
+<td align="center">5</td>
+<td align="center">5</td>
+<td align="center">4</td>
+<td align="center">4</td>
+</tr>
+<tr class="even">
+<td align="center">candidate D</td>
+<td align="center">3</td>
+<td align="center">6</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="center">3</td>
+<td align="center">3</td>
+<td align="center">6</td>
+<td align="center">6</td>
+<td align="center">5</td>
+<td align="center">2</td>
+</tr>
+<tr class="odd">
+<td align="center">candidate E</td>
+<td align="center">6</td>
+<td align="center">5</td>
+<td align="center">4</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">2</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="center">candidate F</td>
+<td align="center">5</td>
+<td align="center">3</td>
+<td align="center">6</td>
+<td align="center">3</td>
+<td align="center">5</td>
+<td align="center">4</td>
+<td align="center">4</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">3</td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: decimal">
+<li>Who won the plurality of most 1st-place votes?
+<select class="webex-select" id="webex-fee315032ba8dacab22322ab60e59a9d" data-answer="PVVJAx0FHAMeU00IOQ=="><option value="blank"></option><option>Candidate
+A</option><option>Candidate B</option><option>Candidate
+C</option><option>Candidate D</option><option>Candidate
+E</option><option>Candidate F</option></select></li>
+<li>Who won using ranked-choice (<a href="https://en.wikipedia.org/wiki/Instant-runoff_voting">instant
+runoff</a>) voting system?
+<select class="webex-select" id="webex-eaa595e0a681fc6ccb6b559ffe8c4d85" data-answer="PlBNBRUFSQBNBhQBOw=="><option value="blank"></option><option>Candidate
+A</option><option>Candidate B</option><option>Candidate
+C</option><option>Candidate D</option><option>Candidate
+E</option><option>Candidate F</option></select></li>
+<li>Who won using <a href="https://en.wikipedia.org/wiki/Borda_count">Borda count</a> voting
+system?
+<select class="webex-select" id="webex-f2ac8d0be4625e29bdc51c4829e59eae" data-answer="PQJNUhRUHFJJBBoCaA=="><option value="blank"></option><option>Candidate
+A</option><option>Candidate B</option><option>Candidate
+C</option><option>Candidate D</option><option>Candidate
+E</option><option>Candidate F</option></select></li>
+</ol>
+</div>
+<div class="webex-solution">
+<p>Sorry, I&#39;m still working on an explanation.</p>
+<ul>
+<li>The winner of most first-place votes is Candidate E.</li>
+<li>The winner of RCV is Candidate A.</li>
+<li>The winner of Borda voting is Candidate B.</li>
+</ul>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>In an election, 79 voters filled out ranked preferences for 6
 candidates. Luckily, although there are 720 possible rankings, only 10
 rankings were cast.</p>
 <table>
@@ -375,144 +1343,1290 @@ rankings were cast.</p>
 <tr class="header">
 <th align="center">candidate</th>
 <th align="center">ranking of 4 voters</th>
+<th align="center">ranking of 27 voters</th>
+<th align="center">ranking of 9 voters</th>
+<th align="center">ranking of 11 voters</th>
 <th align="center">ranking of 8 voters</th>
-<th align="center">ranking of 1 voters</th>
-<th align="center">ranking of 9 voters</th>
-<th align="center">ranking of 12 voters</th>
-<th align="center">ranking of 2 voters</th>
-<th align="center">ranking of 1 voters</th>
 <th align="center">ranking of 6 voters</th>
-<th align="center">ranking of 3 voters</th>
-<th align="center">ranking of 9 voters</th>
+<th align="center">ranking of 2 voters</th>
+<th align="center">ranking of 8 voters</th>
+<th align="center">ranking of 2 voters</th>
+<th align="center">ranking of 2 voters</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td align="center">candidate A</td>
-<td align="center">6</td>
-<td align="center">6</td>
+<td align="center">2</td>
 <td align="center">3</td>
-<td align="center">2</td>
-<td align="center">6</td>
-<td align="center">2</td>
-<td align="center">4</td>
-<td align="center">4</td>
-<td align="center">2</td>
 <td align="center">1</td>
+<td align="center">4</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">5</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">6</td>
 </tr>
 <tr class="even">
 <td align="center">candidate B</td>
-<td align="center">5</td>
+<td align="center">3</td>
 <td align="center">2</td>
-<td align="center">4</td>
 <td align="center">3</td>
-<td align="center">3</td>
-<td align="center">1</td>
-<td align="center">3</td>
+<td align="center">2</td>
+<td align="center">5</td>
 <td align="center">6</td>
-<td align="center">3</td>
+<td align="center">2</td>
+<td align="center">6</td>
+<td align="center">1</td>
 <td align="center">3</td>
 </tr>
 <tr class="odd">
 <td align="center">candidate C</td>
+<td align="center">6</td>
+<td align="center">4</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">4</td>
+</tr>
+<tr class="even">
+<td align="center">candidate D</td>
+<td align="center">4</td>
+<td align="center">5</td>
+<td align="center">5</td>
+<td align="center">3</td>
+<td align="center">6</td>
+<td align="center">1</td>
+<td align="center">6</td>
+<td align="center">4</td>
+<td align="center">5</td>
+<td align="center">2</td>
+</tr>
+<tr class="odd">
+<td align="center">candidate E</td>
+<td align="center">5</td>
+<td align="center">1</td>
+<td align="center">6</td>
+<td align="center">6</td>
+<td align="center">2</td>
+<td align="center">5</td>
+<td align="center">4</td>
+<td align="center">2</td>
+<td align="center">6</td>
+<td align="center">5</td>
+</tr>
+<tr class="even">
+<td align="center">candidate F</td>
+<td align="center">1</td>
+<td align="center">6</td>
+<td align="center">4</td>
+<td align="center">5</td>
+<td align="center">4</td>
+<td align="center">4</td>
+<td align="center">3</td>
+<td align="center">5</td>
+<td align="center">2</td>
+<td align="center">1</td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: decimal">
+<li>Who won the plurality of most 1st-place votes?
+<select class="webex-select" id="webex-cb349406fc85fbced5176b904ef7eb3b" data-answer="OFIfBBUEHAZKUhQFOw=="><option value="blank"></option><option>Candidate
+A</option><option>Candidate B</option><option>Candidate
+C</option><option>Candidate D</option><option>Candidate
+E</option><option>Candidate F</option></select></li>
+<li>Who won using ranked-choice (<a href="https://en.wikipedia.org/wiki/Instant-runoff_voting">instant
+runoff</a>) voting system?
+<select class="webex-select" id="webex-255782b3bf8336fd3682396fd3e854ff" data-answer="aQQZBxQCTgNOVhQDbg=="><option value="blank"></option><option>Candidate
+A</option><option>Candidate B</option><option>Candidate
+C</option><option>Candidate D</option><option>Candidate
+E</option><option>Candidate F</option></select></li>
+<li>Who won using <a href="https://en.wikipedia.org/wiki/Borda_count">Borda count</a> voting
+system?
+<select class="webex-select" id="webex-b4f56a0f28fd3171e9e92960848b27bc" data-answer="OQRKBRpQHFYeCEpUbg=="><option value="blank"></option><option>Candidate
+A</option><option>Candidate B</option><option>Candidate
+C</option><option>Candidate D</option><option>Candidate
+E</option><option>Candidate F</option></select></li>
+</ol>
+</div>
+<div class="webex-solution">
+<p>Sorry, I&#39;m still working on an explanation.</p>
+<ul>
+<li>The winner of most first-place votes is Candidate E.</li>
+<li>The winner of RCV is Candidate A.</li>
+<li>The winner of Borda voting is Candidate C.</li>
+</ul>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>In an election, 56 voters filled out ranked preferences for 6
+candidates. Luckily, although there are 720 possible rankings, only 10
+rankings were cast.</p>
+<table>
+<colgroup>
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">candidate</th>
+<th align="center">ranking of 14 voters</th>
+<th align="center">ranking of 8 voters</th>
+<th align="center">ranking of 13 voters</th>
+<th align="center">ranking of 3 voters</th>
+<th align="center">ranking of 4 voters</th>
+<th align="center">ranking of 2 voters</th>
+<th align="center">ranking of 4 voters</th>
+<th align="center">ranking of 1 voters</th>
+<th align="center">ranking of 2 voters</th>
+<th align="center">ranking of 5 voters</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">candidate A</td>
 <td align="center">1</td>
 <td align="center">5</td>
 <td align="center">6</td>
 <td align="center">1</td>
+<td align="center">5</td>
+<td align="center">1</td>
+<td align="center">6</td>
+<td align="center">6</td>
+<td align="center">3</td>
+<td align="center">5</td>
+</tr>
+<tr class="even">
+<td align="center">candidate B</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">6</td>
+<td align="center">2</td>
+<td align="center">5</td>
+<td align="center">5</td>
 <td align="center">4</td>
 <td align="center">6</td>
-<td align="center">1</td>
+<td align="center">4</td>
+</tr>
+<tr class="odd">
+<td align="center">candidate C</td>
+<td align="center">4</td>
+<td align="center">2</td>
 <td align="center">5</td>
+<td align="center">2</td>
+<td align="center">6</td>
+<td align="center">3</td>
+<td align="center">2</td>
 <td align="center">1</td>
-<td align="center">5</td>
+<td align="center">2</td>
+<td align="center">6</td>
 </tr>
 <tr class="even">
 <td align="center">candidate D</td>
 <td align="center">2</td>
 <td align="center">4</td>
-<td align="center">2</td>
-<td align="center">4</td>
 <td align="center">1</td>
+<td align="center">5</td>
 <td align="center">4</td>
-<td align="center">6</td>
 <td align="center">2</td>
-<td align="center">6</td>
-<td align="center">6</td>
+<td align="center">4</td>
+<td align="center">5</td>
+<td align="center">4</td>
+<td align="center">3</td>
 </tr>
 <tr class="odd">
 <td align="center">candidate E</td>
-<td align="center">3</td>
-<td align="center">1</td>
-<td align="center">1</td>
 <td align="center">6</td>
-<td align="center">2</td>
+<td align="center">6</td>
+<td align="center">3</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">4</td>
 <td align="center">3</td>
 <td align="center">2</td>
-<td align="center">3</td>
-<td align="center">5</td>
-<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">1</td>
 </tr>
 <tr class="even">
 <td align="center">candidate F</td>
+<td align="center">5</td>
+<td align="center">3</td>
+<td align="center">4</td>
 <td align="center">4</td>
 <td align="center">3</td>
-<td align="center">5</td>
-<td align="center">5</td>
-<td align="center">5</td>
-<td align="center">5</td>
-<td align="center">5</td>
+<td align="center">6</td>
 <td align="center">1</td>
-<td align="center">4</td>
-<td align="center">4</td>
+<td align="center">3</td>
+<td align="center">5</td>
+<td align="center">2</td>
 </tr>
 </tbody>
 </table>
 <ol style="list-style-type: decimal">
-<li>Who won the plurality of most 1st-place votes? ##ANSWER1##</li>
+<li>Who won the plurality of most 1st-place votes?
+<select class="webex-select" id="webex-b399a2b8f1c20ce98e7ab53e33698432" data-answer="OQIVCU0CTghKAU8CbQ=="><option value="blank"></option><option>Candidate
+A</option><option>Candidate B</option><option>Candidate
+C</option><option>Candidate D</option><option>Candidate
+E</option><option>Candidate F</option></select></li>
 <li>Who won using ranked-choice (<a href="https://en.wikipedia.org/wiki/Instant-runoff_voting">instant
-runoff</a>) voting system? ##ANSWER2##</li>
+runoff</a>) voting system?
+<select class="webex-select" id="webex-e8b19067643e559a8a83246b4676d778" data-answer="PghOARUAGgYaBB9VaA=="><option value="blank"></option><option>Candidate
+A</option><option>Candidate B</option><option>Candidate
+C</option><option>Candidate D</option><option>Candidate
+E</option><option>Candidate F</option></select></li>
 <li>Who won using <a href="https://en.wikipedia.org/wiki/Borda_count">Borda count</a> voting
-system? ##ANSWER3##</li>
+system?
+<select class="webex-select" id="webex-d8626df0b8b117b7ade85197d5288738" data-answer="PwgaAhpUSgBOCU4BbA=="><option value="blank"></option><option>Candidate
+A</option><option>Candidate B</option><option>Candidate
+C</option><option>Candidate D</option><option>Candidate
+E</option><option>Candidate F</option></select></li>
 </ol>
-<div id="answerlist" class="section level2">
-<h2>Answerlist</h2>
-<ul>
-<li>Candidate A</li>
-<li>Candidate B</li>
-<li>Candidate C</li>
-<li>Candidate D</li>
-<li>Candidate E</li>
-<li>Candidate F</li>
-<li>Candidate A</li>
-<li>Candidate B</li>
-<li>Candidate C</li>
-<li>Candidate D</li>
-<li>Candidate E</li>
-<li>Candidate F</li>
-<li>Candidate A</li>
-<li>Candidate B</li>
-<li>Candidate C</li>
-<li>Candidate D</li>
-<li>Candidate E</li>
-<li>Candidate F</li>
-</ul>
 </div>
-</div>
-<div id="solution" class="section level1">
-<h1>Solution</h1>
-<p>Sorry, I’m still working on an explanation.</p>
+<div class="webex-solution">
+<p>Sorry, I&#39;m still working on an explanation.</p>
 <ul>
-<li>The winner of most first-place votes is Candidate C.</li>
+<li>The winner of most first-place votes is Candidate A.</li>
 <li>The winner of RCV is Candidate D.</li>
 <li>The winner of Borda voting is Candidate E.</li>
 </ul>
 </div>
-<div id="meta-information" class="section level1">
-<h1>Meta-information</h1>
-<p>extype: cloze exclozetype: schoice|schoice|schoice exsolution:
-001000|000100|000010 exname: voting_methods</p>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>In an election, 88 voters filled out ranked preferences for 6
+candidates. Luckily, although there are 720 possible rankings, only 10
+rankings were cast.</p>
+<table>
+<colgroup>
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">candidate</th>
+<th align="center">ranking of 2 voters</th>
+<th align="center">ranking of 7 voters</th>
+<th align="center">ranking of 9 voters</th>
+<th align="center">ranking of 22 voters</th>
+<th align="center">ranking of 11 voters</th>
+<th align="center">ranking of 10 voters</th>
+<th align="center">ranking of 17 voters</th>
+<th align="center">ranking of 2 voters</th>
+<th align="center">ranking of 2 voters</th>
+<th align="center">ranking of 6 voters</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">candidate A</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">6</td>
+<td align="center">5</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">3</td>
+<td align="center">2</td>
+</tr>
+<tr class="even">
+<td align="center">candidate B</td>
+<td align="center">4</td>
+<td align="center">6</td>
+<td align="center">4</td>
+<td align="center">4</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="center">2</td>
+<td align="center">6</td>
+<td align="center">3</td>
+</tr>
+<tr class="odd">
+<td align="center">candidate C</td>
+<td align="center">5</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">6</td>
+<td align="center">6</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="center">4</td>
+</tr>
+<tr class="even">
+<td align="center">candidate D</td>
+<td align="center">1</td>
+<td align="center">5</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">4</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">6</td>
+</tr>
+<tr class="odd">
+<td align="center">candidate E</td>
+<td align="center">6</td>
+<td align="center">1</td>
+<td align="center">5</td>
+<td align="center">5</td>
+<td align="center">5</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">5</td>
+<td align="center">2</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="center">candidate F</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">6</td>
+<td align="center">6</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">5</td>
+<td align="center">6</td>
+<td align="center">5</td>
+<td align="center">5</td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: decimal">
+<li>Who won the plurality of most 1st-place votes?
+<select class="webex-select" id="webex-748b41adeda5e4abc6628e5eac17f37a" data-answer="bAUUUhgBTVRJVE0FOA=="><option value="blank"></option><option>Candidate
+A</option><option>Candidate B</option><option>Candidate
+C</option><option>Candidate D</option><option>Candidate
+E</option><option>Candidate F</option></select></li>
+<li>Who won using ranked-choice (<a href="https://en.wikipedia.org/wiki/Instant-runoff_voting">instant
+runoff</a>) voting system?
+<select class="webex-select" id="webex-6b103a61307ad213bec60b31d443e466" data-answer="bVIdAB9RGgEfARtROQ=="><option value="blank"></option><option>Candidate
+A</option><option>Candidate B</option><option>Candidate
+C</option><option>Candidate D</option><option>Candidate
+E</option><option>Candidate F</option></select></li>
+<li>Who won using <a href="https://en.wikipedia.org/wiki/Borda_count">Borda count</a> voting
+system?
+<select class="webex-select" id="webex-50a2d4c1da5eb3957086dba33fb4276d" data-answer="bgBNAkgETwBIURlVPw=="><option value="blank"></option><option>Candidate
+A</option><option>Candidate B</option><option>Candidate
+C</option><option>Candidate D</option><option>Candidate
+E</option><option>Candidate F</option></select></li>
+</ol>
+</div>
+<div class="webex-solution">
+<p>Sorry, I&#39;m still working on an explanation.</p>
+<ul>
+<li>The winner of most first-place votes is Candidate A.</li>
+<li>The winner of RCV is Candidate E.</li>
+<li>The winner of Borda voting is Candidate D.</li>
+</ul>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>In an election, 164 voters filled out ranked preferences for 6
+candidates. Luckily, although there are 720 possible rankings, only 10
+rankings were cast.</p>
+<table>
+<colgroup>
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">candidate</th>
+<th align="center">ranking of 3 voters</th>
+<th align="center">ranking of 15 voters</th>
+<th align="center">ranking of 20 voters</th>
+<th align="center">ranking of 1 voters</th>
+<th align="center">ranking of 16 voters</th>
+<th align="center">ranking of 44 voters</th>
+<th align="center">ranking of 13 voters</th>
+<th align="center">ranking of 22 voters</th>
+<th align="center">ranking of 11 voters</th>
+<th align="center">ranking of 19 voters</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">candidate A</td>
+<td align="center">4</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">5</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">5</td>
+<td align="center">5</td>
+<td align="center">4</td>
+</tr>
+<tr class="even">
+<td align="center">candidate B</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">5</td>
+<td align="center">6</td>
+<td align="center">5</td>
+<td align="center">3</td>
+<td align="center">6</td>
+<td align="center">1</td>
+<td align="center">6</td>
+<td align="center">6</td>
+</tr>
+<tr class="odd">
+<td align="center">candidate C</td>
+<td align="center">1</td>
+<td align="center">5</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">6</td>
+<td align="center">5</td>
+<td align="center">3</td>
+<td align="center">6</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="center">candidate D</td>
+<td align="center">6</td>
+<td align="center">6</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">4</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="center">3</td>
+<td align="center">3</td>
+</tr>
+<tr class="odd">
+<td align="center">candidate E</td>
+<td align="center">5</td>
+<td align="center">4</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">6</td>
+<td align="center">4</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">5</td>
+</tr>
+<tr class="even">
+<td align="center">candidate F</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">6</td>
+<td align="center">4</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">5</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">2</td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: decimal">
+<li>Who won the plurality of most 1st-place votes?
+<select class="webex-select" id="webex-c14b1fa55c096c153c4907ccfc61464c" data-answer="OAEYUh1XTQUZUxwJaw=="><option value="blank"></option><option>Candidate
+A</option><option>Candidate B</option><option>Candidate
+C</option><option>Candidate D</option><option>Candidate
+E</option><option>Candidate F</option></select></li>
+<li>Who won using ranked-choice (<a href="https://en.wikipedia.org/wiki/Instant-runoff_voting">instant
+runoff</a>) voting system?
+<select class="webex-select" id="webex-8c9c5d37882520f54c75c45555ec6426" data-answer="Y1IVUxlUHwcUCB4Fbw=="><option value="blank"></option><option>Candidate
+A</option><option>Candidate B</option><option>Candidate
+C</option><option>Candidate D</option><option>Candidate
+E</option><option>Candidate F</option></select></li>
+<li>Who won using <a href="https://en.wikipedia.org/wiki/Borda_count">Borda count</a> voting
+system?
+<select class="webex-select" id="webex-3be771d911a2adb84d4076d085a3b21c" data-answer="aFJJBxsBSAkdAU0DPA=="><option value="blank"></option><option>Candidate
+A</option><option>Candidate B</option><option>Candidate
+C</option><option>Candidate D</option><option>Candidate
+E</option><option>Candidate F</option></select></li>
+</ol>
+</div>
+<div class="webex-solution">
+<p>Sorry, I&#39;m still working on an explanation.</p>
+<ul>
+<li>The winner of most first-place votes is Candidate C.</li>
+<li>The winner of RCV is Candidate A.</li>
+<li>The winner of Borda voting is Candidate F.</li>
+</ul>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>In an election, 61 voters filled out ranked preferences for 6
+candidates. Luckily, although there are 720 possible rankings, only 10
+rankings were cast.</p>
+<table>
+<colgroup>
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">candidate</th>
+<th align="center">ranking of 10 voters</th>
+<th align="center">ranking of 5 voters</th>
+<th align="center">ranking of 6 voters</th>
+<th align="center">ranking of 3 voters</th>
+<th align="center">ranking of 13 voters</th>
+<th align="center">ranking of 1 voters</th>
+<th align="center">ranking of 3 voters</th>
+<th align="center">ranking of 8 voters</th>
+<th align="center">ranking of 10 voters</th>
+<th align="center">ranking of 2 voters</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">candidate A</td>
+<td align="center">3</td>
+<td align="center">2</td>
+<td align="center">6</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">6</td>
+<td align="center">5</td>
+<td align="center">4</td>
+</tr>
+<tr class="even">
+<td align="center">candidate B</td>
+<td align="center">5</td>
+<td align="center">6</td>
+<td align="center">5</td>
+<td align="center">3</td>
+<td align="center">6</td>
+<td align="center">2</td>
+<td align="center">5</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">3</td>
+</tr>
+<tr class="odd">
+<td align="center">candidate C</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">5</td>
+<td align="center">6</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">6</td>
+</tr>
+<tr class="even">
+<td align="center">candidate D</td>
+<td align="center">6</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="center">5</td>
+<td align="center">5</td>
+<td align="center">6</td>
+<td align="center">3</td>
+<td align="center">2</td>
+<td align="center">6</td>
+<td align="center">5</td>
+</tr>
+<tr class="odd">
+<td align="center">candidate E</td>
+<td align="center">4</td>
+<td align="center">5</td>
+<td align="center">1</td>
+<td align="center">6</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="center">1</td>
+<td align="center">5</td>
+<td align="center">4</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="center">candidate F</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">4</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">4</td>
+<td align="center">2</td>
+<td align="center">2</td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: decimal">
+<li>Who won the plurality of most 1st-place votes?
+<select class="webex-select" id="webex-3def2a967701edcd80bcc81f7ee7439d" data-answer="aFRJVh5RFQYbBhwBOA=="><option value="blank"></option><option>Candidate
+A</option><option>Candidate B</option><option>Candidate
+C</option><option>Candidate D</option><option>Candidate
+E</option><option>Candidate F</option></select></li>
+<li>Who won using ranked-choice (<a href="https://en.wikipedia.org/wiki/Instant-runoff_voting">instant
+runoff</a>) voting system?
+<select class="webex-select" id="webex-f0ccfabb8aa3fab135b0b4c8f9e2441e" data-answer="PQBPU0pQTlIUUU0DOw=="><option value="blank"></option><option>Candidate
+A</option><option>Candidate B</option><option>Candidate
+C</option><option>Candidate D</option><option>Candidate
+E</option><option>Candidate F</option></select></li>
+<li>Who won using <a href="https://en.wikipedia.org/wiki/Borda_count">Borda count</a> voting
+system?
+<select class="webex-select" id="webex-0a297e8c0a5541d50ff686d0295f66cb" data-answer="a1EeCRtVFFMcURkEaQ=="><option value="blank"></option><option>Candidate
+A</option><option>Candidate B</option><option>Candidate
+C</option><option>Candidate D</option><option>Candidate
+E</option><option>Candidate F</option></select></li>
+</ol>
+</div>
+<div class="webex-solution">
+<p>Sorry, I&#39;m still working on an explanation.</p>
+<ul>
+<li>The winner of most first-place votes is Candidate E.</li>
+<li>The winner of RCV is Candidate C.</li>
+<li>The winner of Borda voting is Candidate F.</li>
+</ul>
+</div>
+</div>
 </div>
 
+<script>
+
+/* definition of content for the buttons */
+const webex_buttons = {check_hidden:          "<b>&check;</b>",
+                       check_hidden_alt:      "Check answer",
+                       check_shown:           "<b>&lsh;</b>",
+                       check_shown_alt:       "Hide check",
+                       check_of_total:        "/",
+                       solution:              "<b>&quest;</b>",
+                       solution_alt:          "Correct solution",
+                       question_next:         "<b>&#8634;</b>",
+                       question_next_alt:     "Next question",
+                       question_previous:     "",
+                       question_previous_alt: ""}
+
+
+/* update total correct if #webex-total_correct exists */
+update_total_correct = function() {
+  console.log("webex: update total_correct");
+
+  document.querySelectorAll(".webex-total_correct").forEach(total => {
+    p = total.closest(".webex-box");
+    var correct = p.getElementsByClassName("webex-correct").length;
+    var solvemes = p.getElementsByClassName("webex-solveme").length;
+    var radiogroups = p.getElementsByClassName("webex-radiogroup").length;
+    var selects = p.getElementsByClassName("webex-select").length;
+    /* no specific class on input node, thus searching via query selector */
+    var checkboxgroups = p.querySelectorAll("div[class=webex-checkboxgroup] input[type=checkbox]").length
+
+    /* show number of correct / total number of answers */
+    total.innerHTML = correct + "&nbsp;" + webex_buttons.check_of_total + "&nbsp;" + (solvemes + radiogroups + checkboxgroups + selects);
+  });
+}
+
+/* check answers */
+check_func = function() {
+  console.log("webex: check answer");
+
+  //var cl = elem.parentElement.classList;
+  var cl = this.closest(".webex-box").classList;
+  if (cl.contains("unchecked")) {
+    cl.remove("unchecked");
+    this.innerHTML = webex_buttons.check_shown; //"Hide check";
+    if (webex_buttons.check_shown_alt.length > 0) this.setAttribute("title", webex_buttons.check_shown_alt);
+  } else {
+    cl.add("unchecked");
+    this.innerHTML = webex_buttons.check_hidden; //"Check answer";
+    if (webex_buttons.check_hidden_alt.length > 0) this.setAttribute("title", webex_buttons.check_hidden_alt);
+  }
+}
+
+/* helper functions for checking the webex ID */
+const id_checker = {"fmt": new RegExp("[g-zG-Z]"),
+                    "load": function(e) { return e.getAttribute("id").match("(?<=(-)).*$")[0]; },
+                    "eval": new TextEncoder(),
+                    "dval": new TextDecoder()}
+
+/* Show/hide correct solution */
+solution_func = function() {
+  console.log("webex: show/hide solution");
+
+  var div = this.closest(".webex-question").querySelector(".webex-solution");
+  var cl = div.classList;
+
+  if (cl.contains("visible")) {
+    cl.remove("visible");
+  } else {
+    cl.add("visible");
+  }
+}
+
+/* function to check if the real answer is numeric */
+convert_to_numeric = function(x) {
+  if (typeof x == "string") {
+    /* do nothing */
+  } else if (x.length == 1) {
+    /* take first element */
+    x = x[0]
+  } else {
+    return NaN;
+  }
+
+  /* remove spaces for easier parsing */
+  x = x.replace(/\s/g, "");
+
+  /* Define patterns for different formats, note that spaces have been removed above */
+  const patterns = [
+    {regex: /^[+-]?\d+(\.\d{3})*,\d+$/, decimal: ",", thousand: "." },  // Format: "1.100.100.100,3"
+    {regex: /^[+-]?\d+(,\d{3})*\.\d+$/, decimal: ".", thousand: "," },  // Format: "1,100,100,100.3"
+    {regex: /^[+-]?\d+(\.|\.\d+)?$/, decimal: "." },                    // Format: "1100100100.5" or "1100100100."
+    {regex: /^[+-]?\d+(,|,\d+)$/, decimal: "," }                        // Format: "1100100100,5" or "1100100100,"
+  ];
+
+
+  /* testing all regular expressions, convert to float if possible */
+  for (const { regex, decimal, thousand } of patterns) {
+    if (regex.test(x)) {
+      let numeric = x;
+      if (thousand) numeric = numeric.replace(new RegExp(`\\${thousand}`, "g"), "");
+      numeric = numeric.replace(decimal, ".");
+      return parseFloat(numeric);
+    }
+  }
+
+  /* input of length 1 but none of the known formats, return NaN */
+  return NaN;
+}
+
+/* Checking webex ID, returns formalsol */
+check_id = function(e) {
+  /* loading webex ID */
+  var id = id_checker["load"](e);
+
+  /* extracting answer */
+  let answer = e.dataset.answer;
+
+  /* checking unique id, prepare and return array */
+  if (!id_checker["fmt"].test(id)) {
+    const a = id_checker["eval"].encode(atob(answer));
+    const b = id_checker["eval"].encode(id);
+    const res = a.map((byte, index) => byte^b[index % b.length]);
+    answer = id_checker["dval"].decode(res);
+    /* Replacing &amp; with ' before parsing */
+    answer = answer.replaceAll("&apos;", "'");
+  }
+
+  return JSON.parse(answer);
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  /* avoid that keyup and keychange twice execute this function within nms = 10
+   * ms, clearing inputTimer and add timeout */
+  console.log("webex: check solveme");
+
+  /* float, precision for checking numeric answers */
+  const eps = 0.00000000000001;
+
+  /* get last checked user answer */
+  const question = this.closest(".webex-question")
+
+  /* extracting classes */
+  var cl = this.classList;
+  var my_answer = this.value;
+
+  /* extracting classes */
+  var cl = this.classList;
+
+  /* empty answer? Job done */
+  if (my_answer == "") {
+    cl.remove("webex-correct");
+    cl.remove("webex-incorrect");
+    return false;
+  }
+
+  /* Find closest (parent) webex-question */
+  let formalsols = check_id(this)
+
+  /* by default we assume the users' answer is incorrect */
+  var user_answer_correct = false;
+
+  /* check if the correct answer is numeric, i.e. if 
+   * formalsols is of length 1 containing one single numeric
+   * value in a known format, else, NaN is returned */
+  const num_formalsol = convert_to_numeric(formalsols);
+  const num_my_answer = convert_to_numeric(my_answer);
+
+  /* if the correct answer is numeric (float), the user's answer
+   * must also be numeric. If not, it is wrong. Else we can
+   * compare floating point numbers */
+  if (!isNaN(num_formalsol) && !isNaN(num_my_answer)) {
+    /* check if the real answer and the user input are numerically the same;
+     * adding 'delta' to avoid precision issues */
+    var diff = Math.abs(num_formalsol - num_my_answer);
+    if (diff < parseFloat(this.dataset.tol) + eps) { user_answer_correct = true; }
+
+  /* if the question contains regex, a regular expression is used
+   * to evaluate the users answer. Allows for multiple regular expressions */
+  } else if (cl.contains("regex")) {
+    for (let i = 0; i < formalsols.length; i++) {
+        let regex = new RegExp(formalsols[i], cl.contains("ignorecase") ? "i" : "");
+        if (regex.test(my_answer)) { user_answer_correct = true; break; }
+    }
+
+  /* else we evaluate on 'string level', considering the creators preferences
+   * regarding set options */
+  } else {
+    /* modify/prepare answer */
+    if (cl.contains("ignorecase")) { my_answer = my_answer.toLowerCase(); }
+    if (cl.contains("nospaces"))   { my_answer = my_answer.replace(/ /g, ""); }
+
+    /* if the real answer includes user input - correct */
+    if (formalsols.includes(my_answer)) {
+      user_answer_correct = true;
+  
+      // added regex bit
+      if (cl.contains("regex")) {
+        answer_regex = RegExp(formalsols.join("|"))
+        if (answer_regex.test(my_answer)) {
+          cl.add("webex-correct");
+        }
+      }
+    }
+  }
+
+  if (user_answer_correct) {
+      cl.add("webex-correct");
+      cl.remove("webex-incorrect");
+  } else {
+      cl.add("webex-incorrect");
+      cl.remove("webex-correct");
+  }
+
+  update_total_correct();
+
+}
+
+/* function for checking select answers */
+select_func = function(e) {
+  console.log("webex: check select");
+
+  var options   = [];
+  Array.from(this.querySelectorAll("option")).forEach((option, index) => {
+    if (!option.hasAttribute("value") || !option.getAttribute("value") === "blank") {
+      options.push(option);
+    }
+  });
+
+  /* get selected option */
+  function get_selected(options) { return options.findIndex(option => option.selected); }
+  var option_index = get_selected(options)
+
+  /* loading webex ID */
+  var formalsol = check_id(this)
+
+  /* add class for current selection */
+  this.classList.remove("webex-incorrect");
+  this.classList.remove("webex-correct");
+  if (option_index >= 0) {
+    this.classList.add(formalsol[option_index] === 1 ? "webex-correct" : "webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+/* function for checking radiogroups answers */
+radiogroups_func = function(e) {
+  console.log("webex: check radiogroups");
+
+  /* get real answer (binary integer array) */
+  var id = e.target.getAttribute("name");
+  var group = document.querySelector(".webex-radiogroup[id='webex-" + id + "']");
+  var formalsol = check_id(group)
+
+  /* check which radiobuttion is selected (user answer) */
+  function get_checked(radios) {
+    return radios.findIndex(radios => radios.checked);
+  }
+  var radios = Array.from(group.querySelectorAll("input[type='radio']"))
+  var radio_index = get_checked(radios);
+
+  /* remove existing classes */
+  radios.forEach(radio => {
+    let cl = radio.closest("label").classList
+    cl.remove("webex-incorrect");
+    cl.remove("webex-correct");
+  });
+
+  /* add class for current selection */
+  let cl = radios[radio_index].closest("label").classList
+  if (formalsol[radio_index] === 1) {
+      cl.add("webex-correct");
+  } else {
+      cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+
+/* function for checking checkboxgroups answers */
+checkboxgroups_func = function(e) {
+  console.log("webex: check checkboxgroups");
+
+  /* get real answer (binary integer array) */
+  var group = document.querySelector(".webex-checkboxgroup[id='" + this.id + "']");
+  var formalsol = check_id(group);
+
+  /* check which checkbox is checked (user answer) */
+  function get_checked(group) {
+      const checkboxes = Array.from(group.querySelectorAll("input[type='checkbox']"));
+      return checkboxes.reduce((indices, checkbox, index) => {
+          if (checkbox.checked) indices.push(index);
+          return indices;
+      }, []);
+  }
+  var checks = Array.from(group.querySelectorAll("input[type='checkbox']"));
+  var check_index = get_checked(group);
+
+  checks.forEach((e, index) => {
+    var label = e.parentNode;
+    var ans = formalsol[index];
+    if ((e.checked && ans === 1) || (!e.checked && ans === 0)) {
+        label.setAttribute("class", "webex-correct")
+    } else {
+        label.setAttribute("class", "webex-incorrect")
+    }
+  });
+
+  update_total_correct();
+}
+
+/* shuffling array (thanks to stack overflow)
+ * If argument x is an integer we create an integer sequence
+ * from 0, 1, ..., (x - 1) and return a shuffled version. If
+ * the input is an array, we simply shuffle it */
+shuffle_array = function(x) {
+   if (Number.isInteger(x) && !isNaN(x)) {
+     x = Array.from({length: x}, (v, i) => i);
+   }
+   let shuffled = x.map(value => ({ value, sort: Math.random() }))
+        .sort((a, b) => a.sort - b.sort).map(({ value }) => value)
+   return shuffled;
+}
+
+/* ---------------------------------------------------------
+ * ---------------------------------------------------------
+ * --------------------------------------------------------- */
+window.onload = function() {
+  //console.log("webex: onload");
+
+  /* setting up buttons and actions to show/hide answers */
+  document.querySelectorAll(".webex-check").forEach(section => {
+    section.classList.add("unchecked");
+
+    /* ul to take up the list items with buttons */
+    let button_ul = document.createElement("ul");
+    button_ul.setAttribute("class", "webex-button-list");
+    section.appendChild(button_ul);
+
+    /* button to _check_ if answers given are correct */
+    let li_check = document.createElement("li");
+    button_ul.appendChild(li_check); /* add list item to ul */
+    let btn_check = document.createElement("button");
+    btn_check.innerHTML = webex_buttons.check_hidden;  // "Check answer";
+    btn_check.setAttribute("class", "webex-button webex-button-check");
+    if (webex_buttons.check_hidden_alt.length > 0) btn_check.setAttribute("title", webex_buttons.check_hidden_alt);
+    btn_check.onclick = check_func;
+    li_check.appendChild(btn_check);
+
+    /* span to show current number of points (when _check_ active) */
+    let spn = document.createElement("span");
+    spn.classList.add("webex-total_correct");
+    li_check.appendChild(spn);
+
+    /* button to show the _solution_ if there is one */
+    var has_solution = section.parentNode.querySelectorAll(".webex-solution").length > 0;
+    if (has_solution) {
+      let li_solution = document.createElement("li");
+      button_ul.appendChild(li_solution); /* add list item to ul */
+      let btn_solution = document.createElement("button");
+      btn_solution.innerHTML = webex_buttons.solution; // "Correct answer";
+      btn_solution.setAttribute("class", "webex-button webex-button-solution");
+      if (webex_buttons.solution_alt.length > 0) btn_solution.setAttribute("title", webex_buttons.solution_alt);
+      btn_solution.onclick = solution_func;
+      li_solution.appendChild(btn_solution);
+    }
+
+  });
+
+  /* set up webex-solveme inputs */
+  document.querySelectorAll(".webex-solveme").forEach(solveme => {
+    solveme.setAttribute("autocomplete","off");
+    solveme.setAttribute("autocorrect", "off");
+    solveme.setAttribute("autocapitalize", "off");
+    solveme.setAttribute("spellcheck", "false");
+    solveme.value = "";
+
+    /* adjust answer for 'no spaces' (ignore spaces) */
+    if (solveme.classList.contains("nospaces")) {
+      solveme.dataset.answer = solveme.dataset.answer.replace(/ /g, "");
+    }
+
+    /* attach checking function, triggered on key up, change, and when
+     * elemnt is out of focus. Only evaluated once by tracking changes
+     * via variable solveme_last_user_answer */
+    solveme.addEventListener("keyup",  solveme_func);
+    solveme.addEventListener("change", solveme_func);
+    solveme.addEventListener("blur",   solveme_func);
+
+    /* adding span to show correct/incorrect icon */
+    solveme.insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+  });
+
+  /* set up radiogroups (single choice questions with display = "buttons") */
+  document.querySelectorAll(".webex-radiogroup").forEach(radiogroup => {
+    radiogroup.onchange = radiogroups_func;
+  });
+
+  /* set up checkboxgroups (multiple choice questions with display = "buttons") */
+  document.querySelectorAll(".webex-checkboxgroup").forEach(checkboxgroup => {
+    checkboxgroup.onchange = checkboxgroups_func;
+  });
+
+  /* set up selects (dropdown menus) */
+  document.querySelectorAll(".webex-select").forEach(select => {
+    select.onchange = select_func;
+    /* append webex-icon for correct/incorrect icons */
+    var elem = document.createElement("span")
+    elem.classList.add("webex-icon")
+    select.parentNode.appendChild(elem)
+  });
+
+  /* change to next/previous question if multiple are available */
+  function handleQuestionClick(group, questions, step) {
+    return async function() {
+      /* get question order as integer vector */
+      let questionOrder = group.dataset.questionOrder.split(",").map(str => parseInt(str));
+
+      /* current question/position */
+      let currentPosition = parseInt(group.dataset.currentPosition);
+
+      /* Hide the current question */
+      questions.forEach(question => { question.classList.remove("active"); });
+
+      /* Move to the next question index */
+      currentPosition = (currentPosition + step) % questionOrder.length;
+      if (currentPosition < 0) currentPosition = currentPosition + questionOrder.length
+
+      /* Display the new question */
+      questions[questionOrder[currentPosition]].classList.add("active");
+
+      // Update the currentPosition data attribute on the group div
+      group.dataset.currentPosition = currentPosition;
+    };
+  }
+
+  document.querySelectorAll(".webex-group").forEach(group => {
+    const questions = Array.from(group.querySelectorAll(".webex-question"));
+
+    /* Create vector with question order. If the webex-group does
+     * not have class '.noshuffle' we will randomly shuffle the order */
+    let questionOrder = Array.from({length: questions.length}, (v, i) => i);
+    if (!group.classList.contains("noshuffle")) {
+      questionOrder = shuffle_array(questionOrder);
+    }
+
+    /* take start position (if set) or start at 0 */
+    const currentPosition = parseInt(group.getAttribute("data-start-position")) || 0;
+
+    /* show the default question for each group */
+    questions[questionOrder[currentPosition]].classList.add("active");
+
+    /* store random order of questions as well as current position */
+    group.dataset.questionOrder   = questionOrder;
+    group.dataset.currentPosition = currentPosition;
+
+    /* find all webex-questions, search for .webex-button-list and
+     * populate the list with necessary <li><button>...</button></li> elements */
+    questions.forEach(question => {
+        let button_ul = question.querySelector("ul.webex-button-list");
+
+        let li_next = document.createElement("li");
+        let nextButton = document.createElement("button");
+        nextButton.setAttribute("class", "webex-button webex-button-next");
+        if (webex_buttons.question_next_alt.length > 0) nextButton.setAttribute("title", webex_buttons.question_next_alt);
+        nextButton.innerHTML = webex_buttons.question_next; // "Next question";
+        nextButton.addEventListener("click", handleQuestionClick(group, questions, 1));
+        li_next.appendChild(nextButton);
+
+        let li_previous = document.createElement("li");
+        let previousButton = document.createElement("button");
+        previousButton.setAttribute("class", "webex-button webex-button-previous");
+        if (webex_buttons.question_previous_alt.length > 0) previousButton.setAttribute("title", webex_buttons.question_previous_alt);
+        previousButton.innerHTML = webex_buttons.question_previous; // "Previous question";
+        previousButton.addEventListener("click", handleQuestionClick(group, questions, -1));
+        li_previous.appendChild(previousButton);
+
+        if (webex_buttons.question_previous.length > 0) button_ul.appendChild(li_previous);
+        if (webex_buttons.question_next.length > 0) button_ul.appendChild(li_next);
+    });
+  });
+
+  /* Development options */
+  document.querySelectorAll(".webex-question.check").forEach(question => {
+      question.querySelector(".webex-button-check").click()
+  });
+  document.querySelectorAll(".webex-question.solution").forEach(question => {
+      let btn = question.querySelector(".webex-button-solution");
+      if (btn !== null) { btn.click(); }
+  });
+
+  /* Pre-filling <input> fields */
+  document.querySelectorAll(".webex-question.prefill").forEach(question => {
+      question.querySelectorAll("input.webex-solveme").forEach(solveme => {
+          let x = JSON.parse(solveme.dataset.answer);
+          solveme.value = x[0];
+          /* Trigger the on change event */
+          solveme.dispatchEvent(new Event("change"));
+      });
+
+      /* Pre-filling radiogroups, that is for schoice questions */
+      question.querySelectorAll(".webex-radiogroup").forEach(radiogroup => {
+          let x = JSON.parse(radiogroup.dataset.answer);
+          let idx = x.indexOf(1);
+          let radios = radiogroup.querySelectorAll('input[type="radio"]');
+          radios[idx].checked = true;
+          /* Trigger the on change event */
+          radios[idx].dispatchEvent(new Event("change", { bubbles: true }));
+      });
+
+      /* Pre-filling checkboxgroups, that is for schoice questions w/ dropdown menus */
+      question.querySelectorAll(".webex-select").forEach(dropdown => {
+          let x = JSON.parse(dropdown.dataset.answer);
+          let idx = x.indexOf(1) + 1; /* +1 to skip the first blank option */
+          let options = dropdown.querySelectorAll("option");
+          options[idx].selected = true;
+          /* Trigger the on change event */
+          options[idx].dispatchEvent(new Event("change", { bubbles: true }));
+      });
+
+      /* Pre-filling checkboxgroups, that is for mchoice questions */
+      question.querySelectorAll(".webex-checkboxgroup").forEach(radiogroup => {
+          let x = JSON.parse(radiogroup.dataset.answer);
+          let checkboxes = radiogroup.querySelectorAll('input[type="checkbox"]');
+          for (let i = 0; i < checkboxes.length; i++) {
+              checkboxes[i].checked = x[i];
+          }
+          /* Trigger the on change event */
+          checkboxes[0].dispatchEvent(new Event("change", { bubbles: true }));
+      });
+  });
+
+  /* Show set tolerance (devel option) */
+  function calc_width(x, txt, offset = 20) {
+      /* We do the following:
+       * Create a new span, insert the value we need in the .tolerance
+       * input node, and calculate its offsetWidth. Then remove it
+       * again; this is just used to calculate the required width. */
+      var cwtmp = document.createElement("span");
+      x.appendChild(cwtmp);
+      cwtmp.innerHTML = txt || "";
+      var w = parseInt(cwtmp.getBoundingClientRect().width) + offset;
+      cwtmp.remove();
+      return w;
+  }
+
+  /* If tolerance should be shown (devel option) we calculate:
+   * - the width required to properly display the solution
+   * - the width required to properly display the tolerance
+   * - add a new element to display the tolerance
+   * - reduce the width of the solution input box. */
+  document.querySelectorAll(".webex-question.tolerance").forEach(question => {
+      question.querySelectorAll("input[data-tol]").forEach(elem => {
+          var w = null;
+
+          /* Add new element showing the tolerance */
+          let tol = document.createElement("input");
+          tol.type = "text"; // <inpyt type="text">
+          tol.disabled = true; // Disable input element
+          tol.classList.add("tolerance"); // Appending class
+          tol.value = "± " + elem.getAttribute("data-tol");
+
+          /* Add new node */
+          elem.parentNode.insertBefore(tol, elem)
+
+          var body     = document.querySelector("body");
+          //tol.value = "± " + "0.0000007";
+          //tol.value = "± " + "0.07";
+          w    = calc_width(body, tol.value);
+          wold = parseInt(elem.getBoundingClientRect().width);
+          wmin = calc_width(body, elem.value);
+
+          /* Calculate required width of the 'tolerance' node, and the
+           * reduction of the original 'input' node */
+          let wnew = Math.max(wmin, wold - w);
+          tol.style.width  = w + "px";
+          elem.style.width = wnew + "px";
+      });
+  });
+
+  update_total_correct();
+}
+
+</script>
 
 
 

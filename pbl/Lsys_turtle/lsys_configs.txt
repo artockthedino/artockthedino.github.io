@@ -585,5 +585,10 @@ snowflake
 
 
 4th degree polynomial... give a complex root.
+https://en.wikipedia.org/wiki/Gibbard%27s_theorem
+
+https://www.equal.vote/ranked_robin
+
+
 
 

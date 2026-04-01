@@ -3,7 +3,7 @@
 
 ncand = 6
 npref = 10
-nvote = 101
+nvote = sample(50:200,1)
 
 borda = function(counts,prefs){
     np = length(prefs)
@@ -129,7 +129,7 @@ Question
 
 In an election, `r nvote` voters filled out ranked preferences for `r ncand` candidates. Luckily, although there are `r factorial(ncand)` possible rankings, only `r npref` rankings were cast.
 
-| candidate | `r paste0(counts," voters | ",collapse="")`
+| candidate | `r paste0("ranking of ",counts," voters | ",collapse="")`
 |:---:|`r paste0(rep(":---:|",npref),collapse="")`
 ```{r,echo=F,results='asis'}
 for(i in 1:ncand){
@@ -141,11 +141,11 @@ for(i in 1:ncand){
 }
 ```
 
-1. Who won the most 1st-place votes?
+1. Who won the plurality of most 1st-place votes?
 ##ANSWER1##
-2. Who won using ranked-choice (instant runoff) voting system?
+2. Who won using ranked-choice ([instant runoff](https://en.wikipedia.org/wiki/Instant-runoff_voting)) voting system?
 ##ANSWER2##
-3. Who won using Borda count voting system?
+3. Who won using [Borda count](https://en.wikipedia.org/wiki/Borda_count) voting system?
 ##ANSWER3##
 
 Answerlist
