@@ -1,0 +1,198 @@
+```{r,echo=FALSE,warning=FALSE}
+nc = sample(3:6,1)
+nv = 7
+
+compare = function(prefs,i,j){
+    pi = 0
+    pj = 0
+    for(k in 1:nv){
+        prefi = prefs[[k]][i]
+        prefj = prefs[[k]][j]
+        if(prefi < prefj){
+            pi = pi+1
+        }
+        if(prefj < prefi){
+            pj = pj+1
+        }
+    }
+    if(pi>pj){
+        win = i
+        lose = j
+    }
+    if(pj>pi){
+        win = j
+        lose = i
+    }
+    if(pj==pi){
+        win = 0
+        lose = 0
+    }
+    return(c(pi,pj,win,lose))
+}
+
+condorcet = function(prefs){
+    nv = length(prefs)
+    nc = length(prefs[[1]])
+    alwayswin = rep(T,nc)
+    for(i in 1:(nc-1)){
+        for(j in (i+1):nc){
+            pi = 0
+            pj = 0
+            for(k in 1:nv){
+                prefi = prefs[[k]][i]
+                prefj = prefs[[k]][j]
+                if(prefi < prefj){
+                    pi = pi+1
+                }
+                if(prefj < prefi){
+                    pj = pj+1
+                }
+            }
+            if(pi <= pj){
+                alwayswin[i] = F
+            }
+            if(pi >= pj){
+                alwayswin[j] = F
+            }
+        }
+    }
+    if(length(unique(alwayswin))==2){
+        return(which(alwayswin))
+    } else {
+        return(0)
+    }
+}
+
+plurality = function(prefs){
+    nv = length(prefs)
+    nc = length(prefs[[1]])
+    points = rep(0,nc)
+    for(k in 1:nv){
+        wo = which(prefs[[k]]==1)
+        points[wo] = points[wo]+1
+    }
+    mp = max(points)
+    if(sum(mp==points)==1){
+        return(which(points==mp))
+    } else {
+        return(0)
+    }
+}
+
+borda = function(prefs){
+    np = length(prefs)
+    nc = length(prefs[[1]])
+    bps = rep(0,nc)
+    for(i in 1:np){
+        for(j in 1:nc){
+            bp = nc-prefs[[i]][j]
+            bps[j] = bps[j]+bp
+        }
+    }
+    win = which(bps==max(bps))
+    if(length(win)>1){
+        return(0)
+    } else {
+        return(win)
+    }
+}
+
+borda_pts = function(prefs){
+    np = length(prefs)
+    nc = length(prefs[[1]])
+    bps = rep(0,nc)
+    for(i in 1:np){
+        for(j in 1:nc){
+            bp = nc-prefs[[i]][j]
+            bps[j] = bps[j]+bp
+        }
+    }
+    return(bps)
+}
+
+nocond = sample(c(T,F),1,F,c(1,nc))
+
+while(T){
+    prefs = list()
+    for(i in 1:nv){
+        pref = sample(1:nc)
+        prefs[[i]] = pref
+    }
+    cond = condorcet(prefs)
+    plur = plurality(prefs)
+    if(cond!=0 && cond!=plur && nocond==F){
+        sol = paste0(1*(cond==1:(nc+1)),collapse="")
+        break
+    }
+    if(nocond==T && cond==0 && plur!=0){
+        sol = paste0(paste0(rep(0,nc),collapse=""),"1")
+        break
+    }
+}
+
+wo = sample(1:nc,1)
+ans = borda_pts(prefs)[wo]
+cans = LETTERS[26-nc+1:nc]
+
+```
+
+Question
+========
+
+In Adams, Massachusetts, `r nc` candidates (`r LETTERS[26-nc+1]` through Z) are running in an election with a single winner. There are `r nv` voters (A through `r LETTERS[nv]`) who each rank the candidates from 1 to `r nc`, with 1 meaning first choice and `r nc` meaning last choice. Those rankings are shown below. Each column represents a single voter's ranking.
+
+|    | `r paste0("voter ",LETTERS[1:nv]," | ",collapse="")`
+|:---:|`r paste0(rep(":---:|",nv),collapse="")`
+```{r,echo=F,results='asis'}
+for(i in 1:nc){
+    cat(paste0("| candidate ",LETTERS[26-nc+i]," | "))
+    for(j in 1:nv){
+        cat(paste0(prefs[[j]][i]," | "))
+    }
+    cat("\n")
+}
+```
+
+A [Borda winner](https://en.wikipedia.org/wiki/Borda_count) is a candidate that gets the most Borda points, where each voter's ranking gives 0 points to the last choice, 1 point to the next lowest, etc.
+
+How many Borda points would candidate `r cans[wo]` get from all `r nv` voters combined?
+
+
+Solution
+========
+
+There are `r nc` candidates. So, we subtract each preference number from `r nc` to get Borda points. We then add all the Borda points from each voter.
+
+```{r,echo=F,fig.dim=c(5,1)}
+mkbtab = function(prefs,i=1){
+    par(mar=c(0,0,0,0))
+    plot(0,0,"n",xlim=c(-1,nv+1),ylim=c(0.5,3.5),axes=F,ann=F)
+    text(-0.5,2,cans[i])
+    text(-0.5,1,"Borda",col="red")
+    for(k in 1:nv){
+        text(k-0.5,3,LETTERS[k])
+        text(k-0.5,2,prefs[[k]][i])
+        text(k-0.5,1,nc-prefs[[k]][i],col="red")
+        # if(prefs[[k]][i]>prefs[[k]][j]){
+        #     mkcirc(k-0.5,1)
+        # } else {
+        #     mkcirc(k-0.5,2)
+        # }
+    }
+    # text(nv+0.5,2,cc[1],col="red",cex=1.2)
+    text(nv+0.5,1,borda_pts(prefs)[i],col="red",cex=1.2)
+    abline(h=2.5)
+    abline(v=0)
+    abline(v=nv)
+    text(nv+0.5,3,"TOTAL",cex=0.8)
+}
+mkbtab(prefs,wo)
+```
+
+
+
+Meta-information
+============
+extype: num
+exsolution: `r ans`
+exname: borda_points

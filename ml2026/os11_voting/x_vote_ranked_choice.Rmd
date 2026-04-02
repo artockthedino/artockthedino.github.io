@@ -12,7 +12,7 @@ borda = function(counts,prefs){
     for(i in 1:np){
         for(j in 1:nc){
             bp = nc-prefs[[i]][j]
-            bps[j] = bps[j]+bp
+            bps[j] = bps[j]+bp*counts[i]
         }
     }
     win = which(bps==max(bps))
