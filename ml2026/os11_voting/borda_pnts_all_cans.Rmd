@@ -208,6 +208,6 @@ bordtable(prefs)
 Meta-information
 ============
 extype: cloze
-exclozetype: `r paste0(rep("schoice",nc+1),collapse=" | ")`
-exsolution: `r paste0(sol,collapse=" | ")`
+exclozetype: `r paste0(rep("schoice",nc+1),collapse="|")`
+exsolution: `r paste0(sol,collapse="|")`
 exname: borda

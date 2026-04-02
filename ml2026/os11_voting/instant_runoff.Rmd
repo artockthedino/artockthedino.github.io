@@ -1,0 +1,297 @@
+```{r,echo=FALSE,warning=FALSE}
+
+compare = function(prefs,i,j){
+    pi = 0
+    pj = 0
+    for(k in 1:nv){
+        prefi = prefs[[k]][i]
+        prefj = prefs[[k]][j]
+        if(prefi < prefj){
+            pi = pi+1
+        }
+        if(prefj < prefi){
+            pj = pj+1
+        }
+    }
+    if(pi>pj){
+        win = i
+        lose = j
+    }
+    if(pj>pi){
+        win = j
+        lose = i
+    }
+    if(pj==pi){
+        win = 0
+        lose = 0
+    }
+    return(c(pi,pj,win,lose))
+}
+
+condorcet = function(prefs){
+    nv = length(prefs)
+    nc = length(prefs[[1]])
+    alwayswin = rep(T,nc)
+    for(i in 1:(nc-1)){
+        for(j in (i+1):nc){
+            pi = 0
+            pj = 0
+            for(k in 1:nv){
+                prefi = prefs[[k]][i]
+                prefj = prefs[[k]][j]
+                if(prefi < prefj){
+                    pi = pi+1
+                }
+                if(prefj < prefi){
+                    pj = pj+1
+                }
+            }
+            if(pi <= pj){
+                alwayswin[i] = F
+            }
+            if(pi >= pj){
+                alwayswin[j] = F
+            }
+        }
+    }
+    if(length(unique(alwayswin))==2){
+        return(which(alwayswin))
+    } else {
+        return(0)
+    }
+}
+
+plurality = function(prefs){
+    nv = length(prefs)
+    nc = length(prefs[[1]])
+    points = rep(0,nc)
+    for(k in 1:nv){
+        wo = which(prefs[[k]]==1)
+        points[wo] = points[wo]+1
+    }
+    mp = max(points)
+    if(sum(mp==points)==1){
+        return(which(points==mp))
+    } else {
+        return(0)
+    }
+}
+
+borda = function(prefs){
+    np = length(prefs)
+    nc = length(prefs[[1]])
+    bps = rep(0,nc)
+    for(i in 1:np){
+        for(j in 1:nc){
+            bp = nc-prefs[[i]][j]
+            bps[j] = bps[j]+bp
+        }
+    }
+    win = which(bps==max(bps))
+    if(length(win)>1){
+        return(0)
+    } else {
+        return(win)
+    }
+}
+
+borda_pts = function(prefs){
+    np = length(prefs)
+    nc = length(prefs[[1]])
+    bps = rep(0,nc)
+    for(i in 1:np){
+        for(j in 1:nc){
+            bp = nc-prefs[[i]][j]
+            bps[j] = bps[j]+bp
+        }
+    }
+    return(bps)
+}
+
+inst_run = function(prefs){
+    counts = rep(1,length(prefs))
+    nrounds = 0
+    whowon = 0
+    N = sum(counts)
+    np = length(prefs)
+    nc = length(prefs[[1]])
+    majority = N%/%2+1
+    winner = F
+    cannies = 1:nc
+    ppp = 0
+    while(winner==F){
+        ppp = ppp+1
+        if(ppp>(nc)){
+            return(c(0,ppp))
+        }
+        # print(cannies)
+        nrounds = nrounds+1
+        vcs = rep(0,length(cannies))
+        for(i in 1:np){
+            p = prefs[[i]]
+            jj = which(p==min(p[cannies]))
+            vcs[which(cannies==jj)] = vcs[which(cannies==jj)]+counts[i]
+        }
+        # print(vcs)
+        if(max(vcs)>=majority){
+            winner=T
+            whowon = cannies[which(vcs==max(vcs))]
+        } else {
+            if(length(cannies)==2){
+                return(c(0,nrounds))
+            }
+            jj = which(vcs==min(vcs))
+            if(length(jj)>1){
+                return(c(0,nrounds))
+            }
+            # print(jj)
+            cannies = cannies[-jj]
+        }
+    }
+    return(c(whowon,nrounds))
+}
+
+while(T){
+    nc = sample(4:6,1)
+    nv = sample(8:12,1)
+    prefs = list()
+    for(i in 1:nv){
+        pref = sample(1:nc)
+        prefs[[i]] = pref
+    }
+    # cond = condorcet(prefs)
+    plur = plurality(prefs)
+    # bord = borda(prefs)
+    inru = inst_run(prefs)[1]
+    inruro = inst_run(prefs)[2]
+    has1 = rep(F,nc)
+    for(i in 1:nv){
+        for(j in 1:nc){
+            if(prefs[[i]][j]==1){
+                has1[j] = T
+            }
+        }
+    }
+    if(inru!=0 && inruro>1 && inru!=plur && length(unique(has1))==1){
+        break
+    }
+}
+
+cans = LETTERS[26-nc+1:nc]
+bp = borda_pts(prefs)
+ach = sort(unique(c(bp,sample(c(bp-1,bp+1,bp-2,bp+2))))[1:10])
+while(length(ach)<10){
+    ach = sort(unique(c(ach,sample(1:(max(bp)+10),1))))
+}
+
+
+al2 = paste0("* Candidate ",cans,collapse="\n")
+
+sol = paste0(1*(1:nc==inru),collapse="")
+
+```
+
+Question
+========
+
+In Adams, Massachusetts, `r nc` candidates (`r LETTERS[26-nc+1]` through Z) are running in an election with a single winner. There are `r nv` voters (A through `r LETTERS[nv]`) who each rank the candidates from 1 to `r nc`, with 1 meaning first choice and `r nc` meaning last choice. Those rankings are shown below. Each column represents a single voter's ranking.
+
+
+```{r,echo=F,fig.dim=c(2+nv/3,1+nc/3),results='asis'}
+inrutab1 = function(prefs,surv=1:length(prefs[[1]])){
+    par(mar=c(0,0,0,0))
+    plot(0,0,"n",xlim=c(-1,nv+1),ylim=c(0.5,nc+1.5),axes=F,ann=F)
+    tots = rep(0,length(prefs[[1]]))
+    for(i in surv){
+        text(-0.5,nc+1-i,cans[i])
+        for(j in 1:nv){
+            text(j-0.5,nc+1-i,prefs[[j]][i])
+            if(prefs[[j]][i]==min(prefs[[j]][surv])){
+                # tots[i] = tots[i]+1
+                # mkcirc(j-0.5,nc+1-i)
+            }
+        }
+        # text(nv+0.5,nc+1-i,tots[i],col="red",cex=1.2)
+    }
+    for(j in 1:nv){
+        text(j-0.5,nc+1,LETTERS[j])
+    }
+    abline(h=nc+0.5)
+    abline(v=0)
+}
+inrutab1(prefs)
+```
+\
+
+Who would win an [instant-runoff election](https://en.wikipedia.org/wiki/Instant-runoff_voting)?
+
+Answerlist
+--------
+
+`r al2`
+
+Solution
+========
+
+First, there are `r nv` voters, so a candidate needs at least `r nv%/%2+1` votes to win a majority.
+
+
+```{r,echo=F,fig.dim=c(2+nv/3,1+nc/3),results="asis"}
+mkcirc = function(x,y){
+    th = seq(0,2*pi,pi/100)
+    lines(x+0.4*cos(th),y+0.4*sin(th),col="red")
+}
+inrutab = function(prefs,surv=1:length(prefs[[1]])){
+    par(mar=c(0,0,0,0))
+    plot(0,0,"n",xlim=c(-1,nv+1),ylim=c(0.5,nc+1.5),axes=F,ann=F)
+    tots = rep(0,length(prefs[[1]]))
+    for(i in surv){
+        text(-0.5,nc+1-i,cans[i])
+        for(j in 1:nv){
+            text(j-0.5,nc+1-i,prefs[[j]][i])
+            if(prefs[[j]][i]==min(prefs[[j]][surv])){
+                tots[i] = tots[i]+1
+                mkcirc(j-0.5,nc+1-i)
+            }
+        }
+        text(nv+0.5,nc+1-i,tots[i],col="red",cex=1.2)
+    }
+    for(j in 1:nv){
+        text(j-0.5,nc+1,LETTERS[j])
+    }
+    abline(h=nc+0.5)
+    abline(v=0)
+    abline(v=nv)
+    text(nv+0.5,nc+1,"votes",cex=0.7)
+    return(tots)
+}
+maj = nv%/%2+1
+totals = rep(0,nc)
+survivors = 1:nc
+ppp = 0
+while(T){
+    ppp = ppp+1
+    if(ppp>nc-1){
+        break
+    }
+    totals = inrutab(prefs,survivors)
+    if(max(totals)<maj){
+        loser_num = which(totals[survivors]==min(totals[survivors]))
+        cat(paste0("\n\nNobody has a majority. Candidate ",cans[survivors[loser_num]]," has the fewest votes. Eliminate candidate ",cans[survivors[loser_num]]," from the contest. Each voter's vote goes to their top candidate still in the election.\n\n"))
+        survivors = survivors[-which(survivors==loser_num)]
+    } else {
+        winner_num = which(totals[survivors]==max(totals[survivors]))
+        cat(paste0("\n\nCandidate ",cans[survivors[winner_num]]," has gotten majority vote. Candidate ",cans[survivors[winner_num]]," wins!"))
+        break
+    }
+}
+
+```
+\
+
+
+Meta-information
+============
+extype: schoice
+exsolution: `r sol`
+exname: instant_runoff

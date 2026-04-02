@@ -1,13 +1,16 @@
 library("exams2forms")
-n = 10
+n = 5
 
 ### Entrance ticket
-pm = list("x_vote_ranked_choice.Rmd")
+pm = list("condorcet.Rmd",
+          "borda_pnts_1_can.Rmd",
+          "borda_pnts_all_cans.Rmd",
+          "instant_runoff.Rmd")
 
 exams2webquiz(pm,
              n=n,
-             title = "examples_0401",
+             title = "examples_0402",
              dir = ".",
-             name="examples_0401")
+             name="examples_0402")
 
 
