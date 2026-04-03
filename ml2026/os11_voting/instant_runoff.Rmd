@@ -241,7 +241,8 @@ mkcirc = function(x,y){
     th = seq(0,2*pi,pi/100)
     lines(x+0.4*cos(th),y+0.4*sin(th),col="red")
 }
-inrutab = function(prefs,surv=1:length(prefs[[1]])){
+inrutab = function(prefs,surv){
+    # cat("\n\nfunc surv ",surv,"\n\n")
     par(mar=c(0,0,0,0))
     plot(0,0,"n",xlim=c(-1,nv+1),ylim=c(0.5,nc+1.5),axes=F,ann=F)
     tots = rep(0,length(prefs[[1]]))
@@ -256,6 +257,7 @@ inrutab = function(prefs,surv=1:length(prefs[[1]])){
         }
         text(nv+0.5,nc+1-i,tots[i],col="red",cex=1.2)
     }
+    # cat("\n\nfunc tots ",tots,"\n\n")
     for(j in 1:nv){
         text(j-0.5,nc+1,LETTERS[j])
     }
@@ -270,20 +272,19 @@ totals = rep(0,nc)
 survivors = 1:nc
 ppp = 0
 while(T){
-    ppp = ppp+1
-    if(ppp>nc-1){
-        break
-    }
     totals = inrutab(prefs,survivors)
-    if(max(totals)<maj){
+    # cat("\n\ntot ",totals,"\n\nsurv ",survivors,"\n\ntotsurv ",totals[survivors],"\n\n")
+    # cat("\n\nmintotsurv ",min(totals[survivors]),"\n\ntotsurv ",totals[survivors],"\n\nwhich ",which(totals[survivors]==min(totals[survivors])))
+    if(max(totals)[1]<maj){
         loser_num = which(totals[survivors]==min(totals[survivors]))
         cat(paste0("\n\nNobody has a majority. Candidate ",cans[survivors[loser_num]]," has the fewest votes. Eliminate candidate ",cans[survivors[loser_num]]," from the contest. Each voter's vote goes to their top candidate still in the election.\n\n"))
-        survivors = survivors[-which(survivors==loser_num)]
+        survivors = survivors[-loser_num]
     } else {
         winner_num = which(totals[survivors]==max(totals[survivors]))
         cat(paste0("\n\nCandidate ",cans[survivors[winner_num]]," has gotten majority vote. Candidate ",cans[survivors[winner_num]]," wins!"))
         break
     }
+    # cat("\n\n",paste0(cans[survivors],collapse=" "),"\n\n")
 }
 
 ```

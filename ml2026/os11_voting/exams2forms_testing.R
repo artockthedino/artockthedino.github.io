@@ -1,5 +1,5 @@
 library("exams2forms")
-n = 5
+n = 10
 
 ### Entrance ticket
 pm = list("condorcet.Rmd",

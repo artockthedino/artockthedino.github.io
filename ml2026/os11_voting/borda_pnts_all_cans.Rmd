@@ -202,7 +202,7 @@ bordtable = function(prefs){
 }
 bordtable(prefs)
 ```
-
+\
 
 
 Meta-information
