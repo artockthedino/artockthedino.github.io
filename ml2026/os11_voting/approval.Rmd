@@ -1,0 +1,126 @@
+```{r,echo=FALSE,warning=FALSE}
+# This problem assumes 4 candidates.
+# 14 Yes/No ballots are represented (not all yes or all no)
+# Each ballot count at top... total votes between 40 and 200
+
+while(T){
+    nv = sample(40:200,1)
+    counts = c(0,diff(c(0,sort(sample(1:(nv-1),13)),nv)),0)
+    ballots = list(c(1,1,1,1),
+                   c(1,1,1,0),
+                   c(1,1,0,1),
+                   c(1,1,0,0),
+                   c(1,0,1,1),
+                   c(1,0,1,0),
+                   c(1,0,0,1),
+                   c(1,0,0,0),
+                   c(0,1,1,1),
+                   c(0,1,1,0),
+                   c(0,1,0,1),
+                   c(0,1,0,0),
+                   c(0,0,1,1),
+                   c(0,0,1,0),
+                   c(0,0,0,1),
+                   c(0,0,0,0))
+    votes = rep(0,4)
+    for(i in 1:16){
+        votes = votes+counts[i]*ballots[[i]]
+    }
+    if(length(unique(votes))==4 && min(votes)>5){
+        break
+    }
+}
+
+extras = c(votes-1,votes+1,votes-2,votes+2,votes-3,votes+3,votes-4,votes+4)
+ach = votes
+ppp = 1
+while(length(ach)<10){
+    ppp = ppp+1
+    if(ppp<10){
+        ach = sort(unique(c(ach,sample(extras,1))))
+    } else {
+        ach = sort(unique(c(ach,sample(1:100,1))))
+    }
+}
+
+cans = c("W","X","Y","Z")
+
+sol1 = paste0(1*(ach==votes[1]),collapse="")
+sol2 = paste0(1*(ach==votes[2]),collapse="")
+sol3 = paste0(1*(ach==votes[3]),collapse="")
+sol4 = paste0(1*(ach==votes[4]),collapse="")
+sol5 = paste0(1*(max(votes)==votes),collapse="")
+
+al1 = paste0("* ",ach,collapse="\n")
+al5 = paste0("* Candidate ",cans,collapse="\n")
+
+```
+
+Question
+========
+
+In an [approval-vote election](https://en.wikipedia.org/wiki/Approval_voting), there are 4 candidates and `r nv` voters. Each voter indicated which candidates they approve of (with a 1) or disapprove of (with a 0). All possible ballots are shown below, and the table indicates how many of each type of ballot was cast.
+
+| Number of ballots | `r paste0(counts," | ",collapse="")`
+|`r paste0(rep(":---:|",17),collapse="")`
+```{r, echo=F, results='asis'}
+for(i in 1:4){
+    cat("| Candidate",cans[i],"|")
+    for(j in 1:16){
+        cat(paste0(ballots[[j]][i]," | "))
+    }
+    cat("\n")
+}
+```
+
+1. How many approvals did Candidate W get? ##ANSWER1##
+2. How many approvals did Candidate X get? ##ANSWER2##
+3. How many approvals did Candidate Y get? ##ANSWER3##
+4. How many approvals did Candidate Z get? ##ANSWER4##
+5. Who won the election? ##ANSWER5##
+
+
+Answerlist
+--------
+
+`r al1`
+`r al1`
+`r al1`
+`r al1`
+`r al5`
+
+
+Solution
+========
+
+Each "1" corresponds to the ballot count number of votes. We can make another table with votes counts.
+
+| Number of ballots | `r paste0(counts," | ",collapse="")`|
+|`r paste0(rep(":---:|",17),collapse="")`
+```{r, echo=F, results='asis'}
+for(i in 1:4){
+    cat("| Candidate",cans[i],"|")
+    for(j in 1:16){
+        cat(paste0(ballots[[j]][i]*counts[j]," | "))
+    }
+    cat("\n")
+}
+```
+
+And then just sum each row.
+
+
+* Candidate W got `r votes[1]` approvals
+* Candidate X got `r votes[2]` approvals
+* Candidate Y got `r votes[3]` approvals
+* Candidate Z got `r votes[4]` approvals
+
+And we see that Candidate `r cans[which(votes==max(votes))]` is the winner.
+
+
+Meta-information
+============
+extype: cloze
+exclozetype: schoice|schoice|schoice|schoice|schoice
+exsolution: `r sol1`|`r sol2`|`r sol3`|`r sol4`|`r sol5`
+exname: approval

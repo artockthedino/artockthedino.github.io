@@ -1,30 +1,31 @@
 library("exams")
-n = 15
+n = 30
 outdir = "outcanvas"
 
 ### Entrance ticket
-pm = list("condorcet.Rmd",
-          "borda_pnts_1_can.Rmd",
-          "borda_pnts_all_cans.Rmd")
-exams2canvas(pm,
-             n=n,
-             dir=outdir,
-             points=rep(12,length(pm)),
-             maxattempts = 3,
-             name="m0402_ET",
-             template = "canvas_qti12.xml",
-             cloze = list(enumerate = FALSE))
-
-# pm = list("x_cond_cp_con_inv.Rmd",
-#           "x_cond_cp_con_inv.Rmd")
+# pm = list("instant_runoff.Rmd",
+#           "approval.Rmd")
 # exams2canvas(pm,
 #              n=n,
 #              dir=outdir,
-#              points=rep(4,length(pm)),
-#              maxattempts = 6,
-#              name="m0325c_conditional_variations",
+#              points=rep(5,length(pm)),
+#              maxattempts = 5,
+#              name="m0403_ET",
 #              template = "canvas_qti12.xml",
 #              cloze = list(enumerate = FALSE))
+
+pm = list("condorcet.Rmd",
+          "borda_pnts_all_cans.Rmd",
+          "instant_runoff.Rmd",
+          "approval.Rmd")
+exams2canvas(pm,
+             n=n,
+             dir=outdir,
+             points=rep(5,length(pm)),
+             maxattempts = 6,
+             name="m0403_voting_methods_review",
+             template = "canvas_qti12.xml",
+             cloze = list(enumerate = FALSE))
 
 
 # pm = list("standard_from_graph.Rmd",
