@@ -90,7 +90,7 @@ plot(x+10,y,"l",xlab="x",ylab="y",ylim=c(0,4*new_scale),col="blue",lwd=2)
 Assume this graph contains all the extrema of the function, so the end-behavior is also indicated.
 
 1. What is the lowest possible degree of the polynomial? ##ANSWER1##
-2. What is the polynomial's [parity](https://en.wikipedia.org/wiki/Parity_(mathematics))? ##ANSWER2##
+2. What is the polynomial degree's [parity](https://en.wikipedia.org/wiki/Parity_(mathematics))? ##ANSWER2##
 3. What is the sign of the leading coefficient? ##ANSWER3##
 
 Answerlist

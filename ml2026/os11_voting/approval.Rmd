@@ -73,6 +73,8 @@ for(i in 1:4){
 }
 ```
 
+(You probably want to copy/paste this table into [sheets](https://sheets.new).)
+
 1. How many approvals did Candidate W get? ##ANSWER1##
 2. How many approvals did Candidate X get? ##ANSWER2##
 3. How many approvals did Candidate Y get? ##ANSWER3##
@@ -108,7 +110,6 @@ for(i in 1:4){
 ```
 
 And then just sum each row.
-
 
 * Candidate W got `r votes[1]` approvals
 * Candidate X got `r votes[2]` approvals
