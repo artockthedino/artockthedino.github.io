@@ -1,0 +1,225 @@
+```{r,echo=FALSE,warning=FALSE}
+nc = sample(4:5,1)
+nv = sample(6:7,1)
+
+compare = function(prefs,i,j){
+    pi = 0
+    pj = 0
+    for(k in 1:nv){
+        prefi = prefs[[k]][i]
+        prefj = prefs[[k]][j]
+        if(prefi < prefj){
+            pi = pi+1
+        }
+        if(prefj < prefi){
+            pj = pj+1
+        }
+    }
+    if(pi>pj){
+        win = i
+        lose = j
+    }
+    if(pj>pi){
+        win = j
+        lose = i
+    }
+    if(pj==pi){
+        win = 0
+        lose = 0
+    }
+    return(c(pi,pj,win,lose))
+}
+
+condorcet = function(prefs){
+    nv = length(prefs)
+    nc = length(prefs[[1]])
+    alwayswin = rep(T,nc)
+    for(i in 1:(nc-1)){
+        for(j in (i+1):nc){
+            pi = 0
+            pj = 0
+            for(k in 1:nv){
+                prefi = prefs[[k]][i]
+                prefj = prefs[[k]][j]
+                if(prefi < prefj){
+                    pi = pi+1
+                }
+                if(prefj < prefi){
+                    pj = pj+1
+                }
+            }
+            if(pi <= pj){
+                alwayswin[i] = F
+            }
+            if(pi >= pj){
+                alwayswin[j] = F
+            }
+        }
+    }
+    if(length(unique(alwayswin))==2){
+        return(which(alwayswin))
+    } else {
+        return(0)
+    }
+}
+
+plurality = function(prefs){
+    nv = length(prefs)
+    nc = length(prefs[[1]])
+    points = rep(0,nc)
+    for(k in 1:nv){
+        wo = which(prefs[[k]]==1)
+        points[wo] = points[wo]+1
+    }
+    mp = max(points)
+    if(sum(mp==points)==1){
+        return(which(points==mp))
+    } else {
+        return(0)
+    }
+}
+
+borda = function(prefs){
+    np = length(prefs)
+    nc = length(prefs[[1]])
+    bps = rep(0,nc)
+    for(i in 1:np){
+        for(j in 1:nc){
+            bp = nc-prefs[[i]][j]
+            bps[j] = bps[j]+bp
+        }
+    }
+    win = which(bps==max(bps))
+    if(length(win)>1){
+        return(0)
+    } else {
+        return(win)
+    }
+}
+
+borda_pts = function(prefs){
+    np = length(prefs)
+    nc = length(prefs[[1]])
+    bps = rep(0,nc)
+    for(i in 1:np){
+        for(j in 1:nc){
+            bp = nc-prefs[[i]][j]
+            bps[j] = bps[j]+bp
+        }
+    }
+    return(bps)
+}
+
+nocond = sample(c(T,F),1,F,c(1,nc))
+
+while(T){
+    prefs = list()
+    for(i in 1:nv){
+        pref = sample(1:nc)
+        prefs[[i]] = pref
+    }
+    cond = condorcet(prefs)
+    plur = plurality(prefs)
+    bord = borda(prefs)
+    if(bord!=plur && bord!=0 && bord != cond){
+        break
+    }
+}
+cans = LETTERS[26-nc+1:nc]
+bp = borda_pts(prefs)
+ach = sort(unique(c(bp,sample(c(bp-1,bp+1,bp-2,bp+2))))[1:10])
+while(length(ach)<10){
+    ach = sort(unique(c(ach,sample(1:(max(bp)+10),1))))
+}
+
+al = paste0("* ",ach,collapse="\n")
+al2 = paste0("* Candidate ",cans,collapse="\n")
+sol = character()
+for(i in 1:nc){
+    sol = c(sol,paste0(1*(bp[i]==ach),collapse=""))
+}
+sol = c(sol,paste0(1*(1:nc==bord),collapse=""))
+
+```
+
+Question
+========
+
+In Adams, Massachusetts, `r nc` candidates (`r LETTERS[26-nc+1]` through Z) are running in an election with a single winner. There are `r nv` voters (A through `r LETTERS[nv]`) who each rank the candidates from 1 to `r nc`, with 1 meaning first choice and `r nc` meaning last choice. Those rankings are shown below. Each column represents a single voter's ranking.
+
+```{r,echo=F,fig.dim=c((nv+1)/2,(nc+1)/3)}
+bordtable = function(prefs){
+    par(mar=c(0,0,0,0))
+    plot(0,0,"n",xlim=c(-1,nv),ylim=c(0.5,nc+1.5),axes=F,ann=F)
+    bp = borda_pts(prefs)
+    for(i in 1:nc){
+        text(-0.5,nc+1-i,cans[i])
+        for(j in 1:nv){
+            text(j-0.5,nc+1-i,prefs[[j]][i])
+        }
+        # text(nv+0.5,nc+1-i,bp[i],col="red",cex=1.2)
+    }
+    for(j in 1:nv){
+        text(j-0.5,nc+1,LETTERS[j])
+    }
+    abline(h=nc+0.5)
+    abline(v=0)
+    # abline(v=nv)
+    # text(nv+0.5,nc+1,"TOTAL",cex=0.8)
+}
+bordtable(prefs)
+```
+\
+
+
+What [Borda count](https://en.wikipedia.org/wiki/Borda_count) would each candidate get?
+
+```{r,echo=F,results='asis'}
+for(i in 1:nc){
+    cat(paste0("* Borda count of candidate ",cans[i],": ##ANSWER",i,"##\n"))
+}
+cat(paste0("* Who wins the Borda election? ##ANSWER",nc+1,"##\n"))
+```
+
+Answerlist
+--------
+
+`r paste0(rep(al,nc),collapse="\n")`
+`r al2`
+
+Solution
+========
+
+There are `r nc` candidates. So, we subtract each preference number from `r nc` to get Borda points. We then add all the Borda points from each voter.
+
+```{r,echo=F,fig.dim=c(2+nv/3,1+nc/3)}
+bordtable = function(prefs){
+    par(mar=c(0,0,0,0))
+    plot(0,0,"n",xlim=c(-1,nv+1),ylim=c(0.5,nc+1.5),axes=F,ann=F)
+    bp = borda_pts(prefs)
+    for(i in 1:nc){
+        text(-0.5,nc+1-i,cans[i])
+        for(j in 1:nv){
+            text(j-0.5,nc+1-i,nc-prefs[[j]][i],col="red")
+        }
+        text(nv+0.5,nc+1-i,bp[i],col="red",cex=1.2)
+    }
+    for(j in 1:nv){
+        text(j-0.5,nc+1,LETTERS[j])
+    }
+    abline(h=nc+0.5)
+    abline(v=0)
+    abline(v=nv)
+    text(nv+0.5,nc+1,"TOTAL",cex=0.8)
+}
+bordtable(prefs)
+```
+\
+
+
+Meta-information
+============
+extype: cloze
+exclozetype: `r paste0(rep("schoice",nc+1),collapse="|")`
+exsolution: `r paste0(sol,collapse="|")`
+exname: borda

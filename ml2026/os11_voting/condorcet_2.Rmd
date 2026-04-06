@@ -1,0 +1,236 @@
+```{r,echo=FALSE,warning=FALSE}
+nc = 4
+nv = 7
+compare = function(prefs,i,j){
+    pi = 0
+    pj = 0
+    for(k in 1:nv){
+        prefi = prefs[[k]][i]
+        prefj = prefs[[k]][j]
+        if(prefi < prefj){
+            pi = pi+1
+        }
+        if(prefj < prefi){
+            pj = pj+1
+        }
+    }
+    if(pi>pj){
+        win = i
+        lose = j
+    }
+    if(pj>pi){
+        win = j
+        lose = i
+    }
+    if(pj==pi){
+        win = 0
+        lose = 0
+    }
+    return(c(pi,pj,win,lose))
+}
+
+condorcet = function(prefs){
+    nv = length(prefs)
+    nc = length(prefs[[1]])
+    alwayswin = rep(T,nc)
+    for(i in 1:(nc-1)){
+        for(j in (i+1):nc){
+            pi = 0
+            pj = 0
+            for(k in 1:nv){
+                prefi = prefs[[k]][i]
+                prefj = prefs[[k]][j]
+                if(prefi < prefj){
+                    pi = pi+1
+                }
+                if(prefj < prefi){
+                    pj = pj+1
+                }
+            }
+            if(pi <= pj){
+                alwayswin[i] = F
+            }
+            if(pi >= pj){
+                alwayswin[j] = F
+            }
+        }
+    }
+    if(length(unique(alwayswin))==2){
+        return(which(alwayswin))
+    } else {
+        return(0)
+    }
+}
+
+plurality = function(prefs){
+    nv = length(prefs)
+    nc = length(prefs[[1]])
+    points = rep(0,nc)
+    for(k in 1:nv){
+        wo = which(prefs[[k]]==1)
+        points[wo] = points[wo]+1
+    }
+    mp = max(points)
+    if(sum(mp==points)==1){
+        return(which(points==mp))
+    } else {
+        return(0)
+    }
+}
+
+nocond = sample(c(T,F),1,F,c(1,nc))
+
+while(T){
+    prefs = list()
+    for(i in 1:nv){
+        pref = sample(1:nc)
+        prefs[[i]] = pref
+    }
+    cond = condorcet(prefs)
+    plur = plurality(prefs)
+    if(cond!=0 && cond!=plur && nocond==F){
+        sol = paste0(1*(cond==1:(nc+1)),collapse="")
+        break
+    }
+    if(nocond==T && cond==0 && plur!=0){
+        sol = paste0(paste0(rep(0,nc),collapse=""),"1")
+        break
+    }
+}
+
+ach = c(LETTERS[26-nc+(1:nc)],"No Condorcet winner!")
+al = paste0("* ",ach,collapse="\n")
+
+cans = LETTERS[26-nc+(1:nc)]
+
+```
+
+Question
+========
+
+In Adams, Massachusetts, `r nc` candidates (`r LETTERS[26-nc+1]` through Z) are running in an election with a single winner. There are `r nv` voters (A through `r LETTERS[nv]`) who each rank the candidates from 1 to `r nc`, with 1 meaning first choice and `r nc` meaning last choice. Those rankings are shown below. Each column represents a single voter's ranking.
+
+
+```{r,echo=F,fig.dim=c((nv+1)*1/2,(nc+1)*1/3)}
+par(mar=c(0,0,0,0))
+plot(0,0,"n",xlim=c(0,nv+1),ylim=c(0,nc+1),axes=F,ann=F)
+abline(v=1)
+abline(h=nc)
+for(i in 1:nc){
+    text(0.5,nc-i+0.5,cans[i])
+}
+for(j in 1:nv){
+    text(j+0.5,nc+0.5,LETTERS[j])
+}
+for(i in 1:nc){
+    for(j in 1:nv){
+        text(j+0.5,nc-i+0.5,prefs[[j]][i])
+    }
+}
+
+```
+\
+
+A [Condorcet winner](https://en.wikipedia.org/wiki/Condorcet_method) would win in a head-to-head election against any other candidate. Who is the Condorcet winner? (Or, possibly, there is none.)
+
+Answerlist
+--------
+
+`r al`
+
+Solution
+========
+
+Consider every head-to-head election. With `r nc` candidates, there will be ${`r nc`\choose 2 }= `r choose(nc,2)`$  pairings (see [combinations](https://en.wikipedia.org/wiki/Binomial_coefficient)).
+
+```{r,echo=F}
+mkcirc = function(x,y){
+    th = seq(0,2*pi,pi/100)
+    lines(x+0.4*cos(th),y+0.4*sin(th),col="red")
+}
+mktab = function(prefs,i=1,j=2){
+    par(mar=c(0,0,0,0))
+    plot(0,0,"n",xlim=c(-1,nv+1),ylim=c(0.5,3.5),axes=F,ann=F)
+    text(-0.5,2,cans[i])
+    text(-0.5,1,cans[j])
+    for(k in 1:nv){
+        text(k-0.5,3,LETTERS[k])
+        text(k-0.5,2,prefs[[k]][i])
+        text(k-0.5,1,prefs[[k]][j])
+        if(prefs[[k]][i]>prefs[[k]][j]){
+            mkcirc(k-0.5,1)
+        } else {
+            mkcirc(k-0.5,2)
+        }
+    }
+    cc = compare(prefs,i,j)
+    text(nv+0.5,2,cc[1],col="red",cex=1.2)
+    text(nv+0.5,1,cc[2],col="red",cex=1.2)
+    abline(h=2.5)
+    abline(v=0)
+    abline(v=nv)
+    text(nv+0.5,3,"votes",cex=0.8)
+}
+```
+
+
+```{r,echo=F,fig.dim=c(5,1),results='asis'}
+for(i in 1:(nc-1)){
+    for(j in (i+1):nc){
+        cat(paste0("Compare candidates ",cans[i]," and ",cans[j],".\n\n"))
+        mktab(prefs,i,j)
+        cc = compare(prefs,i,j)
+        cat(paste0("\n\nSo, ",cans[cc[3]]," beats ",cans[cc[4]],".\n\n"))
+    }
+}
+```
+\
+
+
+Organize all this into a winner table.
+
+```{r,echo=F,fig.dim=c(4,4)}
+par(mar=c(0,0,0,0))
+plot(0,0,"n",ann=F,axes=F,xlim=c(0,nc+1),ylim=c(-nc-1,0))
+for(i in 1:nc){
+    text(0.5,-i-0.5,cans[i])
+    text(i+0.5,-0.5,cans[i])
+    lines(c(i,i),c(-1,-nc-1))
+    lines(c(1,nc+1),c(-i,-i))
+}
+lines(c(nc+1,nc+1),c(-1,-nc-1))
+lines(c(1,nc+1),c(-nc-1,-nc-1))
+
+for(i in 1:nc){
+    for(j in 1:nc){
+        if(i!=j){
+            cc = compare(prefs,i,j)
+            text(i+0.5,-j-0.5,cans[cc[3]])
+        } else {
+            polygon(c(i,i,i+1,i+1),-c(i,i+1,i+1,i),col="grey")
+        }
+    }
+}
+
+if(cond!=0){
+    polygon(cond+c(-1,-1,1,1)*0.4+0.5,c(-1.1,-nc-0.9,-nc-0.9,-1.1),border="red",col=rgb(1,0,0,0.1))
+    polygon(c(1.1,nc+0.9,nc+0.9,1.1),-cond+c(-1,-1,1,1)*0.4-0.5,border="red",col=rgb(1,0,0,0.1))
+}
+
+```
+\
+
+```{r,echo=F,results="asis"}
+if(cond==0){
+    cat("No candidate wins against every other candidate. There is no Condorcet winner.")
+} else {
+    cat(paste0("Notice ",cans[cond]," wins against all other candidates. Thus ",cans[cond]," is the Condorcet winner."))
+}
+```
+
+
+Meta-information
+============
+extype: schoice
+exsolution: `r sol`
+exname: condorcet
