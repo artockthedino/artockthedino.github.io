@@ -1475,4 +1475,152 @@ for(i in gs){
 * Any statement of abuse will be immediately brought to a professional's attention.
 
 
+# Frieze-group Transformations
+
+* Four transformations for frieze patterns and wallpaper patterns:
+    * Translation, Rotation, Mirror, and Glide!
+* **Translation** means copy and shift right:\
+```{r,echo=F,fig.dim=c(3,1.5)}
+getbasedots = function(fg=1,n=4){
+    x = runif(2*n,0.05,0.95)
+    y = runif(2*n)-0.5
+    h = runif(2*n)
+    p = sample(c(15,16,18,19,20),2*n,T)
+    dots = data.frame(x,y,h,p)
+    return(dots)
+}
+
+translate = function(dots,dx=1){
+    tdots = data.frame(dots)
+    tdots$x = dots$x+dx
+    return(tdots)
+}
+rotate = function(dots,xr){
+    tdots = data.frame(dots)
+    tdots$x = tdots$x-xr
+    tdots$x = -tdots$x+xr
+    tdots$y = -tdots$y
+    return(tdots)
+}
+glide = function(dots,dx){
+    tdots = data.frame(dots)
+    tdots$x = tdots$x+dx
+    tdots$y = -tdots$y
+    return(tdots)
+}
+mirror = function(dots,xr){
+    tdots = data.frame(dots)
+    tdots$x = tdots$x-xr
+    tdots$x = -tdots$x+xr
+    return(tdots)
+}
+set.seed(111)
+par(mar=c(0,0,0,0))
+dots = getbasedots(1,10)
+d2 = translate(dots,1)
+plot(0,0,type="n",xlim=c(0,2),ylim=c(-0.5,0.5),axes=F,ann=F)
+col = "grey"
+polygon(dots$x,dots$y,col=rgb(0,0,0,0.2),border="black",fillOddEven = T)
+polygon(d2$x,d2$y,col=rgb(0,0,0,0.2),border="black",fillOddEven = T)
+cols = hsv((abs((dots$x)*(dots$y+0.5)+runif(1))+runif(length(dots$x),-0.1,0.1))%%1,0.7,0.7)
+points(dots$x,dots$y,col=cols,pch=dots$p,cex=2)
+points(d2$x,d2$y,col=cols,pch=dots$p,cex=2)
+abline(v=1,lty=2)
+```
+* For frieze patterns, **rotation** means rotation by 180°\
+```{r,echo=F,fig.dim=c(3,1.5)}
+par(mar=c(0,0,0,0))
+# dots = getbasedots(1,10)
+d2 = rotate(dots,1)
+plot(0,0,type="n",xlim=c(0,2),ylim=c(-0.5,0.5),axes=F,ann=F)
+col = "grey"
+polygon(dots$x,dots$y,col=rgb(0,0,0,0.2),border="black",fillOddEven = T)
+polygon(d2$x,d2$y,col=rgb(0,0,0,0.2),border="black",fillOddEven = T)
+# cols = hsv((abs((dots$x)*(dots$y+0.5)+runif(1))+runif(length(dots$x),-0.1,0.1))%%1,0.7,0.7)
+points(dots$x,dots$y,col=cols,pch=dots$p,cex=2)
+points(d2$x,d2$y,col=cols,pch=dots$p,cex=2)
+abline(v=1,lty=2)
+points(1,0,pch=19,cex=0.8)
+```
+* For frieze patterns, **mirror** means reflection over vertical line\
+```{r,echo=F,fig.dim=c(3,1.5)}
+par(mar=c(0,0,0,0))
+# dots = getbasedots(1,10)
+d2 = mirror(dots,1)
+plot(0,0,type="n",xlim=c(0,2),ylim=c(-0.5,0.5),axes=F,ann=F)
+col = "grey"
+polygon(dots$x,dots$y,col=rgb(0,0,0,0.2),border="black",fillOddEven = T)
+polygon(d2$x,d2$y,col=rgb(0,0,0,0.2),border="black",fillOddEven = T)
+# cols = hsv((abs((dots$x)*(dots$y+0.5)+runif(1))+runif(length(dots$x),-0.1,0.1))%%1,0.7,0.7)
+points(dots$x,dots$y,col=cols,pch=dots$p,cex=2)
+points(d2$x,d2$y,col=cols,pch=dots$p,cex=2)
+abline(v=1,lty=2)
+```
+* For frieze patterns, **glide** means reflection over horizontal line, and then shift right\
+```{r,echo=F,fig.dim=c(3,1.5)}
+par(mar=c(0,0,0,0))
+# dots = getbasedots(1,10)
+d2 = glide(dots,1)
+plot(0,0,type="n",xlim=c(0,2),ylim=c(-0.5,0.5),axes=F,ann=F)
+col = "grey"
+polygon(dots$x,dots$y,col=rgb(0,0,0,0.2),border="black",fillOddEven = T)
+polygon(d2$x,d2$y,col=rgb(0,0,0,0.2),border="black",fillOddEven = T)
+# cols = hsv((abs((dots$x)*(dots$y+0.5)+runif(1))+runif(length(dots$x),-0.1,0.1))%%1,0.7,0.7)
+points(dots$x,dots$y,col=cols,pch=dots$p,cex=2)
+points(d2$x,d2$y,col=cols,pch=dots$p,cex=2)
+abline(v=1,lty=2)
+abline(h=0,lty=2,col=rgb(1,0,0,0.5))
+```
+
+
+# Transformations!
+
+```{r,echo=F,fig.dim=c(8,6)}
+par(mfrow=c(2,2),mar=c(0,0,5,0))
+dots = getbasedots(1,10)
+cols = hsv((abs((dots$x)*(dots$y+0.5)+runif(1))+runif(length(dots$x),-0.1,0.1))%%1,0.7,0.7)
+d2 = translate(dots,1)
+plot(0,0,type="n",xlim=c(0,2),ylim=c(-0.5,0.5),axes=F,ann=F)
+mtext("TRANSLATE",3)
+col = "grey"
+polygon(dots$x,dots$y,col=rgb(0,0,0,0.2),border="black",fillOddEven = T)
+polygon(d2$x,d2$y,col=rgb(0,0,0,0.2),border="black",fillOddEven = T)
+# cols = hsv((abs((dots$x)*(dots$y+0.5)+runif(1))+runif(length(dots$x),-0.1,0.1))%%1,0.7,0.7)
+points(dots$x,dots$y,col=cols,pch=dots$p,cex=2)
+points(d2$x,d2$y,col=cols,pch=dots$p,cex=2)
+
+d2 = rotate(dots,1)
+plot(0,0,type="n",xlim=c(0,2),ylim=c(-0.5,0.5),axes=F,ann=F)
+mtext("ROTATE",3)
+col = "grey"
+polygon(dots$x,dots$y,col=rgb(0,0,0,0.2),border="black",fillOddEven = T)
+polygon(d2$x,d2$y,col=rgb(0,0,0,0.2),border="black",fillOddEven = T)
+# cols = hsv((abs((dots$x)*(dots$y+0.5)+runif(1))+runif(length(dots$x),-0.1,0.1))%%1,0.7,0.7)
+points(dots$x,dots$y,col=cols,pch=dots$p,cex=2)
+points(d2$x,d2$y,col=cols,pch=dots$p,cex=2)
+
+d2 = mirror(dots,1)
+plot(0,0,type="n",xlim=c(0,2),ylim=c(-0.5,0.5),axes=F,ann=F)
+mtext("MIRROR",3)
+col = "grey"
+polygon(dots$x,dots$y,col=rgb(0,0,0,0.2),border="black",fillOddEven = T)
+polygon(d2$x,d2$y,col=rgb(0,0,0,0.2),border="black",fillOddEven = T)
+# cols = hsv((abs((dots$x)*(dots$y+0.5)+runif(1))+runif(length(dots$x),-0.1,0.1))%%1,0.7,0.7)
+points(dots$x,dots$y,col=cols,pch=dots$p,cex=2)
+points(d2$x,d2$y,col=cols,pch=dots$p,cex=2)
+
+d2 = glide(dots,1)
+plot(0,0,type="n",xlim=c(0,2),ylim=c(-0.5,0.5),axes=F,ann=F)
+mtext("GLIDE",3)
+col = "grey"
+polygon(dots$x,dots$y,col=rgb(0,0,0,0.2),border="black",fillOddEven = T)
+polygon(d2$x,d2$y,col=rgb(0,0,0,0.2),border="black",fillOddEven = T)
+# cols = hsv((abs((dots$x)*(dots$y+0.5)+runif(1))+runif(length(dots$x),-0.1,0.1))%%1,0.7,0.7)
+points(dots$x,dots$y,col=cols,pch=dots$p,cex=2)
+points(d2$x,d2$y,col=cols,pch=dots$p,cex=2)
+
+```
+
+
+
 
