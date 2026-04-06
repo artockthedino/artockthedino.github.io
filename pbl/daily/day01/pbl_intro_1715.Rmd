@@ -1622,5 +1622,3 @@ points(d2$x,d2$y,col=cols,pch=dots$p,cex=2)
 ```
 
 
-
-

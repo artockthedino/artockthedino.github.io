@@ -4,14 +4,14 @@ outdir = "outcanvas"
 
 ### Entrance ticket
 pm = list("01_tra_rot_gli_mir.Rmd",
-          "02_tra_rot_gli_mir_noref.Rmd")
+          "x_trarotglimir_rainbownet.Rmd")
 
 exams2canvas(pm,
              n=n,
              dir=outdir,
              points=c(4,4),
              maxattempts = 7,
-             name="pbl_0122_QUIZ",
+             name="pbl_0406_QUIZ",
              template = "canvas_qti12.xml",
              cloze = list(enumerate = FALSE))
 
