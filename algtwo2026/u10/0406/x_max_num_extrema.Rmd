@@ -1,0 +1,30 @@
+```{r,echo=FALSE}
+nums = sample(3:9,3)
+n = nums[1]
+a = sample(c(-1,1),1)*nums[2]
+d = nums[3]
+
+```
+
+
+Question
+========
+
+Let polynomial function $f$ have a leading coefficient `r a`, degree `r n`, and constant `r d`.
+
+$$f(x)~=~`r a`x^{`r n`}+\cdots+`r d`$$
+
+However, the other coefficients are unknown. By picking values for those other coefficients, what is the most number of [extrema](https://en.wikipedia.org/wiki/Maximum_and_minimum) possible?
+
+Solution
+========
+
+To find the maximum number of extrema possible, take the degree of the polynomial and subtract 1. In this case, $`r n`-1=`r n-1`$.
+
+So a polynomial of degree `r n` will have at most `r n-1` extrema.
+
+Meta-information
+============
+extype: num
+exsolution: `r n-1`
+exname: x_max_num_extrema

@@ -1,0 +1,54 @@
+```{r,echo=FALSE}
+nums = sample(3:9,3)
+n = nums[1]
+a = sample(c(-1,1),1)*nums[2]
+d = nums[3]
+
+if(a>0){
+    nmin = n%/%2
+    nmax = (n-1)%/%2
+    rend = "up"
+    asign = "positive"
+} else {
+    nmax = n%/%2
+    nmin = (n-1)%/%2
+    rend = "down"
+    asign = "negative"
+}
+
+if(n%%2==0){
+    nex = "odd"
+    par = "even"
+} else {
+    nex = "even"
+    par = "odd"
+}
+
+```
+
+
+Question
+========
+
+Let polynomial function $f$ have a leading coefficient `r a`, degree `r n`, and constant `r d`.
+
+$$f(x)~=~`r a`x^{`r n`}+\cdots+`r d`$$
+
+However, the other coefficients are unknown. By picking values for those other coefficients, what is the most number of [maxima](https://en.wikipedia.org/wiki/Maximum_and_minimum) possible?
+
+Solution
+========
+
+To find the maximum number of extrema possible, take the degree of the polynomial and subtract 1. In this case, $`r n`-1=`r n-1`$.
+
+If the number of extrema is even, then half of those will be minima and half will be maxima.
+
+If the number of extrema is odd, then we need to consider the end behavior for determining if there are more maxima or more minima. If an even-degree polynomial has a negative leading coefficient, then there will be one more maxima than minima. If an even-degree polynomial has a positive leading coefficient, then there will be one more minima than maxima. 
+
+So a polynomial of degree `r n` and a `r asign` leading coefficient will have at most `r nmax` maxima.
+
+Meta-information
+============
+extype: num
+exsolution: `r nmax`
+exname: x_max_num_maxs

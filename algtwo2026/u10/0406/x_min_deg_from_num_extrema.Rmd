@@ -1,0 +1,125 @@
+```{r,echo=FALSE}
+n = sample(3:10,1)
+a = sample(c(-1,1),1)
+rs = (1:n)*(20/(n+1))-10
+# print(n)
+# print(rs)
+
+ach1 = paste0("n≥",1:12)
+ach2 = c("n is even","n is odd")
+ach3 = c("aₙ is negative","aₙ is positive")
+
+if(a==1){
+    nmin = n%/%2
+    nmax = (n-1)%/%2
+    rend = "up"
+    asign = "positive"
+} else {
+    nmax = n%/%2
+    nmin = (n-1)%/%2
+    rend = "down"
+    asign = "negative"
+}
+
+if(n%%2==0){
+    nex = "odd"
+    par = "even"
+} else {
+    nex = "even"
+    par = "odd"
+}
+
+al1 = paste0("* ",ach1,collapse="\n")
+al2 = paste0("* ",ach2,collapse="\n")
+al3 = paste0("* ",ach3,collapse="\n")
+
+sol1 = paste0(1*(n==1:12),collapse="")
+if(n%%2==0){
+    sol2 = "10"
+} else {
+    sol2 = "01"
+}
+if(a>0){
+    sol3 = "01"
+} else {
+    sol3 = "10"
+}
+
+
+```
+
+
+Question
+========
+
+**BACKGROUND**
+
+A generalized ([univariate](https://en.wikipedia.org/wiki/Univariate)) polynomial function in standard form can be expressed as:
+
+$$y=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_2x^2+a_1x+a_0$$
+
+where $n$ represents the [degree](https://en.wikipedia.org/wiki/Degree_of_a_polynomial) of the polynomial, $a_n$ is the leading coefficient, $a_i$ is the $i^{\mathrm{th}}$-degree coefficient, $a_2$ is the quadratic coefficient, $a_1$ is the linear coefficient, and $a_0$ is the constant. It should be mentioned that $a_n\ne 0$, but the other coefficients could equal 0.
+
+When a polynomial of degree $n$ is graphed, the **most** possible number of [extrema](https://en.wikipedia.org/wiki/Maximum_and_minimum) is $n-1$. For example, a quadratic polynomial function has one extreme, but a cubic polynomial function can have either 2 extrema or none, and a quartic (4th-degree) polynomial can have either 3 extrema or 1.
+
+The end behavior of polynomials dictates that an even-degree polynomial will have an odd number of extrema, and an odd-degree polynomial will have an even number of extrema.
+
+The leading coefficient's [sign](https://en.wikipedia.org/wiki/Sign_(mathematics)) dictates the right-side end behavior. If as $x\to\infty$ we see $y\to\infty$, then $a_n>0$. On the other hand, if as $x\to\infty$ we see $y\to-\infty$, then $a_n<0$.
+
+**SPECIFIC PROBLEM**
+
+Consider the polynomial function graphed below.
+
+```{r,echo=F,fig.dim=c(5,5)}
+x = seq(-10,10,0.01)
+y = rep(1,length(x))
+for(i in 1:length(x)){
+    y[i] = a*prod(x[i]-rs)
+}
+minr = min(rs)
+maxr = max(rs)
+maxay = max(abs(y[abs(x)<maxr]))
+new_scale = sample(3:30,1)
+y = y/maxay*new_scale*log10(10*n)+2*new_scale
+par(mar=c(5,5,0,0))
+plot(x+10,y,"l",xlab="x",ylab="y",ylim=c(0,4*new_scale),col="blue",lwd=2)
+
+```
+\
+
+Assume this graph contains all the extrema of the function, so the end-behavior is also indicated.
+
+1. What is the lowest possible degree of the polynomial? ##ANSWER1##
+2. What is the polynomial degree's [parity](https://en.wikipedia.org/wiki/Parity_(mathematics))? ##ANSWER2##
+3. What is the sign of the leading coefficient? ##ANSWER3##
+
+Answerlist
+--------
+
+`r al1`
+`r al2`
+`r al3`
+
+
+
+Solution
+========
+
+The graph contains $`r n-1`$ extrema. Specifically:
+
+* The number of minima (valley bottoms) is `r nmin`.
+* The number of maxima (mountain peaks) is `r nmax`.
+
+To have $`r n-1`$ extrema, the polynomial's degree must be at least $`r n`$. So, $n\ge `r n`$.
+
+Notice, the number of extrema (`r n-1`) is `r nex`. This indicates the polynomial's degree must be `r par`.
+
+On the right side of the graph, as $x\to \infty$, we see the curve heads `r rend`. This tells us that the leading coefficient, $a_n$, is `r asign`.
+
+
+Meta-information
+============
+extype: cloze
+exclozetype: schoice|schoice|schoice
+exsolution: `r sol1`|`r sol2`|`r sol3`
+exname: x_min_deg

@@ -1,0 +1,41 @@
+---
+title: "Polynomial extrema counts"
+---
+
+
+Consider the [polynomial function](https://en.wikipedia.org/wiki/Polynomial#Definition) with leading coefficient $a$ and degree $n$.
+
+$$y=ax^n+bx^{n-1}+\cdots+px^2+qx+r$$
+
+where coefficient $b$, $p$, $q$, and $r$ are real-number constants (called coefficients). There are other coefficients as well, with the number of coefficients depending on the degree of the polynomial. It should be mentioned that $n$ is a positive integer and $a$ is nonzero.
+
+As the degree of the polynomial increases, so does the maximum amount of extrema.
+
+The parity (even or odd) of $n$, along with the sign (positive or negative) of $a$, determines the end behavior on the left and right.
+
+
+| $n$ | sign of $a$ | number of extrema | left end | right end |
+|:---:|:-----:|:---------:|:-------------:|:-------------:|
+| 2   | $a>0$ | 1         | up  | up  |
+| 2   | $a<0$ | 1         | down | down | 
+| 3   | $a>0$ | 0 or 2    | down | up  | 
+| 3   | $a<0$ | 0 or 2    | up | down |
+| 4   | $a>0$ | 1 or 3    | up | up  | 
+| 4   | $a<0$ | 1 or 3    | down | down |
+| 5   | $a>0$ | 0 or 2 or 4    | down | up  | 
+| 5   | $a<0$ | 0 or 2 or 4   | up | down |
+| 6   | $a>0$ | 1 or 3 or 5   | up | up  | 
+| 6   | $a<0$ | 1 or 3 or 5   | down | down |
+
+
+
+
+
+
+
+
+
+
+
+
+

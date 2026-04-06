@@ -1,0 +1,384 @@
+---
+output: pdf_document
+params:
+    rseed: 2
+    showsol: false
+---
+
+\renewcommand{\arraystretch}{1.2}
+
+```{r,echo=F,warning=FALSE,message=FALSE}
+options(scipen=999)
+if(params$rseed !=0){
+    set.seed(params$rseed)
+}
+knitr::opts_chunk$set(echo = FALSE)
+bn <- basename(knitr::current_input())
+bn = strsplit(bn,".",fixed=T)[[1]][1]
+
+gcd2 <- function(a, b) {
+  if (b == 0) a else Recall(b, a %% b)
+}
+gcd <- function(...) Reduce(gcd2, c(...))
+pn = function(coeffs,pows){
+    pows = pows[coeffs!=0]
+    coeffs = coeffs[coeffs!=0]
+    ex1 = paste0("{",coeffs,"}x^{",pows,"}",collapse="+")
+    ex1 = gsub("+{-","-{",ex1,fixed=T)
+    ex1 = gsub("{1}x^{0}","1",ex1,fixed=T)
+    ex1 = gsub("{-1}x^{0}","-1",ex1,fixed=T)
+    ex1 = gsub("{1}x","x",ex1,fixed=T)
+    ex1 = gsub("{-1}x","-x",ex1,fixed=T)
+    ex1 = gsub("x^{0}","",ex1,fixed=T)
+    ex1 = gsub("x^{1}","x",ex1,fixed=T)
+    ex1 = gsub("+-","-",ex1,fixed=T)
+    if(ex1 == ""){
+        ex1 = "0"
+    }
+    ex1 = gsub("{","",ex1,fixed=T)
+    ex1 = gsub("}","",ex1,fixed=T)
+    return(ex1)
+}
+```
+
+## Example: Divide 5th degree polynomial by quadratic polynomial
+
+Let me attempt to show how to divide by a quadratic polynomial.
+
+```{r,echo=F}
+while(T){
+    nums = sample(2:10)
+    p = nums[1]
+    q = nums[2]
+    r = nums[3]
+    s = nums[4]
+    m = nums[5]
+    n = nums[6]
+    a = nums[7]
+    b = nums[8]
+    c = nums[9]
+    # (ax^2+bx+c)(px^3+qx^2+rx+s) + (mx+n)
+    # (ap)x^5 + (aq+bp)x^4 + (ar+bq+cp)x^3 + (as+br+cq)x^2 + (bs+cr+m)x + (cs+n)
+    G = a*p
+    H = a*q+b*p
+    I = a*r+b*q+c*p
+    J = a*s+b*r+c*q
+    K = b*s+c*r+m
+    L = c*s+n
+    p5 = pn(c(G,H,I,J,K,L),5:0)
+    p3 = pn(c(p,q,r,s),3:0)
+    p2 = pn(c(a,b,c),2:0)
+    p1 = pn(c(m,n),1:0)
+    if(min(abs(c(G,H,I,J,K,L)))>0 && abs(gcd(c(a,b,c)))==1){
+        break
+    }
+}
+```
+
+Let's divide $`r p5`$ by the quadratic polynomial $`r p2`$ using the box method. Below I've filled out the box, and in grey, I've written next to each entry the order in which I would put them.
+
+```{r,echo=F,fig.dim=c(6,2)}
+par(mar=c(0,0,0,0))
+library(latex2exp)
+plot(0,0,"n",xlim=c(0,6),ylim=c(0,4),axes=F,ann=F)
+polygon(c(1,1,5,5),c(0,3,3,0))
+lines(c(1,1),c(0,4))
+lines(c(5,5),c(0,4))
+lines(c(0,5),c(3,3))
+polygon(c(0,0,5,5),c(0,4,4,0))
+lines(c(5.2,5.8),c(3,3),lty=1)
+cex = 0.6
+col = "grey"
+text(0.5,3.5,"*")
+text(0.5,2.5,TeX(paste0("$",a,"x^2$")))
+text(0.1,2.5,"1",col=col,cex=cex)
+text(0.5,1.5,TeX(paste0("$",b,"x$")))
+text(0.1,1.5,"2",col=col,cex=cex)
+text(0.5,0.5,TeX(paste0("$",c,"$")))
+text(0.1,0.5,"3",col=col,cex=cex)
+text(1.5,2.5,TeX(paste0("$",G,"x^5$")))
+text(1.1,2.5,"4",col=col,cex=cex)
+text(1.5,3.5,TeX(paste0("$",p,"x^3$")))
+text(1.1,3.5,"5",col=col,cex=cex)
+text(1.5,1.5,TeX(paste0("$",p*b,"x^4$")))
+text(1.1,1.5,"6",col=col,cex=cex)
+text(1.5,0.5,TeX(paste0("$",p*c,"x^3$")))
+text(1.1,0.5,"7",col=col,cex=cex)
+text(2.5,2.5,TeX(paste0("$",H-p*b,"x^4$")))
+text(2.1,2.5,"8",col=col,cex=cex)
+text(2.5,3.5,TeX(paste0("$",q,"x^2$")))
+text(2.1,3.5,"9",col=col,cex=cex)
+text(2.5,1.5,TeX(paste0("$",q*b,"x^3$")))
+text(2.1,1.5,"10",col=col,cex=cex)
+text(2.5,0.5,TeX(paste0("$",q*c,"x^2$")))
+text(2.1,0.5,"11",col=col,cex=cex)
+text(3.5,2.5,TeX(paste0("$",a*r,"x^3$")))
+text(3.1,2.5,"12",col=col,cex=cex)
+text(3.5,3.5,TeX(paste0("$",r,"x$")))
+text(3.1,3.5,"13",col=col,cex=cex)
+text(3.5,1.5,TeX(paste0("$",r*b,"x^2$")))
+text(3.1,1.5,"14",col=col,cex=cex)
+text(3.5,0.5,TeX(paste0("$",r*c,"x$")))
+text(3.1,0.5,"15",col=col,cex=cex)
+text(4.5,2.5,TeX(paste0("$",a*s,"x^2$")))
+text(4.1,2.5,"16",col=col,cex=cex)
+text(4.5,3.5,TeX(paste0("$",s,"$")))
+text(4.1,3.5,"17",col=col,cex=cex)
+text(4.5,1.5,TeX(paste0("$",s*b,"x$")))
+text(4.1,1.5,"18",col=col,cex=cex)
+text(4.5,0.5,TeX(paste0("$",s*c,"$")))
+text(4.1,0.5,"19",col=col,cex=cex)
+text(5.5,3.5,"rem")
+text(5.5,2.5,TeX(paste0("$",m,"x$")))
+text(5.1,2.5,"20",col=col,cex=cex)
+text(5.5,1.5,TeX(paste0("$",n,"$")))
+text(5.1,1.5,"21",col=col,cex=cex)
+```
+\
+
+The most difficult spots are spots 8, 12, 16, 20, and 21. For those spots, you need to make sure the dividend (the numerator, $`r p5`$) is made by combining like terms.
+
+```{r,echo=F,fig.dim=c(6,2)}
+par(mar=c(0,0,0,0))
+library(latex2exp)
+plot(0,0,"n",xlim=c(0,6),ylim=c(0,4),axes=F,ann=F)
+polygon(c(1,1,5,5),c(0,3,3,0))
+lines(c(1,1),c(0,4))
+lines(c(5,5),c(0,4))
+lines(c(0,5),c(3,3))
+polygon(c(0,0,5,5),c(0,4,4,0))
+lines(c(5.2,5.8),c(3,3),lty=1)
+text(0.5,3.5,"*")
+text(0.5,2.5,TeX(paste0("$",a,"x^2$")))
+text(0.5,1.5,TeX(paste0("$",b,"x$")))
+text(0.5,0.5,TeX(paste0("$",c,"$")))
+text(1.5,2.5,TeX(paste0("$",G,"x^5$")))
+text(1.5,3.5,TeX(paste0("$",p,"x^3$")))
+text(1.5,1.5,TeX(paste0("$",p*b,"x^4$")))
+text(1.5,0.5,TeX(paste0("$",p*c,"x^3$")))
+text(2.5,2.5,TeX(paste0("$",H-p*b,"x^4$")))
+text(2.5,3.5,TeX(paste0("$",q,"x^2$")))
+text(2.5,1.5,TeX(paste0("$",q*b,"x^3$")))
+text(2.5,0.5,TeX(paste0("$",q*c,"x^2$")))
+text(3.5,2.5,TeX(paste0("$",a*r,"x^3$")))
+text(3.5,3.5,TeX(paste0("$",r,"x$")))
+text(3.5,1.5,TeX(paste0("$",r*b,"x^2$")))
+text(3.5,0.5,TeX(paste0("$",r*c,"x$")))
+text(4.5,2.5,TeX(paste0("$",a*s,"x^2$")))
+text(4.5,3.5,TeX(paste0("$",s,"$")))
+text(4.5,1.5,TeX(paste0("$",s*b,"x$")))
+text(4.5,0.5,TeX(paste0("$",s*c,"$")))
+text(5.5,3.5,"rem")
+text(5.5,2.5,TeX(paste0("$",m,"x$")))
+text(5.5,1.5,TeX(paste0("$",n,"$")))
+
+makeoval = function(lx,ly,rx,ry,rad=0.3,col=rgb(1,0,0,0.5),border=rgb(1,0,0,0.5)){
+    thl = seq(3*pi/4,7*pi/4,pi/120)
+    thr = seq(-pi/4,3*pi/4,pi/120)
+    leftx = lx+rad*cos(thl)
+    rightx = rx+rad*cos(thr)
+    lefty = ly+rad*sin(thl)
+    righty = ry+rad*sin(thr)
+    polygon(c(leftx,rightx),c(lefty,righty),col=col,border=border)
+}
+
+makeoval(1.5,2.5,1.5,2.5)
+makeoval(1.5,1.5,2.5,2.5,col=rgb(0.5,0.5,0,0.5),border=rgb(0.5,0.5,0,0.5))
+makeoval(1.5,0.5,3.5,2.5,col=rgb(0,1,0,0.5),border=rgb(0,1,0,0.5))
+makeoval(2.5,0.5,4.5,2.5,col=rgb(0,0.5,0.5,0.5),border=rgb(0,0.5,0.5,0.5))
+makeoval(3.5,0.5,5.5,2.5,col=rgb(0,0,1,0.5),border=rgb(0,0,1,0.5))
+makeoval(4.5,0.5,5.5,1.5,col=rgb(0.5,0,0.5,0.5),border=rgb(0.5,0,0.5,0.5))
+
+```
+\
+
+```{r,echo=F,fig.dim=c(6,1)}
+par(mar=c(0,0,0,0))
+plot(0,0,"n",xlim=c(-0.5,6.5),ylim=c(-1,1),axes=F,ann=F)
+cols = c(rgb(1,0,0),
+         rgb(0.5,0.5,0),
+         rgb(0,1,0),
+         rgb(0,0.5,0.5),
+         rgb(0,0,1),
+         rgb(0.5,0,0.5))
+coefs = c(G,H,I,J,K,L)
+for(i in 1:6){
+    text(i-1-0.4,0,TeX(paste0("$",pn(coefs[i],6-i),"$")),col=cols[i])
+}
+```
+
+To get the answer, look at the top of the box and the remainder. The answer:
+
+$$`r p3`+\frac{`r p1`}{`r p2`}$$
+
+
+\newpage
+
+## Example 2... with negatives...
+
+
+```{r,echo=F}
+while(T){
+    nums = sample(2:10)
+    p = nums[1]
+    q = nums[2]*sample(c(-1,1),1)
+    r = nums[3]*sample(c(-1,1),1)
+    s = nums[4]*sample(c(-1,1),1)
+    m = nums[5]*sample(c(-1,1),1)
+    n = nums[6]*sample(c(-1,1),1)
+    a = nums[7]
+    b = nums[8]*sample(c(-1,1),1)
+    c = nums[9]*sample(c(-1,1),1)
+    # (ax^2+bx+c)(px^3+qx^2+rx+s) + (mx+n)
+    # (ap)x^5 + (aq+bp)x^4 + (ar+bq+cp)x^3 + (as+br+cq)x^2 + (bs+cr+m)x + (cs+n)
+    G = a*p
+    H = a*q+b*p
+    I = a*r+b*q+c*p
+    J = a*s+b*r+c*q
+    K = b*s+c*r+m
+    L = c*s+n
+    p5 = pn(c(G,H,I,J,K,L),5:0)
+    p3 = pn(c(p,q,r,s),3:0)
+    p2 = pn(c(a,b,c),2:0)
+    p1 = pn(c(m,n),1:0)
+    if(min(abs(c(G,H,I,J,K,L)))>0 && abs(gcd(c(a,b,c)))==1){
+        break
+    }
+}
+```
+
+Let's divide $`r p5`$ by the quadratic polynomial $`r p2`$ using the box method. Below I've filled out the box, and in grey, I've written next to each entry the order in which I would put them.
+
+```{r,echo=F,fig.dim=c(6,2)}
+par(mar=c(0,0,0,0))
+library(latex2exp)
+plot(0,0,"n",xlim=c(0,6),ylim=c(0,4),axes=F,ann=F)
+polygon(c(1,1,5,5),c(0,3,3,0))
+lines(c(1,1),c(0,4))
+lines(c(5,5),c(0,4))
+lines(c(0,5),c(3,3))
+polygon(c(0,0,5,5),c(0,4,4,0))
+lines(c(5.2,5.8),c(3,3),lty=1)
+cex = 0.6
+col = "grey"
+text(0.5,3.5,"*")
+text(0.5,2.5,TeX(paste0("$",a,"x^2$")))
+text(0.1,2.5,"1",col=col,cex=cex)
+text(0.5,1.5,TeX(paste0("$",b,"x$")))
+text(0.1,1.5,"2",col=col,cex=cex)
+text(0.5,0.5,TeX(paste0("$",c,"$")))
+text(0.1,0.5,"3",col=col,cex=cex)
+text(1.5,2.5,TeX(paste0("$",G,"x^5$")))
+text(1.1,2.5,"4",col=col,cex=cex)
+text(1.5,3.5,TeX(paste0("$",p,"x^3$")))
+text(1.1,3.5,"5",col=col,cex=cex)
+text(1.5,1.5,TeX(paste0("$",p*b,"x^4$")))
+text(1.1,1.5,"6",col=col,cex=cex)
+text(1.5,0.5,TeX(paste0("$",p*c,"x^3$")))
+text(1.1,0.5,"7",col=col,cex=cex)
+text(2.5,2.5,TeX(paste0("$",H-p*b,"x^4$")))
+text(2.1,2.5,"8",col=col,cex=cex)
+text(2.5,3.5,TeX(paste0("$",q,"x^2$")))
+text(2.1,3.5,"9",col=col,cex=cex)
+text(2.5,1.5,TeX(paste0("$",q*b,"x^3$")))
+text(2.1,1.5,"10",col=col,cex=cex)
+text(2.5,0.5,TeX(paste0("$",q*c,"x^2$")))
+text(2.1,0.5,"11",col=col,cex=cex)
+text(3.5,2.5,TeX(paste0("$",a*r,"x^3$")))
+text(3.1,2.5,"12",col=col,cex=cex)
+text(3.5,3.5,TeX(paste0("$",r,"x$")))
+text(3.1,3.5,"13",col=col,cex=cex)
+text(3.5,1.5,TeX(paste0("$",r*b,"x^2$")))
+text(3.1,1.5,"14",col=col,cex=cex)
+text(3.5,0.5,TeX(paste0("$",r*c,"x$")))
+text(3.1,0.5,"15",col=col,cex=cex)
+text(4.5,2.5,TeX(paste0("$",a*s,"x^2$")))
+text(4.1,2.5,"16",col=col,cex=cex)
+text(4.5,3.5,TeX(paste0("$",s,"$")))
+text(4.1,3.5,"17",col=col,cex=cex)
+text(4.5,1.5,TeX(paste0("$",s*b,"x$")))
+text(4.1,1.5,"18",col=col,cex=cex)
+text(4.5,0.5,TeX(paste0("$",s*c,"$")))
+text(4.1,0.5,"19",col=col,cex=cex)
+text(5.5,3.5,"rem")
+text(5.5,2.5,TeX(paste0("$",m,"x$")))
+text(5.1,2.5,"20",col=col,cex=cex)
+text(5.5,1.5,TeX(paste0("$",n,"$")))
+text(5.1,1.5,"21",col=col,cex=cex)
+```
+\
+
+The most difficult spots are spots 8, 12, 16, 20, and 21. For those spots, you need to make sure the dividend (the numerator, $`r p5`$) is made by combining like terms.
+
+```{r,echo=F,fig.dim=c(6,2)}
+par(mar=c(0,0,0,0))
+library(latex2exp)
+plot(0,0,"n",xlim=c(0,6),ylim=c(0,4),axes=F,ann=F)
+polygon(c(1,1,5,5),c(0,3,3,0))
+lines(c(1,1),c(0,4))
+lines(c(5,5),c(0,4))
+lines(c(0,5),c(3,3))
+polygon(c(0,0,5,5),c(0,4,4,0))
+lines(c(5.2,5.8),c(3,3),lty=1)
+text(0.5,3.5,"*")
+text(0.5,2.5,TeX(paste0("$",a,"x^2$")))
+text(0.5,1.5,TeX(paste0("$",b,"x$")))
+text(0.5,0.5,TeX(paste0("$",c,"$")))
+text(1.5,2.5,TeX(paste0("$",G,"x^5$")))
+text(1.5,3.5,TeX(paste0("$",p,"x^3$")))
+text(1.5,1.5,TeX(paste0("$",p*b,"x^4$")))
+text(1.5,0.5,TeX(paste0("$",p*c,"x^3$")))
+text(2.5,2.5,TeX(paste0("$",H-p*b,"x^4$")))
+text(2.5,3.5,TeX(paste0("$",q,"x^2$")))
+text(2.5,1.5,TeX(paste0("$",q*b,"x^3$")))
+text(2.5,0.5,TeX(paste0("$",q*c,"x^2$")))
+text(3.5,2.5,TeX(paste0("$",a*r,"x^3$")))
+text(3.5,3.5,TeX(paste0("$",r,"x$")))
+text(3.5,1.5,TeX(paste0("$",r*b,"x^2$")))
+text(3.5,0.5,TeX(paste0("$",r*c,"x$")))
+text(4.5,2.5,TeX(paste0("$",a*s,"x^2$")))
+text(4.5,3.5,TeX(paste0("$",s,"$")))
+text(4.5,1.5,TeX(paste0("$",s*b,"x$")))
+text(4.5,0.5,TeX(paste0("$",s*c,"$")))
+text(5.5,3.5,"rem")
+text(5.5,2.5,TeX(paste0("$",m,"x$")))
+text(5.5,1.5,TeX(paste0("$",n,"$")))
+
+makeoval = function(lx,ly,rx,ry,rad=0.3,col=rgb(1,0,0,0.5),border=rgb(1,0,0,0.5)){
+    thl = seq(3*pi/4,7*pi/4,pi/120)
+    thr = seq(-pi/4,3*pi/4,pi/120)
+    leftx = lx+rad*cos(thl)
+    rightx = rx+rad*cos(thr)
+    lefty = ly+rad*sin(thl)
+    righty = ry+rad*sin(thr)
+    polygon(c(leftx,rightx),c(lefty,righty),col=col,border=border)
+}
+
+makeoval(1.5,2.5,1.5,2.5)
+makeoval(1.5,1.5,2.5,2.5,col=rgb(0.5,0.5,0,0.5),border=rgb(0.5,0.5,0,0.5))
+makeoval(1.5,0.5,3.5,2.5,col=rgb(0,1,0,0.5),border=rgb(0,1,0,0.5))
+makeoval(2.5,0.5,4.5,2.5,col=rgb(0,0.5,0.5,0.5),border=rgb(0,0.5,0.5,0.5))
+makeoval(3.5,0.5,5.5,2.5,col=rgb(0,0,1,0.5),border=rgb(0,0,1,0.5))
+makeoval(4.5,0.5,5.5,1.5,col=rgb(0.5,0,0.5,0.5),border=rgb(0.5,0,0.5,0.5))
+
+```
+\
+
+```{r,echo=F,fig.dim=c(6,1)}
+par(mar=c(0,0,0,0))
+plot(0,0,"n",xlim=c(-0.5,6.5),ylim=c(-1,1),axes=F,ann=F)
+cols = c(rgb(1,0,0),
+         rgb(0.5,0.5,0),
+         rgb(0,1,0),
+         rgb(0,0.5,0.5),
+         rgb(0,0,1),
+         rgb(0.5,0,0.5))
+coefs = c(G,H,I,J,K,L)
+for(i in 1:6){
+    text(i-1-0.4,0,TeX(paste0("$",pn(coefs[i],6-i),"$")),col=cols[i])
+}
+```
+
+To get the answer, look at the top of the box and the remainder. The answer:
+
+$$`r p3`+\frac{`r p1`}{`r p2`}$$

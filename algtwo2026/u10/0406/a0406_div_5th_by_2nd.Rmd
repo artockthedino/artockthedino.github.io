@@ -1,0 +1,103 @@
+---
+output: pdf_document
+params:
+    rseed: 0
+    showsol: false
+---
+
+\renewcommand{\arraystretch}{1.2}
+
+```{r,echo=F,warning=FALSE,message=FALSE}
+options(scipen=999)
+if(params$rseed !=0){
+    set.seed(params$rseed)
+}
+knitr::opts_chunk$set(echo = FALSE)
+bn <- basename(knitr::current_input())
+bn = strsplit(bn,".",fixed=T)[[1]][1]
+
+gcd2 <- function(a, b) {
+  if (b == 0) a else Recall(b, a %% b)
+}
+gcd <- function(...) Reduce(gcd2, c(...))
+pn = function(coeffs,pows){
+    pows = pows[coeffs!=0]
+    coeffs = coeffs[coeffs!=0]
+    ex1 = paste0("{",coeffs,"}x^{",pows,"}",collapse="+")
+    ex1 = gsub("+{-","-{",ex1,fixed=T)
+    ex1 = gsub("{1}x^{0}","1",ex1,fixed=T)
+    ex1 = gsub("{-1}x^{0}","-1",ex1,fixed=T)
+    ex1 = gsub("{1}x","x",ex1,fixed=T)
+    ex1 = gsub("{-1}x","-x",ex1,fixed=T)
+    ex1 = gsub("x^{0}","",ex1,fixed=T)
+    ex1 = gsub("x^{1}","x",ex1,fixed=T)
+    ex1 = gsub("+-","-",ex1,fixed=T)
+    if(ex1 == ""){
+        ex1 = "0"
+    }
+    ex1 = gsub("{","",ex1,fixed=T)
+    ex1 = gsub("}","",ex1,fixed=T)
+    return(ex1)
+}
+```
+
+## `r bn` (v`r params$rseed`)
+
+Practice dividing 5th-degree polynomials by quadratic polynomials.
+
+```{r,echo=F}
+p5s = character()
+p3s = character()
+p2s = character()
+p1s = character()
+while(length(p5s)<16){
+    nums = sample(2:10)
+    p = nums[1]
+    q = nums[2]*sample(c(-1,1),1)
+    r = nums[3]*sample(c(-1,1),1)
+    s = nums[4]*sample(c(-1,1),1)
+    m = nums[5]*sample(c(-1,1),1)
+    n = nums[6]*sample(c(-1,1),1)
+    a = nums[7]
+    b = nums[8]*sample(c(-1,1),1)
+    c = nums[9]*sample(c(-1,1),1)
+    # (ax^2+bx+c)(px^3+qx^2+rx+s) + (mx+n)
+    # (ap)x^5 + (aq+bp)x^4 + (ar+bq+cp)x^3 + (as+br+cq)x^2 + (bs+cr+m)x + (cs+n)
+    G = a*p
+    H = a*q+b*p
+    I = a*r+b*q+c*p
+    J = a*s+b*r+c*q
+    K = b*s+c*r+m
+    L = c*s+n
+    p5 = pn(c(G,H,I,J,K,L),5:0)
+    p3 = pn(c(p,q,r,s),3:0)
+    p2 = pn(c(a,b,c),2:0)
+    p1 = pn(c(m,n),1:0)
+    if(min(abs(c(G,H,I,J,K,L)))>0 && abs(gcd(c(a,b,c)))==1 && !(p5%in%p5s) && !(p2%in%p2s)){
+        p5s = c(p5s,p5)
+        p3s = c(p3s,p3)
+        p2s = c(p2s,p2)
+        p1s = c(p1s,p1)
+    }
+}
+```
+
+
+```{r,echo=F,results='asis'}
+for(i in 1:length(p5s)){
+    cat(paste0(i,". Divide $",p5s[i],"$ by the quadratic polynomial $",p2s[i],"$.\n\n\\vfill\n\n"))
+}
+```
+
+\newpage
+
+### Solutions
+
+```{r,echo=F,results='asis'}
+for(i in 1:length(p5s)){
+    cat(paste0(i,". Answer is $",p3s[i],"+\\frac{",p1s[i],"}{",p2s[i],"}$.\n\n\\vfill\n\n"))
+}
+```
+
+
+
