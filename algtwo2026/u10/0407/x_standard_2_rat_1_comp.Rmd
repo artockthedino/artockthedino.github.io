@@ -1,0 +1,209 @@
+```{r,echo=FALSE}
+library(latex2exp)
+options(scipen=99)
+# (x-(r+mi))(x-(r-mi))(dx-n)
+# r+mi, r-mi, and n/d
+# (x^2-2rx+(r^2+m^2))(dx-n)
+# dx^3+(-n-2rd)x^2+(2rn+dr^2+dm^2)x+(-nr^2-nm^2)
+
+ndposs = list(c(3,2),c(5,2),c(7,2),c(9,2),
+              c(2,3),c(4,3),c(5,3),c(7,3),c(8,3),
+              c(3,4),c(5,4),c(7,4),c(9,4),
+              c(2,5),c(3,5),c(4,5),c(6,5),c(7,5),c(8,5),c(9,5),
+              c(5,6),c(7,6),
+              c(2,7),c(3,7),c(4,7),c(5,7),c(6,7),c(8,7),c(9,7),
+              c(3,8),c(5,8),c(7,8),c(9,8),
+              c(2,9),c(4,9),c(5,9),c(7,9))
+
+
+nds = sample(ndposs,2)
+r = nds[[1]][1]*sample(c(-1,1),1)
+m = nds[[1]][2]*sample(c(-1,1),1)
+n = nds[[2]][1]*sample(c(-1,1),1)
+d = nds[[2]][2]
+
+A = d
+B = -n-2*r*d
+C = 2*r*n+d*r^2+d*m^2
+D = -n*r^2-n*m^2
+cf3 = c(A,B,C,D)
+
+ach = c(0,1,A,B,C,D,-n+2*r*d,2*r*n-2*r^2-d*m^2,2*r*n-2*r^2+d*m^2,
+        2*r*n+2*r^2-d*m^2,-n-r*d,-n+r*d,-n*r^2+n*m^2,r^2-m^2,r^2+m^2)
+ach = sort(unique(c(ach,-ach)))
+
+cn = function(real,imag){
+    ss = paste0(real,"+",imag,"i")
+    ss = gsub("+-","-",ss,fixed=T)
+    return(ss)
+}
+
+pn = function(c,d){
+    d = d[c!=0]
+    c = c[c!=0]
+    p = paste0("{",c,"}x^{",d,"}",collapse="+")
+    p = gsub("x^{0}","",p,fixed=T)
+    p = gsub("x^{1}","x",p,fixed=T)
+    p = gsub("+{-","-{",p,fixed=T)
+    p = gsub("+{1}x","+x",p,fixed=T)
+    p = gsub("-{1}x","-x",p,fixed=T)
+    p = gsub("{-1}x","-x",p,fixed=T)
+    p = gsub("{1}x","x",p,fixed=T)
+    return(p)
+}
+
+al = paste0("* ",ach,collapse="\n")
+sol1 = paste0(1*(ach==A),collapse="")
+sol2 = paste0(1*(ach==B),collapse="")
+sol3 = paste0(1*(ach==C),collapse="")
+sol4 = paste0(1*(ach==D),collapse="")
+
+```
+
+Question
+========
+
+Let function $f$ represent a cubic polynomial function with **integer** coefficients.
+
+$$f(x)~=~ax^3+bx^2+cx+d$$
+
+That function has a real root $x=\frac{`r n`}{`r d`}$ and a complex root $x=`r cn(r,m)`$.
+
+$$f\left(\frac{`r n`}{`r d`}\right)~=~0$$
+$$f(`r cn(r,m)`)~=~0$$
+
+Assuming $a>0$ and $a$ is the smallest possible integer with those given roots, find all the coefficients.
+
+* $a=$ ##ANSWER1##
+* $b=$ ##ANSWER2##
+* $c=$ ##ANSWER3##
+* $d=$ ##ANSWER4##
+
+Answerlist
+--------
+
+`r al`
+`r al`
+`r al`
+`r al`
+
+
+Solution
+========
+
+When a polynomial with real coefficients has complex roots, they always come as [complex-conjugate](https://en.wikipedia.org/wiki/Complex_conjugate) pairs. Thus, we know all three factors.
+
+$$f(x)~=~(`r pn(c(d,-n),1:0)`)(x-(`r cn(r,m)`))(x-(`r cn(r,-m)`))$$
+
+```{r,echo=F}
+f2 = paste0("(",pn(c(d,-n),1:0),")(x+",-r,"+",-m,"i)(x+",-r,"+",m,"i)")
+f2 = gsub("+-","-",f2,fixed=T)
+```
+
+Distribute subtraction across inner parentheses.
+
+$$f(x)~=~`r f2`$$
+
+Multiply the two complex-root factors using a box.
+
+```{r,echo=F,fig.dim=c(3,2)}
+par(mar=c(0,0,0,0))
+plot(0,0,"n",axes=F,ann=F,xlim=c(0,4),ylim=c(0,4))
+abline(v=1)
+abline(h=3)
+va = -0.5
+text(0.5,3.5,"*")
+text(0.5,2.1,"x",adj=c(0.5,va))
+text(0.5,1.1,-r,adj=c(0.5,va))
+text(0.5,0.1,paste0(-m,"i"),adj=c(0.5,va))
+text(1.5,3.1,"x",adj=c(0.5,va))
+text(2.5,3.1,-r,adj=c(0.5,va))
+text(3.5,3.1,paste0(m,"i"),adj=c(0.5,va))
+
+text(1.5,2.1,TeX(paste0("$x^2$")),adj=c(0.5,va))
+text(2.5,2.1,TeX(paste0("$",-r,"x$")),adj=c(0.5,va))
+text(3.5,2.1,TeX(paste0("$",m,"ix$")),adj=c(0.5,va))
+
+text(1.5,1.1,TeX(paste0("$",-r,"x$")),adj=c(0.5,va))
+text(2.5,1.1,r^2,adj=c(0.5,va))
+text(3.5,1.1,TeX(paste0("$",-r*m,"i$")),adj=c(0.5,va))
+
+text(1.5,0.1,TeX(paste0("$",-m,"ix$")),adj=c(0.5,va))
+text(2.5,0.1,TeX(paste0("$",r*m,"i$")),adj=c(0.5,va))
+text(3.5,0.1,TeX(paste0("$-",m^2,"i^2$")),adj=c(0.5,va))
+```
+\
+
+Notice some of those terms cancel.
+
+```{r,echo=F}
+
+# (x-r-mi)(x-r+mi)
+
+f3 = paste0("(",pn(c(d,-n),1:0),")(x^2+",-2*r,"x+",r^2,"+",-m^2,"i^2)")
+f3 = gsub("+-","-",f3,fixed=T)
+```
+
+$$f(x)~=~`r f3`$$
+
+Remember that $i^2=-1$.
+
+```{r,echo=F}
+
+# (x-r-mi)(x-r+mi)
+
+f4 = paste0("(",pn(c(d,-n),1:0),")(x^2+",-2*r,"x+",r^2,"+",-m^2,"(-1))")
+f4 = gsub("+-","-",f4,fixed=T)
+
+f5 = paste0("(",pn(c(d,-n),1:0),")(x^2+",-2*r,"x+",r^2,"+",m^2,")")
+f5 = gsub("+-","-",f5,fixed=T)
+
+f6 = paste0("(",pn(c(d,-n),1:0),")(x^2+",-2*r,"x+",r^2+m^2,")")
+f6 = gsub("+-","-",f6,fixed=T)
+```
+
+
+$$f(x)~=~`r f4`$$
+
+$$f(x)~=~`r f5`$$
+
+$$f(x)~=~`r f6`$$
+
+Use another box to expand the product into standard form.
+
+```{r,echo=F,fig.dim=c(3,1.5)}
+par(mar=c(0,0,0,0))
+plot(0,0,"n",axes=F,ann=F,xlim=c(0,4),ylim=c(1,4))
+abline(v=1)
+abline(h=3)
+va = -0.5
+text(0.5,3.5,"*")
+text(0.5,2.1,TeX(paste("$",d,"x$",collapse="")),adj=c(0.5,va))
+text(0.5,1.1,-n,adj=c(0.5,va))
+
+text(1.5,3.1,TeX("$x^2$"),adj=c(0.5,va))
+text(2.5,3.1,TeX(paste("$",-2*r,"x$",collapse="")),adj=c(0.5,va))
+text(3.5,3.1,TeX(paste0("$",r^2+m^2,"$")),adj=c(0.5,va))
+
+text(1.5,2.1,TeX(paste0("$",d,"x^3$")),adj=c(0.5,va))
+text(2.5,2.1,TeX(paste0("$",-d*2*r,"x^2$")),adj=c(0.5,va))
+text(3.5,2.1,TeX(paste0("$",d*(r^2+m^2),"x$")),adj=c(0.5,va))
+
+text(1.5,1.1,TeX(paste0("$",-n,"x^2$")),adj=c(0.5,va))
+text(2.5,1.1,TeX(paste0("$",2*n*r,"x$")),adj=c(0.5,va))
+text(3.5,1.1,TeX(paste0("$",-n*(r^2+m^2),"$")),adj=c(0.5,va))
+
+```
+\
+
+Combine like terms.
+
+$$f(x)~=~`r pn(c(A,B,C,D),3:0)`$$
+
+
+Meta-information
+============
+extype: cloze
+exclozetype: schoice|schoice|schoice|schoice
+exsolution: `r sol1`|`r sol2`|`r sol3`|`r sol4`
+exname: x_standard_2_rat_1_comp
