@@ -15,22 +15,24 @@ ndposs = list(c(3,2),c(5,2),c(7,2),c(9,2),
               c(3,8),c(5,8),c(7,8),c(9,8),
               c(2,9),c(4,9),c(5,9),c(7,9))
 
+while(T){
+    nds = sample(ndposs,2)
+    r = nds[[1]][1]*sample(c(-1,1),1)
+    m = nds[[1]][2]*sample(c(-1,1),1)
+    n = nds[[2]][1]*sample(c(-1,1),1)
+    d = nds[[2]][2]
+    A = d
+    B = -n-2*r*d
+    C = 2*r*n+d*r^2+d*m^2
+    D = -n*r^2-n*m^2
+    cf3 = c(A,B,C,D)
+    ach = c(0,1,A,B,C,D,-n+2*r*d,2*r*n-2*r^2-d*m^2,2*r*n-2*r^2+d*m^2,
+            2*r*n+2*r^2-d*m^2,-n-r*d,-n+r*d,-n*r^2+n*m^2,r^2-m^2,r^2+m^2)
+    ach = sort(unique(c(ach,-ach)))
+    if(max(abs(cf3))<10000){break}
+}
 
-nds = sample(ndposs,2)
-r = nds[[1]][1]*sample(c(-1,1),1)
-m = nds[[1]][2]*sample(c(-1,1),1)
-n = nds[[2]][1]*sample(c(-1,1),1)
-d = nds[[2]][2]
 
-A = d
-B = -n-2*r*d
-C = 2*r*n+d*r^2+d*m^2
-D = -n*r^2-n*m^2
-cf3 = c(A,B,C,D)
-
-ach = c(0,1,A,B,C,D,-n+2*r*d,2*r*n-2*r^2-d*m^2,2*r*n-2*r^2+d*m^2,
-        2*r*n+2*r^2-d*m^2,-n-r*d,-n+r*d,-n*r^2+n*m^2,r^2-m^2,r^2+m^2)
-ach = sort(unique(c(ach,-ach)))
 
 cn = function(real,imag){
     ss = paste0(real,"+",imag,"i")
