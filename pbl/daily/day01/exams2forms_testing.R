@@ -7,7 +7,7 @@ pm = list("01_tra_rot_gli_mir.Rmd",
 
 exams2webquiz(pm,
              n=n,
-             title = "examples_0406",
+             title = "examples_0407",
              dir = ".",
-             name="examples_0406")
+             name="examples_0407")
 
