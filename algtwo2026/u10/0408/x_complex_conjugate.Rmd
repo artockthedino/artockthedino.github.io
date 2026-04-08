@@ -1,0 +1,43 @@
+```{r,echo=FALSE}
+rm = sample(2:9,2)*sample(c(-1,1),2,T)
+cn = function(real,imag){
+    ss = paste0("{",real,"}+",imag,"i")
+    ss = gsub("+-","-",ss,fixed=T)
+    ss = gsub("+1i","+i",ss,fixed=T)
+    ss = gsub("-1i","-i",ss,fixed=T)
+    ss = gsub("+0i","",ss,fixed=T)
+    ss = gsub("{0}+","",ss,fixed=T)
+    ss = gsub("{0}-","",ss,fixed=T)
+    ss = gsub("{","",ss,fixed=T)
+    ss = gsub("}","",ss,fixed=T)
+    return(ss)
+}
+
+R = rm[1]
+M = rm[2]
+
+cn1 = cn(R,M)
+cn2 = cn(R,-M)
+
+```
+
+Question
+========
+
+Let function $f$ be a polynomial with real coefficients. If $f(`r cn1`)=0$, then that implies that $`r cn1`$ is one root of the polynomial.
+
+What is the other known root?
+
+Solution
+========
+
+When a polynomial with real coefficients has a complex root, we know the [complex conjugate](https://en.wikipedia.org/wiki/Complex_conjugate) is also a root.
+
+So, the answer is ``r cn2``
+
+
+Meta-information
+============
+extype: string
+exsolution: `r cn2`
+exname: complex_conjugate

@@ -1,19 +1,14 @@
 library("exams2forms")
-n = 6
+n = 5
 
 ### Entrance ticket
-pm = list("x_roots_from_factored_form.Rmd",
-          "x_poly_sketch_dubs.Rmd",
-          "x_complex_conjugate.Rmd",
-          "x_4th_get_rats_from_comp.Rmd")
+pm = list("x_4th_get_rats_from_comp.Rmd")
 
 exams2webquiz(pm,
              n=n,
              title = "examples_0408",
              dir = ".",
              name="examples_0408")
-
-
 
 
 
