@@ -11,7 +11,7 @@
 
 
 
-<title>x_root_from_factor.knit</title>
+<title>02b_qf_hpq_comp.knit</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -354,21 +354,107 @@ display: none;
 
 <div id="question" class="section level1">
 <h1>Question</h1>
-<p>Let function <span class="math inline">\(f\)</span> be a polynomial.
-If <span class="math inline">\(x-5\)</span> is a factor of the
-polynomial, then what root is known? In other words, for what value of
-<span class="math inline">\(x\)</span> do we know <span class="math inline">\(f(x)=0\)</span>?</p>
+<p>The solutions to <span class="math inline">\(x^{2}-{4}x+{94}=0\)</span> can be expressed, in
+simplest form, as <span class="math inline">\(x=h\pm p\sqrt{q}\)</span>,
+where <span class="math inline">\(p\)</span> might be <a href="https://en.wikipedia.org/wiki/Imaginary_number">imaginary</a>.
+Find the values of <span class="math inline">\(h\)</span>, <span class="math inline">\(p\)</span>, and <span class="math inline">\(q\)</span>.</p>
+<p><span class="math inline">\(h=\)</span> ##ANSWER1##</p>
+<p><span class="math inline">\(p=\)</span> ##ANSWER2##</p>
+<p><span class="math inline">\(q=\)</span> ##ANSWER3##</p>
+<div id="answerlist" class="section level2">
+<h2>Answerlist</h2>
+<ul>
+<li>-10</li>
+<li>-9</li>
+<li>-8</li>
+<li>-7</li>
+<li>-6</li>
+<li>-5</li>
+<li>-4</li>
+<li>-3</li>
+<li>-2</li>
+<li>-1</li>
+<li>0</li>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+<li>8</li>
+<li>9</li>
+<li>10</li>
+<li>2</li>
+<li>2i</li>
+<li>3</li>
+<li>3i</li>
+<li>4</li>
+<li>4i</li>
+<li>5</li>
+<li>5i</li>
+<li>6</li>
+<li>6i</li>
+<li>7</li>
+<li>7i</li>
+<li>8</li>
+<li>8i</li>
+<li>9</li>
+<li>9i</li>
+<li>10</li>
+<li>10i</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+<li>8</li>
+<li>9</li>
+<li>10</li>
+</ul>
+</div>
 </div>
 <div id="solution" class="section level1">
 <h1>Solution</h1>
-<p>See the <a href="https://en.wikipedia.org/wiki/Zero-product_property">zero product
-property</a>.</p>
-<p>A polynomial equals zero whenever one of its factors equals zero.</p>
-<p>The root is 5. In other words, we know <span class="math inline">\(f(5)=0\)</span>.</p>
+<p>Write the equation.</p>
+<p><span class="math display">\[x^{2}-{4}x+{94}=0\]</span></p>
+<p>Identify the coefficients.</p>
+<p><span class="math display">\[a=1\]</span> <span class="math display">\[b=-4\]</span> <span class="math display">\[c=94\]</span></p>
+<p>Plug numbers into the quadratic formula.</p>
+<p><span class="math display">\[x =
+\frac{-(-4)\pm\sqrt{(-4)^2-4(1)(94)}}{2(1)} \]</span></p>
+<p>Simplify.</p>
+<p><span class="math display">\[x = \frac{4 \pm
+\sqrt{16-376}}{2}\]</span></p>
+<p>Simplify.</p>
+<p><span class="math display">\[x = \frac{4 \pm
+\sqrt{-360}}{2}\]</span></p>
+<p>Use prime factorization.</p>
+<p><span class="math display">\[x = \frac{4 \pm
+\sqrt{(-1)\cdot2\cdot2\cdot2\cdot3\cdot3\cdot5}}{2}\]</span></p>
+<p>Isolate the twin factors.</p>
+<p><span class="math display">\[x = \frac{4 \pm
+\sqrt{2\cdot2\cdot3\cdot3}\cdot\sqrt{-1} \cdot
+\sqrt{2\cdot5}}{2}\]</span></p>
+<p>Simplify the square root of the square.</p>
+<p><span class="math display">\[x = \frac{4 \pm 2\cdot3\cdot i \cdot
+\sqrt{2\cdot5}}{2}\]</span></p>
+<p>Simplify the integer products.</p>
+<p><span class="math display">\[x = \frac{4 \pm 6i
+\sqrt{10}}{2}\]</span></p>
+<p>Split the fraction.</p>
+<p><span class="math display">\[x = \frac{4}{2} \pm
+\frac{6i\sqrt{10}}{2}\]</span></p>
+<p>Both numerators contain a factor of 2.</p>
+<p><span class="math display">\[x = 2 \pm 3i\sqrt{10}\]</span></p>
+<p>So, <span class="math inline">\(h=2\)</span> and <span class="math inline">\(p=3i\)</span> and <span class="math inline">\(q=10\)</span>.</p>
 </div>
 <div id="meta-information" class="section level1">
 <h1>Meta-information</h1>
-<p>extype: num exsolution: 5 exname: root_from_factor</p>
+<p>extype: cloze exclozetype: schoice|schoice|schoice exsolution:
+000000000000100000000|000100000000000000|000000001 exname:
+et_qf_radical_solns</p>
 </div>
 
 

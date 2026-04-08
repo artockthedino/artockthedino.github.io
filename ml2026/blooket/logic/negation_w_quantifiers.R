@@ -28,8 +28,8 @@ for(i in 1:nq){
     p2 = phrases2[5-i1]
     ach = sample(phrases2)
     wo = which(ach==p2)
-    qtext = paste0("Consider the logical statement (p) defined below.\n\n p: ",p1,"\n\nWhich option represents ~p, the negation of p?")
-    s=paste0(s,i,',"',qtext,'",',
+    qtext = paste0('Negate the statement: ',p1,'')
+    s=paste0(s,i,",'",qtext,"',",
              paste0(ach,collapse=','),',30,',wo,collapse=""
     )
     if(i<nq){
