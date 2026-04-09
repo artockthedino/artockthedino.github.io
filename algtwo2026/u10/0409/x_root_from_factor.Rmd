@@ -1,0 +1,29 @@
+```{r,echo=FALSE}
+a = sample(2:9,1)*sample(c(-1,1),1)
+
+fac1 = paste0("x+",-a,collapse="")
+fac1 = gsub("+-","-",fac1,fixed=T)
+
+```
+
+Question
+========
+
+Let function $f$ be a polynomial. If $`r fac1`$ is a factor of the polynomial, then what root is known? In other words, for what value of $x$ do we know $f(x)=0$?
+
+
+Solution
+========
+
+See the [zero product property](https://en.wikipedia.org/wiki/Zero-product_property).
+
+A polynomial equals zero whenever one of its factors equals zero.
+
+The root is `r a`. In other words, we know $f(`r a`)=0$.
+
+
+Meta-information
+============
+extype: num
+exsolution: `r a`
+exname: root_from_factor

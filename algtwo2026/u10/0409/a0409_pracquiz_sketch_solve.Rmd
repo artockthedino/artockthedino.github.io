@@ -1,0 +1,380 @@
+---
+output: pdf_document
+params:
+    rseed: 0
+    showsol: false
+---
+
+\renewcommand{\arraystretch}{1.2}
+
+```{r,echo=F,warning=FALSE,message=FALSE}
+options(scipen=999)
+if(params$rseed !=0){
+    set.seed(params$rseed)
+}
+knitr::opts_chunk$set(echo = FALSE)
+bn <- basename(knitr::current_input())
+bn = strsplit(bn,".",fixed=T)[[1]][1]
+
+pn = function(coeffs,pows){
+    pows = pows[coeffs!=0]
+    coeffs = coeffs[coeffs!=0]
+    ex1 = paste0("{",coeffs,"}x^{",pows,"}",collapse="+")
+    ex1 = gsub("+{-","-{",ex1,fixed=T)
+    ex1 = gsub("{1}x^{0}","1",ex1,fixed=T)
+    ex1 = gsub("{-1}x^{0}","-1",ex1,fixed=T)
+    ex1 = gsub("{1}x","x",ex1,fixed=T)
+    ex1 = gsub("{-1}x","-x",ex1,fixed=T)
+    ex1 = gsub("x^{0}","",ex1,fixed=T)
+    ex1 = gsub("x^{1}","x",ex1,fixed=T)
+    ex1 = gsub("+-","-",ex1,fixed=T)
+    if(ex1 == ""){
+        ex1 = "0"
+    }
+    ex1 = gsub("{","",ex1,fixed=T)
+    ex1 = gsub("}","",ex1,fixed=T)
+    return(ex1)
+}
+```
+
+Name: \vspace{0.1in} \hrule
+
+## `r bn` (v`r params$rseed`)
+
+```{r,echo=F}
+numq = 3
+exps = character() #c("y=(x+8)(x+4)^2(x+1)(x-3)^2","y=-(x+1)^2(x-5)(x-7)")
+roots = list() #list(c(-8,-4,-1,3),c(-1,5,7))
+pows = list() #list(c(1,2,1,2),c(2,1,1))
+degs = numeric()
+as = sample(c(1,-1,sample(c(-1,1),1)))
+while(length(exps)<numq){
+    n = sample(3:4,1)
+    while(T){
+        root = sort(sample(1:8,n)*sample(c(-1,1),n,T))
+        pow = sample(1:2,n,T)
+        if(min(diff(root))>1 && max(diff(root))<7 && sum(pow)>n && sum(pow)<2*n){break}
+    }
+    daord = 1:n
+    if(length(exps)>4){
+        daord = sample(1:n)
+    }
+    r2 = root[daord]
+    p2 = pow[daord]
+    a = as[[length(exps)+1]]
+    deg = sum(pow)
+    # a = ((length(exps)+1)%%2)*2-1 #sample(c(-1,1),1)
+    exp1 = paste0("(x+",-r2,")^",p2,collapse="")
+    exp1 = gsub("+-","-",exp1,fixed=T)
+    exp1 = gsub("^1","",exp1,fixed=T)
+    if(a==-1){
+        exp1 = paste0("y=-",exp1)
+    } else {
+        exp1 = paste0("y=",exp1)
+    }
+    if(!(exp1 %in% exps) && !(deg%in%degs)){
+        exps = c(exps,exp1)
+        roots[[length(roots)+1]] = root
+        pows[[length(pows)+1]] = pow
+        as = c(as,a)
+        degs = c(degs,deg)
+    }
+}
+
+
+```
+
+```{r,echo=F,fig.dim=c(6,2),results='hide'}
+png("maybe.png",1200,400)
+par(mar=c(0,0,0,0))
+plot(0,0,"n",xlim=c(-10,10),ylim=c(-2,2),axes=F,ann=F)
+abline(h=0)
+abline(v=0)
+for(i in -10:10){
+    if(i%%5==0 && i!=0){
+        lines(c(i,i),c(-0.1,0.1),lwd=3)
+        text(i,-0.4,i,cex=2)
+    } else{
+        lines(c(i,i),c(-0.05,0.05),lwd=2)
+    }
+}
+dev.off()
+```
+
+```{r,echo=F,fig.dim=c(6,2),results='asis',fig.align='center',eval=!(params$showsol)}
+for(i in 1:length(exps)){
+    cat(paste0(i,". Sketch $",exps[i],"$\n\n"))
+    cat("![](maybe.png)")
+    cat("\n\n\\vfill\n\n")
+    if(i%%3==0){
+        cat("\\newpage\n\n")
+    }
+}
+```
+
+```{r,echo=F,fig.dim=c(6,2.5),results='asis',eval=params$showsol}
+
+fx = function(x,a,root,pow){
+    b = a
+    for(i in 1:length(root)){
+        b = b*(x-root[i])^pow[i]
+    }
+    return(b)
+}
+library(latex2exp)
+for(iii in 1:length(exps)){
+    exp = exps[iii]
+    # cat(paste0("$",exp,"$\n\n"))
+    root = roots[[iii]]
+    pow = pows[[iii]]
+    a = as[iii]
+    N = length(root)
+    par(mar=c(0,0,3,0))
+    plot(0,0,"n",axes=F,ann=F,xlim=c(-10,10),ylim=c(-2,2))
+    mtext(TeX(paste0("$",exp,"$")),3)
+    abline(v=0,lwd=1)
+    abline(h=0,lwd=2)
+    for(i in -10:10){
+        if(i%%5==0 && i!=0){
+            lines(c(i,i),c(-0.2,0.2))
+            text(i,-0.5,i,cex=0.7)
+        } else {
+            lines(c(i,i),c(-0.1,0.1))
+        }
+    }
+    xs = root
+    xmid = c(xs[1]-1,(xs[2:N]+xs[1:(N-1)])/2,xs[N]+1)
+    sss = 1.3
+    xx = xmid[1]
+    yy = sign(fx(xmid[1],a,root,pow))
+    mm = -yy*sss
+    for(i in 1:length(root)){
+        xx = c(xx,xs[i])
+        yy = c(yy,0)
+        if(sign(fx(xs[i]-0.1,a,root,pow))==sign(fx(xs[i]+0.1,a,root,pow))){
+            mm = c(mm,0)
+        }
+        if(sign(fx(xs[i]-0.1,a,root,pow))==-1 && sign(fx(xs[i]+0.1,a,root,pow))==1){
+            mm = c(mm,sss)
+        }
+        if(sign(fx(xs[i]-0.1,a,root,pow))==1 && sign(fx(xs[i]+0.1,a,root,pow))==-1){
+            mm = c(mm,-sss)
+        }
+        xx = c(xx,xmid[i+1])
+        if(i<N){
+            mm = c(mm,0)
+            yy = c(yy,pi/2*sign(fx(xmid[i+1],a,root,pow)))
+        } else {
+            mm = c(mm,sign(a)*sss)
+            yy = c(yy,sign(fx(xmid[i+1],a,root,pow)))
+        }
+    }
+    xwave = seq(min(xs),max(xs),0.1)
+    sf = splinefunH(xx,yy,mm)
+    lines(xwave,sin(sf(xwave)),col="blue",lwd=3)
+    points(root,rep(0,length(root)),pch=19,col="blue")
+    xlo = seq(min(xs)-1,min(xs),0.1)
+    lines(xlo,sf(xlo),col="blue",lwd=3)
+    xhi = seq(max(xs),max(xs)+1,0.1)
+    lines(xhi,sf(xhi),col="blue",lwd=3)
+    
+    # lines(c(max(root),max(root)+2),c(0,2*a),col="blue",lwd=3)
+    # lines(c(min(root),min(root)-2),c(0,2*a*(-1)^n),col="blue",lwd=3)
+    
+    arrows(xx[2*N+1],yy[2*N+1],xx[2*N+1]+0.5,yy[2*N+1]+0.5*sign(a)*sss,col="blue",lwd=3,length=0.1,angle=15)
+    arrows(xx[1],yy[1],xx[1]-0.5,yy[1]+0.5*sign(yy[1])*sss,col="blue",lwd=3,length=0.1,angle=15)
+    cat("\n\n\\vfill\n\n")
+}
+```
+
+\newpage
+
+```{r,echo=F}
+library(latex2exp)
+options(scipen=99)
+# (x-(r+mi))(x-(r-mi))(ax+b)(cx+d)
+# (x-r-mi)(x-r+mi)(ax+b)(cx+d)
+# -b/a and -d/c
+# (x^2-2rx+(r^2+m^2))(acx^2+(ad+bc)x+bd)
+# acx^4 + (ad+bc-2rac)x^3 + (acr^2+acm^2-2rad-2rbc+bd)x^2 + (-2rbd+adr^2+adm^2+bcr^2+bcm^2)x + (bdr^2+bdm^2)
+gcd2 <- function(a, b) {
+  if (b == 0) a else Recall(b, a %% b)
+}
+gcd <- function(...) Reduce(gcd2, c(...))
+
+rats = list(c(1,1),c(2,1),c(3,1),c(4,1),c(5,1),c(6,1),c(7,1),c(8,1),c(9,1),
+            c(1,2),c(3,2),c(5,2),c(7,2),c(9,2),
+            c(1,3),c(2,3),c(4,3),c(5,3),c(7,3),c(8,3),
+            c(1,4),c(3,4),c(5,4),c(7,4),c(9,4),
+            c(1,5),c(2,5),c(3,5),c(4,5),c(6,5),c(7,5),c(8,5),c(9,5),
+            c(1,6),c(5,6),c(7,6),
+            c(1,7),c(2,7),c(3,7),c(4,7),c(5,7),c(6,7),c(8,7),c(9,7),
+            c(1,8),c(3,8),c(5,8),c(7,8),c(9,8),
+            c(1,9),c(2,9),c(4,9),c(5,9),c(7,9))
+while(T){
+    rat = sample(rats,3)
+    
+    r = rat[[1]][1]*sample(c(-1,1),1)
+    m = rat[[1]][2]*sample(c(-1,1),1)
+    a = rat[[2]][1]
+    b = rat[[2]][2]*sample(c(-1,1),1)
+    c = rat[[3]][1]
+    d = rat[[3]][2]*sample(c(-1,1),1)
+    
+    # acx^4 + (ad+bc-2rac)x^3 + (acr^2+acm^2-2rad-2rbc+bd)x^2 + (-2rbd+adr^2+adm^2+bcr^2+bcm^2)x + (bdr^2+bdm^2)
+    A = a*c
+    B = a*d+b*c-2*r*a*c
+    C = a*c*r^2+a*c*m^2-2*r*a*d-2*r*b*c+b*d
+    D = -2*r*b*d+a*d*r^2+a*d*m^2+b*c*r^2+b*c*m^2
+    E = b*d*r^2+b*d*m^2
+    cf4 = c(A,B,C,D,E)
+    # (x^2-2rx+(r^2+m^2))(acx^2+(ad+bc)x+bd)
+    qa = a*c
+    qb = a*d+b*c
+    qc = b*d
+    cfq = c(qa,qb,qc)
+    ca = 1
+    cb = -2*r
+    cc = r^2+m^2
+    cfc = c(ca,cb,cc)
+    if(max(abs(cf4))<500){break}
+}
+
+numer1 = -qb+round(sqrt(qb^2-4*qa*qc))
+denom1 = 2*qa
+numer2 = -qb-round(sqrt(qb^2-4*qa*qc))
+denom2 = 2*qa
+
+nn1 = numer1/gcd(c(numer1,denom1))
+dd1 = denom1/gcd(c(numer1,denom1))
+nn2 = numer2/gcd(c(numer2,denom2))
+dd2 = denom2/gcd(c(numer2,denom2))
+
+cn = function(real,imag){
+    ss = paste0("{",real,"}+",imag,"i")
+    ss = gsub("+-","-",ss,fixed=T)
+    ss = gsub("+1i","+i",ss,fixed=T)
+    ss = gsub("-1i","-i",ss,fixed=T)
+    ss = gsub("+0i","",ss,fixed=T)
+    ss = gsub("{0}+","",ss,fixed=T)
+    ss = gsub("{0}-","",ss,fixed=T)
+    ss = gsub("{","",ss,fixed=T)
+    ss = gsub("}","",ss,fixed=T)
+    return(ss)
+}
+
+frac = function(num,den){
+    if(den!=1){
+        ss = paste0("\\frac{",num,"}{",den,"}")
+    }
+    else{
+        ss = paste0(num)
+    }
+    return(ss)
+}
+
+pn = function(c,d){
+    d = d[c!=0]
+    c = c[c!=0]
+    p = paste0("{",c,"}x^{",d,"}",collapse="+")
+    p = gsub("x^{0}","",p,fixed=T)
+    p = gsub("x^{1}","x",p,fixed=T)
+    p = gsub("+{-","-{",p,fixed=T)
+    p = gsub("+{1}x","+x",p,fixed=T)
+    p = gsub("-{1}x","-x",p,fixed=T)
+    p = gsub("{-1}x","-x",p,fixed=T)
+    p = gsub("{1}x","x",p,fixed=T)
+    return(p)
+}
+```
+
+
+4. Let $f$ represent a quartic (4th degree) polynomial with integer coefficients.
+$$f(x)~=~`r pn(cf4,4:0)`$$
+One of the roots is $`r cn(r,m)`$, where $i=\sqrt{-1}$.
+$$f(`r cn(r,m)`)~=~0$$
+This quartic polynomial has at least 1 rational root. Find all the rational roots.
+
+
+```{r,echo=F,results='asis',eval=params$showsol}
+fa = paste0("(ax^2+bx+c)(x-(",r,"+",m,"i))(x-(",r,"+",-m,"i))")
+fa = gsub("+-","-",fa,fixed=T)
+fa = gsub("+1i","+i",fa,fixed=T)
+fa = gsub("-1i","-i",fa,fixed=T)
+f2 = paste0("(ax^2+bx+c)(x+",-r,"+",-m,"i)(x+",-r,"+",m,"i)")
+f2 = gsub("+-","-",f2,fixed=T)
+f2 = gsub("+1i","+i",f2,fixed=T)
+f2 = gsub("-1i","-i",f2,fixed=T)
+
+cat("\n\n\\vfill\\color{red}\n\n")
+cat(paste0("$$",fa,"$$\n\n"))
+cat(paste0("$$",f2,"$$\n\n"))
+
+f4 = paste0("(ax^2+bx+c)(x^2+",-2*r,"x+",r^2,"+",-m^2,"(-1))")
+f4 = gsub("+-","-",f4,fixed=T)
+f5 = paste0("(ax^2+bx+c)(x^2+",-2*r,"x+",r^2,"+",m^2,")")
+f5 = gsub("+-","-",f5,fixed=T)
+f6 = paste0("(ax^2+bx+c)(x^2+",-2*r,"x+",r^2+m^2,")")
+f6 = gsub("+-","-",f6,fixed=T)
+
+# cat(paste0("$$",f4,"$$\n\n"))
+# cat(paste0("$$",f5,"$$\n\n"))
+cat(paste0("$$",f6,"$$\n\n"))
+
+# cat("\\color{black}\n\n\\vfill\n\n")
+
+```
+
+```{r,echo=F,fig.dim=c(3,1.5),eval=params$showsol,fig.align='center'}
+par(mar=c(0,0,0,0))
+plot(0,0,"n",xlim=c(0,4),ylim=c(0,4),axes=F,ann=F)
+abline(h=3)
+abline(v=1)
+text(0.5,2.5,TeX("$x^2$"))
+text(0.5,1.5,TeX(paste0("$",-2*r,"x$")))
+text(0.5,0.5,TeX(paste0("$",r^2+m^2,"$")))
+
+text(1.5,2.5,TeX(paste0("$",cfq[1],"x^4$")))
+text(1.5,3.5,TeX(paste0("$",cfq[1],"x^2$")))
+text(1.5,1.5,TeX(paste0("$",cfq[1]*cfc[2],"x^3$")))
+text(1.5,0.5,TeX(paste0("$",cfq[1]*cfc[3],"x^2$")))
+
+text(2.5,2.5,TeX(paste0("$",cfq[2]*cfc[1],"x^3$")))
+text(2.5,3.5,TeX(paste0("$",cfq[2]*cfc[1],"x$")))
+text(2.5,1.5,TeX(paste0("$",cfq[2]*cfc[2],"x^2$")))
+text(2.5,0.5,TeX(paste0("$",cfq[2]*cfc[3],"x$")))
+
+text(3.5,2.5,TeX(paste0("$",cfq[3]*cfc[1],"x^2$")))
+text(3.5,3.5,TeX(paste0("$",cfq[3]*cfc[1],"$")))
+text(3.5,1.5,TeX(paste0("$",cfq[3]*cfc[2],"x$")))
+text(3.5,0.5,TeX(paste0("$",cfq[3]*cfc[3],"$")))
+
+```
+\
+
+```{r,echo=F,results='asis',eval=params$showsol}
+# qf1 = paste0("\\frac{-(",qb,")\\pm\\sqrt{(",qb,")^2-",4*qa*qc,"}}{",2*qa,"}")
+# qf1 = gsub("--","+",qf2,fixed=T)
+
+qf2 = paste0("\\frac{",-qb,"\\pm\\sqrt{",qb^2,"-",4*qa*qc,"}}{",2*qa,"}")
+qf2 = gsub("--","+",qf2,fixed=T)
+cat(paste0("\n\n$$",qf2,"$$\n\n"))
+
+qf2 = paste0("\\frac{",-qb,"\\pm\\sqrt{",qb^2-4*qa*qc,"}}{",2*qa,"}")
+qf2 = gsub("--","+",qf2,fixed=T)
+cat(paste0("\n\n$$",qf2,"$$\n\n"))
+
+qf2 = paste0("\\frac{",-qb,"\\pm",round(sqrt(qb^2-4*qa*qc)),"}{",2*qa,"}")
+qf2 = gsub("--","+",qf2,fixed=T)
+cat(paste0("\n\n$$",qf2,"$$\n\n"))
+
+qf2 = paste0("\\frac{",-qb+round(sqrt(qb^2-4*qa*qc)),"}{",2*qa,"}~~~~\\frac{",-qb-round(sqrt(qb^2-4*qa*qc)),"}{",2*qa,"}")
+qf2 = gsub("--","+",qf2,fixed=T)
+cat(paste0("\n\n$$",qf2,"$$\n\n"))
+
+qf2 = paste0(frac(nn1,dd1),"~~~~",frac(nn2,dd2))
+qf2 = gsub("--","+",qf2,fixed=T)
+cat(paste0("\n\n$$",qf2,"$$\n\n"))
+
+
+```

@@ -1,0 +1,49 @@
+```{r,echo=FALSE}
+a = sample(2:9,4)*sample(c(-1,1),4,T)
+
+fac1 = paste0("(x+",-a,")",collapse="")
+fac1 = gsub("+-","-",fac1,fixed=T)
+
+ach = -9:9
+
+al = paste0("* ",ach,collapse="\n")
+
+sol = rep(0,length(ach))
+for(i in 1:length(a)){
+    sol = sol+1*(ach==a[i])
+}
+sol = paste0(sol,collapse="")
+
+```
+
+Question
+========
+
+Let function $f$ be a quartic (4th-degree) polynomial shown below as a product of linear factors:
+
+$$f(x)~=~`r fac1`$$
+
+Find all the [roots](https://en.wikipedia.org/wiki/Zero_of_a_function) of polynomial $f$. In other words, find all values of $x$ such that $f(x)=0$.
+
+Answerlist
+--------
+
+`r al`
+
+
+Solution
+========
+
+
+See the [zero product property](https://en.wikipedia.org/wiki/Zero-product_property).
+
+A polynomial equals zero whenever one of its factors equals zero.
+
+Thus, the roots are `r paste0(a,collapse=" and ")`.
+
+
+Meta-information
+============
+extype: mchoice
+exsolution: `r sol`
+exname: roots_from_factored_form

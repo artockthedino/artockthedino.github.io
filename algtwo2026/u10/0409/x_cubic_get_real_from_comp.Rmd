@@ -1,0 +1,157 @@
+```{r,echo=FALSE}
+library(latex2exp)
+options(scipen=99)
+# (x-(r+mi))(x-(r-mi))(dx-n)
+# r+mi, r-mi, and n/d
+# (x^2-2rx+(r^2+m^2))(dx-n)
+# dx^3+(-n-2rd)x^2+(2rn+dr^2+dm^2)x+(-nr^2-nm^2)
+
+ndposs = list(c(3,2),c(5,2),c(7,2),c(9,2),
+              c(2,3),c(4,3),c(5,3),c(7,3),c(8,3),
+              c(3,4),c(5,4),c(7,4),c(9,4),
+              c(2,5),c(3,5),c(4,5),c(6,5),c(7,5),c(8,5),c(9,5),
+              c(5,6),c(7,6),
+              c(2,7),c(3,7),c(4,7),c(5,7),c(6,7),c(8,7),c(9,7),
+              c(3,8),c(5,8),c(7,8),c(9,8),
+              c(2,9),c(4,9),c(5,9),c(7,9))
+
+nds = sample(ndposs,2)
+r = nds[[1]][1]*sample(c(-1,1),1)
+m = nds[[1]][2]*sample(c(-1,1),1)
+n = sample(2:9,1)*sample(c(-1,1),1)
+d = 1 #nds[[2]][2]
+A = d
+B = -n-2*r*d
+C = 2*r*n+d*r^2+d*m^2
+D = -n*r^2-n*m^2
+cf3 = c(A,B,C,D)
+
+
+cn = function(real,imag){
+    ss = paste0(real,"+",imag,"i")
+    ss = gsub("+-","-",ss,fixed=T)
+    return(ss)
+}
+
+pn = function(c,d){
+    d = d[c!=0]
+    c = c[c!=0]
+    p = paste0("{",c,"}x^{",d,"}",collapse="+")
+    p = gsub("x^{0}","",p,fixed=T)
+    p = gsub("x^{1}","x",p,fixed=T)
+    p = gsub("+{-","-{",p,fixed=T)
+    p = gsub("+{1}x","+x",p,fixed=T)
+    p = gsub("-{1}x","-x",p,fixed=T)
+    p = gsub("{-1}x","-x",p,fixed=T)
+    p = gsub("{1}x","x",p,fixed=T)
+    return(p)
+}
+
+
+```
+
+Question
+========
+
+Consider the cubic function shown below:
+
+$$f(x)~=~`r pn(cf3,3:0)`$$
+
+One root is $`r cn(r,m)`$.
+
+$$f(`r cn(r,m)`)=0$$
+
+Find a real solution to the equation below.
+
+$$`r pn(cf3,3:0)`=0$$
+
+Solution
+========
+
+When polynomials with real coefficients have complex roots, we know complex roots come as complex-conjugate pairs. In other words, since $`r cn(r,m)`$ is a root, we also know $`r cn(r,-m)`$ is a root. Thus, if $a$ is the real root (the number we are looking for), we can express function $f$ as the product of three factors.
+
+$$f(x)~=~(x-a)(x-(`r cn(r,m)`))(x-(`r cn(r,-m)`))$$
+
+Distribute the negative across the inner parentheses.
+
+```{r,echo=F}
+f2 = paste0("(x-a)(x+",-r,"+",-m,"i)(x+",-r,"+",m,"i)")
+f2 = gsub("+-","-",f2,fixed=T)
+```
+
+$$f(x)~=~`r f2`$$
+
+
+Multiply the two complex-root factors using a box.
+
+```{r,echo=F,fig.dim=c(3,2)}
+par(mar=c(0,0,0,0))
+plot(0,0,"n",axes=F,ann=F,xlim=c(0,4),ylim=c(0,4))
+abline(v=1)
+abline(h=3)
+va = -0.5
+text(0.5,3.5,"*")
+text(0.5,2.1,"x",adj=c(0.5,va))
+text(0.5,1.1,-r,adj=c(0.5,va))
+text(0.5,0.1,paste0(-m,"i"),adj=c(0.5,va))
+text(1.5,3.1,"x",adj=c(0.5,va))
+text(2.5,3.1,-r,adj=c(0.5,va))
+text(3.5,3.1,paste0(m,"i"),adj=c(0.5,va))
+
+text(1.5,2.1,TeX(paste0("$x^2$")),adj=c(0.5,va))
+text(2.5,2.1,TeX(paste0("$",-r,"x$")),adj=c(0.5,va))
+text(3.5,2.1,TeX(paste0("$",m,"ix$")),adj=c(0.5,va))
+
+text(1.5,1.1,TeX(paste0("$",-r,"x$")),adj=c(0.5,va))
+text(2.5,1.1,r^2,adj=c(0.5,va))
+text(3.5,1.1,TeX(paste0("$",-r*m,"i$")),adj=c(0.5,va))
+
+text(1.5,0.1,TeX(paste0("$",-m,"ix$")),adj=c(0.5,va))
+text(2.5,0.1,TeX(paste0("$",r*m,"i$")),adj=c(0.5,va))
+text(3.5,0.1,TeX(paste0("$-",m^2,"i^2$")),adj=c(0.5,va))
+```
+\
+
+Notice some of those terms cancel when combining like terms.
+
+```{r,echo=F}
+
+# (x-r-mi)(x-r+mi)
+
+f3 = paste0("(x-a)(x^2+",-2*r,"x+",r^2,"+",-m^2,"i^2)")
+f3 = gsub("+-","-",f3,fixed=T)
+```
+
+$$f(x)~=~`r f3`$$
+
+Remember that $i^2=-1$.
+
+```{r,echo=F}
+
+# (x-r-mi)(x-r+mi)
+
+f4 = paste0("(x-a)(x^2+",-2*r,"x+",r^2,"+",-m^2,"(-1))")
+f4 = gsub("+-","-",f4,fixed=T)
+
+f5 = paste0("(x-a)(x^2+",-2*r,"x+",r^2,"+",m^2,")")
+f5 = gsub("+-","-",f5,fixed=T)
+
+f6 = paste0("(x-a)(x^2+",-2*r,"x+",r^2+m^2,")")
+f6 = gsub("+-","-",f6,fixed=T)
+```
+
+
+$$f(x)~=~`r f4`$$
+
+$$f(x)~=~`r f5`$$
+
+$$f(x)~=~`r f6`$$
+
+NOT DONE... I guess show division from here...
+
+
+Meta-information
+============
+extype: num
+exsolution: `r n`
+exname: x_standard_2_rat_1_comp

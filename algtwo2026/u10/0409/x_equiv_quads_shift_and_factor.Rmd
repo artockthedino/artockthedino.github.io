@@ -1,0 +1,202 @@
+```{r,echo=FALSE}
+# (x-h)^2+b(x-h)+c
+# (x+p)(x+q)
+# x^2+(p+q)x+pq
+# x^2-2hx+h^2+bx-bh+c
+# p+q = -2h+b
+# p*q = h^2-bh+c
+
+# b = p+q+2h
+# c = pq+bh-h^2
+
+# wrong...
+# x^2-h^2+bx-bh+c
+# p+q = b
+# p*q = -h^2-bh+c
+# p*(b-p) = -h^2-bh+c
+# pb-p^2 = -h^2-bh+c
+# 0 = p^2+(-b)p+(-h^2-bh+c)
+# p = (b + sqrt(b^2+4h^2+4bh-4c))/2
+# q = (b - sqrt(b^2+4h^2+4bh-4c))/2
+
+# wrong
+# x^2+h^2+bx-bh+c
+# p+q = b
+# p*q = h^2-bh+c
+# p*(b-p) = h^2-bh+c
+# pb-p^2 = h^2-bh+c
+# 0 = p^2+(-b)p+(h^2-bh+c)
+# p = (b + sqrt(b^2-4h^2+4bh-4c))/2
+# q = (b - sqrt(b^2-4h^2+4bh-4c))/2
+
+# wrong
+# x^2+(p+q)x+pq
+# x^2-2hx+h^2+bx+bh+c
+# p+q = -2h+b
+# p*q = h^2+bh+c
+# p(b-2h-p) = h^2+bh+c
+# pb-2ph-p^2 = h^2+bh+c
+# 0 = p^2+(2h-b)p + h^2+bh+c
+# p = (-(2h-b) - sqrt((2h-b)^2-4h^2-4bh-4c))/2
+# q = (-(2h-b) + sqrt((2h-b)^2-4h^2-4bh-4c))/2
+
+while(T){
+    hpq = sample(2:8,3)*sample(c(-1,1),3,T)
+    h = hpq[1]
+    p = min(hpq[2:3])
+    q = max(hpq[2:3])
+    b = p+q+2*h
+    c = p*q+b*h-h^2
+    if(abs(b)>1 && abs(c)>0){
+        break
+    }
+}
+
+
+pqs = list(c(p,q))
+
+
+if(b^2+4*h^2+4*b*h-4*c>0){
+    p2 = round((b - sqrt(b^2+4*h^2+4*b*h-4*c))/2)
+    q2 = round((b + sqrt(b^2+4*h^2+4*b*h-4*c))/2)
+    pq2 = sort(c(p2,q2))
+} else {
+    pq2 = sort(sample(2:9,2)*sample(c(-1,1),2,T))
+    p2 = min(pq2)
+    q2 = max(pq2)
+}
+pqs[[length(pqs)+1]] = pq2
+
+if(b^2-4*h^2+4*b*h-4*c>0){
+    p3 = round((b - sqrt(b^2-4*h^2+4*b*h-4*c))/2)
+    q3 = round((b + sqrt(b^2-4*h^2+4*b*h-4*c))/2)
+    pq3 = sort(c(p3,q3))
+} else {
+    pq3 = sample(2:9,2)*sample(c(-1,1),2,T)
+    p3 = min(pq3)
+    q3 = max(pq3)
+}
+pqs[[length(pqs)+1]] = pq3
+pqs = unique(pqs)
+
+if((2*h-b)^2-4*h^2-4*b*h-4*c>0){
+    p4 = round((-(2*h-b) - sqrt((2*h-b)^2-4*h^2-4*b*h-4*c))/2)
+    q4 = round((-(2*h-b) + sqrt((2*h-b)^2-4*h^2-4*b*h-4*c))/2)
+    pq4 = sort(c(p4,q4))
+} else {
+    pq4 = sample(2:9,2)*sample(c(-1,1),2,T)
+    p4 = min(pq4)
+    q4 = max(pq4)
+}
+pqs[[length(pqs)+1]] = pq4
+pqs = unique(pqs)
+
+while(length(pqs)<4){
+    pq5 = sample(2:9,2)*sample(c(-1,1),2,T)
+    p5 = min(pq5)
+    q5 = max(pq5)
+    pqs[[length(pqs)+1]] = pq5
+    pqs = unique(pqs)
+}
+
+fckit = pqs
+pqs = list()
+
+for(i in 1:length(fckit)){
+    ppqq = fckit[[i]]
+    if(min(abs(ppqq))>0 && max(abs(ppqq))<12){
+        pqs[[length(pqs)+1]] = ppqq
+    }
+}
+
+while(length(pqs)<4){
+    pq5 = sample(2:9,2)*sample(c(-1,1),2,T)
+    p5 = min(pq5)
+    q5 = max(pq5)
+    pqs[[length(pqs)+1]] = pq5
+    pqs = unique(pqs)
+}
+
+
+
+if(h<0){
+    w1 = "left"
+} else {
+    w1 = "right"
+}
+
+f1 = paste0("(x+",-h,")^2+",b,"(x+",-h,")+",c,collapse="")
+f1 = gsub("+-","-",f1,fixed=T)
+
+f2 = paste0("(x+",q,")(x+",p,")")
+f2 = gsub("+-","-",f2,fixed=T)
+
+f2bad1 = paste0("(x+",pqs[[2]][2],")(x+",pqs[[2]][1],")")
+f2bad1 = gsub("+-","-",f2bad1,fixed=T)
+
+f3bad1 = paste0("(x+",pqs[[3]][2],")(x+",pqs[[3]][1],")")
+f3bad1 = gsub("+-","-",f3bad1,fixed=T)
+
+f4bad1 = paste0("(x+",pqs[[4]][2],")(x+",pqs[[4]][1],")")
+f4bad1 = gsub("+-","-",f4bad1,fixed=T)
+
+ach = sample(c(f2,f2bad1,f3bad1,f4bad1))
+al = paste0("* $f(x)=",ach,"$",collapse="\n")
+sol = paste0(1*(ach==f2),collapse="")
+
+f3 = paste0("x^2+",-2*h,"x+",h^2,"+",b,"(x+",-h,")+",c,collapse="")
+f3 = gsub("+-","-",f3,fixed=T)
+
+f4 = paste0("x^2+",-2*h,"x+",h^2,"+",b,"x+",-b*h,"+",c,collapse="")
+f4 = gsub("+-","-",f4,fixed=T)
+
+f5 = paste0("x^2+",-2*h+b,"x+",h^2-b*h+c,collapse="")
+f5 = gsub("+-","-",f5,fixed=T)
+
+
+```
+
+Question
+========
+
+Let function $f$ represent a standard-form quadratic polynomial shifted horizontally `r abs(h)` units to the `r w1`.
+
+$$f(x)=`r f1`$$
+
+Express function $f$ in factored form.
+
+Answerlist
+--------
+
+`r al`
+
+
+Solution
+========
+
+Given: $$`r f1`$$
+
+[Expand the squared binomial](https://en.wikipedia.org/wiki/Binomial_theorem). 
+
+
+$$`r f3`$$
+
+Distribute.
+
+
+$$`r f4`$$
+
+Combine like terms.
+
+$$`r f5`$$
+
+Factor.
+
+$$`r f2`$$
+
+
+Meta-information
+============
+extype: schoice
+exsolution: `r sol`
+exname: equiv_quads_shift_and_factor
