@@ -595,6 +595,11 @@ https://en.wikipedia.org/wiki/Independence_of_clones_criterion
 https://en.wikipedia.org/wiki/Comparison_of_electoral_systems#Comparison_of_single-winner_voting_methods
 
 
+plurality
+instant-runoff
+borda
+Condorcet
+approval voting
 
 
 

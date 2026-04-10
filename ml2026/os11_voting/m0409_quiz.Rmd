@@ -1,0 +1,725 @@
+---
+output: pdf_document
+params:
+    rseed: 0
+    showsol: true
+---
+
+\renewcommand{\arraystretch}{1.2}
+
+```{r,echo=F,warning=FALSE,message=FALSE}
+options(scipen=999)
+if(params$rseed !=0){
+    set.seed(params$rseed)
+}
+knitr::opts_chunk$set(echo = FALSE)
+bn <- basename(knitr::current_input())
+bn = strsplit(bn,".",fixed=T)[[1]][1]
+
+pn = function(coeffs,pows){
+    pows = pows[coeffs!=0]
+    coeffs = coeffs[coeffs!=0]
+    ex1 = paste0("{",coeffs,"}x^{",pows,"}",collapse="+")
+    ex1 = gsub("+{-","-{",ex1,fixed=T)
+    ex1 = gsub("{1}x^{0}","1",ex1,fixed=T)
+    ex1 = gsub("{-1}x^{0}","-1",ex1,fixed=T)
+    ex1 = gsub("{1}x","x",ex1,fixed=T)
+    ex1 = gsub("{-1}x","-x",ex1,fixed=T)
+    ex1 = gsub("x^{0}","",ex1,fixed=T)
+    ex1 = gsub("x^{1}","x",ex1,fixed=T)
+    ex1 = gsub("+-","-",ex1,fixed=T)
+    if(ex1 == ""){
+        ex1 = "0"
+    }
+    ex1 = gsub("{","",ex1,fixed=T)
+    ex1 = gsub("}","",ex1,fixed=T)
+    return(ex1)
+}
+```
+
+Name: \vspace{0.1in} \hrule
+
+## `r bn` (v`r params$rseed`)
+
+```{r,echo=F}
+nc = sample(4:5,1)
+nv = sample(6:9,1)
+
+compare = function(prefs,i,j){
+    pi = 0
+    pj = 0
+    for(k in 1:nv){
+        prefi = prefs[[k]][i]
+        prefj = prefs[[k]][j]
+        if(prefi < prefj){
+            pi = pi+1
+        }
+        if(prefj < prefi){
+            pj = pj+1
+        }
+    }
+    if(pi>pj){
+        win = i
+        lose = j
+    }
+    if(pj>pi){
+        win = j
+        lose = i
+    }
+    if(pj==pi){
+        win = 0
+        lose = 0
+    }
+    return(c(pi,pj,win,lose))
+}
+
+condorcet = function(prefs){
+    nv = length(prefs)
+    nc = length(prefs[[1]])
+    alwayswin = rep(T,nc)
+    for(i in 1:(nc-1)){
+        for(j in (i+1):nc){
+            pi = 0
+            pj = 0
+            for(k in 1:nv){
+                prefi = prefs[[k]][i]
+                prefj = prefs[[k]][j]
+                if(prefi < prefj){
+                    pi = pi+1
+                }
+                if(prefj < prefi){
+                    pj = pj+1
+                }
+            }
+            if(pi <= pj){
+                alwayswin[i] = F
+            }
+            if(pi >= pj){
+                alwayswin[j] = F
+            }
+        }
+    }
+    if(length(unique(alwayswin))==2){
+        return(which(alwayswin))
+    } else {
+        return(0)
+    }
+}
+
+plurality = function(prefs){
+    nv = length(prefs)
+    nc = length(prefs[[1]])
+    points = rep(0,nc)
+    for(k in 1:nv){
+        wo = which(prefs[[k]]==1)
+        points[wo] = points[wo]+1
+    }
+    mp = max(points)
+    if(sum(mp==points)==1){
+        return(which(points==mp))
+    } else {
+        return(0)
+    }
+}
+
+borda = function(prefs){
+    np = length(prefs)
+    nc = length(prefs[[1]])
+    bps = rep(0,nc)
+    for(i in 1:np){
+        for(j in 1:nc){
+            bp = nc-prefs[[i]][j]
+            bps[j] = bps[j]+bp
+        }
+    }
+    win = which(bps==max(bps))
+    if(length(win)>1){
+        return(0)
+    } else {
+        return(win)
+    }
+}
+
+borda_pts = function(prefs){
+    np = length(prefs)
+    nc = length(prefs[[1]])
+    bps = rep(0,nc)
+    for(i in 1:np){
+        for(j in 1:nc){
+            bp = nc-prefs[[i]][j]
+            bps[j] = bps[j]+bp
+        }
+    }
+    return(bps)
+}
+
+nocond = sample(c(T,F),1,F,c(1,nc))
+
+while(T){
+    prefs = list()
+    for(i in 1:nv){
+        pref = sample(1:nc)
+        prefs[[i]] = pref
+    }
+    cond = condorcet(prefs)
+    plur = plurality(prefs)
+    bord = borda(prefs)
+    if(bord!=plur && bord!=0 && bord != cond){
+        break
+    }
+}
+cans = LETTERS[26-nc+1:nc]
+bp = borda_pts(prefs)
+```
+
+### Question 1
+
+`r nc` candidates (`r LETTERS[26-nc+1]` through Z) are running in an election with a single winner. There are `r nv` voters (A through `r LETTERS[nv]`) who each rank the candidates from 1 to `r nc`, with 1 meaning first choice and `r nc` meaning last choice. Those rankings are shown below. Each column represents a single voter's ranking.
+
+|    | `r paste0("voter ",LETTERS[1:nv]," | ",collapse="")`
+|:---:|`r paste0(rep(":---:|",nv),collapse="")`
+```{r,echo=F,results='asis'}
+for(i in 1:nc){
+    cat(paste0("| candidate ",LETTERS[26-nc+i]," | "))
+    for(j in 1:nv){
+        cat(paste0(prefs[[j]][i]," | "))
+    }
+    cat("\n")
+}
+```
+
+
+1. What [Borda count](https://en.wikipedia.org/wiki/Borda_count) would each candidate get?
+2. Who wins a Borda-count election?
+
+```{r,echo=F,eval=params$showsol,results='asis'}
+cat("\\color{red}\n\n")
+cat(bp)
+cat(" ... ")
+cat(cans[which(bp==max(bp))])
+cat("\n\n\\color{black}")
+
+```
+
+\vfill
+
+### Question 2
+
+```{r,echo=FALSE,warning=FALSE}
+compare = function(prefs,i,j){
+    pi = 0
+    pj = 0
+    for(k in 1:nv){
+        prefi = prefs[[k]][i]
+        prefj = prefs[[k]][j]
+        if(prefi < prefj){
+            pi = pi+1
+        }
+        if(prefj < prefi){
+            pj = pj+1
+        }
+    }
+    if(pi>pj){
+        win = i
+        lose = j
+    }
+    if(pj>pi){
+        win = j
+        lose = i
+    }
+    if(pj==pi){
+        win = 0
+        lose = 0
+    }
+    return(c(pi,pj,win,lose))
+}
+
+condorcet = function(prefs){
+    nv = length(prefs)
+    nc = length(prefs[[1]])
+    alwayswin = rep(T,nc)
+    for(i in 1:(nc-1)){
+        for(j in (i+1):nc){
+            pi = 0
+            pj = 0
+            for(k in 1:nv){
+                prefi = prefs[[k]][i]
+                prefj = prefs[[k]][j]
+                if(prefi < prefj){
+                    pi = pi+1
+                }
+                if(prefj < prefi){
+                    pj = pj+1
+                }
+            }
+            if(pi <= pj){
+                alwayswin[i] = F
+            }
+            if(pi >= pj){
+                alwayswin[j] = F
+            }
+        }
+    }
+    if(length(unique(alwayswin))==2){
+        return(which(alwayswin))
+    } else {
+        return(0)
+    }
+}
+
+plurality = function(prefs){
+    nv = length(prefs)
+    nc = length(prefs[[1]])
+    points = rep(0,nc)
+    for(k in 1:nv){
+        wo = which(prefs[[k]]==1)
+        points[wo] = points[wo]+1
+    }
+    mp = max(points)
+    if(sum(mp==points)==1){
+        return(which(points==mp))
+    } else {
+        return(0)
+    }
+}
+
+borda = function(prefs){
+    np = length(prefs)
+    nc = length(prefs[[1]])
+    bps = rep(0,nc)
+    for(i in 1:np){
+        for(j in 1:nc){
+            bp = nc-prefs[[i]][j]
+            bps[j] = bps[j]+bp
+        }
+    }
+    win = which(bps==max(bps))
+    if(length(win)>1){
+        return(0)
+    } else {
+        return(win)
+    }
+}
+
+borda_pts = function(prefs){
+    np = length(prefs)
+    nc = length(prefs[[1]])
+    bps = rep(0,nc)
+    for(i in 1:np){
+        for(j in 1:nc){
+            bp = nc-prefs[[i]][j]
+            bps[j] = bps[j]+bp
+        }
+    }
+    return(bps)
+}
+
+inst_run = function(prefs){
+    counts = rep(1,length(prefs))
+    nrounds = 0
+    whowon = 0
+    N = sum(counts)
+    np = length(prefs)
+    nc = length(prefs[[1]])
+    majority = N%/%2+1
+    winner = F
+    cannies = 1:nc
+    ppp = 0
+    while(winner==F){
+        ppp = ppp+1
+        if(ppp>(nc)){
+            return(c(0,ppp))
+        }
+        # print(cannies)
+        nrounds = nrounds+1
+        vcs = rep(0,length(cannies))
+        for(i in 1:np){
+            p = prefs[[i]]
+            jj = which(p==min(p[cannies]))
+            vcs[which(cannies==jj)] = vcs[which(cannies==jj)]+counts[i]
+        }
+        # print(vcs)
+        if(max(vcs)>=majority){
+            winner=T
+            whowon = cannies[which(vcs==max(vcs))]
+        } else {
+            if(length(cannies)==2){
+                return(c(0,nrounds))
+            }
+            jj = which(vcs==min(vcs))
+            if(length(jj)>1){
+                return(c(0,nrounds))
+            }
+            # print(jj)
+            cannies = cannies[-jj]
+        }
+    }
+    return(c(whowon,nrounds))
+}
+
+while(T){
+    nc = sample(4:6,1)
+    nv = sample(8:12,1)
+    prefs = list()
+    for(i in 1:nv){
+        pref = sample(1:nc)
+        prefs[[i]] = pref
+    }
+    # cond = condorcet(prefs)
+    plur = plurality(prefs)
+    # bord = borda(prefs)
+    inru = inst_run(prefs)[1]
+    inruro = inst_run(prefs)[2]
+    has1 = rep(F,nc)
+    for(i in 1:nv){
+        for(j in 1:nc){
+            if(prefs[[i]][j]==1){
+                has1[j] = T
+            }
+        }
+    }
+    if(inru!=0 && inruro>1 && inru!=plur && length(unique(has1))==1){
+        break
+    }
+}
+
+cans = LETTERS[26-nc+1:nc]
+```
+
+
+`r nc` candidates (`r LETTERS[26-nc+1]` through Z) are running in an election with a single winner. There are `r nv` voters (A through `r LETTERS[nv]`) who each rank the candidates from 1 to `r nc`, with 1 meaning first choice and `r nc` meaning last choice. Those rankings are shown below. Each column represents a single voter's ranking.
+
+
+```{r,echo=F,fig.dim=c(2+nv/3,1+nc/3),results='asis'}
+inrutab1 = function(prefs,surv=1:length(prefs[[1]])){
+    par(mar=c(0,0,0,0))
+    plot(0,0,"n",xlim=c(-1,nv+1),ylim=c(0.5,nc+1.5),axes=F,ann=F)
+    tots = rep(0,length(prefs[[1]]))
+    for(i in surv){
+        text(-0.5,nc+1-i,cans[i])
+        for(j in 1:nv){
+            text(j-0.5,nc+1-i,prefs[[j]][i])
+            if(prefs[[j]][i]==min(prefs[[j]][surv])){
+                # tots[i] = tots[i]+1
+                # mkcirc(j-0.5,nc+1-i)
+            }
+        }
+        # text(nv+0.5,nc+1-i,tots[i],col="red",cex=1.2)
+    }
+    for(j in 1:nv){
+        text(j-0.5,nc+1,LETTERS[j])
+    }
+    abline(h=nc+0.5)
+    abline(v=0)
+}
+inrutab1(prefs)
+```
+\
+
+Who would win an [instant-runoff election](https://en.wikipedia.org/wiki/Instant-runoff_voting)?
+
+
+```{r,echo=F,fig.dim=c(2+nv/3,1+nc/3),results="asis",eval=params$showsol}
+mkcirc = function(x,y){
+    th = seq(0,2*pi,pi/100)
+    lines(x+0.4*cos(th),y+0.4*sin(th),col="red")
+}
+inrutab = function(prefs,surv){
+    # cat("\n\nfunc surv ",surv,"\n\n")
+    # par(mar=c(0,0,0,0))
+    # plot(0,0,"n",xlim=c(-1,nv+1),ylim=c(0.5,nc+1.5),axes=F,ann=F)
+    tots = rep(0,length(prefs[[1]]))
+    for(i in surv){
+        # text(-0.5,nc+1-i,cans[i])
+        for(j in 1:nv){
+            # text(j-0.5,nc+1-i,prefs[[j]][i])
+            if(prefs[[j]][i]==min(prefs[[j]][surv])){
+                tots[i] = tots[i]+1
+                # mkcirc(j-0.5,nc+1-i)
+            }
+        }
+        # text(nv+0.5,nc+1-i,tots[i],col="red",cex=1.2)
+    }
+    # cat("\n\nfunc tots ",tots,"\n\n")
+    # for(j in 1:nv){
+        # text(j-0.5,nc+1,LETTERS[j])
+    # }
+    # abline(h=nc+0.5)
+    # abline(v=0)
+    # abline(v=nv)
+    # text(nv+0.5,nc+1,"votes",cex=0.7)
+    return(tots)
+}
+maj = nv%/%2+1
+totals = rep(0,nc)
+survivors = 1:nc
+ppp = 0
+while(T){
+    totals = inrutab(prefs,survivors)
+    # cat("\n\ntot ",totals,"\n\nsurv ",survivors,"\n\ntotsurv ",totals[survivors],"\n\n")
+    # cat("\n\nmintotsurv ",min(totals[survivors]),"\n\ntotsurv ",totals[survivors],"\n\nwhich ",which(totals[survivors]==min(totals[survivors])))
+    if(max(totals)[1]<maj){
+        loser_num = which(totals[survivors]==min(totals[survivors]))
+        # cat(paste0("\n\nNobody has a majority. Candidate ",cans[survivors[loser_num]]," has the fewest votes. Eliminate candidate ",cans[survivors[loser_num]]," from the contest. Each voter's vote goes to their top candidate still in the election.\n\n"))
+        survivors = survivors[-loser_num]
+    } else {
+        winner_num = which(totals[survivors]==max(totals[survivors]))
+        cat(paste0("\n\n\\color{red}\n\nCandidate ",cans[survivors[winner_num]]," wins!\n\n\\color{black}"))
+        break
+    }
+    # cat("\n\n",paste0(cans[survivors],collapse=" "),"\n\n")
+}
+
+```
+\
+
+\newpage
+
+```{r,echo=FALSE,warning=FALSE}
+nc = 4
+nv = 7
+compare = function(prefs,i,j){
+    pi = 0
+    pj = 0
+    for(k in 1:nv){
+        prefi = prefs[[k]][i]
+        prefj = prefs[[k]][j]
+        if(prefi < prefj){
+            pi = pi+1
+        }
+        if(prefj < prefi){
+            pj = pj+1
+        }
+    }
+    if(pi>pj){
+        win = i
+        lose = j
+    }
+    if(pj>pi){
+        win = j
+        lose = i
+    }
+    if(pj==pi){
+        win = 0
+        lose = 0
+    }
+    return(c(pi,pj,win,lose))
+}
+
+condorcet = function(prefs){
+    nv = length(prefs)
+    nc = length(prefs[[1]])
+    alwayswin = rep(T,nc)
+    for(i in 1:(nc-1)){
+        for(j in (i+1):nc){
+            pi = 0
+            pj = 0
+            for(k in 1:nv){
+                prefi = prefs[[k]][i]
+                prefj = prefs[[k]][j]
+                if(prefi < prefj){
+                    pi = pi+1
+                }
+                if(prefj < prefi){
+                    pj = pj+1
+                }
+            }
+            if(pi <= pj){
+                alwayswin[i] = F
+            }
+            if(pi >= pj){
+                alwayswin[j] = F
+            }
+        }
+    }
+    if(length(unique(alwayswin))==2){
+        return(which(alwayswin))
+    } else {
+        return(0)
+    }
+}
+
+plurality = function(prefs){
+    nv = length(prefs)
+    nc = length(prefs[[1]])
+    points = rep(0,nc)
+    for(k in 1:nv){
+        wo = which(prefs[[k]]==1)
+        points[wo] = points[wo]+1
+    }
+    mp = max(points)
+    if(sum(mp==points)==1){
+        return(which(points==mp))
+    } else {
+        return(0)
+    }
+}
+
+nocond = sample(c(T,F),1,F,c(1,nc))
+
+while(T){
+    prefs = list()
+    for(i in 1:nv){
+        pref = sample(1:nc)
+        prefs[[i]] = pref
+    }
+    cond = condorcet(prefs)
+    plur = plurality(prefs)
+    if(cond!=0 && cond!=plur && nocond==F){
+        sol = paste0(1*(cond==1:(nc+1)),collapse="")
+        break
+    }
+    if(nocond==T && cond==0 && plur!=0){
+        sol = paste0(paste0(rep(0,nc),collapse=""),"1")
+        break
+    }
+}
+
+ach = c(LETTERS[26-nc+(1:nc)],"No Condorcet winner!")
+al = paste0("* ",ach,collapse="\n")
+
+cans = LETTERS[26-nc+(1:nc)]
+
+```
+
+### Question 3
+
+`r nc` candidates (`r LETTERS[26-nc+1]` through Z) are running in an election with a single winner. There are `r nv` voters (A through `r LETTERS[nv]`) who each rank the candidates from 1 to `r nc`, with 1 meaning first choice and `r nc` meaning last choice. Those rankings are shown below. Each column represents a single voter's ranking.
+
+```{r,echo=F,fig.dim=c((nv+1)*1/2,(nc+1)*1/3)}
+par(mar=c(0,0,0,0))
+plot(0,0,"n",xlim=c(0,nv+1),ylim=c(0,nc+1),axes=F,ann=F)
+abline(v=1)
+abline(h=nc)
+for(i in 1:nc){
+    text(0.5,nc-i+0.5,cans[i])
+}
+for(j in 1:nv){
+    text(j+0.5,nc+0.5,LETTERS[j])
+}
+for(i in 1:nc){
+    for(j in 1:nv){
+        text(j+0.5,nc-i+0.5,prefs[[j]][i])
+    }
+}
+
+```
+\
+
+A [Condorcet winner](https://en.wikipedia.org/wiki/Condorcet_method) would win in a head-to-head election against any other candidate. Who is the Condorcet winner? (Or, possibly, there is none.)
+
+```{r,echo=F,results="asis",eval=params$showsol}
+cat("\n\n\\color{red}\n\n")
+if(cond==0){
+    cat("No candidate wins against every other candidate. There is no Condorcet winner.")
+} else {
+    cat(paste0("Notice ",cans[cond]," wins against all other candidates. Thus ",cans[cond]," is the Condorcet winner."))
+}
+cat("\n\n\\color{black}\n\n")
+```
+
+### Question 4
+
+```{r,echo=FALSE,warning=FALSE}
+# This problem assumes 4 candidates.
+# 14 Yes/No ballots are represented (not all yes or all no)
+# Each ballot count at top... total votes between 40 and 200
+
+while(T){
+    nv = sample(40:200,1)
+    counts = c(0,diff(c(0,sort(sample(1:(nv-1),13)),nv)),0)
+    ballots = list(c(1,1,1,1),
+                   c(1,1,1,0),
+                   c(1,1,0,1),
+                   c(1,1,0,0),
+                   c(1,0,1,1),
+                   c(1,0,1,0),
+                   c(1,0,0,1),
+                   c(1,0,0,0),
+                   c(0,1,1,1),
+                   c(0,1,1,0),
+                   c(0,1,0,1),
+                   c(0,1,0,0),
+                   c(0,0,1,1),
+                   c(0,0,1,0),
+                   c(0,0,0,1),
+                   c(0,0,0,0))
+    votes = rep(0,4)
+    for(i in 1:16){
+        votes = votes+counts[i]*ballots[[i]]
+    }
+    if(length(unique(votes))==4 && min(votes)>5){
+        break
+    }
+}
+
+extras = c(votes-1,votes+1,votes-2,votes+2,votes-3,votes+3,votes-4,votes+4)
+ach = votes
+ppp = 1
+while(length(ach)<10){
+    ppp = ppp+1
+    if(ppp<10){
+        ach = sort(unique(c(ach,sample(extras,1))))
+    } else {
+        ach = sort(unique(c(ach,sample(1:100,1))))
+    }
+}
+
+cans = c("W","X","Y","Z")
+
+sol1 = paste0(1*(ach==votes[1]),collapse="")
+sol2 = paste0(1*(ach==votes[2]),collapse="")
+sol3 = paste0(1*(ach==votes[3]),collapse="")
+sol4 = paste0(1*(ach==votes[4]),collapse="")
+sol5 = paste0(1*(max(votes)==votes),collapse="")
+
+al1 = paste0("* ",ach,collapse="\n")
+al5 = paste0("* Candidate ",cans,collapse="\n")
+
+```
+
+In an [approval-vote election](https://en.wikipedia.org/wiki/Approval_voting), there are 4 candidates and `r nv` voters. Each voter indicated which candidates they approve of (with a "Y") or disapprove of (with a "N"). All possible ballots are shown below, and the table indicates how many of each type of ballot was cast.
+
+
+```{r,echo=F,fig.dim=c((16+2)*1/2,(4+1)*1/3)}
+par(mar=c(0,0,0,0))
+plot(0,0,"n",xlim=c(-1,16+1),ylim=c(0,4+1),axes=F,ann=F)
+abline(v=1)
+abline(h=4)
+text(1,4+0.5,"Ballot Count",adj=1.1)
+for(i in 1:4){
+    text(0.5,4-i+0.5,cans[i])
+}
+for(j in 1:16){
+    text(j+0.5,4+0.5,counts[j])
+}
+for(i in 1:4){
+    for(j in 1:16){
+        if(ballots[[j]][i]==1){
+            text(j+0.5,4-i+0.5,"Y",col="darkgreen")
+        } else {
+            text(j+0.5,4-i+0.5,"N",col="grey")
+        }
+        
+    }
+}
+```
+\
+
+1. How many approvals did Candidate W get? 
+2. How many approvals did Candidate X get? 
+3. How many approvals did Candidate Y get?
+4. How many approvals did Candidate Z get?
+5. Who won the election?
+
+
+```{r,echo=F,results='asis',eval=params$showsol}
+cat("\n\n\\color{red}\n\n")
+cat(votes)
+cat(" ... So ")
+cat(cans[which(votes==max(votes))])
+cat(" wins.")
+
+cat("\n\n\\color{black}\n\n")
+```
+

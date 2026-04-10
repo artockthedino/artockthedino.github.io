@@ -1,0 +1,72 @@
+```{r,echo=FALSE}
+
+cn = function(real,imag){
+    ss = paste0("{",real,"}+",imag,"i")
+    ss = gsub("+-","-",ss,fixed=T)
+    ss = gsub("+1i","+i",ss,fixed=T)
+    ss = gsub("-1i","-i",ss,fixed=T)
+    ss = gsub("+0i","",ss,fixed=T)
+    ss = gsub("{0}+","",ss,fixed=T)
+    ss = gsub("{0}-","",ss,fixed=T)
+    ss = gsub("{","",ss,fixed=T)
+    ss = gsub("}","",ss,fixed=T)
+    return(ss)
+}
+
+rm = sample(2:9,2)*sample(c(-1,1),2,T)
+
+R = rm[1]
+M = rm[2]
+
+cn1 = cn(R,M)
+cn2 = cn(R,-M)
+
+ach1 = paste0("(x+",-R,"+",-M,"i)(x+",-R,"+",M,"i)",collapse = "")
+ach2 = paste0("(x+",R,"+",-M,"i)(x+",R,"+",M,"i)",collapse = "")
+ach3 = paste0("(x+",-R,"+",M,"i)(x+",R,"+",M,"i)",collapse = "")
+ach4 = paste0("(x+",-R,"+",-M,"i)(x+",R,"+",-M,"i)",collapse = "")
+
+ach1 = gsub("+-","-",ach1,fixed=T)
+ach2 = gsub("+-","-",ach2,fixed=T)
+ach3 = gsub("+-","-",ach3,fixed=T)
+ach4 = gsub("+-","-",ach4,fixed=T)
+
+ach = sample(c(ach1,ach2,ach3,ach4))
+al = paste0("* $",ach,"$",collapse="\n")
+sol = paste0(1*(ach1==ach),collapse="")
+
+ff = paste0("(x-(",R,"+",M,"i))(x-(",R,"+",-M,"i))",collapse = "")
+ff = gsub("+-","-",ff,fixed=T)
+
+```
+
+Question
+========
+
+Which of the quadratic polynomials below has a root of $`r cn1`$ and real coefficients (when in standard expanded form)?
+
+Answerlist
+--------
+
+`r al`
+
+Solution
+========
+
+The correct answer is $`r ach1`$.
+
+If the polynomial has real coefficients, then the other root must be $`r cn2`$. We can then express each factor as $x$ minus the root.
+
+$$`r ff`$$
+
+Distribute the subtraction across the parentheses to get the correct answer.
+
+$$`r ach1`$$
+
+Notice that $`r ach4`$ has $`r cn1`$ as a root, but if you expand it, there will be imaginary/complex coefficients.
+
+Meta-information
+============
+extype: schoice
+exsolution: `r sol`
+exname: complex_factors_from_root

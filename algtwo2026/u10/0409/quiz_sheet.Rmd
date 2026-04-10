@@ -1,0 +1,41 @@
+---
+output: pdf_document
+---
+
+# This Mastery Assessment must be proctored
+
+Whenever Student has access to this Mastery Assessment, a school staff member will monitor to make sure Student does not use any prohibited aides.
+
+* No computer
+* No phone
+* No other humans
+* No AI
+* No work done between sittings (All reference notes and work stay with Mastery Assessment until complete, and no additional notes can be added after pauses.)
+
+Students are allowed to use handheld calculators. Based on accommodations, some students are allowed notes and worked examples. All Mr. Worley Mastery Assessments allow unlimited attempts, and only the highest score is counted. 
+
+Whenever a school professional gives the student access to this test, please fill out a row in the table below.
+
+\vspace{0.5in}
+
+\renewcommand{\arraystretch}{1.5}
+
+\begin{tabular}{|l|}\hline \\
+\LARGE STUDENT: \hspace{4in} \\ \hline
+\end{tabular}
+
+\normalsize
+
+\begin{tabular}{|p{2in}|p{1in}|p{1.5in}|p{1.5in}|} \hline
+Proctor & Date & Time Start & Time End \\ \hline
+&&& \\ &&& \\ \hline
+&&& \\ &&& \\ \hline
+&&& \\ &&& \\ \hline
+&&& \\ &&& \\ \hline
+&&& \\ &&& \\ \hline
+&&& \\ &&& \\ \hline
+\end{tabular}
+
+
+
+

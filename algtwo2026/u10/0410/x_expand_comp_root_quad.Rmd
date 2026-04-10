@@ -1,0 +1,80 @@
+```{r,echo=FALSE}
+pn = function(c,d){
+    d = d[c!=0]
+    c = c[c!=0]
+    p = paste0("{",c,"}x^{",d,"}",collapse="+")
+    p = gsub("x^{0}","",p,fixed=T)
+    p = gsub("x^{1}","x",p,fixed=T)
+    p = gsub("+{-","-{",p,fixed=T)
+    p = gsub("+{1}x","+x",p,fixed=T)
+    p = gsub("-{1}x","-x",p,fixed=T)
+    p = gsub("{-1}x","-x",p,fixed=T)
+    p = gsub("{1}x","x",p,fixed=T)
+    return(p)
+}
+
+cn = function(real,imag){
+    ss = paste0("{",real,"}+",imag,"i")
+    ss = gsub("+-","-",ss,fixed=T)
+    ss = gsub("+1i","+i",ss,fixed=T)
+    ss = gsub("-1i","-i",ss,fixed=T)
+    ss = gsub("+0i","",ss,fixed=T)
+    ss = gsub("{0}+","",ss,fixed=T)
+    ss = gsub("{0}-","",ss,fixed=T)
+    ss = gsub("{","",ss,fixed=T)
+    ss = gsub("}","",ss,fixed=T)
+    return(ss)
+}
+
+rm = sample(2:9,2)*sample(c(-1,1),2,T)
+
+R = rm[1]
+M = rm[2]
+
+cn1 = cn(R,M)
+cn2 = cn(R,-M)
+
+start = paste0("(x+",-R,"+",-M,"i)(x+",-R,"+",M,"i)",collapse = "")
+start = gsub("+-","-",start,fixed=T)
+
+## (x-R-Mi)(x-R+Mi)
+# x^2 - 2*Rx + R^2+M^2
+
+ach1 = pn(c(1,-2*R,R^2+M^2),2:0)
+ach2 = pn(c(1,2*R,R^2+M^2),2:0)
+ach3 = pn(c(1,-2*R,abs(R^2-M^2)),2:0)
+ach4 = pn(c(1,2*R,abs(R^2-M^2)),2:0)
+
+ach = sample(c(ach1,ach2,ach3,ach4))
+al = paste0("* $",ach,"$",collapse="\n")
+sol = paste0(1*(ach1==ach),collapse="")
+
+
+```
+
+Question
+========
+
+Expand the quadratic polynomial with complex roots into standard form.
+
+$$`r start`$$
+
+Answerlist
+--------
+
+`r al`
+
+Solution
+========
+
+The correct answer is $`r ach1`$.
+
+Use a box.
+
+
+
+Meta-information
+============
+extype: schoice
+exsolution: `r sol`
+exname: expand_comp_root_quad

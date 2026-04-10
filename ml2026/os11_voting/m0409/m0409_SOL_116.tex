@@ -1,0 +1,236 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+
+\renewcommand{\arraystretch}{1.2}
+
+Name: \vspace{0.1in}
+
+\hrule
+
+\hypertarget{m0409_quiz-v116}{%
+\subsection{m0409\_quiz (v116)}\label{m0409_quiz-v116}}
+
+\hypertarget{question-1}{%
+\subsubsection{Question 1}\label{question-1}}
+
+4 candidates (W through Z) are running in an election with a single
+winner. There are 8 voters (A through H) who each rank the candidates
+from 1 to 4, with 1 meaning first choice and 4 meaning last choice.
+Those rankings are shown below. Each column represents a single voter's
+ranking.
+
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1111}}
+  >{\centering\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1111}}
+  >{\centering\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1111}}
+  >{\centering\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1111}}
+  >{\centering\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1111}}
+  >{\centering\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1111}}
+  >{\centering\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1111}}
+  >{\centering\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1111}}
+  >{\centering\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1111}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+voter A
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+voter B
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+voter C
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+voter D
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+voter E
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+voter F
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+voter G
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+voter H
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+candidate W & 3 & 2 & 1 & 4 & 4 & 1 & 4 & 1 \\
+candidate X & 4 & 3 & 2 & 1 & 1 & 2 & 2 & 4 \\
+candidate Y & 2 & 4 & 3 & 2 & 3 & 4 & 3 & 3 \\
+candidate Z & 1 & 1 & 4 & 3 & 2 & 3 & 1 & 2 \\
+\end{longtable}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  What \href{https://en.wikipedia.org/wiki/Borda_count}{Borda count}
+  would each candidate get?
+\item
+  Who wins a Borda-count election?
+\end{enumerate}
+
+\color{red}
+
+12 13 8 15 \ldots{} Z
+
+\color{black}
+
+\vfill
+
+\hypertarget{question-2}{%
+\subsubsection{Question 2}\label{question-2}}
+
+5 candidates (V through Z) are running in an election with a single
+winner. There are 11 voters (A through K) who each rank the candidates
+from 1 to 5, with 1 meaning first choice and 5 meaning last choice.
+Those rankings are shown below. Each column represents a single voter's
+ranking.
+
+\includegraphics{m0409/m0409_SOL_116_files/figure-latex/unnamed-chunk-6-1.pdf}\\
+
+Who would win an
+\href{https://en.wikipedia.org/wiki/Instant-runoff_voting}{instant-runoff
+election}?
+
+\color{red}
+
+Candidate Y wins!
+
+\color{black}
+
+\hfill\break
+
+\newpage
+
+\hypertarget{question-3}{%
+\subsubsection{Question 3}\label{question-3}}
+
+4 candidates (W through Z) are running in an election with a single
+winner. There are 7 voters (A through G) who each rank the candidates
+from 1 to 4, with 1 meaning first choice and 4 meaning last choice.
+Those rankings are shown below. Each column represents a single voter's
+ranking.
+
+\includegraphics{m0409/m0409_SOL_116_files/figure-latex/unnamed-chunk-9-1.pdf}\\
+
+A \href{https://en.wikipedia.org/wiki/Condorcet_method}{Condorcet
+winner} would win in a head-to-head election against any other
+candidate. Who is the Condorcet winner? (Or, possibly, there is none.)
+
+\color{red}
+
+Notice Y wins against all other candidates. Thus Y is the Condorcet
+winner.
+
+\color{black}
+
+\hypertarget{question-4}{%
+\subsubsection{Question 4}\label{question-4}}
+
+In an \href{https://en.wikipedia.org/wiki/Approval_voting}{approval-vote
+election}, there are 4 candidates and 73 voters. Each voter indicated
+which candidates they approve of (with a ``Y'') or disapprove of (with a
+``N''). All possible ballots are shown below, and the table indicates
+how many of each type of ballot was cast.
+
+\includegraphics{m0409/m0409_SOL_116_files/figure-latex/unnamed-chunk-12-1.pdf}\\
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  How many approvals did Candidate W get?
+\item
+  How many approvals did Candidate X get?
+\item
+  How many approvals did Candidate Y get?
+\item
+  How many approvals did Candidate Z get?
+\item
+  Who won the election?
+\end{enumerate}
+
+\color{red}
+
+29 45 32 50 \ldots{} So Z wins.
+
+\color{black}
+
+\end{document}

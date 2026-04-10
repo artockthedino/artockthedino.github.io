@@ -1,0 +1,807 @@
+"Blooket
+Import Template",,,,,,,
+Question #,Question Text,Answer 1,Answer 2,"Answer 3 
+(Optional)","Answer 4
+(Optional)","Time Limit (sec)
+(Max: 300 seconds)","Correct Answer(s)
+(Only include Answer #)"
+1,'Negate the statement: No violins are indigo.',Some violins are not indigo.,No violins are indigo.,Some violins are indigo.,All violins are indigo.,30,3
+2,'Negate the statement: Some quokkas are jealous.',Some quokkas are jealous.,Some quokkas are not jealous.,All quokkas are jealous.,No quokkas are jealous.,30,4
+3,'Negate the statement: All zebras are awesome.',Some zebras are awesome.,No zebras are awesome.,All zebras are awesome.,Some zebras are not awesome.,30,4
+4,'Negate the statement: Some cats are killers.',Some cats are killers.,Some cats are not killers.,No cats are killers.,All cats are killers.,30,3
+5,'Negate the statement: No jaguars are enigmatic.',Some jaguars are not enigmatic.,No jaguars are enigmatic.,All jaguars are enigmatic.,Some jaguars are enigmatic.,30,4
+6,'Negate the statement: Some violins are killers.',No violins are killers.,All violins are killers.,Some violins are killers.,Some violins are not killers.,30,1
+7,'Negate the statement: Some dogs are yellow.',All dogs are yellow.,Some dogs are not yellow.,Some dogs are yellow.,No dogs are yellow.,30,4
+8,'Negate the statement: No dogs are violent.',No dogs are violent.,Some dogs are not violent.,Some dogs are violent.,All dogs are violent.,30,3
+9,'Negate the statement: Some xylophones are yellow.',Some xylophones are not yellow.,Some xylophones are yellow.,No xylophones are yellow.,All xylophones are yellow.,30,3
+10,'Negate the statement: Some quokkas are killers.',No quokkas are killers.,Some quokkas are not killers.,All quokkas are killers.,Some quokkas are killers.,30,1
+11,'Negate the statement: Some flowers are zombies.',No flowers are zombies.,All flowers are zombies.,Some flowers are not zombies.,Some flowers are zombies.,30,1
+12,'Negate the statement: Some ponies are not indigo.',Some ponies are not indigo.,No ponies are indigo.,Some ponies are indigo.,All ponies are indigo.,30,4
+13,'Negate the statement: No hawks are queens.',Some hawks are not queens.,All hawks are queens.,No hawks are queens.,Some hawks are queens.,30,4
+14,'Negate the statement: No kangaroos are happy.',All kangaroos are happy.,Some kangaroos are happy.,Some kangaroos are not happy.,No kangaroos are happy.,30,2
+15,'Negate the statement: Some owls are not happy.',All owls are happy.,Some owls are happy.,Some owls are not happy.,No owls are happy.,30,1
+16,'Negate the statement: Some tulips are not sly.',Some tulips are not sly.,All tulips are sly.,Some tulips are sly.,No tulips are sly.,30,2
+17,'Negate the statement: All narwhals are blue.',All narwhals are blue.,No narwhals are blue.,Some narwhals are not blue.,Some narwhals are blue.,30,3
+18,'Negate the statement: Some llamas are not red.',Some llamas are not red.,All llamas are red.,Some llamas are red.,No llamas are red.,30,2
+19,'Negate the statement: Some flowers are violent.',Some flowers are violent.,All flowers are violent.,No flowers are violent.,Some flowers are not violent.,30,3
+20,'Negate the statement: All whales are blue.',Some whales are blue.,All whales are blue.,Some whales are not blue.,No whales are blue.,30,3
+21,'Negate the statement: No whales are sly.',All whales are sly.,No whales are sly.,Some whales are not sly.,Some whales are sly.,30,4
+22,'Negate the statement: No xylophones are indigo.',Some xylophones are indigo.,All xylophones are indigo.,Some xylophones are not indigo.,No xylophones are indigo.,30,1
+23,'Negate the statement: All llamas are sly.',No llamas are sly.,Some llamas are sly.,Some llamas are not sly.,All llamas are sly.,30,3
+24,'Negate the statement: No violins are indigo.',All violins are indigo.,Some violins are not indigo.,Some violins are indigo.,No violins are indigo.,30,3
+25,'Negate the statement: Some zebras are sly.',No zebras are sly.,All zebras are sly.,Some zebras are not sly.,Some zebras are sly.,30,1
+26,'Negate the statement: No jaguars are curious.',All jaguars are curious.,No jaguars are curious.,Some jaguars are curious.,Some jaguars are not curious.,30,3
+27,'Negate the statement: Some llamas are not outgoing.',Some llamas are not outgoing.,All llamas are outgoing.,No llamas are outgoing.,Some llamas are outgoing.,30,2
+28,'Negate the statement: All hawks are indigo.',All hawks are indigo.,Some hawks are not indigo.,Some hawks are indigo.,No hawks are indigo.,30,2
+29,'Negate the statement: Some violins are not menacing.',Some violins are menacing.,No violins are menacing.,Some violins are not menacing.,All violins are menacing.,30,4
+30,'Negate the statement: All owls are weak.',Some owls are not weak.,No owls are weak.,Some owls are weak.,All owls are weak.,30,1
+31,'Negate the statement: No flowers are lame.',Some flowers are not lame.,No flowers are lame.,Some flowers are lame.,All flowers are lame.,30,3
+32,'Negate the statement: Some zebras are lame.',All zebras are lame.,Some zebras are lame.,Some zebras are not lame.,No zebras are lame.,30,4
+33,'Negate the statement: No flowers are weak.',All flowers are weak.,Some flowers are not weak.,Some flowers are weak.,No flowers are weak.,30,3
+34,'Negate the statement: Some xylophones are lame.',All xylophones are lame.,Some xylophones are lame.,Some xylophones are not lame.,No xylophones are lame.,30,4
+35,'Negate the statement: Some insects are indigo.',No insects are indigo.,All insects are indigo.,Some insects are not indigo.,Some insects are indigo.,30,1
+36,'Negate the statement: Some owls are not zombies.',All owls are zombies.,Some owls are not zombies.,No owls are zombies.,Some owls are zombies.,30,1
+37,'Negate the statement: No dogs are weak.',Some dogs are weak.,No dogs are weak.,All dogs are weak.,Some dogs are not weak.,30,1
+38,'Negate the statement: All quokkas are enigmatic.',All quokkas are enigmatic.,No quokkas are enigmatic.,Some quokkas are not enigmatic.,Some quokkas are enigmatic.,30,3
+39,'Negate the statement: All elephants are menacing.',Some elephants are not menacing.,Some elephants are menacing.,No elephants are menacing.,All elephants are menacing.,30,1
+40,'Negate the statement: No flowers are menacing.',No flowers are menacing.,All flowers are menacing.,Some flowers are menacing.,Some flowers are not menacing.,30,3
+41,'Negate the statement: Some quokkas are jealous.',Some quokkas are not jealous.,No quokkas are jealous.,All quokkas are jealous.,Some quokkas are jealous.,30,2
+42,'Negate the statement: No insects are indigo.',All insects are indigo.,No insects are indigo.,Some insects are indigo.,Some insects are not indigo.,30,3
+43,'Negate the statement: No cats are green.',Some cats are green.,No cats are green.,Some cats are not green.,All cats are green.,30,1
+44,'Negate the statement: Some dogs are not enigmatic.',No dogs are enigmatic.,Some dogs are enigmatic.,All dogs are enigmatic.,Some dogs are not enigmatic.,30,3
+45,'Negate the statement: All giraffes are pious.',No giraffes are pious.,All giraffes are pious.,Some giraffes are pious.,Some giraffes are not pious.,30,4
+46,'Negate the statement: Some hawks are not weak.',All hawks are weak.,No hawks are weak.,Some hawks are not weak.,Some hawks are weak.,30,1
+47,'Negate the statement: No whales are killers.',No whales are killers.,Some whales are killers.,All whales are killers.,Some whales are not killers.,30,2
+48,'Negate the statement: Some elephants are outgoing.',All elephants are outgoing.,No elephants are outgoing.,Some elephants are outgoing.,Some elephants are not outgoing.,30,2
+49,'Negate the statement: All tulips are awesome.',Some tulips are awesome.,Some tulips are not awesome.,No tulips are awesome.,All tulips are awesome.,30,2
+50,'Negate the statement: Some apples are lame.',Some apples are not lame.,Some apples are lame.,All apples are lame.,No apples are lame.,30,4
+51,'Negate the statement: Some umbrellas are curious.',All umbrellas are curious.,Some umbrellas are not curious.,No umbrellas are curious.,Some umbrellas are curious.,30,3
+52,'Negate the statement: Some cats are furious.',No cats are furious.,Some cats are not furious.,Some cats are furious.,All cats are furious.,30,1
+53,'Negate the statement: No violins are sly.',Some violins are sly.,No violins are sly.,All violins are sly.,Some violins are not sly.,30,1
+54,'Negate the statement: Some cats are nice.',Some cats are nice.,No cats are nice.,All cats are nice.,Some cats are not nice.,30,2
+55,'Negate the statement: All umbrellas are yellow.',Some umbrellas are not yellow.,Some umbrellas are yellow.,All umbrellas are yellow.,No umbrellas are yellow.,30,1
+56,'Negate the statement: All xylophones are green.',Some xylophones are green.,No xylophones are green.,All xylophones are green.,Some xylophones are not green.,30,4
+57,'Negate the statement: Some hawks are not transient.',Some hawks are not transient.,No hawks are transient.,All hawks are transient.,Some hawks are transient.,30,3
+58,'Negate the statement: No insects are umpires.',All insects are umpires.,Some insects are umpires.,Some insects are not umpires.,No insects are umpires.,30,2
+59,'Negate the statement: No elephants are killers.',Some elephants are not killers.,No elephants are killers.,Some elephants are killers.,All elephants are killers.,30,3
+60,'Negate the statement: Some bugs are not xenophobic.',No bugs are xenophobic.,Some bugs are xenophobic.,All bugs are xenophobic.,Some bugs are not xenophobic.,30,3
+61,'Negate the statement: No dogs are curious.',No dogs are curious.,Some dogs are curious.,All dogs are curious.,Some dogs are not curious.,30,2
+62,'Negate the statement: Some elephants are not outgoing.',All elephants are outgoing.,Some elephants are not outgoing.,No elephants are outgoing.,Some elephants are outgoing.,30,1
+63,'Negate the statement: All umbrellas are zombies.',Some umbrellas are zombies.,All umbrellas are zombies.,No umbrellas are zombies.,Some umbrellas are not zombies.,30,4
+64,'Negate the statement: Some jaguars are not violent.',Some jaguars are not violent.,All jaguars are violent.,Some jaguars are violent.,No jaguars are violent.,30,2
+65,'Negate the statement: No llamas are lame.',All llamas are lame.,Some llamas are lame.,Some llamas are not lame.,No llamas are lame.,30,2
+66,'Negate the statement: Some whales are not xenophobic.',No whales are xenophobic.,Some whales are not xenophobic.,Some whales are xenophobic.,All whales are xenophobic.,30,4
+67,'Negate the statement: All tulips are xenophobic.',Some tulips are xenophobic.,Some tulips are not xenophobic.,All tulips are xenophobic.,No tulips are xenophobic.,30,2
+68,'Negate the statement: Some ponies are red.',All ponies are red.,Some ponies are not red.,Some ponies are red.,No ponies are red.,30,4
+69,'Negate the statement: All elephants are weak.',All elephants are weak.,No elephants are weak.,Some elephants are weak.,Some elephants are not weak.,30,4
+70,'Negate the statement: No zebras are xenophobic.',No zebras are xenophobic.,Some zebras are xenophobic.,All zebras are xenophobic.,Some zebras are not xenophobic.,30,2
+71,'Negate the statement: Some giraffes are not xenophobic.',All giraffes are xenophobic.,No giraffes are xenophobic.,Some giraffes are xenophobic.,Some giraffes are not xenophobic.,30,1
+72,'Negate the statement: Some zebras are not violent.',Some zebras are not violent.,No zebras are violent.,Some zebras are violent.,All zebras are violent.,30,4
+73,'Negate the statement: Some owls are awesome.',All owls are awesome.,Some owls are awesome.,Some owls are not awesome.,No owls are awesome.,30,4
+74,'Negate the statement: Some snakes are weak.',Some snakes are weak.,Some snakes are not weak.,All snakes are weak.,No snakes are weak.,30,4
+75,'Negate the statement: Some insects are not lame.',Some insects are not lame.,Some insects are lame.,No insects are lame.,All insects are lame.,30,4
+76,'Negate the statement: Some jaguars are jealous.',All jaguars are jealous.,Some jaguars are not jealous.,Some jaguars are jealous.,No jaguars are jealous.,30,4
+77,'Negate the statement: Some hawks are not curious.',Some hawks are not curious.,No hawks are curious.,Some hawks are curious.,All hawks are curious.,30,4
+78,'Negate the statement: No apples are nice.',Some apples are nice.,Some apples are not nice.,No apples are nice.,All apples are nice.,30,1
+79,'Negate the statement: No jaguars are menacing.',Some jaguars are menacing.,No jaguars are menacing.,Some jaguars are not menacing.,All jaguars are menacing.,30,1
+80,'Negate the statement: Some hawks are not queens.',No hawks are queens.,Some hawks are queens.,All hawks are queens.,Some hawks are not queens.,30,3
+81,'Negate the statement: All narwhals are enigmatic.',Some narwhals are not enigmatic.,Some narwhals are enigmatic.,No narwhals are enigmatic.,All narwhals are enigmatic.,30,1
+82,'Negate the statement: Some kangaroos are queens.',All kangaroos are queens.,No kangaroos are queens.,Some kangaroos are queens.,Some kangaroos are not queens.,30,2
+83,'Negate the statement: Some snakes are not yellow.',All snakes are yellow.,Some snakes are yellow.,Some snakes are not yellow.,No snakes are yellow.,30,1
+84,'Negate the statement: Some apples are outgoing.',Some apples are outgoing.,All apples are outgoing.,Some apples are not outgoing.,No apples are outgoing.,30,4
+85,'Negate the statement: Some jaguars are lame.',No jaguars are lame.,All jaguars are lame.,Some jaguars are lame.,Some jaguars are not lame.,30,1
+86,'Negate the statement: No whales are dangerous.',Some whales are not dangerous.,All whales are dangerous.,No whales are dangerous.,Some whales are dangerous.,30,4
+87,'Negate the statement: No umbrellas are awesome.',All umbrellas are awesome.,Some umbrellas are awesome.,Some umbrellas are not awesome.,No umbrellas are awesome.,30,2
+88,'Negate the statement: All jaguars are weak.',All jaguars are weak.,Some jaguars are weak.,Some jaguars are not weak.,No jaguars are weak.,30,3
+89,'Negate the statement: All tulips are green.',Some tulips are green.,All tulips are green.,No tulips are green.,Some tulips are not green.,30,4
+90,'Negate the statement: Some giraffes are not xenophobic.',Some giraffes are xenophobic.,No giraffes are xenophobic.,All giraffes are xenophobic.,Some giraffes are not xenophobic.,30,3
+91,'Negate the statement: Some xylophones are not enigmatic.',Some xylophones are not enigmatic.,Some xylophones are enigmatic.,All xylophones are enigmatic.,No xylophones are enigmatic.,30,3
+92,'Negate the statement: No jaguars are pious.',All jaguars are pious.,No jaguars are pious.,Some jaguars are pious.,Some jaguars are not pious.,30,3
+93,'Negate the statement: No apples are enigmatic.',No apples are enigmatic.,All apples are enigmatic.,Some apples are enigmatic.,Some apples are not enigmatic.,30,3
+94,'Negate the statement: All quokkas are red.',Some quokkas are red.,Some quokkas are not red.,All quokkas are red.,No quokkas are red.,30,2
+95,'Negate the statement: Some whales are outgoing.',Some whales are outgoing.,All whales are outgoing.,No whales are outgoing.,Some whales are not outgoing.,30,3
+96,'Negate the statement: No whales are jealous.',Some whales are jealous.,No whales are jealous.,All whales are jealous.,Some whales are not jealous.,30,1
+97,'Negate the statement: No quokkas are enigmatic.',Some quokkas are not enigmatic.,No quokkas are enigmatic.,All quokkas are enigmatic.,Some quokkas are enigmatic.,30,4
+98,'Negate the statement: All dogs are violent.',Some dogs are violent.,No dogs are violent.,All dogs are violent.,Some dogs are not violent.,30,4
+99,'Negate the statement: Some umbrellas are not indigo.',Some umbrellas are not indigo.,All umbrellas are indigo.,Some umbrellas are indigo.,No umbrellas are indigo.,30,2
+100,'Negate the statement: No insects are curious.',Some insects are curious.,Some insects are not curious.,All insects are curious.,No insects are curious.,30,1
+101,'Negate the statement: All cats are weak.',Some cats are weak.,No cats are weak.,All cats are weak.,Some cats are not weak.,30,4
+102,'Negate the statement: Some mice are jealous.',No mice are jealous.,Some mice are not jealous.,Some mice are jealous.,All mice are jealous.,30,1
+103,'Negate the statement: Some jaguars are jealous.',Some jaguars are jealous.,Some jaguars are not jealous.,All jaguars are jealous.,No jaguars are jealous.,30,4
+104,'Negate the statement: No violins are happy.',Some violins are not happy.,Some violins are happy.,All violins are happy.,No violins are happy.,30,2
+105,'Negate the statement: Some ponies are not happy.',Some ponies are happy.,Some ponies are not happy.,No ponies are happy.,All ponies are happy.,30,4
+106,'Negate the statement: All hawks are weak.',Some hawks are weak.,No hawks are weak.,All hawks are weak.,Some hawks are not weak.,30,4
+107,'Negate the statement: Some flowers are sly.',All flowers are sly.,Some flowers are not sly.,Some flowers are sly.,No flowers are sly.,30,4
+108,'Negate the statement: Some owls are queens.',All owls are queens.,Some owls are queens.,No owls are queens.,Some owls are not queens.,30,3
+109,'Negate the statement: Some umbrellas are not jealous.',No umbrellas are jealous.,All umbrellas are jealous.,Some umbrellas are jealous.,Some umbrellas are not jealous.,30,2
+110,'Negate the statement: Some apples are not pious.',All apples are pious.,No apples are pious.,Some apples are pious.,Some apples are not pious.,30,1
+111,'Negate the statement: No violins are furious.',Some violins are furious.,Some violins are not furious.,No violins are furious.,All violins are furious.,30,1
+112,'Negate the statement: No quokkas are awesome.',All quokkas are awesome.,No quokkas are awesome.,Some quokkas are awesome.,Some quokkas are not awesome.,30,3
+113,'Negate the statement: Some owls are not weak.',Some owls are not weak.,Some owls are weak.,All owls are weak.,No owls are weak.,30,3
+114,'Negate the statement: Some apples are curious.',No apples are curious.,All apples are curious.,Some apples are curious.,Some apples are not curious.,30,1
+115,'Negate the statement: All owls are weak.',Some owls are not weak.,Some owls are weak.,No owls are weak.,All owls are weak.,30,1
+116,'Negate the statement: Some elephants are indigo.',All elephants are indigo.,Some elephants are not indigo.,No elephants are indigo.,Some elephants are indigo.,30,3
+117,'Negate the statement: Some umbrellas are not red.',No umbrellas are red.,Some umbrellas are red.,All umbrellas are red.,Some umbrellas are not red.,30,3
+118,'Negate the statement: All umbrellas are weak.',No umbrellas are weak.,Some umbrellas are weak.,Some umbrellas are not weak.,All umbrellas are weak.,30,3
+119,'Negate the statement: No owls are dangerous.',Some owls are dangerous.,All owls are dangerous.,Some owls are not dangerous.,No owls are dangerous.,30,1
+120,'Negate the statement: Some narwhals are not sly.',Some narwhals are not sly.,Some narwhals are sly.,No narwhals are sly.,All narwhals are sly.,30,4
+121,'Negate the statement: Some flowers are not killers.',Some flowers are killers.,No flowers are killers.,All flowers are killers.,Some flowers are not killers.,30,3
+122,'Negate the statement: No whales are yellow.',No whales are yellow.,Some whales are yellow.,Some whales are not yellow.,All whales are yellow.,30,2
+123,'Negate the statement: Some elephants are not violent.',Some elephants are not violent.,All elephants are violent.,Some elephants are violent.,No elephants are violent.,30,2
+124,'Negate the statement: All elephants are furious.',Some elephants are furious.,No elephants are furious.,Some elephants are not furious.,All elephants are furious.,30,3
+125,'Negate the statement: Some tulips are outgoing.',Some tulips are outgoing.,No tulips are outgoing.,Some tulips are not outgoing.,All tulips are outgoing.,30,2
+126,'Negate the statement: All mice are enigmatic.',No mice are enigmatic.,Some mice are enigmatic.,Some mice are not enigmatic.,All mice are enigmatic.,30,3
+127,'Negate the statement: Some ponies are not curious.',Some ponies are curious.,No ponies are curious.,Some ponies are not curious.,All ponies are curious.,30,4
+128,'Negate the statement: Some tulips are jealous.',No tulips are jealous.,Some tulips are jealous.,Some tulips are not jealous.,All tulips are jealous.,30,1
+129,'Negate the statement: Some whales are not pious.',Some whales are pious.,All whales are pious.,Some whales are not pious.,No whales are pious.,30,2
+130,'Negate the statement: Some jaguars are dangerous.',Some jaguars are not dangerous.,No jaguars are dangerous.,All jaguars are dangerous.,Some jaguars are dangerous.,30,2
+131,'Negate the statement: No insects are furious.',Some insects are furious.,All insects are furious.,No insects are furious.,Some insects are not furious.,30,1
+132,'Negate the statement: All narwhals are violent.',All narwhals are violent.,No narwhals are violent.,Some narwhals are not violent.,Some narwhals are violent.,30,3
+133,'Negate the statement: Some cats are not curious.',Some cats are not curious.,Some cats are curious.,No cats are curious.,All cats are curious.,30,4
+134,'Negate the statement: All tulips are blue.',All tulips are blue.,Some tulips are blue.,No tulips are blue.,Some tulips are not blue.,30,4
+135,'Negate the statement: All apples are outgoing.',All apples are outgoing.,Some apples are not outgoing.,Some apples are outgoing.,No apples are outgoing.,30,2
+136,'Negate the statement: Some cats are awesome.',Some cats are awesome.,No cats are awesome.,All cats are awesome.,Some cats are not awesome.,30,2
+137,'Negate the statement: No kangaroos are red.',Some kangaroos are red.,All kangaroos are red.,Some kangaroos are not red.,No kangaroos are red.,30,1
+138,'Negate the statement: All insects are umpires.',Some insects are not umpires.,All insects are umpires.,Some insects are umpires.,No insects are umpires.,30,1
+139,'Negate the statement: No tulips are yellow.',No tulips are yellow.,Some tulips are yellow.,All tulips are yellow.,Some tulips are not yellow.,30,2
+140,'Negate the statement: No dogs are nice.',No dogs are nice.,Some dogs are not nice.,Some dogs are nice.,All dogs are nice.,30,3
+141,'Negate the statement: All flowers are queens.',Some flowers are queens.,Some flowers are not queens.,All flowers are queens.,No flowers are queens.,30,2
+142,'Negate the statement: No jaguars are umpires.',Some jaguars are not umpires.,All jaguars are umpires.,Some jaguars are umpires.,No jaguars are umpires.,30,3
+143,'Negate the statement: Some snakes are not outgoing.',No snakes are outgoing.,Some snakes are outgoing.,All snakes are outgoing.,Some snakes are not outgoing.,30,3
+144,'Negate the statement: All llamas are umpires.',No llamas are umpires.,Some llamas are not umpires.,All llamas are umpires.,Some llamas are umpires.,30,2
+145,'Negate the statement: No violins are transient.',No violins are transient.,All violins are transient.,Some violins are transient.,Some violins are not transient.,30,3
+146,'Negate the statement: Some narwhals are weak.',All narwhals are weak.,No narwhals are weak.,Some narwhals are not weak.,Some narwhals are weak.,30,2
+147,'Negate the statement: No whales are green.',Some whales are not green.,All whales are green.,Some whales are green.,No whales are green.,30,3
+148,'Negate the statement: All dogs are nice.',No dogs are nice.,All dogs are nice.,Some dogs are not nice.,Some dogs are nice.,30,3
+149,'Negate the statement: Some zebras are not blue.',No zebras are blue.,Some zebras are not blue.,All zebras are blue.,Some zebras are blue.,30,3
+150,'Negate the statement: Some xylophones are jealous.',Some xylophones are not jealous.,Some xylophones are jealous.,All xylophones are jealous.,No xylophones are jealous.,30,4
+151,'Negate the statement: Some hawks are curious.',Some hawks are curious.,No hawks are curious.,All hawks are curious.,Some hawks are not curious.,30,2
+152,'Negate the statement: No apples are yellow.',Some apples are not yellow.,All apples are yellow.,No apples are yellow.,Some apples are yellow.,30,4
+153,'Negate the statement: Some violins are not violent.',No violins are violent.,Some violins are not violent.,Some violins are violent.,All violins are violent.,30,4
+154,'Negate the statement: Some ponies are not transient.',All ponies are transient.,Some ponies are not transient.,No ponies are transient.,Some ponies are transient.,30,1
+155,'Negate the statement: Some bugs are not red.',Some bugs are not red.,No bugs are red.,Some bugs are red.,All bugs are red.,30,4
+156,'Negate the statement: No narwhals are violent.',Some narwhals are violent.,No narwhals are violent.,All narwhals are violent.,Some narwhals are not violent.,30,1
+157,'Negate the statement: Some zebras are indigo.',All zebras are indigo.,Some zebras are indigo.,Some zebras are not indigo.,No zebras are indigo.,30,4
+158,'Negate the statement: Some umbrellas are enigmatic.',No umbrellas are enigmatic.,Some umbrellas are not enigmatic.,All umbrellas are enigmatic.,Some umbrellas are enigmatic.,30,1
+159,'Negate the statement: Some bugs are not red.',Some bugs are red.,Some bugs are not red.,No bugs are red.,All bugs are red.,30,4
+160,'Negate the statement: Some snakes are not transient.',Some snakes are not transient.,Some snakes are transient.,All snakes are transient.,No snakes are transient.,30,3
+161,'Negate the statement: All insects are weak.',No insects are weak.,All insects are weak.,Some insects are weak.,Some insects are not weak.,30,4
+162,'Negate the statement: No owls are furious.',Some owls are furious.,Some owls are not furious.,No owls are furious.,All owls are furious.,30,1
+163,'Negate the statement: All mice are umpires.',Some mice are not umpires.,No mice are umpires.,All mice are umpires.,Some mice are umpires.,30,1
+164,'Negate the statement: Some narwhals are violent.',All narwhals are violent.,Some narwhals are violent.,Some narwhals are not violent.,No narwhals are violent.,30,4
+165,'Negate the statement: All flowers are nice.',Some flowers are nice.,No flowers are nice.,Some flowers are not nice.,All flowers are nice.,30,3
+166,'Negate the statement: All umbrellas are curious.',Some umbrellas are not curious.,No umbrellas are curious.,Some umbrellas are curious.,All umbrellas are curious.,30,1
+167,'Negate the statement: All zebras are menacing.',No zebras are menacing.,Some zebras are not menacing.,Some zebras are menacing.,All zebras are menacing.,30,2
+168,'Negate the statement: Some jaguars are not pious.',Some jaguars are not pious.,Some jaguars are pious.,All jaguars are pious.,No jaguars are pious.,30,3
+169,'Negate the statement: Some xylophones are not lame.',Some xylophones are not lame.,Some xylophones are lame.,All xylophones are lame.,No xylophones are lame.,30,3
+170,'Negate the statement: Some apples are dangerous.',Some apples are dangerous.,Some apples are not dangerous.,No apples are dangerous.,All apples are dangerous.,30,3
+171,'Negate the statement: All umbrellas are sly.',Some umbrellas are sly.,All umbrellas are sly.,No umbrellas are sly.,Some umbrellas are not sly.,30,4
+172,'Negate the statement: Some jaguars are not transient.',All jaguars are transient.,Some jaguars are not transient.,Some jaguars are transient.,No jaguars are transient.,30,1
+173,'Negate the statement: No owls are killers.',No owls are killers.,All owls are killers.,Some owls are killers.,Some owls are not killers.,30,3
+174,'Negate the statement: All whales are killers.',Some whales are not killers.,Some whales are killers.,No whales are killers.,All whales are killers.,30,1
+175,'Negate the statement: No mice are happy.',No mice are happy.,Some mice are not happy.,All mice are happy.,Some mice are happy.,30,4
+176,'Negate the statement: No xylophones are red.',Some xylophones are red.,Some xylophones are not red.,No xylophones are red.,All xylophones are red.,30,1
+177,'Negate the statement: No jaguars are happy.',Some jaguars are happy.,All jaguars are happy.,No jaguars are happy.,Some jaguars are not happy.,30,1
+178,'Negate the statement: No whales are dangerous.',All whales are dangerous.,Some whales are dangerous.,No whales are dangerous.,Some whales are not dangerous.,30,2
+179,'Negate the statement: Some dogs are not green.',Some dogs are green.,Some dogs are not green.,All dogs are green.,No dogs are green.,30,3
+180,'Negate the statement: Some jaguars are not killers.',All jaguars are killers.,No jaguars are killers.,Some jaguars are not killers.,Some jaguars are killers.,30,1
+181,'Negate the statement: Some hawks are not killers.',No hawks are killers.,All hawks are killers.,Some hawks are not killers.,Some hawks are killers.,30,2
+182,'Negate the statement: Some kangaroos are not indigo.',No kangaroos are indigo.,Some kangaroos are indigo.,Some kangaroos are not indigo.,All kangaroos are indigo.,30,4
+183,'Negate the statement: No ponies are umpires.',All ponies are umpires.,Some ponies are umpires.,Some ponies are not umpires.,No ponies are umpires.,30,2
+184,'Negate the statement: Some elephants are not killers.',Some elephants are killers.,No elephants are killers.,Some elephants are not killers.,All elephants are killers.,30,4
+185,'Negate the statement: No quokkas are violent.',No quokkas are violent.,Some quokkas are violent.,All quokkas are violent.,Some quokkas are not violent.,30,2
+186,'Negate the statement: Some kangaroos are blue.',All kangaroos are blue.,Some kangaroos are blue.,Some kangaroos are not blue.,No kangaroos are blue.,30,4
+187,'Negate the statement: Some zebras are not transient.',No zebras are transient.,Some zebras are not transient.,Some zebras are transient.,All zebras are transient.,30,4
+188,'Negate the statement: All xylophones are blue.',Some xylophones are blue.,Some xylophones are not blue.,All xylophones are blue.,No xylophones are blue.,30,2
+189,'Negate the statement: Some quokkas are not curious.',Some quokkas are curious.,No quokkas are curious.,Some quokkas are not curious.,All quokkas are curious.,30,4
+190,'Negate the statement: All xylophones are blue.',All xylophones are blue.,Some xylophones are blue.,Some xylophones are not blue.,No xylophones are blue.,30,3
+191,'Negate the statement: No kangaroos are sly.',Some kangaroos are not sly.,Some kangaroos are sly.,All kangaroos are sly.,No kangaroos are sly.,30,2
+192,'Negate the statement: All apples are dangerous.',Some apples are dangerous.,No apples are dangerous.,All apples are dangerous.,Some apples are not dangerous.,30,4
+193,'Negate the statement: No llamas are umpires.',All llamas are umpires.,Some llamas are not umpires.,No llamas are umpires.,Some llamas are umpires.,30,4
+194,'Negate the statement: No elephants are lame.',Some elephants are lame.,No elephants are lame.,All elephants are lame.,Some elephants are not lame.,30,1
+195,'Negate the statement: Some snakes are menacing.',No snakes are menacing.,Some snakes are not menacing.,All snakes are menacing.,Some snakes are menacing.,30,1
+196,'Negate the statement: Some owls are menacing.',Some owls are menacing.,All owls are menacing.,No owls are menacing.,Some owls are not menacing.,30,3
+197,'Negate the statement: All elephants are umpires.',No elephants are umpires.,Some elephants are umpires.,Some elephants are not umpires.,All elephants are umpires.,30,3
+198,'Negate the statement: Some apples are not yellow.',Some apples are yellow.,Some apples are not yellow.,All apples are yellow.,No apples are yellow.,30,3
+199,'Negate the statement: No llamas are umpires.',All llamas are umpires.,Some llamas are not umpires.,No llamas are umpires.,Some llamas are umpires.,30,4
+200,'Negate the statement: All mice are furious.',All mice are furious.,No mice are furious.,Some mice are not furious.,Some mice are furious.,30,3
+201,'Negate the statement: Some violins are weak.',All violins are weak.,No violins are weak.,Some violins are weak.,Some violins are not weak.,30,2
+202,'Negate the statement: Some insects are violent.',Some insects are violent.,No insects are violent.,All insects are violent.,Some insects are not violent.,30,2
+203,'Negate the statement: Some whales are outgoing.',Some whales are outgoing.,All whales are outgoing.,No whales are outgoing.,Some whales are not outgoing.,30,3
+204,'Negate the statement: All narwhals are lame.',Some narwhals are not lame.,No narwhals are lame.,Some narwhals are lame.,All narwhals are lame.,30,1
+205,'Negate the statement: All violins are zombies.',Some violins are zombies.,No violins are zombies.,Some violins are not zombies.,All violins are zombies.,30,3
+206,'Negate the statement: Some narwhals are not zombies.',Some narwhals are not zombies.,No narwhals are zombies.,Some narwhals are zombies.,All narwhals are zombies.,30,4
+207,'Negate the statement: Some narwhals are not awesome.',No narwhals are awesome.,All narwhals are awesome.,Some narwhals are awesome.,Some narwhals are not awesome.,30,2
+208,'Negate the statement: No bugs are happy.',No bugs are happy.,All bugs are happy.,Some bugs are not happy.,Some bugs are happy.,30,4
+209,'Negate the statement: Some apples are not queens.',Some apples are not queens.,No apples are queens.,Some apples are queens.,All apples are queens.,30,4
+210,'Negate the statement: Some snakes are not menacing.',Some snakes are menacing.,No snakes are menacing.,Some snakes are not menacing.,All snakes are menacing.,30,4
+211,'Negate the statement: All quokkas are transient.',Some quokkas are transient.,Some quokkas are not transient.,All quokkas are transient.,No quokkas are transient.,30,2
+212,'Negate the statement: Some ponies are not outgoing.',Some ponies are outgoing.,All ponies are outgoing.,Some ponies are not outgoing.,No ponies are outgoing.,30,2
+213,'Negate the statement: Some snakes are happy.',No snakes are happy.,Some snakes are happy.,Some snakes are not happy.,All snakes are happy.,30,1
+214,'Negate the statement: No owls are sly.',All owls are sly.,Some owls are not sly.,Some owls are sly.,No owls are sly.,30,3
+215,'Negate the statement: All violins are violent.',No violins are violent.,All violins are violent.,Some violins are violent.,Some violins are not violent.,30,4
+216,'Negate the statement: Some elephants are not transient.',No elephants are transient.,Some elephants are transient.,Some elephants are not transient.,All elephants are transient.,30,4
+217,'Negate the statement: No elephants are pious.',All elephants are pious.,Some elephants are pious.,Some elephants are not pious.,No elephants are pious.,30,2
+218,'Negate the statement: Some violins are indigo.',Some violins are not indigo.,All violins are indigo.,Some violins are indigo.,No violins are indigo.,30,4
+219,'Negate the statement: No tulips are jealous.',Some tulips are jealous.,All tulips are jealous.,No tulips are jealous.,Some tulips are not jealous.,30,1
+220,'Negate the statement: Some narwhals are zombies.',Some narwhals are not zombies.,Some narwhals are zombies.,All narwhals are zombies.,No narwhals are zombies.,30,4
+221,'Negate the statement: All apples are xenophobic.',Some apples are xenophobic.,All apples are xenophobic.,No apples are xenophobic.,Some apples are not xenophobic.,30,4
+222,'Negate the statement: Some whales are not enigmatic.',All whales are enigmatic.,Some whales are enigmatic.,No whales are enigmatic.,Some whales are not enigmatic.,30,1
+223,'Negate the statement: All tulips are red.',Some tulips are red.,All tulips are red.,No tulips are red.,Some tulips are not red.,30,4
+224,'Negate the statement: Some ponies are not umpires.',All ponies are umpires.,Some ponies are not umpires.,No ponies are umpires.,Some ponies are umpires.,30,1
+225,'Negate the statement: All xylophones are dangerous.',Some xylophones are dangerous.,No xylophones are dangerous.,All xylophones are dangerous.,Some xylophones are not dangerous.,30,4
+226,'Negate the statement: Some llamas are nice.',No llamas are nice.,Some llamas are nice.,All llamas are nice.,Some llamas are not nice.,30,1
+227,'Negate the statement: Some tulips are killers.',Some tulips are not killers.,Some tulips are killers.,No tulips are killers.,All tulips are killers.,30,3
+228,'Negate the statement: All owls are killers.',Some owls are not killers.,Some owls are killers.,No owls are killers.,All owls are killers.,30,1
+229,'Negate the statement: Some apples are not pious.',All apples are pious.,Some apples are not pious.,No apples are pious.,Some apples are pious.,30,1
+230,'Negate the statement: All insects are weak.',Some insects are weak.,All insects are weak.,No insects are weak.,Some insects are not weak.,30,4
+231,'Negate the statement: All elephants are happy.',All elephants are happy.,Some elephants are not happy.,No elephants are happy.,Some elephants are happy.,30,2
+232,'Negate the statement: All ponies are enigmatic.',Some ponies are enigmatic.,No ponies are enigmatic.,All ponies are enigmatic.,Some ponies are not enigmatic.,30,4
+233,'Negate the statement: All narwhals are blue.',Some narwhals are blue.,All narwhals are blue.,Some narwhals are not blue.,No narwhals are blue.,30,3
+234,'Negate the statement: Some ponies are violent.',Some ponies are violent.,No ponies are violent.,All ponies are violent.,Some ponies are not violent.,30,2
+235,'Negate the statement: Some whales are blue.',No whales are blue.,Some whales are blue.,Some whales are not blue.,All whales are blue.,30,1
+236,'Negate the statement: No snakes are enigmatic.',No snakes are enigmatic.,Some snakes are not enigmatic.,All snakes are enigmatic.,Some snakes are enigmatic.,30,4
+237,'Negate the statement: No tulips are happy.',Some tulips are happy.,All tulips are happy.,Some tulips are not happy.,No tulips are happy.,30,1
+238,'Negate the statement: No kangaroos are blue.',No kangaroos are blue.,Some kangaroos are blue.,Some kangaroos are not blue.,All kangaroos are blue.,30,2
+239,'Negate the statement: Some apples are not sly.',No apples are sly.,Some apples are sly.,Some apples are not sly.,All apples are sly.,30,4
+240,'Negate the statement: All umbrellas are menacing.',Some umbrellas are menacing.,All umbrellas are menacing.,No umbrellas are menacing.,Some umbrellas are not menacing.,30,4
+241,'Negate the statement: All kangaroos are indigo.',Some kangaroos are indigo.,No kangaroos are indigo.,All kangaroos are indigo.,Some kangaroos are not indigo.,30,4
+242,'Negate the statement: All violins are xenophobic.',Some violins are xenophobic.,All violins are xenophobic.,Some violins are not xenophobic.,No violins are xenophobic.,30,3
+243,'Negate the statement: Some giraffes are nice.',All giraffes are nice.,Some giraffes are nice.,Some giraffes are not nice.,No giraffes are nice.,30,4
+244,'Negate the statement: All cats are sly.',All cats are sly.,Some cats are not sly.,No cats are sly.,Some cats are sly.,30,2
+245,'Negate the statement: Some xylophones are not blue.',No xylophones are blue.,All xylophones are blue.,Some xylophones are not blue.,Some xylophones are blue.,30,2
+246,'Negate the statement: Some dogs are weak.',Some dogs are not weak.,No dogs are weak.,Some dogs are weak.,All dogs are weak.,30,2
+247,'Negate the statement: Some snakes are not dangerous.',No snakes are dangerous.,All snakes are dangerous.,Some snakes are dangerous.,Some snakes are not dangerous.,30,2
+248,'Negate the statement: No llamas are queens.',No llamas are queens.,Some llamas are not queens.,All llamas are queens.,Some llamas are queens.,30,4
+249,'Negate the statement: All llamas are red.',All llamas are red.,No llamas are red.,Some llamas are red.,Some llamas are not red.,30,4
+250,'Negate the statement: No zebras are umpires.',Some zebras are not umpires.,All zebras are umpires.,No zebras are umpires.,Some zebras are umpires.,30,4
+251,'Negate the statement: Some whales are not yellow.',Some whales are not yellow.,Some whales are yellow.,All whales are yellow.,No whales are yellow.,30,3
+252,'Negate the statement: No umbrellas are queens.',No umbrellas are queens.,All umbrellas are queens.,Some umbrellas are not queens.,Some umbrellas are queens.,30,4
+253,'Negate the statement: No ponies are menacing.',All ponies are menacing.,No ponies are menacing.,Some ponies are menacing.,Some ponies are not menacing.,30,3
+254,'Negate the statement: No zebras are weak.',All zebras are weak.,Some zebras are weak.,No zebras are weak.,Some zebras are not weak.,30,2
+255,'Negate the statement: All kangaroos are blue.',No kangaroos are blue.,Some kangaroos are not blue.,All kangaroos are blue.,Some kangaroos are blue.,30,2
+256,'Negate the statement: Some hawks are not jealous.',Some hawks are not jealous.,All hawks are jealous.,Some hawks are jealous.,No hawks are jealous.,30,2
+257,'Negate the statement: All tulips are furious.',No tulips are furious.,All tulips are furious.,Some tulips are not furious.,Some tulips are furious.,30,3
+258,'Negate the statement: Some quokkas are menacing.',All quokkas are menacing.,Some quokkas are not menacing.,Some quokkas are menacing.,No quokkas are menacing.,30,4
+259,'Negate the statement: Some narwhals are curious.',Some narwhals are not curious.,No narwhals are curious.,All narwhals are curious.,Some narwhals are curious.,30,2
+260,'Negate the statement: Some elephants are not violent.',Some elephants are not violent.,Some elephants are violent.,No elephants are violent.,All elephants are violent.,30,4
+261,'Negate the statement: All dogs are nice.',All dogs are nice.,No dogs are nice.,Some dogs are nice.,Some dogs are not nice.,30,4
+262,'Negate the statement: No apples are violent.',All apples are violent.,Some apples are not violent.,Some apples are violent.,No apples are violent.,30,3
+263,'Negate the statement: Some elephants are transient.',Some elephants are transient.,Some elephants are not transient.,All elephants are transient.,No elephants are transient.,30,4
+264,'Negate the statement: Some llamas are not yellow.',All llamas are yellow.,Some llamas are not yellow.,Some llamas are yellow.,No llamas are yellow.,30,1
+265,'Negate the statement: No giraffes are queens.',Some giraffes are queens.,No giraffes are queens.,Some giraffes are not queens.,All giraffes are queens.,30,1
+266,'Negate the statement: No elephants are yellow.',Some elephants are not yellow.,Some elephants are yellow.,No elephants are yellow.,All elephants are yellow.,30,2
+267,'Negate the statement: Some flowers are not curious.',No flowers are curious.,Some flowers are not curious.,All flowers are curious.,Some flowers are curious.,30,3
+268,'Negate the statement: Some violins are xenophobic.',Some violins are xenophobic.,All violins are xenophobic.,Some violins are not xenophobic.,No violins are xenophobic.,30,4
+269,'Negate the statement: Some ponies are not killers.',No ponies are killers.,Some ponies are killers.,All ponies are killers.,Some ponies are not killers.,30,3
+270,'Negate the statement: Some flowers are killers.',No flowers are killers.,Some flowers are not killers.,All flowers are killers.,Some flowers are killers.,30,1
+271,'Negate the statement: All llamas are dangerous.',All llamas are dangerous.,No llamas are dangerous.,Some llamas are dangerous.,Some llamas are not dangerous.,30,4
+272,'Negate the statement: Some owls are violent.',Some owls are violent.,Some owls are not violent.,All owls are violent.,No owls are violent.,30,4
+273,'Negate the statement: No tulips are nice.',No tulips are nice.,Some tulips are nice.,All tulips are nice.,Some tulips are not nice.,30,2
+274,'Negate the statement: Some mice are not furious.',All mice are furious.,No mice are furious.,Some mice are furious.,Some mice are not furious.,30,1
+275,'Negate the statement: Some narwhals are pious.',All narwhals are pious.,No narwhals are pious.,Some narwhals are not pious.,Some narwhals are pious.,30,2
+276,'Negate the statement: Some llamas are not dangerous.',No llamas are dangerous.,All llamas are dangerous.,Some llamas are dangerous.,Some llamas are not dangerous.,30,2
+277,'Negate the statement: Some jaguars are not weak.',No jaguars are weak.,Some jaguars are weak.,Some jaguars are not weak.,All jaguars are weak.,30,4
+278,'Negate the statement: Some kangaroos are weak.',All kangaroos are weak.,Some kangaroos are not weak.,Some kangaroos are weak.,No kangaroos are weak.,30,4
+279,'Negate the statement: Some insects are not weak.',No insects are weak.,Some insects are not weak.,Some insects are weak.,All insects are weak.,30,4
+280,'Negate the statement: All narwhals are menacing.',No narwhals are menacing.,Some narwhals are not menacing.,All narwhals are menacing.,Some narwhals are menacing.,30,2
+281,'Negate the statement: All giraffes are violent.',Some giraffes are violent.,No giraffes are violent.,All giraffes are violent.,Some giraffes are not violent.,30,4
+282,'Negate the statement: Some narwhals are not weak.',Some narwhals are weak.,Some narwhals are not weak.,All narwhals are weak.,No narwhals are weak.,30,3
+283,'Negate the statement: Some zebras are enigmatic.',Some zebras are enigmatic.,No zebras are enigmatic.,Some zebras are not enigmatic.,All zebras are enigmatic.,30,2
+284,'Negate the statement: Some giraffes are red.',No giraffes are red.,All giraffes are red.,Some giraffes are not red.,Some giraffes are red.,30,1
+285,'Negate the statement: Some mice are not pious.',All mice are pious.,Some mice are not pious.,No mice are pious.,Some mice are pious.,30,1
+286,'Negate the statement: Some whales are furious.',No whales are furious.,Some whales are furious.,All whales are furious.,Some whales are not furious.,30,1
+287,'Negate the statement: Some whales are enigmatic.',Some whales are not enigmatic.,No whales are enigmatic.,All whales are enigmatic.,Some whales are enigmatic.,30,2
+288,'Negate the statement: Some jaguars are transient.',All jaguars are transient.,Some jaguars are not transient.,Some jaguars are transient.,No jaguars are transient.,30,4
+289,'Negate the statement: No narwhals are xenophobic.',Some narwhals are xenophobic.,Some narwhals are not xenophobic.,All narwhals are xenophobic.,No narwhals are xenophobic.,30,1
+290,'Negate the statement: No apples are yellow.',Some apples are yellow.,All apples are yellow.,No apples are yellow.,Some apples are not yellow.,30,1
+291,'Negate the statement: All violins are pious.',Some violins are not pious.,No violins are pious.,All violins are pious.,Some violins are pious.,30,1
+292,'Negate the statement: Some xylophones are indigo.',Some xylophones are not indigo.,All xylophones are indigo.,No xylophones are indigo.,Some xylophones are indigo.,30,3
+293,'Negate the statement: All owls are umpires.',All owls are umpires.,Some owls are umpires.,Some owls are not umpires.,No owls are umpires.,30,3
+294,'Negate the statement: Some tulips are not transient.',Some tulips are not transient.,No tulips are transient.,Some tulips are transient.,All tulips are transient.,30,4
+295,'Negate the statement: Some owls are indigo.',All owls are indigo.,Some owls are not indigo.,Some owls are indigo.,No owls are indigo.,30,4
+296,'Negate the statement: All bugs are violent.',All bugs are violent.,Some bugs are violent.,Some bugs are not violent.,No bugs are violent.,30,3
+297,'Negate the statement: All flowers are blue.',Some flowers are not blue.,Some flowers are blue.,No flowers are blue.,All flowers are blue.,30,1
+298,'Negate the statement: All cats are indigo.',Some cats are not indigo.,No cats are indigo.,All cats are indigo.,Some cats are indigo.,30,1
+299,'Negate the statement: No llamas are enigmatic.',All llamas are enigmatic.,Some llamas are enigmatic.,Some llamas are not enigmatic.,No llamas are enigmatic.,30,2
+300,'Negate the statement: All kangaroos are nice.',All kangaroos are nice.,Some kangaroos are not nice.,Some kangaroos are nice.,No kangaroos are nice.,30,2
+301,'Negate the statement: Some narwhals are outgoing.',All narwhals are outgoing.,No narwhals are outgoing.,Some narwhals are not outgoing.,Some narwhals are outgoing.,30,2
+302,'Negate the statement: No apples are green.',Some apples are green.,No apples are green.,Some apples are not green.,All apples are green.,30,1
+303,'Negate the statement: No hawks are happy.',Some hawks are not happy.,All hawks are happy.,No hawks are happy.,Some hawks are happy.,30,4
+304,'Negate the statement: No hawks are yellow.',No hawks are yellow.,Some hawks are not yellow.,All hawks are yellow.,Some hawks are yellow.,30,4
+305,'Negate the statement: All violins are weak.',Some violins are not weak.,No violins are weak.,Some violins are weak.,All violins are weak.,30,1
+306,'Negate the statement: No giraffes are pious.',Some giraffes are pious.,All giraffes are pious.,Some giraffes are not pious.,No giraffes are pious.,30,1
+307,'Negate the statement: All giraffes are dangerous.',Some giraffes are not dangerous.,All giraffes are dangerous.,No giraffes are dangerous.,Some giraffes are dangerous.,30,1
+308,'Negate the statement: Some xylophones are not yellow.',All xylophones are yellow.,Some xylophones are not yellow.,No xylophones are yellow.,Some xylophones are yellow.,30,1
+309,'Negate the statement: No bugs are happy.',All bugs are happy.,Some bugs are happy.,Some bugs are not happy.,No bugs are happy.,30,2
+310,'Negate the statement: Some zebras are not nice.',All zebras are nice.,Some zebras are not nice.,Some zebras are nice.,No zebras are nice.,30,1
+311,'Negate the statement: Some insects are weak.',Some insects are weak.,Some insects are not weak.,All insects are weak.,No insects are weak.,30,4
+312,'Negate the statement: No dogs are furious.',No dogs are furious.,All dogs are furious.,Some dogs are not furious.,Some dogs are furious.,30,4
+313,'Negate the statement: No umbrellas are zombies.',No umbrellas are zombies.,Some umbrellas are not zombies.,All umbrellas are zombies.,Some umbrellas are zombies.,30,4
+314,'Negate the statement: Some snakes are not sly.',Some snakes are not sly.,All snakes are sly.,Some snakes are sly.,No snakes are sly.,30,2
+315,'Negate the statement: All whales are transient.',Some whales are not transient.,All whales are transient.,Some whales are transient.,No whales are transient.,30,1
+316,'Negate the statement: No flowers are furious.',Some flowers are not furious.,All flowers are furious.,No flowers are furious.,Some flowers are furious.,30,4
+317,'Negate the statement: All kangaroos are yellow.',Some kangaroos are not yellow.,All kangaroos are yellow.,No kangaroos are yellow.,Some kangaroos are yellow.,30,1
+318,'Negate the statement: All dogs are happy.',All dogs are happy.,Some dogs are not happy.,Some dogs are happy.,No dogs are happy.,30,2
+319,'Negate the statement: Some whales are queens.',Some whales are queens.,All whales are queens.,No whales are queens.,Some whales are not queens.,30,3
+320,'Negate the statement: No insects are queens.',No insects are queens.,All insects are queens.,Some insects are not queens.,Some insects are queens.,30,4
+321,'Negate the statement: All quokkas are awesome.',Some quokkas are not awesome.,Some quokkas are awesome.,All quokkas are awesome.,No quokkas are awesome.,30,1
+322,'Negate the statement: All umbrellas are green.',No umbrellas are green.,Some umbrellas are green.,All umbrellas are green.,Some umbrellas are not green.,30,4
+323,'Negate the statement: Some zebras are not blue.',All zebras are blue.,No zebras are blue.,Some zebras are not blue.,Some zebras are blue.,30,1
+324,'Negate the statement: All xylophones are happy.',Some xylophones are happy.,No xylophones are happy.,All xylophones are happy.,Some xylophones are not happy.,30,4
+325,'Negate the statement: Some umbrellas are violent.',Some umbrellas are violent.,No umbrellas are violent.,Some umbrellas are not violent.,All umbrellas are violent.,30,2
+326,'Negate the statement: Some zebras are red.',All zebras are red.,Some zebras are not red.,Some zebras are red.,No zebras are red.,30,4
+327,'Negate the statement: Some dogs are not jealous.',Some dogs are jealous.,All dogs are jealous.,Some dogs are not jealous.,No dogs are jealous.,30,2
+328,'Negate the statement: No whales are curious.',Some whales are curious.,Some whales are not curious.,All whales are curious.,No whales are curious.,30,1
+329,'Negate the statement: No owls are blue.',Some owls are not blue.,Some owls are blue.,All owls are blue.,No owls are blue.,30,2
+330,'Negate the statement: Some bugs are violent.',Some bugs are not violent.,No bugs are violent.,All bugs are violent.,Some bugs are violent.,30,2
+331,'Negate the statement: No umbrellas are menacing.',Some umbrellas are not menacing.,All umbrellas are menacing.,Some umbrellas are menacing.,No umbrellas are menacing.,30,3
+332,'Negate the statement: Some elephants are not umpires.',All elephants are umpires.,No elephants are umpires.,Some elephants are umpires.,Some elephants are not umpires.,30,1
+333,'Negate the statement: Some kangaroos are jealous.',Some kangaroos are not jealous.,No kangaroos are jealous.,All kangaroos are jealous.,Some kangaroos are jealous.,30,2
+334,'Negate the statement: Some jaguars are jealous.',Some jaguars are not jealous.,No jaguars are jealous.,Some jaguars are jealous.,All jaguars are jealous.,30,2
+335,'Negate the statement: Some umbrellas are red.',Some umbrellas are red.,Some umbrellas are not red.,All umbrellas are red.,No umbrellas are red.,30,4
+336,'Negate the statement: Some giraffes are umpires.',No giraffes are umpires.,All giraffes are umpires.,Some giraffes are not umpires.,Some giraffes are umpires.,30,1
+337,'Negate the statement: Some whales are outgoing.',No whales are outgoing.,Some whales are outgoing.,Some whales are not outgoing.,All whales are outgoing.,30,1
+338,'Negate the statement: All umbrellas are transient.',Some umbrellas are transient.,No umbrellas are transient.,All umbrellas are transient.,Some umbrellas are not transient.,30,4
+339,'Negate the statement: No dogs are happy.',Some dogs are happy.,No dogs are happy.,Some dogs are not happy.,All dogs are happy.,30,1
+340,'Negate the statement: Some jaguars are not red.',No jaguars are red.,All jaguars are red.,Some jaguars are not red.,Some jaguars are red.,30,2
+341,'Negate the statement: All hawks are sly.',Some hawks are sly.,Some hawks are not sly.,No hawks are sly.,All hawks are sly.,30,2
+342,'Negate the statement: Some jaguars are not violent.',No jaguars are violent.,Some jaguars are not violent.,Some jaguars are violent.,All jaguars are violent.,30,4
+343,'Negate the statement: No owls are happy.',Some owls are not happy.,Some owls are happy.,No owls are happy.,All owls are happy.,30,2
+344,'Negate the statement: Some dogs are nice.',All dogs are nice.,Some dogs are nice.,No dogs are nice.,Some dogs are not nice.,30,3
+345,'Negate the statement: Some flowers are green.',All flowers are green.,Some flowers are not green.,Some flowers are green.,No flowers are green.,30,4
+346,'Negate the statement: No flowers are jealous.',No flowers are jealous.,Some flowers are not jealous.,All flowers are jealous.,Some flowers are jealous.,30,4
+347,'Negate the statement: Some quokkas are not sly.',Some quokkas are sly.,Some quokkas are not sly.,All quokkas are sly.,No quokkas are sly.,30,3
+348,'Negate the statement: Some quokkas are not nice.',Some quokkas are not nice.,All quokkas are nice.,No quokkas are nice.,Some quokkas are nice.,30,2
+349,'Negate the statement: Some flowers are not nice.',All flowers are nice.,Some flowers are not nice.,No flowers are nice.,Some flowers are nice.,30,1
+350,'Negate the statement: Some cats are lame.',No cats are lame.,Some cats are lame.,All cats are lame.,Some cats are not lame.,30,1
+351,'Negate the statement: Some insects are not xenophobic.',No insects are xenophobic.,Some insects are xenophobic.,All insects are xenophobic.,Some insects are not xenophobic.,30,3
+352,'Negate the statement: Some elephants are not pious.',All elephants are pious.,No elephants are pious.,Some elephants are pious.,Some elephants are not pious.,30,1
+353,'Negate the statement: No umbrellas are lame.',All umbrellas are lame.,Some umbrellas are not lame.,Some umbrellas are lame.,No umbrellas are lame.,30,3
+354,'Negate the statement: Some bugs are yellow.',Some bugs are yellow.,All bugs are yellow.,Some bugs are not yellow.,No bugs are yellow.,30,4
+355,'Negate the statement: Some xylophones are not dangerous.',Some xylophones are not dangerous.,All xylophones are dangerous.,No xylophones are dangerous.,Some xylophones are dangerous.,30,2
+356,'Negate the statement: Some zebras are not blue.',All zebras are blue.,Some zebras are not blue.,Some zebras are blue.,No zebras are blue.,30,1
+357,'Negate the statement: All ponies are happy.',All ponies are happy.,Some ponies are not happy.,Some ponies are happy.,No ponies are happy.,30,2
+358,'Negate the statement: No giraffes are outgoing.',Some giraffes are outgoing.,All giraffes are outgoing.,Some giraffes are not outgoing.,No giraffes are outgoing.,30,1
+359,'Negate the statement: Some umbrellas are not furious.',Some umbrellas are furious.,Some umbrellas are not furious.,All umbrellas are furious.,No umbrellas are furious.,30,3
+360,'Negate the statement: Some violins are not sly.',All violins are sly.,No violins are sly.,Some violins are sly.,Some violins are not sly.,30,1
+361,'Negate the statement: All apples are outgoing.',Some apples are not outgoing.,Some apples are outgoing.,No apples are outgoing.,All apples are outgoing.,30,1
+362,'Negate the statement: All flowers are dangerous.',Some flowers are dangerous.,No flowers are dangerous.,Some flowers are not dangerous.,All flowers are dangerous.,30,3
+363,'Negate the statement: All mice are umpires.',Some mice are not umpires.,All mice are umpires.,No mice are umpires.,Some mice are umpires.,30,1
+364,'Negate the statement: Some umbrellas are umpires.',All umbrellas are umpires.,Some umbrellas are not umpires.,Some umbrellas are umpires.,No umbrellas are umpires.,30,4
+365,'Negate the statement: All ponies are violent.',Some ponies are not violent.,All ponies are violent.,Some ponies are violent.,No ponies are violent.,30,1
+366,'Negate the statement: All zebras are red.',Some zebras are not red.,All zebras are red.,Some zebras are red.,No zebras are red.,30,1
+367,'Negate the statement: No hawks are furious.',Some hawks are not furious.,No hawks are furious.,All hawks are furious.,Some hawks are furious.,30,4
+368,'Negate the statement: Some jaguars are happy.',Some jaguars are not happy.,Some jaguars are happy.,All jaguars are happy.,No jaguars are happy.,30,4
+369,'Negate the statement: All narwhals are enigmatic.',Some narwhals are enigmatic.,No narwhals are enigmatic.,All narwhals are enigmatic.,Some narwhals are not enigmatic.,30,4
+370,'Negate the statement: No elephants are zombies.',All elephants are zombies.,No elephants are zombies.,Some elephants are not zombies.,Some elephants are zombies.,30,4
+371,'Negate the statement: All owls are furious.',All owls are furious.,Some owls are not furious.,No owls are furious.,Some owls are furious.,30,2
+372,'Negate the statement: No umbrellas are outgoing.',Some umbrellas are outgoing.,All umbrellas are outgoing.,Some umbrellas are not outgoing.,No umbrellas are outgoing.,30,1
+373,'Negate the statement: Some whales are not menacing.',All whales are menacing.,No whales are menacing.,Some whales are menacing.,Some whales are not menacing.,30,1
+374,'Negate the statement: Some giraffes are xenophobic.',Some giraffes are not xenophobic.,All giraffes are xenophobic.,Some giraffes are xenophobic.,No giraffes are xenophobic.,30,4
+375,'Negate the statement: Some giraffes are zombies.',Some giraffes are zombies.,Some giraffes are not zombies.,All giraffes are zombies.,No giraffes are zombies.,30,4
+376,'Negate the statement: No dogs are killers.',All dogs are killers.,No dogs are killers.,Some dogs are not killers.,Some dogs are killers.,30,4
+377,'Negate the statement: No elephants are umpires.',No elephants are umpires.,All elephants are umpires.,Some elephants are umpires.,Some elephants are not umpires.,30,3
+378,'Negate the statement: All quokkas are zombies.',All quokkas are zombies.,No quokkas are zombies.,Some quokkas are zombies.,Some quokkas are not zombies.,30,4
+379,'Negate the statement: All owls are green.',Some owls are green.,No owls are green.,Some owls are not green.,All owls are green.,30,3
+380,'Negate the statement: No quokkas are sly.',Some quokkas are sly.,No quokkas are sly.,Some quokkas are not sly.,All quokkas are sly.,30,1
+381,'Negate the statement: Some whales are sly.',Some whales are not sly.,All whales are sly.,Some whales are sly.,No whales are sly.,30,4
+382,'Negate the statement: No hawks are violent.',Some hawks are violent.,Some hawks are not violent.,All hawks are violent.,No hawks are violent.,30,1
+383,'Negate the statement: Some whales are violent.',No whales are violent.,Some whales are not violent.,All whales are violent.,Some whales are violent.,30,1
+384,'Negate the statement: Some narwhals are not transient.',Some narwhals are transient.,No narwhals are transient.,Some narwhals are not transient.,All narwhals are transient.,30,4
+385,'Negate the statement: Some elephants are furious.',No elephants are furious.,All elephants are furious.,Some elephants are not furious.,Some elephants are furious.,30,1
+386,'Negate the statement: Some zebras are zombies.',Some zebras are not zombies.,All zebras are zombies.,No zebras are zombies.,Some zebras are zombies.,30,3
+387,'Negate the statement: No narwhals are umpires.',Some narwhals are not umpires.,No narwhals are umpires.,All narwhals are umpires.,Some narwhals are umpires.,30,4
+388,'Negate the statement: No flowers are queens.',Some flowers are not queens.,No flowers are queens.,All flowers are queens.,Some flowers are queens.,30,4
+389,'Negate the statement: No kangaroos are weak.',Some kangaroos are weak.,All kangaroos are weak.,Some kangaroos are not weak.,No kangaroos are weak.,30,1
+390,'Negate the statement: Some giraffes are outgoing.',No giraffes are outgoing.,Some giraffes are not outgoing.,All giraffes are outgoing.,Some giraffes are outgoing.,30,1
+391,'Negate the statement: Some whales are umpires.',All whales are umpires.,Some whales are not umpires.,No whales are umpires.,Some whales are umpires.,30,3
+392,'Negate the statement: All flowers are blue.',Some flowers are not blue.,Some flowers are blue.,No flowers are blue.,All flowers are blue.,30,1
+393,'Negate the statement: No xylophones are awesome.',No xylophones are awesome.,Some xylophones are not awesome.,All xylophones are awesome.,Some xylophones are awesome.,30,4
+394,'Negate the statement: Some owls are umpires.',All owls are umpires.,No owls are umpires.,Some owls are umpires.,Some owls are not umpires.,30,2
+395,'Negate the statement: No violins are furious.',Some violins are not furious.,All violins are furious.,No violins are furious.,Some violins are furious.,30,4
+396,'Negate the statement: No whales are zombies.',Some whales are not zombies.,All whales are zombies.,No whales are zombies.,Some whales are zombies.,30,4
+397,'Negate the statement: Some whales are not nice.',All whales are nice.,Some whales are not nice.,Some whales are nice.,No whales are nice.,30,1
+398,'Negate the statement: No narwhals are yellow.',All narwhals are yellow.,Some narwhals are not yellow.,Some narwhals are yellow.,No narwhals are yellow.,30,3
+399,'Negate the statement: Some apples are red.',No apples are red.,Some apples are not red.,Some apples are red.,All apples are red.,30,1
+400,'Negate the statement: All quokkas are queens.',No quokkas are queens.,Some quokkas are not queens.,Some quokkas are queens.,All quokkas are queens.,30,2
+401,'Negate the statement: All bugs are furious.',Some bugs are not furious.,No bugs are furious.,Some bugs are furious.,All bugs are furious.,30,1
+402,'Negate the statement: Some bugs are happy.',No bugs are happy.,Some bugs are happy.,All bugs are happy.,Some bugs are not happy.,30,1
+403,'Negate the statement: Some jaguars are not pious.',Some jaguars are not pious.,No jaguars are pious.,Some jaguars are pious.,All jaguars are pious.,30,4
+404,'Negate the statement: All whales are curious.',All whales are curious.,Some whales are not curious.,Some whales are curious.,No whales are curious.,30,2
+405,'Negate the statement: No kangaroos are killers.',All kangaroos are killers.,No kangaroos are killers.,Some kangaroos are killers.,Some kangaroos are not killers.,30,3
+406,'Negate the statement: No xylophones are menacing.',All xylophones are menacing.,Some xylophones are menacing.,No xylophones are menacing.,Some xylophones are not menacing.,30,2
+407,'Negate the statement: Some kangaroos are violent.',Some kangaroos are not violent.,No kangaroos are violent.,Some kangaroos are violent.,All kangaroos are violent.,30,2
+408,'Negate the statement: Some giraffes are weak.',Some giraffes are not weak.,No giraffes are weak.,All giraffes are weak.,Some giraffes are weak.,30,2
+409,'Negate the statement: All kangaroos are weak.',Some kangaroos are not weak.,Some kangaroos are weak.,No kangaroos are weak.,All kangaroos are weak.,30,1
+410,'Negate the statement: No llamas are jealous.',Some llamas are jealous.,All llamas are jealous.,Some llamas are not jealous.,No llamas are jealous.,30,1
+411,'Negate the statement: Some insects are outgoing.',All insects are outgoing.,No insects are outgoing.,Some insects are not outgoing.,Some insects are outgoing.,30,2
+412,'Negate the statement: No umbrellas are enigmatic.',Some umbrellas are not enigmatic.,All umbrellas are enigmatic.,Some umbrellas are enigmatic.,No umbrellas are enigmatic.,30,3
+413,'Negate the statement: All kangaroos are violent.',All kangaroos are violent.,No kangaroos are violent.,Some kangaroos are violent.,Some kangaroos are not violent.,30,4
+414,'Negate the statement: All narwhals are dangerous.',Some narwhals are not dangerous.,All narwhals are dangerous.,Some narwhals are dangerous.,No narwhals are dangerous.,30,1
+415,'Negate the statement: Some jaguars are curious.',Some jaguars are not curious.,No jaguars are curious.,Some jaguars are curious.,All jaguars are curious.,30,2
+416,'Negate the statement: Some jaguars are not violent.',All jaguars are violent.,Some jaguars are not violent.,Some jaguars are violent.,No jaguars are violent.,30,1
+417,'Negate the statement: Some snakes are not transient.',No snakes are transient.,Some snakes are transient.,Some snakes are not transient.,All snakes are transient.,30,4
+418,'Negate the statement: All zebras are curious.',Some zebras are not curious.,No zebras are curious.,Some zebras are curious.,All zebras are curious.,30,1
+419,'Negate the statement: No tulips are blue.',No tulips are blue.,Some tulips are blue.,Some tulips are not blue.,All tulips are blue.,30,2
+420,'Negate the statement: Some flowers are enigmatic.',All flowers are enigmatic.,No flowers are enigmatic.,Some flowers are not enigmatic.,Some flowers are enigmatic.,30,2
+421,'Negate the statement: Some umbrellas are not menacing.',All umbrellas are menacing.,No umbrellas are menacing.,Some umbrellas are menacing.,Some umbrellas are not menacing.,30,1
+422,'Negate the statement: Some insects are violent.',No insects are violent.,Some insects are not violent.,All insects are violent.,Some insects are violent.,30,1
+423,'Negate the statement: Some apples are not transient.',Some apples are transient.,All apples are transient.,Some apples are not transient.,No apples are transient.,30,2
+424,'Negate the statement: No apples are nice.',Some apples are nice.,All apples are nice.,No apples are nice.,Some apples are not nice.,30,1
+425,'Negate the statement: Some giraffes are umpires.',No giraffes are umpires.,Some giraffes are not umpires.,Some giraffes are umpires.,All giraffes are umpires.,30,1
+426,'Negate the statement: No umbrellas are red.',Some umbrellas are not red.,All umbrellas are red.,No umbrellas are red.,Some umbrellas are red.,30,4
+427,'Negate the statement: No narwhals are lame.',No narwhals are lame.,Some narwhals are not lame.,All narwhals are lame.,Some narwhals are lame.,30,4
+428,'Negate the statement: All flowers are violent.',Some flowers are not violent.,Some flowers are violent.,All flowers are violent.,No flowers are violent.,30,1
+429,'Negate the statement: Some mice are sly.',No mice are sly.,Some mice are sly.,All mice are sly.,Some mice are not sly.,30,1
+430,'Negate the statement: Some apples are not zombies.',Some apples are zombies.,No apples are zombies.,Some apples are not zombies.,All apples are zombies.,30,4
+431,'Negate the statement: All hawks are lame.',Some hawks are not lame.,Some hawks are lame.,All hawks are lame.,No hawks are lame.,30,1
+432,'Negate the statement: Some tulips are green.',Some tulips are green.,No tulips are green.,All tulips are green.,Some tulips are not green.,30,2
+433,'Negate the statement: Some giraffes are green.',All giraffes are green.,Some giraffes are not green.,Some giraffes are green.,No giraffes are green.,30,4
+434,'Negate the statement: Some bugs are not lame.',All bugs are lame.,Some bugs are not lame.,No bugs are lame.,Some bugs are lame.,30,1
+435,'Negate the statement: All owls are queens.',All owls are queens.,Some owls are not queens.,No owls are queens.,Some owls are queens.,30,2
+436,'Negate the statement: All apples are indigo.',Some apples are indigo.,Some apples are not indigo.,No apples are indigo.,All apples are indigo.,30,2
+437,'Negate the statement: Some llamas are nice.',Some llamas are not nice.,No llamas are nice.,All llamas are nice.,Some llamas are nice.,30,2
+438,'Negate the statement: No giraffes are green.',All giraffes are green.,Some giraffes are green.,No giraffes are green.,Some giraffes are not green.,30,2
+439,'Negate the statement: Some umbrellas are not happy.',Some umbrellas are happy.,All umbrellas are happy.,Some umbrellas are not happy.,No umbrellas are happy.,30,2
+440,'Negate the statement: Some ponies are umpires.',Some ponies are not umpires.,No ponies are umpires.,Some ponies are umpires.,All ponies are umpires.,30,2
+441,'Negate the statement: All xylophones are furious.',Some xylophones are not furious.,All xylophones are furious.,No xylophones are furious.,Some xylophones are furious.,30,1
+442,'Negate the statement: No elephants are nice.',Some elephants are nice.,All elephants are nice.,No elephants are nice.,Some elephants are not nice.,30,1
+443,'Negate the statement: No jaguars are blue.',All jaguars are blue.,Some jaguars are not blue.,No jaguars are blue.,Some jaguars are blue.,30,4
+444,'Negate the statement: Some narwhals are queens.',Some narwhals are not queens.,Some narwhals are queens.,No narwhals are queens.,All narwhals are queens.,30,3
+445,'Negate the statement: Some apples are menacing.',Some apples are not menacing.,No apples are menacing.,All apples are menacing.,Some apples are menacing.,30,2
+446,'Negate the statement: Some whales are not weak.',All whales are weak.,No whales are weak.,Some whales are not weak.,Some whales are weak.,30,1
+447,'Negate the statement: Some snakes are not indigo.',No snakes are indigo.,All snakes are indigo.,Some snakes are indigo.,Some snakes are not indigo.,30,2
+448,'Negate the statement: No narwhals are jealous.',Some narwhals are jealous.,All narwhals are jealous.,Some narwhals are not jealous.,No narwhals are jealous.,30,1
+449,'Negate the statement: Some mice are xenophobic.',Some mice are not xenophobic.,All mice are xenophobic.,Some mice are xenophobic.,No mice are xenophobic.,30,4
+450,'Negate the statement: No jaguars are transient.',All jaguars are transient.,Some jaguars are not transient.,No jaguars are transient.,Some jaguars are transient.,30,4
+451,'Negate the statement: All cats are menacing.',All cats are menacing.,Some cats are menacing.,Some cats are not menacing.,No cats are menacing.,30,3
+452,'Negate the statement: All xylophones are weak.',All xylophones are weak.,No xylophones are weak.,Some xylophones are not weak.,Some xylophones are weak.,30,3
+453,'Negate the statement: Some zebras are outgoing.',Some zebras are outgoing.,Some zebras are not outgoing.,No zebras are outgoing.,All zebras are outgoing.,30,3
+454,'Negate the statement: No dogs are violent.',All dogs are violent.,No dogs are violent.,Some dogs are violent.,Some dogs are not violent.,30,3
+455,'Negate the statement: No xylophones are enigmatic.',All xylophones are enigmatic.,Some xylophones are enigmatic.,No xylophones are enigmatic.,Some xylophones are not enigmatic.,30,2
+456,'Negate the statement: Some whales are not violent.',Some whales are not violent.,No whales are violent.,All whales are violent.,Some whales are violent.,30,3
+457,'Negate the statement: All snakes are transient.',Some snakes are transient.,All snakes are transient.,No snakes are transient.,Some snakes are not transient.,30,4
+458,'Negate the statement: No cats are xenophobic.',Some cats are xenophobic.,All cats are xenophobic.,No cats are xenophobic.,Some cats are not xenophobic.,30,1
+459,'Negate the statement: All bugs are lame.',Some bugs are lame.,All bugs are lame.,Some bugs are not lame.,No bugs are lame.,30,3
+460,'Negate the statement: All quokkas are weak.',All quokkas are weak.,No quokkas are weak.,Some quokkas are weak.,Some quokkas are not weak.,30,4
+461,'Negate the statement: Some insects are not outgoing.',No insects are outgoing.,Some insects are not outgoing.,Some insects are outgoing.,All insects are outgoing.,30,4
+462,'Negate the statement: Some narwhals are not killers.',Some narwhals are not killers.,No narwhals are killers.,Some narwhals are killers.,All narwhals are killers.,30,4
+463,'Negate the statement: Some hawks are not umpires.',All hawks are umpires.,No hawks are umpires.,Some hawks are not umpires.,Some hawks are umpires.,30,1
+464,'Negate the statement: No giraffes are blue.',Some giraffes are not blue.,No giraffes are blue.,All giraffes are blue.,Some giraffes are blue.,30,4
+465,'Negate the statement: No mice are blue.',Some mice are blue.,No mice are blue.,All mice are blue.,Some mice are not blue.,30,1
+466,'Negate the statement: Some whales are not lame.',Some whales are lame.,Some whales are not lame.,No whales are lame.,All whales are lame.,30,4
+467,'Negate the statement: All dogs are red.',All dogs are red.,Some dogs are red.,No dogs are red.,Some dogs are not red.,30,4
+468,'Negate the statement: No jaguars are yellow.',Some jaguars are not yellow.,No jaguars are yellow.,All jaguars are yellow.,Some jaguars are yellow.,30,4
+469,'Negate the statement: All umbrellas are lame.',Some umbrellas are lame.,Some umbrellas are not lame.,No umbrellas are lame.,All umbrellas are lame.,30,2
+470,'Negate the statement: Some hawks are not happy.',No hawks are happy.,Some hawks are happy.,All hawks are happy.,Some hawks are not happy.,30,3
+471,'Negate the statement: Some giraffes are outgoing.',Some giraffes are outgoing.,All giraffes are outgoing.,Some giraffes are not outgoing.,No giraffes are outgoing.,30,4
+472,'Negate the statement: No narwhals are jealous.',Some narwhals are jealous.,No narwhals are jealous.,Some narwhals are not jealous.,All narwhals are jealous.,30,1
+473,'Negate the statement: No bugs are green.',All bugs are green.,Some bugs are not green.,No bugs are green.,Some bugs are green.,30,4
+474,'Negate the statement: No ponies are yellow.',Some ponies are yellow.,Some ponies are not yellow.,No ponies are yellow.,All ponies are yellow.,30,1
+475,'Negate the statement: Some flowers are not nice.',Some flowers are not nice.,Some flowers are nice.,No flowers are nice.,All flowers are nice.,30,4
+476,'Negate the statement: Some snakes are not zombies.',No snakes are zombies.,All snakes are zombies.,Some snakes are zombies.,Some snakes are not zombies.,30,2
+477,'Negate the statement: Some narwhals are not queens.',Some narwhals are not queens.,All narwhals are queens.,Some narwhals are queens.,No narwhals are queens.,30,2
+478,'Negate the statement: Some hawks are menacing.',Some hawks are menacing.,All hawks are menacing.,No hawks are menacing.,Some hawks are not menacing.,30,3
+479,'Negate the statement: No xylophones are enigmatic.',All xylophones are enigmatic.,Some xylophones are not enigmatic.,Some xylophones are enigmatic.,No xylophones are enigmatic.,30,3
+480,'Negate the statement: No hawks are dangerous.',Some hawks are dangerous.,Some hawks are not dangerous.,All hawks are dangerous.,No hawks are dangerous.,30,1
+481,'Negate the statement: Some mice are not umpires.',Some mice are umpires.,All mice are umpires.,Some mice are not umpires.,No mice are umpires.,30,2
+482,'Negate the statement: Some jaguars are lame.',All jaguars are lame.,No jaguars are lame.,Some jaguars are not lame.,Some jaguars are lame.,30,2
+483,'Negate the statement: Some tulips are lame.',No tulips are lame.,Some tulips are not lame.,Some tulips are lame.,All tulips are lame.,30,1
+484,'Negate the statement: Some quokkas are jealous.',Some quokkas are not jealous.,Some quokkas are jealous.,All quokkas are jealous.,No quokkas are jealous.,30,4
+485,'Negate the statement: Some xylophones are nice.',Some xylophones are not nice.,Some xylophones are nice.,No xylophones are nice.,All xylophones are nice.,30,3
+486,'Negate the statement: No ponies are furious.',Some ponies are furious.,Some ponies are not furious.,All ponies are furious.,No ponies are furious.,30,1
+487,'Negate the statement: No flowers are awesome.',All flowers are awesome.,Some flowers are not awesome.,No flowers are awesome.,Some flowers are awesome.,30,4
+488,'Negate the statement: No tulips are menacing.',All tulips are menacing.,No tulips are menacing.,Some tulips are not menacing.,Some tulips are menacing.,30,4
+489,'Negate the statement: Some quokkas are not happy.',All quokkas are happy.,Some quokkas are not happy.,Some quokkas are happy.,No quokkas are happy.,30,1
+490,'Negate the statement: Some flowers are not yellow.',No flowers are yellow.,Some flowers are yellow.,All flowers are yellow.,Some flowers are not yellow.,30,3
+491,'Negate the statement: Some insects are not yellow.',All insects are yellow.,Some insects are yellow.,No insects are yellow.,Some insects are not yellow.,30,1
+492,'Negate the statement: Some cats are sly.',Some cats are not sly.,Some cats are sly.,All cats are sly.,No cats are sly.,30,4
+493,'Negate the statement: No tulips are furious.',All tulips are furious.,Some tulips are furious.,No tulips are furious.,Some tulips are not furious.,30,2
+494,'Negate the statement: No llamas are xenophobic.',Some llamas are xenophobic.,All llamas are xenophobic.,Some llamas are not xenophobic.,No llamas are xenophobic.,30,1
+495,'Negate the statement: No quokkas are sly.',No quokkas are sly.,All quokkas are sly.,Some quokkas are sly.,Some quokkas are not sly.,30,3
+496,'Negate the statement: Some violins are happy.',No violins are happy.,All violins are happy.,Some violins are not happy.,Some violins are happy.,30,1
+497,'Negate the statement: All whales are yellow.',Some whales are yellow.,All whales are yellow.,Some whales are not yellow.,No whales are yellow.,30,3
+498,'Negate the statement: No mice are blue.',Some mice are not blue.,All mice are blue.,Some mice are blue.,No mice are blue.,30,3
+499,'Negate the statement: No narwhals are sly.',Some narwhals are not sly.,Some narwhals are sly.,No narwhals are sly.,All narwhals are sly.,30,2
+500,'Negate the statement: Some elephants are killers.',Some elephants are killers.,Some elephants are not killers.,All elephants are killers.,No elephants are killers.,30,4
+501,'Negate the statement: No tulips are happy.',No tulips are happy.,Some tulips are happy.,All tulips are happy.,Some tulips are not happy.,30,2
+502,'Negate the statement: Some narwhals are not indigo.',All narwhals are indigo.,No narwhals are indigo.,Some narwhals are indigo.,Some narwhals are not indigo.,30,1
+503,'Negate the statement: No flowers are pious.',Some flowers are pious.,No flowers are pious.,Some flowers are not pious.,All flowers are pious.,30,1
+504,'Negate the statement: Some ponies are not happy.',Some ponies are happy.,No ponies are happy.,Some ponies are not happy.,All ponies are happy.,30,4
+505,'Negate the statement: All narwhals are green.',Some narwhals are green.,Some narwhals are not green.,All narwhals are green.,No narwhals are green.,30,2
+506,'Negate the statement: No zebras are lame.',Some zebras are not lame.,Some zebras are lame.,All zebras are lame.,No zebras are lame.,30,2
+507,'Negate the statement: No umbrellas are dangerous.',Some umbrellas are dangerous.,Some umbrellas are not dangerous.,All umbrellas are dangerous.,No umbrellas are dangerous.,30,1
+508,'Negate the statement: All tulips are red.',Some tulips are red.,No tulips are red.,Some tulips are not red.,All tulips are red.,30,3
+509,'Negate the statement: Some owls are awesome.',Some owls are not awesome.,All owls are awesome.,No owls are awesome.,Some owls are awesome.,30,3
+510,'Negate the statement: Some hawks are not xenophobic.',Some hawks are not xenophobic.,Some hawks are xenophobic.,No hawks are xenophobic.,All hawks are xenophobic.,30,4
+511,'Negate the statement: No owls are yellow.',Some owls are yellow.,Some owls are not yellow.,No owls are yellow.,All owls are yellow.,30,1
+512,'Negate the statement: Some zebras are red.',Some zebras are red.,No zebras are red.,All zebras are red.,Some zebras are not red.,30,2
+513,'Negate the statement: No zebras are happy.',Some zebras are not happy.,No zebras are happy.,All zebras are happy.,Some zebras are happy.,30,4
+514,'Negate the statement: No cats are red.',Some cats are red.,Some cats are not red.,All cats are red.,No cats are red.,30,1
+515,'Negate the statement: All snakes are sly.',All snakes are sly.,Some snakes are sly.,No snakes are sly.,Some snakes are not sly.,30,4
+516,'Negate the statement: All hawks are red.',Some hawks are red.,Some hawks are not red.,No hawks are red.,All hawks are red.,30,2
+517,'Negate the statement: Some umbrellas are not umpires.',Some umbrellas are not umpires.,Some umbrellas are umpires.,All umbrellas are umpires.,No umbrellas are umpires.,30,3
+518,'Negate the statement: All cats are awesome.',No cats are awesome.,All cats are awesome.,Some cats are not awesome.,Some cats are awesome.,30,3
+519,'Negate the statement: Some umbrellas are jealous.',Some umbrellas are jealous.,All umbrellas are jealous.,Some umbrellas are not jealous.,No umbrellas are jealous.,30,4
+520,'Negate the statement: All tulips are xenophobic.',All tulips are xenophobic.,Some tulips are xenophobic.,Some tulips are not xenophobic.,No tulips are xenophobic.,30,3
+521,'Negate the statement: No zebras are blue.',All zebras are blue.,Some zebras are not blue.,No zebras are blue.,Some zebras are blue.,30,4
+522,'Negate the statement: Some cats are not green.',Some cats are green.,Some cats are not green.,No cats are green.,All cats are green.,30,4
+523,'Negate the statement: Some apples are sly.',Some apples are sly.,Some apples are not sly.,All apples are sly.,No apples are sly.,30,4
+524,'Negate the statement: No snakes are enigmatic.',Some snakes are not enigmatic.,No snakes are enigmatic.,Some snakes are enigmatic.,All snakes are enigmatic.,30,3
+525,'Negate the statement: No zebras are xenophobic.',No zebras are xenophobic.,Some zebras are not xenophobic.,Some zebras are xenophobic.,All zebras are xenophobic.,30,3
+526,'Negate the statement: All flowers are zombies.',Some flowers are zombies.,Some flowers are not zombies.,No flowers are zombies.,All flowers are zombies.,30,2
+527,'Negate the statement: No bugs are jealous.',Some bugs are not jealous.,All bugs are jealous.,Some bugs are jealous.,No bugs are jealous.,30,3
+528,'Negate the statement: No mice are lame.',No mice are lame.,Some mice are not lame.,All mice are lame.,Some mice are lame.,30,4
+529,'Negate the statement: No kangaroos are weak.',No kangaroos are weak.,Some kangaroos are not weak.,All kangaroos are weak.,Some kangaroos are weak.,30,4
+530,'Negate the statement: Some narwhals are outgoing.',No narwhals are outgoing.,Some narwhals are outgoing.,Some narwhals are not outgoing.,All narwhals are outgoing.,30,1
+531,'Negate the statement: All cats are red.',Some cats are red.,All cats are red.,Some cats are not red.,No cats are red.,30,3
+532,'Negate the statement: Some whales are zombies.',All whales are zombies.,Some whales are not zombies.,No whales are zombies.,Some whales are zombies.,30,3
+533,'Negate the statement: Some xylophones are not menacing.',Some xylophones are menacing.,All xylophones are menacing.,Some xylophones are not menacing.,No xylophones are menacing.,30,2
+534,'Negate the statement: All bugs are transient.',Some bugs are transient.,Some bugs are not transient.,All bugs are transient.,No bugs are transient.,30,2
+535,'Negate the statement: Some bugs are nice.',All bugs are nice.,No bugs are nice.,Some bugs are nice.,Some bugs are not nice.,30,2
+536,'Negate the statement: No mice are nice.',Some mice are nice.,Some mice are not nice.,All mice are nice.,No mice are nice.,30,1
+537,'Negate the statement: All umbrellas are blue.',Some umbrellas are not blue.,All umbrellas are blue.,No umbrellas are blue.,Some umbrellas are blue.,30,1
+538,'Negate the statement: No snakes are sly.',Some snakes are sly.,All snakes are sly.,No snakes are sly.,Some snakes are not sly.,30,1
+539,'Negate the statement: Some apples are queens.',Some apples are queens.,No apples are queens.,Some apples are not queens.,All apples are queens.,30,2
+540,'Negate the statement: Some hawks are not transient.',Some hawks are not transient.,Some hawks are transient.,No hawks are transient.,All hawks are transient.,30,4
+541,'Negate the statement: All ponies are green.',All ponies are green.,No ponies are green.,Some ponies are green.,Some ponies are not green.,30,4
+542,'Negate the statement: All apples are weak.',No apples are weak.,Some apples are weak.,All apples are weak.,Some apples are not weak.,30,4
+543,'Negate the statement: Some ponies are not green.',Some ponies are not green.,Some ponies are green.,All ponies are green.,No ponies are green.,30,3
+544,'Negate the statement: Some quokkas are enigmatic.',Some quokkas are not enigmatic.,All quokkas are enigmatic.,Some quokkas are enigmatic.,No quokkas are enigmatic.,30,4
+545,'Negate the statement: Some jaguars are furious.',Some jaguars are furious.,Some jaguars are not furious.,No jaguars are furious.,All jaguars are furious.,30,3
+546,'Negate the statement: Some elephants are curious.',Some elephants are not curious.,Some elephants are curious.,All elephants are curious.,No elephants are curious.,30,4
+547,'Negate the statement: Some violins are jealous.',Some violins are not jealous.,Some violins are jealous.,No violins are jealous.,All violins are jealous.,30,3
+548,'Negate the statement: Some kangaroos are not queens.',Some kangaroos are queens.,No kangaroos are queens.,All kangaroos are queens.,Some kangaroos are not queens.,30,3
+549,'Negate the statement: No jaguars are furious.',No jaguars are furious.,Some jaguars are not furious.,Some jaguars are furious.,All jaguars are furious.,30,3
+550,'Negate the statement: Some umbrellas are not weak.',No umbrellas are weak.,Some umbrellas are weak.,Some umbrellas are not weak.,All umbrellas are weak.,30,4
+551,'Negate the statement: All hawks are killers.',All hawks are killers.,Some hawks are not killers.,No hawks are killers.,Some hawks are killers.,30,2
+552,'Negate the statement: Some tulips are outgoing.',Some tulips are not outgoing.,No tulips are outgoing.,Some tulips are outgoing.,All tulips are outgoing.,30,2
+553,'Negate the statement: All llamas are weak.',No llamas are weak.,All llamas are weak.,Some llamas are weak.,Some llamas are not weak.,30,4
+554,'Negate the statement: No whales are outgoing.',Some whales are not outgoing.,Some whales are outgoing.,No whales are outgoing.,All whales are outgoing.,30,2
+555,'Negate the statement: Some owls are not yellow.',Some owls are yellow.,No owls are yellow.,Some owls are not yellow.,All owls are yellow.,30,4
+556,'Negate the statement: No zebras are zombies.',No zebras are zombies.,Some zebras are not zombies.,All zebras are zombies.,Some zebras are zombies.,30,4
+557,'Negate the statement: No insects are enigmatic.',No insects are enigmatic.,All insects are enigmatic.,Some insects are not enigmatic.,Some insects are enigmatic.,30,4
+558,'Negate the statement: Some flowers are pious.',Some flowers are not pious.,Some flowers are pious.,All flowers are pious.,No flowers are pious.,30,4
+559,'Negate the statement: Some cats are not curious.',No cats are curious.,Some cats are not curious.,All cats are curious.,Some cats are curious.,30,3
+560,'Negate the statement: Some jaguars are not furious.',Some jaguars are not furious.,Some jaguars are furious.,All jaguars are furious.,No jaguars are furious.,30,3
+561,'Negate the statement: Some jaguars are not umpires.',Some jaguars are umpires.,No jaguars are umpires.,Some jaguars are not umpires.,All jaguars are umpires.,30,4
+562,'Negate the statement: All snakes are dangerous.',Some snakes are dangerous.,No snakes are dangerous.,All snakes are dangerous.,Some snakes are not dangerous.,30,4
+563,'Negate the statement: No umbrellas are zombies.',No umbrellas are zombies.,Some umbrellas are zombies.,Some umbrellas are not zombies.,All umbrellas are zombies.,30,2
+564,'Negate the statement: All flowers are curious.',Some flowers are curious.,Some flowers are not curious.,No flowers are curious.,All flowers are curious.,30,2
+565,'Negate the statement: All flowers are furious.',All flowers are furious.,No flowers are furious.,Some flowers are not furious.,Some flowers are furious.,30,3
+566,'Negate the statement: All cats are blue.',Some cats are not blue.,All cats are blue.,No cats are blue.,Some cats are blue.,30,1
+567,'Negate the statement: No quokkas are red.',All quokkas are red.,Some quokkas are not red.,No quokkas are red.,Some quokkas are red.,30,4
+568,'Negate the statement: Some insects are not red.',Some insects are not red.,Some insects are red.,No insects are red.,All insects are red.,30,4
+569,'Negate the statement: Some bugs are not blue.',All bugs are blue.,Some bugs are blue.,No bugs are blue.,Some bugs are not blue.,30,1
+570,'Negate the statement: All apples are umpires.',Some apples are umpires.,All apples are umpires.,No apples are umpires.,Some apples are not umpires.,30,4
+571,'Negate the statement: Some ponies are transient.',Some ponies are transient.,All ponies are transient.,No ponies are transient.,Some ponies are not transient.,30,3
+572,'Negate the statement: Some hawks are violent.',All hawks are violent.,Some hawks are violent.,Some hawks are not violent.,No hawks are violent.,30,4
+573,'Negate the statement: Some zebras are red.',No zebras are red.,Some zebras are not red.,Some zebras are red.,All zebras are red.,30,1
+574,'Negate the statement: Some dogs are not awesome.',No dogs are awesome.,All dogs are awesome.,Some dogs are awesome.,Some dogs are not awesome.,30,2
+575,'Negate the statement: No dogs are violent.',No dogs are violent.,Some dogs are not violent.,Some dogs are violent.,All dogs are violent.,30,3
+576,'Negate the statement: Some mice are zombies.',Some mice are zombies.,Some mice are not zombies.,No mice are zombies.,All mice are zombies.,30,3
+577,'Negate the statement: All bugs are curious.',All bugs are curious.,Some bugs are not curious.,Some bugs are curious.,No bugs are curious.,30,2
+578,'Negate the statement: No dogs are nice.',All dogs are nice.,No dogs are nice.,Some dogs are nice.,Some dogs are not nice.,30,3
+579,'Negate the statement: All hawks are dangerous.',All hawks are dangerous.,No hawks are dangerous.,Some hawks are not dangerous.,Some hawks are dangerous.,30,3
+580,'Negate the statement: Some mice are menacing.',All mice are menacing.,Some mice are menacing.,Some mice are not menacing.,No mice are menacing.,30,4
+581,'Negate the statement: No giraffes are violent.',No giraffes are violent.,All giraffes are violent.,Some giraffes are not violent.,Some giraffes are violent.,30,4
+582,'Negate the statement: No quokkas are zombies.',Some quokkas are zombies.,No quokkas are zombies.,All quokkas are zombies.,Some quokkas are not zombies.,30,1
+583,'Negate the statement: Some apples are jealous.',No apples are jealous.,Some apples are jealous.,Some apples are not jealous.,All apples are jealous.,30,1
+584,'Negate the statement: No mice are blue.',No mice are blue.,All mice are blue.,Some mice are not blue.,Some mice are blue.,30,4
+585,'Negate the statement: No dogs are green.',All dogs are green.,Some dogs are not green.,Some dogs are green.,No dogs are green.,30,3
+586,'Negate the statement: No hawks are yellow.',No hawks are yellow.,Some hawks are yellow.,All hawks are yellow.,Some hawks are not yellow.,30,2
+587,'Negate the statement: Some owls are not dangerous.',No owls are dangerous.,Some owls are not dangerous.,Some owls are dangerous.,All owls are dangerous.,30,4
+588,'Negate the statement: No kangaroos are yellow.',Some kangaroos are not yellow.,All kangaroos are yellow.,No kangaroos are yellow.,Some kangaroos are yellow.,30,4
+589,'Negate the statement: Some kangaroos are yellow.',All kangaroos are yellow.,Some kangaroos are not yellow.,No kangaroos are yellow.,Some kangaroos are yellow.,30,3
+590,'Negate the statement: Some giraffes are weak.',All giraffes are weak.,No giraffes are weak.,Some giraffes are not weak.,Some giraffes are weak.,30,2
+591,'Negate the statement: No narwhals are red.',Some narwhals are not red.,Some narwhals are red.,All narwhals are red.,No narwhals are red.,30,2
+592,'Negate the statement: All xylophones are green.',All xylophones are green.,Some xylophones are green.,Some xylophones are not green.,No xylophones are green.,30,3
+593,'Negate the statement: Some llamas are menacing.',Some llamas are menacing.,All llamas are menacing.,Some llamas are not menacing.,No llamas are menacing.,30,4
+594,'Negate the statement: All giraffes are queens.',Some giraffes are queens.,All giraffes are queens.,No giraffes are queens.,Some giraffes are not queens.,30,4
+595,'Negate the statement: No cats are lame.',Some cats are lame.,Some cats are not lame.,No cats are lame.,All cats are lame.,30,1
+596,'Negate the statement: Some owls are not outgoing.',All owls are outgoing.,Some owls are not outgoing.,No owls are outgoing.,Some owls are outgoing.,30,1
+597,'Negate the statement: Some ponies are menacing.',All ponies are menacing.,Some ponies are menacing.,No ponies are menacing.,Some ponies are not menacing.,30,3
+598,'Negate the statement: All tulips are curious.',All tulips are curious.,Some tulips are not curious.,No tulips are curious.,Some tulips are curious.,30,2
+599,'Negate the statement: Some xylophones are outgoing.',All xylophones are outgoing.,No xylophones are outgoing.,Some xylophones are outgoing.,Some xylophones are not outgoing.,30,2
+600,'Negate the statement: Some narwhals are not killers.',Some narwhals are killers.,Some narwhals are not killers.,All narwhals are killers.,No narwhals are killers.,30,3
+601,'Negate the statement: All cats are red.',Some cats are not red.,Some cats are red.,All cats are red.,No cats are red.,30,1
+602,'Negate the statement: No whales are weak.',No whales are weak.,All whales are weak.,Some whales are weak.,Some whales are not weak.,30,3
+603,'Negate the statement: Some flowers are not pious.',Some flowers are pious.,Some flowers are not pious.,All flowers are pious.,No flowers are pious.,30,3
+604,'Negate the statement: Some kangaroos are not indigo.',Some kangaroos are indigo.,All kangaroos are indigo.,No kangaroos are indigo.,Some kangaroos are not indigo.,30,2
+605,'Negate the statement: Some apples are not umpires.',Some apples are not umpires.,No apples are umpires.,All apples are umpires.,Some apples are umpires.,30,3
+606,'Negate the statement: Some jaguars are zombies.',Some jaguars are zombies.,Some jaguars are not zombies.,No jaguars are zombies.,All jaguars are zombies.,30,3
+607,'Negate the statement: Some violins are happy.',No violins are happy.,All violins are happy.,Some violins are not happy.,Some violins are happy.,30,1
+608,'Negate the statement: Some hawks are not lame.',All hawks are lame.,Some hawks are lame.,Some hawks are not lame.,No hawks are lame.,30,1
+609,'Negate the statement: Some dogs are violent.',Some dogs are not violent.,All dogs are violent.,No dogs are violent.,Some dogs are violent.,30,3
+610,'Negate the statement: Some elephants are lame.',Some elephants are not lame.,Some elephants are lame.,All elephants are lame.,No elephants are lame.,30,4
+611,'Negate the statement: Some zebras are not dangerous.',Some zebras are dangerous.,All zebras are dangerous.,Some zebras are not dangerous.,No zebras are dangerous.,30,2
+612,'Negate the statement: All apples are nice.',Some apples are not nice.,No apples are nice.,Some apples are nice.,All apples are nice.,30,1
+613,'Negate the statement: Some giraffes are indigo.',Some giraffes are indigo.,No giraffes are indigo.,All giraffes are indigo.,Some giraffes are not indigo.,30,2
+614,'Negate the statement: Some llamas are blue.',Some llamas are not blue.,Some llamas are blue.,All llamas are blue.,No llamas are blue.,30,4
+615,'Negate the statement: All bugs are weak.',No bugs are weak.,Some bugs are weak.,All bugs are weak.,Some bugs are not weak.,30,4
+616,'Negate the statement: No flowers are happy.',All flowers are happy.,No flowers are happy.,Some flowers are happy.,Some flowers are not happy.,30,3
+617,'Negate the statement: Some insects are not furious.',No insects are furious.,Some insects are furious.,Some insects are not furious.,All insects are furious.,30,4
+618,'Negate the statement: All dogs are pious.',All dogs are pious.,Some dogs are not pious.,No dogs are pious.,Some dogs are pious.,30,2
+619,'Negate the statement: All tulips are nice.',Some tulips are not nice.,All tulips are nice.,Some tulips are nice.,No tulips are nice.,30,1
+620,'Negate the statement: Some violins are enigmatic.',Some violins are not enigmatic.,No violins are enigmatic.,All violins are enigmatic.,Some violins are enigmatic.,30,2
+621,'Negate the statement: Some elephants are dangerous.',No elephants are dangerous.,Some elephants are dangerous.,All elephants are dangerous.,Some elephants are not dangerous.,30,1
+622,'Negate the statement: All llamas are queens.',All llamas are queens.,No llamas are queens.,Some llamas are queens.,Some llamas are not queens.,30,4
+623,'Negate the statement: All whales are killers.',Some whales are not killers.,Some whales are killers.,All whales are killers.,No whales are killers.,30,1
+624,'Negate the statement: No kangaroos are awesome.',No kangaroos are awesome.,Some kangaroos are awesome.,Some kangaroos are not awesome.,All kangaroos are awesome.,30,2
+625,'Negate the statement: Some zebras are curious.',All zebras are curious.,No zebras are curious.,Some zebras are not curious.,Some zebras are curious.,30,2
+626,'Negate the statement: No flowers are dangerous.',Some flowers are dangerous.,Some flowers are not dangerous.,All flowers are dangerous.,No flowers are dangerous.,30,1
+627,'Negate the statement: All quokkas are jealous.',All quokkas are jealous.,Some quokkas are not jealous.,Some quokkas are jealous.,No quokkas are jealous.,30,2
+628,'Negate the statement: All mice are menacing.',All mice are menacing.,Some mice are menacing.,No mice are menacing.,Some mice are not menacing.,30,4
+629,'Negate the statement: No elephants are red.',Some elephants are not red.,Some elephants are red.,All elephants are red.,No elephants are red.,30,2
+630,'Negate the statement: Some owls are not curious.',No owls are curious.,All owls are curious.,Some owls are curious.,Some owls are not curious.,30,2
+631,'Negate the statement: All kangaroos are transient.',Some kangaroos are transient.,All kangaroos are transient.,No kangaroos are transient.,Some kangaroos are not transient.,30,4
+632,'Negate the statement: All xylophones are curious.',All xylophones are curious.,Some xylophones are not curious.,No xylophones are curious.,Some xylophones are curious.,30,2
+633,'Negate the statement: No kangaroos are weak.',No kangaroos are weak.,All kangaroos are weak.,Some kangaroos are not weak.,Some kangaroos are weak.,30,4
+634,'Negate the statement: Some whales are not xenophobic.',No whales are xenophobic.,All whales are xenophobic.,Some whales are xenophobic.,Some whales are not xenophobic.,30,2
+635,'Negate the statement: Some bugs are umpires.',Some bugs are umpires.,No bugs are umpires.,All bugs are umpires.,Some bugs are not umpires.,30,2
+636,'Negate the statement: No ponies are xenophobic.',Some ponies are not xenophobic.,Some ponies are xenophobic.,All ponies are xenophobic.,No ponies are xenophobic.,30,2
+637,'Negate the statement: All elephants are yellow.',Some elephants are yellow.,All elephants are yellow.,Some elephants are not yellow.,No elephants are yellow.,30,3
+638,'Negate the statement: No jaguars are pious.',Some jaguars are not pious.,No jaguars are pious.,All jaguars are pious.,Some jaguars are pious.,30,4
+639,'Negate the statement: Some umbrellas are not outgoing.',Some umbrellas are not outgoing.,All umbrellas are outgoing.,No umbrellas are outgoing.,Some umbrellas are outgoing.,30,2
+640,'Negate the statement: All owls are yellow.',Some owls are yellow.,No owls are yellow.,All owls are yellow.,Some owls are not yellow.,30,4
+641,'Negate the statement: All quokkas are sly.',All quokkas are sly.,Some quokkas are not sly.,No quokkas are sly.,Some quokkas are sly.,30,2
+642,'Negate the statement: No narwhals are nice.',No narwhals are nice.,Some narwhals are nice.,All narwhals are nice.,Some narwhals are not nice.,30,2
+643,'Negate the statement: Some insects are transient.',Some insects are transient.,All insects are transient.,Some insects are not transient.,No insects are transient.,30,4
+644,'Negate the statement: All flowers are blue.',Some flowers are blue.,No flowers are blue.,All flowers are blue.,Some flowers are not blue.,30,4
+645,'Negate the statement: No tulips are zombies.',No tulips are zombies.,All tulips are zombies.,Some tulips are zombies.,Some tulips are not zombies.,30,3
+646,'Negate the statement: Some elephants are not dangerous.',Some elephants are not dangerous.,Some elephants are dangerous.,No elephants are dangerous.,All elephants are dangerous.,30,4
+647,'Negate the statement: All umbrellas are menacing.',No umbrellas are menacing.,Some umbrellas are not menacing.,All umbrellas are menacing.,Some umbrellas are menacing.,30,2
+648,'Negate the statement: No violins are indigo.',No violins are indigo.,Some violins are indigo.,Some violins are not indigo.,All violins are indigo.,30,2
+649,'Negate the statement: All kangaroos are furious.',All kangaroos are furious.,No kangaroos are furious.,Some kangaroos are furious.,Some kangaroos are not furious.,30,4
+650,'Negate the statement: Some giraffes are not weak.',No giraffes are weak.,Some giraffes are not weak.,All giraffes are weak.,Some giraffes are weak.,30,3
+651,'Negate the statement: Some quokkas are menacing.',All quokkas are menacing.,Some quokkas are menacing.,No quokkas are menacing.,Some quokkas are not menacing.,30,3
+652,'Negate the statement: Some xylophones are not dangerous.',No xylophones are dangerous.,Some xylophones are dangerous.,All xylophones are dangerous.,Some xylophones are not dangerous.,30,3
+653,'Negate the statement: Some elephants are lame.',Some elephants are not lame.,All elephants are lame.,No elephants are lame.,Some elephants are lame.,30,3
+654,'Negate the statement: Some flowers are not furious.',No flowers are furious.,Some flowers are furious.,Some flowers are not furious.,All flowers are furious.,30,4
+655,'Negate the statement: Some whales are not lame.',Some whales are lame.,No whales are lame.,All whales are lame.,Some whales are not lame.,30,3
+656,'Negate the statement: No llamas are red.',Some llamas are red.,No llamas are red.,Some llamas are not red.,All llamas are red.,30,1
+657,'Negate the statement: Some kangaroos are happy.',No kangaroos are happy.,All kangaroos are happy.,Some kangaroos are happy.,Some kangaroos are not happy.,30,1
+658,'Negate the statement: All kangaroos are curious.',No kangaroos are curious.,Some kangaroos are not curious.,Some kangaroos are curious.,All kangaroos are curious.,30,2
+659,'Negate the statement: All flowers are pious.',No flowers are pious.,Some flowers are not pious.,Some flowers are pious.,All flowers are pious.,30,2
+660,'Negate the statement: Some llamas are zombies.',No llamas are zombies.,All llamas are zombies.,Some llamas are zombies.,Some llamas are not zombies.,30,1
+661,'Negate the statement: All violins are enigmatic.',No violins are enigmatic.,All violins are enigmatic.,Some violins are not enigmatic.,Some violins are enigmatic.,30,3
+662,'Negate the statement: All apples are enigmatic.',Some apples are not enigmatic.,All apples are enigmatic.,No apples are enigmatic.,Some apples are enigmatic.,30,1
+663,'Negate the statement: No quokkas are jealous.',Some quokkas are not jealous.,All quokkas are jealous.,No quokkas are jealous.,Some quokkas are jealous.,30,4
+664,'Negate the statement: All umbrellas are lame.',Some umbrellas are lame.,No umbrellas are lame.,All umbrellas are lame.,Some umbrellas are not lame.,30,4
+665,'Negate the statement: All elephants are awesome.',Some elephants are awesome.,All elephants are awesome.,Some elephants are not awesome.,No elephants are awesome.,30,3
+666,'Negate the statement: No flowers are green.',Some flowers are green.,No flowers are green.,All flowers are green.,Some flowers are not green.,30,1
+667,'Negate the statement: No apples are indigo.',Some apples are not indigo.,All apples are indigo.,Some apples are indigo.,No apples are indigo.,30,3
+668,'Negate the statement: Some giraffes are not jealous.',No giraffes are jealous.,Some giraffes are jealous.,Some giraffes are not jealous.,All giraffes are jealous.,30,4
+669,'Negate the statement: Some xylophones are red.',All xylophones are red.,Some xylophones are not red.,No xylophones are red.,Some xylophones are red.,30,3
+670,'Negate the statement: All xylophones are curious.',All xylophones are curious.,No xylophones are curious.,Some xylophones are not curious.,Some xylophones are curious.,30,3
+671,'Negate the statement: No umbrellas are furious.',Some umbrellas are not furious.,Some umbrellas are furious.,No umbrellas are furious.,All umbrellas are furious.,30,2
+672,'Negate the statement: Some cats are transient.',Some cats are not transient.,All cats are transient.,Some cats are transient.,No cats are transient.,30,4
+673,'Negate the statement: All narwhals are zombies.',No narwhals are zombies.,Some narwhals are not zombies.,All narwhals are zombies.,Some narwhals are zombies.,30,2
+674,'Negate the statement: All xylophones are jealous.',Some xylophones are jealous.,All xylophones are jealous.,Some xylophones are not jealous.,No xylophones are jealous.,30,3
+675,'Negate the statement: Some cats are yellow.',Some cats are not yellow.,Some cats are yellow.,All cats are yellow.,No cats are yellow.,30,4
+676,'Negate the statement: Some owls are green.',All owls are green.,No owls are green.,Some owls are green.,Some owls are not green.,30,2
+677,'Negate the statement: No insects are menacing.',Some insects are not menacing.,Some insects are menacing.,No insects are menacing.,All insects are menacing.,30,2
+678,'Negate the statement: Some insects are sly.',All insects are sly.,Some insects are sly.,Some insects are not sly.,No insects are sly.,30,4
+679,'Negate the statement: All umbrellas are violent.',Some umbrellas are violent.,Some umbrellas are not violent.,No umbrellas are violent.,All umbrellas are violent.,30,2
+680,'Negate the statement: Some flowers are not outgoing.',No flowers are outgoing.,All flowers are outgoing.,Some flowers are not outgoing.,Some flowers are outgoing.,30,2
+681,'Negate the statement: Some xylophones are jealous.',All xylophones are jealous.,No xylophones are jealous.,Some xylophones are jealous.,Some xylophones are not jealous.,30,2
+682,'Negate the statement: Some quokkas are not violent.',No quokkas are violent.,All quokkas are violent.,Some quokkas are violent.,Some quokkas are not violent.,30,2
+683,'Negate the statement: No quokkas are violent.',No quokkas are violent.,Some quokkas are not violent.,Some quokkas are violent.,All quokkas are violent.,30,3
+684,'Negate the statement: All owls are violent.',Some owls are violent.,No owls are violent.,All owls are violent.,Some owls are not violent.,30,4
+685,'Negate the statement: No snakes are umpires.',No snakes are umpires.,Some snakes are not umpires.,Some snakes are umpires.,All snakes are umpires.,30,3
+686,'Negate the statement: Some jaguars are not zombies.',All jaguars are zombies.,Some jaguars are zombies.,Some jaguars are not zombies.,No jaguars are zombies.,30,1
+687,'Negate the statement: Some tulips are dangerous.',No tulips are dangerous.,Some tulips are dangerous.,Some tulips are not dangerous.,All tulips are dangerous.,30,1
+688,'Negate the statement: Some hawks are dangerous.',No hawks are dangerous.,Some hawks are dangerous.,Some hawks are not dangerous.,All hawks are dangerous.,30,1
+689,'Negate the statement: Some flowers are not zombies.',All flowers are zombies.,No flowers are zombies.,Some flowers are zombies.,Some flowers are not zombies.,30,1
+690,'Negate the statement: All whales are pious.',Some whales are not pious.,All whales are pious.,Some whales are pious.,No whales are pious.,30,1
+691,'Negate the statement: Some umbrellas are not awesome.',Some umbrellas are awesome.,Some umbrellas are not awesome.,All umbrellas are awesome.,No umbrellas are awesome.,30,3
+692,'Negate the statement: All zebras are menacing.',All zebras are menacing.,No zebras are menacing.,Some zebras are not menacing.,Some zebras are menacing.,30,3
+693,'Negate the statement: Some ponies are lame.',All ponies are lame.,Some ponies are not lame.,No ponies are lame.,Some ponies are lame.,30,3
+694,'Negate the statement: No whales are pious.',No whales are pious.,Some whales are not pious.,Some whales are pious.,All whales are pious.,30,3
+695,'Negate the statement: Some insects are not weak.',All insects are weak.,Some insects are not weak.,Some insects are weak.,No insects are weak.,30,1
+696,'Negate the statement: All zebras are furious.',Some zebras are not furious.,No zebras are furious.,All zebras are furious.,Some zebras are furious.,30,1
+697,'Negate the statement: Some jaguars are yellow.',No jaguars are yellow.,Some jaguars are yellow.,All jaguars are yellow.,Some jaguars are not yellow.,30,1
+698,'Negate the statement: All violins are transient.',Some violins are not transient.,All violins are transient.,Some violins are transient.,No violins are transient.,30,1
+699,'Negate the statement: Some violins are not enigmatic.',Some violins are not enigmatic.,All violins are enigmatic.,Some violins are enigmatic.,No violins are enigmatic.,30,2
+700,'Negate the statement: Some umbrellas are not awesome.',All umbrellas are awesome.,Some umbrellas are awesome.,Some umbrellas are not awesome.,No umbrellas are awesome.,30,1
+701,'Negate the statement: No owls are yellow.',Some owls are not yellow.,Some owls are yellow.,No owls are yellow.,All owls are yellow.,30,2
+702,'Negate the statement: All kangaroos are enigmatic.',Some kangaroos are not enigmatic.,No kangaroos are enigmatic.,Some kangaroos are enigmatic.,All kangaroos are enigmatic.,30,1
+703,'Negate the statement: No zebras are umpires.',All zebras are umpires.,No zebras are umpires.,Some zebras are umpires.,Some zebras are not umpires.,30,3
+704,'Negate the statement: All insects are red.',Some insects are red.,No insects are red.,All insects are red.,Some insects are not red.,30,4
+705,'Negate the statement: All cats are violent.',No cats are violent.,All cats are violent.,Some cats are violent.,Some cats are not violent.,30,4
+706,'Negate the statement: Some owls are not weak.',Some owls are weak.,No owls are weak.,All owls are weak.,Some owls are not weak.,30,3
+707,'Negate the statement: Some giraffes are not sly.',No giraffes are sly.,All giraffes are sly.,Some giraffes are sly.,Some giraffes are not sly.,30,2
+708,'Negate the statement: Some umbrellas are zombies.',No umbrellas are zombies.,All umbrellas are zombies.,Some umbrellas are zombies.,Some umbrellas are not zombies.,30,1
+709,'Negate the statement: All insects are blue.',No insects are blue.,Some insects are not blue.,Some insects are blue.,All insects are blue.,30,2
+710,'Negate the statement: No hawks are indigo.',Some hawks are not indigo.,Some hawks are indigo.,No hawks are indigo.,All hawks are indigo.,30,2
+711,'Negate the statement: Some quokkas are zombies.',No quokkas are zombies.,All quokkas are zombies.,Some quokkas are zombies.,Some quokkas are not zombies.,30,1
+712,'Negate the statement: Some whales are violent.',Some whales are violent.,All whales are violent.,Some whales are not violent.,No whales are violent.,30,4
+713,'Negate the statement: No tulips are umpires.',No tulips are umpires.,Some tulips are umpires.,All tulips are umpires.,Some tulips are not umpires.,30,2
+714,'Negate the statement: Some insects are furious.',No insects are furious.,All insects are furious.,Some insects are furious.,Some insects are not furious.,30,1
+715,'Negate the statement: Some narwhals are happy.',Some narwhals are not happy.,No narwhals are happy.,All narwhals are happy.,Some narwhals are happy.,30,2
+716,'Negate the statement: All zebras are green.',Some zebras are not green.,All zebras are green.,Some zebras are green.,No zebras are green.,30,1
+717,'Negate the statement: No narwhals are outgoing.',Some narwhals are outgoing.,Some narwhals are not outgoing.,All narwhals are outgoing.,No narwhals are outgoing.,30,1
+718,'Negate the statement: Some flowers are queens.',Some flowers are not queens.,Some flowers are queens.,All flowers are queens.,No flowers are queens.,30,4
+719,'Negate the statement: All flowers are umpires.',Some flowers are not umpires.,All flowers are umpires.,No flowers are umpires.,Some flowers are umpires.,30,1
+720,'Negate the statement: No elephants are lame.',No elephants are lame.,Some elephants are not lame.,All elephants are lame.,Some elephants are lame.,30,4
+721,'Negate the statement: Some jaguars are not pious.',Some jaguars are not pious.,All jaguars are pious.,Some jaguars are pious.,No jaguars are pious.,30,2
+722,'Negate the statement: No ponies are menacing.',All ponies are menacing.,Some ponies are not menacing.,Some ponies are menacing.,No ponies are menacing.,30,3
+723,'Negate the statement: Some dogs are enigmatic.',Some dogs are enigmatic.,No dogs are enigmatic.,Some dogs are not enigmatic.,All dogs are enigmatic.,30,2
+724,'Negate the statement: Some snakes are menacing.',No snakes are menacing.,All snakes are menacing.,Some snakes are menacing.,Some snakes are not menacing.,30,1
+725,'Negate the statement: Some violins are not queens.',No violins are queens.,Some violins are not queens.,All violins are queens.,Some violins are queens.,30,3
+726,'Negate the statement: All flowers are indigo.',No flowers are indigo.,All flowers are indigo.,Some flowers are not indigo.,Some flowers are indigo.,30,3
+727,'Negate the statement: Some llamas are not violent.',No llamas are violent.,Some llamas are not violent.,Some llamas are violent.,All llamas are violent.,30,4
+728,'Negate the statement: All whales are green.',Some whales are not green.,No whales are green.,All whales are green.,Some whales are green.,30,1
+729,'Negate the statement: No hawks are outgoing.',All hawks are outgoing.,Some hawks are outgoing.,No hawks are outgoing.,Some hawks are not outgoing.,30,2
+730,'Negate the statement: Some elephants are not umpires.',Some elephants are umpires.,All elephants are umpires.,Some elephants are not umpires.,No elephants are umpires.,30,2
+731,'Negate the statement: All violins are sly.',Some violins are not sly.,Some violins are sly.,All violins are sly.,No violins are sly.,30,1
+732,'Negate the statement: No tulips are yellow.',No tulips are yellow.,All tulips are yellow.,Some tulips are not yellow.,Some tulips are yellow.,30,4
+733,'Negate the statement: All kangaroos are weak.',Some kangaroos are not weak.,Some kangaroos are weak.,All kangaroos are weak.,No kangaroos are weak.,30,1
+734,'Negate the statement: Some umbrellas are dangerous.',Some umbrellas are not dangerous.,Some umbrellas are dangerous.,No umbrellas are dangerous.,All umbrellas are dangerous.,30,3
+735,'Negate the statement: No jaguars are nice.',All jaguars are nice.,Some jaguars are not nice.,Some jaguars are nice.,No jaguars are nice.,30,3
+736,'Negate the statement: Some elephants are not happy.',Some elephants are happy.,No elephants are happy.,All elephants are happy.,Some elephants are not happy.,30,3
+737,'Negate the statement: All zebras are awesome.',No zebras are awesome.,Some zebras are awesome.,Some zebras are not awesome.,All zebras are awesome.,30,3
+738,'Negate the statement: All tulips are red.',No tulips are red.,Some tulips are red.,All tulips are red.,Some tulips are not red.,30,4
+739,'Negate the statement: Some flowers are furious.',Some flowers are furious.,No flowers are furious.,All flowers are furious.,Some flowers are not furious.,30,2
+740,'Negate the statement: No cats are awesome.',All cats are awesome.,Some cats are awesome.,No cats are awesome.,Some cats are not awesome.,30,2
+741,'Negate the statement: No zebras are xenophobic.',Some zebras are xenophobic.,Some zebras are not xenophobic.,All zebras are xenophobic.,No zebras are xenophobic.,30,1
+742,'Negate the statement: Some zebras are not queens.',All zebras are queens.,Some zebras are queens.,No zebras are queens.,Some zebras are not queens.,30,1
+743,'Negate the statement: Some quokkas are not dangerous.',No quokkas are dangerous.,Some quokkas are not dangerous.,Some quokkas are dangerous.,All quokkas are dangerous.,30,4
+744,'Negate the statement: All xylophones are queens.',Some xylophones are queens.,All xylophones are queens.,No xylophones are queens.,Some xylophones are not queens.,30,4
+745,'Negate the statement: Some giraffes are not green.',No giraffes are green.,All giraffes are green.,Some giraffes are green.,Some giraffes are not green.,30,2
+746,'Negate the statement: Some dogs are not enigmatic.',No dogs are enigmatic.,Some dogs are enigmatic.,Some dogs are not enigmatic.,All dogs are enigmatic.,30,4
+747,'Negate the statement: Some insects are not awesome.',Some insects are awesome.,No insects are awesome.,Some insects are not awesome.,All insects are awesome.,30,4
+748,'Negate the statement: Some jaguars are jealous.',No jaguars are jealous.,All jaguars are jealous.,Some jaguars are jealous.,Some jaguars are not jealous.,30,1
+749,'Negate the statement: No hawks are jealous.',Some hawks are not jealous.,All hawks are jealous.,Some hawks are jealous.,No hawks are jealous.,30,3
+750,'Negate the statement: No insects are violent.',Some insects are not violent.,All insects are violent.,No insects are violent.,Some insects are violent.,30,4
+751,'Negate the statement: Some mice are killers.',No mice are killers.,Some mice are not killers.,All mice are killers.,Some mice are killers.,30,1
+752,'Negate the statement: All umbrellas are sly.',Some umbrellas are not sly.,Some umbrellas are sly.,All umbrellas are sly.,No umbrellas are sly.,30,1
+753,'Negate the statement: Some xylophones are yellow.',Some xylophones are yellow.,Some xylophones are not yellow.,No xylophones are yellow.,All xylophones are yellow.,30,3
+754,'Negate the statement: Some giraffes are weak.',Some giraffes are weak.,No giraffes are weak.,Some giraffes are not weak.,All giraffes are weak.,30,2
+755,'Negate the statement: All insects are transient.',Some insects are transient.,All insects are transient.,Some insects are not transient.,No insects are transient.,30,3
+756,'Negate the statement: No xylophones are awesome.',All xylophones are awesome.,Some xylophones are awesome.,Some xylophones are not awesome.,No xylophones are awesome.,30,2
+757,'Negate the statement: Some insects are sly.',Some insects are sly.,Some insects are not sly.,No insects are sly.,All insects are sly.,30,3
+758,'Negate the statement: Some jaguars are umpires.',All jaguars are umpires.,Some jaguars are umpires.,Some jaguars are not umpires.,No jaguars are umpires.,30,4
+759,'Negate the statement: Some hawks are not red.',No hawks are red.,Some hawks are red.,Some hawks are not red.,All hawks are red.,30,4
+760,'Negate the statement: All jaguars are zombies.',Some jaguars are not zombies.,No jaguars are zombies.,Some jaguars are zombies.,All jaguars are zombies.,30,1
+761,'Negate the statement: All mice are violent.',Some mice are not violent.,No mice are violent.,All mice are violent.,Some mice are violent.,30,1
+762,'Negate the statement: Some bugs are awesome.',Some bugs are awesome.,No bugs are awesome.,Some bugs are not awesome.,All bugs are awesome.,30,2
+763,'Negate the statement: Some jaguars are jealous.',All jaguars are jealous.,No jaguars are jealous.,Some jaguars are not jealous.,Some jaguars are jealous.,30,2
+764,'Negate the statement: All narwhals are menacing.',All narwhals are menacing.,Some narwhals are not menacing.,Some narwhals are menacing.,No narwhals are menacing.,30,2
+765,'Negate the statement: Some umbrellas are killers.',No umbrellas are killers.,Some umbrellas are not killers.,All umbrellas are killers.,Some umbrellas are killers.,30,1
+766,'Negate the statement: All jaguars are weak.',Some jaguars are weak.,No jaguars are weak.,All jaguars are weak.,Some jaguars are not weak.,30,4
+767,'Negate the statement: Some zebras are menacing.',All zebras are menacing.,Some zebras are not menacing.,Some zebras are menacing.,No zebras are menacing.,30,4
+768,'Negate the statement: No dogs are happy.',No dogs are happy.,All dogs are happy.,Some dogs are not happy.,Some dogs are happy.,30,4
+769,'Negate the statement: No whales are outgoing.',Some whales are not outgoing.,No whales are outgoing.,All whales are outgoing.,Some whales are outgoing.,30,4
+770,'Negate the statement: Some violins are not happy.',All violins are happy.,No violins are happy.,Some violins are not happy.,Some violins are happy.,30,1
+771,'Negate the statement: Some jaguars are jealous.',Some jaguars are jealous.,No jaguars are jealous.,Some jaguars are not jealous.,All jaguars are jealous.,30,2
+772,'Negate the statement: All bugs are xenophobic.',No bugs are xenophobic.,Some bugs are xenophobic.,All bugs are xenophobic.,Some bugs are not xenophobic.,30,4
+773,'Negate the statement: Some apples are zombies.',No apples are zombies.,Some apples are not zombies.,All apples are zombies.,Some apples are zombies.,30,1
+774,'Negate the statement: Some giraffes are not xenophobic.',Some giraffes are not xenophobic.,No giraffes are xenophobic.,Some giraffes are xenophobic.,All giraffes are xenophobic.,30,4
+775,'Negate the statement: Some xylophones are nice.',Some xylophones are nice.,No xylophones are nice.,All xylophones are nice.,Some xylophones are not nice.,30,2
+776,'Negate the statement: Some bugs are not pious.',All bugs are pious.,No bugs are pious.,Some bugs are not pious.,Some bugs are pious.,30,1
+777,'Negate the statement: All apples are nice.',Some apples are nice.,All apples are nice.,Some apples are not nice.,No apples are nice.,30,3
+778,'Negate the statement: No ponies are pious.',All ponies are pious.,Some ponies are pious.,Some ponies are not pious.,No ponies are pious.,30,2
+779,'Negate the statement: Some bugs are blue.',Some bugs are blue.,Some bugs are not blue.,All bugs are blue.,No bugs are blue.,30,4
+780,'Negate the statement: All hawks are awesome.',No hawks are awesome.,Some hawks are awesome.,Some hawks are not awesome.,All hawks are awesome.,30,3
+781,'Negate the statement: Some bugs are weak.',All bugs are weak.,No bugs are weak.,Some bugs are not weak.,Some bugs are weak.,30,2
+782,'Negate the statement: Some owls are indigo.',Some owls are not indigo.,No owls are indigo.,Some owls are indigo.,All owls are indigo.,30,2
+783,'Negate the statement: Some hawks are not enigmatic.',Some hawks are not enigmatic.,No hawks are enigmatic.,All hawks are enigmatic.,Some hawks are enigmatic.,30,3
+784,'Negate the statement: Some insects are transient.',Some insects are transient.,Some insects are not transient.,No insects are transient.,All insects are transient.,30,3
+785,'Negate the statement: All xylophones are menacing.',Some xylophones are menacing.,All xylophones are menacing.,No xylophones are menacing.,Some xylophones are not menacing.,30,4
+786,'Negate the statement: No llamas are outgoing.',Some llamas are not outgoing.,Some llamas are outgoing.,All llamas are outgoing.,No llamas are outgoing.,30,2
+787,'Negate the statement: Some violins are not blue.',All violins are blue.,Some violins are not blue.,No violins are blue.,Some violins are blue.,30,1
+788,'Negate the statement: Some kangaroos are weak.',No kangaroos are weak.,All kangaroos are weak.,Some kangaroos are weak.,Some kangaroos are not weak.,30,1
+789,'Negate the statement: All elephants are transient.',All elephants are transient.,No elephants are transient.,Some elephants are transient.,Some elephants are not transient.,30,4
+790,'Negate the statement: Some bugs are not killers.',All bugs are killers.,Some bugs are killers.,No bugs are killers.,Some bugs are not killers.,30,1
+791,'Negate the statement: No zebras are umpires.',All zebras are umpires.,Some zebras are umpires.,No zebras are umpires.,Some zebras are not umpires.,30,2
+792,'Negate the statement: All cats are red.',All cats are red.,Some cats are not red.,Some cats are red.,No cats are red.,30,2
+793,'Negate the statement: Some narwhals are not queens.',Some narwhals are not queens.,All narwhals are queens.,Some narwhals are queens.,No narwhals are queens.,30,2
+794,'Negate the statement: Some apples are curious.',All apples are curious.,Some apples are not curious.,No apples are curious.,Some apples are curious.,30,3
+795,'Negate the statement: All whales are weak.',No whales are weak.,Some whales are not weak.,All whales are weak.,Some whales are weak.,30,2
+796,'Negate the statement: All xylophones are dangerous.',No xylophones are dangerous.,All xylophones are dangerous.,Some xylophones are not dangerous.,Some xylophones are dangerous.,30,3
+797,'Negate the statement: All owls are menacing.',Some owls are menacing.,All owls are menacing.,No owls are menacing.,Some owls are not menacing.,30,4
+798,'Negate the statement: Some bugs are not red.',No bugs are red.,Some bugs are red.,All bugs are red.,Some bugs are not red.,30,3
+799,'Negate the statement: No umbrellas are furious.',No umbrellas are furious.,All umbrellas are furious.,Some umbrellas are furious.,Some umbrellas are not furious.,30,3
+800,'Negate the statement: Some giraffes are zombies.',Some giraffes are not zombies.,No giraffes are zombies.,Some giraffes are zombies.,All giraffes are zombies.,30,2

@@ -1,0 +1,49 @@
+---
+output: pdf_document
+---
+
+# Proctor Documentation Sheet for Algebra 2
+
+## This mastery assessment must be proctored.
+
+Whenever a student has access to this mastery assessment, a proctor will monitor to make sure the student does not use any prohibited aides.
+
+* No computer
+* No phone
+* No other humans
+* No AI
+* No work done between sittings (All reference notes and work stay with mastery assessment until complete, and no additional notes can be added after breaks.)
+
+Students are allowed to use handheld calculators. Based on accommodations, some students are allowed notes and worked examples.
+
+Whenever a proctor gives the student access to this test, the proctor should fill out a row in the table below.
+
+\vspace{0.5in}
+
+\renewcommand{\arraystretch}{1.5}
+
+\begin{tabular}{|l|}\hline \\
+\LARGE STUDENT: \hspace{4in} \\ \hline
+\end{tabular}
+
+\normalsize
+
+\begin{tabular}{|p{2in}|p{1in}|p{1.5in}|p{1.5in}|} \hline
+Proctor & Date & Time Start & Time End \\ \hline
+&&& \\ &&& \\ \hline
+&&& \\ &&& \\ \hline
+&&& \\ &&& \\ \hline
+&&& \\ &&& \\ \hline
+&&& \\ &&& \\ \hline
+&&& \\ &&& \\ \hline
+\end{tabular}
+
+
+\vfill
+
+Students are allowed as many retakes as they want, and only the highest score counts.
+
+\vfill
+
+
+

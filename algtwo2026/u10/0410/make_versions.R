@@ -1,7 +1,7 @@
-fn = "a0409_pracquiz_sketch_solve.Rmd"
+fn = "a0410_MASTERY_sketch_solve.Rmd"
 shortfn = strsplit(fn,"_")[[1]][1]
-nlow = 300
-nhigh = 340
+nlow = 700
+nhigh = 740
 
 sss44 = "<!DOCTYPE html>
 <html lang='en'>

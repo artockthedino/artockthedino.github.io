@@ -12,7 +12,7 @@ phrases = c("All XXX are YYY.","No XXX are YYY.","Some XXX are YYY.","Some XXX a
 
 explains = c("Set $A$ is a subset of set $B$.","Set $A$ and set $B$ are disjoint.","The intersection of set $A$ and set $B$ is not empty.","Set $A$ is not a subset of set $B$.")
 
-nq = 800
+nq = 800*3
 for(i in 1:nq){
     n = sample(nouns,1)
     a = sample(adjectives,1)
@@ -28,8 +28,8 @@ for(i in 1:nq){
     p2 = phrases2[5-i1]
     ach = sample(phrases2)
     wo = which(ach==p2)
-    qtext = paste0('Negate the statement: ',p1,'')
-    s=paste0(s,i,",'",qtext,"',",
+    qtext = paste0("Negate the statement: ",p1)
+    s=paste0(s,i,",",qtext,",",
              paste0(ach,collapse=','),',30,',wo,collapse=""
     )
     if(i<nq){
@@ -37,6 +37,6 @@ for(i in 1:nq){
     }
 }
 
-fileConn<-file("negate_w_quantifiers.csv")
+fileConn<-file("negate_w_quantifiers_SETS.csv")
 writeLines(s, fileConn)
 close(fileConn)

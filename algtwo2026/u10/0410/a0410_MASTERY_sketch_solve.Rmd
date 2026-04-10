@@ -1,8 +1,8 @@
 ---
 output: pdf_document
 params:
-    rseed: 1
-    showsol: true
+    rseed: 0
+    showsol: false
 ---
 
 \renewcommand{\arraystretch}{1.2}
@@ -37,8 +37,13 @@ pn = function(coeffs,pows){
 }
 ```
 
+Name: \vspace{0.1in} \hrule
 
 ## `r bn` (v`r params$rseed`)
+
+### Question 1
+
+Sketch the following polynomial functions. Accurately indicate the $x$ intercepts and where the curve is above or below the $x$ axis (where the function is positive or negative).
 
 ```{r,echo=F}
 numq = 3
@@ -54,10 +59,10 @@ while(length(exps)<numq){
         pow = sample(1:2,n,T)
         if(min(diff(root))>1 && max(diff(root))<7 && sum(pow)>n && sum(pow)<2*n){break}
     }
-    daord = 1:n
-    if(length(exps)>4){
-        daord = sample(1:n)
-    }
+    daord = sample(1:n)
+    # if(length(exps)>4){
+    #     daord = sample(1:n)
+    # }
     r2 = root[daord]
     p2 = pow[daord]
     a = as[[length(exps)+1]]
@@ -102,7 +107,7 @@ dev.off()
 
 ```{r,echo=F,fig.dim=c(6,2),results='asis',fig.align='center',eval=!(params$showsol)}
 for(i in 1:length(exps)){
-    cat(paste0(i,". Sketch $",exps[i],"$\n\n"))
+    cat(paste0("$",exps[i],"$\n\n"))
     cat("![](maybe.png)")
     cat("\n\n\\vfill\n\n")
     if(i%%3==0){
@@ -236,7 +241,7 @@ while(T){
     cb = -2*r
     cc = r^2+m^2
     cfc = c(ca,cb,cc)
-    if(max(abs(cf4))<500){break}
+    if(max(abs(cf4))<750 && min(abs(c(r,m)))>1 && min(abs(c(A,B,C,D,E)))>0){break}
 }
 
 numer1 = -qb+round(sqrt(qb^2-4*qa*qc))
@@ -287,64 +292,39 @@ pn = function(c,d){
 }
 ```
 
+## Question 2
 
-4. Let $f$ represent a quartic (4th degree) polynomial with integer coefficients.
+Let function $f$ be defined below.
 $$f(x)~=~`r pn(cf4,4:0)`$$
-One of the roots is $`r cn(r,m)`$, where $i=\sqrt{-1}$.
+One root is the complex number $`r cn(r,m)`$.
 $$f(`r cn(r,m)`)~=~0$$
-This quartic polynomial has at least 1 rational root. Find all the rational roots.
+Function $f$ has 2 rational roots. Find both rational roots of function $f$.
 
 
 ```{r,echo=F,results='asis',eval=params$showsol}
-cat("\n\n\\vfill\\color{red}\n\n")
-sent1 = paste0("If $",r,"+",m,"i$ is a root, then the complex conjugate $",r,"+",-m,"i$ is too. We can express the function as a product of two factors corresponding to these complex roots and an unknown quadratic factor.")
-sent1 = gsub("+-","-",sent1,fixed=T)
-sent1 = gsub("+1i","+i",sent1,fixed=T)
-sent1 = gsub("-1i","-i",sent1,fixed=T)
-cat(sent1)
-
-fa = paste0("f(x)~=~(ax^2+bx+c)(x-(",r,"+",m,"i))(x-(",r,"+",-m,"i))")
+fa = paste0("(ax^2+bx+c)(x-(",r,"+",m,"i))(x-(",r,"+",-m,"i))")
 fa = gsub("+-","-",fa,fixed=T)
 fa = gsub("+1i","+i",fa,fixed=T)
 fa = gsub("-1i","-i",fa,fixed=T)
-
-
-cat(paste0("$$",fa,"$$\n\n"))
-
-sent1 = paste0("Distribute away the inner parentheses.")
-sent1 = gsub("+-","-",sent1,fixed=T)
-sent1 = gsub("+1i","+i",sent1,fixed=T)
-sent1 = gsub("-1i","-i",sent1,fixed=T)
-cat(sent1)
-
-f2 = paste0("f(x)~=~(ax^2+bx+c)(x+",-r,"+",-m,"i)(x+",-r,"+",m,"i)")
+f2 = paste0("(ax^2+bx+c)(x+",-r,"+",-m,"i)(x+",-r,"+",m,"i)")
 f2 = gsub("+-","-",f2,fixed=T)
 f2 = gsub("+1i","+i",f2,fixed=T)
 f2 = gsub("-1i","-i",f2,fixed=T)
+
+cat("\n\n\\vfill\\color{red}\n\n")
+cat(paste0("$$",fa,"$$\n\n"))
 cat(paste0("$$",f2,"$$\n\n"))
 
-sent1 = paste0("Multiply the two linear factors (expand the product to get a quadratic). Use a box (not shown).")
-sent1 = gsub("+-","-",sent1,fixed=T)
-sent1 = gsub("+1i","+i",sent1,fixed=T)
-sent1 = gsub("-1i","-i",sent1,fixed=T)
-cat(sent1)
-
-f4 = paste0("f(x)~=~(ax^2+bx+c)(x^2+",-2*r,"x+",r^2,"+",-m^2,"(-1))")
+f4 = paste0("(ax^2+bx+c)(x^2+",-2*r,"x+",r^2,"+",-m^2,"(-1))")
 f4 = gsub("+-","-",f4,fixed=T)
 f5 = paste0("(ax^2+bx+c)(x^2+",-2*r,"x+",r^2,"+",m^2,")")
 f5 = gsub("+-","-",f5,fixed=T)
-f6 = paste0(pn(cf4,4:0),"~=~(ax^2+bx+c)(x^2+",-2*r,"x+",r^2+m^2,")")
+f6 = paste0("(ax^2+bx+c)(x^2+",-2*r,"x+",r^2+m^2,")")
 f6 = gsub("+-","-",f6,fixed=T)
 
 # cat(paste0("$$",f4,"$$\n\n"))
 # cat(paste0("$$",f5,"$$\n\n"))
 cat(paste0("$$",f6,"$$\n\n"))
-
-sent1 = paste0("Divide $",pn(cf4,4:0),"$ by the known quadratic factor,  $x^2+",-2*r,"x+",r^2+m^2,"$, to find the unknown factor.")
-sent1 = gsub("+-","-",sent1,fixed=T)
-sent1 = gsub("+1i","+i",sent1,fixed=T)
-sent1 = gsub("-1i","-i",sent1,fixed=T)
-cat(sent1)
 
 # cat("\\color{black}\n\n\\vfill\n\n")
 
@@ -353,43 +333,33 @@ cat(sent1)
 ```{r,echo=F,fig.dim=c(3,1.5),eval=params$showsol,fig.align='center'}
 par(mar=c(0,0,0,0))
 plot(0,0,"n",xlim=c(0,4),ylim=c(0,4),axes=F,ann=F)
-col = "red"
-abline(h=3,col=col)
-abline(v=1,col=col)
-text(0.5,2.5,TeX("$x^2$"),col=col)
-text(0.5,1.5,TeX(paste0("$",-2*r,"x$")),col=col)
-text(0.5,0.5,TeX(paste0("$",r^2+m^2,"$")),col=col)
+abline(h=3)
+abline(v=1)
+text(0.5,2.5,TeX("$x^2$"))
+text(0.5,1.5,TeX(paste0("$",-2*r,"x$")))
+text(0.5,0.5,TeX(paste0("$",r^2+m^2,"$")))
 
-text(1.5,2.5,TeX(paste0("$",cfq[1],"x^4$")),col=col)
-text(1.5,3.5,TeX(paste0("$",cfq[1],"x^2$")),col=col)
-text(1.5,1.5,TeX(paste0("$",cfq[1]*cfc[2],"x^3$")),col=col)
-text(1.5,0.5,TeX(paste0("$",cfq[1]*cfc[3],"x^2$")),col=col)
+text(1.5,2.5,TeX(paste0("$",cfq[1],"x^4$")))
+text(1.5,3.5,TeX(paste0("$",cfq[1],"x^2$")))
+text(1.5,1.5,TeX(paste0("$",cfq[1]*cfc[2],"x^3$")))
+text(1.5,0.5,TeX(paste0("$",cfq[1]*cfc[3],"x^2$")))
 
-text(2.5,2.5,TeX(paste0("$",cfq[2]*cfc[1],"x^3$")),col=col)
-text(2.5,3.5,TeX(paste0("$",cfq[2]*cfc[1],"x$")),col=col)
-text(2.5,1.5,TeX(paste0("$",cfq[2]*cfc[2],"x^2$")),col=col)
-text(2.5,0.5,TeX(paste0("$",cfq[2]*cfc[3],"x$")),col=col)
+text(2.5,2.5,TeX(paste0("$",cfq[2]*cfc[1],"x^3$")))
+text(2.5,3.5,TeX(paste0("$",cfq[2]*cfc[1],"x$")))
+text(2.5,1.5,TeX(paste0("$",cfq[2]*cfc[2],"x^2$")))
+text(2.5,0.5,TeX(paste0("$",cfq[2]*cfc[3],"x$")))
 
-text(3.5,2.5,TeX(paste0("$",cfq[3]*cfc[1],"x^2$")),col=col)
-text(3.5,3.5,TeX(paste0("$",cfq[3]*cfc[1],"$")),col=col)
-text(3.5,1.5,TeX(paste0("$",cfq[3]*cfc[2],"x$")),col=col)
-text(3.5,0.5,TeX(paste0("$",cfq[3]*cfc[3],"$")),col=col)
+text(3.5,2.5,TeX(paste0("$",cfq[3]*cfc[1],"x^2$")))
+text(3.5,3.5,TeX(paste0("$",cfq[3]*cfc[1],"$")))
+text(3.5,1.5,TeX(paste0("$",cfq[3]*cfc[2],"x$")))
+text(3.5,0.5,TeX(paste0("$",cfq[3]*cfc[3],"$")))
 
 ```
+\
 
 ```{r,echo=F,results='asis',eval=params$showsol}
 # qf1 = paste0("\\frac{-(",qb,")\\pm\\sqrt{(",qb,")^2-",4*qa*qc,"}}{",2*qa,"}")
 # qf1 = gsub("--","+",qf2,fixed=T)
-
-sent1 = paste0("Use the quadratic formula on $",pn(c(qa,qb,qc),2:0),"=0$ to find roots. QF:  $x=\\frac{-b\\pm\\sqrt{b^2-4ac}}{2a}$.")
-sent1 = gsub("+-","-",sent1,fixed=T)
-sent1 = gsub("+1i","+i",sent1,fixed=T)
-sent1 = gsub("-1i","-i",sent1,fixed=T)
-cat(sent1)
-
-qf2 = paste0("\\frac{-(",qb,")\\pm\\sqrt{(",qb,")^2-4(",qa,")(",qc,")}}{2(",qa,")}")
-qf2 = gsub("--","+",qf2,fixed=T)
-cat(paste0("\n\n$$",qf2,"$$\n\n"))
 
 qf2 = paste0("\\frac{",-qb,"\\pm\\sqrt{",qb^2,"-",4*qa*qc,"}}{",2*qa,"}")
 qf2 = gsub("--","+",qf2,fixed=T)
@@ -403,13 +373,13 @@ qf2 = paste0("\\frac{",-qb,"\\pm",round(sqrt(qb^2-4*qa*qc)),"}{",2*qa,"}")
 qf2 = gsub("--","+",qf2,fixed=T)
 cat(paste0("\n\n$$",qf2,"$$\n\n"))
 
-qf2 = paste0("\\frac{",-qb+round(sqrt(qb^2-4*qa*qc)),"}{",2*qa,"}~~~~~~~~\\frac{",-qb-round(sqrt(qb^2-4*qa*qc)),"}{",2*qa,"}")
+qf2 = paste0("\\frac{",-qb+round(sqrt(qb^2-4*qa*qc)),"}{",2*qa,"}~~~~\\frac{",-qb-round(sqrt(qb^2-4*qa*qc)),"}{",2*qa,"}")
 qf2 = gsub("--","+",qf2,fixed=T)
 cat(paste0("\n\n$$",qf2,"$$\n\n"))
 
-qf2 = paste0(frac(nn1,dd1),"~~~~~~~~",frac(nn2,dd2))
+qf2 = paste0(frac(nn1,dd1),"~~~~",frac(nn2,dd2))
 qf2 = gsub("--","+",qf2,fixed=T)
-cat(paste0("\n\n\\begin{center}\\begin{tabular}{|c|}\\hline $",qf2,"$ \\\\  \\hline\\end{tabular}\\end{center}\n\n"))
+cat(paste0("\n\n$$",qf2,"$$\n\n"))
 
 
 ```
