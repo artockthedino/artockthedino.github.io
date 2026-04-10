@@ -6,7 +6,6 @@ outdir = "outcanvas"
 # pm = list("x_trarotglimir_noref.Rmd",
 #           "x_trarotglimir_polygon.Rmd",
 #           "x_trarotglimir_rainbownet.Rmd")
-# 
 # exams2canvas(pm,
 #              n=n,
 #              dir=outdir,
@@ -16,8 +15,8 @@ outdir = "outcanvas"
 #              template = "canvas_qti12.xml",
 #              cloze = list(enumerate = FALSE))
 
-# # Classwork 1
-pm = list("x_recognize_Frieze_group.Rmd")
+# # # Classwork 1
+pm = list("x_recognize_Frieze_poly.Rmd")
 exams2canvas(pm,
              n=n,
              dir=outdir,

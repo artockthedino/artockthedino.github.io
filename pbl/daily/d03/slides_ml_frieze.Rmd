@@ -3,8 +3,17 @@ title: "Frieze Groups"
 output: slidy_presentation
 ---
 
-# Frieze Patterns:
+# What is a Frieze?
 
+![](frieze_01.jpg){width=100%}
+![](frieze_02.jpg){width=100%}
+![](frieze_03.jpg){width=100%}
+![](frieze_04.jpg){width=100%}
+![](frieze_05.jpg){width=100%}
+![](frieze_06.jpg){width=100%}
+![](frieze_07.jpg){width=100%}
+
+# Frieze Patterns:
 
 * https://eschermath.org/wiki/Frieze_Patterns.html
 * https://maths.nuigalway.ie/~rquinlan/groups/exhibition/burke_hasanik_mcmahon_sweetman.pdf
@@ -12,6 +21,23 @@ output: slidy_presentation
 * https://lindagreen.web.unc.edu/wp-content/uploads/sites/5262/2020/12/Section15_ClassifyingFriezePatterns.pdf
 * https://www.craftsmanspace.com/free-patterns/collection-of-indian-frieze-patterns.html
 * https://www.youtube.com/watch?v=0mXz-NP-raY
+
+# There are 7 types of Frieze patterns
+
+1. All translations (p1, hop)\
+![](01_p1.png){width=100%}
+2. All glides (p11g, step)\
+![](02_p11g.png){width=100%}
+3. All mirrors (p1m1, sidle)\
+![](03_p1m1.png){width=100%}
+4. All 180° rotations (p2, spinning hop)\
+![](04_p2.png){width=100%}
+5. Mirror and glide, alternating (p2mg, spinning sidle)
+![](05_p2mg.png){width=100%}
+6. Mirror over the horizontal line, and translation sideways (p11m, jump)
+![](06_p11m.png){width=100%}
+7. Mirror over the horizontal line, and mirrors sideways (p2mm, spinning jump)
+![](07_p2mm.png){width=100%}
 
 
 # Frieze Examples:
@@ -145,28 +171,33 @@ mirror = function(dots,xr){
 }
 
 drawdots = function(dots,fg,val=1){
+    polygon(dots$x,dots$y,col="lightgrey",fillOddEven = T,border="darkgrey")
     points(dots$x,dots$y,col=hsv(dots$h,1,val),pch=dots$p)
     if(fg==1){
         for(i in 1:5){
             dots = translate(dots,1)
+            polygon(dots$x,dots$y,col="lightgrey",fillOddEven = T,border="darkgrey")
             points(dots$x,dots$y,col=hsv(dots$h,1,val),pch=dots$p)
         }
     }
     if(fg==2){
         for(i in 1:5){
             dots = glide(dots,1)
+            polygon(dots$x,dots$y,col="lightgrey",fillOddEven = T,border="darkgrey")
             points(dots$x,dots$y,col=hsv(dots$h,1,val),pch=dots$p)
         }
     }
     if(fg==3){
         for(i in 1:5){
             dots = mirror(dots,i)
+            polygon(dots$x,dots$y,col="lightgrey",fillOddEven = T,border="darkgrey")
             points(dots$x,dots$y,col=hsv(dots$h,1,val),pch=dots$p)
         }
     }
     if(fg==4){
         for(i in 1:5){
             dots = rotate(dots,i)
+            polygon(dots$x,dots$y,col="lightgrey",fillOddEven = T,border="darkgrey")
             points(dots$x,dots$y,col=hsv(dots$h,1,val),pch=dots$p)
         }
     }
@@ -177,18 +208,21 @@ drawdots = function(dots,fg,val=1){
             } else {
                 dots = rotate(dots,i)
             }
+            polygon(dots$x,dots$y,col="lightgrey",fillOddEven = T,border="darkgrey")
             points(dots$x,dots$y,col=hsv(dots$h,1,val),pch=dots$p)
         }
     }
     if(fg==6){
         for(i in 1:5){
             dots = translate(dots,1)
+            polygon(dots$x,dots$y,col="lightgrey",fillOddEven = T,border="darkgrey")
             points(dots$x,dots$y,col=hsv(dots$h,1,val),pch=dots$p)
         }
     }
     if(fg==7){
         for(i in 1:5){
             dots = mirror(dots,i)
+            polygon(dots$x,dots$y,col="lightgrey",fillOddEven = T,border="darkgrey")
             points(dots$x,dots$y,col=hsv(dots$h,1,val),pch=dots$p)
         }
     }
