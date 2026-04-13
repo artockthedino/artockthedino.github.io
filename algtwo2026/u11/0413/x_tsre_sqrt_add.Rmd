@@ -1,0 +1,64 @@
+```{r,echo=FALSE}
+# sqrt(x)+a = b
+while(T){
+    a = sample(1:15,1)*1 #sample(c(-1,1),1)
+    b = sample(1:15,1)*sample(c(-1,1),1)
+    if((b-a)>1 && (b-a)<13){
+        break
+        }
+}
+eq = paste0("\\sqrt{x}+",a,"=",b)
+eq = gsub("+-","-",eq,fixed=T)
+x = (b-a)^2
+
+if(a>0){
+    wrd = paste0("Subtract ",abs(a)," from both sides.")
+} else {
+    wrd = paste0("Add ",abs(a)," to both sides.")
+}
+
+eq2 = paste0("\\sqrt{x}=",b-a)
+
+
+eq3 = paste0("\\sqrt{",x,"}+",a,"\\stackrel{?}{=}",b)
+eq3 = gsub("+-","-",eq3,fixed=T)
+
+
+eq4 = paste0(round(sqrt(x)),"+",a,"\\stackrel{?}{=}",b)
+eq4 = gsub("+-","-",eq4,fixed=T)
+
+```
+
+Question
+========
+
+Solve.
+
+$$`r eq`$$
+
+Solution
+========
+
+
+`r wrd`
+
+$$`r eq2`$$
+
+Square both sides.
+
+$$x=`r x`$$
+
+Check the solution in the original equation.
+
+$$`r eq3`$$
+
+$$`r eq4`$$
+
+Yup, that is true. So $x=`r x`$ is a solution to the given equation.
+
+
+Meta-information
+============
+extype: num
+exsolution: `r x`
+exname: tsre_sqrt_add

@@ -6,7 +6,7 @@ with open("//Users/chad.worley@bartcharter.org/Documents/canvasAPItests/acctok.t
 
 # Variables
 course_id = '2110'
-file_path_list = ["outcanvas/a0410_ET.zip"]
+file_path_list = ["outcanvas/a0413_ET.zip","outcanvas/a0413_base_conversion.zip"]
 
 ######## FOR UPLOADING ETS
 # fpl = []

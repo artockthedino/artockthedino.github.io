@@ -356,7 +356,8 @@ display: none;
 <h1>Question</h1>
 <p>Let <span class="math inline">\(f\)</span> be a function. Consider
 the curve defined by the following equation:</p>
-<p><span class="math display">\[y=9\cdot\left(f{\left[\frac{x}{4}-2\right]}-6\right)\]</span></p>
+<p><span class="math display">\[y=4\cdot
+f{\left[\frac{x}{3}+7\right]}-8\]</span></p>
 <p>That curve can be interpreted as a transformation of the parent curve
 <span class="math inline">\(b=f[a]\)</span>. What transformations,
 <strong>and in what order</strong>, would produce the daughter curve
@@ -386,34 +387,34 @@ from the parent curve?</p>
 <li>shift right by distance</li>
 <li>stretch by factor</li>
 <li>shrink by factor</li>
-<li>2</li>
+<li>3</li>
 <li>4</li>
-<li>6</li>
-<li>9</li>
+<li>7</li>
+<li>8</li>
 <li>shift left by distance</li>
 <li>shift right by distance</li>
 <li>stretch by factor</li>
 <li>shrink by factor</li>
-<li>2</li>
+<li>3</li>
 <li>4</li>
-<li>6</li>
-<li>9</li>
+<li>7</li>
+<li>8</li>
 <li>shift up by distance</li>
 <li>shift down by distance</li>
 <li>stretch by factor</li>
 <li>shrink by factor</li>
-<li>2</li>
+<li>3</li>
 <li>4</li>
-<li>6</li>
-<li>9</li>
+<li>7</li>
+<li>8</li>
 <li>shift up by distance</li>
 <li>shift down by distance</li>
 <li>stretch by factor</li>
 <li>shrink by factor</li>
-<li>2</li>
+<li>3</li>
 <li>4</li>
-<li>6</li>
-<li>9</li>
+<li>7</li>
+<li>8</li>
 </ul>
 </div>
 </div>
@@ -423,30 +424,39 @@ from the parent curve?</p>
 <ul>
 <li>Horizontal transformations:
 <ul>
-<li>shift right by distance 2</li>
-<li>stretch by factor 4</li>
+<li>shift left by distance 7</li>
+<li>stretch by factor 3</li>
 </ul></li>
 <li>Vertical transformations:
 <ul>
-<li>shift down by distance 6</li>
-<li>stretch by factor 9</li>
+<li>stretch by factor 4</li>
+<li>shift down by distance 8</li>
 </ul></li>
 </ul>
-<p>It is easiest to see this by following our strategy. Start by writing
-down the given equation.</p>
-<p><span class="math display">\[y=9\cdot\left(f{\left[\frac{x}{4}-2\right]}-6\right)\]</span></p>
+<p>The horizontal transformations are determined by the operations
+inside the argument of the function. The vertical transformations are
+determined by the operations outside the function.</p>
+<p>Notice, the horizontal transformations are kind of “backwards” in
+order and effect from what you’d expect based on PEMDAS. The vertical
+transformations are intuitive.</p>
+<p>It is easiest to see why by setting the arguent equal to <span class="math inline">\(a\)</span>. Start by writing down the given
+equation.</p>
+<p><span class="math display">\[y=4\cdot
+f{\left[\frac{x}{3}+7\right]}-8\]</span></p>
 <p>Set the argument equal to <span class="math inline">\(a\)</span>.</p>
-<p><span class="math display">\[\frac{x}{4}-2=a\]</span></p>
+<p><span class="math display">\[\frac{x}{3}+7=a\]</span></p>
 <p>Solve the <a href="https://chadworley.github.io/algtwo2026/u02/10_09/outhtml/EZ_two-step_equations.html">two-step
 equation</a>.</p>
-<p><span class="math display">\[x=4\left(a+2\right)\]</span></p>
-<p>Because <span class="math inline">\(\frac{x}{4}-2\)</span> equals
+<p><span class="math display">\[x=3\left(a-7\right)\]</span></p>
+<p>Because <span class="math inline">\(\frac{x}{3}+7\)</span> equals
 <span class="math inline">\(a\)</span>, we can substitute <span class="math inline">\(a\)</span> for the argument in our equation.</p>
-<p><span class="math display">\[y=9\cdot\left(f{\left[a\right]}-6\right)\]</span></p>
+<p><span class="math display">\[y=4\cdot
+f{\left[a\right]}-8\]</span></p>
 <p>Because <span class="math inline">\(f(a)\)</span> equals <span class="math inline">\(b\)</span>, we can substitute <span class="math inline">\(b\)</span> for <span class="math inline">\(f(a)\)</span>.</p>
-<p><span class="math display">\[y=9\cdot\left(b-6\right)\]</span></p>
+<p><span class="math display">\[y=4\cdot b-8\]</span></p>
 <p>Write the coordinate transformation (from the <span class="math inline">\(x=\)</span> formula and the <span class="math inline">\(y=\)</span> formula):</p>
-<p><span class="math display">\[(a,b)\to\left(4\left(a+2\right)~,~9\cdot\left(b-6\right)\right)\]</span></p>
+<p><span class="math display">\[(a,b)\to\left(3\left(a-7\right)~,~4\cdot
+b-8\right)\]</span></p>
 <p>Once the function transformations are expressed as a coordinate
 transformation, we can just follow the order of operations (PEMDAS), and
 the operations are all intuitive. Multiplication (by number more than 1)
@@ -455,13 +465,13 @@ shifts. So, again, the correct answers are:</p>
 <ul>
 <li>Horizontal transformations:
 <ul>
-<li>shift right by distance 2</li>
-<li>stretch by factor 4</li>
+<li>shift left by distance 7</li>
+<li>stretch by factor 3</li>
 </ul></li>
 <li>Vertical transformations:
 <ul>
-<li>shift down by distance 6</li>
-<li>stretch by factor 9</li>
+<li>stretch by factor 4</li>
+<li>shift down by distance 8</li>
 </ul></li>
 </ul>
 </div>
@@ -469,7 +479,7 @@ shifts. So, again, the correct answers are:</p>
 <h1>Meta-information</h1>
 <p>extype: cloze exclozetype:
 schoice|schoice|schoice|schoice|schoice|schoice|schoice|schoice
-exsolution: 0100|1000|0010|0100|0100|0010|0010|0001 exname:
+exsolution: 1000|0010|0010|1000|0010|0100|0100|0001 exname:
 transforms_from_feq</p>
 </div>
 
