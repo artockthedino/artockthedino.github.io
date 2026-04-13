@@ -1,0 +1,147 @@
+```{r,echo=FALSE}
+options(scipen=99)
+b = 6
+while(T){
+    ndigs = sample(6:7,1)
+    digits = c(sample(1:(b-1),1),sample(0:(b-1),ndigs-1,T))
+    if(length(unique(digits))==b){break}
+}
+tot = 0
+for(i in 1:ndigs){
+    tot = tot + digits[i]*b^(ndigs-i)
+}
+
+aldig = function(x=0,y=0,n=0,r=0.4,lwd=2){
+    # nnn = c("☀","★","☆","☇","☈","☉","☊","☋","☌","☍","☎","☏")
+    # text(x,y,n,cex=r*2)
+    # lines(c(x-r,x-r,x+r),c(y+r,y-r,y-r),lwd=2)
+    th = seq(0,2*pi,pi/1000)
+    if(n>1){
+        RR = cos(n*th/2)^2*r
+        lines(x+RR*sin(th),y+RR*cos(th),lwd=lwd)
+    }
+    if(n==0){
+        lines(x+cos(th)*r/10,y+sin(th)*r/10,lwd=lwd)
+    }
+    if(n==1){
+        # polygon(c(x,x+r,x,x-r),c(y-r,y,y+r,y),lwd=lwd)
+        lines(x+r*sin(th)/2,y+r*cos(th),lwd=lwd)
+    }
+}
+
+aln = function(xlc=0,ylc=0,digs=c(2,1,0),r=0.4,lwd=2,deltax=1){
+    for(i in 1:length(digs)){
+        aldig(xlc+deltax*(i-1),ylc,digs[i],r=r,lwd=lwd)
+    }
+}
+
+zaln = function(xlc=0,ylc=0,digs=c(2,1,0),r=0.4,lwd=2,deltax=1,nd=6){
+    nlz = max(c(nd-length(digs),0))
+    ddd = c(rep(0,nlz),digs)
+    for(i in 1:length(ddd)){
+        aldig(xlc+deltax*(i-1),ylc,ddd[i],r=r,lwd=lwd)
+    }
+}
+
+adig = function(n,b){
+    if(n>0){
+        greatest_pow = floor(log(n)/log(b))
+    } else {
+        return(0)
+    }
+    tot = n
+    digs = numeric()
+    for(i in greatest_pow:0){
+        dig = tot %/% (b^i)
+        digs = c(digs,dig)
+        tot = tot-dig*b^i
+    }
+    return(digs)
+}
+
+
+```
+
+Question
+========
+
+An alien society uses a [base-`r b` number system](https://en.wikipedia.org/wiki/Radix). Just like (most?) humans, they put the least significant digit on the right and most significant digit on the left. Below shows the equivalence between the alien numerical system and our [decimal numeral system](https://en.wikipedia.org/wiki/Decimal) for a few numbers.
+
+```{r,echo=F,fig.dim=c(4,4)}
+
+par(mar=c(0,0,0,0))
+plot(0,0,"n",axes=F,ann=F,xlim=c(0,20),ylim=c(0,20))
+ccen = c(2,9,16)
+for(i in 0:29){
+    col = i%/%10
+    row = i%%10
+    # dd = adig(i,b)
+    text(ccen[col+1],20-row*2-1,"=")
+    text(ccen[col+1]-1,20-row*2-1,i,adj=1)
+    dd = adig(i,b)
+    aln(ccen[col+1]+1,20-row*2-1,dd)
+}
+
+```
+\
+
+When the aliens invented [mechanical counters](https://en.wikipedia.org/wiki/Mechanical_counter), each disk had `r b` markings. I think it can help to visualize the animated mechanical counter: 
+
+```{r,echo=F,fig.show='animate',animation.hook='gifski',fig.dim=c(3,0.5)}
+par(mar=c(0,0,0,0))
+
+for(i in 0:100){
+    plot(0,0,"n",axes=F,ann=F,xlim=c(0,12),ylim=c(0,2))
+    text(2.5,1.5,"human")
+    thos = i %/% 1000
+    huns = (i-thos*1000) %/% 100
+    tens = (i-thos*1000-huns*100) %/% 10
+    ones = i-thos*1000-huns*100-tens*10
+    text(1,0.5,thos)
+    text(2,0.5,huns)
+    text(3,0.5,tens)
+    text(4,0.5,ones)
+    polygon(c(0.5,4.5,4.5,0.5),c(0,0,1,1))
+    dd = adig(i,b)
+    text(9,1.5,"alien")
+    zaln(7,0.5,dd,r=0.4,nd = 4)
+}
+
+
+
+
+```
+\
+
+As an alien-human translator, you run into this alien number:
+
+```{r,echo=F,fig.dim=c(4.5,0.5)}
+par(mar=c(0,0,0,0))
+plot(0,0,"n",axes=F,ann=F,xlim=c(0,9),ylim=c(0,1))
+for(i in 1:ndigs){
+    aln(i,0.5,digits[i],r=0.4,lwd=4)
+}
+
+```
+\
+
+What number is represented (expressed in our base-10 human way)?
+
+
+Solution
+========
+
+Each symbol represents a number between 0 and `r b-1`. Each position represents a power of `r b`. The total value is found by adding up the products of each symbol's value times its corresponding power of `r b`.
+
+$$`r paste0(digits,"\\cdot ",b,"^{",(ndigs-1):0,"}",collapse="+")`$$
+
+You should get the answer:
+
+$$`r tot`$$
+
+
+Meta-information
+============
+extype: num
+exsolution: `r tot`
+exname: x_alien_base_5

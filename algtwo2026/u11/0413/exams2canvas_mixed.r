@@ -24,26 +24,26 @@ outdir = "outcanvas"
 #              template = "canvas_qti12.xml",
 #              cloze = list(enumerate = FALSE))
 
-pm = c("x_alien_base_3.Rmd",
-       "x_alien_base_4.Rmd",
-       "x_alien_base_5.Rmd",
-       "x_alien_base_6.Rmd",
-       "x_alien_base_12.Rmd")
+# pm = c("x_alien_base_3.Rmd",
+#        "x_alien_base_4.Rmd",
+#        "x_alien_base_5.Rmd",
+#        "x_alien_base_6.Rmd",
+#        "x_alien_base_12_B.Rmd")
+# exams2canvas(pm,
+#              n=n,
+#              dir=outdir,
+#              points=rep(3,length(pm)),
+#              maxattempts = 5,
+#              name="a0413_base_conversion",
+#              template = "canvas_qti12.xml",
+#              cloze = list(enumerate = FALSE))
+
+pm = c("x_alien_base_12_B.Rmd")
 exams2canvas(pm,
              n=n,
              dir=outdir,
              points=rep(3,length(pm)),
              maxattempts = 5,
-             name="a0413_base_conversion",
+             name="a0413_fixit",
              template = "canvas_qti12.xml",
              cloze = list(enumerate = FALSE))
-
-# pm = rep("x_poly_sketch_dubs.Rmd",5)
-# exams2canvas(pm,
-#              n=n,
-#              dir=outdir,
-#              points=rep(1,length(pm)),
-#              maxattempts = 6,
-#              name="a0330_poly_sketch_multiplicity",
-#              template = "canvas_qti12.xml",
-#              cloze = list(enumerate = FALSE))

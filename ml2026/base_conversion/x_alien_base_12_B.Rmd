@@ -1,0 +1,164 @@
+```{r,echo=FALSE}
+options(scipen=99)
+b = 12
+while(T){
+    ndigs = sample(4:5,1)
+    digits = c(sample(1:(b-1),1),sample(0:(b-1),ndigs-1,T))
+    if(length(unique(digits))==ndigs){break}
+}
+tot = 0
+for(i in 1:ndigs){
+    tot = tot + digits[i]*b^(ndigs-i)
+}
+
+aldig = function(x=0,y=0,n=0,r=0.4,lwd=2,cex=0.7){
+    th = seq(0,2*pi,pi/1000)
+    # polygon(x+r*cos(th),y+r*sin(th),lwd=lwd)
+    p1 = c(x-r,y+r)
+    p2 = c(x,y+r)
+    p3 = c(x+r,y+r)
+    p4 = c(x-r,y)
+    p5 = c(x,y)
+    p6 = c(x+r,y)
+    p7 = c(x-r,y-r)
+    p8 = c(x,y-r)
+    p9 = c(x+r,y-r)
+    ps = list(p1,p2,p3,p4,p5,p6,p7,p8,p9)
+    # points(c(x-r,x+r,x+r,x-r),c(y-r,y-r,y+r,y+r),pch=20,cex=cex)
+    connects = list(c(1,3,9,7,1),
+                    c(1,2,8,7,9),
+                    c(1,3,7,9),
+                    c(1,3,6,4,6,9,7),
+                    c(1,4,6,3,9),
+                    c(3,1,4,6,9,7),
+                    c(3,1,7,9,6,4),
+                    c(1,3,7),
+                    c(1,3,9,7,1,4,6),
+                    c(6,4,1,3,9),
+                    c(1,9,5,7,3),
+                    c(3,1,6,7,9))
+    xx = numeric()
+    yy = numeric()
+    for(i in 1:length(connects[[n+1]])){
+        xx = c(xx,ps[[connects[[n+1]][i]]][1])
+        yy = c(yy,ps[[connects[[n+1]][i]]][2])
+    }
+    lines(xx,yy,lwd=lwd)
+}
+
+aln = function(xlc=0,ylc=0,digs=c(2,1,0),r=0.4,lwd=2,deltax=1,cex=0.7){
+    for(i in 1:length(digs)){
+        aldig(xlc+deltax*(i-1),ylc,digs[i],r=r,lwd=lwd,cex=cex)
+    }
+}
+
+zaln = function(xlc=0,ylc=0,digs=c(2,1,0),r=0.4,lwd=2,deltax=1,nd=6){
+    nlz = max(c(nd-length(digs),0))
+    ddd = c(rep(0,nlz),digs)
+    for(i in 1:length(ddd)){
+        aldig(xlc+deltax*(i-1),ylc,ddd[i],r=r,lwd=lwd)
+    }
+}
+
+adig = function(n,b){
+    if(n>0){
+        greatest_pow = floor(log(n)/log(b))
+    } else {
+        return(0)
+    }
+    tot = n
+    digs = numeric()
+    for(i in greatest_pow:0){
+        dig = tot %/% (b^i)
+        digs = c(digs,dig)
+        tot = tot-dig*b^i
+    }
+    return(digs)
+}
+
+
+```
+
+Question
+========
+
+Consider the base-12 number system from [Schoolhouse Rock's Little Twelvetoes](https://www.youtube.com/watch?v=pqGyUvZP0Zg).
+
+```{r,echo=F,fig.dim=c(4,4)}
+
+par(mar=c(0,0,0,0))
+plot(0,0,"n",axes=F,ann=F,xlim=c(0,20),ylim=c(0,20))
+ccen = c(2,9,16)
+for(i in 0:29){
+    col = i%/%10
+    row = i%%10
+    # dd = adig(i,b)
+    text(ccen[col+1],20-row*2-1,"=")
+    text(ccen[col+1]-1,20-row*2-1,i,adj=1)
+    dd = adig(i,b)
+    aln(ccen[col+1]+1,20-row*2-1,dd,r=0.3)
+}
+
+```
+\
+
+When the twelve-toed aliens invented [mechanical counters](https://en.wikipedia.org/wiki/Mechanical_counter), each disk had `r b` markings. I think it can help to visualize the animated mechanical counter: 
+
+```{r,echo=F,fig.show='animate',animation.hook='gifski',fig.dim=c(3,0.5)}
+par(mar=c(0,0,0,0))
+
+for(i in 0:100){
+    plot(0,0,"n",axes=F,ann=F,xlim=c(0,12),ylim=c(0,2))
+    text(2.5,1.5,"human")
+    thos = i %/% 1000
+    huns = (i-thos*1000) %/% 100
+    tens = (i-thos*1000-huns*100) %/% 10
+    ones = i-thos*1000-huns*100-tens*10
+    text(1,0.5,thos)
+    text(2,0.5,huns)
+    text(3,0.5,tens)
+    text(4,0.5,ones)
+    polygon(c(0.5,4.5,4.5,0.5),c(0,0,1,1))
+    dd = adig(i,b)
+    text(9,1.5,"alien")
+    zaln(7,0.5,dd,r=0.3,nd = 4)
+}
+
+
+
+
+```
+\
+
+As an alien-human translator, you run into this alien number:
+
+```{r,echo=F,fig.dim=c(4.5,0.5)}
+par(mar=c(0,0,0,0))
+plot(0,0,"n",axes=F,ann=F,xlim=c(0,9),ylim=c(0,1))
+for(i in 1:ndigs){
+    aln(i,0.5,digits[i],r=0.3,lwd=4,cex=1.2)
+}
+
+```
+\
+
+What number is represented (expressed in our base-10 human way)?
+
+
+Solution
+========
+
+Each symbol represents a number between 0 and `r b-1`. Each position represents a power of `r b`. The total value is found by adding up the products of each symbol's value times its corresponding power of `r b`.
+
+$$`r paste0(digits,"\\cdot ",b,"^{",(ndigs-1):0,"}",collapse="+")`$$
+
+You should get the answer:
+
+$$`r tot`$$
+
+
+Meta-information
+============
+extype: num
+exsolution: `r tot`
+exname: x_alien_base_5

@@ -1,0 +1,40 @@
+```{r data generation, echo = FALSE, results = "hide"}
+options(scipen=99)
+ndig = sample(4:5,1)
+digs = sample(1:9,ndig)
+
+tot = sum(digs*10^((ndig-1):0))
+ss = paste0(digs,"\\cdot 10^{",(ndig-1):0,"}",collapse="+")
+
+ss2 = paste0(digs,"\\cdot ",10^((ndig-1):0),collapse="+")
+ss3 = paste0(digs*10^((ndig-1):0),collapse="+")
+
+```
+
+Question
+========
+
+Evaluate the expression below.
+
+$$`r ss`$$
+
+
+Solution
+========
+
+This is easier than it looks.
+
+$$`r ss`$$
+
+$$`r ss2`$$
+
+$$`r ss3`$$
+
+$$`r tot`$$
+
+
+Meta-information
+============
+extype: num
+exsolution: `r tot`
+exname: exp_form_to_normal
