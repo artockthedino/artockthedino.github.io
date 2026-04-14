@@ -1,0 +1,64 @@
+```{r,echo=FALSE}
+n = sample(100:800,1)
+b = sample(c(4,5,6,7,8),1)
+
+chars = character()
+rems = numeric()
+
+quot = n %/% b
+rem = n-quot*b
+rems = c(rems,rem)
+while(quot != 0){
+    quot2 = quot
+    quot = quot %/% b
+    rem = quot2-quot*b
+    rems = c(rem,rems)
+}
+cc = c("0",LETTERS[1:(b-1)])
+
+ans = paste0(cc[rems+1],collapse="")
+
+```
+
+Question
+========
+
+Consider an alien society that uses base-`r b` number system with the following symbols:
+
+| Human number | Alien numeral |
+|:---:|:---:|
+| 0  |   0 |
+`r paste0("| ",1:(b-1)," | ",LETTERS[1:(b-1)]," |",collapse="\n")`
+
+Notice, the alien 0 is the same as our 0, but then they use uppercase letters in the order of our alphabet instead of Arabic numerals.
+
+A human wants to convert the number `r n` to Alien. Do this for them.
+
+Solution
+========
+
+
+```{r,echo=F,results='asis'}
+q = n
+while(q != 0){
+    q2 = q
+    q = q%/%b
+    rr = q2-q*b
+    cat(paste0("Divide ",q2," by the base ",b," to get a quotient and remainder.\n$$\\frac{",q2,"}{",b,"}~=~",q,"+\\frac{",rr,"}{",b,"}$$\n\n(The quotient was ",q," and the remainder was ",rr,".)\n\n"))
+}
+```
+
+Now, write down the remainders in reverse order.
+
+$$\text{remainders}~=~`r rems`$$
+
+And, lastly, use the table to convert those amounts into alien symbols.
+
+The answer: ``r ans``
+
+
+Meta-information
+============
+extype: string
+exsolution: `r ans`
+exname: x_base_10_to_alph

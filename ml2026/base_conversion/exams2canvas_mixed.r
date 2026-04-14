@@ -1,5 +1,5 @@
 library("exams")
-n = 15
+n = 50
 outdir = "outcanvas"
 
 ### Entrance ticket
@@ -14,17 +14,15 @@ outdir = "outcanvas"
 #              template = "canvas_qti12.xml",
 #              cloze = list(enumerate = FALSE))
 
-pm = list("x_alien_base_3.Rmd",
-          "x_alien_base_4.Rmd",
-          "x_alien_base_5.Rmd",
-          "x_alien_base_6.Rmd",
-          "x_alien_base_12_B.Rmd")
+pm = list("x_base_10_to_alph.Rmd",
+          "x_base_10_to_alph.Rmd",
+          "x_base_10_to_alph.Rmd")
 exams2canvas(pm,
              n=n,
              dir=outdir,
-             points=rep(2,length(pm)),
+             points=rep(3,length(pm)),
              maxattempts = 5,
-             name="m0413_base_conversion",
+             name="m0414_base10_to_other",
              template = "canvas_qti12.xml",
              cloze = list(enumerate = FALSE))
 
