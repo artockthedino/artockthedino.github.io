@@ -1,0 +1,18 @@
+---
+title: "examples_0415"
+output: exams2forms::webquiz
+---
+
+```{r exams2forms-setup, include = FALSE}
+## package and exercises
+library("exams2forms")
+exm <- list("x_pyth_thrm_get_hyp.Rmd", "x_pyth_thrm_get_side.Rmd", "x_tri_area.Rmd", 
+    "01_distance_formula.Rmd", "02_points_within_distance.Rmd", 
+    "03_points_in_overlap.Rmd", "04_trilateration.Rmd", "07_three_dim_dist.Rmd", 
+    "17_circ_params_from_graph.Rmd", "18_circ_params_from_eq.Rmd", 
+    "19_circ_by_compltng_sqr.Rmd")
+```
+
+```{r exams2forms-include, echo = FALSE, message = FALSE, results="asis"}
+exams2forms(exm,  n = 10, nsamp = NULL)
+```

@@ -15,35 +15,254 @@ if(params$rseed !=0){
 knitr::opts_chunk$set(echo = FALSE)
 bn <- basename(knitr::current_input())
 bn = strsplit(bn,".",fixed=T)[[1]][1]
+
+qqq = 0
+qn = function(){
+    qqq <<- qqq+1
+    return(qqq)
+}
+
 ```
 
 Name: \vspace{5pt} \hrule
 
 # `r bn` (v`r params$rseed`)
 
-```{r}
-gcd2 <- function(a, b) {
-  if (b == 0) a else Recall(b, a %% b)
+## Question `r qn()`
+
+Solve the linear equation. $$5=\frac{x}{3}-2$$
+
+a. $x=13$
+b. $x=17$
+c. $x=19$
+d. $x=21$
+
+\vfill 
+
+## Question `r qn()`
+
+Solve the radical equation. $$8=17-\sqrt{3x}$$
+
+a. $x=3$
+b. $x=9$
+c. $x=27$
+d. $x=81$
+
+\vfill 
+
+
+## Question `r qn()`
+
+Find both solutions to the quadratic equation.
+$$(2x-3)(5x+7)=0$$
+
+a. $x=\frac{3}{2}$ and $x=\frac{-7}{5}$
+b. $x=\frac{-3}{2}$ and $x=\frac{7}{5}$
+c. $x=\frac{2}{3}$ and $x=\frac{-5}{7}$
+d. $x=\frac{-2}{3}$ and $x=\frac{5}{7}$
+
+\vfill 
+
+\newpage
+
+
+## Question `r qn()`
+
+Factor the quadratic expression $x^2+3x-4$.
+
+a. $(x+4)(x-1)$
+b. $(x-3)(x-1)$
+c. $(x+2)(x-2)$
+d. $(x-2)(x-2)$
+
+\vfill 
+
+## Question `r qn()`
+
+<!-- (2x+3)(3x-4) = 6x^2-8x+9x-12 -->
+
+Factor the quadratic expression $6x^2+x-12$.
+
+a. $(6x+1)(x-12)$
+b. $(6x-1)(x+12)$
+c. $(3x+4)(2x-3)$
+d. $(3x-4)(2x+2)$
+
+\vfill
+
+## Question `r qn()`
+
+<!-- (x+1)(x+2) -->
+
+Expand the quadratic expression $(x+1)(x+2)$
+
+a. $x^2+2$
+b. $2x+3$
+c. $x^2+x+3$
+d. $x^2+3x+2$
+
+\vfill
+
+## Question `r qn()`
+
+Find both solutions to the quadratic equation.
+$$0=x^2-8x+28$$
+
+a. $x=4\pm2i\sqrt{3}$
+b. $x=4\pm3i\sqrt{2}$
+c. $x=4\pm4i\sqrt{11}$
+d. $x=4\pm11i\sqrt{4}$
+
+\vfill
+
+\newpage
+
+On this page, all questions refer to the figure below.
+
+```{r,echo=F,fig.dim=c(3,3)}
+# -sqrt(x+6)+5
+# y = 1/2(x+5)+4
+xr = seq(-6,10,0.001)
+yr = -sqrt(xr+6)+5
+xl = seq(-10,10,0.1)
+yl = 1/2*(xl+5)+4
+xl = xl[yl<=10]
+yl = yl[yl<=10]
+
+par(pty="s",mar=c(0,0,0,0))
+plot(0,0,"n",xlim=c(-10,10),ylim=c(-10,10),ann=F,axes=F)
+for(i in -10:10){
+    lines(c(i,i),c(-10,10),col="grey",lwd=0.5)
+    lines(c(-10,10),c(i,i),col="grey",lwd=0.5)
 }
-gcd <- function(...) Reduce(gcd2, c(...))
+for(i in seq(-10,10,5)){
+    lines(c(i,i),c(-10,10),col="darkgrey",lwd=1)
+    lines(c(-10,10),c(i,i),col="darkgrey",lwd=1)
+}
+abline(h=0,lwd=2)
+abline(v=0,lwd=2)
+text(10,0,"x",adj=c(-0.2,-0.2))
+text(0,10,"y",adj=c(-0.2,-0.2))
+text(10,0,"10",adj=c(0.5,1.2),cex=0.7)
+text(0,10,"10",adj=c(1.1,0.5),cex=0.7)
+
+lines(xr,yr,col="red",lwd=2)
+lines(xl,yl,col="blue",lwd=2)
+legend(-9,-5,c("y=f(x)","y=g(x)"),col=c("blue","red"),lwd=c(2,2))
+```
+\
+
+## Question `r qn()`
+
+What is the equation of the line in point-slope form?
+
+a. $f(x)=\frac{1}{2}(x-5)+4$
+b. $f(x)=\frac{1}{2}(x+5)+4$
+c. $f(x)=\frac{1}{2}(x-5)-4$
+d. $f(x)=\frac{1}{2}(x+5)-4$
+
+
+## Question `r qn()`
+
+What is the equation of the radical curve?
+
+a. $g(x)=-\sqrt{x+6}+5$
+b. $g(x)=\sqrt{-(x+6)}+5$
+c. $g(x)=-\sqrt{x-6}+5$
+d. $g(x)=\sqrt{-(x-6)}+5$
+
+## Question `r qn()`
+
+What is the valid solution to $f(x)=g(x)$?
+
+a. $x=-6$
+b. $x=-5$
+c. $x=3$
+d. $x=4$
+
+## Question `r qn()`
+
+What is the extraneous solution to $f(x)=g(x)$?
+
+a. $x=-6$
+b. $x=-5$
+c. $x=3$
+d. $x=4$
+
+\newpage
+
+## Question `r qn()`
+
+Expand the cubed binomial. $$(2x+1)^3$$
+
+a. $8x^3+12x^2+6x+1$
+b. $6x+3$
+c. $8x^3+1$
+d. $8x^3+4x^2+2x+1$
+
+
+## Question `r qn()`
+
+Expand the product. $$(2x^3+x^2+3)(5x^2-3x+1)$$
+
+<!-- (2x^3+x^2+3)(5x^2-3x+1) = 10x^5-x^4-x^3+16x^2-9x+3 -->
+
+a. $2x^3+6x^2-3x+4$
+b. $10x^5-x^4+14x^3-8x^2+3$
+c. $2x^3-6x^2+3x-4$
+d. $10x^5-x^4-x^3+16x^2-9x+3$
+
+
+## Question `r qn()`
+
+Find the equivalent expression. $$\frac{3x^4-8x^3+6x+6}{x-2}$$
+
+a. $3x^3-2x^2+x+8$
+b. $3x^3-2x^2-4x-3-\frac{5}{x-2}$
+c. $3x^3-14x-9-\frac{7}{x-2}$
+d. $3x^3+2x-x-8$
+
+
+## Question `r qn()`
+
+If $f(x)$ is a polynomial such that $f(4)=0$, then we know:
+
+a. The $y$ intercept is at $(0,-4)$.
+a. The $y$ intercept is at $(0,4)$.
+c. The remainder of $\frac{f(x)}{x-4}$ is 0.
+d. The remainder of $\frac{f(x)}{x+4}$ is 0.
+
+## Question `r qn()`
+
+Consider the polynomial function $f(x)=10x^8-3x^4+5x^3-8x-10$. Where is the $y$ intercept?
+
+a. $(-10,0)$
+b. $(0,-10)$
+c. $(10,0)$
+d. $(0,10)$
+
+\newpage
+
+## Question `r qn()`
+
+Factor the cubic polynomial.
+$$x^3-5x^2-2x+24$$
+
+a. $(x-2)(x-3)(x+4)$
+b. $(x-2)(x+3)(x-4)$
+c. $(x+2)(x-3)(x-4)$
+d. $(x-2)(x-3)(x-4)$
+
+
+## Question `r qn()`
+
+Which polynomial matches the sketch below?
+
+```{r,echo=F,fig.dim=c(6,2)}
+# -(x+4)()
+
 ```
 
-## Factor from solution
-
-```{r,echo=F}
-rat_pairs = list(c(2,3),c(2,5),c(2,7),c(2,9),
-                 c(3,2),c(3,4),c(3,5),c(3,7),c(3,8),
-                 c(4,3),c(4,5),c(4,7),c(4,9),
-                 c(5,2),c(5,3),c(5,4),c(5,6),c(5,7),c(5,8),c(5,9),
-                 c(6,5),c(6,7),
-                 c(7,2),c(7,3),c(7,4),c(7,5),c(7,6),c(7,8),c(7,9),
-                 c(8,3),c(8,5),c(8,7),c(8,9),
-                 c(9,2),c(9,4),c(9,5),c(9,7),c(9,8))
-rpi = sample(1:length(rat_pairs),1)
-rp = rat_pairs[[i]]
-
-
-```
 
 
 

@@ -1,0 +1,68 @@
+```{r,echo=FALSE}
+w = sample(3:8,1)
+h = sample(3:8,1)
+
+xpos = sample(1:(w-1),1)
+
+A = w*h/2
+
+```
+
+Question
+========
+
+A triangle has vertices at $(0,0)$ and $(`r w`,0)$ and $(`r xpos`,`r h`)$. Find the area (in square units).
+
+```{r,echo=F,fig.dim=c(4,4)}
+par(mar=c(0,0,0,0))
+plot(0,0,"n",xlim=c(0,10),ylim=c(0,10),axes=F,ann=F)
+for(i in 1:10){
+    lines(c(i,i),c(0,10),col="grey",lwd=0.8)
+    lines(c(0,10),c(i,i),col="grey",lwd=0.8)
+}
+for(i in c(5,10)){
+    lines(c(i,i),c(0,10),col="darkgrey",lwd=1.2)
+    lines(c(0,10),c(i,i),col="darkgrey",lwd=1.2)
+}
+abline(h=0)
+abline(v=0)
+polygon(c(0,w,xpos),c(0,0,h),col=rgb(1,0,0,0.2),border="red")
+```
+\
+
+Solution
+========
+
+The area of a triangle is half the base times the height.
+
+$$A=\frac{`r w`\cdot `r h`}{2}$$
+
+You should be able to see it is half the area of the surrounding rectangle...
+
+```{r,echo=F,fig.dim=c(4,4)}
+par(mar=c(0,0,0,0))
+plot(0,0,"n",xlim=c(0,10),ylim=c(0,10),axes=F,ann=F)
+for(i in 1:10){
+    lines(c(i,i),c(0,10),col="grey",lwd=0.8)
+    lines(c(0,10),c(i,i),col="grey",lwd=0.8)
+}
+for(i in c(5,10)){
+    lines(c(i,i),c(0,10),col="darkgrey",lwd=1.2)
+    lines(c(0,10),c(i,i),col="darkgrey",lwd=1.2)
+}
+abline(h=0)
+abline(v=0)
+polygon(c(0,0,w,w),c(0,h,h,0),col=rgb(0,0,0,0.1),border="black",lwd=2)
+polygon(c(0,w,xpos),c(0,0,h),col=rgb(1,0,0,0.2),border="red")
+lines(c(xpos,xpos),c(0,h),col="blue")
+```
+\
+
+
+
+Meta-information
+============
+extype: num
+exsolution: `r A`
+exname: tri_area
+extol: 0.1
