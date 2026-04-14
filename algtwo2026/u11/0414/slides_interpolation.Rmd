@@ -1,0 +1,115 @@
+---
+output: slidy_presentation
+---
+
+# Why polynomials?
+
+* They are easy to compute (addition, multiplication, exponentiation)
+* They are easy to differentiate and integrate (calculus)
+* With enough terms, a polynomial can closely approximate any other curve.
+
+
+# Interpolation
+
+* Imagine you collected the following temperature vs time data by measuring the temperature every hour for 12 hours:
+
+```{r,echo=F,fig.dim=c(4,4)}
+set.seed(123)
+x = 0:12
+y = 10*sin((x+3)/12*pi)-x/10+runif(length(x),-3,3)+60
+par(mar=c(5,5,0,0))
+plot(x,y,xlab="Hours after noon",ylab="Temperature (F)",ylim=c(50,80))
+```
+
+Now, someone wants you to estimate what the temperature was at 4:30 PM. You have a few choices for how to approach this.
+
+# Piecewise linear interpolation
+
+* You could connect neighboring points with straight lines. This is a "piecewise function".
+
+
+```{r,echo=F,fig.dim=c(4,4)}
+par(mar=c(5,5,0,0))
+plot(x,y,xlab="Hours after noon",ylab="Temperature (F)",ylim=c(50,80))
+lines(x,y)
+points(4.5,mean(y[5:6]),col="red",pch=19)
+```
+
+* In this case, we are simply finding the average of the temperatures at 4:00 PM and 5:00 PM.
+
+# Lagrange polynomial
+
+* It is possible to force a polynomial through all of those points. Since there are 13 points, it will probably need to be a degree-12 polynomial.
+
+```{r,echo=F,fig.dim=c(4,4)}
+library(polynom)
+par(mar=c(5,5,0,0))
+plot(x,y,xlab="Hours after noon",ylab="Temperature (F)",ylim=c(50,80))
+# lines(x,y)
+# points(4.5,mean(y[5:6]),col="red",pch=19)
+pc = poly.calc(x, y,)
+lines(pc)
+
+points(4.5,predict(pc, 4.5),col="red",pch=19)
+
+```
+
+```{r,results="asis",echo=F}
+options(scipen=99)
+cat(paste0(pc))
+```
+
+
+Notice this "blows up" a bit. In science, we would call this **overfitting**. Typically, we wish to smooth out the data, because the data come with noise.
+
+
+# Regression
+
+Instead of using a 12-degree polynomial that hits all points exactly, we can use a lower-degree polynomial that gets close to the points.
+
+Technically (almost always) we minimize the sum of the squared residuals (the vertical distance from point to curve).
+
+Typically, one starts with linear regression, and adds higher degrees until no benefit of extra terms.
+
+* Linear regression
+
+```{r,echo=F,fig.dim=c(4,4)}
+library(polynom)
+par(mar=c(5,5,0,0))
+plot(x,y,xlab="Hours after noon",ylab="Temperature (F)",ylim=c(50,80))
+model <- lm(y ~ x)
+abline(model)
+points(4.5,predict(model,data.frame(x=4.5)),col="red",pch=19)
+```
+
+
+* Quadratic regression
+
+```{r,echo=F,fig.dim=c(4,4)}
+library(polynom)
+par(mar=c(5,5,0,0))
+plot(x,y,xlab="Hours after noon",ylab="Temperature (F)",ylim=c(50,80))
+# model <- lm(y ~ x)
+# abline(model)
+# points(4.5,predict(model,data.frame(x=4.5)),col="red",pch=19)
+qua_mod = lm(y ~ poly(x,2,raw = TRUE))
+xx = seq(0,12,0.1)
+lines(xx,predict(qua_mod,data.frame(x=xx)))
+points(4.5,predict(qua_mod,data.frame(x=4.5)),col="red",pch=19)
+```
+
+* Cubic regression
+
+```{r,echo=F,fig.dim=c(4,4)}
+library(polynom)
+par(mar=c(5,5,0,0))
+plot(x,y,xlab="Hours after noon",ylab="Temperature (F)",ylim=c(50,80))
+# model <- lm(y ~ x)
+# abline(model)
+# points(4.5,predict(model,data.frame(x=4.5)),col="red",pch=19)
+cub_mod = lm(y ~ poly(x,3,raw = TRUE))
+xx = seq(0,12,0.1)
+lines(xx,predict(cub_mod,data.frame(x=xx)))
+points(4.5,predict(cub_mod,data.frame(x=4.5)),col="red",pch=19)
+```
+
