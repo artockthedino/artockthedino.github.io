@@ -1,12 +1,8 @@
 library("exams2forms")
-n = 5
+n = 100
 
 ### Entrance ticket
-pm = list("x_EZ_two-step_equations.Rmd",
-          "solve_a1_eq_2sfs.Rmd",
-          "ez_primes_factored_eq_0.Rmd",
-          "et03_quad_formula_decimal.Rmd",
-          c("x_tsre_add_sqrt.Rmd",
+pm = list(c("x_tsre_add_sqrt.Rmd",
             "x_tsre_div_sqrt.Rmd",
             "x_tsre_mult_sqrt.Rmd",
             "x_tsre_sqrt_add.Rmd",
@@ -17,9 +13,9 @@ pm = list("x_EZ_two-step_equations.Rmd",
 
 exams2webquiz(pm,
              n=n,
-             title = "ET_examples_0413",
+             title = "two-step_radical_equations",
              dir = ".",
-             name="ET_examples_0413")
+             name="two-step_radical_equations")
 
 
 

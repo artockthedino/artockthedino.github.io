@@ -1,0 +1,162 @@
+---
+output: pdf_document
+params:
+    rseed: 2
+    showsol: true
+header-includes:
+  - \usepackage{multicol}
+---
+
+```{r,echo=F,warning=FALSE,message=FALSE}
+options(scipen=999)
+if(params$rseed !=0){
+    set.seed(params$rseed)
+}
+knitr::opts_chunk$set(echo = FALSE)
+bn <- basename(knitr::current_input())
+bn = strsplit(bn,".",fixed=T)[[1]][1]
+```
+
+## `r bn`
+
+```{r}
+gcd2 <- function(a, b) {
+  if (b == 0) a else Recall(b, a %% b)
+}
+gcd <- function(...) Reduce(gcd2, c(...))
+```
+
+
+```{r,echo=F}
+qt = c(sample(1:8),sample(1:8),sample(1:8))
+eqs = character()
+sols = character()
+for(qti in qt){
+    while(T){
+        if(qti == 1){
+            a = sample(1:9,1)*1
+            b = sample(2:10,1)
+            eq = paste0("\\sqrt{x+",a,"}=",b)
+            eq = gsub("+-","-",eq,fixed=T)
+            x = b^2-a
+        }
+        if(qti == 7){
+            a = sample(1:9,1)*(-1)
+            b = sample(2:10,1)
+            eq = paste0("\\sqrt{x+",a,"}=",b)
+            eq = gsub("+-","-",eq,fixed=T)
+            x = b^2-a
+        }
+        if(qti == 2){
+            b = sample(2:5,1)
+            a = sample(c(2:5,10),1)*sample(c(-1,1),1)
+            x = a*b^2
+            eq = paste0("\\sqrt{\\frac{x}{",a,"}}=",b)
+        }
+        if(qti == 3){
+            while(T){
+                b = sample(2:12,1)
+                a = sample(2:6,1)*sample(c(-1,1),1)
+                x = b^2/a
+                if(x%%1==0 && abs(a)!=abs(b)){break}
+            }
+            eq = paste0("\\sqrt{",a,"x}=",b)
+        }
+        if(qti == 4){
+            while(T){
+                a = sample(1:15,1)*1
+                b = sample(1:15,1)*sample(c(-1,1),1)
+                if((b-a)>1 && (b-a)<13){
+                    break
+                    }
+            }
+            eq = paste0("\\sqrt{x}+",a,"=",b)
+            eq = gsub("+-","-",eq,fixed=T)
+            x = (b-a)^2
+        }
+        if(qti == 8){
+            while(T){
+                a = sample(1:15,1)*(-1)
+                b = sample(1:15,1)*sample(c(-1,1),1)
+                if((b-a)>1 && (b-a)<13){
+                    break
+                    }
+            }
+            eq = paste0("\\sqrt{x}+",a,"=",b)
+            eq = gsub("+-","-",eq,fixed=T)
+            x = (b-a)^2
+        }
+        if(qti == 5){
+            while(T){
+                sab = sample(c(-1,1),1)
+                a = sample(2:6,1)*sab
+                b = sample(2:6,1)*sab
+                sqrtx = a*b
+                x = (a*b)^2
+                if(sqrtx<17){break}
+            }
+            eq = paste0("\\frac{\\sqrt{x}}{",a,"}=",b)
+        }
+        if(qti == 6){
+            while(T){
+                sab = sample(c(-1,1),1)
+                multer = sample(2:10,1)
+                a = sample(2:6,1)*sab
+                b = a*multer
+                x = (b/a)^2
+                if(x%%1==0 && abs(a)!=abs(b)){break}
+            }
+            eq = paste0(a,"\\sqrt{x}=",b)
+        }
+        if(!(eq %in% eqs)){break}
+    }
+    
+    eqs = c(eqs,eq)
+    sols = c(sols,paste0("x=",x))
+}
+
+```
+
+Solve the following equations:
+
+
+```{r,echo=F,results='asis'}
+
+s = ""
+for(i in 1:length(eqs)){
+    s = paste0(s,eqs[i])
+    if(i%%5==0 && i<length(eqs)){
+        s = paste0(s," \\\\\n\\\\\n")
+    } else {
+        s = paste0(s," && ")
+    }
+}
+
+cat(paste0("\\begin{align*}\n"))
+cat(s)
+cat(paste0("\n\\end{align*}"))
+
+```
+
+\newpage
+
+```{r,echo=F,results='asis'}
+s = ""
+for(i in 1:length(sols)){
+    s = paste0(s,sols[i])
+    if(i%%5==0 && i<length(sols)){
+        s = paste0(s," \\\\\n\\\\\n")
+    } else {
+        s = paste0(s," && ")
+    }
+}
+cat("\\color{gray}\n")
+cat("### Answers\n\n")
+cat(paste0("\\begin{align*}\n"))
+cat(s)
+cat(paste0("\n\\end{align*}"))
+cat("\n\\color{black}\n")
+```
+
+
+
