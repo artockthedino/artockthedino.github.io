@@ -24,9 +24,7 @@ qn = function(){
 
 ```
 
-Name: \vspace{5pt} \hrule
-
-# `r bn` (v`r params$rseed`)
+# `r bn`
 
 ## Question `r qn()`
 
@@ -36,6 +34,19 @@ a. $x=13$
 b. $x=17$
 c. $x=19$
 d. $x=21$
+
+\vfill 
+
+## Question `r qn()`
+
+Let a function be defined as $$f(x)=\sqrt[3]{x+2}-5$$
+
+Find the inverse function.
+
+a. $f^{-1}(x)=(x+5)^3-2$
+b. $f^{-1}(x)=(x+5)^3+2$
+c. $f^{-1}(x)=(x+2)^3-5$
+d. $f^{-1}(x)=(x+2)^3+5$
 
 \vfill 
 
@@ -62,6 +73,18 @@ c. $x=\frac{2}{3}$ and $x=\frac{-5}{7}$
 d. $x=\frac{-2}{3}$ and $x=\frac{5}{7}$
 
 \vfill 
+
+
+## Question `r qn()`
+
+Which of the following represents the quadratic formula. If $ax^2+bx+c=0$, then:
+
+a. $x=\frac{b\pm\sqrt{b^2+4ac}}{2a}$
+b. $x=\frac{-b\pm\sqrt{b^2+4ac}}{2a}$
+c. $x=\frac{b\pm\sqrt{b^2-4ac}}{2a}$
+d. $x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}$
+
+
 
 \newpage
 
@@ -100,6 +123,17 @@ a. $x^2+2$
 b. $2x+3$
 c. $x^2+x+3$
 d. $x^2+3x+2$
+
+\vfill
+
+## Question `r qn()`
+
+Expand the quadratic polynomial with complex roots. $$(x-6-7i)(x-6+7i)$$
+
+a. $x^2-12x+85$
+b. $x^2-12x+13$
+c. $x^2+12x+85$
+d. $x^2+12x+13$
 
 \vfill
 
@@ -259,9 +293,368 @@ d. $(x-2)(x-3)(x-4)$
 Which polynomial matches the sketch below?
 
 ```{r,echo=F,fig.dim=c(6,2)}
-# -(x+4)()
+# (x+3)(x-2)^2
+# (x+3)(x^2-4x+4)
+# x^3-x^2-8x+12
+
+# -(x+3)^2(x-2)
+# -(x^2+6x+9)(x-2)
+# -(x^3+4x^2-3x-18)
+# -x^3-4x^2+3x+18
+# -3x^2-8x+3
+# (8-sqrt(64+4*3*3))/(-6)
+# (8-sqrt(64+4*3*3))/(-6)
+
+xs = seq(-5,5,0.01)
+ys = -(xs+3)^2*(xs-2)
+
+par(mar=c(0,0,0,0))
+plot(0,0,"n",xlim=c(-5,5),ylim=c(-20,20),axes=F,ann=F)
+for(i in 1:5){
+    lines(c(i,i),c(-1,1))
+    lines(c(-i,-i),c(-1,1))
+}
+abline(h=0)
+abline(v=0)
+text(5,0,"5",adj=c(0.5,1.5))
+text(-5,0,"-5",adj=c(0.5,1.5))
+text(5,0,"x",adj=c(-1,-0.2))
+text(0,20,"y",adj=c(-0.5,0))
+lines(xs,ys,col="blue",lwd=2)
+```
+
+a. $y=x^3+4x^2-3x-18$
+b. $y=-x^3-4x^2+3x+18$
+c. $y=x^3-x^2-8x+12$
+d. $y=-x^3+x^2+8x-12$
+
+
+## Question `r qn()`
+
+```{r,echo=FALSE}
+set.seed(8)
+n = 5 #sample(2:5,1)
+while(T){
+    root = sort(sample(1:8,n)*sample(c(-1,1),n,T))
+    pows = sample(1:2,n,T)
+    pow2 = sample(1:2,n,T)
+    if(min(diff(root))>1 && max(diff(root))<7 && sum(pows==pow2)!=n && sum(pows)>n && sum(pows)<2*n){break}
+}
+
+a = sample(c(-1,1),1)
+ord = sample(1:n)
+rmix = root[ord]
+pmix = pows[ord]
+pmix2 = pow2[ord]
+
+if(a==1){
+    exp1 = paste0("(x+",-rmix,")^",pmix,collapse="")
+    exp2 = paste0("(x+",-rmix,")^",pmix2,collapse="")
+    exp3 = paste0("-",paste0("(x+",-rmix,")^",pmix,collapse=""))
+    exp4 = paste0("-",paste0("(x+",-rmix,")^",pmix2,collapse=""))
+    exp5 = paste0("(x+",-root,")^",pows,collapse="")
+    exp6 = paste0("a",paste0("(x+",-root,")^",pows,collapse=""))
+} else {
+    exp1 = paste0("-",paste0("(x+",-rmix,")^",pmix,collapse=""))
+    exp2 = paste0("-",paste0("(x+",-rmix,")^",pmix2,collapse=""))
+    exp3 = paste0("(x+",-rmix,")^",pmix,collapse="")
+    exp4 = paste0("(x+",-rmix,")^",pmix2,collapse="")
+    exp5 = paste0("-",paste0("(x+",-root,")^",pows,collapse=""))
+    exp6 = paste0("a",paste0("(x+",-root,")^",pows,collapse=""))
+}
+exp1 = gsub("+-","-",exp1,fixed=T)
+exp2 = gsub("+-","-",exp2,fixed=T)
+exp3 = gsub("+-","-",exp3,fixed=T)
+exp4 = gsub("+-","-",exp4,fixed=T)
+exp5 = gsub("+-","-",exp5,fixed=T)
+exp6 = gsub("+-","-",exp6,fixed=T)
+
+exp1 = gsub("^1","",exp1,fixed=T)
+exp2 = gsub("^1","",exp2,fixed=T)
+exp3 = gsub("^1","",exp3,fixed=T)
+exp4 = gsub("^1","",exp4,fixed=T)
+exp5 = gsub("^1","",exp5,fixed=T)
+exp6 = gsub("^1","",exp6,fixed=T)
+
+exps = sample(c(exp1,exp2,exp3,exp4))
+al = paste0(letters[1:4],". $y=",exps,"$",collapse="\n")
+sol = paste0(1*(exps==exp1),collapse="")
+```
+
+A polynomial is sketched below.
+
+```{r,echo=F,fig.dim=c(6,2)}
+par(mar=c(0,0,0,0))
+plot(0,0,"n",axes=F,ann=F,xlim=c(-10,10),ylim=c(-2,2))
+abline(v=0,lwd=1)
+abline(h=0,lwd=2)
+for(i in -10:10){
+    if(i%%5==0 && i!=0){
+        lines(c(i,i),c(-0.1,0.1))
+        text(i,-0.2,i)
+    } else {
+        lines(c(i,i),c(-0.05,0.05))
+    }
+}
+xs = root
+fx = function(x,a,root,pows){
+    b = a
+    for(i in 1:length(root)){
+        b = b*(x-root[i])^pows[i]
+    }
+    return(b)
+}
+xmid = c(xs[1]-1,(xs[2:n]+xs[1:(n-1)])/2,xs[n]+1)
+sss = 1.3
+xx = xmid[1]
+yy = sign(fx(xmid[1],a,root,pows))
+mm = -yy*sss
+for(i in 1:n){
+    xx = c(xx,xs[i])
+    yy = c(yy,0)
+    if(sign(fx(xs[i]-0.1,a,root,pows))==sign(fx(xs[i]+0.1,a,root,pows))){
+        mm = c(mm,0)
+    }
+    if(sign(fx(xs[i]-0.1,a,root,pows))==-1 && sign(fx(xs[i]+0.1,a,root,pows))==1){
+        mm = c(mm,sss)
+    }
+    if(sign(fx(xs[i]-0.1,a,root,pows))==1 && sign(fx(xs[i]+0.1,a,root,pows))==-1){
+        mm = c(mm,-sss)
+    }
+    xx = c(xx,xmid[i+1])
+    if(i<n){
+        mm = c(mm,0)
+        yy = c(yy,pi/2*sign(fx(xmid[i+1],a,root,pows)))
+    } else {
+        mm = c(mm,sign(a)*sss)
+        yy = c(yy,sign(fx(xmid[i+1],a,root,pows)))
+    }
+}
+
+xwave = seq(min(xs),max(xs),0.1)
+sf = splinefunH(xx,yy,mm)
+lines(xwave,sin(sf(xwave)),col="blue",lwd=3)
+points(root,rep(0,n),pch=19,col="blue")
+xlo = seq(min(xs)-1,min(xs),0.1)
+lines(xlo,sf(xlo),col="blue",lwd=3)
+xhi = seq(max(xs),max(xs)+1,0.1)
+lines(xhi,sf(xhi),col="blue",lwd=3)
+
+# lines(c(max(root),max(root)+2),c(0,2*a),col="blue",lwd=3)
+# lines(c(min(root),min(root)-2),c(0,2*a*(-1)^n),col="blue",lwd=3)
+arrows(xx[2*n+1],yy[2*n+1],xx[2*n+1]+0.5,yy[2*n+1]+0.5*sign(a)*sss,col="blue",lwd=3,length=0.1,angle=15)
+arrows(xx[1],yy[1],xx[1]-0.5,yy[1]+0.5*sign(yy[1])*sss,col="blue",lwd=3,length=0.1,angle=15)
+```
+\
+
+Which polynomial is best represented by the sketch?
+
+`r al`
+
+
+
+\newpage
+
+
+## Question `r qn()`
+
+What is the minimum degree of the polynomial sketched below?
+
+
+```{r,echo=F,fig.dim=c(6,2)}
+# (x+3)(x-2)^2
+# (x+3)(x^2-4x+4)
+# x^3-x^2-8x+12
+
+# -(x+3)^2(x-2)
+# -(x^2+6x+9)(x-2)
+# -(x^3+4x^2-3x-18)
+# -x^3-4x^2+3x+18
+# -3x^2-8x+3
+# (8-sqrt(64+4*3*3))/(-6)
+# (8-sqrt(64+4*3*3))/(-6)
+
+xs = seq(-4,4,0.01)
+ys = (xs-4)*(xs-2)*(xs)*(xs+2)*(xs+4)
+ay = abs(max(ys))
+
+xs = seq(-5,5,0.01)
+ys = (xs-4)*(xs-2)*(xs)*(xs+2)*(xs+4)/ay*5+10
+
+par(mar=c(0,0,0,0))
+plot(0,0,"n",xlim=c(-5,5),ylim=c(-5,20),axes=F,ann=F)
+for(i in 1:5){
+    lines(c(i,i),c(-1,1))
+    lines(c(-i,-i),c(-1,1))
+}
+abline(h=0)
+abline(v=0)
+text(5,0,"5",adj=c(0.5,1.5))
+text(-5,0,"-5",adj=c(0.5,1.5))
+text(5,0,"x",adj=c(-1,-0.2))
+text(0,20,"y",adj=c(-0.5,0))
+lines(xs,ys,col="blue",lwd=2)
+```
+
+a. 3
+b. 4
+c. 5
+d. 6
+
+
+## Question `r qn()`
+
+When using the quadratic formula, if the discriminant is positive, then:
+
+a. There are two real solutions.
+b. There is one real solution.
+c. There are two complex solutions.
+d. There is one complex solution and one real solution.
+
+## Question `r qn()`
+
+Which expression is equivalent to $(x+2)^2-5(x+2)+6$?
+
+a. $x(x-1)$
+b. $(x-3)(x-2)$
+c. $(x-4)(x+3)$
+d. $(x-6)(x+1)$
+
+
+## Question `r qn()`
+
+Which binomial is a factor of $x^3+6x^2+x-14$?
+
+a. $x-1$
+b. $x-2$
+c. $x+1$
+d. $x+2$
+
+## Question `r qn()`
+
+The solution set for the equation $x+1=\sqrt{4x+25}$ is
+
+a. $\{\}$
+b. $\{6\}$
+c. $\{6,-4\}$
+d. $\{-4\}$
+
+\newpage
+
+## Question `r qn()`
+
+Consider the function plotted below.
+
+```{r,echo=F,fig.dim=c(5,2)}
+par(mar=c(0,0,0,0))
+plot(0,0,"n",xlim=c(-5,5),ylim=c(-0.5,1.5),axes=F,ann=F)
+abline(h=0)
+abline(v=0)
+text(5,0,"x",adj=c(0.5,1.2))
+text(0,1.5,"y",adj=c(1.2,0.5))
+x = seq(-5,5,0.01)
+y = (1)/(x^2+1)
+lines(x,y,lwd=2,col="blue")
 
 ```
+
+The function is:
+
+a. Periodic
+b. Even
+c. Odd
+d. Complex
+
+
+## Question `r qn()`
+
+Consider the function plotted below.
+
+```{r,echo=F,fig.dim=c(5,2)}
+par(mar=c(0,0,0,0))
+plot(0,0,"n",xlim=c(-5,5),ylim=c(-1.5,1.5),axes=F,ann=F)
+abline(h=0)
+abline(v=0)
+text(5,0,"x",adj=c(0.5,1.2))
+text(0,1.5,"y",adj=c(1.2,0.5))
+x = seq(-5,5,0.01)
+y = x^3/(x^4+1)
+lines(x,y,lwd=2,col="blue")
+
+```
+
+The function is:
+
+a. Periodic
+b. Even
+c. Odd
+d. Complex
+
+\newpage
+
+
+## Question `r qn()`
+
+Consider the function $y=f(x)$ plotted below.
+
+```{r,echo=F,fig.dim=c(2,2)}
+mkplot = function(){
+    plot(0,0,"n",xlim=c(-10,10),ylim=c(-10,10))
+    for(i in -10:10){
+        lines(c(i,i),c(-10,10),col="grey",lwd=0.5)
+        lines(c(-10,10),c(i,i),col="grey",lwd=0.5)
+    }
+    for(i in seq(-10,10,5)){
+        lines(c(i,i),c(-10,10),col="darkgrey",lwd=1)
+        lines(c(-10,10),c(i,i),col="darkgrey",lwd=1)
+    }
+    abline(h=0,lwd=2)
+    abline(v=0,lwd=2)
+    text(10,0,"x",adj=c(0.5,-0.2))
+    text(0,10,"y",adj=c(-0.2,0.5))
+    text(10,0,"10",adj=c(0.5,1.2),cex=0.7)
+    text(0,10,"10",adj=c(1.1,0.5),cex=0.7)
+}
+
+par(mar=c(0,0,0,0),pty="s")
+mkplot()
+x = c(-2,7,9)
+y = c(3,4,8)
+lines(x,y,col="blue",lwd=2)
+```
+
+
+Which option represents the inverse function, $y=f^{-1}(x)$?
+
+```{r,echo=F,fig.dim=c(5,5)}
+par(mfrow=c(2,2),mar=c(2,2,2,2))
+
+mkplot()
+x2 = -x
+y2 = y
+lines(x2,y2,col="blue",lwd=2)
+mtext("a",3)
+
+mkplot()
+x2 = x
+y2 = -y
+lines(x2,y2,col="blue",lwd=2)
+mtext("b",3)
+
+mkplot()
+x2 = -x
+y2 = -y
+lines(x2,y2,col="blue",lwd=2)
+mtext("c",3)
+
+mkplot()
+x2 = y
+y2 = x
+lines(x2,y2,col="blue",lwd=2)
+mtext("d",3)
+```
+
+
 
 
 

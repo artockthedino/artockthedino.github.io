@@ -1,0 +1,134 @@
+```{r data generation, echo = FALSE, results = "hide"}
+options(scipen=99)
+b = sample(c(4,5,6,7,8),1)
+s = c("0",LETTERS[1:(b-1)])
+
+adig = function(n,b=b){
+    if(n>0){
+        greatest_pow = floor(log(n)/log(b))
+    } else {
+        return(0)
+    }
+    tot = n
+    digs = numeric()
+    for(i in greatest_pow:0){
+        dig = tot %/% (b^i)
+        digs = c(digs,dig)
+        tot = tot-dig*b^i
+    }
+    return(digs)
+}
+
+while(T){
+    ns = sample(100:500,2)
+    n1 = ns[1]
+    n2 = ns[2]
+    ad1 = adig(n1,b)
+    ad2 = adig(n2,b)
+    maxlength = max(length(ad1),length(ad2))
+    ad3 = numeric()
+    for(i in 1:maxlength){
+        ad1i = 0
+        ad2i = 0
+        if(length(ad1)-i+1>0){
+            ad1i = ad1[length(ad1)-i+1]
+        }
+        if(length(ad2)-i+1>0){
+            ad2i = ad2[length(ad2)-i+1]
+        }
+        ad3 = c(ad3,ad1i+ad2i)
+    }
+    if(abs(diff(ns))>50 && sum(ad3>b)>0){
+        break
+    }
+}
+
+an1 = paste0(s[adig(n1,b)+1],collapse="")
+an2 = paste0(s[adig(n2,b)+1],collapse="")
+an3 = paste0(s[adig(n1+n2,b)+1],collapse="")
+
+ss1 = s[adig(n1,b)+1]
+ss2 = s[adig(n2,b)+1]
+ss3 = s[adig(n1+n2,b)+1]
+
+
+```
+
+Question
+========
+
+An alien society uses a base-`r b` positional numbering system. Luckily, they use the same symbol "0" for zero, and then symbols that match our uppercase letters. Below represents their single-digit addition table.
+
+```{r,echo=F,fig.dim=c(0.5*b+1,0.5*b+1)}
+par(mar=c(0,0,0,0))
+plot(0,0,"n",xlim=c(0,b+1),ylim=c(0,b+1),axes=F,ann=F)
+abline(h=b)
+abline(v=1)
+text(0.5,b+0.5,"+")
+for(i in 1:b){
+    text(i+0.5,b+0.5,s[i])
+    text(0.5,b-i+0.5,s[i])
+}
+for(i in 1:b){
+    for(j in 1:b){
+        text(i+0.5,b-j+0.5,paste0(s[adig(i+j-2,b)+1],collapse=""))
+    }
+}
+
+```
+\
+
+Use that table to add:
+
+$$\text{`r an1`}+\text{`r an2`}$$
+
+
+
+
+Solution
+========
+
+Line up the two numbers.
+
+```{r,echo=F,fig.dim=c(3,3)}
+par(mar=c(0,0,0,0))
+plot(0,0,"n",xlim=c(-0.5,5.5),ylim=c(-0.5,4.5),axes=F,ann=F)
+for(i in 1:length(ss1)){
+    text(6-i,3,ss1[length(ss1)-i+1])
+}
+for(i in 1:length(ss2)){
+    text(6-i,2,ss2[length(ss2)-i+1])
+}
+text(0,2,"+")
+abline(h=1.5)
+
+
+```
+\
+
+Then add each digit, starting at the right. Carry higher-power digits as needed. Sorry, I was not able to code how to show this step by step yet.
+
+```{r,echo=F,fig.dim=c(3,3)}
+par(mar=c(0,0,0,0))
+plot(0,0,"n",xlim=c(-0.5,5.5),ylim=c(-0.5,4.5),axes=F,ann=F)
+for(i in 1:length(ss1)){
+    text(6-i,3,ss1[length(ss1)-i+1])
+}
+for(i in 1:length(ss2)){
+    text(6-i,2,ss2[length(ss2)-i+1])
+}
+text(0,2,"+")
+abline(h=1.5)
+for(i in 1:length(ss3)){
+    text(6-i,1,ss3[length(ss3)-i+1])
+}
+
+```
+\
+
+
+Meta-information
+============
+extype: string
+exsolution: `r an3`
+exname: base_b_addition
