@@ -1,6 +1,6 @@
 ```{r data generation, echo = FALSE, results = "hide"}
 options(scipen=99)
-b = sample(c(4,5,6,7,8,9),1)
+b = sample(c(4,5,6,7,8),1)
 s = c("0",LETTERS[1:(b-1)])
 
 adig = function(n,b=b){
@@ -59,7 +59,7 @@ Question
 
 An alien society uses a base-`r b` positional numbering system. Luckily, they use the same symbol "0" for zero, and then symbols that match our uppercase letters. Below represents their single-digit addition table.
 
-```{r,echo=F,fig.dim=c(0.4*(b+1),0.4*(b+1))}
+```{r,echo=F,fig.dim=c(0.5*b+1,0.5*b+1)}
 par(mar=c(0,0,0,0))
 plot(0,0,"n",xlim=c(0,b+1),ylim=c(0,b+1),axes=F,ann=F)
 abline(h=b)
@@ -88,7 +88,43 @@ Use that table to add:
 Solution
 ========
 
-The answer is ``r an3``.
+Line up the two numbers.
+
+```{r,echo=F,fig.dim=c(3,3)}
+par(mar=c(0,0,0,0))
+plot(0,0,"n",xlim=c(-0.5,5.5),ylim=c(-0.5,4.5),axes=F,ann=F)
+for(i in 1:length(ss1)){
+    text(6-i,3,ss1[length(ss1)-i+1])
+}
+for(i in 1:length(ss2)){
+    text(6-i,2,ss2[length(ss2)-i+1])
+}
+text(0,2,"+")
+abline(h=1.5)
+
+
+```
+\
+
+Then add each digit, starting at the right. Carry higher-power digits as needed. Sorry, I was not able to code how to show this step by step yet.
+
+```{r,echo=F,fig.dim=c(3,3)}
+par(mar=c(0,0,0,0))
+plot(0,0,"n",xlim=c(-0.5,5.5),ylim=c(-0.5,4.5),axes=F,ann=F)
+for(i in 1:length(ss1)){
+    text(6-i,3,ss1[length(ss1)-i+1])
+}
+for(i in 1:length(ss2)){
+    text(6-i,2,ss2[length(ss2)-i+1])
+}
+text(0,2,"+")
+abline(h=1.5)
+for(i in 1:length(ss3)){
+    text(6-i,1,ss3[length(ss3)-i+1])
+}
+
+```
+\
 
 
 Meta-information

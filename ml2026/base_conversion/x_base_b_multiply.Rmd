@@ -1,6 +1,6 @@
 ```{r data generation, echo = FALSE, results = "hide"}
 options(scipen=99)
-b = sample(c(4,5,6,7,8),1)
+b = sample(c(5,6,7,8,9),1)
 s = c("0",LETTERS[1:(b-1)])
 
 adig = function(n,b=b){
@@ -19,12 +19,16 @@ adig = function(n,b=b){
     return(digs)
 }
 
-ns = sample(50:200,2)
-n1 = ns[1]
-n2 = ns[2]
-ad1 = adig(n1,b)
-ad2 = adig(n2,b)
-ad3 = adig(n1*n2,b)
+while(T){
+    ns = sample(50:200,2)
+    n1 = ns[1]
+    n2 = ns[2]
+    ad1 = adig(n1,b)
+    ad2 = adig(n2,b)
+    ad3 = adig(n1*n2,b)
+    if(sum(c(n1,n2)==0)<2){break}
+}
+
 
 # while(T){
 #     ns = sample(100:500,2)
@@ -64,10 +68,10 @@ ss3 = s[adig(n1*n2,b)+1]
 Question
 ========
 
-An alien society uses a base-`r b` positional numbering system. Luckily, they use the same symbol "0" for zero, and then symbols that match our uppercase letters. Below represents their single-digit addition table.
+An alien society uses a base-`r b` positional numbering system. Luckily, they use the same symbol "0" for zero, and then symbols that match our uppercase letters. Below represents their single-digit addition table and single-digit multiplication table.
 
-```{r,echo=F,fig.dim=c(0.5*b+1,0.5*b+1)}
-par(mar=c(0,0,0,0))
+```{r,echo=F,fig.dim=c((0.4*(b+1))*2+0.4,0.4*(b+1))}
+par(mar=c(1,1,1,1),mfrow=c(1,2))
 plot(0,0,"n",xlim=c(0,b+1),ylim=c(0,b+1),axes=F,ann=F)
 abline(h=b)
 abline(v=1)
@@ -82,14 +86,7 @@ for(i in 1:b){
     }
 }
 
-```
-\
-
-We can also produce their single-digit multiplication table.
-
-
-```{r,echo=F,fig.dim=c(0.5*b+1,0.5*b+1)}
-par(mar=c(0,0,0,0))
+par(mar=c(1,1,1,1))
 plot(0,0,"n",xlim=c(0,b+1),ylim=c(0,b+1),axes=F,ann=F)
 abline(h=b)
 abline(v=1)
@@ -117,10 +114,11 @@ Use those tables to multiply:
 Solution
 ========
 
+The answer is ``r an3``.
 
 
 Meta-information
 ============
 extype: string
 exsolution: `r an3`
-exname: base_b_addition
+exname: base_b_multiply
