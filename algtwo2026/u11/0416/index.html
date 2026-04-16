@@ -1,4 +1,4 @@
-sss = "<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset='utf-8' />
@@ -84,23 +84,4 @@ Anyway, the list below is probably only helpful for me.
 
 <br><br>
 
-"
-
-ddd = list.dirs("./",TRUE,TRUE)
-for(dir in ddd){
-  fls = list.files(dir)
-  for(fl in fls){
-    #if(grepl(".html",fl,fixed=T) || grepl(".pdf",fl,fixed=T)){
-    if(grepl(".html",fl,fixed=T) && grepl("examp",fl,fixed=T)){ 
-      s1 = paste0(substring(dir,3),"/",fl,collapse="")
-      sss = paste0(sss,"<a href=https://artockthedino.github.io",s1,">",s1,"</a><br>")
-    }
-  }
-}
-
-sss = paste0(sss,"</body>")
-
-fileConn<-file("index.html")
-writeLines(sss, fileConn)
-close(fileConn)
-
+<a href=https://artockthedino.github.io/examples_0416.html>/examples_0416.html</a><br></body>
