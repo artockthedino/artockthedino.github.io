@@ -1,0 +1,91 @@
+```{r data generation, echo = FALSE, results = "hide",warning=FALSE}
+while(T){
+    hkr = sample(2:15,3)*c(sample(c(-1,1),2,T),1)
+    h = hkr[1]
+    k = hkr[2]
+    r = abs(hkr[3])
+    extrms = c(h-r,k-r,h+r,k+r)
+    if(max(abs(extrms))<15){break}
+}
+
+
+ach = -15:15
+
+eq1 = gsub("+-","-",paste0("(x+",-h,")^2+(y+",-k,")^2=",r^2),fixed=T)
+eq2 = gsub("+-","-",paste0("(x+",h,")^2+(y+",-k,")^2=",r^2),fixed=T)
+eq3 = gsub("+-","-",paste0("(x+",-h,")^2+(y+",k,")^2=",r^2),fixed=T)
+eq4 = gsub("+-","-",paste0("(x+",h,")^2+(y+",k,")^2=",r^2),fixed=T)
+eq5 = gsub("+-","-",paste0("(x+",-h,")^2+(y+",-k,")^2=",r),fixed=T)
+eq6 = gsub("+-","-",paste0("(x+",h,")^2+(y+",-k,")^2=",r),fixed=T)
+eq7 = gsub("+-","-",paste0("(x+",-h,")^2+(y+",k,")^2=",r),fixed=T)
+eq8 = gsub("+-","-",paste0("(x+",h,")^2+(y+",k,")^2=",r),fixed=T)
+
+ach = c(eq1,eq2,eq3,eq4,eq5,eq6,eq7,eq8)
+ach = sort(ach)
+al = paste0("* $",ach,"$",collapse="\n")
+sol = paste0(1*(ach==eq1),collapse="")
+
+```
+
+Question
+========
+
+
+```{r,echo=F,fig.dim=c(7,7)}
+par(mar=c(0,0,0,0),pty="s")
+plot(0,0,"n",axes=F,ann=F,xlim=c(-15,15),ylim=c(-15,15))
+for(i in -15:15){
+    lines(c(-15,15),c(i,i),col="lightgrey",lwd=0.5)
+    lines(c(i,i),c(-15,15),col="lightgrey",lwd=0.5)
+}
+for(i in seq(-15,15,5)){
+    lines(c(-15,15),c(i,i),col="darkgrey",lwd=1)
+    lines(c(i,i),c(-15,15),col="darkgrey",lwd=1)
+}
+arrows(-15.5,0,15.5,0,0.1,10,3,lwd=2)
+arrows(0,-15.5,0,15.5,0.1,10,3,lwd=2)
+text(15,-0.5,"15")
+text(15,0.5,"x")
+text(-0.5,15,"15")
+text(0.5,15,"y")
+
+th = seq(0,2*pi,pi/300)
+lines(h+r*cos(th),k+r*sin(th),lwd=3,col="blue")
+
+
+```
+\
+
+Which equation matches the circle?
+
+
+Answerlist
+--------
+
+`r al`
+
+
+Solution
+========
+
+Remember the circle equation:
+
+$$(x-h)^2+(y-k)^2~=~r^2$$
+
+The center of the circle is at $(`r h`, `r k`)$, so $h=`r h`$ and $k=`r k`$. The radius of the circle is the distance from the center to the edge. The radius is `r r`, so $r=`r r`$.
+
+```{r,echo=F}
+eq = paste0("(x-",h,")^2+(y-",k,")^2=",r,"^2",collapse="")
+eq = gsub("--","+",eq,fixed=T)
+```
+
+The standard equation of the circle is shown:
+
+$$`r eq`$$
+
+
+Meta-information
+============
+extype: schoice
+exsolution: `r sol`
+exname: circ_params_from_graph
