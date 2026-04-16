@@ -21,6 +21,7 @@ Here are a few cool ones:
  <li><a href='https://artockthedino.github.io/ml2026/os_01_02_combined_review/examples_0326.html'>Set theory and logic</a></li>
  <li><a href='https://artockthedino.github.io/algtwo2026/u11/0415/examples_0415.html'>Distance and circles</a></li>
  <li><a href='https://artockthedino.github.io/algtwo2026/function_intro/examples_func_intro.html'>Function and Inverse Intro</a></li>
+ <li><a href='https://artockthedino.github.io/algtwo2026/u11/0414/examples_EZ_two_step.html'>Easy two-step linear equations</a></li>
 </ul>
 
 
