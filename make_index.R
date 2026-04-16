@@ -5,13 +5,10 @@ sss = "<!DOCTYPE html>
 <title>Chad's files</title>
 </head>
 <body>
-Recent randomly generated problems, written using 
-<a href='https://www.r-exams.org/'>r-exams</a> 
-in Rmarkdown. The files are open-source, with a copy-left GNU Affero General Public License v3.0. Feel free to use
-without attribution for any other similarly copy-left projects.
 
-<br><br>
-Here are a few cool ones:
+Here are a few cool problems I wrote using 
+<a href='https://www.r-exams.org/'>r-exams</a> 
+in Rmarkdown:
 
 <ul>
  <li><a href='https://artockthedino.github.io/pbl/0327/examples_0326.html'>7th/8th Grade PBL on patterns and algorithmic art</a></li>
@@ -24,12 +21,44 @@ Here are a few cool ones:
  <li><a href='https://artockthedino.github.io/algtwo2026/u11/0414/examples_EZ_two_step.html'>Easy two-step linear equations</a></li>
 </ul>
 
+<br>
+
+I also write some online tools for students:
+
+<ul>
+ <li><a href='https://artockthedino.github.io/lsys.html'>L-system turtle graphics</a></li>
+ <li><a href='https://chadworley.github.io/color_good_bad.html'>Vote colors Good or Bad</a></li>
+ <li><a href='https://chadworley.github.io/rng.html'>Discrete random data generator</a></li>
+ <li><a href='https://chadworley.github.io/sn.html'>Standard Normal Probability Calculator</a></li>
+ <li><a href='https://chadworley.github.io/normal.html'>Normal Probability Calculator</a></li>
+ <li><a href='https://chadworley.github.io/tdist.html'>Student's T Distribution Calculator</a></li>
+</ul>
+
+<br><br>
+
+I also make Blookets. Some question types can be uploaded as .csv files,
+but others require me to run pyautogui to upload images. 
+
+<ul>
+ <li><a href='https://dashboard.blooket.com/set/69d7b460ec74279751c0d423'>Negate Quantified Logical Statements</a></li>
+ <li><a href='https://dashboard.blooket.com/set/66d105b3b4e96891920b7223'>Arithmetic (most played)</a></li>
+ <li><a href='https://dashboard.blooket.com/set/67b0cdfd93dff8ad62a25722'>One-step equations with positive integer solutions</a></li>
+ <li><a href='https://dashboard.blooket.com/set/67e6ea8bfc4076fd8b1cd73a'>Two-step evaluation</a></li>
+ <li><a href='https://dashboard.blooket.com/set/67e695c07ef0ed78176ade30'>Two-step equations with positive integer solutions</a></li>
+ <li><a href='https://dashboard.blooket.com/set/6901ec30970f9cbda55caa5a'>Frieze Transformations (translation, mirror, rotation, glide)</a></li>
+ <li><a href='https://dashboard.blooket.com/set/69837f9b59a0ddbf9bde93c5'>Frieze group</a></li>
+ <li><a href='https://dashboard.blooket.com/set/69bb1480c1e88a327eaf2517'>Venn Diagrams</a></li>
+ <li><a href='https://dashboard.blooket.com/set/67c12088620424410a04eb80'>Unit Circle Trig Special Angles</a></li>
+ <li><a href='https://dashboard.blooket.com/set/678e8b40270bda27479d20eb'>Intro right-triangle trigonometry</a></li>
+ <li><a href='https://dashboard.blooket.com/set/69308058afb19fcc333988cf'>Simplify Fractions</a></li>
+ <li><a href='https://dashboard.blooket.com/set/69029413970f9cbda55cb82c'>FOIL and Factor quadratics with a=1 (MC)</a></li>
+</ul>
 
 <br><br>
 
 The Rmarkdown files (at 
 <a href='https://github.com/artockthedino/artockthedino.github.io'>https://github.com/artockthedino/artockthedino.github.io</a>
-) used to generate these .html files can also make
+) used to generate the random-question .html files can also make
 files in a variety of other formats. I specifically generate QTI .zip files to
 upload to Canvas using RStudio. I also generate my PDFs with Rmarkdown (and sometimes LaTeX).
 
@@ -51,7 +80,9 @@ one question at a time.
 <br>
 <br>
 
-These examples use the <a href='https://www.r-exams.org/'>r-exams</a> 
+Anyway, the list below is probably only helpful for me.
+
+<br><br>
 
 "
 
