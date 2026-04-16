@@ -26,7 +26,13 @@ while(T){
     ad1 = adig(n1,b)
     ad2 = adig(n2,b)
     ad3 = adig(n1*n2,b)
-    if(sum(c(n1,n2)==0)<2){break}
+    # print(n1)
+    # print(ad1)
+    # print(n2)
+    # print(ad2)
+    # print(ad1==0)
+    # print(ad2==0)
+    if(sum(ad1==0)+sum(ad2==0)<2){break}
 }
 
 

@@ -1,5 +1,5 @@
 library("exams2forms")
-n = 20
+n = 10
 
 ### Entrance ticket
 pm = list("x_base_b_addition.Rmd",
