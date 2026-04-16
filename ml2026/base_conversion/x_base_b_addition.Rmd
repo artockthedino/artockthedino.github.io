@@ -80,7 +80,7 @@ for(i in 1:b){
 
 Use that table to add:
 
-$$\text{`r an1`}+\text{`r an2`}$$
+`r an1` + `r an2`
 
 
 
