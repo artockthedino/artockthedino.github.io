@@ -11,7 +11,7 @@
 
 
 
-<title>01_use_fsol_find_gsol.knit</title>
+<title>01_ops_two_steps.knit</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -354,72 +354,62 @@ display: none;
 
 <div id="question" class="section level1">
 <h1>Question</h1>
-<p>If <span class="math inline">\(f[80]=3\)</span>, then there exists a
-knowable solution to the equation below.</p>
-<p><span class="math display">\[y=16\cdot
-f{\left[4\left(x+13\right)\right]}-46\]</span></p>
-<p>Find the solution.</p>
-<ul>
-<li><span class="math inline">\(x=\)</span> ##ANSWER1##</li>
-<li><span class="math inline">\(y=\)</span> ##ANSWER2##</li>
-</ul>
+<p>Let function <span class="math inline">\(f\)</span> be defined with
+the algebraic expression below: <span class="math display">\[f(x)~=~\frac{x-5}{3}\]</span></p>
+<p>Describe the operation sequence that function <span class="math inline">\(f\)</span> applies to the input.</p>
+<ol style="list-style-type: decimal">
+<li>##ANSWER1## ##ANSWER2##</li>
+<li>##ANSWER3## ##ANSWER4##</li>
+</ol>
+<p>An inverse function would need to undo those operations in reverse
+order. What is the operation sequence of the inverse function?</p>
+<ol style="list-style-type: decimal">
+<li>##ANSWER5## ##ANSWER6##</li>
+<li>##ANSWER7## ##ANSWER8##</li>
+</ol>
 <div id="answerlist" class="section level2">
 <h2>Answerlist</h2>
 <ul>
-<li>2</li>
-<li>4</li>
+<li>Add</li>
+<li>Subtract</li>
+<li>Multiply by</li>
+<li>Divide by</li>
+<li>3</li>
 <li>5</li>
-<li>7</li>
-<li>15</li>
-<li>41</li>
-<li>66</li>
-<li>87</li>
-<li>94</li>
-<li>95</li>
-<li>2</li>
-<li>4</li>
+<li>Add</li>
+<li>Subtract</li>
+<li>Multiply by</li>
+<li>Divide by</li>
+<li>3</li>
 <li>5</li>
-<li>7</li>
-<li>15</li>
-<li>41</li>
-<li>66</li>
-<li>87</li>
-<li>94</li>
-<li>95</li>
+<li>Add</li>
+<li>Subtract</li>
+<li>Multiply by</li>
+<li>Divide by</li>
+<li>3</li>
+<li>5</li>
+<li>Add</li>
+<li>Subtract</li>
+<li>Multiply by</li>
+<li>Divide by</li>
+<li>3</li>
+<li>5</li>
 </ul>
 </div>
 </div>
 <div id="solution" class="section level1">
 <h1>Solution</h1>
-<p>Rewrite the given information:</p>
-<p><span class="math display">\[f[80]=3\]</span></p>
-<p><span class="math display">\[y=16\cdot
-f{\left[4\left(x+13\right)\right]}-46\]</span></p>
-<p>First, let’s make the argument equal to 80.</p>
-<p><span class="math display">\[4\left(x+13\right)~=~80\]</span></p>
-<p>Divide by 4.</p>
-<p><span class="math display">\[x+13~=~20\]</span></p>
-<p>Subtract 13.</p>
-<p><span class="math display">\[x~=~7\]</span></p>
-<p>Let’s plug that value of <span class="math inline">\(x\)</span> into
-the given equation.</p>
-<p><span class="math display">\[y=16\cdot
-f{\left[4\left((7)+13\right)\right]}-46\]</span></p>
-<p>Simplify the argument using arithmetic and order of operations.</p>
-<p><span class="math display">\[y=16\cdot
-f{\left[80\right]}-46\]</span></p>
-<p>Excellent! Now we can use the first bit of information given to us:
-<span class="math inline">\(f[80]=3\)</span>. So, we can substitute 3 in
-place of <span class="math inline">\(f[80]\)</span>.</p>
-<p><span class="math display">\[y=16\cdot 3-46\]</span></p>
-<p>Simplify the expression using arithmetic and order of operations.</p>
-<p><span class="math display">\[y=2\]</span></p>
-<p>And, thus, we have our solution: <span class="math inline">\(x=7\)</span> and <span class="math inline">\(y=2\)</span>.</p>
+<p>The original <span class="math inline">\(f\)</span> function
+subtracts 5 and then divides by 3. This is based on <a href="https://en.wikipedia.org/wiki/Order_of_operations">PEMDAS</a>.</p>
+<p>So, the inverse function multiplies by 3 and then adds 5.</p>
+<p><span class="math display">\[f^{-1}(x)~=~3x+5\]</span></p>
 </div>
 <div id="meta-information" class="section level1">
 <h1>Meta-information</h1>
-<p>extype: cloze exclozetype: schoice|schoice exsolution:
-0001000000|1000000000 exname: use_fsol_find_gsol</p>
+<p>extype: cloze exclozetype:
+schoice|schoice|schoice|schoice|schoice|schoice|schoice|schoice
+exsolution: 0100|01|0001|10|0010|10|1000|01 exname:
+identify_two_steps</p>
 </div>
 
 

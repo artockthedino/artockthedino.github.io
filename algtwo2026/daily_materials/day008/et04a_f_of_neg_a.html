@@ -11,7 +11,7 @@
 
 
 
-<title>01_use_fsol_find_gsol.knit</title>
+<title>et04a_f_of_neg_a.knit</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -354,72 +354,39 @@ display: none;
 
 <div id="question" class="section level1">
 <h1>Question</h1>
-<p>If <span class="math inline">\(f[80]=3\)</span>, then there exists a
-knowable solution to the equation below.</p>
-<p><span class="math display">\[y=16\cdot
-f{\left[4\left(x+13\right)\right]}-46\]</span></p>
-<p>Find the solution.</p>
-<ul>
-<li><span class="math inline">\(x=\)</span> ##ANSWER1##</li>
-<li><span class="math inline">\(y=\)</span> ##ANSWER2##</li>
-</ul>
+<p>Let function <span class="math inline">\(f\)</span> be defined as a
+univariate polynomial: <span class="math display">\[f(x) ~=~ - 2 x^{3} +
+2 x^{2} + 3 x - 4\]</span> Which of the following expressions is
+equivalent to <span class="math inline">\(f(-a)\)</span>?</p>
 <div id="answerlist" class="section level2">
 <h2>Answerlist</h2>
 <ul>
-<li>2</li>
-<li>4</li>
-<li>5</li>
-<li>7</li>
-<li>15</li>
-<li>41</li>
-<li>66</li>
-<li>87</li>
-<li>94</li>
-<li>95</li>
-<li>2</li>
-<li>4</li>
-<li>5</li>
-<li>7</li>
-<li>15</li>
-<li>41</li>
-<li>66</li>
-<li>87</li>
-<li>94</li>
-<li>95</li>
+<li><span class="math inline">\(2 a^{3} + 2 a^{2} - 3 a -
+4\)</span></li>
+<li><span class="math inline">\(- 2 a^{3} + 2 a^{2} + 3 a -
+4\)</span></li>
+<li><span class="math inline">\(- 2 a^{3} - 2 a^{2} + 3 a +
+4\)</span></li>
+<li><span class="math inline">\(2 a^{3} - 2 a^{2} - 3 a +
+4\)</span></li>
 </ul>
 </div>
 </div>
 <div id="solution" class="section level1">
 <h1>Solution</h1>
-<p>Rewrite the given information:</p>
-<p><span class="math display">\[f[80]=3\]</span></p>
-<p><span class="math display">\[y=16\cdot
-f{\left[4\left(x+13\right)\right]}-46\]</span></p>
-<p>First, let’s make the argument equal to 80.</p>
-<p><span class="math display">\[4\left(x+13\right)~=~80\]</span></p>
-<p>Divide by 4.</p>
-<p><span class="math display">\[x+13~=~20\]</span></p>
-<p>Subtract 13.</p>
-<p><span class="math display">\[x~=~7\]</span></p>
-<p>Let’s plug that value of <span class="math inline">\(x\)</span> into
-the given equation.</p>
-<p><span class="math display">\[y=16\cdot
-f{\left[4\left((7)+13\right)\right]}-46\]</span></p>
-<p>Simplify the argument using arithmetic and order of operations.</p>
-<p><span class="math display">\[y=16\cdot
-f{\left[80\right]}-46\]</span></p>
-<p>Excellent! Now we can use the first bit of information given to us:
-<span class="math inline">\(f[80]=3\)</span>. So, we can substitute 3 in
-place of <span class="math inline">\(f[80]\)</span>.</p>
-<p><span class="math display">\[y=16\cdot 3-46\]</span></p>
-<p>Simplify the expression using arithmetic and order of operations.</p>
-<p><span class="math display">\[y=2\]</span></p>
-<p>And, thus, we have our solution: <span class="math inline">\(x=7\)</span> and <span class="math inline">\(y=2\)</span>.</p>
+<p>Substitute <span class="math inline">\(-a\)</span> for <span class="math inline">\(x\)</span>.</p>
+<p><span class="math display">\[f(-a) ~=~ - 2 (-a)^{3} + 2 (-a)^{2} + 3
+(-a) - 4\]</span></p>
+<p>Simplify. Remember, a negative raised to an even power is positive
+and a negative raised to an odd power is negative.</p>
+<p><span class="math display">\[f(-a) ~=~ 2 a^{3} + 2 a^{2} - 3 a -
+4\]</span></p>
+<p>The shortcut is to recognize that only the cubic (with <span class="math inline">\(x^3\)</span>) and linear (with <span class="math inline">\(x\)</span>, or <span class="math inline">\(x^1\)</span>), which are the ODD powered terms,
+switch signs between <span class="math inline">\(f(x)\)</span> and <span class="math inline">\(f(-a)\)</span>.</p>
 </div>
 <div id="meta-information" class="section level1">
 <h1>Meta-information</h1>
-<p>extype: cloze exclozetype: schoice|schoice exsolution:
-0001000000|1000000000 exname: use_fsol_find_gsol</p>
+<p>extype: schoice exsolution: 1000 exname: neg_a_function</p>
 </div>
 
 

@@ -11,7 +11,7 @@
 
 
 
-<title>01_use_fsol_find_gsol.knit</title>
+<title>et04_simp_n_poly_nx.knit</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -354,72 +354,31 @@ display: none;
 
 <div id="question" class="section level1">
 <h1>Question</h1>
-<p>If <span class="math inline">\(f[80]=3\)</span>, then there exists a
-knowable solution to the equation below.</p>
-<p><span class="math display">\[y=16\cdot
-f{\left[4\left(x+13\right)\right]}-46\]</span></p>
-<p>Find the solution.</p>
-<ul>
-<li><span class="math inline">\(x=\)</span> ##ANSWER1##</li>
-<li><span class="math inline">\(y=\)</span> ##ANSWER2##</li>
-</ul>
+<p>Simplify the expression: <span class="math display">\[-\left(9(-x)^6+4(-x)^5-5(-x)^4-3(-x)^3\right)\]</span></p>
 <div id="answerlist" class="section level2">
 <h2>Answerlist</h2>
 <ul>
-<li>2</li>
-<li>4</li>
-<li>5</li>
-<li>7</li>
-<li>15</li>
-<li>41</li>
-<li>66</li>
-<li>87</li>
-<li>94</li>
-<li>95</li>
-<li>2</li>
-<li>4</li>
-<li>5</li>
-<li>7</li>
-<li>15</li>
-<li>41</li>
-<li>66</li>
-<li>87</li>
-<li>94</li>
-<li>95</li>
+<li><span class="math inline">\(-9x^6-4x^5+5x^4+3x^3\)</span></li>
+<li><span class="math inline">\(-9x^6+4x^5+5x^4-3x^3\)</span></li>
+<li><span class="math inline">\(9x^6+4x^5-5x^4-3x^3\)</span></li>
+<li><span class="math inline">\(9x^6-4x^5-5x^4+3x^3\)</span></li>
 </ul>
 </div>
 </div>
 <div id="solution" class="section level1">
 <h1>Solution</h1>
-<p>Rewrite the given information:</p>
-<p><span class="math display">\[f[80]=3\]</span></p>
-<p><span class="math display">\[y=16\cdot
-f{\left[4\left(x+13\right)\right]}-46\]</span></p>
-<p>First, let’s make the argument equal to 80.</p>
-<p><span class="math display">\[4\left(x+13\right)~=~80\]</span></p>
-<p>Divide by 4.</p>
-<p><span class="math display">\[x+13~=~20\]</span></p>
-<p>Subtract 13.</p>
-<p><span class="math display">\[x~=~7\]</span></p>
-<p>Let’s plug that value of <span class="math inline">\(x\)</span> into
-the given equation.</p>
-<p><span class="math display">\[y=16\cdot
-f{\left[4\left((7)+13\right)\right]}-46\]</span></p>
-<p>Simplify the argument using arithmetic and order of operations.</p>
-<p><span class="math display">\[y=16\cdot
-f{\left[80\right]}-46\]</span></p>
-<p>Excellent! Now we can use the first bit of information given to us:
-<span class="math inline">\(f[80]=3\)</span>. So, we can substitute 3 in
-place of <span class="math inline">\(f[80]\)</span>.</p>
-<p><span class="math display">\[y=16\cdot 3-46\]</span></p>
-<p>Simplify the expression using arithmetic and order of operations.</p>
-<p><span class="math display">\[y=2\]</span></p>
-<p>And, thus, we have our solution: <span class="math inline">\(x=7\)</span> and <span class="math inline">\(y=2\)</span>.</p>
+<p>Write the given expression.</p>
+<p><span class="math display">\[-\left(9(-x)^6+4(-x)^5-5(-x)^4-3(-x)^3\right)\]</span></p>
+<p>Get rid of inner parentheses. An odd amount of negative factors
+results in a negative product. An even amount of negative factors
+results in a positive product.</p>
+<p><span class="math display">\[-\left(9x^6-4x^5-5x^4+3x^3\right)\]</span></p>
+<p>Distribute the outer negative to all terms.</p>
+<p><span class="math display">\[-9x^6+4x^5+5x^4-3x^3\]</span></p>
 </div>
 <div id="meta-information" class="section level1">
 <h1>Meta-information</h1>
-<p>extype: cloze exclozetype: schoice|schoice exsolution:
-0001000000|1000000000 exname: use_fsol_find_gsol</p>
+<p>extype: schoice exsolution: 0100 exname: simp_n_poly_x</p>
 </div>
 
 

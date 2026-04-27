@@ -581,6 +581,24 @@ snowflake
   "thickness": "30"
 }
 
+angry jellyfish
+{
+  "axiom": "F",
+  "rules": "F > GG-F-GG\nG > F++G++F",
+  "iters": "10",
+  "angle": "82.75",
+  "startAngle": "38",
+  "stroke": "#000000",
+  "bg": "#ffffff",
+  "thickness": "1"
+}
+
+
+
+
+
+
+
 
 
 
