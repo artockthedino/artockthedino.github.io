@@ -11,7 +11,7 @@
 
 
 
-<title>et02_ab_to_xy.knit</title>
+<title>examples_0428</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -476,6 +476,252 @@ if (window.hljs) {
 
 
 
+<style type="text/css">:root {
+--incorrect: #983E82;
+--incorrect_alpha: #edaddd;
+--correct: #59935B;
+--correct_alpha: #c0edc2;
+--highlight: #467AAC;
+--highlight_alpha: #D1E4FF;
+--highlight_gray: #C3C3C3;
+--background_question: #7f7f7f0d;
+--background_input: white;
+--text_input: black;
+--webex-reveal-main-font-size: 1.5rem; 
+--webex-reveal-main-color: var(--r-main-color);
+}
+
+
+:root .quarto-dark, :root .color-theme-2 {
+--highlight: #5687B9;
+--background_input: black;
+--text_input: white;
+}
+
+.reveal .webex-question * {
+font-size: var(--webex-reveal-main-font-size) !important;
+color: var(--webex-reveal-main-color) !important;
+} 
+
+.webex-group .webex-question {
+display: none;
+}
+.webex-group .webex-question.active {
+display: block;
+}
+.webex-check {}
+.webex-box {
+border: 2px solid var(--highlight);
+padding: 0.5em;
+margin: 1em 0;
+border-radius: .25em;
+background-color: var(--background_question);
+}
+.webex-filename {
+display: block;
+font-family: "Lucida Console", "Courier New", monospace;
+color: gray;
+text-align: right;
+}
+.webex-filename > p { margin: 0; }
+.webex-total_correct {
+margin-left: 1em;
+}
+.unchecked .webex-total_correct {
+display: none;
+}
+.unchecked .webex-incorrect,
+.unchecked .webex-correct {
+border: 2px solid transparent !important;
+background-color: transparent !important;
+}
+
+.unchecked select.webex-incorrect,
+.unchecked select.webex-correct,
+.unchecked input.webex-incorrect,
+.unchecked input.webex-correct {
+border: 2px solid var(--highlight) !important;
+background-color: var(--background_input) !important;
+color: var(--text_input) !important;
+}
+
+.webex-select, .webex-solveme,
+.unchecked .webex-radiogroup > .webex-incorrect,
+.unchecked .webex-radiogroup > .webex-correct{
+border: 2px solid var(--highlight);
+background-color: var(--background_input);
+color: var(--text_input) !important;
+border-radius: 0.25em;
+width: auto;
+max-width: 90%;
+}
+.webex-question .tolerance + .webex-solveme {
+border-top-left-radius: 0;
+border-bottom-left-radius: 0;
+border-left: none;
+padding-left: 0.5em;
+}
+.webex-question .tolerance {
+border-color: var(--highlight);
+border-radius: 0.25em;
+background-color: #CECECE;
+color: gray;
+text-align: right;
+border-top-right-radius: 0;
+border-bottom-right-radius: 0;
+border-style: solid;
+border-right: none;
+padding-right: .5em;
+padding-left: .25em;
+}
+.webex-check:not(.unchecked) .tolerance:has(+ .webex-solveme.webex-incorrect) {
+border-color: var(--incorrect);
+color: var(--incorrect);
+}
+.webex-check:not(.unchecked) .tolerance:has(+ .webex-solveme.webex-correct) {
+border-color: var(--correct);
+color: var(--correct);
+}
+.webex-incorrect, .webex-checkboxgroup, .webex-solveme. .webex-radiogroup {
+
+border-radius: 0.25em;
+}
+.webex-checkboxgroup {
+margin-bottom: 1em;
+}
+.webex-incorrect,
+.webex-checkboxgroup > .webex-incorrect,
+.webex-solveme.webex-incorrect,
+.webex-radiogroup > .webex-incorrect {
+border: 2px solid var(--incorrect);
+background-color: var(--incorrect_alpha);
+}
+.webex-correct, .webex-checkboxgroup > .webex-correct,
+.webex-solveme.webex-correct,
+.webex-radiogroup >.webex-correct {
+border: 2px solid var(--correct);
+background-color: var(--correct_alpha);
+}
+.unchecked .webex-incorrect > span::after,
+.unchecked .webex-incorrect + .webex-icon::after,
+.unchecked .webex-correct > span::after,
+.unchecked .webex-correct + .webex-icon::after {
+content: "";
+}
+
+.webex-incorrect > span::after,
+.webex-incorrect + .webex-icon::after {
+content: "\00a0\00a0\2715";
+}
+.webex-correct > span::after,
+.webex-correct + .webex-icon::after {
+content: "\00a0\00a0\2713";
+}
+
+
+
+.webex-solution {
+display: none;
+padding: 0.5em;
+margin-bottom: 10px;
+border: 2px solid var(--highlight_gray);
+border-radius: 5px;
+}
+.webex-solution.visible {
+display: block;
+}
+.webex-solution > ul {
+padding-left: 2em;
+}
+
+ul.webex-button-list {
+display: flex;
+flex-wrap: wrap;
+width: 100%;
+list-style: none;
+padding: 0 !important; 
+margin: 0 !important; 
+}
+ul.webex-button-list > li {
+padding: 0;
+}
+ul.webex-button-list > li {
+margin-bottom: 0 !important; 
+}
+ul.webex-button-list > li:first-child {
+margin-right: auto;
+margin-top: 0; 
+}
+.webex-solution button,
+.webex-box .webex-button {
+height: 2em;
+min-width: 2em;
+margin-bottom: 0;
+margin-right: 0.25em;
+border-radius: 0.5em;
+background-color: transparent;
+border-color: var(--highlight);
+color: var(--highlight);
+padding: 0 0.5em;
+font-size: 1.2em;
+white-space: nowrap;
+}
+.webex-button:hover {
+background-color: var(--highlight_alpha);
+}
+.webex-solution pre.sourceCode {
+border-color: var(--correct);
+}
+ul.webex-button-list > li:last-child > .webex-button { margin-right: 0;
+}
+
+.webex-checkboxgroup > label,
+.unchecked .webex-checkboxgroup > label,
+.webex-radiogroup label {
+font-weight: 400;
+display: block;
+border: 2px solid transparent;
+background-color: inherit;
+border-radius: 0.25em;
+}
+.webex-checkboxgroup label > input[type=checkbox],
+.webex-radiogroup label > input[type=radio] {
+margin: 0.1em 0.5em 0 0.25em;
+position: relative;
+top: 0.125em;
+}
+.webex-radiogroup {
+margin: 1em 0;
+}
+
+.webex-box > ul:not(.webex-button-list) {
+list-style: none;
+margin: 0;
+padding: 0 0 1em 0.25em;
+}
+.webex-box > ul:not(.webex-button-list) > li {
+margin: 0 0 0.25em 0;
+}
+.webex-box > ul:not(.webex-button-list) > li > select {
+margin: 0 0.5em 0 0;
+}
+
+.webex-checkboxgroup > label {
+display: block;
+}
+.webex-checkboxgroup > label > span {
+font-weight: normal;
+}
+.unchecked .webex-checkboxgroup .webex-incorrect,
+.unchecked .webex-checkboxgroup .webex-correct {
+border: 2px solid transparent !important;
+background-color: transparent !important;
+}
+.unchecked .webex-checkboxgroup > label.webex-correct,
+.unchecked .webex-checkboxgroup > label.webex-incorrect {
+background-color: transparent;
+}
+</style>
 
 
 
@@ -572,15 +818,1270 @@ display: none;
 
 
 
+<h1 class="title toc-ignore">examples_0428</h1>
 
 </div>
 
 
-<div id="question" class="section level1">
-<h1>Question</h1>
-<p>Let <span class="math inline">\(f\)</span> be a function. Solutions
-to <span class="math inline">\(f[a]=b\)</span> are shown as rows in the
-table:</p>
+<div class="webex-group">
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[33=9
+x+6\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-1423732deab1e5663a91f45a3811202b" data-tol="0" size="20" data-answer="ahYBEWo="></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[33=9
+x+6\]</span> Subtract 6 from both sides of the equation.</p>
+<p><span class="math display">\[27=9 x\]</span></p>
+<p>Divide both sides of the equation by 9.</p>
+<p><span class="math display">\[3=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=3\]</span></p>
+<p>You can check your possible answer by substituting 3 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[33\stackrel{?}{=}9 (3)+6\]</span></p>
+<p><span class="math display">\[33 \stackrel{?}{=} 27+6\]</span></p>
+<p><span class="math display">\[33 \stackrel{\checkmark}{=}
+33\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=3\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[2=\frac{x+8}{6}\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-4bd6c0e4e43173dad46ad23e19ae4eeb" data-tol="0" size="20" data-answer="b0BQFD4="></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[2=\frac{x+8}{6}\]</span> Multiply both sides of
+the equation by 6.</p>
+<p><span class="math display">\[12=x+8\]</span></p>
+<p>Subtract 8 from both sides of the equation.</p>
+<p><span class="math display">\[4=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=4\]</span></p>
+<p>You can check your possible answer by substituting 4 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[2\stackrel{?}{=}\frac{(4)+8}{6}\]</span></p>
+<p><span class="math display">\[2 \stackrel{?}{=}
+\frac{12}{6}\]</span></p>
+<p><span class="math display">\[2 \stackrel{\checkmark}{=}
+2\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=4\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[2=\frac{x}{2}-3\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-11321e1004a2af3aab63a29cf1c9c890" data-tol="0" size="20" data-answer="ahMCAhM4"></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[2=\frac{x}{2}-3\]</span> Add 3 to both sides of
+the equation.</p>
+<p><span class="math display">\[5=\frac{x}{2}\]</span></p>
+<p>Multiply both sides of the equation by 2.</p>
+<p><span class="math display">\[10=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=10\]</span></p>
+<p>You can check your possible answer by substituting 10 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[2\stackrel{?}{=}\frac{(10)}{2}-3\]</span></p>
+<p><span class="math display">\[2 \stackrel{?}{=} 5-3\]</span></p>
+<p><span class="math display">\[2 \stackrel{\checkmark}{=}
+2\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=10\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[30=(x+8)\cdot
+2\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-da87f143521d4d34fa73264abf7fff27" data-tol="0" size="20" data-answer="P0MPFTs="></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[30=(x+8)\cdot 2\]</span> Divide both sides of the
+equation by 2.</p>
+<p><span class="math display">\[15=x+8\]</span></p>
+<p>Subtract 8 from both sides of the equation.</p>
+<p><span class="math display">\[7=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=7\]</span></p>
+<p>You can check your possible answer by substituting 7 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[30\stackrel{?}{=}((7)+8)\cdot
+2\]</span></p>
+<p><span class="math display">\[30 \stackrel{?}{=} 15\cdot
+2\]</span></p>
+<p><span class="math display">\[30 \stackrel{\checkmark}{=}
+30\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=7\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Solve the equation below. <span class="math display">\[36=(x+3)\cdot
+4\]</span></p>
+<p><input class="webex-solveme nospaces" id="webex-6800f7c49041b120c87fc8526b1ef8c7" data-tol="0" size="20" data-answer="bRoGEjs="></input></p>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given equation. <span class="math display">\[36=(x+3)\cdot 4\]</span> Divide both sides of the
+equation by 4.</p>
+<p><span class="math display">\[9=x+3\]</span></p>
+<p>Subtract 3 from both sides of the equation.</p>
+<p><span class="math display">\[6=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=6\]</span></p>
+<p>You can check your possible answer by substituting 6 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[36\stackrel{?}{=}((6)+3)\cdot
+4\]</span></p>
+<p><span class="math display">\[36 \stackrel{?}{=} 9\cdot 4\]</span></p>
+<p><span class="math display">\[36 \stackrel{\checkmark}{=}
+36\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=6\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+</div>
+<div class="webex-group">
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Let function <span class="math inline">\(f\)</span> be defined with
+the algebraic formula below: <span class="math display">\[f(x) =
+\frac{x}{7}-8\]</span></p>
+<p>Find an expression for the inverse function <span class="math inline">\(f^{-1}\)</span>.</p>
+<div id="webex-f1f7d1f0fcad2a2571788efbd6603ed2" class="webex-radiogroup" data-answer="PQFKB0gBSgBKU01UHlAeBRsBGwgUVUpSSAYaAB9VSAI7">
+<label><input type="radio" autocomplete="off" name="f1f7d1f0fcad2a2571788efbd6603ed2"></input><span><span class="math inline">\(f^{-1}(x)~=~\frac{x-7}{8}\)</span></span></label><label><input type="radio" autocomplete="off" name="f1f7d1f0fcad2a2571788efbd6603ed2"></input><span><span class="math inline">\(f^{-1}(x)~=~8(x-7)\)</span></span></label><label><input type="radio" autocomplete="off" name="f1f7d1f0fcad2a2571788efbd6603ed2"></input><span><span class="math inline">\(f^{-1}(x)~=~\frac{x}{7}+8\)</span></span></label><label><input type="radio" autocomplete="off" name="f1f7d1f0fcad2a2571788efbd6603ed2"></input><span><span class="math inline">\(f^{-1}(x)~=~8(x+7)\)</span></span></label><label><input type="radio" autocomplete="off" name="f1f7d1f0fcad2a2571788efbd6603ed2"></input><span><span class="math inline">\(f^{-1}(x)~=~\frac{x}{7}-8\)</span></span></label><label><input type="radio" autocomplete="off" name="f1f7d1f0fcad2a2571788efbd6603ed2"></input><span><span class="math inline">\(f^{-1}(x)~=~7x-8\)</span></span></label><label><input type="radio" autocomplete="off" name="f1f7d1f0fcad2a2571788efbd6603ed2"></input><span><span class="math inline">\(f^{-1}(x)~=~7(x+8)\)</span></span></label><label><input type="radio" autocomplete="off" name="f1f7d1f0fcad2a2571788efbd6603ed2"></input><span><span class="math inline">\(f^{-1}(x)~=~8x+7\)</span></span></label><label><input type="radio" autocomplete="off" name="f1f7d1f0fcad2a2571788efbd6603ed2"></input><span><span class="math inline">\(f^{-1}(x)~=~\frac{x+8}{7}\)</span></span></label><label><input type="radio" autocomplete="off" name="f1f7d1f0fcad2a2571788efbd6603ed2"></input><span><span class="math inline">\(f^{-1}(x)~=~\frac{x}{8}+7\)</span></span></label><label><input type="radio" autocomplete="off" name="f1f7d1f0fcad2a2571788efbd6603ed2"></input><span><span class="math inline">\(f^{-1}(x)~=~\frac{x-8}{7}\)</span></span></label><label><input type="radio" autocomplete="off" name="f1f7d1f0fcad2a2571788efbd6603ed2"></input><span><span class="math inline">\(f^{-1}(x)~=~7x+8\)</span></span></label><label><input type="radio" autocomplete="off" name="f1f7d1f0fcad2a2571788efbd6603ed2"></input><span><span class="math inline">\(f^{-1}(x)~=~8x-7\)</span></span></label><label><input type="radio" autocomplete="off" name="f1f7d1f0fcad2a2571788efbd6603ed2"></input><span><span class="math inline">\(f^{-1}(x)~=~\frac{x+7}{8}\)</span></span></label><label><input type="radio" autocomplete="off" name="f1f7d1f0fcad2a2571788efbd6603ed2"></input><span><span class="math inline">\(f^{-1}(x)~=~\frac{x}{8}-7\)</span></span></label><label><input type="radio" autocomplete="off" name="f1f7d1f0fcad2a2571788efbd6603ed2"></input><span><span class="math inline">\(f^{-1}(x)~=~7(x-8)\)</span></span></label>
+</div>
+</div>
+<div class="webex-solution">
+<p>The original function tells us to divide by 7 and then subtract
+8.</p>
+<p>The inverse function does the inverse operations in the reverse
+order, so it must add 8 and then multiply by 7.</p>
+<p><span class="math display">\[f^{-1}(x)=7(x+8)\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Let function <span class="math inline">\(f\)</span> be defined with
+the algebraic formula below: <span class="math display">\[f(x) =
+\frac{x}{5}+6\]</span></p>
+<p>Find an expression for the inverse function <span class="math inline">\(f^{-1}\)</span>.</p>
+<div id="webex-42c8bdc666ea819143e48b841a56ce78" class="webex-radiogroup" data-answer="bwJPCE5UTwYaBklRFAAVARgDSQQUUhQEHVEZBk9VGwhp">
+<label><input type="radio" autocomplete="off" name="42c8bdc666ea819143e48b841a56ce78"></input><span><span class="math inline">\(f^{-1}(x)~=~5(x+6)\)</span></span></label><label><input type="radio" autocomplete="off" name="42c8bdc666ea819143e48b841a56ce78"></input><span><span class="math inline">\(f^{-1}(x)~=~6x+5\)</span></span></label><label><input type="radio" autocomplete="off" name="42c8bdc666ea819143e48b841a56ce78"></input><span><span class="math inline">\(f^{-1}(x)~=~\frac{x}{6}-5\)</span></span></label><label><input type="radio" autocomplete="off" name="42c8bdc666ea819143e48b841a56ce78"></input><span><span class="math inline">\(f^{-1}(x)~=~\frac{x+5}{6}\)</span></span></label><label><input type="radio" autocomplete="off" name="42c8bdc666ea819143e48b841a56ce78"></input><span><span class="math inline">\(f^{-1}(x)~=~5x-6\)</span></span></label><label><input type="radio" autocomplete="off" name="42c8bdc666ea819143e48b841a56ce78"></input><span><span class="math inline">\(f^{-1}(x)~=~\frac{x}{5}-6\)</span></span></label><label><input type="radio" autocomplete="off" name="42c8bdc666ea819143e48b841a56ce78"></input><span><span class="math inline">\(f^{-1}(x)~=~5(x-6)\)</span></span></label><label><input type="radio" autocomplete="off" name="42c8bdc666ea819143e48b841a56ce78"></input><span><span class="math inline">\(f^{-1}(x)~=~\frac{x-6}{5}\)</span></span></label><label><input type="radio" autocomplete="off" name="42c8bdc666ea819143e48b841a56ce78"></input><span><span class="math inline">\(f^{-1}(x)~=~\frac{x}{6}+5\)</span></span></label><label><input type="radio" autocomplete="off" name="42c8bdc666ea819143e48b841a56ce78"></input><span><span class="math inline">\(f^{-1}(x)~=~6(x+5)\)</span></span></label><label><input type="radio" autocomplete="off" name="42c8bdc666ea819143e48b841a56ce78"></input><span><span class="math inline">\(f^{-1}(x)~=~5x+6\)</span></span></label><label><input type="radio" autocomplete="off" name="42c8bdc666ea819143e48b841a56ce78"></input><span><span class="math inline">\(f^{-1}(x)~=~\frac{x+6}{5}\)</span></span></label><label><input type="radio" autocomplete="off" name="42c8bdc666ea819143e48b841a56ce78"></input><span><span class="math inline">\(f^{-1}(x)~=~6(x-5)\)</span></span></label><label><input type="radio" autocomplete="off" name="42c8bdc666ea819143e48b841a56ce78"></input><span><span class="math inline">\(f^{-1}(x)~=~6x-5\)</span></span></label><label><input type="radio" autocomplete="off" name="42c8bdc666ea819143e48b841a56ce78"></input><span><span class="math inline">\(f^{-1}(x)~=~\frac{x}{5}+6\)</span></span></label><label><input type="radio" autocomplete="off" name="42c8bdc666ea819143e48b841a56ce78"></input><span><span class="math inline">\(f^{-1}(x)~=~\frac{x-5}{6}\)</span></span></label>
+</div>
+</div>
+<div class="webex-solution">
+<p>The original function tells us to divide by 5 and then add 6.</p>
+<p>The inverse function does the inverse operations in the reverse
+order, so it must subtract 6 and then multiply by 5.</p>
+<p><span class="math display">\[f^{-1}(x)=5(x-6)\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Let function <span class="math inline">\(f\)</span> be defined with
+the algebraic formula below: <span class="math display">\[f(x) =
+\frac{x}{7}+6\]</span></p>
+<p>Find an expression for the inverse function <span class="math inline">\(f^{-1}\)</span>.</p>
+<div id="webex-1af72184365d1b374ee2e6c31f1930bd" class="webex-radiogroup" data-answer="alFKBx4BFAQfBxlUHVIfBxhVSQJJBk8DHVYdCR8ATlRs">
+<label><input type="radio" autocomplete="off" name="1af72184365d1b374ee2e6c31f1930bd"></input><span><span class="math inline">\(f^{-1}(x)~=~6x+7\)</span></span></label><label><input type="radio" autocomplete="off" name="1af72184365d1b374ee2e6c31f1930bd"></input><span><span class="math inline">\(f^{-1}(x)~=~\frac{x-7}{6}\)</span></span></label><label><input type="radio" autocomplete="off" name="1af72184365d1b374ee2e6c31f1930bd"></input><span><span class="math inline">\(f^{-1}(x)~=~6(x-7)\)</span></span></label><label><input type="radio" autocomplete="off" name="1af72184365d1b374ee2e6c31f1930bd"></input><span><span class="math inline">\(f^{-1}(x)~=~7(x+6)\)</span></span></label><label><input type="radio" autocomplete="off" name="1af72184365d1b374ee2e6c31f1930bd"></input><span><span class="math inline">\(f^{-1}(x)~=~7(x-6)\)</span></span></label><label><input type="radio" autocomplete="off" name="1af72184365d1b374ee2e6c31f1930bd"></input><span><span class="math inline">\(f^{-1}(x)~=~6x-7\)</span></span></label><label><input type="radio" autocomplete="off" name="1af72184365d1b374ee2e6c31f1930bd"></input><span><span class="math inline">\(f^{-1}(x)~=~\frac{x-6}{7}\)</span></span></label><label><input type="radio" autocomplete="off" name="1af72184365d1b374ee2e6c31f1930bd"></input><span><span class="math inline">\(f^{-1}(x)~=~\frac{x+6}{7}\)</span></span></label><label><input type="radio" autocomplete="off" name="1af72184365d1b374ee2e6c31f1930bd"></input><span><span class="math inline">\(f^{-1}(x)~=~\frac{x}{6}-7\)</span></span></label><label><input type="radio" autocomplete="off" name="1af72184365d1b374ee2e6c31f1930bd"></input><span><span class="math inline">\(f^{-1}(x)~=~\frac{x+7}{6}\)</span></span></label><label><input type="radio" autocomplete="off" name="1af72184365d1b374ee2e6c31f1930bd"></input><span><span class="math inline">\(f^{-1}(x)~=~\frac{x}{7}-6\)</span></span></label><label><input type="radio" autocomplete="off" name="1af72184365d1b374ee2e6c31f1930bd"></input><span><span class="math inline">\(f^{-1}(x)~=~6(x+7)\)</span></span></label><label><input type="radio" autocomplete="off" name="1af72184365d1b374ee2e6c31f1930bd"></input><span><span class="math inline">\(f^{-1}(x)~=~\frac{x}{7}+6\)</span></span></label><label><input type="radio" autocomplete="off" name="1af72184365d1b374ee2e6c31f1930bd"></input><span><span class="math inline">\(f^{-1}(x)~=~7x+6\)</span></span></label><label><input type="radio" autocomplete="off" name="1af72184365d1b374ee2e6c31f1930bd"></input><span><span class="math inline">\(f^{-1}(x)~=~7x-6\)</span></span></label><label><input type="radio" autocomplete="off" name="1af72184365d1b374ee2e6c31f1930bd"></input><span><span class="math inline">\(f^{-1}(x)~=~\frac{x}{6}+7\)</span></span></label>
+</div>
+</div>
+<div class="webex-solution">
+<p>The original function tells us to divide by 7 and then add 6.</p>
+<p>The inverse function does the inverse operations in the reverse
+order, so it must subtract 6 and then multiply by 7.</p>
+<p><span class="math display">\[f^{-1}(x)=7(x-6)\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Let function <span class="math inline">\(f\)</span> be defined with
+the algebraic formula below: <span class="math display">\[f(x) =
+\frac{x-7}{4}\]</span></p>
+<p>Find an expression for the inverse function <span class="math inline">\(f^{-1}\)</span>.</p>
+<div id="webex-b3397d62d2507eb6772ee1ce90e537d7" class="webex-radiogroup" data-answer="OQMfCRtUGgJIAhkBG1VOBhsHHlVJAU9VFQBJBR8HSAc/">
+<label><input type="radio" autocomplete="off" name="b3397d62d2507eb6772ee1ce90e537d7"></input><span><span class="math inline">\(f^{-1}(x)~=~\frac{x+7}{4}\)</span></span></label><label><input type="radio" autocomplete="off" name="b3397d62d2507eb6772ee1ce90e537d7"></input><span><span class="math inline">\(f^{-1}(x)~=~\frac{x-7}{4}\)</span></span></label><label><input type="radio" autocomplete="off" name="b3397d62d2507eb6772ee1ce90e537d7"></input><span><span class="math inline">\(f^{-1}(x)~=~7x+4\)</span></span></label><label><input type="radio" autocomplete="off" name="b3397d62d2507eb6772ee1ce90e537d7"></input><span><span class="math inline">\(f^{-1}(x)~=~4x-7\)</span></span></label><label><input type="radio" autocomplete="off" name="b3397d62d2507eb6772ee1ce90e537d7"></input><span><span class="math inline">\(f^{-1}(x)~=~4(x-7)\)</span></span></label><label><input type="radio" autocomplete="off" name="b3397d62d2507eb6772ee1ce90e537d7"></input><span><span class="math inline">\(f^{-1}(x)~=~4x+7\)</span></span></label><label><input type="radio" autocomplete="off" name="b3397d62d2507eb6772ee1ce90e537d7"></input><span><span class="math inline">\(f^{-1}(x)~=~7(x-4)\)</span></span></label><label><input type="radio" autocomplete="off" name="b3397d62d2507eb6772ee1ce90e537d7"></input><span><span class="math inline">\(f^{-1}(x)~=~\frac{x+4}{7}\)</span></span></label><label><input type="radio" autocomplete="off" name="b3397d62d2507eb6772ee1ce90e537d7"></input><span><span class="math inline">\(f^{-1}(x)~=~7x-4\)</span></span></label><label><input type="radio" autocomplete="off" name="b3397d62d2507eb6772ee1ce90e537d7"></input><span><span class="math inline">\(f^{-1}(x)~=~\frac{x}{7}-4\)</span></span></label><label><input type="radio" autocomplete="off" name="b3397d62d2507eb6772ee1ce90e537d7"></input><span><span class="math inline">\(f^{-1}(x)~=~\frac{x}{7}+4\)</span></span></label><label><input type="radio" autocomplete="off" name="b3397d62d2507eb6772ee1ce90e537d7"></input><span><span class="math inline">\(f^{-1}(x)~=~\frac{x}{4}-7\)</span></span></label><label><input type="radio" autocomplete="off" name="b3397d62d2507eb6772ee1ce90e537d7"></input><span><span class="math inline">\(f^{-1}(x)~=~7(x+4)\)</span></span></label><label><input type="radio" autocomplete="off" name="b3397d62d2507eb6772ee1ce90e537d7"></input><span><span class="math inline">\(f^{-1}(x)~=~\frac{x-4}{7}\)</span></span></label><label><input type="radio" autocomplete="off" name="b3397d62d2507eb6772ee1ce90e537d7"></input><span><span class="math inline">\(f^{-1}(x)~=~4(x+7)\)</span></span></label><label><input type="radio" autocomplete="off" name="b3397d62d2507eb6772ee1ce90e537d7"></input><span><span class="math inline">\(f^{-1}(x)~=~\frac{x}{4}+7\)</span></span></label>
+</div>
+</div>
+<div class="webex-solution">
+<p>The original function tells us to subtract 7 and then divide by
+4.</p>
+<p>The inverse function does the inverse operations in the reverse
+order, so it must multiply by 4 and then add 7.</p>
+<p><span class="math display">\[f^{-1}(x)=4x+7\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Let function <span class="math inline">\(f\)</span> be defined with
+the algebraic formula below: <span class="math display">\[f(x) =
+\frac{x}{4}+7\]</span></p>
+<p>Find an expression for the inverse function <span class="math inline">\(f^{-1}\)</span>.</p>
+<div id="webex-a4f813f9e59278fdf000730d1cf2cd58" class="webex-radiogroup" data-answer="OgRKCB0DSglJBRUCGwhKVEoAHAAbAxxVHVNKAk9UGQg8">
+<label><input type="radio" autocomplete="off" name="a4f813f9e59278fdf000730d1cf2cd58"></input><span><span class="math inline">\(f^{-1}(x)~=~\frac{x-7}{4}\)</span></span></label><label><input type="radio" autocomplete="off" name="a4f813f9e59278fdf000730d1cf2cd58"></input><span><span class="math inline">\(f^{-1}(x)~=~\frac{x}{7}+4\)</span></span></label><label><input type="radio" autocomplete="off" name="a4f813f9e59278fdf000730d1cf2cd58"></input><span><span class="math inline">\(f^{-1}(x)~=~7x-4\)</span></span></label><label><input type="radio" autocomplete="off" name="a4f813f9e59278fdf000730d1cf2cd58"></input><span><span class="math inline">\(f^{-1}(x)~=~\frac{x}{4}-7\)</span></span></label><label><input type="radio" autocomplete="off" name="a4f813f9e59278fdf000730d1cf2cd58"></input><span><span class="math inline">\(f^{-1}(x)~=~4(x+7)\)</span></span></label><label><input type="radio" autocomplete="off" name="a4f813f9e59278fdf000730d1cf2cd58"></input><span><span class="math inline">\(f^{-1}(x)~=~\frac{x}{7}-4\)</span></span></label><label><input type="radio" autocomplete="off" name="a4f813f9e59278fdf000730d1cf2cd58"></input><span><span class="math inline">\(f^{-1}(x)~=~\frac{x+7}{4}\)</span></span></label><label><input type="radio" autocomplete="off" name="a4f813f9e59278fdf000730d1cf2cd58"></input><span><span class="math inline">\(f^{-1}(x)~=~\frac{x+4}{7}\)</span></span></label><label><input type="radio" autocomplete="off" name="a4f813f9e59278fdf000730d1cf2cd58"></input><span><span class="math inline">\(f^{-1}(x)~=~4x-7\)</span></span></label><label><input type="radio" autocomplete="off" name="a4f813f9e59278fdf000730d1cf2cd58"></input><span><span class="math inline">\(f^{-1}(x)~=~7(x-4)\)</span></span></label><label><input type="radio" autocomplete="off" name="a4f813f9e59278fdf000730d1cf2cd58"></input><span><span class="math inline">\(f^{-1}(x)~=~\frac{x}{4}+7\)</span></span></label><label><input type="radio" autocomplete="off" name="a4f813f9e59278fdf000730d1cf2cd58"></input><span><span class="math inline">\(f^{-1}(x)~=~4(x-7)\)</span></span></label><label><input type="radio" autocomplete="off" name="a4f813f9e59278fdf000730d1cf2cd58"></input><span><span class="math inline">\(f^{-1}(x)~=~7(x+4)\)</span></span></label><label><input type="radio" autocomplete="off" name="a4f813f9e59278fdf000730d1cf2cd58"></input><span><span class="math inline">\(f^{-1}(x)~=~7x+4\)</span></span></label><label><input type="radio" autocomplete="off" name="a4f813f9e59278fdf000730d1cf2cd58"></input><span><span class="math inline">\(f^{-1}(x)~=~4x+7\)</span></span></label><label><input type="radio" autocomplete="off" name="a4f813f9e59278fdf000730d1cf2cd58"></input><span><span class="math inline">\(f^{-1}(x)~=~\frac{x-4}{7}\)</span></span></label>
+</div>
+</div>
+<div class="webex-solution">
+<p>The original function tells us to divide by 4 and then add 7.</p>
+<p>The inverse function does the inverse operations in the reverse
+order, so it must subtract 7 and then multiply by 4.</p>
+<p><span class="math display">\[f^{-1}(x)=4(x-7)\]</span></p>
+</div>
+</div>
+</div>
+<div class="webex-group">
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Let <span class="math inline">\(f\)</span> represent a <a href="https://en.wikipedia.org/wiki/Injective_function">one-to-one
+function</a>. Point <span class="math inline">\((-20,71)\)</span> is on
+the curve <span class="math inline">\(y=f(x)\)</span>.</p>
+<p>The inverse function&#39;s curve, <span class="math inline">\(y=f^{-1}(x)\)</span>, has a corresponding point.
+What is the known point on the inverse function&#39;s curve? Type your
+answer with parentheses, with a comma separator, and without spaces. For
+example <code>(10,-99)</code>.</p>
+<p><input class="webex-solveme" id="webex-eaf23bb2f9b4d5ef60878b3a0eb81900" size="20" data-answer="PkNOBQJOTwBWEEBp"></input></p>
+</div>
+<div class="webex-solution">
+<p>You simply swap the coordinates. Thus, the answer is <span class="math inline">\((71,-20)\)</span>. You type the answer like
+<code>(71,-20)</code>.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Let <span class="math inline">\(f\)</span> represent a <a href="https://en.wikipedia.org/wiki/Injective_function">one-to-one
+function</a>. Point <span class="math inline">\((-41,74)\)</span> is on
+the curve <span class="math inline">\(y=f(x)\)</span>.</p>
+<p>The inverse function&#39;s curve, <span class="math inline">\(y=f^{-1}(x)\)</span>, has a corresponding point.
+What is the known point on the inverse function&#39;s curve? Type your
+answer with parentheses, with a comma separator, and without spaces. For
+example <code>(10,-99)</code>.</p>
+<p><input class="webex-solveme" id="webex-7ce274ffd5e37762c0aba17f68d95a79" size="20" data-answer="bEFNBQMYS1JVHEdu"></input></p>
+</div>
+<div class="webex-solution">
+<p>You simply swap the coordinates. Thus, the answer is <span class="math inline">\((74,-41)\)</span>. You type the answer like
+<code>(74,-41)</code>.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Let <span class="math inline">\(f\)</span> represent a <a href="https://en.wikipedia.org/wiki/Injective_function">one-to-one
+function</a>. Point <span class="math inline">\((-78,-94)\)</span> is on
+the curve <span class="math inline">\(y=f(x)\)</span>.</p>
+<p>The inverse function&#39;s curve, <span class="math inline">\(y=f^{-1}(x)\)</span>, has a corresponding point.
+What is the known point on the inverse function&#39;s curve? Type your
+answer with parentheses, with a comma separator, and without spaces. For
+example <code>(10,-99)</code>.</p>
+<p><input class="webex-solveme" id="webex-1fb8b5e9a916e31af50037e106744a54" size="20" data-answer="akRKFVsBSRRWARgUOA=="></input></p>
+</div>
+<div class="webex-solution">
+<p>You simply swap the coordinates. Thus, the answer is <span class="math inline">\((-94,-78)\)</span>. You type the answer like
+<code>(-94,-78)</code>.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Let <span class="math inline">\(f\)</span> represent a <a href="https://en.wikipedia.org/wiki/Injective_function">one-to-one
+function</a>. Point <span class="math inline">\((24,53)\)</span> is on
+the curve <span class="math inline">\(y=f(x)\)</span>.</p>
+<p>The inverse function&#39;s curve, <span class="math inline">\(y=f^{-1}(x)\)</span>, has a corresponding point.
+What is the known point on the inverse function&#39;s curve? Type your
+answer with parentheses, with a comma separator, and without spaces. For
+example <code>(10,-99)</code>.</p>
+<p><input class="webex-solveme" id="webex-b138f46db957894efbf8f729a948c014" size="20" data-answer="ORMbDVUYBFBLG2g="></input></p>
+</div>
+<div class="webex-solution">
+<p>You simply swap the coordinates. Thus, the answer is <span class="math inline">\((53,24)\)</span>. You type the answer like
+<code>(53,24)</code>.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Let <span class="math inline">\(f\)</span> represent a <a href="https://en.wikipedia.org/wiki/Injective_function">one-to-one
+function</a>. Point <span class="math inline">\((92,65)\)</span> is on
+the curve <span class="math inline">\(y=f(x)\)</span>.</p>
+<p>The inverse function&#39;s curve, <span class="math inline">\(y=f^{-1}(x)\)</span>, has a corresponding point.
+What is the known point on the inverse function&#39;s curve? Type your
+answer with parentheses, with a comma separator, and without spaces. For
+example <code>(10,-99)</code>.</p>
+<p><input class="webex-solveme" id="webex-fcca12c4b6468f3d71b5bc9f96e60c0b" size="20" data-answer="PUFLVwQeWgZLFGk="></input></p>
+</div>
+<div class="webex-solution">
+<p>You simply swap the coordinates. Thus, the answer is <span class="math inline">\((65,92)\)</span>. You type the answer like
+<code>(65,92)</code>.</p>
+</div>
+</div>
+</div>
+<div class="webex-group">
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Let a transformed cubing function be defined by the equation
+below:</p>
+<p><span class="math display">\[f(x) = (x-6)^3+5\]</span></p>
+<p>Find the inverse function.</p>
+<div id="webex-c3b468d46a1be753fa0ea2c19a8fb122" class="webex-radiogroup" data-answer="OANOBRoISAQaUR1SSQcZAzs=">
+<label><input type="radio" autocomplete="off" name="c3b468d46a1be753fa0ea2c19a8fb122"></input><span><span class="math inline">\(f^{-1}(x)=\sqrt[3]{x-5}-6\)</span></span></label><label><input type="radio" autocomplete="off" name="c3b468d46a1be753fa0ea2c19a8fb122"></input><span><span class="math inline">\(f^{-1}(x)=\sqrt[3]{x-5}+6\)</span></span></label><label><input type="radio" autocomplete="off" name="c3b468d46a1be753fa0ea2c19a8fb122"></input><span><span class="math inline">\(f^{-1}(x)=\sqrt[3]{x-6}-5\)</span></span></label><label><input type="radio" autocomplete="off" name="c3b468d46a1be753fa0ea2c19a8fb122"></input><span><span class="math inline">\(f^{-1}(x)=\sqrt[3]{x-6}+5\)</span></span></label><label><input type="radio" autocomplete="off" name="c3b468d46a1be753fa0ea2c19a8fb122"></input><span><span class="math inline">\(f^{-1}(x)=\sqrt[3]{x+5}-6\)</span></span></label><label><input type="radio" autocomplete="off" name="c3b468d46a1be753fa0ea2c19a8fb122"></input><span><span class="math inline">\(f^{-1}(x)=\sqrt[3]{x+5}+6\)</span></span></label><label><input type="radio" autocomplete="off" name="c3b468d46a1be753fa0ea2c19a8fb122"></input><span><span class="math inline">\(f^{-1}(x)=\sqrt[3]{x+6}-5\)</span></span></label><label><input type="radio" autocomplete="off" name="c3b468d46a1be753fa0ea2c19a8fb122"></input><span><span class="math inline">\(f^{-1}(x)=\sqrt[3]{x+6}+5\)</span></span></label>
+</div>
+</div>
+<div class="webex-solution">
+<p>First, get rid of function notation.</p>
+<p><span class="math display">\[y = (x-6)^3+5\]</span></p>
+<p>Swap <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> to find an inverse function.</p>
+<p><span class="math display">\[x=(y-6)^3+5\]</span></p>
+<p>Solve for <span class="math inline">\(y\)</span> by undoing the
+operation on the right side.</p>
+<p><span class="math display">\[x-5=(y-6)^3\]</span></p>
+<p><span class="math display">\[\sqrt[3]{x-5}=y-6\]</span></p>
+<p><span class="math display">\[\sqrt[3]{x-5}+6=y\]</span></p>
+<p>The correct answer is <span class="math inline">\(f^{-1}(x)=\sqrt[3]{x-5}+6\)</span>.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Let a transformed cubing function be defined by the equation
+below:</p>
+<p><span class="math display">\[f(x) = (x-1)^3-6\]</span></p>
+<p>Find the inverse function.</p>
+<div id="webex-53fe5b843053f65ec7fbfa802c1ef8a9" class="webex-radiogroup" data-answer="bgNKVRlSFAQfABkDSgYZVD4=">
+<label><input type="radio" autocomplete="off" name="53fe5b843053f65ec7fbfa802c1ef8a9"></input><span><span class="math inline">\(f^{-1}(x)=\sqrt[3]{x-1}-6\)</span></span></label><label><input type="radio" autocomplete="off" name="53fe5b843053f65ec7fbfa802c1ef8a9"></input><span><span class="math inline">\(f^{-1}(x)=\sqrt[3]{x-1}+6\)</span></span></label><label><input type="radio" autocomplete="off" name="53fe5b843053f65ec7fbfa802c1ef8a9"></input><span><span class="math inline">\(f^{-1}(x)=\sqrt[3]{x-6}-1\)</span></span></label><label><input type="radio" autocomplete="off" name="53fe5b843053f65ec7fbfa802c1ef8a9"></input><span><span class="math inline">\(f^{-1}(x)=\sqrt[3]{x-6}+1\)</span></span></label><label><input type="radio" autocomplete="off" name="53fe5b843053f65ec7fbfa802c1ef8a9"></input><span><span class="math inline">\(f^{-1}(x)=\sqrt[3]{x+1}-6\)</span></span></label><label><input type="radio" autocomplete="off" name="53fe5b843053f65ec7fbfa802c1ef8a9"></input><span><span class="math inline">\(f^{-1}(x)=\sqrt[3]{x+1}+6\)</span></span></label><label><input type="radio" autocomplete="off" name="53fe5b843053f65ec7fbfa802c1ef8a9"></input><span><span class="math inline">\(f^{-1}(x)=\sqrt[3]{x+6}-1\)</span></span></label><label><input type="radio" autocomplete="off" name="53fe5b843053f65ec7fbfa802c1ef8a9"></input><span><span class="math inline">\(f^{-1}(x)=\sqrt[3]{x+6}+1\)</span></span></label>
+</div>
+</div>
+<div class="webex-solution">
+<p>First, get rid of function notation.</p>
+<p><span class="math display">\[y = (x-1)^3-6\]</span></p>
+<p>Swap <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> to find an inverse function.</p>
+<p><span class="math display">\[x=(y-1)^3-6\]</span></p>
+<p>Solve for <span class="math inline">\(y\)</span> by undoing the
+operation on the right side.</p>
+<p><span class="math display">\[x+6=(y-1)^3\]</span></p>
+<p><span class="math display">\[\sqrt[3]{x+6}=y-1\]</span></p>
+<p><span class="math display">\[\sqrt[3]{x+6}+1=y\]</span></p>
+<p>The correct answer is <span class="math inline">\(f^{-1}(x)=\sqrt[3]{x+6}+1\)</span>.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Let a transformed cubing function be defined by the equation
+below:</p>
+<p><span class="math display">\[f(x) = (x-1)^3+6\]</span></p>
+<p>Find the inverse function.</p>
+<div id="webex-4bbe87df20f8bf056de656facb6c0efb" class="webex-radiogroup" data-answer="b1JOVRQHSFceAEoITlYcBWs=">
+<label><input type="radio" autocomplete="off" name="4bbe87df20f8bf056de656facb6c0efb"></input><span><span class="math inline">\(f^{-1}(x)=\sqrt[3]{x-1}-6\)</span></span></label><label><input type="radio" autocomplete="off" name="4bbe87df20f8bf056de656facb6c0efb"></input><span><span class="math inline">\(f^{-1}(x)=\sqrt[3]{x-1}+6\)</span></span></label><label><input type="radio" autocomplete="off" name="4bbe87df20f8bf056de656facb6c0efb"></input><span><span class="math inline">\(f^{-1}(x)=\sqrt[3]{x-6}-1\)</span></span></label><label><input type="radio" autocomplete="off" name="4bbe87df20f8bf056de656facb6c0efb"></input><span><span class="math inline">\(f^{-1}(x)=\sqrt[3]{x-6}+1\)</span></span></label><label><input type="radio" autocomplete="off" name="4bbe87df20f8bf056de656facb6c0efb"></input><span><span class="math inline">\(f^{-1}(x)=\sqrt[3]{x+1}-6\)</span></span></label><label><input type="radio" autocomplete="off" name="4bbe87df20f8bf056de656facb6c0efb"></input><span><span class="math inline">\(f^{-1}(x)=\sqrt[3]{x+1}+6\)</span></span></label><label><input type="radio" autocomplete="off" name="4bbe87df20f8bf056de656facb6c0efb"></input><span><span class="math inline">\(f^{-1}(x)=\sqrt[3]{x+6}-1\)</span></span></label><label><input type="radio" autocomplete="off" name="4bbe87df20f8bf056de656facb6c0efb"></input><span><span class="math inline">\(f^{-1}(x)=\sqrt[3]{x+6}+1\)</span></span></label>
+</div>
+</div>
+<div class="webex-solution">
+<p>First, get rid of function notation.</p>
+<p><span class="math display">\[y = (x-1)^3+6\]</span></p>
+<p>Swap <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> to find an inverse function.</p>
+<p><span class="math display">\[x=(y-1)^3+6\]</span></p>
+<p>Solve for <span class="math inline">\(y\)</span> by undoing the
+operation on the right side.</p>
+<p><span class="math display">\[x-6=(y-1)^3\]</span></p>
+<p><span class="math display">\[\sqrt[3]{x-6}=y-1\]</span></p>
+<p><span class="math display">\[\sqrt[3]{x-6}+1=y\]</span></p>
+<p>The correct answer is <span class="math inline">\(f^{-1}(x)=\sqrt[3]{x-6}+1\)</span>.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Let a transformed cubing function be defined by the equation
+below:</p>
+<p><span class="math display">\[f(x) = (x-6)^3-7\]</span></p>
+<p>Find the inverse function.</p>
+<div id="webex-a5470940281a2487b3cecd385eaac742" class="webex-radiogroup" data-answer="OgUYBxwJGAAeCB1RHgQUBj8=">
+<label><input type="radio" autocomplete="off" name="a5470940281a2487b3cecd385eaac742"></input><span><span class="math inline">\(f^{-1}(x)=\sqrt[3]{x-6}-7\)</span></span></label><label><input type="radio" autocomplete="off" name="a5470940281a2487b3cecd385eaac742"></input><span><span class="math inline">\(f^{-1}(x)=\sqrt[3]{x-6}+7\)</span></span></label><label><input type="radio" autocomplete="off" name="a5470940281a2487b3cecd385eaac742"></input><span><span class="math inline">\(f^{-1}(x)=\sqrt[3]{x-7}-6\)</span></span></label><label><input type="radio" autocomplete="off" name="a5470940281a2487b3cecd385eaac742"></input><span><span class="math inline">\(f^{-1}(x)=\sqrt[3]{x-7}+6\)</span></span></label><label><input type="radio" autocomplete="off" name="a5470940281a2487b3cecd385eaac742"></input><span><span class="math inline">\(f^{-1}(x)=\sqrt[3]{x+6}-7\)</span></span></label><label><input type="radio" autocomplete="off" name="a5470940281a2487b3cecd385eaac742"></input><span><span class="math inline">\(f^{-1}(x)=\sqrt[3]{x+6}+7\)</span></span></label><label><input type="radio" autocomplete="off" name="a5470940281a2487b3cecd385eaac742"></input><span><span class="math inline">\(f^{-1}(x)=\sqrt[3]{x+7}-6\)</span></span></label><label><input type="radio" autocomplete="off" name="a5470940281a2487b3cecd385eaac742"></input><span><span class="math inline">\(f^{-1}(x)=\sqrt[3]{x+7}+6\)</span></span></label>
+</div>
+</div>
+<div class="webex-solution">
+<p>First, get rid of function notation.</p>
+<p><span class="math display">\[y = (x-6)^3-7\]</span></p>
+<p>Swap <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> to find an inverse function.</p>
+<p><span class="math display">\[x=(y-6)^3-7\]</span></p>
+<p>Solve for <span class="math inline">\(y\)</span> by undoing the
+operation on the right side.</p>
+<p><span class="math display">\[x+7=(y-6)^3\]</span></p>
+<p><span class="math display">\[\sqrt[3]{x+7}=y-6\]</span></p>
+<p><span class="math display">\[\sqrt[3]{x+7}+6=y\]</span></p>
+<p>The correct answer is <span class="math inline">\(f^{-1}(x)=\sqrt[3]{x+7}+6\)</span>.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Let a transformed cubing function be defined by the equation
+below:</p>
+<p><span class="math display">\[f(x) = (x+4)^3-7\]</span></p>
+<p>Find the inverse function.</p>
+<div id="webex-fdb747d18a95784248943554ebcec10e" class="webex-radiogroup" data-answer="PVROBxgHSAEUURUFGwkYAmk=">
+<label><input type="radio" autocomplete="off" name="fdb747d18a95784248943554ebcec10e"></input><span><span class="math inline">\(f^{-1}(x)=\sqrt[3]{x-4}-7\)</span></span></label><label><input type="radio" autocomplete="off" name="fdb747d18a95784248943554ebcec10e"></input><span><span class="math inline">\(f^{-1}(x)=\sqrt[3]{x-4}+7\)</span></span></label><label><input type="radio" autocomplete="off" name="fdb747d18a95784248943554ebcec10e"></input><span><span class="math inline">\(f^{-1}(x)=\sqrt[3]{x-7}-4\)</span></span></label><label><input type="radio" autocomplete="off" name="fdb747d18a95784248943554ebcec10e"></input><span><span class="math inline">\(f^{-1}(x)=\sqrt[3]{x-7}+4\)</span></span></label><label><input type="radio" autocomplete="off" name="fdb747d18a95784248943554ebcec10e"></input><span><span class="math inline">\(f^{-1}(x)=\sqrt[3]{x+4}-7\)</span></span></label><label><input type="radio" autocomplete="off" name="fdb747d18a95784248943554ebcec10e"></input><span><span class="math inline">\(f^{-1}(x)=\sqrt[3]{x+4}+7\)</span></span></label><label><input type="radio" autocomplete="off" name="fdb747d18a95784248943554ebcec10e"></input><span><span class="math inline">\(f^{-1}(x)=\sqrt[3]{x+7}-4\)</span></span></label><label><input type="radio" autocomplete="off" name="fdb747d18a95784248943554ebcec10e"></input><span><span class="math inline">\(f^{-1}(x)=\sqrt[3]{x+7}+4\)</span></span></label>
+</div>
+</div>
+<div class="webex-solution">
+<p>First, get rid of function notation.</p>
+<p><span class="math display">\[y = (x+4)^3-7\]</span></p>
+<p>Swap <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> to find an inverse function.</p>
+<p><span class="math display">\[x=(y+4)^3-7\]</span></p>
+<p>Solve for <span class="math inline">\(y\)</span> by undoing the
+operation on the right side.</p>
+<p><span class="math display">\[x+7=(y+4)^3\]</span></p>
+<p><span class="math display">\[\sqrt[3]{x+7}=y+4\]</span></p>
+<p><span class="math display">\[\sqrt[3]{x+7}-4=y\]</span></p>
+<p>The correct answer is <span class="math inline">\(f^{-1}(x)=\sqrt[3]{x+7}-4\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="webex-group">
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Let a transformed cube-root function be defined by the equation
+below:</p>
+<p><span class="math display">\[f(x) = \sqrt[3]{x-6}-5\]</span></p>
+<p>Find the inverse function.</p>
+<div id="webex-0a99ee7406a1c2062203eeb2305b8232" class="webex-radiogroup" data-answer="a1EVCUlVGwQcBk0ATwIcBm8=">
+<label><input type="radio" autocomplete="off" name="0a99ee7406a1c2062203eeb2305b8232"></input><span><span class="math inline">\(f^{-1}(x)=(x-5)^3-6\)</span></span></label><label><input type="radio" autocomplete="off" name="0a99ee7406a1c2062203eeb2305b8232"></input><span><span class="math inline">\(f^{-1}(x)=(x-5)^3+6\)</span></span></label><label><input type="radio" autocomplete="off" name="0a99ee7406a1c2062203eeb2305b8232"></input><span><span class="math inline">\(f^{-1}(x)=(x-6)^3-5\)</span></span></label><label><input type="radio" autocomplete="off" name="0a99ee7406a1c2062203eeb2305b8232"></input><span><span class="math inline">\(f^{-1}(x)=(x-6)^3+5\)</span></span></label><label><input type="radio" autocomplete="off" name="0a99ee7406a1c2062203eeb2305b8232"></input><span><span class="math inline">\(f^{-1}(x)=(x+5)^3-6\)</span></span></label><label><input type="radio" autocomplete="off" name="0a99ee7406a1c2062203eeb2305b8232"></input><span><span class="math inline">\(f^{-1}(x)=(x+5)^3+6\)</span></span></label><label><input type="radio" autocomplete="off" name="0a99ee7406a1c2062203eeb2305b8232"></input><span><span class="math inline">\(f^{-1}(x)=(x+6)^3-5\)</span></span></label><label><input type="radio" autocomplete="off" name="0a99ee7406a1c2062203eeb2305b8232"></input><span><span class="math inline">\(f^{-1}(x)=(x+6)^3+5\)</span></span></label>
+</div>
+</div>
+<div class="webex-solution">
+<p>First, get rid of function notation.</p>
+<p><span class="math display">\[y = \sqrt[3]{x-6}-5\]</span></p>
+<p>Swap <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> to find an inverse function.</p>
+<p><span class="math display">\[x=\sqrt[3]{y-6}-5\]</span></p>
+<p>Solve for <span class="math inline">\(y\)</span> by undoing the
+operation on the right side.</p>
+<p><span class="math display">\[x+5=\sqrt[3]{y-6}\]</span></p>
+<p><span class="math display">\[(x+5)^3=y-6\]</span></p>
+<p><span class="math display">\[(x+5)^3+6=y\]</span></p>
+<p>The correct answer is <span class="math inline">\(f^{-1}(x)=(x+5)^3+6\)</span>.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Let a transformed cube-root function be defined by the equation
+below:</p>
+<p><span class="math display">\[f(x) = \sqrt[3]{x-2}+7\]</span></p>
+<p>Find the inverse function.</p>
+<div id="webex-1306b04bdc6c489d9ec53c6118a3392d" class="webex-radiogroup" data-answer="agMcBk4AGFNIUxpTGAgVVGQ=">
+<label><input type="radio" autocomplete="off" name="1306b04bdc6c489d9ec53c6118a3392d"></input><span><span class="math inline">\(f^{-1}(x)=(x-2)^3-7\)</span></span></label><label><input type="radio" autocomplete="off" name="1306b04bdc6c489d9ec53c6118a3392d"></input><span><span class="math inline">\(f^{-1}(x)=(x-2)^3+7\)</span></span></label><label><input type="radio" autocomplete="off" name="1306b04bdc6c489d9ec53c6118a3392d"></input><span><span class="math inline">\(f^{-1}(x)=(x-7)^3-2\)</span></span></label><label><input type="radio" autocomplete="off" name="1306b04bdc6c489d9ec53c6118a3392d"></input><span><span class="math inline">\(f^{-1}(x)=(x-7)^3+2\)</span></span></label><label><input type="radio" autocomplete="off" name="1306b04bdc6c489d9ec53c6118a3392d"></input><span><span class="math inline">\(f^{-1}(x)=(x+2)^3-7\)</span></span></label><label><input type="radio" autocomplete="off" name="1306b04bdc6c489d9ec53c6118a3392d"></input><span><span class="math inline">\(f^{-1}(x)=(x+2)^3+7\)</span></span></label><label><input type="radio" autocomplete="off" name="1306b04bdc6c489d9ec53c6118a3392d"></input><span><span class="math inline">\(f^{-1}(x)=(x+7)^3-2\)</span></span></label><label><input type="radio" autocomplete="off" name="1306b04bdc6c489d9ec53c6118a3392d"></input><span><span class="math inline">\(f^{-1}(x)=(x+7)^3+2\)</span></span></label>
+</div>
+</div>
+<div class="webex-solution">
+<p>First, get rid of function notation.</p>
+<p><span class="math display">\[y = \sqrt[3]{x-2}+7\]</span></p>
+<p>Swap <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> to find an inverse function.</p>
+<p><span class="math display">\[x=\sqrt[3]{y-2}+7\]</span></p>
+<p>Solve for <span class="math inline">\(y\)</span> by undoing the
+operation on the right side.</p>
+<p><span class="math display">\[x-7=\sqrt[3]{y-2}\]</span></p>
+<p><span class="math display">\[(x-7)^3=y-2\]</span></p>
+<p><span class="math display">\[(x-7)^3+2=y\]</span></p>
+<p>The correct answer is <span class="math inline">\(f^{-1}(x)=(x-7)^3+2\)</span>.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Let a transformed cube-root function be defined by the equation
+below:</p>
+<p><span class="math display">\[f(x) = \sqrt[3]{x+3}+9\]</span></p>
+<p>Find the inverse function.</p>
+<div id="webex-ac851eaf4950d7daf00403aab039f506" class="webex-radiogroup" data-answer="OlMUBR1UTVYYCRkASAdIUTs=">
+<label><input type="radio" autocomplete="off" name="ac851eaf4950d7daf00403aab039f506"></input><span><span class="math inline">\(f^{-1}(x)=(x-3)^3-9\)</span></span></label><label><input type="radio" autocomplete="off" name="ac851eaf4950d7daf00403aab039f506"></input><span><span class="math inline">\(f^{-1}(x)=(x-3)^3+9\)</span></span></label><label><input type="radio" autocomplete="off" name="ac851eaf4950d7daf00403aab039f506"></input><span><span class="math inline">\(f^{-1}(x)=(x-9)^3-3\)</span></span></label><label><input type="radio" autocomplete="off" name="ac851eaf4950d7daf00403aab039f506"></input><span><span class="math inline">\(f^{-1}(x)=(x-9)^3+3\)</span></span></label><label><input type="radio" autocomplete="off" name="ac851eaf4950d7daf00403aab039f506"></input><span><span class="math inline">\(f^{-1}(x)=(x+3)^3-9\)</span></span></label><label><input type="radio" autocomplete="off" name="ac851eaf4950d7daf00403aab039f506"></input><span><span class="math inline">\(f^{-1}(x)=(x+3)^3+9\)</span></span></label><label><input type="radio" autocomplete="off" name="ac851eaf4950d7daf00403aab039f506"></input><span><span class="math inline">\(f^{-1}(x)=(x+9)^3-3\)</span></span></label><label><input type="radio" autocomplete="off" name="ac851eaf4950d7daf00403aab039f506"></input><span><span class="math inline">\(f^{-1}(x)=(x+9)^3+3\)</span></span></label>
+</div>
+</div>
+<div class="webex-solution">
+<p>First, get rid of function notation.</p>
+<p><span class="math display">\[y = \sqrt[3]{x+3}+9\]</span></p>
+<p>Swap <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> to find an inverse function.</p>
+<p><span class="math display">\[x=\sqrt[3]{y+3}+9\]</span></p>
+<p>Solve for <span class="math inline">\(y\)</span> by undoing the
+operation on the right side.</p>
+<p><span class="math display">\[x-9=\sqrt[3]{y+3}\]</span></p>
+<p><span class="math display">\[(x-9)^3=y+3\]</span></p>
+<p><span class="math display">\[(x-9)^3-3=y\]</span></p>
+<p>The correct answer is <span class="math inline">\(f^{-1}(x)=(x-9)^3-3\)</span>.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Let a transformed cube-root function be defined by the equation
+below:</p>
+<p><span class="math display">\[f(x) = \sqrt[3]{x-5}-3\]</span></p>
+<p>Find the inverse function.</p>
+<div id="webex-8eff61154dab2b20f0e52bf2937a5b9f" class="webex-radiogroup" data-answer="Y1VKVhoBHQUYVE1THlIeADs=">
+<label><input type="radio" autocomplete="off" name="8eff61154dab2b20f0e52bf2937a5b9f"></input><span><span class="math inline">\(f^{-1}(x)=(x-3)^3-5\)</span></span></label><label><input type="radio" autocomplete="off" name="8eff61154dab2b20f0e52bf2937a5b9f"></input><span><span class="math inline">\(f^{-1}(x)=(x-3)^3+5\)</span></span></label><label><input type="radio" autocomplete="off" name="8eff61154dab2b20f0e52bf2937a5b9f"></input><span><span class="math inline">\(f^{-1}(x)=(x-5)^3-3\)</span></span></label><label><input type="radio" autocomplete="off" name="8eff61154dab2b20f0e52bf2937a5b9f"></input><span><span class="math inline">\(f^{-1}(x)=(x-5)^3+3\)</span></span></label><label><input type="radio" autocomplete="off" name="8eff61154dab2b20f0e52bf2937a5b9f"></input><span><span class="math inline">\(f^{-1}(x)=(x+3)^3-5\)</span></span></label><label><input type="radio" autocomplete="off" name="8eff61154dab2b20f0e52bf2937a5b9f"></input><span><span class="math inline">\(f^{-1}(x)=(x+3)^3+5\)</span></span></label><label><input type="radio" autocomplete="off" name="8eff61154dab2b20f0e52bf2937a5b9f"></input><span><span class="math inline">\(f^{-1}(x)=(x+5)^3-3\)</span></span></label><label><input type="radio" autocomplete="off" name="8eff61154dab2b20f0e52bf2937a5b9f"></input><span><span class="math inline">\(f^{-1}(x)=(x+5)^3+3\)</span></span></label>
+</div>
+</div>
+<div class="webex-solution">
+<p>First, get rid of function notation.</p>
+<p><span class="math display">\[y = \sqrt[3]{x-5}-3\]</span></p>
+<p>Swap <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> to find an inverse function.</p>
+<p><span class="math display">\[x=\sqrt[3]{y-5}-3\]</span></p>
+<p>Solve for <span class="math inline">\(y\)</span> by undoing the
+operation on the right side.</p>
+<p><span class="math display">\[x+3=\sqrt[3]{y-5}\]</span></p>
+<p><span class="math display">\[(x+3)^3=y-5\]</span></p>
+<p><span class="math display">\[(x+3)^3+5=y\]</span></p>
+<p>The correct answer is <span class="math inline">\(f^{-1}(x)=(x+3)^3+5\)</span>.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Let a transformed cube-root function be defined by the equation
+below:</p>
+<p><span class="math display">\[f(x) = \sqrt[3]{x-8}-5\]</span></p>
+<p>Find the inverse function.</p>
+<div id="webex-e2d0b825002ed9e50e3fd6fd35fd912e" class="webex-radiogroup" data-answer="PgJIAE4IHgUcAB5USAlJBW0=">
+<label><input type="radio" autocomplete="off" name="e2d0b825002ed9e50e3fd6fd35fd912e"></input><span><span class="math inline">\(f^{-1}(x)=(x-5)^3-8\)</span></span></label><label><input type="radio" autocomplete="off" name="e2d0b825002ed9e50e3fd6fd35fd912e"></input><span><span class="math inline">\(f^{-1}(x)=(x-5)^3+8\)</span></span></label><label><input type="radio" autocomplete="off" name="e2d0b825002ed9e50e3fd6fd35fd912e"></input><span><span class="math inline">\(f^{-1}(x)=(x-8)^3-5\)</span></span></label><label><input type="radio" autocomplete="off" name="e2d0b825002ed9e50e3fd6fd35fd912e"></input><span><span class="math inline">\(f^{-1}(x)=(x-8)^3+5\)</span></span></label><label><input type="radio" autocomplete="off" name="e2d0b825002ed9e50e3fd6fd35fd912e"></input><span><span class="math inline">\(f^{-1}(x)=(x+5)^3-8\)</span></span></label><label><input type="radio" autocomplete="off" name="e2d0b825002ed9e50e3fd6fd35fd912e"></input><span><span class="math inline">\(f^{-1}(x)=(x+5)^3+8\)</span></span></label><label><input type="radio" autocomplete="off" name="e2d0b825002ed9e50e3fd6fd35fd912e"></input><span><span class="math inline">\(f^{-1}(x)=(x+8)^3-5\)</span></span></label><label><input type="radio" autocomplete="off" name="e2d0b825002ed9e50e3fd6fd35fd912e"></input><span><span class="math inline">\(f^{-1}(x)=(x+8)^3+5\)</span></span></label>
+</div>
+</div>
+<div class="webex-solution">
+<p>First, get rid of function notation.</p>
+<p><span class="math display">\[y = \sqrt[3]{x-8}-5\]</span></p>
+<p>Swap <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> to find an inverse function.</p>
+<p><span class="math display">\[x=\sqrt[3]{y-8}-5\]</span></p>
+<p>Solve for <span class="math inline">\(y\)</span> by undoing the
+operation on the right side.</p>
+<p><span class="math display">\[x+5=\sqrt[3]{y-8}\]</span></p>
+<p><span class="math display">\[(x+5)^3=y-8\]</span></p>
+<p><span class="math display">\[(x+5)^3+8=y\]</span></p>
+<p>The correct answer is <span class="math inline">\(f^{-1}(x)=(x+5)^3+8\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="webex-group">
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>The equation below defines a curve made by horizontal transformations
+of an (unknown) function <span class="math inline">\(f\)</span>.</p>
+<p><span class="math display">\[y~=~f\left[\frac{x}{2}+3\right]\]</span></p>
+<p>What value of <span class="math inline">\(x\)</span> makes the
+argument equal to 8?</p>
+<p><input class="webex-solveme nospaces" id="webex-036d505a0460e78c3d5bfdba6b26a75e" data-tol="0" size="20" data-answer="axEHVBdt"></input></p>
+</div>
+<div class="webex-solution">
+<p>Set the argument equal to 8. <span class="math display">\[8=\frac{x}{2}+3\]</span> Subtract 3 from both
+sides of the equation.</p>
+<p><span class="math display">\[5=\frac{x}{2}\]</span></p>
+<p>Multiply both sides of the equation by 2.</p>
+<p><span class="math display">\[10=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=10\]</span></p>
+<p>You can check your possible answer by substituting 10 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[8\stackrel{?}{=}\frac{(10)}{2}+3\]</span></p>
+<p><span class="math display">\[8 \stackrel{?}{=} 5+3\]</span></p>
+<p><span class="math display">\[8 \stackrel{\checkmark}{=}
+8\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=10\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>The equation below defines a curve made by horizontal transformations
+of an (unknown) function <span class="math inline">\(f\)</span>.</p>
+<p><span class="math display">\[y~=~f\left[\frac{x}{6}+4\right]\]</span></p>
+<p>What value of <span class="math inline">\(x\)</span> makes the
+argument equal to 6?</p>
+<p><input class="webex-solveme nospaces" id="webex-5e07798ce0d4de2a05eee18a6c26b326" data-tol="0" size="20" data-answer="bkcBBRVk"></input></p>
+</div>
+<div class="webex-solution">
+<p>Set the argument equal to 6. <span class="math display">\[6=\frac{x}{6}+4\]</span> Subtract 4 from both
+sides of the equation.</p>
+<p><span class="math display">\[2=\frac{x}{6}\]</span></p>
+<p>Multiply both sides of the equation by 6.</p>
+<p><span class="math display">\[12=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=12\]</span></p>
+<p>You can check your possible answer by substituting 12 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[6\stackrel{?}{=}\frac{(12)}{6}+4\]</span></p>
+<p><span class="math display">\[6 \stackrel{?}{=} 2+4\]</span></p>
+<p><span class="math display">\[6 \stackrel{\checkmark}{=}
+6\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=12\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>The equation below defines a curve made by horizontal transformations
+of an (unknown) function <span class="math inline">\(f\)</span>.</p>
+<p><span class="math display">\[y~=~f\left[\frac{x}{3}-2\right]\]</span></p>
+<p>What value of <span class="math inline">\(x\)</span> makes the
+argument equal to 2?</p>
+<p><input class="webex-solveme nospaces" id="webex-522b5611a59d960b6a1a4e5b1cc8ec0f" data-tol="0" size="20" data-answer="bhADUBdr"></input></p>
+</div>
+<div class="webex-solution">
+<p>Set the argument equal to 2. <span class="math display">\[2=\frac{x}{3}-2\]</span> Add 2 to both sides of
+the equation.</p>
+<p><span class="math display">\[4=\frac{x}{3}\]</span></p>
+<p>Multiply both sides of the equation by 3.</p>
+<p><span class="math display">\[12=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=12\]</span></p>
+<p>You can check your possible answer by substituting 12 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[2\stackrel{?}{=}\frac{(12)}{3}-2\]</span></p>
+<p><span class="math display">\[2 \stackrel{?}{=} 4-2\]</span></p>
+<p><span class="math display">\[2 \stackrel{\checkmark}{=}
+2\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=12\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>The equation below defines a curve made by horizontal transformations
+of an (unknown) function <span class="math inline">\(f\)</span>.</p>
+<p><span class="math display">\[y~=~f\left[8 x-4\right]\]</span></p>
+<p>What value of <span class="math inline">\(x\)</span> makes the
+argument equal to 20?</p>
+<p><input class="webex-solveme nospaces" id="webex-f7a3db7d4001226c52520a085507a2cc" data-tol="0" size="20" data-answer="PRVSETk="></input></p>
+</div>
+<div class="webex-solution">
+<p>Set the argument equal to 20. <span class="math display">\[20=8
+x-4\]</span> Add 4 to both sides of the equation.</p>
+<p><span class="math display">\[24=8 x\]</span></p>
+<p>Divide both sides of the equation by 8.</p>
+<p><span class="math display">\[3=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=3\]</span></p>
+<p>You can check your possible answer by substituting 3 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[20\stackrel{?}{=}8 (3)-4\]</span></p>
+<p><span class="math display">\[20 \stackrel{?}{=} 24-4\]</span></p>
+<p><span class="math display">\[20 \stackrel{\checkmark}{=}
+20\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=3\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>The equation below defines a curve made by horizontal transformations
+of an (unknown) function <span class="math inline">\(f\)</span>.</p>
+<p><span class="math display">\[y~=~f\left[\frac{x}{2}+8\right]\]</span></p>
+<p>What value of <span class="math inline">\(x\)</span> makes the
+argument equal to 10?</p>
+<p><input class="webex-solveme nospaces" id="webex-90839e4a1ffe2c785ef1c1f5c102c538" data-tol="0" size="20" data-answer="YhIMEWQ="></input></p>
+</div>
+<div class="webex-solution">
+<p>Set the argument equal to 10. <span class="math display">\[10=\frac{x}{2}+8\]</span> Subtract 8 from both
+sides of the equation.</p>
+<p><span class="math display">\[2=\frac{x}{2}\]</span></p>
+<p>Multiply both sides of the equation by 2.</p>
+<p><span class="math display">\[4=x\]</span></p>
+<p>Switch sides (which is allowed because equality is commutative).</p>
+<p><span class="math display">\[x=4\]</span></p>
+<p>You can check your possible answer by substituting 4 for <span class="math inline">\(x\)</span> in the original equation.</p>
+<p><span class="math display">\[10\stackrel{?}{=}\frac{(4)}{2}+8\]</span></p>
+<p><span class="math display">\[10 \stackrel{?}{=} 2+8\]</span></p>
+<p><span class="math display">\[10 \stackrel{\checkmark}{=}
+10\]</span></p>
+<p>So, indeed we see that <span class="math inline">\(x=4\)</span> is a
+solution to the equation.</p>
+</div>
+</div>
+</div>
+<div class="webex-group">
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>On the curve <span class="math inline">\(y=\sqrt{x}\)</span> exists
+the point <span class="math inline">\((49,7)\)</span> because <span class="math inline">\(7=\sqrt{49}\)</span>.</p>
+<p>We can transform the square-root function horizontally and vertically
+to create a new curve defined by the equation below:</p>
+<p><span class="math display">\[y=5\cdot\left(\sqrt{\frac{-x}{4}-3}+7\right)\]</span></p>
+<p>Find this curve&#39;s corresponding point by finding the value of <span class="math inline">\(x\)</span> that makes the radicand equal to 49,
+and then find the <span class="math inline">\(y\)</span> value by
+evaluating the right side of the equation. Express that point using
+parentheses, a comma separator, and no spaces. For example, type
+<code>(18,-5)</code> for the point <span class="math inline">\((18,-5)\)</span>.</p>
+<p><input class="webex-solveme" id="webex-68078f30d457a1349a2e71562a3d8272" size="20" data-answer="bRoYGgpWCxxTBBwVPA=="></input></p>
+</div>
+<div class="webex-solution">
+<p>Set the radicand (the argument of the square-root function) equal to
+49.</p>
+<p><span class="math display">\[\frac{-x}{4}-3=49\]</span></p>
+<p>Solve the two-step (or maybe three-step) linear equation.</p>
+<p><span class="math display">\[x=-208\]</span></p>
+<p>Plug <span class="math inline">\(x=-208\)</span> into equation.</p>
+<p><span class="math display">\[y=5\cdot\left(\sqrt{\frac{-(-208)}{4}-3}+7\right)\]</span></p>
+<p>Simplify the radicand.</p>
+<p><span class="math display">\[y=5\cdot\left(\sqrt{49}+7\right)\]</span></p>
+<p>Evaluate the radical.</p>
+<p><span class="math display">\[y=5\cdot\left(7+7\right)\]</span></p>
+<p>Evaluate the right side using PEMDAS.</p>
+<p><span class="math display">\[y=70\]</span></p>
+<p>So, the corresponding point on the transformed curve is
+<code>(-208,70)</code>.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>On the curve <span class="math inline">\(y=\sqrt{x}\)</span> exists
+the point <span class="math inline">\((36,6)\)</span> because <span class="math inline">\(6=\sqrt{36}\)</span>.</p>
+<p>We can transform the square-root function horizontally and vertically
+to create a new curve defined by the equation below:</p>
+<p><span class="math display">\[y=\frac{-\sqrt{4\left(x-5\right)}-10}{2}\]</span></p>
+<p>Find this curve&#39;s corresponding point by finding the value of <span class="math inline">\(x\)</span> that makes the radicand equal to 36,
+and then find the <span class="math inline">\(y\)</span> value by
+evaluating the right side of the equation. Express that point using
+parentheses, a comma separator, and no spaces. For example, type
+<code>(18,-5)</code> for the point <span class="math inline">\((18,-5)\)</span>.</p>
+<p><input class="webex-solveme" id="webex-5b23e686f6ecc5a76493b8fb036d3971" size="20" data-answer="bkAaAlEaFQ5PFDg="></input></p>
+</div>
+<div class="webex-solution">
+<p>Set the radicand (the argument of the square-root function) equal to
+36.</p>
+<p><span class="math display">\[4\left(x-5\right)=36\]</span></p>
+<p>Solve the two-step (or maybe three-step) linear equation.</p>
+<p><span class="math display">\[x=14\]</span></p>
+<p>Plug <span class="math inline">\(x=14\)</span> into equation.</p>
+<p><span class="math display">\[y=\frac{-\sqrt{4\left((14)-5\right)}-10}{2}\]</span></p>
+<p>Simplify the radicand.</p>
+<p><span class="math display">\[y=\frac{-\sqrt{36}-10}{2}\]</span></p>
+<p>Evaluate the radical.</p>
+<p><span class="math display">\[y=\frac{-6-10}{2}\]</span></p>
+<p>Evaluate the right side using PEMDAS.</p>
+<p><span class="math display">\[y=-8\]</span></p>
+<p>So, the corresponding point on the transformed curve is
+<code>(14,-8)</code>.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>On the curve <span class="math inline">\(y=\sqrt{x}\)</span> exists
+the point <span class="math inline">\((49,7)\)</span> because <span class="math inline">\(7=\sqrt{49}\)</span>.</p>
+<p>We can transform the square-root function horizontally and vertically
+to create a new curve defined by the equation below:</p>
+<p><span class="math display">\[y=-5\cdot\left(\sqrt{\frac{-x}{4}-6}+2\right)\]</span></p>
+<p>Find this curve&#39;s corresponding point by finding the value of <span class="math inline">\(x\)</span> that makes the radicand equal to 49,
+and then find the <span class="math inline">\(y\)</span> value by
+evaluating the right side of the equation. Express that point using
+parentheses, a comma separator, and no spaces. For example, type
+<code>(18,-5)</code> for the point <span class="math inline">\((18,-5)\)</span>.</p>
+<p><input class="webex-solveme" id="webex-4c65251abfafcce987e750c47ec99fea" size="20" data-answer="b0EeGAAHAU1PUlRPQT4="></input></p>
+</div>
+<div class="webex-solution">
+<p>Set the radicand (the argument of the square-root function) equal to
+49.</p>
+<p><span class="math display">\[\frac{-x}{4}-6=49\]</span></p>
+<p>Solve the two-step (or maybe three-step) linear equation.</p>
+<p><span class="math display">\[x=-220\]</span></p>
+<p>Plug <span class="math inline">\(x=-220\)</span> into equation.</p>
+<p><span class="math display">\[y=-5\cdot\left(\sqrt{\frac{-(-220)}{4}-6}+2\right)\]</span></p>
+<p>Simplify the radicand.</p>
+<p><span class="math display">\[y=-5\cdot\left(\sqrt{49}+2\right)\]</span></p>
+<p>Evaluate the radical.</p>
+<p><span class="math display">\[y=-5\cdot\left(7+2\right)\]</span></p>
+<p>Evaluate the right side using PEMDAS.</p>
+<p><span class="math display">\[y=-45\]</span></p>
+<p>So, the corresponding point on the transformed curve is
+<code>(-220,-45)</code>.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>On the curve <span class="math inline">\(y=\sqrt{x}\)</span> exists
+the point <span class="math inline">\((49,7)\)</span> because <span class="math inline">\(7=\sqrt{49}\)</span>.</p>
+<p>We can transform the square-root function horizontally and vertically
+to create a new curve defined by the equation below:</p>
+<p><span class="math display">\[y=\frac{\sqrt{-4 x-7}+2}{9}\]</span></p>
+<p>Find this curve&#39;s corresponding point by finding the value of <span class="math inline">\(x\)</span> that makes the radicand equal to 49,
+and then find the <span class="math inline">\(y\)</span> value by
+evaluating the right side of the equation. Express that point using
+parentheses, a comma separator, and no spaces. For example, type
+<code>(18,-5)</code> for the point <span class="math inline">\((18,-5)\)</span>.</p>
+<p><input class="webex-solveme" id="webex-2742eb3f29afdeaa120328be2dd8c99b" size="20" data-answer="aRUcH1RWH1cbGzw="></input></p>
+</div>
+<div class="webex-solution">
+<p>Set the radicand (the argument of the square-root function) equal to
+49.</p>
+<p><span class="math display">\[-4 x-7=49\]</span></p>
+<p>Solve the two-step (or maybe three-step) linear equation.</p>
+<p><span class="math display">\[x=-14\]</span></p>
+<p>Plug <span class="math inline">\(x=-14\)</span> into equation.</p>
+<p><span class="math display">\[y=\frac{\sqrt{-4
+(-14)-7}+2}{9}\]</span></p>
+<p>Simplify the radicand.</p>
+<p><span class="math display">\[y=\frac{\sqrt{49}+2}{9}\]</span></p>
+<p>Evaluate the radical.</p>
+<p><span class="math display">\[y=\frac{7+2}{9}\]</span></p>
+<p>Evaluate the right side using PEMDAS.</p>
+<p><span class="math display">\[y=1\]</span></p>
+<p>So, the corresponding point on the transformed curve is
+<code>(-14,1)</code>.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>On the curve <span class="math inline">\(y=\sqrt{x}\)</span> exists
+the point <span class="math inline">\((64,8)\)</span> because <span class="math inline">\(8=\sqrt{64}\)</span>.</p>
+<p>We can transform the square-root function horizontally and vertically
+to create a new curve defined by the equation below:</p>
+<p><span class="math display">\[y=\frac{-\sqrt{4\left(x+10\right)}}{2}+9\]</span></p>
+<p>Find this curve&#39;s corresponding point by finding the value of <span class="math inline">\(x\)</span> that makes the radicand equal to 64,
+and then find the <span class="math inline">\(y\)</span> value by
+evaluating the right side of the equation. Express that point using
+parentheses, a comma separator, and no spaces. For example, type
+<code>(18,-5)</code> for the point <span class="math inline">\((18,-5)\)</span>.</p>
+<p><input class="webex-solveme" id="webex-fd6b1d5d214d1de73645526b4aa27a39" size="20" data-answer="PUYeVB1RHEZv"></input></p>
+</div>
+<div class="webex-solution">
+<p>Set the radicand (the argument of the square-root function) equal to
+64.</p>
+<p><span class="math display">\[4\left(x+10\right)=64\]</span></p>
+<p>Solve the two-step (or maybe three-step) linear equation.</p>
+<p><span class="math display">\[x=6\]</span></p>
+<p>Plug <span class="math inline">\(x=6\)</span> into equation.</p>
+<p><span class="math display">\[y=\frac{-\sqrt{4\left((6)+10\right)}}{2}+9\]</span></p>
+<p>Simplify the radicand.</p>
+<p><span class="math display">\[y=\frac{-\sqrt{64}}{2}+9\]</span></p>
+<p>Evaluate the radical.</p>
+<p><span class="math display">\[y=\frac{-8}{2}+9\]</span></p>
+<p>Evaluate the right side using PEMDAS.</p>
+<p><span class="math display">\[y=5\]</span></p>
+<p>So, the corresponding point on the transformed curve is
+<code>(6,5)</code>.</p>
+</div>
+</div>
+</div>
+<div class="webex-group">
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Consider the two functions <span class="math inline">\(f\)</span> and
+<span class="math inline">\(g\)</span>, where <span class="math inline">\(g\)</span> is defined as a transformation of <span class="math inline">\(f\)</span>, as shown below as an equation true for
+any value of <span class="math inline">\(x\)</span>:</p>
+<p><span class="math display">\[g[x]~=~3\cdot\left(f{\left[5
+x+4\right]}-8\right)\]</span></p>
+<p>For every point <span class="math inline">\((a,b)\)</span> on the
+curve <span class="math inline">\(b=f[a]\)</span> there is a
+corresponding point on the curve <span class="math inline">\(y=g[x]\)</span>. What is the rule that describes
+this coordinate transformation?</p>
+<div id="webex-3d1f1c194ef68e36499531abc4e366f9" class="webex-radiogroup" data-answer="aFUdVh1THQkYVUoGFFUfBhgJFQUfAU1SPg==">
+<label><input type="radio" autocomplete="off" name="3d1f1c194ef68e36499531abc4e366f9"></input><span><span class="math inline">\((a,b)\to
+\left(\frac{a-4}{5},3\left(b-8\right)\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="3d1f1c194ef68e36499531abc4e366f9"></input><span><span class="math inline">\((a,b)\to \left(\frac{a-4}{5},8
+b-3\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="3d1f1c194ef68e36499531abc4e366f9"></input><span><span class="math inline">\((a,b)\to
+\left(\frac{a-5}{4},\frac{b}{8}+3\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="3d1f1c194ef68e36499531abc4e366f9"></input><span><span class="math inline">\((a,b)\to \left(\frac{a}{4}-5,8
+b-3\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="3d1f1c194ef68e36499531abc4e366f9"></input><span><span class="math inline">\((a,b)\to
+\left(\frac{a}{4}-5,8\left(b-3\right)\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="3d1f1c194ef68e36499531abc4e366f9"></input><span><span class="math inline">\((a,b)\to \left(\frac{a}{5}-4,3
+b-8\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="3d1f1c194ef68e36499531abc4e366f9"></input><span><span class="math inline">\((a,b)\to \left(4 a+5,3
+b-8\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="3d1f1c194ef68e36499531abc4e366f9"></input><span><span class="math inline">\((a,b)\to \left(4 a+5,8
+b-3\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="3d1f1c194ef68e36499531abc4e366f9"></input><span><span class="math inline">\((a,b)\to
+\left(4\left(a+5\right),\frac{b+3}{8}\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="3d1f1c194ef68e36499531abc4e366f9"></input><span><span class="math inline">\((a,b)\to \left(5
+a+4,\frac{b}{3}+8\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="3d1f1c194ef68e36499531abc4e366f9"></input><span><span class="math inline">\((a,b)\to \left(5
+a+4,\frac{b}{8}+3\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="3d1f1c194ef68e36499531abc4e366f9"></input><span><span class="math inline">\((a,b)\to
+\left(5\left(a+4\right),\frac{b+8}{3}\right)\)</span></span></label>
+</div>
+</div>
+<div class="webex-solution">
+<p>We know we need the argument <span class="math inline">\(5
+x+4\)</span> to equal <span class="math inline">\(a\)</span> because we
+wish to use the fact that <span class="math inline">\(f[a]=b\)</span>.</p>
+<p><span class="math display">\[5 x+4~=~a\]</span> Solve for <span class="math inline">\(x\)</span>.</p>
+<ol style="list-style-type: decimal">
+<li>subtract 4</li>
+<li>divide by 5</li>
+</ol>
+<p><span class="math display">\[x~=~\frac{a-4}{5}\]</span></p>
+<p>So, now, since <span class="math inline">\(5 x+4~=~a\)</span>, we can
+rewrite the main equation: <span class="math display">\[g[x]~=~3\cdot\left(f{\left[a\right]}-8\right)\]</span></p>
+<p>We can also substitute <span class="math inline">\(y\)</span> for
+<span class="math inline">\(g[x]\)</span> and substitute <span class="math inline">\(b\)</span> for <span class="math inline">\(f[a]\)</span>.</p>
+<p><span class="math display">\[y~=~3\cdot\left(b-8\right)\]</span></p>
+<p>And, thus, the corresponding point on the <span class="math inline">\(g\)</span> curve is <span class="math inline">\(\left(\frac{a-4}{5},3\left(b-8\right)\right)\)</span>.
+As a coordinate transformation:</p>
+<p><span class="math display">\[(a,b)\to
+\left(\frac{a-4}{5},3\left(b-8\right)\right)\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Consider the two functions <span class="math inline">\(f\)</span> and
+<span class="math inline">\(g\)</span>, where <span class="math inline">\(g\)</span> is defined as a transformation of <span class="math inline">\(f\)</span>, as shown below as an equation true for
+any value of <span class="math inline">\(x\)</span>:</p>
+<p><span class="math display">\[g[x]~=~\frac{f{\left[4
+x-7\right]}}{5}+6\]</span></p>
+<p>For every point <span class="math inline">\((a,b)\)</span> on the
+curve <span class="math inline">\(b=f[a]\)</span> there is a
+corresponding point on the curve <span class="math inline">\(y=g[x]\)</span>. What is the rule that describes
+this coordinate transformation?</p>
+<div id="webex-c0b99f535085e5a7bcfbdfc6f645b48c" class="webex-radiogroup" data-answer="OABOCRVWGQMZABQFSQRNB05TSlJIVk8GOw==">
+<label><input type="radio" autocomplete="off" name="c0b99f535085e5a7bcfbdfc6f645b48c"></input><span><span class="math inline">\((a,b)\to
+\left(\frac{a}{4}+7,5\left(b-6\right)\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="c0b99f535085e5a7bcfbdfc6f645b48c"></input><span><span class="math inline">\((a,b)\to
+\left(\frac{a}{4}+7,6\left(b-5\right)\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="c0b99f535085e5a7bcfbdfc6f645b48c"></input><span><span class="math inline">\((a,b)\to
+\left(\frac{a}{7}+4,\frac{b+5}{6}\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="c0b99f535085e5a7bcfbdfc6f645b48c"></input><span><span class="math inline">\((a,b)\to
+\left(\frac{a}{7}+4,\frac{b+6}{5}\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="c0b99f535085e5a7bcfbdfc6f645b48c"></input><span><span class="math inline">\((a,b)\to \left(\frac{a}{7}+4,5
+b-6\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="c0b99f535085e5a7bcfbdfc6f645b48c"></input><span><span class="math inline">\((a,b)\to
+\left(\frac{a}{7}+4,6\left(b-5\right)\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="c0b99f535085e5a7bcfbdfc6f645b48c"></input><span><span class="math inline">\((a,b)\to
+\left(\frac{a+7}{4},\frac{b}{5}+6\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="c0b99f535085e5a7bcfbdfc6f645b48c"></input><span><span class="math inline">\((a,b)\to
+\left(\frac{a+7}{4},5\left(b-6\right)\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="c0b99f535085e5a7bcfbdfc6f645b48c"></input><span><span class="math inline">\((a,b)\to
+\left(\frac{a+7}{4},6\left(b-5\right)\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="c0b99f535085e5a7bcfbdfc6f645b48c"></input><span><span class="math inline">\((a,b)\to
+\left(4\left(a-7\right),5\left(b-6\right)\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="c0b99f535085e5a7bcfbdfc6f645b48c"></input><span><span class="math inline">\((a,b)\to \left(7
+a-4,\frac{b+5}{6}\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="c0b99f535085e5a7bcfbdfc6f645b48c"></input><span><span class="math inline">\((a,b)\to
+\left(7\left(a-4\right),\frac{b+5}{6}\right)\)</span></span></label>
+</div>
+</div>
+<div class="webex-solution">
+<p>We know we need the argument <span class="math inline">\(4
+x-7\)</span> to equal <span class="math inline">\(a\)</span> because we
+wish to use the fact that <span class="math inline">\(f[a]=b\)</span>.</p>
+<p><span class="math display">\[4 x-7~=~a\]</span> Solve for <span class="math inline">\(x\)</span>.</p>
+<ol style="list-style-type: decimal">
+<li>add 7</li>
+<li>divide by 4</li>
+</ol>
+<p><span class="math display">\[x~=~\frac{a+7}{4}\]</span></p>
+<p>So, now, since <span class="math inline">\(4 x-7~=~a\)</span>, we can
+rewrite the main equation: <span class="math display">\[g[x]~=~\frac{f{\left[a\right]}}{5}+6\]</span></p>
+<p>We can also substitute <span class="math inline">\(y\)</span> for
+<span class="math inline">\(g[x]\)</span> and substitute <span class="math inline">\(b\)</span> for <span class="math inline">\(f[a]\)</span>.</p>
+<p><span class="math display">\[y~=~\frac{b}{5}+6\]</span></p>
+<p>And, thus, the corresponding point on the <span class="math inline">\(g\)</span> curve is <span class="math inline">\(\left(\frac{a+7}{4},\frac{b}{5}+6\right)\)</span>.
+As a coordinate transformation:</p>
+<p><span class="math display">\[(a,b)\to
+\left(\frac{a+7}{4},\frac{b}{5}+6\right)\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Consider the two functions <span class="math inline">\(f\)</span> and
+<span class="math inline">\(g\)</span>, where <span class="math inline">\(g\)</span> is defined as a transformation of <span class="math inline">\(f\)</span>, as shown below as an equation true for
+any value of <span class="math inline">\(x\)</span>:</p>
+<p><span class="math display">\[g[x]~=~\frac{f{\left[8
+x-4\right]}-5}{9}\]</span></p>
+<p>For every point <span class="math inline">\((a,b)\)</span> on the
+curve <span class="math inline">\(b=f[a]\)</span> there is a
+corresponding point on the curve <span class="math inline">\(y=g[x]\)</span>. What is the rule that describes
+this coordinate transformation?</p>
+<div id="webex-607d0c8436e6454a59effbadb34e3373" class="webex-radiogroup" data-answer="bQAbVBxTFAQfBkkHGAUYURkJSVZKUk1UPw==">
+<label><input type="radio" autocomplete="off" name="607d0c8436e6454a59effbadb34e3373"></input><span><span class="math inline">\((a,b)\to
+\left(\frac{a}{4}+8,5\left(b+9\right)\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="607d0c8436e6454a59effbadb34e3373"></input><span><span class="math inline">\((a,b)\to
+\left(\frac{a}{8}+4,\frac{b-9}{5}\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="607d0c8436e6454a59effbadb34e3373"></input><span><span class="math inline">\((a,b)\to
+\left(\frac{a}{8}+4,\frac{b}{5}-9\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="607d0c8436e6454a59effbadb34e3373"></input><span><span class="math inline">\((a,b)\to
+\left(\frac{a}{8}+4,5\left(b+9\right)\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="607d0c8436e6454a59effbadb34e3373"></input><span><span class="math inline">\((a,b)\to
+\left(\frac{a}{8}+4,9\left(b+5\right)\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="607d0c8436e6454a59effbadb34e3373"></input><span><span class="math inline">\((a,b)\to
+\left(\frac{a+4}{8},\frac{b-5}{9}\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="607d0c8436e6454a59effbadb34e3373"></input><span><span class="math inline">\((a,b)\to \left(\frac{a+8}{4},5
+b+9\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="607d0c8436e6454a59effbadb34e3373"></input><span><span class="math inline">\((a,b)\to \left(4
+a-8,\frac{b-5}{9}\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="607d0c8436e6454a59effbadb34e3373"></input><span><span class="math inline">\((a,b)\to \left(4
+a-8,5\left(b+9\right)\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="607d0c8436e6454a59effbadb34e3373"></input><span><span class="math inline">\((a,b)\to \left(4 a-8,9
+b+5\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="607d0c8436e6454a59effbadb34e3373"></input><span><span class="math inline">\((a,b)\to \left(4\left(a-8\right),5
+b+9\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="607d0c8436e6454a59effbadb34e3373"></input><span><span class="math inline">\((a,b)\to \left(8
+a-4,\frac{b}{9}-5\right)\)</span></span></label>
+</div>
+</div>
+<div class="webex-solution">
+<p>We know we need the argument <span class="math inline">\(8
+x-4\)</span> to equal <span class="math inline">\(a\)</span> because we
+wish to use the fact that <span class="math inline">\(f[a]=b\)</span>.</p>
+<p><span class="math display">\[8 x-4~=~a\]</span> Solve for <span class="math inline">\(x\)</span>.</p>
+<ol style="list-style-type: decimal">
+<li>add 4</li>
+<li>divide by 8</li>
+</ol>
+<p><span class="math display">\[x~=~\frac{a+4}{8}\]</span></p>
+<p>So, now, since <span class="math inline">\(8 x-4~=~a\)</span>, we can
+rewrite the main equation: <span class="math display">\[g[x]~=~\frac{f{\left[a\right]}-5}{9}\]</span></p>
+<p>We can also substitute <span class="math inline">\(y\)</span> for
+<span class="math inline">\(g[x]\)</span> and substitute <span class="math inline">\(b\)</span> for <span class="math inline">\(f[a]\)</span>.</p>
+<p><span class="math display">\[y~=~\frac{b-5}{9}\]</span></p>
+<p>And, thus, the corresponding point on the <span class="math inline">\(g\)</span> curve is <span class="math inline">\(\left(\frac{a+4}{8},\frac{b-5}{9}\right)\)</span>.
+As a coordinate transformation:</p>
+<p><span class="math display">\[(a,b)\to
+\left(\frac{a+4}{8},\frac{b-5}{9}\right)\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Consider the two functions <span class="math inline">\(f\)</span> and
+<span class="math inline">\(g\)</span>, where <span class="math inline">\(g\)</span> is defined as a transformation of <span class="math inline">\(f\)</span>, as shown below as an equation true for
+any value of <span class="math inline">\(x\)</span>:</p>
+<p><span class="math display">\[g[x]~=~\frac{f{\left[5\left(x-9\right)\right]}}{6}+8\]</span></p>
+<p>For every point <span class="math inline">\((a,b)\)</span> on the
+curve <span class="math inline">\(b=f[a]\)</span> there is a
+corresponding point on the curve <span class="math inline">\(y=g[x]\)</span>. What is the rule that describes
+this coordinate transformation?</p>
+<div id="webex-ebab8de8873214d07c88daf6f9d3b691" class="webex-radiogroup" data-answer="PlNNUhRUSQgUBx8CHQRIABtTFAhIUUoGOw==">
+<label><input type="radio" autocomplete="off" name="ebab8de8873214d07c88daf6f9d3b691"></input><span><span class="math inline">\((a,b)\to
+\left(\frac{a}{5}+9,\frac{b}{6}+8\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="ebab8de8873214d07c88daf6f9d3b691"></input><span><span class="math inline">\((a,b)\to
+\left(\frac{a}{5}+9,\frac{b+6}{8}\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="ebab8de8873214d07c88daf6f9d3b691"></input><span><span class="math inline">\((a,b)\to
+\left(\frac{a}{9}+5,\frac{b}{8}+6\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="ebab8de8873214d07c88daf6f9d3b691"></input><span><span class="math inline">\((a,b)\to
+\left(\frac{a}{9}+5,\frac{b+6}{8}\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="ebab8de8873214d07c88daf6f9d3b691"></input><span><span class="math inline">\((a,b)\to
+\left(\frac{a+5}{9},\frac{b}{6}+8\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="ebab8de8873214d07c88daf6f9d3b691"></input><span><span class="math inline">\((a,b)\to
+\left(\frac{a+9}{5},\frac{b}{8}+6\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="ebab8de8873214d07c88daf6f9d3b691"></input><span><span class="math inline">\((a,b)\to
+\left(\frac{a+9}{5},\frac{b+6}{8}\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="ebab8de8873214d07c88daf6f9d3b691"></input><span><span class="math inline">\((a,b)\to
+\left(\frac{a+9}{5},\frac{b+8}{6}\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="ebab8de8873214d07c88daf6f9d3b691"></input><span><span class="math inline">\((a,b)\to
+\left(5\left(a-9\right),\frac{b+6}{8}\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="ebab8de8873214d07c88daf6f9d3b691"></input><span><span class="math inline">\((a,b)\to
+\left(5\left(a-9\right),\frac{b+8}{6}\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="ebab8de8873214d07c88daf6f9d3b691"></input><span><span class="math inline">\((a,b)\to \left(9
+a-5,\frac{b+6}{8}\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="ebab8de8873214d07c88daf6f9d3b691"></input><span><span class="math inline">\((a,b)\to \left(9
+a-5,6\left(b-8\right)\right)\)</span></span></label>
+</div>
+</div>
+<div class="webex-solution">
+<p>We know we need the argument <span class="math inline">\(5\left(x-9\right)\)</span> to equal <span class="math inline">\(a\)</span> because we wish to use the fact that
+<span class="math inline">\(f[a]=b\)</span>.</p>
+<p><span class="math display">\[5\left(x-9\right)~=~a\]</span> Solve for
+<span class="math inline">\(x\)</span>.</p>
+<ol style="list-style-type: decimal">
+<li>divide by 5</li>
+<li>add 9</li>
+</ol>
+<p><span class="math display">\[x~=~\frac{a}{5}+9\]</span></p>
+<p>So, now, since <span class="math inline">\(5\left(x-9\right)~=~a\)</span>, we can rewrite the
+main equation: <span class="math display">\[g[x]~=~\frac{f{\left[a\right]}}{6}+8\]</span></p>
+<p>We can also substitute <span class="math inline">\(y\)</span> for
+<span class="math inline">\(g[x]\)</span> and substitute <span class="math inline">\(b\)</span> for <span class="math inline">\(f[a]\)</span>.</p>
+<p><span class="math display">\[y~=~\frac{b}{6}+8\]</span></p>
+<p>And, thus, the corresponding point on the <span class="math inline">\(g\)</span> curve is <span class="math inline">\(\left(\frac{a}{5}+9,\frac{b}{6}+8\right)\)</span>.
+As a coordinate transformation:</p>
+<p><span class="math display">\[(a,b)\to
+\left(\frac{a}{5}+9,\frac{b}{6}+8\right)\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Consider the two functions <span class="math inline">\(f\)</span> and
+<span class="math inline">\(g\)</span>, where <span class="math inline">\(g\)</span> is defined as a transformation of <span class="math inline">\(f\)</span>, as shown below as an equation true for
+any value of <span class="math inline">\(x\)</span>:</p>
+<p><span class="math display">\[g[x]~=~\frac{f{\left[\frac{x}{2}-5\right]}+6}{4}\]</span></p>
+<p>For every point <span class="math inline">\((a,b)\)</span> on the
+curve <span class="math inline">\(b=f[a]\)</span> there is a
+corresponding point on the curve <span class="math inline">\(y=g[x]\)</span>. What is the rule that describes
+this coordinate transformation?</p>
+<div id="webex-e0df86948ba86215c51e6a852c2c31ce" class="webex-radiogroup" data-answer="PgBIVhQGFQQUUk0IGgIdBE8FHVUaURQFbw==">
+<label><input type="radio" autocomplete="off" name="e0df86948ba86215c51e6a852c2c31ce"></input><span><span class="math inline">\((a,b)\to \left(\frac{a-2}{5},4
+b-6\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="e0df86948ba86215c51e6a852c2c31ce"></input><span><span class="math inline">\((a,b)\to \left(\frac{a-2}{5},6
+b-4\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="e0df86948ba86215c51e6a852c2c31ce"></input><span><span class="math inline">\((a,b)\to
+\left(\frac{a}{2}-5,\frac{b}{6}+4\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="e0df86948ba86215c51e6a852c2c31ce"></input><span><span class="math inline">\((a,b)\to
+\left(\frac{a}{2}-5,\frac{b+6}{4}\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="e0df86948ba86215c51e6a852c2c31ce"></input><span><span class="math inline">\((a,b)\to \left(\frac{a}{5}-2,4
+b-6\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="e0df86948ba86215c51e6a852c2c31ce"></input><span><span class="math inline">\((a,b)\to \left(\frac{a}{5}-2,6
+b-4\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="e0df86948ba86215c51e6a852c2c31ce"></input><span><span class="math inline">\((a,b)\to
+\left(2\left(a+5\right),\frac{b}{6}+4\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="e0df86948ba86215c51e6a852c2c31ce"></input><span><span class="math inline">\((a,b)\to
+\left(2\left(a+5\right),\frac{b+6}{4}\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="e0df86948ba86215c51e6a852c2c31ce"></input><span><span class="math inline">\((a,b)\to \left(2\left(a+5\right),6
+b-4\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="e0df86948ba86215c51e6a852c2c31ce"></input><span><span class="math inline">\((a,b)\to \left(5
+a+2,\frac{b+4}{6}\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="e0df86948ba86215c51e6a852c2c31ce"></input><span><span class="math inline">\((a,b)\to \left(5
+a+2,\frac{b+6}{4}\right)\)</span></span></label><label><input type="radio" autocomplete="off" name="e0df86948ba86215c51e6a852c2c31ce"></input><span><span class="math inline">\((a,b)\to \left(5 a+2,6
+b-4\right)\)</span></span></label>
+</div>
+</div>
+<div class="webex-solution">
+<p>We know we need the argument <span class="math inline">\(\frac{x}{2}-5\)</span> to equal <span class="math inline">\(a\)</span> because we wish to use the fact that
+<span class="math inline">\(f[a]=b\)</span>.</p>
+<p><span class="math display">\[\frac{x}{2}-5~=~a\]</span> Solve for
+<span class="math inline">\(x\)</span>.</p>
+<ol style="list-style-type: decimal">
+<li>add 5</li>
+<li>multiply by 2</li>
+</ol>
+<p><span class="math display">\[x~=~2\left(a+5\right)\]</span></p>
+<p>So, now, since <span class="math inline">\(\frac{x}{2}-5~=~a\)</span>, we can rewrite the
+main equation: <span class="math display">\[g[x]~=~\frac{f{\left[a\right]}+6}{4}\]</span></p>
+<p>We can also substitute <span class="math inline">\(y\)</span> for
+<span class="math inline">\(g[x]\)</span> and substitute <span class="math inline">\(b\)</span> for <span class="math inline">\(f[a]\)</span>.</p>
+<p><span class="math display">\[y~=~\frac{b+6}{4}\]</span></p>
+<p>And, thus, the corresponding point on the <span class="math inline">\(g\)</span> curve is <span class="math inline">\(\left(2\left(a+5\right),\frac{b+6}{4}\right)\)</span>.
+As a coordinate transformation:</p>
+<p><span class="math display">\[(a,b)\to
+\left(2\left(a+5\right),\frac{b+6}{4}\right)\]</span></p>
+</div>
+</div>
+</div>
+<div class="webex-group">
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If <span class="math inline">\(f[65]=2\)</span>, then there exists a
+knowable solution to the equation below.</p>
+<p><span class="math display">\[y=24\cdot f{\left[6
+x-43\right]}+22\]</span></p>
+<p>Find the solution.</p>
+<ul>
+<li><span class="math inline">\(x=\)</span>
+<select class="webex-select" id="webex-03b52d8fb5868cb8062c18b33697442a" data-answer="awJOBR5UFFZOBRQGFFNOCBwGHlNs"><option value="blank"></option><option>18</option><option>20</option><option>29</option><option>46</option><option>55</option><option>65</option><option>68</option><option>70</option><option>80</option><option>92</option></select></li>
+<li><span class="math inline">\(y=\)</span>
+<select class="webex-select" id="webex-baedb615c8d80a3770977a8823be19f7" data-answer="OVFJVE4GHQVPCEgIHFEfBhsAFQdq"><option value="blank"></option><option>18</option><option>20</option><option>29</option><option>46</option><option>55</option><option>65</option><option>68</option><option>70</option><option>80</option><option>92</option></select></li>
+</ul>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given information:</p>
+<p><span class="math display">\[f[65]=2\]</span></p>
+<p><span class="math display">\[y=24\cdot f{\left[6
+x-43\right]}+22\]</span></p>
+<p>First, let&#39;s make the argument equal to 65.</p>
+<p><span class="math display">\[6 x-43~=~65\]</span></p>
+<p>Add 43.</p>
+<p><span class="math display">\[6 x~=~108\]</span></p>
+<p>Divide by 6.</p>
+<p><span class="math display">\[x~=~18\]</span></p>
+<p>Let&#39;s plug that value of <span class="math inline">\(x\)</span> into
+the given equation.</p>
+<p><span class="math display">\[y=24\cdot f{\left[6
+(18)-43\right]}+22\]</span></p>
+<p>Simplify the argument using arithmetic and order of operations.</p>
+<p><span class="math display">\[y=24\cdot
+f{\left[65\right]}+22\]</span></p>
+<p>Excellent! Now we can use the first bit of information given to us:
+<span class="math inline">\(f[65]=2\)</span>. So, we can substitute 2 in
+place of <span class="math inline">\(f[65]\)</span>.</p>
+<p><span class="math display">\[y=24\cdot 2+22\]</span></p>
+<p>Simplify the expression using arithmetic and order of operations.</p>
+<p><span class="math display">\[y=70\]</span></p>
+<p>And, thus, we have our solution: <span class="math inline">\(x=18\)</span> and <span class="math inline">\(y=70\)</span>.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If <span class="math inline">\(f[3]=70\)</span>, then there exists a
+knowable solution to the equation below.</p>
+<p><span class="math display">\[y=\frac{f{\left[\frac{x-33}{19}\right]}-44}{2}\]</span></p>
+<p>Find the solution.</p>
+<ul>
+<li><span class="math inline">\(x=\)</span>
+<select class="webex-select" id="webex-725c99ca7bae7e53376587ee606e774d" data-answer="bAIZUxUJT1EbUk1VG1UZAh8HGgVl"><option value="blank"></option><option>2</option><option>3</option><option>13</option><option>52</option><option>57</option><option>67</option><option>89</option><option>90</option><option>92</option><option>96</option></select></li>
+<li><span class="math inline">\(y=\)</span>
+<select class="webex-select" id="webex-f98e15142dd4200dd322a34471e60fdf" data-answer="PQkUVR0EHQQeVEgEHgAcVEgDHgI8"><option value="blank"></option><option>2</option><option>3</option><option>13</option><option>52</option><option>57</option><option>67</option><option>89</option><option>90</option><option>92</option><option>96</option></select></li>
+</ul>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given information:</p>
+<p><span class="math display">\[f[3]=70\]</span></p>
+<p><span class="math display">\[y=\frac{f{\left[\frac{x-33}{19}\right]}-44}{2}\]</span></p>
+<p>First, let&#39;s make the argument equal to 3.</p>
+<p><span class="math display">\[\frac{x-33}{19}~=~3\]</span></p>
+<p>Multiply by 19.</p>
+<p><span class="math display">\[x-33~=~57\]</span></p>
+<p>Add 33.</p>
+<p><span class="math display">\[x~=~90\]</span></p>
+<p>Let&#39;s plug that value of <span class="math inline">\(x\)</span> into
+the given equation.</p>
+<p><span class="math display">\[y=\frac{f{\left[\frac{(90)-33}{19}\right]}-44}{2}\]</span></p>
+<p>Simplify the argument using arithmetic and order of operations.</p>
+<p><span class="math display">\[y=\frac{f{\left[3\right]}-44}{2}\]</span></p>
+<p>Excellent! Now we can use the first bit of information given to us:
+<span class="math inline">\(f[3]=70\)</span>. So, we can substitute 70
+in place of <span class="math inline">\(f[3]\)</span>.</p>
+<p><span class="math display">\[y=\frac{70-44}{2}\]</span></p>
+<p>Simplify the expression using arithmetic and order of operations.</p>
+<p><span class="math display">\[y=13\]</span></p>
+<p>And, thus, we have our solution: <span class="math inline">\(x=90\)</span> and <span class="math inline">\(y=13\)</span>.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If <span class="math inline">\(f[45]=34\)</span>, then there exists a
+knowable solution to the equation below.</p>
+<p><span class="math display">\[y=3\cdot
+f{\left[\frac{x}{4}+37\right]}-28\]</span></p>
+<p>Find the solution.</p>
+<ul>
+<li><span class="math inline">\(x=\)</span>
+<select class="webex-select" id="webex-f082502e6ab415195c8f4c3995733cda" data-answer="PQAUAhkAHlQaUU4EHQUdCRlTFFZp"><option value="blank"></option><option>2</option><option>18</option><option>20</option><option>32</option><option>45</option><option>54</option><option>68</option><option>74</option><option>91</option><option>99</option></select></li>
+<li><span class="math inline">\(y=\)</span>
+<select class="webex-select" id="webex-8cbd650df5066e64f8c01b832a1ebd5d" data-answer="Y1NOVBoFHFRKBRwGGlUaBUoITwBs"><option value="blank"></option><option>2</option><option>18</option><option>20</option><option>32</option><option>45</option><option>54</option><option>68</option><option>74</option><option>91</option><option>99</option></select></li>
+</ul>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given information:</p>
+<p><span class="math display">\[f[45]=34\]</span></p>
+<p><span class="math display">\[y=3\cdot
+f{\left[\frac{x}{4}+37\right]}-28\]</span></p>
+<p>First, let&#39;s make the argument equal to 45.</p>
+<p><span class="math display">\[\frac{x}{4}+37~=~45\]</span></p>
+<p>Subtract 37.</p>
+<p><span class="math display">\[\frac{x}{4}~=~8\]</span></p>
+<p>Multiply by 4.</p>
+<p><span class="math display">\[x~=~32\]</span></p>
+<p>Let&#39;s plug that value of <span class="math inline">\(x\)</span> into
+the given equation.</p>
+<p><span class="math display">\[y=3\cdot
+f{\left[\frac{(32)}{4}+37\right]}-28\]</span></p>
+<p>Simplify the argument using arithmetic and order of operations.</p>
+<p><span class="math display">\[y=3\cdot
+f{\left[45\right]}-28\]</span></p>
+<p>Excellent! Now we can use the first bit of information given to us:
+<span class="math inline">\(f[45]=34\)</span>. So, we can substitute 34
+in place of <span class="math inline">\(f[45]\)</span>.</p>
+<p><span class="math display">\[y=3\cdot 34-28\]</span></p>
+<p>Simplify the expression using arithmetic and order of operations.</p>
+<p><span class="math display">\[y=74\]</span></p>
+<p>And, thus, we have our solution: <span class="math inline">\(x=32\)</span> and <span class="math inline">\(y=74\)</span>.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If <span class="math inline">\(f[52]=14\)</span>, then there exists a
+knowable solution to the equation below.</p>
+<p><span class="math display">\[y=21\cdot\left(f{\left[4\left(x-56\right)\right]}-10\right)\]</span></p>
+<p>Find the solution.</p>
+<ul>
+<li><span class="math inline">\(x=\)</span>
+<select class="webex-select" id="webex-44bf8faafaf7e5a3941314ee9167c35e" data-answer="bwROVhRWTVFKUUoHSQRNAxUEHQNs"><option value="blank"></option><option>9</option><option>17</option><option>30</option><option>31</option><option>33</option><option>52</option><option>69</option><option>80</option><option>82</option><option>84</option></select></li>
+<li><span class="math inline">\(y=\)</span>
+<select class="webex-select" id="webex-861dc6deb945fdaf51cc2f6aabd8f7c7" data-answer="YwYdVE8GSFVOCRgFSlRNVhkBT1Jv"><option value="blank"></option><option>9</option><option>17</option><option>30</option><option>31</option><option>33</option><option>52</option><option>69</option><option>80</option><option>82</option><option>84</option></select></li>
+</ul>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given information:</p>
+<p><span class="math display">\[f[52]=14\]</span></p>
+<p><span class="math display">\[y=21\cdot\left(f{\left[4\left(x-56\right)\right]}-10\right)\]</span></p>
+<p>First, let&#39;s make the argument equal to 52.</p>
+<p><span class="math display">\[4\left(x-56\right)~=~52\]</span></p>
+<p>Divide by 4.</p>
+<p><span class="math display">\[x-56~=~13\]</span></p>
+<p>Add 56.</p>
+<p><span class="math display">\[x~=~69\]</span></p>
+<p>Let&#39;s plug that value of <span class="math inline">\(x\)</span> into
+the given equation.</p>
+<p><span class="math display">\[y=21\cdot\left(f{\left[4\left((69)-56\right)\right]}-10\right)\]</span></p>
+<p>Simplify the argument using arithmetic and order of operations.</p>
+<p><span class="math display">\[y=21\cdot\left(f{\left[52\right]}-10\right)\]</span></p>
+<p>Excellent! Now we can use the first bit of information given to us:
+<span class="math inline">\(f[52]=14\)</span>. So, we can substitute 14
+in place of <span class="math inline">\(f[52]\)</span>.</p>
+<p><span class="math display">\[y=21\cdot\left(14-10\right)\]</span></p>
+<p>Simplify the expression using arithmetic and order of operations.</p>
+<p><span class="math display">\[y=84\]</span></p>
+<p>And, thus, we have our solution: <span class="math inline">\(x=69\)</span> and <span class="math inline">\(y=84\)</span>.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If <span class="math inline">\(f[68]=83\)</span>, then there exists a
+knowable solution to the equation below.</p>
+<p><span class="math display">\[y=\frac{f{\left[4\left(x+8\right)\right]}+61}{2}\]</span></p>
+<p>Find the solution.</p>
+<ul>
+<li><span class="math inline">\(x=\)</span>
+<select class="webex-select" id="webex-70e361eeebfb6139bda71720b3ee3bdd" data-answer="bABJAhoBSVVJUkpSGgEfCU5UTQds"><option value="blank"></option><option>4</option><option>9</option><option>11</option><option>28</option><option>35</option><option>44</option><option>68</option><option>72</option><option>76</option><option>79</option></select></li>
+<li><span class="math inline">\(y=\)</span>
+<select class="webex-select" id="webex-a5ab371febf429cb25de297035866df9" data-answer="OgVNUh8HHVZJUkoEHglPUx4FSFVv"><option value="blank"></option><option>4</option><option>9</option><option>11</option><option>28</option><option>35</option><option>44</option><option>68</option><option>72</option><option>76</option><option>79</option></select></li>
+</ul>
+</div>
+<div class="webex-solution">
+<p>Rewrite the given information:</p>
+<p><span class="math display">\[f[68]=83\]</span></p>
+<p><span class="math display">\[y=\frac{f{\left[4\left(x+8\right)\right]}+61}{2}\]</span></p>
+<p>First, let&#39;s make the argument equal to 68.</p>
+<p><span class="math display">\[4\left(x+8\right)~=~68\]</span></p>
+<p>Divide by 4.</p>
+<p><span class="math display">\[x+8~=~17\]</span></p>
+<p>Subtract 8.</p>
+<p><span class="math display">\[x~=~9\]</span></p>
+<p>Let&#39;s plug that value of <span class="math inline">\(x\)</span> into
+the given equation.</p>
+<p><span class="math display">\[y=\frac{f{\left[4\left((9)+8\right)\right]}+61}{2}\]</span></p>
+<p>Simplify the argument using arithmetic and order of operations.</p>
+<p><span class="math display">\[y=\frac{f{\left[68\right]}+61}{2}\]</span></p>
+<p>Excellent! Now we can use the first bit of information given to us:
+<span class="math inline">\(f[68]=83\)</span>. So, we can substitute 83
+in place of <span class="math inline">\(f[68]\)</span>.</p>
+<p><span class="math display">\[y=\frac{83+61}{2}\]</span></p>
+<p>Simplify the expression using arithmetic and order of operations.</p>
+<p><span class="math display">\[y=72\]</span></p>
+<p>And, thus, we have our solution: <span class="math inline">\(x=9\)</span> and <span class="math inline">\(y=72\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="webex-group">
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Let <span class="math inline">\(f\)</span> be a function with three
+known input-output pairs, shown as solutions to the equation <span class="math inline">\(b=f[a]\)</span>.</p>
 <table class="table table-bordered" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -595,35 +2096,31 @@ table:</p>
 <tbody>
 <tr>
 <td style="text-align:right;">
-33
+4
 </td>
 <td style="text-align:right;">
-57
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-46
-</td>
-<td style="text-align:right;">
-22
+40
 </td>
 </tr>
 <tr>
 <td style="text-align:right;">
-48
+5
 </td>
 <td style="text-align:right;">
-90
+68
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+61
 </td>
 </tr>
 </tbody>
 </table>
-<p>Each <span class="math inline">\((a,b)\)</span> solution has a
-corresponding <span class="math inline">\((x,y)\)</span> solution to the
-equation below.</p>
-<p><span class="math display">\[y~=~f(x-2)-5\]</span></p>
-<p>Express the corresponding solutions in the same order.</p>
+<p>Find the corresponding solutions to the following equation: <span class="math display">\[y~=~\frac{f{\left[\frac{x+2}{9}\right]}-5}{7}\]</span></p>
 <table class="table table-bordered" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -638,67 +2135,110 @@ equation below.</p>
 <tbody>
 <tr>
 <td style="text-align:left;">
-##ANSWER1##
+<select class="webex-select" id="webex-56450b4602cf27b2b42b795f6b000718" data-answer="bgYYBRxSGAYcAk9XHgdOAk4EHlJq"><option value="blank"></option><option>2</option><option>5</option><option>8</option><option>9</option><option>23</option><option>34</option><option>40</option><option>42</option><option>43</option><option>52</option></select>
 </td>
 <td style="text-align:left;">
-##ANSWER4##
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-##ANSWER2##
-</td>
-<td style="text-align:left;">
-##ANSWER5##
+<select class="webex-select" id="webex-a54e70c50604f2f58711a2dcbcaa1bda" data-answer="OgUYVBsATwUcBhwESgJKBRQHHQE8"><option value="blank"></option><option>2</option><option>5</option><option>8</option><option>9</option><option>23</option><option>34</option><option>40</option><option>42</option><option>43</option><option>52</option></select>
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-##ANSWER3##
+<select class="webex-select" id="webex-71e2d1ae872a01d34b8b8697b56e85b8" data-answer="bAFJAkgBTVUUBx5RHAFIAxhTFFJl"><option value="blank"></option><option>2</option><option>5</option><option>8</option><option>9</option><option>23</option><option>34</option><option>40</option><option>42</option><option>43</option><option>52</option></select>
 </td>
 <td style="text-align:left;">
-##ANSWER6##
+<select class="webex-select" id="webex-7e90a6e83bc04e89c94e8cccd6a2a886" data-answer="bFUVAE0GSQkfUk8AGFUUCU8JGFVl"><option value="blank"></option><option>2</option><option>5</option><option>8</option><option>9</option><option>23</option><option>34</option><option>40</option><option>42</option><option>43</option><option>52</option></select>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<select class="webex-select" id="webex-6b4f09b7be01abe821b72e1e37128981" data-answer="bVIYVhwJTgdOVRwBTVJJCB4BTgZv"><option value="blank"></option><option>2</option><option>5</option><option>8</option><option>9</option><option>23</option><option>34</option><option>40</option><option>42</option><option>43</option><option>52</option></select>
+</td>
+<td style="text-align:left;">
+<select class="webex-select" id="webex-a93791b9e11cdab33e058f7ad61e97ea" data-answer="OgkfBxUATglJAR1TSFFOAx9VHAVl"><option value="blank"></option><option>2</option><option>5</option><option>8</option><option>9</option><option>23</option><option>34</option><option>40</option><option>42</option><option>43</option><option>52</option></select>
 </td>
 </tr>
 </tbody>
 </table>
-<div id="answerlist" class="section level2">
-<h2>Answerlist</h2>
-<ul>
-<li>28</li>
-<li>31</li>
-<li>35</li>
-<li>38</li>
-<li>41</li>
-<li>44</li>
-<li>48</li>
-<li>51</li>
-<li>43</li>
-<li>46</li>
-<li>50</li>
-<li>53</li>
-<li>52</li>
-<li>55</li>
-<li>59</li>
-<li>62</li>
-<li>17</li>
-<li>20</li>
-<li>24</li>
-<li>27</li>
-<li>85</li>
-<li>88</li>
-<li>92</li>
-<li>95</li>
-</ul>
 </div>
-</div>
-<div id="solution" class="section level1">
-<h1>Solution</h1>
-<p>The transformations are a translation right by 2 and a translation
-down by 5. So, add 2 to each <span class="math inline">\(a\)</span>
-value to find each <span class="math inline">\(x\)</span> value. Also,
-subtract 5 from each <span class="math inline">\(b\)</span> value to
-find each <span class="math inline">\(y\)</span> value.</p>
+<div class="webex-solution">
+<p>Restate the given equation.</p>
+<p><span class="math display">\[y~=~\frac{f{\left[\frac{x+2}{9}\right]}-5}{7}\]</span></p>
+<p>Set <span class="math inline">\(f\)</span>&#39;s argument equal to <span class="math inline">\(a\)</span>.</p>
+<p><span class="math display">\[\frac{x+2}{9}~=~a\]</span></p>
+<p>Solve for <span class="math inline">\(x\)</span> by solving the <a href="https://www.khanacademy.org/math/7th-grade-illustrative-math/unit-6-expressions-equations-and-inequalities/x16db28654a9632d7:reasoning-about-solving-equations-part-1/a/two-step-equations-review">two-step
+equation</a>.</p>
+<p><span class="math display">\[x~=~9 a-2\]</span></p>
+<p>Because we set <span class="math inline">\(\frac{x+2}{9}\)</span>
+equal to <span class="math inline">\(a\)</span>, we can replace <span class="math inline">\(\frac{x+2}{9}\)</span> with <span class="math inline">\(a\)</span> in the main equation.</p>
+<p><span class="math display">\[y=\frac{f{\left[a\right]}-5}{7}\]</span></p>
+<p>We know <span class="math inline">\(f[a]=b\)</span>, so replace <span class="math inline">\(f[a]\)</span> with <span class="math inline">\(b\)</span>.</p>
+<p><span class="math display">\[y~=~\frac{b-5}{7}\]</span></p>
+<p>We now have two formulas: <span class="math inline">\(x~=~9
+a-2\)</span> and <span class="math inline">\(y~=~\frac{b-5}{7}\)</span>.
+Use those formulas!</p>
+<table class="table table-bordered" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+<span class="math inline">\(a\)</span>
+</th>
+<th style="text-align:left;">
+<span class="math inline">\(b\)</span>
+</th>
+<th style="text-align:left;">
+<span class="math inline">\(x\)</span>
+</th>
+<th style="text-align:left;">
+<span class="math inline">\(y\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<span class="math display">\[4\]</span>
+</td>
+<td style="text-align:left;">
+<span class="math display">\[40\]</span>
+</td>
+<td style="text-align:left;">
+<span class="math display">\[9\cdot 4-2\]</span>
+</td>
+<td style="text-align:left;">
+<span class="math display">\[\frac{40-5}{7}\]</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math display">\[5\]</span>
+</td>
+<td style="text-align:left;">
+<span class="math display">\[68\]</span>
+</td>
+<td style="text-align:left;">
+<span class="math display">\[9\cdot 5-2\]</span>
+</td>
+<td style="text-align:left;">
+<span class="math display">\[\frac{68-5}{7}\]</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math display">\[6\]</span>
+</td>
+<td style="text-align:left;">
+<span class="math display">\[61\]</span>
+</td>
+<td style="text-align:left;">
+<span class="math display">\[9\cdot 6-2\]</span>
+</td>
+<td style="text-align:left;">
+<span class="math display">\[\frac{61-5}{7}\]</span>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Evaluate all numerical expressions to get the answers.</p>
 <table class="table table-bordered" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -713,46 +2253,1428 @@ find each <span class="math inline">\(y\)</span> value.</p>
 <tbody>
 <tr>
 <td style="text-align:right;">
-35
+34
 </td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+43
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
 <td style="text-align:right;">
 52
 </td>
-</tr>
-<tr>
 <td style="text-align:right;">
-48
-</td>
-<td style="text-align:right;">
-17
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-50
-</td>
-<td style="text-align:right;">
-85
+8
 </td>
 </tr>
 </tbody>
 </table>
-<p>We could approach this by finding the coordinate transformations.
-First, we set the argument to <span class="math inline">\(a\)</span>.</p>
-<p><span class="math display">\[x-2=a\]</span> <span class="math display">\[x=a+2\]</span></p>
-<p>Then, replace <span class="math inline">\(f(\ldots)\)</span> with
-<span class="math inline">\(b\)</span>.</p>
-<p><span class="math display">\[y=b-5\]</span></p>
-<p>This gives the coordinate transformation:</p>
-<p><span class="math display">\[(a,b)~\to~ (a+2~,~b-5)\]</span></p>
 </div>
-<div id="meta-information" class="section level1">
-<h1>Meta-information</h1>
-<p>extype: cloze exclozetype:
-schoice|schoice|schoice|schoice|schoice|schoice exsolution:
-0010|0010|0010|1000|1000|1000 exname: ab_to_xy_shifts</p>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Let <span class="math inline">\(f\)</span> be a function with three
+known input-output pairs, shown as solutions to the equation <span class="math inline">\(b=f[a]\)</span>.</p>
+<table class="table table-bordered" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+<span class="math inline">\(a\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(b\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+84
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+90
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+</tbody>
+</table>
+<p>Find the corresponding solutions to the following equation: <span class="math display">\[y~=~7\cdot
+f{\left[6\left(x+2\right)\right]}-9\]</span></p>
+<table class="table table-bordered" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+<span class="math inline">\(x\)</span>
+</th>
+<th style="text-align:left;">
+<span class="math inline">\(y\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<select class="webex-select" id="webex-3bdbf7be385cf17950af7b1b62a02a91" data-answer="aFJIU0oHTlUfCBlTSgEbCRkATVZq"><option value="blank"></option><option>0</option><option>1</option><option>5</option><option>12</option><option>13</option><option>19</option><option>41</option><option>47</option><option>61</option><option>69</option></select>
+</td>
+<td style="text-align:left;">
+<select class="webex-select" id="webex-17a6883b47dc7120b384fbd63487f34f" data-answer="agdNBhQIH1IYB0hTGwEeAU4DFAQ7"><option value="blank"></option><option>0</option><option>1</option><option>5</option><option>12</option><option>13</option><option>19</option><option>41</option><option>47</option><option>61</option><option>69</option></select>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<select class="webex-select" id="webex-2c3289807607774c0f9bc7310dcb3cbb" data-answer="aVMfAhQJFAEbBhwHGwcYUxxWFVI+"><option value="blank"></option><option>0</option><option>1</option><option>5</option><option>12</option><option>13</option><option>19</option><option>41</option><option>47</option><option>61</option><option>69</option></select>
+</td>
+<td style="text-align:left;">
+<select class="webex-select" id="webex-531b3b8e2aa915a7188069d3b306bb7f" data-answer="bgMdUh9SFFUeUU0IHQVNBx0IFABr"><option value="blank"></option><option>0</option><option>1</option><option>5</option><option>12</option><option>13</option><option>19</option><option>41</option><option>47</option><option>61</option><option>69</option></select>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<select class="webex-select" id="webex-6956133a23092b019b3c535172b19f59" data-answer="bQkZBh0DH1EeAhwJHlIcARVSH1No"><option value="blank"></option><option>0</option><option>1</option><option>5</option><option>12</option><option>13</option><option>19</option><option>41</option><option>47</option><option>61</option><option>69</option></select>
+</td>
+<td style="text-align:left;">
+<select class="webex-select" id="webex-771742faadd1d520d83b6987aaac002e" data-answer="bAcdBxgDSlFNVEgBSAUeAEgIH1Jr"><option value="blank"></option><option>0</option><option>1</option><option>5</option><option>12</option><option>13</option><option>19</option><option>41</option><option>47</option><option>61</option><option>69</option></select>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="webex-solution">
+<p>Restate the given equation.</p>
+<p><span class="math display">\[y~=~7\cdot
+f{\left[6\left(x+2\right)\right]}-9\]</span></p>
+<p>Set <span class="math inline">\(f\)</span>&#39;s argument equal to <span class="math inline">\(a\)</span>.</p>
+<p><span class="math display">\[6\left(x+2\right)~=~a\]</span></p>
+<p>Solve for <span class="math inline">\(x\)</span> by solving the <a href="https://www.khanacademy.org/math/7th-grade-illustrative-math/unit-6-expressions-equations-and-inequalities/x16db28654a9632d7:reasoning-about-solving-equations-part-1/a/two-step-equations-review">two-step
+equation</a>.</p>
+<p><span class="math display">\[x~=~\frac{a}{6}-2\]</span></p>
+<p>Because we set <span class="math inline">\(6\left(x+2\right)\)</span>
+equal to <span class="math inline">\(a\)</span>, we can replace <span class="math inline">\(6\left(x+2\right)\)</span> with <span class="math inline">\(a\)</span> in the main equation.</p>
+<p><span class="math display">\[y=7\cdot
+f{\left[a\right]}-9\]</span></p>
+<p>We know <span class="math inline">\(f[a]=b\)</span>, so replace <span class="math inline">\(f[a]\)</span> with <span class="math inline">\(b\)</span>.</p>
+<p><span class="math display">\[y~=~7\cdot b-9\]</span></p>
+<p>We now have two formulas: <span class="math inline">\(x~=~\frac{a}{6}-2\)</span> and <span class="math inline">\(y~=~7\cdot b-9\)</span>. Use those formulas!</p>
+<table class="table table-bordered" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+<span class="math inline">\(a\)</span>
+</th>
+<th style="text-align:left;">
+<span class="math inline">\(b\)</span>
+</th>
+<th style="text-align:left;">
+<span class="math inline">\(x\)</span>
+</th>
+<th style="text-align:left;">
+<span class="math inline">\(y\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<span class="math display">\[18\]</span>
+</td>
+<td style="text-align:left;">
+<span class="math display">\[8\]</span>
+</td>
+<td style="text-align:left;">
+<span class="math display">\[\frac{18}{6}-2\]</span>
+</td>
+<td style="text-align:left;">
+<span class="math display">\[7\cdot 8-9\]</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math display">\[84\]</span>
+</td>
+<td style="text-align:left;">
+<span class="math display">\[4\]</span>
+</td>
+<td style="text-align:left;">
+<span class="math display">\[\frac{84}{6}-2\]</span>
+</td>
+<td style="text-align:left;">
+<span class="math display">\[7\cdot 4-9\]</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math display">\[90\]</span>
+</td>
+<td style="text-align:left;">
+<span class="math display">\[2\]</span>
+</td>
+<td style="text-align:left;">
+<span class="math display">\[\frac{90}{6}-2\]</span>
+</td>
+<td style="text-align:left;">
+<span class="math display">\[7\cdot 2-9\]</span>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Evaluate all numerical expressions to get the answers.</p>
+<table class="table table-bordered" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+<span class="math inline">\(x\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(y\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+47
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+19
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Let <span class="math inline">\(f\)</span> be a function with three
+known input-output pairs, shown as solutions to the equation <span class="math inline">\(b=f[a]\)</span>.</p>
+<table class="table table-bordered" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+<span class="math inline">\(a\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(b\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:right;">
+40
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:right;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:right;">
+35
+</td>
+</tr>
+</tbody>
+</table>
+<p>Find the corresponding solutions to the following equation: <span class="math display">\[y~=~\frac{f{\left[\frac{x+8}{3}\right]}}{5}-2\]</span></p>
+<table class="table table-bordered" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+<span class="math inline">\(x\)</span>
+</th>
+<th style="text-align:left;">
+<span class="math inline">\(y\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<select class="webex-select" id="webex-c8292b6268429cf4e8875f2799495d33" data-answer="OAgeCR5SGgIaCBgCFVJKBEkIFAdo"><option value="blank"></option><option>5</option><option>6</option><option>7</option><option>18</option><option>62</option><option>63</option><option>64</option><option>73</option><option>81</option><option>85</option></select>
+</td>
+<td style="text-align:left;">
+<select class="webex-select" id="webex-5fe5e6a4720ec4e321bb61db8cdaa882" data-answer="blZJBEkGTQQbAhxVTwRJAx4BTlJr"><option value="blank"></option><option>5</option><option>6</option><option>7</option><option>18</option><option>62</option><option>63</option><option>64</option><option>73</option><option>81</option><option>85</option></select>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<select class="webex-select" id="webex-3979df2466f623efac8dd246a7b437dd" data-answer="aAkbCUhWHgQaBkoGHgNJV01TFFQ5"><option value="blank"></option><option>5</option><option>6</option><option>7</option><option>18</option><option>62</option><option>63</option><option>64</option><option>73</option><option>81</option><option>85</option></select>
+</td>
+<td style="text-align:left;">
+<select class="webex-select" id="webex-62156b360187f93d169b4c72e470e2f6" data-answer="bQIdBRpSHwccARQHSgkfVB0GFVJp"><option value="blank"></option><option>5</option><option>6</option><option>7</option><option>18</option><option>62</option><option>63</option><option>64</option><option>73</option><option>81</option><option>85</option></select>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<select class="webex-select" id="webex-fe5aa56490425396453a623558354758" data-answer="PVUZUU0FGgQVABgCGQMVBhgFH1Br"><option value="blank"></option><option>5</option><option>6</option><option>7</option><option>18</option><option>62</option><option>63</option><option>64</option><option>73</option><option>81</option><option>85</option></select>
+</td>
+<td style="text-align:left;">
+<select class="webex-select" id="webex-3c610651739f97d467e838d5a1005f06" data-answer="aFIaARwGGQEbAxVWFQdIBBoHSQhu"><option value="blank"></option><option>5</option><option>6</option><option>7</option><option>18</option><option>62</option><option>63</option><option>64</option><option>73</option><option>81</option><option>85</option></select>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="webex-solution">
+<p>Restate the given equation.</p>
+<p><span class="math display">\[y~=~\frac{f{\left[\frac{x+8}{3}\right]}}{5}-2\]</span></p>
+<p>Set <span class="math inline">\(f\)</span>&#39;s argument equal to <span class="math inline">\(a\)</span>.</p>
+<p><span class="math display">\[\frac{x+8}{3}~=~a\]</span></p>
+<p>Solve for <span class="math inline">\(x\)</span> by solving the <a href="https://www.khanacademy.org/math/7th-grade-illustrative-math/unit-6-expressions-equations-and-inequalities/x16db28654a9632d7:reasoning-about-solving-equations-part-1/a/two-step-equations-review">two-step
+equation</a>.</p>
+<p><span class="math display">\[x~=~3 a-8\]</span></p>
+<p>Because we set <span class="math inline">\(\frac{x+8}{3}\)</span>
+equal to <span class="math inline">\(a\)</span>, we can replace <span class="math inline">\(\frac{x+8}{3}\)</span> with <span class="math inline">\(a\)</span> in the main equation.</p>
+<p><span class="math display">\[y=\frac{f{\left[a\right]}}{5}-2\]</span></p>
+<p>We know <span class="math inline">\(f[a]=b\)</span>, so replace <span class="math inline">\(f[a]\)</span> with <span class="math inline">\(b\)</span>.</p>
+<p><span class="math display">\[y~=~\frac{b}{5}-2\]</span></p>
+<p>We now have two formulas: <span class="math inline">\(x~=~3
+a-8\)</span> and <span class="math inline">\(y~=~\frac{b}{5}-2\)</span>.
+Use those formulas!</p>
+<table class="table table-bordered" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+<span class="math inline">\(a\)</span>
+</th>
+<th style="text-align:left;">
+<span class="math inline">\(b\)</span>
+</th>
+<th style="text-align:left;">
+<span class="math inline">\(x\)</span>
+</th>
+<th style="text-align:left;">
+<span class="math inline">\(y\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<span class="math display">\[24\]</span>
+</td>
+<td style="text-align:left;">
+<span class="math display">\[40\]</span>
+</td>
+<td style="text-align:left;">
+<span class="math display">\[3\cdot 24-8\]</span>
+</td>
+<td style="text-align:left;">
+<span class="math display">\[\frac{40}{5}-2\]</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math display">\[27\]</span>
+</td>
+<td style="text-align:left;">
+<span class="math display">\[100\]</span>
+</td>
+<td style="text-align:left;">
+<span class="math display">\[3\cdot 27-8\]</span>
+</td>
+<td style="text-align:left;">
+<span class="math display">\[\frac{100}{5}-2\]</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math display">\[31\]</span>
+</td>
+<td style="text-align:left;">
+<span class="math display">\[35\]</span>
+</td>
+<td style="text-align:left;">
+<span class="math display">\[3\cdot 31-8\]</span>
+</td>
+<td style="text-align:left;">
+<span class="math display">\[\frac{35}{5}-2\]</span>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Evaluate all numerical expressions to get the answers.</p>
+<table class="table table-bordered" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+<span class="math inline">\(x\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(y\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+64
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+73
+</td>
+<td style="text-align:right;">
+18
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+85
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Let <span class="math inline">\(f\)</span> be a function with three
+known input-output pairs, shown as solutions to the equation <span class="math inline">\(b=f[a]\)</span>.</p>
+<table class="table table-bordered" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+<span class="math inline">\(a\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(b\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+18
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+15
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+</tbody>
+</table>
+<p>Find the corresponding solutions to the following equation: <span class="math display">\[y~=~3\cdot
+f{\left[\frac{x-8}{9}\right]}-7\]</span></p>
+<table class="table table-bordered" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+<span class="math inline">\(x\)</span>
+</th>
+<th style="text-align:left;">
+<span class="math inline">\(y\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<select class="webex-select" id="webex-22c2ff0c27d1cb0e536ed0891ce06e75" data-answer="aQJPAkpWHFMeBkgBT1IcVRkDGlU5"><option value="blank"></option><option>3</option><option>17</option><option>23</option><option>38</option><option>44</option><option>46</option><option>47</option><option>63</option><option>80</option><option>89</option></select>
+</td>
+<td style="text-align:left;">
+<select class="webex-select" id="webex-89822e5802fa787c6448062bac55dcdb" data-answer="YwkUAh5VGQgcAkpRGwkbUxoEGAht"><option value="blank"></option><option>3</option><option>17</option><option>23</option><option>38</option><option>44</option><option>46</option><option>47</option><option>63</option><option>80</option><option>89</option></select>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<select class="webex-select" id="webex-753b25050ecb4e1f015eee1fccc5033f" data-answer="bAUfUh4FHAUcVU9SGFUdVhwAGVU4"><option value="blank"></option><option>3</option><option>17</option><option>23</option><option>38</option><option>44</option><option>46</option><option>47</option><option>63</option><option>80</option><option>89</option></select>
+</td>
+<td style="text-align:left;">
+<select class="webex-select" id="webex-999f1c53fe798873352682269311cdff" data-answer="YgkVVh1TGQJKVRsJFAgbAx8FHgZl"><option value="blank"></option><option>3</option><option>17</option><option>23</option><option>38</option><option>44</option><option>46</option><option>47</option><option>63</option><option>80</option><option>89</option></select>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<select class="webex-select" id="webex-c532c9249272e8d8279b865c55df9de8" data-answer="OAUfAk8JHgQVAhsCSQhICB4HFVNl"><option value="blank"></option><option>3</option><option>17</option><option>23</option><option>38</option><option>44</option><option>46</option><option>47</option><option>63</option><option>80</option><option>89</option></select>
+</td>
+<td style="text-align:left;">
+<select class="webex-select" id="webex-f4c38fdf3623e604ce766dace98b9793" data-answer="PQRPAxRXSFYfBh4DSQYcBE9VGwZr"><option value="blank"></option><option>3</option><option>17</option><option>23</option><option>38</option><option>44</option><option>46</option><option>47</option><option>63</option><option>80</option><option>89</option></select>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="webex-solution">
+<p>Restate the given equation.</p>
+<p><span class="math display">\[y~=~3\cdot
+f{\left[\frac{x-8}{9}\right]}-7\]</span></p>
+<p>Set <span class="math inline">\(f\)</span>&#39;s argument equal to <span class="math inline">\(a\)</span>.</p>
+<p><span class="math display">\[\frac{x-8}{9}~=~a\]</span></p>
+<p>Solve for <span class="math inline">\(x\)</span> by solving the <a href="https://www.khanacademy.org/math/7th-grade-illustrative-math/unit-6-expressions-equations-and-inequalities/x16db28654a9632d7:reasoning-about-solving-equations-part-1/a/two-step-equations-review">two-step
+equation</a>.</p>
+<p><span class="math display">\[x~=~9 a+8\]</span></p>
+<p>Because we set <span class="math inline">\(\frac{x-8}{9}\)</span>
+equal to <span class="math inline">\(a\)</span>, we can replace <span class="math inline">\(\frac{x-8}{9}\)</span> with <span class="math inline">\(a\)</span> in the main equation.</p>
+<p><span class="math display">\[y=3\cdot
+f{\left[a\right]}-7\]</span></p>
+<p>We know <span class="math inline">\(f[a]=b\)</span>, so replace <span class="math inline">\(f[a]\)</span> with <span class="math inline">\(b\)</span>.</p>
+<p><span class="math display">\[y~=~3\cdot b-7\]</span></p>
+<p>We now have two formulas: <span class="math inline">\(x~=~9
+a+8\)</span> and <span class="math inline">\(y~=~3\cdot b-7\)</span>.
+Use those formulas!</p>
+<table class="table table-bordered" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+<span class="math inline">\(a\)</span>
+</th>
+<th style="text-align:left;">
+<span class="math inline">\(b\)</span>
+</th>
+<th style="text-align:left;">
+<span class="math inline">\(x\)</span>
+</th>
+<th style="text-align:left;">
+<span class="math inline">\(y\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<span class="math display">\[4\]</span>
+</td>
+<td style="text-align:left;">
+<span class="math display">\[18\]</span>
+</td>
+<td style="text-align:left;">
+<span class="math display">\[9\cdot 4+8\]</span>
+</td>
+<td style="text-align:left;">
+<span class="math display">\[3\cdot 18-7\]</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math display">\[8\]</span>
+</td>
+<td style="text-align:left;">
+<span class="math display">\[15\]</span>
+</td>
+<td style="text-align:left;">
+<span class="math display">\[9\cdot 8+8\]</span>
+</td>
+<td style="text-align:left;">
+<span class="math display">\[3\cdot 15-7\]</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math display">\[9\]</span>
+</td>
+<td style="text-align:left;">
+<span class="math display">\[10\]</span>
+</td>
+<td style="text-align:left;">
+<span class="math display">\[9\cdot 9+8\]</span>
+</td>
+<td style="text-align:left;">
+<span class="math display">\[3\cdot 10-7\]</span>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Evaluate all numerical expressions to get the answers.</p>
+<table class="table table-bordered" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+<span class="math inline">\(x\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(y\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+44
+</td>
+<td style="text-align:right;">
+47
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+80
+</td>
+<td style="text-align:right;">
+38
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+89
+</td>
+<td style="text-align:right;">
+23
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Let <span class="math inline">\(f\)</span> be a function with three
+known input-output pairs, shown as solutions to the equation <span class="math inline">\(b=f[a]\)</span>.</p>
+<table class="table table-bordered" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+<span class="math inline">\(a\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(b\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+75
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+65
+</td>
+<td style="text-align:right;">
+15
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+87
+</td>
+<td style="text-align:right;">
+69
+</td>
+</tr>
+</tbody>
+</table>
+<p>Find the corresponding solutions to the following equation: <span class="math display">\[y~=~\frac{f{\left[2
+x+3\right]}+9}{6}\]</span></p>
+<table class="table table-bordered" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+<span class="math inline">\(x\)</span>
+</th>
+<th style="text-align:left;">
+<span class="math inline">\(y\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<select class="webex-select" id="webex-4d31bc5085cea1c79fdf5b05a25626fe" data-answer="b1UfAU5TGQAUBU9VTQFPBxVWSFZo"><option value="blank"></option><option>3</option><option>4</option><option>13</option><option>14</option><option>22</option><option>31</option><option>42</option><option>65</option><option>74</option><option>80</option></select>
+</td>
+<td style="text-align:left;">
+<select class="webex-select" id="webex-ef33bbc0614e1970125c0bc0b66f0160" data-answer="PlYfA05STwEaARhVHQkbAB0CGVNt"><option value="blank"></option><option>3</option><option>4</option><option>13</option><option>14</option><option>22</option><option>31</option><option>42</option><option>65</option><option>74</option><option>80</option></select>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<select class="webex-select" id="webex-cb55097f5bdcdcdac4de917f78a9ea92" data-answer="OFIZBRwJG1YZUkhSSFNIUU8ESFVk"><option value="blank"></option><option>3</option><option>4</option><option>13</option><option>14</option><option>22</option><option>31</option><option>42</option><option>65</option><option>74</option><option>80</option></select>
+</td>
+<td style="text-align:left;">
+<select class="webex-select" id="webex-94732466308cf7e58a1fcd1b13df4ef8" data-answer="YgQbAh4EGgYfABRTSgdJBRRRHVY+"><option value="blank"></option><option>3</option><option>4</option><option>13</option><option>14</option><option>22</option><option>31</option><option>42</option><option>65</option><option>74</option><option>80</option></select>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<select class="webex-select" id="webex-c818105721265a1e969c2dac74c70c83" data-answer="OAgdCB0AGQceAR4GGVAdVRUGFVNv"><option value="blank"></option><option>3</option><option>4</option><option>13</option><option>14</option><option>22</option><option>31</option><option>42</option><option>65</option><option>74</option><option>80</option></select>
+</td>
+<td style="text-align:left;">
+<select class="webex-select" id="webex-c83f412ac34234e718135b37e913e595" data-answer="OAgfVhgAHlFPAxgCHwRJBx0IHQNo"><option value="blank"></option><option>3</option><option>4</option><option>13</option><option>14</option><option>22</option><option>31</option><option>42</option><option>65</option><option>74</option><option>80</option></select>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="webex-solution">
+<p>Restate the given equation.</p>
+<p><span class="math display">\[y~=~\frac{f{\left[2
+x+3\right]}+9}{6}\]</span></p>
+<p>Set <span class="math inline">\(f\)</span>&#39;s argument equal to <span class="math inline">\(a\)</span>.</p>
+<p><span class="math display">\[2 x+3~=~a\]</span></p>
+<p>Solve for <span class="math inline">\(x\)</span> by solving the <a href="https://www.khanacademy.org/math/7th-grade-illustrative-math/unit-6-expressions-equations-and-inequalities/x16db28654a9632d7:reasoning-about-solving-equations-part-1/a/two-step-equations-review">two-step
+equation</a>.</p>
+<p><span class="math display">\[x~=~\frac{a-3}{2}\]</span></p>
+<p>Because we set <span class="math inline">\(2 x+3\)</span> equal to
+<span class="math inline">\(a\)</span>, we can replace <span class="math inline">\(2 x+3\)</span> with <span class="math inline">\(a\)</span> in the main equation.</p>
+<p><span class="math display">\[y=\frac{f{\left[a\right]}+9}{6}\]</span></p>
+<p>We know <span class="math inline">\(f[a]=b\)</span>, so replace <span class="math inline">\(f[a]\)</span> with <span class="math inline">\(b\)</span>.</p>
+<p><span class="math display">\[y~=~\frac{b+9}{6}\]</span></p>
+<p>We now have two formulas: <span class="math inline">\(x~=~\frac{a-3}{2}\)</span> and <span class="math inline">\(y~=~\frac{b+9}{6}\)</span>. Use those
+formulas!</p>
+<table class="table table-bordered" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+<span class="math inline">\(a\)</span>
+</th>
+<th style="text-align:left;">
+<span class="math inline">\(b\)</span>
+</th>
+<th style="text-align:left;">
+<span class="math inline">\(x\)</span>
+</th>
+<th style="text-align:left;">
+<span class="math inline">\(y\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<span class="math display">\[9\]</span>
+</td>
+<td style="text-align:left;">
+<span class="math display">\[75\]</span>
+</td>
+<td style="text-align:left;">
+<span class="math display">\[\frac{9-3}{2}\]</span>
+</td>
+<td style="text-align:left;">
+<span class="math display">\[\frac{75+9}{6}\]</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math display">\[65\]</span>
+</td>
+<td style="text-align:left;">
+<span class="math display">\[15\]</span>
+</td>
+<td style="text-align:left;">
+<span class="math display">\[\frac{65-3}{2}\]</span>
+</td>
+<td style="text-align:left;">
+<span class="math display">\[\frac{15+9}{6}\]</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math display">\[87\]</span>
+</td>
+<td style="text-align:left;">
+<span class="math display">\[69\]</span>
+</td>
+<td style="text-align:left;">
+<span class="math display">\[\frac{87-3}{2}\]</span>
+</td>
+<td style="text-align:left;">
+<span class="math display">\[\frac{69+9}{6}\]</span>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Evaluate all numerical expressions to get the answers.</p>
+<table class="table table-bordered" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+<span class="math inline">\(x\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(y\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+14
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+42
+</td>
+<td style="text-align:right;">
+13
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 
+<script>
+
+/* definition of content for the buttons */
+const webex_buttons = {check_hidden:          "<b>&check;</b>",
+                       check_hidden_alt:      "Check answer",
+                       check_shown:           "<b>&lsh;</b>",
+                       check_shown_alt:       "Hide check",
+                       check_of_total:        "/",
+                       solution:              "<b>&quest;</b>",
+                       solution_alt:          "Correct solution",
+                       question_next:         "<b>&#8634;</b>",
+                       question_next_alt:     "Next question",
+                       question_previous:     "",
+                       question_previous_alt: ""}
+
+
+/* update total correct if #webex-total_correct exists */
+update_total_correct = function() {
+  console.log("webex: update total_correct");
+
+  document.querySelectorAll(".webex-total_correct").forEach(total => {
+    p = total.closest(".webex-box");
+    var correct = p.getElementsByClassName("webex-correct").length;
+    var solvemes = p.getElementsByClassName("webex-solveme").length;
+    var radiogroups = p.getElementsByClassName("webex-radiogroup").length;
+    var selects = p.getElementsByClassName("webex-select").length;
+    /* no specific class on input node, thus searching via query selector */
+    var checkboxgroups = p.querySelectorAll("div[class=webex-checkboxgroup] input[type=checkbox]").length
+
+    /* show number of correct / total number of answers */
+    total.innerHTML = correct + "&nbsp;" + webex_buttons.check_of_total + "&nbsp;" + (solvemes + radiogroups + checkboxgroups + selects);
+  });
+}
+
+/* check answers */
+check_func = function() {
+  console.log("webex: check answer");
+
+  //var cl = elem.parentElement.classList;
+  var cl = this.closest(".webex-box").classList;
+  if (cl.contains("unchecked")) {
+    cl.remove("unchecked");
+    this.innerHTML = webex_buttons.check_shown; //"Hide check";
+    if (webex_buttons.check_shown_alt.length > 0) this.setAttribute("title", webex_buttons.check_shown_alt);
+  } else {
+    cl.add("unchecked");
+    this.innerHTML = webex_buttons.check_hidden; //"Check answer";
+    if (webex_buttons.check_hidden_alt.length > 0) this.setAttribute("title", webex_buttons.check_hidden_alt);
+  }
+}
+
+/* helper functions for checking the webex ID */
+const id_checker = {"fmt": new RegExp("[g-zG-Z]"),
+                    "load": function(e) { return e.getAttribute("id").match("(?<=(-)).*$")[0]; },
+                    "eval": new TextEncoder(),
+                    "dval": new TextDecoder()}
+
+/* Show/hide correct solution */
+solution_func = function() {
+  console.log("webex: show/hide solution");
+
+  var div = this.closest(".webex-question").querySelector(".webex-solution");
+  var cl = div.classList;
+
+  if (cl.contains("visible")) {
+    cl.remove("visible");
+  } else {
+    cl.add("visible");
+  }
+}
+
+/* function to check if the real answer is numeric */
+convert_to_numeric = function(x) {
+  if (typeof x == "string") {
+    /* do nothing */
+  } else if (x.length == 1) {
+    /* take first element */
+    x = x[0]
+  } else {
+    return NaN;
+  }
+
+  /* remove spaces for easier parsing */
+  x = x.replace(/\s/g, "");
+
+  /* Define patterns for different formats, note that spaces have been removed above */
+  const patterns = [
+    {regex: /^[+-]?\d+(\.\d{3})*,\d+$/, decimal: ",", thousand: "." },  // Format: "1.100.100.100,3"
+    {regex: /^[+-]?\d+(,\d{3})*\.\d+$/, decimal: ".", thousand: "," },  // Format: "1,100,100,100.3"
+    {regex: /^[+-]?\d+(\.|\.\d+)?$/, decimal: "." },                    // Format: "1100100100.5" or "1100100100."
+    {regex: /^[+-]?\d+(,|,\d+)$/, decimal: "," }                        // Format: "1100100100,5" or "1100100100,"
+  ];
+
+
+  /* testing all regular expressions, convert to float if possible */
+  for (const { regex, decimal, thousand } of patterns) {
+    if (regex.test(x)) {
+      let numeric = x;
+      if (thousand) numeric = numeric.replace(new RegExp(`\\${thousand}`, "g"), "");
+      numeric = numeric.replace(decimal, ".");
+      return parseFloat(numeric);
+    }
+  }
+
+  /* input of length 1 but none of the known formats, return NaN */
+  return NaN;
+}
+
+/* Checking webex ID, returns formalsol */
+check_id = function(e) {
+  /* loading webex ID */
+  var id = id_checker["load"](e);
+
+  /* extracting answer */
+  let answer = e.dataset.answer;
+
+  /* checking unique id, prepare and return array */
+  if (!id_checker["fmt"].test(id)) {
+    const a = id_checker["eval"].encode(atob(answer));
+    const b = id_checker["eval"].encode(id);
+    const res = a.map((byte, index) => byte^b[index % b.length]);
+    answer = id_checker["dval"].decode(res);
+    /* Replacing &amp; with ' before parsing */
+    answer = answer.replaceAll("&apos;", "'");
+  }
+
+  return JSON.parse(answer);
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  /* avoid that keyup and keychange twice execute this function within nms = 10
+   * ms, clearing inputTimer and add timeout */
+  console.log("webex: check solveme");
+
+  /* float, precision for checking numeric answers */
+  const eps = 0.00000000000001;
+
+  /* get last checked user answer */
+  const question = this.closest(".webex-question")
+
+  /* extracting classes */
+  var cl = this.classList;
+  var my_answer = this.value;
+
+  /* extracting classes */
+  var cl = this.classList;
+
+  /* empty answer? Job done */
+  if (my_answer == "") {
+    cl.remove("webex-correct");
+    cl.remove("webex-incorrect");
+    return false;
+  }
+
+  /* Find closest (parent) webex-question */
+  let formalsols = check_id(this)
+
+  /* by default we assume the users' answer is incorrect */
+  var user_answer_correct = false;
+
+  /* check if the correct answer is numeric, i.e. if 
+   * formalsols is of length 1 containing one single numeric
+   * value in a known format, else, NaN is returned */
+  const num_formalsol = convert_to_numeric(formalsols);
+  const num_my_answer = convert_to_numeric(my_answer);
+
+  /* if the correct answer is numeric (float), the user's answer
+   * must also be numeric. If not, it is wrong. Else we can
+   * compare floating point numbers */
+  if (!isNaN(num_formalsol) && !isNaN(num_my_answer)) {
+    /* check if the real answer and the user input are numerically the same;
+     * adding 'delta' to avoid precision issues */
+    var diff = Math.abs(num_formalsol - num_my_answer);
+    if (diff < parseFloat(this.dataset.tol) + eps) { user_answer_correct = true; }
+
+  /* if the question contains regex, a regular expression is used
+   * to evaluate the users answer. Allows for multiple regular expressions */
+  } else if (cl.contains("regex")) {
+    for (let i = 0; i < formalsols.length; i++) {
+        let regex = new RegExp(formalsols[i], cl.contains("ignorecase") ? "i" : "");
+        if (regex.test(my_answer)) { user_answer_correct = true; break; }
+    }
+
+  /* else we evaluate on 'string level', considering the creators preferences
+   * regarding set options */
+  } else {
+    /* modify/prepare answer */
+    if (cl.contains("ignorecase")) { my_answer = my_answer.toLowerCase(); }
+    if (cl.contains("nospaces"))   { my_answer = my_answer.replace(/ /g, ""); }
+
+    /* if the real answer includes user input - correct */
+    if (formalsols.includes(my_answer)) {
+      user_answer_correct = true;
+  
+      // added regex bit
+      if (cl.contains("regex")) {
+        answer_regex = RegExp(formalsols.join("|"))
+        if (answer_regex.test(my_answer)) {
+          cl.add("webex-correct");
+        }
+      }
+    }
+  }
+
+  if (user_answer_correct) {
+      cl.add("webex-correct");
+      cl.remove("webex-incorrect");
+  } else {
+      cl.add("webex-incorrect");
+      cl.remove("webex-correct");
+  }
+
+  update_total_correct();
+
+}
+
+/* function for checking select answers */
+select_func = function(e) {
+  console.log("webex: check select");
+
+  var options   = [];
+  Array.from(this.querySelectorAll("option")).forEach((option, index) => {
+    if (!option.hasAttribute("value") || !option.getAttribute("value") === "blank") {
+      options.push(option);
+    }
+  });
+
+  /* get selected option */
+  function get_selected(options) { return options.findIndex(option => option.selected); }
+  var option_index = get_selected(options)
+
+  /* loading webex ID */
+  var formalsol = check_id(this)
+
+  /* add class for current selection */
+  this.classList.remove("webex-incorrect");
+  this.classList.remove("webex-correct");
+  if (option_index >= 0) {
+    this.classList.add(formalsol[option_index] === 1 ? "webex-correct" : "webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+/* function for checking radiogroups answers */
+radiogroups_func = function(e) {
+  console.log("webex: check radiogroups");
+
+  /* get real answer (binary integer array) */
+  var id = e.target.getAttribute("name");
+  var group = document.querySelector(".webex-radiogroup[id='webex-" + id + "']");
+  var formalsol = check_id(group)
+
+  /* check which radiobuttion is selected (user answer) */
+  function get_checked(radios) {
+    return radios.findIndex(radios => radios.checked);
+  }
+  var radios = Array.from(group.querySelectorAll("input[type='radio']"))
+  var radio_index = get_checked(radios);
+
+  /* remove existing classes */
+  radios.forEach(radio => {
+    let cl = radio.closest("label").classList
+    cl.remove("webex-incorrect");
+    cl.remove("webex-correct");
+  });
+
+  /* add class for current selection */
+  let cl = radios[radio_index].closest("label").classList
+  if (formalsol[radio_index] === 1) {
+      cl.add("webex-correct");
+  } else {
+      cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+
+/* function for checking checkboxgroups answers */
+checkboxgroups_func = function(e) {
+  console.log("webex: check checkboxgroups");
+
+  /* get real answer (binary integer array) */
+  var group = document.querySelector(".webex-checkboxgroup[id='" + this.id + "']");
+  var formalsol = check_id(group);
+
+  /* check which checkbox is checked (user answer) */
+  function get_checked(group) {
+      const checkboxes = Array.from(group.querySelectorAll("input[type='checkbox']"));
+      return checkboxes.reduce((indices, checkbox, index) => {
+          if (checkbox.checked) indices.push(index);
+          return indices;
+      }, []);
+  }
+  var checks = Array.from(group.querySelectorAll("input[type='checkbox']"));
+  var check_index = get_checked(group);
+
+  checks.forEach((e, index) => {
+    var label = e.parentNode;
+    var ans = formalsol[index];
+    if ((e.checked && ans === 1) || (!e.checked && ans === 0)) {
+        label.setAttribute("class", "webex-correct")
+    } else {
+        label.setAttribute("class", "webex-incorrect")
+    }
+  });
+
+  update_total_correct();
+}
+
+/* shuffling array (thanks to stack overflow)
+ * If argument x is an integer we create an integer sequence
+ * from 0, 1, ..., (x - 1) and return a shuffled version. If
+ * the input is an array, we simply shuffle it */
+shuffle_array = function(x) {
+   if (Number.isInteger(x) && !isNaN(x)) {
+     x = Array.from({length: x}, (v, i) => i);
+   }
+   let shuffled = x.map(value => ({ value, sort: Math.random() }))
+        .sort((a, b) => a.sort - b.sort).map(({ value }) => value)
+   return shuffled;
+}
+
+/* ---------------------------------------------------------
+ * ---------------------------------------------------------
+ * --------------------------------------------------------- */
+window.onload = function() {
+  //console.log("webex: onload");
+
+  /* setting up buttons and actions to show/hide answers */
+  document.querySelectorAll(".webex-check").forEach(section => {
+    section.classList.add("unchecked");
+
+    /* ul to take up the list items with buttons */
+    let button_ul = document.createElement("ul");
+    button_ul.setAttribute("class", "webex-button-list");
+    section.appendChild(button_ul);
+
+    /* button to _check_ if answers given are correct */
+    let li_check = document.createElement("li");
+    button_ul.appendChild(li_check); /* add list item to ul */
+    let btn_check = document.createElement("button");
+    btn_check.innerHTML = webex_buttons.check_hidden;  // "Check answer";
+    btn_check.setAttribute("class", "webex-button webex-button-check");
+    if (webex_buttons.check_hidden_alt.length > 0) btn_check.setAttribute("title", webex_buttons.check_hidden_alt);
+    btn_check.onclick = check_func;
+    li_check.appendChild(btn_check);
+
+    /* span to show current number of points (when _check_ active) */
+    let spn = document.createElement("span");
+    spn.classList.add("webex-total_correct");
+    li_check.appendChild(spn);
+
+    /* button to show the _solution_ if there is one */
+    var has_solution = section.parentNode.querySelectorAll(".webex-solution").length > 0;
+    if (has_solution) {
+      let li_solution = document.createElement("li");
+      button_ul.appendChild(li_solution); /* add list item to ul */
+      let btn_solution = document.createElement("button");
+      btn_solution.innerHTML = webex_buttons.solution; // "Correct answer";
+      btn_solution.setAttribute("class", "webex-button webex-button-solution");
+      if (webex_buttons.solution_alt.length > 0) btn_solution.setAttribute("title", webex_buttons.solution_alt);
+      btn_solution.onclick = solution_func;
+      li_solution.appendChild(btn_solution);
+    }
+
+  });
+
+  /* set up webex-solveme inputs */
+  document.querySelectorAll(".webex-solveme").forEach(solveme => {
+    solveme.setAttribute("autocomplete","off");
+    solveme.setAttribute("autocorrect", "off");
+    solveme.setAttribute("autocapitalize", "off");
+    solveme.setAttribute("spellcheck", "false");
+    solveme.value = "";
+
+    /* adjust answer for 'no spaces' (ignore spaces) */
+    if (solveme.classList.contains("nospaces")) {
+      solveme.dataset.answer = solveme.dataset.answer.replace(/ /g, "");
+    }
+
+    /* attach checking function, triggered on key up, change, and when
+     * elemnt is out of focus. Only evaluated once by tracking changes
+     * via variable solveme_last_user_answer */
+    solveme.addEventListener("keyup",  solveme_func);
+    solveme.addEventListener("change", solveme_func);
+    solveme.addEventListener("blur",   solveme_func);
+
+    /* adding span to show correct/incorrect icon */
+    solveme.insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+  });
+
+  /* set up radiogroups (single choice questions with display = "buttons") */
+  document.querySelectorAll(".webex-radiogroup").forEach(radiogroup => {
+    radiogroup.onchange = radiogroups_func;
+  });
+
+  /* set up checkboxgroups (multiple choice questions with display = "buttons") */
+  document.querySelectorAll(".webex-checkboxgroup").forEach(checkboxgroup => {
+    checkboxgroup.onchange = checkboxgroups_func;
+  });
+
+  /* set up selects (dropdown menus) */
+  document.querySelectorAll(".webex-select").forEach(select => {
+    select.onchange = select_func;
+    /* append webex-icon for correct/incorrect icons */
+    var elem = document.createElement("span")
+    elem.classList.add("webex-icon")
+    select.parentNode.appendChild(elem)
+  });
+
+  /* change to next/previous question if multiple are available */
+  function handleQuestionClick(group, questions, step) {
+    return async function() {
+      /* get question order as integer vector */
+      let questionOrder = group.dataset.questionOrder.split(",").map(str => parseInt(str));
+
+      /* current question/position */
+      let currentPosition = parseInt(group.dataset.currentPosition);
+
+      /* Hide the current question */
+      questions.forEach(question => { question.classList.remove("active"); });
+
+      /* Move to the next question index */
+      currentPosition = (currentPosition + step) % questionOrder.length;
+      if (currentPosition < 0) currentPosition = currentPosition + questionOrder.length
+
+      /* Display the new question */
+      questions[questionOrder[currentPosition]].classList.add("active");
+
+      // Update the currentPosition data attribute on the group div
+      group.dataset.currentPosition = currentPosition;
+    };
+  }
+
+  document.querySelectorAll(".webex-group").forEach(group => {
+    const questions = Array.from(group.querySelectorAll(".webex-question"));
+
+    /* Create vector with question order. If the webex-group does
+     * not have class '.noshuffle' we will randomly shuffle the order */
+    let questionOrder = Array.from({length: questions.length}, (v, i) => i);
+    if (!group.classList.contains("noshuffle")) {
+      questionOrder = shuffle_array(questionOrder);
+    }
+
+    /* take start position (if set) or start at 0 */
+    const currentPosition = parseInt(group.getAttribute("data-start-position")) || 0;
+
+    /* show the default question for each group */
+    questions[questionOrder[currentPosition]].classList.add("active");
+
+    /* store random order of questions as well as current position */
+    group.dataset.questionOrder   = questionOrder;
+    group.dataset.currentPosition = currentPosition;
+
+    /* find all webex-questions, search for .webex-button-list and
+     * populate the list with necessary <li><button>...</button></li> elements */
+    questions.forEach(question => {
+        let button_ul = question.querySelector("ul.webex-button-list");
+
+        let li_next = document.createElement("li");
+        let nextButton = document.createElement("button");
+        nextButton.setAttribute("class", "webex-button webex-button-next");
+        if (webex_buttons.question_next_alt.length > 0) nextButton.setAttribute("title", webex_buttons.question_next_alt);
+        nextButton.innerHTML = webex_buttons.question_next; // "Next question";
+        nextButton.addEventListener("click", handleQuestionClick(group, questions, 1));
+        li_next.appendChild(nextButton);
+
+        let li_previous = document.createElement("li");
+        let previousButton = document.createElement("button");
+        previousButton.setAttribute("class", "webex-button webex-button-previous");
+        if (webex_buttons.question_previous_alt.length > 0) previousButton.setAttribute("title", webex_buttons.question_previous_alt);
+        previousButton.innerHTML = webex_buttons.question_previous; // "Previous question";
+        previousButton.addEventListener("click", handleQuestionClick(group, questions, -1));
+        li_previous.appendChild(previousButton);
+
+        if (webex_buttons.question_previous.length > 0) button_ul.appendChild(li_previous);
+        if (webex_buttons.question_next.length > 0) button_ul.appendChild(li_next);
+    });
+  });
+
+  /* Development options */
+  document.querySelectorAll(".webex-question.check").forEach(question => {
+      question.querySelector(".webex-button-check").click()
+  });
+  document.querySelectorAll(".webex-question.solution").forEach(question => {
+      let btn = question.querySelector(".webex-button-solution");
+      if (btn !== null) { btn.click(); }
+  });
+
+  /* Pre-filling <input> fields */
+  document.querySelectorAll(".webex-question.prefill").forEach(question => {
+      question.querySelectorAll("input.webex-solveme").forEach(solveme => {
+          let x = JSON.parse(solveme.dataset.answer);
+          solveme.value = x[0];
+          /* Trigger the on change event */
+          solveme.dispatchEvent(new Event("change"));
+      });
+
+      /* Pre-filling radiogroups, that is for schoice questions */
+      question.querySelectorAll(".webex-radiogroup").forEach(radiogroup => {
+          let x = JSON.parse(radiogroup.dataset.answer);
+          let idx = x.indexOf(1);
+          let radios = radiogroup.querySelectorAll('input[type="radio"]');
+          radios[idx].checked = true;
+          /* Trigger the on change event */
+          radios[idx].dispatchEvent(new Event("change", { bubbles: true }));
+      });
+
+      /* Pre-filling checkboxgroups, that is for schoice questions w/ dropdown menus */
+      question.querySelectorAll(".webex-select").forEach(dropdown => {
+          let x = JSON.parse(dropdown.dataset.answer);
+          let idx = x.indexOf(1) + 1; /* +1 to skip the first blank option */
+          let options = dropdown.querySelectorAll("option");
+          options[idx].selected = true;
+          /* Trigger the on change event */
+          options[idx].dispatchEvent(new Event("change", { bubbles: true }));
+      });
+
+      /* Pre-filling checkboxgroups, that is for mchoice questions */
+      question.querySelectorAll(".webex-checkboxgroup").forEach(radiogroup => {
+          let x = JSON.parse(radiogroup.dataset.answer);
+          let checkboxes = radiogroup.querySelectorAll('input[type="checkbox"]');
+          for (let i = 0; i < checkboxes.length; i++) {
+              checkboxes[i].checked = x[i];
+          }
+          /* Trigger the on change event */
+          checkboxes[0].dispatchEvent(new Event("change", { bubbles: true }));
+      });
+  });
+
+  /* Show set tolerance (devel option) */
+  function calc_width(x, txt, offset = 20) {
+      /* We do the following:
+       * Create a new span, insert the value we need in the .tolerance
+       * input node, and calculate its offsetWidth. Then remove it
+       * again; this is just used to calculate the required width. */
+      var cwtmp = document.createElement("span");
+      x.appendChild(cwtmp);
+      cwtmp.innerHTML = txt || "";
+      var w = parseInt(cwtmp.getBoundingClientRect().width) + offset;
+      cwtmp.remove();
+      return w;
+  }
+
+  /* If tolerance should be shown (devel option) we calculate:
+   * - the width required to properly display the solution
+   * - the width required to properly display the tolerance
+   * - add a new element to display the tolerance
+   * - reduce the width of the solution input box. */
+  document.querySelectorAll(".webex-question.tolerance").forEach(question => {
+      question.querySelectorAll("input[data-tol]").forEach(elem => {
+          var w = null;
+
+          /* Add new element showing the tolerance */
+          let tol = document.createElement("input");
+          tol.type = "text"; // <inpyt type="text">
+          tol.disabled = true; // Disable input element
+          tol.classList.add("tolerance"); // Appending class
+          tol.value = "± " + elem.getAttribute("data-tol");
+
+          /* Add new node */
+          elem.parentNode.insertBefore(tol, elem)
+
+          var body     = document.querySelector("body");
+          //tol.value = "± " + "0.0000007";
+          //tol.value = "± " + "0.07";
+          w    = calc_width(body, tol.value);
+          wold = parseInt(elem.getBoundingClientRect().width);
+          wmin = calc_width(body, elem.value);
+
+          /* Calculate required width of the 'tolerance' node, and the
+           * reduction of the original 'input' node */
+          let wnew = Math.max(wmin, wold - w);
+          tol.style.width  = w + "px";
+          elem.style.width = wnew + "px";
+      });
+  });
+
+  update_total_correct();
+}
+
+</script>
 
 
 

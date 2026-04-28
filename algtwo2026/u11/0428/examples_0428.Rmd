@@ -1,0 +1,17 @@
+---
+title: "examples_0428"
+output: exams2forms::webquiz
+---
+
+```{r exams2forms-setup, include = FALSE}
+## package and exercises
+library("exams2forms")
+exm <- list("x_EZ_two-step_equations.Rmd", "et01_two-step_inverse_alg.Rmd", 
+    "x_get_inverse_pnt.Rmd", "x_invert_cubing.Rmd", "x_invert_cuberoot.Rmd", 
+    "x_make_arg_equal_a.Rmd", "x_point_on_trans_sqrt.Rmd", "05_coordinate_transformation.Rmd", 
+    "01_use_fsol_find_gsol.Rmd", "et01_get_new_pnts_bfa.Rmd")
+```
+
+```{r exams2forms-include, echo = FALSE, message = FALSE, results="asis"}
+exams2forms(exm,  n = 5, nsamp = NULL)
+```

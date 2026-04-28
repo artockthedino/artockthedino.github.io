@@ -1,0 +1,33 @@
+```{r data generation, echo = FALSE, results = "hide"}
+while(T){
+    xy = sample(11:98,2)*sample(c(-1,1),2,T)
+    x = xy[1]
+    y = xy[2]
+    if(abs(diff(abs(xy)))>10){break}
+}
+
+p1 = paste0("(",x,",",y,")",collapse="")
+p2 = paste0("(",y,",",x,")",collapse="")
+
+```
+
+Question
+========
+
+Let $f$ represent a [one-to-one function](https://en.wikipedia.org/wiki/Injective_function). Point $`r p1`$ is on the curve $y=f(x)$.
+
+The inverse function's curve, $y=f^{-1}(x)$, has a corresponding point. What is the known point on the inverse function's curve? Type your answer with parentheses, with a comma separator, and without spaces. For example `(10,-99)`.
+
+
+
+Solution
+========
+
+You simply swap the coordinates. Thus, the answer is $`r p2`$. You type the answer like ``r p2``.
+
+
+Meta-information
+============
+extype: string
+exsolution: `r p2`
+exname: get_inverse_pnt

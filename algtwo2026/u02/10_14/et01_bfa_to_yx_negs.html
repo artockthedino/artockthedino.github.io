@@ -11,7 +11,7 @@
 
 
 
-<title>et02_ab_to_xy.knit</title>
+<title>et01_bfa_to_yx_negs.knit</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -578,9 +578,8 @@ display: none;
 
 <div id="question" class="section level1">
 <h1>Question</h1>
-<p>Let <span class="math inline">\(f\)</span> be a function. Solutions
-to <span class="math inline">\(f[a]=b\)</span> are shown as rows in the
-table:</p>
+<p>Let <span class="math inline">\(f\)</span> be a function with three
+known input-output pairs, shown as solutions to the equation <span class="math inline">\(b=f[a]\)</span>.</p>
 <table class="table table-bordered" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -595,35 +594,31 @@ table:</p>
 <tbody>
 <tr>
 <td style="text-align:right;">
-33
+-90
 </td>
 <td style="text-align:right;">
-57
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-46
-</td>
-<td style="text-align:right;">
-22
+84
 </td>
 </tr>
 <tr>
 <td style="text-align:right;">
-48
+-72
 </td>
 <td style="text-align:right;">
-90
+-64
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+81
+</td>
+<td style="text-align:right;">
+-98
 </td>
 </tr>
 </tbody>
 </table>
-<p>Each <span class="math inline">\((a,b)\)</span> solution has a
-corresponding <span class="math inline">\((x,y)\)</span> solution to the
-equation below.</p>
-<p><span class="math display">\[y~=~f(x-2)-5\]</span></p>
-<p>Express the corresponding solutions in the same order.</p>
+<p>Find the corresponding solutions to the following equation: <span class="math display">\[y~=~\frac{-f{\left[-9\left(x+8\right)\right]}-6}{2}\]</span></p>
 <table class="table table-bordered" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -665,43 +660,92 @@ equation below.</p>
 <div id="answerlist" class="section level2">
 <h2>Answerlist</h2>
 <ul>
-<li>28</li>
-<li>31</li>
-<li>35</li>
-<li>38</li>
-<li>41</li>
-<li>44</li>
-<li>48</li>
-<li>51</li>
-<li>43</li>
+<li>-45</li>
+<li>-17</li>
+<li>0</li>
+<li>2</li>
+<li>11</li>
+<li>23</li>
+<li>29</li>
 <li>46</li>
 <li>50</li>
-<li>53</li>
-<li>52</li>
-<li>55</li>
-<li>59</li>
-<li>62</li>
-<li>17</li>
-<li>20</li>
-<li>24</li>
-<li>27</li>
-<li>85</li>
-<li>88</li>
-<li>92</li>
-<li>95</li>
+<li>82</li>
+<li>-45</li>
+<li>-17</li>
+<li>0</li>
+<li>2</li>
+<li>11</li>
+<li>23</li>
+<li>29</li>
+<li>46</li>
+<li>50</li>
+<li>82</li>
+<li>-45</li>
+<li>-17</li>
+<li>0</li>
+<li>2</li>
+<li>11</li>
+<li>23</li>
+<li>29</li>
+<li>46</li>
+<li>50</li>
+<li>82</li>
+<li>-45</li>
+<li>-17</li>
+<li>0</li>
+<li>2</li>
+<li>11</li>
+<li>23</li>
+<li>29</li>
+<li>46</li>
+<li>50</li>
+<li>82</li>
+<li>-45</li>
+<li>-17</li>
+<li>0</li>
+<li>2</li>
+<li>11</li>
+<li>23</li>
+<li>29</li>
+<li>46</li>
+<li>50</li>
+<li>82</li>
+<li>-45</li>
+<li>-17</li>
+<li>0</li>
+<li>2</li>
+<li>11</li>
+<li>23</li>
+<li>29</li>
+<li>46</li>
+<li>50</li>
+<li>82</li>
 </ul>
 </div>
 </div>
 <div id="solution" class="section level1">
 <h1>Solution</h1>
-<p>The transformations are a translation right by 2 and a translation
-down by 5. So, add 2 to each <span class="math inline">\(a\)</span>
-value to find each <span class="math inline">\(x\)</span> value. Also,
-subtract 5 from each <span class="math inline">\(b\)</span> value to
-find each <span class="math inline">\(y\)</span> value.</p>
+<p>Restate the given equation.</p>
+<p><span class="math display">\[y~=~\frac{-f{\left[-9\left(x+8\right)\right]}-6}{2}\]</span></p>
+<p>Set <span class="math inline">\(f\)</span>’s argument equal to <span class="math inline">\(a\)</span>.</p>
+<p><span class="math display">\[-9\left(x+8\right)~=~a\]</span></p>
+<p>Solve the equation for <span class="math inline">\(x\)</span>. In
+other words, isolate <span class="math inline">\(x\)</span>.</p>
+<p><span class="math display">\[x~=~\frac{-a}{9}-8\]</span></p>
+<p>Because we set <span class="math inline">\(-9\left(x+8\right)\)</span> equal to <span class="math inline">\(a\)</span>, we can replace <span class="math inline">\(-9\left(x+8\right)\)</span> with <span class="math inline">\(a\)</span> in the main equation.</p>
+<p><span class="math display">\[y=\frac{-f{\left[a\right]}-6}{2}\]</span></p>
+<p>We know <span class="math inline">\(f[a]=b\)</span>, so replace <span class="math inline">\(f[a]\)</span> with <span class="math inline">\(b\)</span>.</p>
+<p><span class="math display">\[y~=~\frac{-b-6}{2}\]</span></p>
+<p>We now have two formulas: <span class="math inline">\(x=\frac{-a}{9}-8\)</span> and <span class="math inline">\(y=\frac{-b-6}{2}\)</span>. Use those formulas!</p>
 <table class="table table-bordered" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
+<th style="text-align:right;">
+<span class="math inline">\(a\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(b\)</span>
+</th>
 <th style="text-align:right;">
 <span class="math inline">\(x\)</span>
 </th>
@@ -713,44 +757,55 @@ find each <span class="math inline">\(y\)</span> value.</p>
 <tbody>
 <tr>
 <td style="text-align:right;">
-35
+-90
 </td>
 <td style="text-align:right;">
-52
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-48
+84
 </td>
 <td style="text-align:right;">
-17
+2
+</td>
+<td style="text-align:right;">
+-45
 </td>
 </tr>
 <tr>
 <td style="text-align:right;">
-50
+-72
 </td>
 <td style="text-align:right;">
-85
+-64
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+29
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+81
+</td>
+<td style="text-align:right;">
+-98
+</td>
+<td style="text-align:right;">
+-17
+</td>
+<td style="text-align:right;">
+46
 </td>
 </tr>
 </tbody>
 </table>
-<p>We could approach this by finding the coordinate transformations.
-First, we set the argument to <span class="math inline">\(a\)</span>.</p>
-<p><span class="math display">\[x-2=a\]</span> <span class="math display">\[x=a+2\]</span></p>
-<p>Then, replace <span class="math inline">\(f(\ldots)\)</span> with
-<span class="math inline">\(b\)</span>.</p>
-<p><span class="math display">\[y=b-5\]</span></p>
-<p>This gives the coordinate transformation:</p>
-<p><span class="math display">\[(a,b)~\to~ (a+2~,~b-5)\]</span></p>
 </div>
 <div id="meta-information" class="section level1">
 <h1>Meta-information</h1>
 <p>extype: cloze exclozetype:
 schoice|schoice|schoice|schoice|schoice|schoice exsolution:
-0010|0010|0010|1000|1000|1000 exname: ab_to_xy_shifts</p>
+0001000000|0010000000|0100000000|1000000000|0000001000|0000000100
+exname: bfa_to_ya_negs</p>
 </div>
 
 
