@@ -3,20 +3,23 @@ options(scipen=99)
 ndig = sample(4:5,1)
 digs = sample(1:9,ndig)
 
-tot = sum(digs*10^((ndig-1):0))
-ss = paste0(digs,"\\cdot 10^{",(ndig-1):0,"}",collapse="+")
+exponents = c("⁰","¹","²","³","⁴","⁵","⁶","⁷","⁸","⁹")
+cdot = "·"
 
-ss2 = paste0(digs,"\\cdot ",10^((ndig-1):0),collapse="+")
-ss3 = paste0(digs*10^((ndig-1):0),collapse="+")
+tot = sum(digs*10^((ndig-1):0))
+ss = paste0(digs,cdot,"10",exponents[ndig:1],collapse=" + ")
+ss2 = paste0(digs,cdot,10^((ndig-1):0),collapse=" + ")
+ss3 = paste0(digs*10^((ndig-1):0),collapse=" + ")
+
 
 ```
 
 Question
 ========
 
-Evaluate the expression below.
+Evaluate the expression: 
 
-$$`r ss`$$
+`r ss`
 
 
 Solution
@@ -24,13 +27,13 @@ Solution
 
 This is easier than it looks.
 
-$$`r ss`$$
+`r ss`
 
-$$`r ss2`$$
+`r ss2`
 
-$$`r ss3`$$
+`r ss3`
 
-$$`r tot`$$
+`r tot`
 
 
 Meta-information

@@ -1,0 +1,154 @@
+```{r data generation, echo = FALSE, results = "hide"}
+options(scipen=99)
+exp_frames = c("M\\left(x+A\\right)",
+               "M x+A",
+               "M\\left(x-A\\right)",
+               "M x-A",
+               "-M\\left(x-A\\right)",
+               "-M x+A",
+               "-M\\left(x+A\\right)",
+               "-M x-A",
+               "\\frac{-x-A}{M}",
+               "\\frac{-x}{M}-A",
+               "\\frac{A-x}{M}",
+               "\\frac{-x}{M}+A",
+               "\\frac{x+A}{M}",
+               "\\frac{x}{M}+A",
+               "\\frac{x-A}{M}",
+               "\\frac{x}{M}-A")
+
+exp_frames2 = c("M\\cdot\\left(x+A\\right)",
+               "M\\cdot x+A",
+               "M\\cdot\\left(x-A\\right)",
+               "M\\cdot x-A",
+               "-M\\cdot\\left(x-A\\right)",
+               "-M\\cdot x+A",
+               "-M\\cdot\\left(x+A\\right)",
+               "-M\\cdot x-A",
+               "\\frac{-x-A}{M}",
+               "\\frac{-x}{M}-A",
+               "\\frac{A-x}{M}",
+               "\\frac{-x}{M}+A",
+               "\\frac{x+A}{M}",
+               "\\frac{x}{M}+A",
+               "\\frac{x-A}{M}",
+               "\\frac{x}{M}-A")
+
+funcs = list(function(x,A,M){M*(x+A)},
+             function(x,A,M){M*x+A},
+             function(x,A,M){M*(x-A)},
+             function(x,A,M){M*x-A},
+             function(x,A,M){M*(A-x)},
+             function(x,A,M){-M*x+A},
+             function(x,A,M){-M*(x+A)},
+             function(x,A,M){-M*x-A},
+             function(x,A,M){-(x+A)/M},
+             function(x,A,M){-x/M-A},
+             function(x,A,M){(A-x)/M},
+             function(x,A,M){-x/M+A},
+             function(x,A,M){(x+A)/M},
+             function(x,A,M){x/M+A},
+             function(x,A,M){(x-A)/M},
+             function(x,A,M){x/M-A}
+             )
+
+et = sample(1:length(funcs),2,T)
+et1 = et[1]
+iet1 = length(funcs)+1-et1
+et2 = et[2]
+iet2 = length(funcs)+1-et2
+psq = (3:10)^2
+
+iii = 0
+while(T){
+    iii = iii+1
+    a = sample(psq,1)
+    AM = sample(2:10,4)
+    A1 = AM[1]
+    M1 = AM[2]
+    A2 = AM[3]
+    M2 = AM[4]
+    x = funcs[[iet1]](a,A1,M1)
+    b = sqrt(a)
+    y = funcs[[et2]](b,A2,M2)
+    if(x%%1==0 && y%%1==0 && abs(x)<1000 && abs(y)<1000){
+        break
+    }
+    if(iii>1000){
+        et = sample(1:length(funcs),2,T)
+        et1 = et[1]
+        iet1 = length(funcs)+1-et1
+        et2 = et[2]
+        iet2 = length(funcs)+1-et2
+    }
+}
+
+argex = exp_frames[et1]
+argex = gsub("A",A1,argex,fixed=T)
+argex = gsub("M",M1,argex,fixed=T)
+outex = exp_frames2[et2]
+outex = gsub("x",paste0("\\sqrt{",argex,"}"),outex,fixed=T)
+outex = gsub("A",A2,outex,fixed=T)
+outex = gsub("M",M2,outex,fixed=T)
+
+plugged = gsub("x",paste0("(",x,")"),outex,fixed=T)
+
+simparg = exp_frames2[et2]
+simparg = gsub("x",paste0("\\sqrt{",a,"}"),simparg,fixed=T)
+simparg = gsub("A",A2,simparg,fixed=T)
+simparg = gsub("M",M2,simparg,fixed=T)
+
+findy = exp_frames2[et2]
+findy = gsub("x",b,findy,fixed=T)
+findy = gsub("A",A2,findy,fixed=T)
+findy = gsub("M",M2,findy,fixed=T)
+
+```
+
+Question
+========
+
+On the curve $y=\sqrt{x}$ exists the point $(`r a`,`r b`)$ because $`r b`=\sqrt{`r a`}$.
+
+We can transform the square-root function horizontally and vertically to create a new curve defined by the equation below:
+
+$$y=`r outex`$$
+
+Find this curve's corresponding point by finding the value of $x$ that makes the radicand equal to `r a`, and then find the $y$ value by evaluating the right side of the equation. Express that point using parentheses, a comma separator, and no spaces. For example, type `(18,-5)` for the point $(18,-5)$.
+
+
+Solution
+========
+
+Set the radicand (the argument of the square-root function) equal to `r a`.
+
+$$`r argex`=`r a`$$
+
+Solve the two-step (or maybe three-step) linear equation.
+
+$$x=`r x`$$
+
+Plug $x=`r x`$ into equation.
+
+$$y=`r plugged`$$
+
+Simplify the radicand.
+
+$$y=`r simparg`$$
+
+Evaluate the radical.
+
+$$y=`r findy`$$
+
+Evaluate the right side using PEMDAS.
+
+$$y=`r y`$$
+
+So, the corresponding point on the transformed curve is ``(`r x`,`r y`)``.
+
+
+Meta-information
+============
+extype: string
+exsolution: (`r x`,`r y`)
+exname: point_on_trans_sqrt

@@ -4,16 +4,15 @@ outdir = "outcanvas"
 
 ### Entrance ticket
 pm = list("x_num_exp_form_to_normal.Rmd",
-          "x_alien_base_5.Rmd",
+          "x_alien_base_4.Rmd",
           "x_base_10_to_alph.Rmd",
-          "x_base_b_addition.Rmd",
-          "x_base_b_multiply.Rmd")
+          "x_base_b_addition.Rmd")
 exams2canvas(pm,
              n=n,
              dir=outdir,
-             points=rep(4,length(pm)),
+             points=rep(5,length(pm)),
              maxattempts = 5,
-             name="m0427_ET",
+             name="m0428_alien_base_mastery",
              template = "canvas_qti12.xml",
              cloze = list(enumerate = FALSE))
 

@@ -48,7 +48,6 @@ adig = function(n,b=4){
     return(digs)
 }
 
-
 ```
 
 Question

@@ -85,7 +85,7 @@ for(i in 0:29){
 ```
 \
 
-When the aliens invented [mechanical counters](https://en.wikipedia.org/wiki/Mechanical_counter), each disk had `r b` markings. I think it can help to visualize the animated mechanical counter: 
+When the aliens invented [mechanical counters](https://en.wikipedia.org/wiki/Mechanical_counter), each disk had $`r b`$ markings. I think it can help to visualize the animated mechanical counter: 
 
 ```{r,echo=F,fig.show='animate',animation.hook='gifski',fig.dim=c(3,0.5)}
 par(mar=c(0,0,0,0))
@@ -106,9 +106,6 @@ for(i in 0:100){
     text(9,1.5,"alien")
     zaln(7,0.5,dd,r=0.4,nd = 4)
 }
-
-
-
 
 ```
 \
@@ -144,4 +141,4 @@ Meta-information
 ============
 extype: num
 exsolution: `r tot`
-exname: x_alien_base_5
+exname: x_alien_base_6

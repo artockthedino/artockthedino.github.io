@@ -102,14 +102,12 @@ d. $(x-2)(x-2)$
 
 ## Question `r qn()`
 
-<!-- (2x+3)(3x-4) = 6x^2-8x+9x-12 -->
-
 Factor the quadratic expression $6x^2+x-12$.
 
 a. $(6x+1)(x-12)$
 b. $(6x-1)(x+12)$
 c. $(3x+4)(2x-3)$
-d. $(3x-4)(2x+2)$
+d. $(3x-4)(2x+3)$
 
 \vfill
 
