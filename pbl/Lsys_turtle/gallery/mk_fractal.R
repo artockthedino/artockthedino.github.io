@@ -94,19 +94,19 @@ makeplot = function(xyc,lwd=1){
 }
 
 g105= list("A",
-           list("A"="CAA[--CAB][++CAB]",
-                "B"="C[-CC-CA][+CC+CA]",
-                "C"="CC"),
-           6,
-           90)
+           list("A"="BB---A---BB",
+                "B"="AAA++++BBCBB++++AAA",
+                "C"="ABC-C++A++C-CBA"),
+           4,
+           45)
 
-fn = paste0(g105[[1]],"_",paste0(names(g105[[2]]),":",g105[[2]],collapse="_"),"_",g105[[3]],"_",g105[4],".png",collapse="")
+fn = paste0("043026/",g105[[1]],"_",paste0(names(g105[[2]]),":",g105[[2]],collapse="_"),"_",g105[[3]],"_",g105[4],".png",collapse="")
 # fn = "hi.png"
 png(fn,400,400)
 
 s = getstr(g105[[1]],g105[[2]],g105[[3]])
 angle = g105[[4]]
-xyc = getxyc(s,angle/180*pi,angle_initial=90/180*pi)
+xyc = getxyc(s,angle/180*pi,angle_initial=0/180*pi)
 par(mar=c(0,0,0,0))
 makeplot(xyc,lwd=1)
 dev.off()

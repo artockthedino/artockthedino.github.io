@@ -1,0 +1,113 @@
+```{r,echo=FALSE}
+blanks = c("What percent of 40 is 24?",
+"24 is what percent of 40?",
+"24 out of 40 is what percent?",
+"what percent is 24 out of 40?",
+"60% of 40 is what?",
+"What is 60% of 40?",
+"What out of 40 is 60%?",
+"60% is what out of 40?",
+"60% of what is 24?",
+"24 is 60% of what?",
+"24 out of what is 60%?",
+"60% is 24 out of what?")
+
+eqs = c("\\frac{x}{100}\\cdot 40 = 24",
+        "24 = \\frac{x}{100}\\cdot 40",
+        "\\frac{24}{40}=\\frac{x}{100}",
+        "\\frac{x}{100}=\\frac{24}{40}",
+        "\\frac{60}{100}\\cdot 40 = x",
+        "x = \\frac{60}{100}\\cdot 40",
+        "\\frac{x}{40} = \\frac{60}{100}",
+        "\\frac{60}{100} = \\frac{x}{40}",
+        "\\frac{60}{100}\\cdot x = 24",
+        "24 = \\frac{60}{100}\\cdot x",
+        "\\frac{24}{x} = \\frac{60}{100}",
+        "\\frac{60}{100} = \\frac{24}{x}")
+
+eq2 = c("x = \\frac{24}{40}\\cdot 100",
+        "x = \\frac{24}{40}\\cdot 100",
+        "x = \\frac{24}{40}\\cdot 100",
+        "x = \\frac{24}{40}\\cdot 100",
+        "x = \\frac{60}{100}\\cdot 40",
+        "x = \\frac{60}{100}\\cdot 40",
+        "x = \\frac{60}{100}\\cdot 40",
+        "x = \\frac{60}{100}\\cdot 40",
+        "x = \\frac{24}{60}\\cdot 100",
+        "x = \\frac{24}{60}\\cdot 100",
+        "x = \\frac{24}{60}\\cdot 100",
+        "x = \\frac{24}{60}\\cdot 100")
+
+while(T){
+    part = sample(1:200,1)
+    whole = sample(1:200,1)
+    perc = part/whole*100
+    if(perc%%1==0 && perc<100 && whole != 100){break}
+}
+ii = sample(1:length(blanks),1)
+blank = blanks[ii]
+qstr = gsub("24",part,blank,fixed=T)
+qstr = gsub("60",perc,qstr,fixed=T)
+qstr = gsub("40",whole,qstr,fixed=T)
+
+eq = eqs[ii]
+eq = gsub("24",part,eq,fixed=T)
+eq = gsub("60",perc,eq,fixed=T)
+eq = gsub("40",whole,eq,fixed=T)
+
+
+eq2 = eq2[ii]
+eq2 = gsub("24",part,eq2,fixed=T)
+eq2 = gsub("60",perc,eq2,fixed=T)
+eq2 = gsub("40",whole,eq2,fixed=T)
+
+if(ii %in% 1:4){
+    astr = paste0(perc,"%",collapse="")
+    aa = gsub("what percent",astr,qstr,fixed=T)
+    aa = gsub("What percent",astr,aa,fixed=T)
+}
+if(ii %in% 5:8){
+    astr = paste0(part)
+    aa = gsub("what",astr,qstr,fixed=T)
+    aa = gsub("What",astr,aa,fixed=T)
+}
+if(ii %in% 9:12){
+    astr = paste0(whole)
+    aa = gsub("what",astr,qstr,fixed=T)
+    aa = gsub("What",astr,aa,fixed=T)
+}
+
+aa = gsub("?",".",aa,fixed=T)
+
+```
+
+Question
+========
+
+`r qstr`
+
+
+Solution
+========
+
+Turn the sentence into an equation.
+
+$$`r eq`$$
+
+Find the value of $x$ that satisfies the equation.
+
+$$`r eq2`$$
+
+Use a calculator to find the answer is ``r astr``.
+
+
+`r aa`
+
+
+
+
+Meta-information
+============
+extype: string
+exsolution: `r astr`
+exname: basic_percentages

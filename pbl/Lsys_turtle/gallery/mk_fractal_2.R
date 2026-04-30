@@ -2,7 +2,7 @@ axiom = "A"
 rules = list("A"="A--B--A",
              "B"="BB+++AAA+++BB")
 angle = 90
-rec = 3
+rec = 5
 
 
 howmanychars = 0
