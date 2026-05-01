@@ -1,0 +1,114 @@
+```{r,echo=FALSE}
+blanks = c("What percent of TOTAL is PART?",
+"PART is what percent of TOTAL?",
+"PART out of TOTAL is what percent?",
+"What percent is PART out of TOTAL?",
+"PERC% of TOTAL is what?",
+"What is PERC% of TOTAL?",
+"What out of TOTAL is PERC%?",
+"PERC% is what out of TOTAL?",
+"PERC% of what is PART?",
+"PART is PERC% of what?",
+"PART out of what is PERC%?",
+"PERC% is PART out of what?")
+
+eqs = c("\\frac{x}{100}\\cdot TOTAL = PART",
+        "PART = \\frac{x}{100}\\cdot TOTAL",
+        "\\frac{PART}{TOTAL}=\\frac{x}{100}",
+        "\\frac{x}{100}=\\frac{PART}{TOTAL}",
+        "\\frac{60}{100}\\cdot TOTAL = x",
+        "x = \\frac{PERC}{100}\\cdot TOTAL",
+        "\\frac{x}{TOTAL} = \\frac{PERC}{100}",
+        "\\frac{PERC}{100} = \\frac{x}{TOTAL}",
+        "\\frac{PERC}{100}\\cdot x = PART",
+        "PART = \\frac{PERC}{100}\\cdot x",
+        "\\frac{PART}{x} = \\frac{PERC}{100}",
+        "\\frac{PERC}{100} = \\frac{PART}{x}")
+
+eq2 = c("x = \\frac{PART}{TOTAL}\\cdot 100",
+        "x = \\frac{PART}{TOTAL}\\cdot 100",
+        "x = \\frac{PART}{TOTAL}\\cdot 100",
+        "x = \\frac{PART}{TOTAL}\\cdot 100",
+        "x = \\frac{PERC}{100}\\cdot TOTAL",
+        "x = \\frac{PERC}{100}\\cdot TOTAL",
+        "x = \\frac{PERC}{100}\\cdot TOTAL",
+        "x = \\frac{PERC}{100}\\cdot TOTAL",
+        "x = \\frac{PART}{PERC}\\cdot 100",
+        "x = \\frac{PART}{PERC}\\cdot 100",
+        "x = \\frac{PART}{PERC}\\cdot 100",
+        "x = \\frac{PART}{PERC}\\cdot 100")
+
+while(T){
+    part = sample(1:200,1)
+    whole = sample(1:200,1)
+    perc = part/whole*100
+    if(perc%%1==0 && perc<100 && whole != 100){break}
+}
+# ii = sample(1:length(blanks),1)
+ii = sample(5:8,1)
+blank = blanks[ii]
+qstr = gsub("PART",part,blank,fixed=T)
+qstr = gsub("PERC",perc,qstr,fixed=T)
+qstr = gsub("TOTAL",whole,qstr,fixed=T)
+
+eq = eqs[ii]
+eq = gsub("PART",part,eq,fixed=T)
+eq = gsub("PERC",perc,eq,fixed=T)
+eq = gsub("TOTAL",whole,eq,fixed=T)
+
+eq2 = eq2[ii]
+eq2 = gsub("PART",part,eq2,fixed=T)
+eq2 = gsub("PERC",perc,eq2,fixed=T)
+eq2 = gsub("TOTAL",whole,eq2,fixed=T)
+
+if(ii %in% 1:4){
+    astr = paste0(perc,"%",collapse="")
+    aa = gsub("what percent",astr,qstr,fixed=T)
+    aa = gsub("What percent",astr,aa,fixed=T)
+    extype = "string"
+}
+if(ii %in% 5:8){
+    astr = paste0(part)
+    aa = gsub("what",astr,qstr,fixed=T)
+    aa = gsub("What",astr,aa,fixed=T)
+    extype = "num"
+}
+if(ii %in% 9:12){
+    astr = paste0(whole)
+    aa = gsub("what",astr,qstr,fixed=T)
+    aa = gsub("What",astr,aa,fixed=T)
+    extype = "num"
+}
+
+aa = gsub("?",".",aa,fixed=T)
+
+```
+
+Question
+========
+
+`r qstr`
+
+
+Solution
+========
+
+Turn the sentence into an equation.
+
+$$`r eq`$$
+
+Find the value of $x$ that satisfies the equation.
+
+$$`r eq2`$$
+
+Use a calculator to find the answer is ``r astr``.
+
+
+`r aa`
+
+
+Meta-information
+============
+extype: string
+exsolution: `r astr`
+exname: basic_percentages

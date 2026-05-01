@@ -614,18 +614,6 @@ Give graph, ask for remainder when the polynomial is divided by (x-2).
 
 
 
-what percent of 60 is 24?
-24 is what percent of 60?
-24 out of 60 is what percent?
-
-60% of 40 is what?
-what is 60% of 40?
-40 out of what is 60%?
-
-60% of what is 24?
-24 is 60% of what?
-what out of 24 is 60%?
-
 
 
 

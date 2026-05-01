@@ -5,1003 +5,1203 @@ Question #,Question Text,Answer 1,Answer 2,"Answer 3
 (Optional)","Time Limit (sec)
 (Max: 300 seconds)","Correct Answer(s)
 (Only include Answer #)",,
-1,What percent of 170 is 17?,10%,,,,300,,,typing
-2,150 is what percent of 200?,75%,,,,300,,,typing
-3,32 out of 128 is what percent?,25%,,,,300,,,typing
-4,24% of 100 is what?,24,,,,300,,,typing
-5,What is 25% of 144?,36,,,,300,,,typing
-6,What out of 200 is 80%?,160,,,,300,,,typing
-7,15% of what is 6?,15,,,,300,,,typing
-8,56 is 80% of what?,70,,,,300,,,typing
-9,3 out of what is 2%?,150,,,,300,,,typing
-10,What percent of 75 is 54?,72%,,,,300,,,typing
-11,74 is what percent of 185?,40%,,,,300,,,typing
-12,66 out of 110 is what percent?,60%,,,,300,,,typing
-13,30% of 100 is what?,30,,,,300,,,typing
-14,What is 72% of 25?,18,,,,300,,,typing
-15,What out of 50 is 2%?,1,,,,300,,,typing
-16,77% of what is 154?,200,,,,300,,,typing
-17,66 is 50% of what?,132,,,,300,,,typing
-18,138 out of what is 92%?,150,,,,300,,,typing
-19,What percent of 160 is 8?,5%,,,,300,,,typing
-20,9 is what percent of 60?,15%,,,,300,,,typing
-21,119 out of 140 is what percent?,85%,,,,300,,,typing
-22,5% of 80 is what?,4,,,,300,,,typing
-23,What is 25% of 172?,43,,,,300,,,typing
-24,What out of 50 is 20%?,10,,,,300,,,typing
-25,54% of what is 81?,150,,,,300,,,typing
-26,161 is 92% of what?,175,,,,300,,,typing
-27,89 out of what is 89%?,100,,,,300,,,typing
-28,What percent of 75 is 72?,96%,,,,300,,,typing
-29,75 is what percent of 100?,75%,,,,300,,,typing
-30,154 out of 175 is what percent?,88%,,,,300,,,typing
-31,20% of 115 is what?,23,,,,300,,,typing
-32,What is 37% of 200?,74,,,,300,,,typing
-33,What out of 150 is 52%?,78,,,,300,,,typing
-34,70% of what is 77?,110,,,,300,,,typing
-35,108 is 80% of what?,135,,,,300,,,typing
-36,52 out of what is 50%?,104,,,,300,,,typing
-37,What percent of 150 is 96?,64%,,,,300,,,typing
-38,36 is what percent of 80?,45%,,,,300,,,typing
-39,158 out of 200 is what percent?,79%,,,,300,,,typing
-40,66% of 50 is what?,33,,,,300,,,typing
-41,What is 37% of 200?,74,,,,300,,,typing
-42,What out of 150 is 96%?,144,,,,300,,,typing
-43,75% of what is 24?,32,,,,300,,,typing
-44,30 is 25% of what?,120,,,,300,,,typing
-45,18 out of what is 24%?,75,,,,300,,,typing
-46,What percent of 80 is 48?,60%,,,,300,,,typing
-47,170 is what percent of 200?,85%,,,,300,,,typing
-48,48 out of 100 is what percent?,48%,,,,300,,,typing
-49,22% of 200 is what?,44,,,,300,,,typing
-50,What is 5% of 5?,2,,,,300,,,typing
-51,What out of 150 is 90%?,135,,,,300,,,typing
-52,86% of what is 43?,50,,,,300,,,typing
-53,4 is 5% of what?,80,,,,300,,,typing
-54,6 out of what is 10%?,60,,,,300,,,typing
-55,What percent of 30 is 12?,40%,,,,300,,,typing
-56,135 is what percent of 180?,75%,,,,300,,,typing
-57,144 out of 160 is what percent?,90%,,,,300,,,typing
-58,50% of 168 is what?,84,,,,300,,,typing
-59,What is 44% of 50?,22,,,,300,,,typing
-60,What out of 60 is 5%?,3,,,,300,,,typing
-61,99% of what is 198?,200,,,,300,,,typing
-62,132 is 80% of what?,165,,,,300,,,typing
-63,128 out of what is 64%?,200,,,,300,,,typing
-64,What percent of 140 is 133?,95%,,,,300,,,typing
-65,26 is what percent of 130?,20%,,,,300,,,typing
-66,48 out of 75 is what percent?,64%,,,,300,,,typing
-67,75% of 40 is what?,30,,,,300,,,typing
-68,What is 4% of 175?,7,,,,300,,,typing
-69,What out of 100 is 62%?,62,,,,300,,,typing
-70,50% of what is 33?,66,,,,300,,,typing
-71,35 is 70% of what?,50,,,,300,,,typing
-72,72 out of what is 36%?,200,,,,300,,,typing
-73,What percent of 120 is 24?,20%,,,,300,,,typing
-74,61 is what percent of 100?,61%,,,,300,,,typing
-75,45 out of 75 is what percent?,60%,,,,300,,,typing
-76,85% of 60 is what?,51,,,,300,,,typing
-77,What is 96% of 125?,120,,,,300,,,typing
-78,What out of 170 is 30%?,51,,,,300,,,typing
-79,81% of what is 162?,200,,,,300,,,typing
-80,41 is 82% of what?,50,,,,300,,,typing
-81,72 out of what is 90%?,80,,,,300,,,typing
-82,What percent of 140 is 105?,75%,,,,300,,,typing
-83,38 is what percent of 50?,76%,,,,300,,,typing
-84,11 out of 50 is what percent?,22%,,,,300,,,typing
-85,32% of 150 is what?,48,,,,300,,,typing
-86,What is 10% of 40?,4,,,,300,,,typing
-87,What out of 200 is 31%?,62,,,,300,,,typing
-88,75% of what is 105?,140,,,,300,,,typing
-89,22 is 44% of what?,50,,,,300,,,typing
-90,4 out of what is 4%?,100,,,,300,,,typing
-91,What percent of 25 is 1?,4%,,,,300,,,typing
-92,44 is what percent of 88?,50%,,,,300,,,typing
-93,100 out of 100 is what percent?,40%,,,,300,,,typing
-94,50% of 16 is what?,8,,,,300,,,typing
-95,What is 70% of 60?,42,,,,300,,,typing
-96,What out of 100 is 75%?,75,,,,300,,,typing
-97,15% of what is 3?,20,,,,300,,,typing
-98,17 is 17% of what?,100,,,,300,,,typing
-99,4 out of what is 5%?,80,,,,300,,,typing
-100,What percent of 118 is 59?,50%,,,,300,,,typing
-101,128 is what percent of 200?,64%,,,,300,,,typing
-102,29 out of 145 is what percent?,20%,,,,300,,,typing
-103,10% of 60 is what?,6,,,,300,,,typing
-104,What is 20% of 80?,16,,,,300,,,typing
-105,What out of 25 is 36%?,9,,,,300,,,typing
-106,25% of what is 4?,16,,,,300,,,typing
-107,3 is 2% of what?,150,,,,300,,,typing
-108,36 out of what is 80%?,45,,,,300,,,typing
-109,What percent of 100 is 8?,8%,,,,300,,,typing
-110,52 is what percent of 200?,26%,,,,300,,,typing
-111,180 out of 200 is what percent?,80%,,,,300,,,typing
-112,30% of 90 is what?,27,,,,300,,,typing
-113,What is 50% of 180?,90,,,,300,,,typing
-114,What out of 104 is 50%?,52,,,,300,,,typing
-115,50% of what is 65?,130,,,,300,,,typing
-116,72 is 80% of what?,90,,,,300,,,typing
-117,148 out of what is 74%?,200,,,,300,,,typing
-118,What percent of 100 is 34?,34%,,,,300,,,typing
-119,10 is what percent of 100?,10%,,,,300,,,typing
-120,64 out of 160 is what percent?,40%,,,,300,,,typing
-121,50% of 50 is what?,25,,,,300,,,typing
-122,What is 25% of 108?,27,,,,300,,,typing
-123,What out of 100 is 82%?,82,,,,300,,,typing
-124,16% of what is 28?,175,,,,300,,,typing
-125,66 is 33% of what?,200,,,,300,,,typing
-126,170 out of what is 85%?,200,,,,300,,,typing
-127,What percent of 156 is 39?,25%,,,,300,,,typing
-128,42 is what percent of 50?,84%,,,,300,,,typing
-129,21 out of 175 is what percent?,12%,,,,300,,,typing
-130,61% of 200 is what?,122,,,,300,,,typing
-131,What is 63% of 100?,63,,,,300,,,typing
-132,What out of 50 is 8%?,4,,,,300,,,typing
-133,88% of what is 176?,200,,,,300,,,typing
-134,14 is 8% of what?,175,,,,300,,,typing
-135,63 out of what is 63%?,100,,,,300,,,typing
-136,What percent of 65 is 52?,80%,,,,300,,,typing
-137,56 is what percent of 70?,80%,,,,300,,,typing
-138,74 out of 200 is what percent?,37%,,,,300,,,typing
-139,26% of 100 is what?,26,,,,300,,,typing
-140,What is 59% of 100?,59,,,,300,,,typing
-141,What out of 25 is 8%?,2,,,,300,,,typing
-142,25% of what is 20?,80,,,,300,,,typing
-143,27 is 30% of what?,90,,,,300,,,typing
-144,44 out of what is 88%?,50,,,,300,,,typing
-145,What percent of 60 is 36?,60%,,,,300,,,typing
-146,13 is what percent of 52?,25%,,,,300,,,typing
-147,42 out of 60 is what percent?,70%,,,,300,,,typing
-148,50% of 134 is what?,67,,,,300,,,typing
-149,What is 47% of 200?,94,,,,300,,,typing
-150,What out of 25 is 44%?,11,,,,300,,,typing
-151,130% of what is 52?,130,,,,300,,,typing
-152,68 is 85% of what?,80,,,,300,,,typing
-153,16 out of what is 40%?,40,,,,300,,,typing
-154,What percent of 160 is 80?,50%,,,,300,,,typing
-155,3 is what percent of 150?,2%,,,,300,,,typing
-156,48 out of 64 is what percent?,75%,,,,300,,,typing
-157,65% of 120 is what?,78,,,,300,,,typing
-158,What is 50% of 54?,27,,,,300,,,typing
-159,What out of 45 is 60%?,27,,,,300,,,typing
-160,98% of what is 196?,200,,,,300,,,typing
-161,34 is 85% of what?,40,,,,300,,,typing
-162,9 out of what is 90%?,10,,,,300,,,typing
-163,What percent of 20 is 7?,35%,,,,300,,,typing
-164,35 is what percent of 100?,35%,,,,300,,,typing
-165,22 out of 55 is what percent?,40%,,,,300,,,typing
-166,78% of 50 is what?,39,,,,300,,,typing
-167,What is 76% of 125?,95,,,,300,,,typing
-168,What out of 96 is 50%?,48,,,,300,,,typing
-169,20% of what is 39?,195,,,,300,,,typing
-170,45 is 75% of what?,60,,,,300,,,typing
-171,42 out of what is 35%?,120,,,,300,,,typing
-172,What percent of 120 is 6?,5%,,,,300,,,typing
-173,26 is what percent of 65?,40%,,,,300,,,typing
-174,96 out of 120 is what percent?,80%,,,,300,,,typing
-175,24% of 50 is what?,12,,,,300,,,typing
-176,What is 24% of 75?,18,,,,300,,,typing
-177,What out of 90 is 10%?,9,,,,300,,,typing
-178,12% of what is 15?,125,,,,300,,,typing
-179,6 is 10% of what?,60,,,,300,,,typing
-180,46 out of what is 92%?,50,,,,300,,,typing
-181,What percent of 50 is 46?,92%,,,,300,,,typing
-182,65 is what percent of 125?,52%,,,,300,,,typing
-183,63 out of 75 is what percent?,84%,,,,300,,,typing
-184,79% of 200 is what?,158,,,,300,,,typing
-185,What is 110% of 110?,44,,,,300,,,typing
-186,What out of 40 is 65%?,26,,,,300,,,typing
-187,90% of what is 36?,90,,,,300,,,typing
-188,32 is 25% of what?,128,,,,300,,,typing
-189,6 out of what is 15%?,40,,,,300,,,typing
-190,What percent of 40 is 10?,25%,,,,300,,,typing
-191,21 is what percent of 175?,12%,,,,300,,,typing
-192,4 out of 50 is what percent?,8%,,,,300,,,typing
-193,68% of 75 is what?,51,,,,300,,,typing
-194,What is 6% of 200?,12,,,,300,,,typing
-195,What out of 35 is 60%?,21,,,,300,,,typing
-196,50% of what is 68?,136,,,,300,,,typing
-197,150 is 75% of what?,200,,,,300,,,typing
-198,47 out of what is 47%?,100,,,,300,,,typing
-199,What percent of 15 is 3?,20%,,,,300,,,typing
-200,32 is what percent of 128?,25%,,,,300,,,typing
-201,33 out of 165 is what percent?,20%,,,,300,,,typing
-202,50% of 24 is what?,12,,,,300,,,typing
-203,What is 75% of 64?,48,,,,300,,,typing
-204,What out of 140 is 20%?,28,,,,300,,,typing
-205,44% of what is 55?,125,,,,300,,,typing
-206,42 is 75% of what?,56,,,,300,,,typing
-207,96 out of what is 48%?,200,,,,300,,,typing
-208,What percent of 200 is 146?,73%,,,,300,,,typing
-209,22 is what percent of 200?,11%,,,,300,,,typing
-210,38 out of 200 is what percent?,19%,,,,300,,,typing
-211,22% of 100 is what?,22,,,,300,,,typing
-212,What is 65% of 60?,39,,,,300,,,typing
-213,What out of 190 is 10%?,19,,,,300,,,typing
-214,88% of what is 154?,175,,,,300,,,typing
-215,21 is 75% of what?,28,,,,300,,,typing
-216,117 out of what is 90%?,130,,,,300,,,typing
-217,What percent of 20 is 7?,35%,,,,300,,,typing
-218,19 is what percent of 20?,95%,,,,300,,,typing
-219,41 out of 100 is what percent?,41%,,,,300,,,typing
-220,50% of 34 is what?,17,,,,300,,,typing
-221,What is 85% of 20?,17,,,,300,,,typing
-222,What out of 110 is 70%?,77,,,,300,,,typing
-223,95% of what is 133?,140,,,,300,,,typing
-224,12 is 80% of what?,15,,,,300,,,typing
-225,59 out of what is 50%?,118,,,,300,,,typing
-226,What percent of 125 is 65?,52%,,,,300,,,typing
-227,18 is what percent of 30?,60%,,,,300,,,typing
-228,9 out of 75 is what percent?,12%,,,,300,,,typing
-229,50% of 114 is what?,57,,,,300,,,typing
-230,What is 30% of 170?,51,,,,300,,,typing
-231,What out of 195 is 60%?,117,,,,300,,,typing
-232,50% of what is 65?,130,,,,300,,,typing
-233,2 is 5% of what?,5,,,,300,,,typing
-234,144 out of what is 75%?,192,,,,300,,,typing
-235,What percent of 100 is 37?,37%,,,,300,,,typing
-236,44 is what percent of 176?,25%,,,,300,,,typing
-237,34 out of 170 is what percent?,20%,,,,300,,,typing
-238,75% of 4 is what?,3,,,,300,,,typing
-239,What is 50% of 132?,66,,,,300,,,typing
-240,What out of 6 is 50%?,3,,,,300,,,typing
-241,70% of what is 84?,120,,,,300,,,typing
-242,36 is 80% of what?,45,,,,300,,,typing
-243,42 out of what is 42%?,100,,,,300,,,typing
-244,What percent of 40 is 10?,25%,,,,300,,,typing
-245,9 is what percent of 180?,5%,,,,300,,,typing
-246,99 out of 150 is what percent?,66%,,,,300,,,typing
-247,25% of 124 is what?,31,,,,300,,,typing
-248,What is 92% of 75?,69,,,,300,,,typing
-249,What out of 200 is 52%?,104,,,,300,,,typing
-250,76% of what is 19?,25,,,,300,,,typing
-251,48 is 50% of what?,96,,,,300,,,typing
-252,147 out of what is 75%?,196,,,,300,,,typing
-253,What percent of 128 is 32?,25%,,,,300,,,typing
-254,24 is what percent of 96?,25%,,,,300,,,typing
-255,86 out of 172 is what percent?,50%,,,,300,,,typing
-256,60% of 115 is what?,69,,,,300,,,typing
-257,What is 25% of 4?,1,,,,300,,,typing
-258,What out of 150 is 20%?,30,,,,300,,,typing
-259,64% of what is 48?,75,,,,300,,,typing
-260,2 is 25% of what?,8,,,,300,,,typing
-261,81 out of what is 75%?,108,,,,300,,,typing
-262,What percent of 125 is 90?,72%,,,,300,,,typing
-263,16 is what percent of 64?,25%,,,,300,,,typing
-264,84 out of 100 is what percent?,84%,,,,300,,,typing
-265,85% of 80 is what?,68,,,,300,,,typing
-266,What is 10% of 160?,16,,,,300,,,typing
-267,What out of 90 is 90%?,36,,,,300,,,typing
-268,85% of what is 51?,60,,,,300,,,typing
-269,11 is 50% of what?,22,,,,300,,,typing
-270,62 out of what is 155%?,155,,,,300,,,typing
-271,What percent of 70 is 63?,90%,,,,300,,,typing
-272,14 is what percent of 70?,20%,,,,300,,,typing
-273,69 out of 150 is what percent?,46%,,,,300,,,typing
-274,75% of 156 is what?,117,,,,300,,,typing
-275,What is 20% of 175?,35,,,,300,,,typing
-276,What out of 180 is 60%?,108,,,,300,,,typing
-277,34% of what is 51?,150,,,,300,,,typing
-278,90 is 60% of what?,150,,,,300,,,typing
-279,78 out of what is 60%?,130,,,,300,,,typing
-280,What percent of 200 is 44?,22%,,,,300,,,typing
-281,42 is what percent of 140?,30%,,,,300,,,typing
-282,99 out of 110 is what percent?,90%,,,,300,,,typing
-283,50% of 78 is what?,39,,,,300,,,typing
-284,What is 46% of 50?,23,,,,300,,,typing
-285,What out of 176 is 75%?,132,,,,300,,,typing
-286,75% of what is 3?,4,,,,300,,,typing
-287,115 is 92% of what?,125,,,,300,,,typing
-288,17 out of what is 34%?,50,,,,300,,,typing
-289,What percent of 80 is 32?,40%,,,,300,,,typing
-290,68 is what percent of 136?,50%,,,,300,,,typing
-291,4 out of 10 is what percent?,40%,,,,300,,,typing
-292,66% of 150 is what?,99,,,,300,,,typing
-293,What is 44% of 200?,88,,,,300,,,typing
-294,What out of 100 is 50%?,50,,,,300,,,typing
-295,15% of what is 6?,15,,,,300,,,typing
-296,56 is 80% of what?,70,,,,300,,,typing
-297,90 out of what is 45%?,200,,,,300,,,typing
-298,What percent of 150 is 66?,44%,,,,300,,,typing
-299,148 is what percent of 200?,74%,,,,300,,,typing
-300,33 out of 110 is what percent?,30%,,,,300,,,typing
-301,50% of 80 is what?,40,,,,300,,,typing
-302,What is 19% of 200?,38,,,,300,,,typing
-303,What out of 25 is 36%?,9,,,,300,,,typing
-304,83% of what is 166?,200,,,,300,,,typing
-305,13 is 10% of what?,130,,,,300,,,typing
-306,81 out of what is 45%?,180,,,,300,,,typing
-307,What percent of 20 is 12?,60%,,,,300,,,typing
-308,72 is what percent of 75?,96%,,,,300,,,typing
-309,134 out of 200 is what percent?,67%,,,,300,,,typing
-310,22% of 200 is what?,44,,,,300,,,typing
-311,What is 95% of 200?,190,,,,300,,,typing
-312,What out of 180 is 180%?,72,,,,300,,,typing
-313,50% of what is 96?,192,,,,300,,,typing
-314,41 is 41% of what?,100,,,,300,,,typing
-315,51 out of what is 85%?,60,,,,300,,,typing
-316,What percent of 164 is 41?,25%,,,,300,,,typing
-317,36 is what percent of 48?,75%,,,,300,,,typing
-318,136 out of 170 is what percent?,80%,,,,300,,,typing
-319,70% of 170 is what?,119,,,,300,,,typing
-320,What is 75% of 64?,48,,,,300,,,typing
-321,What out of 140 is 80%?,112,,,,300,,,typing
-322,20% of what is 33?,165,,,,300,,,typing
-323,21 is 60% of what?,35,,,,300,,,typing
-324,68 out of what is 50%?,136,,,,300,,,typing
-325,What percent of 8 is 2?,25%,,,,300,,,typing
-326,54 is what percent of 75?,72%,,,,300,,,typing
-327,11 out of 22 is what percent?,50%,,,,300,,,typing
-328,99% of 100 is what?,99,,,,300,,,typing
-329,What is 90% of 60?,54,,,,300,,,typing
-330,What out of 150 is 62%?,93,,,,300,,,typing
-331,87% of what is 87?,100,,,,300,,,typing
-332,66 is 75% of what?,88,,,,300,,,typing
-333,41 out of what is 41%?,100,,,,300,,,typing
-334,What percent of 158 is 79?,50%,,,,300,,,typing
-335,138 is what percent of 150?,92%,,,,300,,,typing
-336,105 out of 125 is what percent?,84%,,,,300,,,typing
-337,80% of 10 is what?,8,,,,300,,,typing
-338,What is 42% of 100?,42,,,,300,,,typing
-339,What out of 50 is 34%?,17,,,,300,,,typing
-340,50% of what is 76?,152,,,,300,,,typing
-341,10 is 50% of what?,20,,,,300,,,typing
-342,122 out of what is 61%?,200,,,,300,,,typing
-343,What percent of 125 is 100?,80%,,,,300,,,typing
-344,19 is what percent of 25?,76%,,,,300,,,typing
-345,11 out of 50 is what percent?,22%,,,,300,,,typing
-346,75% of 156 is what?,117,,,,300,,,typing
-347,What is 15% of 200?,30,,,,300,,,typing
-348,What out of 200 is 8%?,16,,,,300,,,typing
-349,68% of what is 102?,150,,,,300,,,typing
-350,171 is 95% of what?,180,,,,300,,,typing
-351,36 out of what is 45%?,80,,,,300,,,typing
-352,What percent of 125 is 85?,68%,,,,300,,,typing
-353,37 is what percent of 50?,74%,,,,300,,,typing
-354,91 out of 130 is what percent?,70%,,,,300,,,typing
-355,68% of 100 is what?,68,,,,300,,,typing
-356,What is 25% of 92?,23,,,,300,,,typing
-357,What out of 175 is 48%?,84,,,,300,,,typing
-358,50% of what is 86?,172,,,,300,,,typing
-359,46 is 25% of what?,184,,,,300,,,typing
-360,200 out of what is 20%?,200,,,,300,,,typing
-361,What percent of 40 is 10?,25%,,,,300,,,typing
-362,4 is what percent of 8?,50%,,,,300,,,typing
-363,34 out of 40 is what percent?,85%,,,,300,,,typing
-364,86% of 50 is what?,43,,,,300,,,typing
-365,What is 60% of 10?,6,,,,300,,,typing
-366,What out of 195 is 80%?,156,,,,300,,,typing
-367,90% of what is 81?,90,,,,300,,,typing
-368,176 is 88% of what?,200,,,,300,,,typing
-369,99 out of what is 60%?,165,,,,300,,,typing
-370,What percent of 114 is 57?,50%,,,,300,,,typing
-371,8 is what percent of 16?,50%,,,,300,,,typing
-372,5 out of 100 is what percent?,5%,,,,300,,,typing
-373,50% of 124 is what?,62,,,,300,,,typing
-374,What is 20% of 135?,27,,,,300,,,typing
-375,What out of 80 is 75%?,60,,,,300,,,typing
-376,50% of what is 76?,152,,,,300,,,typing
-377,104 is 80% of what?,130,,,,300,,,typing
-378,4 out of what is 16%?,25,,,,300,,,typing
-379,What percent of 200 is 70?,35%,,,,300,,,typing
-380,14 is what percent of 20?,70%,,,,300,,,typing
-381,87 out of 116 is what percent?,75%,,,,300,,,typing
-382,50% of 98 is what?,49,,,,300,,,typing
-383,What is 20% of 20?,4,,,,300,,,typing
-384,What out of 50 is 54%?,27,,,,300,,,typing
-385,8% of what is 4?,50,,,,300,,,typing
-386,31 is 31% of what?,100,,,,300,,,typing
-387,34 out of what is 50%?,68,,,,300,,,typing
-388,What percent of 75 is 63?,84%,,,,300,,,typing
-389,180 is what percent of 200?,80%,,,,300,,,typing
-390,78 out of 130 is what percent?,60%,,,,300,,,typing
-391,10% of 40 is what?,4,,,,300,,,typing
-392,What is 50% of 190?,95,,,,300,,,typing
-393,What out of 25 is 48%?,12,,,,300,,,typing
-394,51% of what is 102?,200,,,,300,,,typing
-395,42 is 105% of what?,105,,,,300,,,typing
-396,14 out of what is 50%?,28,,,,300,,,typing
-397,What percent of 150 is 117?,78%,,,,300,,,typing
-398,12 is what percent of 80?,15%,,,,300,,,typing
-399,180 out of 200 is what percent?,90%,,,,300,,,typing
-400,75% of 76 is what?,57,,,,300,,,typing
-401,What is 5% of 120?,6,,,,300,,,typing
-402,What out of 160 is 95%?,152,,,,300,,,typing
-403,75% of what is 90?,120,,,,300,,,typing
-404,6 is 15% of what?,40,,,,300,,,typing
-405,28 out of what is 20%?,140,,,,300,,,typing
-406,What percent of 180 is 63?,35%,,,,300,,,typing
-407,6 is what percent of 15?,40%,,,,300,,,typing
-408,69 out of 75 is what percent?,92%,,,,300,,,typing
-409,25% of 144 is what?,36,,,,300,,,typing
-410,What is 92% of 100?,92,,,,300,,,typing
-411,What out of 50 is 10%?,5,,,,300,,,typing
-412,35% of what is 70?,200,,,,300,,,typing
-413,23 is 25% of what?,92,,,,300,,,typing
-414,65 out of what is 52%?,125,,,,300,,,typing
-415,What percent of 150 is 3?,2%,,,,300,,,typing
-416,52 is what percent of 65?,80%,,,,300,,,typing
-417,33 out of 50 is what percent?,66%,,,,300,,,typing
-418,82% of 150 is what?,123,,,,300,,,typing
-419,What is 170% of 170?,68,,,,300,,,typing
-420,What out of 200 is 69%?,138,,,,300,,,typing
-421,20% of what is 37?,185,,,,300,,,typing
-422,28 is 35% of what?,80,,,,300,,,typing
-423,4 out of what is 10%?,10,,,,300,,,typing
-424,What percent of 116 is 29?,25%,,,,300,,,typing
-425,188 is what percent of 200?,94%,,,,300,,,typing
-426,12 out of 50 is what percent?,24%,,,,300,,,typing
-427,60% of 130 is what?,78,,,,300,,,typing
-428,What is 80% of 145?,116,,,,300,,,typing
-429,What out of 200 is 12%?,24,,,,300,,,typing
-430,10% of what is 14?,140,,,,300,,,typing
-431,34 is 25% of what?,136,,,,300,,,typing
-432,64 out of what is 80%?,80,,,,300,,,typing
-433,What percent of 200 is 136?,68%,,,,300,,,typing
-434,54 is what percent of 60?,90%,,,,300,,,typing
-435,64 out of 80 is what percent?,80%,,,,300,,,typing
-436,60% of 100 is what?,60,,,,300,,,typing
-437,What is 80% of 160?,128,,,,300,,,typing
-438,What out of 100 is 99%?,99,,,,300,,,typing
-439,50% of what is 18?,36,,,,300,,,typing
-440,18 is 75% of what?,24,,,,300,,,typing
-441,45 out of what is 25%?,180,,,,300,,,typing
-442,What percent of 40 is 30?,75%,,,,300,,,typing
-443,14 is what percent of 56?,25%,,,,300,,,typing
-444,77 out of 154 is what percent?,50%,,,,300,,,typing
-445,50% of 116 is what?,58,,,,300,,,typing
-446,What is 70% of 20?,14,,,,300,,,typing
-447,What out of 25 is 64%?,16,,,,300,,,typing
-448,17% of what is 34?,200,,,,300,,,typing
-449,45 is 25% of what?,180,,,,300,,,typing
-450,28 out of what is 70%?,70,,,,300,,,typing
-451,What percent of 125 is 95?,76%,,,,300,,,typing
-452,19 is what percent of 95?,20%,,,,300,,,typing
-453,39 out of 52 is what percent?,75%,,,,300,,,typing
-454,50% of 156 is what?,78,,,,300,,,typing
-455,What is 18% of 100?,18,,,,300,,,typing
-456,What out of 100 is 70%?,70,,,,300,,,typing
-457,50% of what is 90?,180,,,,300,,,typing
-458,21 is 84% of what?,25,,,,300,,,typing
-459,86 out of what is 86%?,100,,,,300,,,typing
-460,What percent of 160 is 16?,10%,,,,300,,,typing
-461,100 is what percent of 100?,40%,,,,300,,,typing
-462,25 out of 50 is what percent?,50%,,,,300,,,typing
-463,60% of 10 is what?,6,,,,300,,,typing
-464,What is 76% of 200?,152,,,,300,,,typing
-465,What out of 150 is 48%?,72,,,,300,,,typing
-466,36% of what is 72?,200,,,,300,,,typing
-467,4 is 16% of what?,25,,,,300,,,typing
-468,120 out of what is 60%?,200,,,,300,,,typing
-469,What percent of 180 is 171?,95%,,,,300,,,typing
-470,45 is what percent of 125?,36%,,,,300,,,typing
-471,31 out of 62 is what percent?,50%,,,,300,,,typing
-472,50% of 84 is what?,42,,,,300,,,typing
-473,What is 165% of 165?,66,,,,300,,,typing
-474,What out of 200 is 21%?,42,,,,300,,,typing
-475,25% of what is 26?,104,,,,300,,,typing
-476,15 is 10% of what?,150,,,,300,,,typing
-477,120 out of what is 75%?,160,,,,300,,,typing
-478,What percent of 150 is 18?,12%,,,,300,,,typing
-479,133 is what percent of 175?,76%,,,,300,,,typing
-480,1 out of 50 is what percent?,2%,,,,300,,,typing
-481,150% of 150 is what?,60,,,,300,,,typing
-482,What is 75% of 96?,72,,,,300,,,typing
-483,What out of 175 is 44%?,77,,,,300,,,typing
-484,38% of what is 76?,200,,,,300,,,typing
-485,4 is 10% of what?,40,,,,300,,,typing
-486,170 out of what is 85%?,200,,,,300,,,typing
-487,What percent of 125 is 20?,16%,,,,300,,,typing
-488,21 is what percent of 70?,30%,,,,300,,,typing
-489,29 out of 58 is what percent?,50%,,,,300,,,typing
-490,70% of 70 is what?,49,,,,300,,,typing
-491,What is 70% of 90?,63,,,,300,,,typing
-492,What out of 190 is 90%?,171,,,,300,,,typing
-493,60% of what is 30?,50,,,,300,,,typing
-494,55 is 44% of what?,125,,,,300,,,typing
-495,36 out of what is 60%?,60,,,,300,,,typing
-496,What percent of 200 is 52?,26%,,,,300,,,typing
-497,37 is what percent of 100?,37%,,,,300,,,typing
-498,27 out of 54 is what percent?,50%,,,,300,,,typing
-499,30% of 150 is what?,45,,,,300,,,typing
-500,What is 72% of 175?,126,,,,300,,,typing
-501,What out of 190 is 190%?,76,,,,300,,,typing
-502,50% of what is 1?,2,,,,300,,,typing
-503,60 is 60% of what?,100,,,,300,,,typing
-504,115 out of what is 92%?,125,,,,300,,,typing
-505,What percent of 25 is 11?,44%,,,,300,,,typing
-506,75 is what percent of 150?,50%,,,,300,,,typing
-507,12 out of 75 is what percent?,16%,,,,300,,,typing
-508,20% of 140 is what?,28,,,,300,,,typing
-509,What is 30% of 70?,21,,,,300,,,typing
-510,What out of 195 is 195%?,78,,,,300,,,typing
-511,10% of what is 19?,190,,,,300,,,typing
-512,32 is 16% of what?,200,,,,300,,,typing
-513,171 out of what is 95%?,180,,,,300,,,typing
-514,What percent of 100 is 79?,79%,,,,300,,,typing
-515,39 is what percent of 130?,30%,,,,300,,,typing
-516,21 out of 60 is what percent?,35%,,,,300,,,typing
-517,69% of 200 is what?,138,,,,300,,,typing
-518,What is 20% of 155?,31,,,,300,,,typing
-519,What out of 156 is 75%?,117,,,,300,,,typing
-520,72% of what is 126?,175,,,,300,,,typing
-521,72 is 50% of what?,144,,,,300,,,typing
-522,32 out of what is 80%?,40,,,,300,,,typing
-523,What percent of 100 is 2?,2%,,,,300,,,typing
-524,100 is what percent of 100?,40%,,,,300,,,typing
-525,27 out of 90 is what percent?,30%,,,,300,,,typing
-526,92% of 100 is what?,92,,,,300,,,typing
-527,What is 6% of 150?,9,,,,300,,,typing
-528,What out of 115 is 60%?,69,,,,300,,,typing
-529,25% of what is 46?,184,,,,300,,,typing
-530,8 is 32% of what?,25,,,,300,,,typing
-531,11 out of what is 11%?,100,,,,300,,,typing
-532,What percent of 20 is 10?,50%,,,,300,,,typing
-533,38 is what percent of 50?,76%,,,,300,,,typing
-534,3 out of 50 is what percent?,6%,,,,300,,,typing
-535,8% of 175 is what?,14,,,,300,,,typing
-536,What is 42% of 100?,42,,,,300,,,typing
-537,What out of 150 is 44%?,66,,,,300,,,typing
-538,81% of what is 162?,200,,,,300,,,typing
-539,54 is 27% of what?,200,,,,300,,,typing
-540,2 out of what is 8%?,25,,,,300,,,typing
-541,What percent of 85 is 51?,60%,,,,300,,,typing
-542,6 is what percent of 20?,30%,,,,300,,,typing
-543,25 out of 125 is what percent?,20%,,,,300,,,typing
-544,31% of 100 is what?,31,,,,300,,,typing
-545,What is 91% of 200?,182,,,,300,,,typing
-546,What out of 180 is 60%?,108,,,,300,,,typing
-547,5% of what is 9?,180,,,,300,,,typing
-548,33 is 60% of what?,55,,,,300,,,typing
-549,80 out of what is 80%?,75,,,,300,,,typing
-550,What percent of 105 is 42?,40%,,,,300,,,typing
-551,5 is what percent of 25?,20%,,,,300,,,typing
-552,77 out of 110 is what percent?,70%,,,,300,,,typing
-553,68% of 150 is what?,102,,,,300,,,typing
-554,What is 38% of 100?,38,,,,300,,,typing
-555,What out of 76 is 50%?,38,,,,300,,,typing
-556,90% of what is 18?,20,,,,300,,,typing
-557,30 is 25% of what?,120,,,,300,,,typing
-558,81 out of what is 50%?,162,,,,300,,,typing
-559,What percent of 100 is 93?,93%,,,,300,,,typing
-560,69 is what percent of 92?,75%,,,,300,,,typing
-561,1 out of 5 is what percent?,20%,,,,300,,,typing
-562,20% of 180 is what?,36,,,,300,,,typing
-563,What is 23% of 100?,23,,,,300,,,typing
-564,What out of 100 is 74%?,74,,,,300,,,typing
-565,45% of what is 72?,160,,,,300,,,typing
-566,93 is 60% of what?,155,,,,300,,,typing
-567,12 out of what is 30%?,40,,,,300,,,typing
-568,What percent of 145 is 29?,20%,,,,300,,,typing
-569,75 is what percent of 100?,75%,,,,300,,,typing
-570,123 out of 150 is what percent?,82%,,,,300,,,typing
-571,53% of 200 is what?,106,,,,300,,,typing
-572,What is 50% of 102?,51,,,,300,,,typing
-573,What out of 94 is 50%?,47,,,,300,,,typing
-574,85% of what is 119?,140,,,,300,,,typing
-575,1 is 10% of what?,10,,,,300,,,typing
-576,12 out of what is 6%?,200,,,,300,,,typing
-577,What percent of 192 is 48?,25%,,,,300,,,typing
-578,78 is what percent of 100?,78%,,,,300,,,typing
-579,15 out of 30 is what percent?,50%,,,,300,,,typing
-580,50% of 90 is what?,45,,,,300,,,typing
-581,What is 84% of 100?,84,,,,300,,,typing
-582,What out of 108 is 25%?,27,,,,300,,,typing
-583,43% of what is 43?,100,,,,300,,,typing
-584,110 is 88% of what?,125,,,,300,,,typing
-585,80 out of what is 80%?,100,,,,300,,,typing
-586,What percent of 175 is 161?,92%,,,,300,,,typing
-587,62 is what percent of 124?,50%,,,,300,,,typing
-588,27 out of 30 is what percent?,90%,,,,300,,,typing
-589,50% of 172 is what?,86,,,,300,,,typing
-590,What is 50% of 94?,47,,,,300,,,typing
-591,What out of 100 is 97%?,97,,,,300,,,typing
-592,4% of what is 7?,175,,,,300,,,typing
-593,19 is 25% of what?,76,,,,300,,,typing
-594,21 out of what is 21%?,100,,,,300,,,typing
-595,What percent of 175 is 63?,36%,,,,300,,,typing
-596,171 is what percent of 180?,95%,,,,300,,,typing
-597,123 out of 164 is what percent?,75%,,,,300,,,typing
-598,36% of 25 is what?,9,,,,300,,,typing
-599,What is 37% of 200?,74,,,,300,,,typing
-600,What out of 35 is 20%?,7,,,,300,,,typing
-601,60% of what is 102?,170,,,,300,,,typing
-602,63 is 45% of what?,140,,,,300,,,typing
-603,46 out of what is 46%?,100,,,,300,,,typing
-604,What percent of 120 is 54?,45%,,,,300,,,typing
-605,95 is what percent of 125?,76%,,,,300,,,typing
-606,6 out of 20 is what percent?,30%,,,,300,,,typing
-607,50% of 132 is what?,66,,,,300,,,typing
-608,What is 12% of 100?,12,,,,300,,,typing
-609,What out of 135 is 20%?,27,,,,300,,,typing
-610,84% of what is 42?,50,,,,300,,,typing
-611,171 is 95% of what?,180,,,,300,,,typing
-612,19 out of what is 38%?,50,,,,300,,,typing
-613,What percent of 100 is 73?,73%,,,,300,,,typing
-614,92 is what percent of 184?,50%,,,,300,,,typing
-615,34 out of 85 is what percent?,40%,,,,300,,,typing
-616,70% of 150 is what?,105,,,,300,,,typing
-617,What is 4% of 100?,4,,,,300,,,typing
-618,What out of 15 is 60%?,9,,,,300,,,typing
-619,10% of what is 4?,40,,,,300,,,typing
-620,180 is 90% of what?,200,,,,300,,,typing
-621,39 out of what is 50%?,78,,,,300,,,typing
-622,What percent of 10 is 6?,60%,,,,300,,,typing
-623,156 is what percent of 200?,78%,,,,300,,,typing
-624,16 out of 20 is what percent?,80%,,,,300,,,typing
-625,22% of 200 is what?,44,,,,300,,,typing
-626,What is 83% of 200?,166,,,,300,,,typing
-627,What out of 40 is 15%?,6,,,,300,,,typing
-628,42% of what is 21?,50,,,,300,,,typing
-629,11 is 20% of what?,55,,,,300,,,typing
-630,23 out of what is 46%?,50,,,,300,,,typing
-631,What percent of 160 is 32?,20%,,,,300,,,typing
-632,80 is what percent of 75?,80%,,,,300,,,typing
-633,67 out of 134 is what percent?,50%,,,,300,,,typing
-634,52% of 25 is what?,13,,,,300,,,typing
-635,What is 80% of 145?,116,,,,300,,,typing
-636,What out of 102 is 50%?,51,,,,300,,,typing
-637,86% of what is 43?,50,,,,300,,,typing
-638,18 is 45% of what?,45,,,,300,,,typing
-639,135 out of what is 90%?,150,,,,300,,,typing
-640,What percent of 170 is 102?,60%,,,,300,,,typing
-641,23 is what percent of 46?,50%,,,,300,,,typing
-642,27 out of 90 is what percent?,30%,,,,300,,,typing
-643,24% of 25 is what?,6,,,,300,,,typing
-644,What is 75% of 168?,126,,,,300,,,typing
-645,What out of 24 is 75%?,18,,,,300,,,typing
-646,80% of what is 36?,45,,,,300,,,typing
-647,136 is 68% of what?,200,,,,300,,,typing
-648,120 out of what is 80%?,150,,,,300,,,typing
-649,What percent of 5 is 1?,20%,,,,300,,,typing
-650,63 is what percent of 75?,84%,,,,300,,,typing
-651,48 out of 96 is what percent?,50%,,,,300,,,typing
-652,75% of 112 is what?,84,,,,300,,,typing
-653,What is 10% of 90?,9,,,,300,,,typing
-654,What out of 100 is 36%?,36,,,,300,,,typing
-655,26% of what is 52?,200,,,,300,,,typing
-656,10 is 50% of what?,20,,,,300,,,typing
-657,12 out of what is 6%?,200,,,,300,,,typing
-658,What percent of 16 is 8?,50%,,,,300,,,typing
-659,70 is what percent of 200?,35%,,,,300,,,typing
-660,11 out of 100 is what percent?,11%,,,,300,,,typing
-661,90% of 110 is what?,99,,,,300,,,typing
-662,What is 50% of 186?,93,,,,300,,,typing
-663,What out of 100 is 27%?,27,,,,300,,,typing
-664,43% of what is 86?,200,,,,300,,,typing
-665,63 is 42% of what?,150,,,,300,,,typing
-666,6 out of what is 75%?,8,,,,300,,,typing
-667,What percent of 70 is 42?,60%,,,,300,,,typing
-668,69 is what percent of 138?,50%,,,,300,,,typing
-669,76 out of 152 is what percent?,50%,,,,300,,,typing
-670,10% of 20 is what?,2,,,,300,,,typing
-671,What is 50% of 190?,95,,,,300,,,typing
-672,What out of 50 is 34%?,17,,,,300,,,typing
-673,50% of what is 87?,174,,,,300,,,typing
-674,51 is 60% of what?,85,,,,300,,,typing
-675,63 out of what is 90%?,70,,,,300,,,typing
-676,What percent of 75 is 80?,80%,,,,300,,,typing
-677,91 is what percent of 175?,52%,,,,300,,,typing
-678,26 out of 50 is what percent?,52%,,,,300,,,typing
-679,5% of 80 is what?,4,,,,300,,,typing
-680,What is 48% of 125?,60,,,,300,,,typing
-681,What out of 104 is 25%?,26,,,,300,,,typing
-682,65% of what is 117?,180,,,,300,,,typing
-683,96 is 80% of what?,120,,,,300,,,typing
-684,138 out of what is 69%?,200,,,,300,,,typing
-685,What percent of 135 is 54?,40%,,,,300,,,typing
-686,60 is what percent of 100?,60%,,,,300,,,typing
-687,84 out of 200 is what percent?,42%,,,,300,,,typing
-688,19% of 100 is what?,19,,,,300,,,typing
-689,What is 25% of 36?,9,,,,300,,,typing
-690,What out of 165 is 20%?,33,,,,300,,,typing
-691,75% of what is 132?,176,,,,300,,,typing
-692,21 is 21% of what?,100,,,,300,,,typing
-693,85 out of what is 68%?,125,,,,300,,,typing
-694,What percent of 150 is 3?,2%,,,,300,,,typing
-695,102 is what percent of 200?,51%,,,,300,,,typing
-696,12 out of 60 is what percent?,20%,,,,300,,,typing
-697,48% of 25 is what?,12,,,,300,,,typing
-698,What is 39% of 200?,78,,,,300,,,typing
-699,What out of 100 is 66%?,66,,,,300,,,typing
-700,60% of what is 120?,200,,,,300,,,typing
-701,66 is 60% of what?,110,,,,300,,,typing
-702,92 out of what is 80%?,115,,,,300,,,typing
-703,What percent of 175 is 168?,96%,,,,300,,,typing
-704,74 is what percent of 185?,40%,,,,300,,,typing
-705,124 out of 200 is what percent?,62%,,,,300,,,typing
-706,50% of 8 is what?,4,,,,300,,,typing
-707,What is 25% of 76?,19,,,,300,,,typing
-708,What out of 100 is 98%?,98,,,,300,,,typing
-709,84% of what is 147?,175,,,,300,,,typing
-710,84 is 48% of what?,175,,,,300,,,typing
-711,64 out of what is 32%?,200,,,,300,,,typing
-712,What percent of 104 is 26?,25%,,,,300,,,typing
-713,30 is what percent of 75?,40%,,,,300,,,typing
-714,15 out of 125 is what percent?,12%,,,,300,,,typing
-715,16% of 150 is what?,24,,,,300,,,typing
-716,What is 70% of 200?,140,,,,300,,,typing
-717,What out of 150 is 52%?,78,,,,300,,,typing
-718,37% of what is 37?,100,,,,300,,,typing
-719,55 is 44% of what?,125,,,,300,,,typing
-720,89 out of what is 89%?,100,,,,300,,,typing
-721,What percent of 25 is 15?,60%,,,,300,,,typing
-722,11 is what percent of 100?,11%,,,,300,,,typing
-723,20 out of 25 is what percent?,80%,,,,300,,,typing
-724,92% of 25 is what?,23,,,,300,,,typing
-725,What is 60% of 50?,30,,,,300,,,typing
-726,What out of 150 is 6%?,9,,,,300,,,typing
-727,74% of what is 148?,200,,,,300,,,typing
-728,2 is 25% of what?,8,,,,300,,,typing
-729,12 out of what is 20%?,60,,,,300,,,typing
-730,What percent of 148 is 111?,75%,,,,300,,,typing
-731,96 is what percent of 128?,75%,,,,300,,,typing
-732,10 out of 25 is what percent?,40%,,,,300,,,typing
-733,90% of 190 is what?,171,,,,300,,,typing
-734,What is 95% of 120?,114,,,,300,,,typing
-735,What out of 100 is 88%?,88,,,,300,,,typing
-736,20% of what is 12?,60,,,,300,,,typing
-737,6 is 5% of what?,120,,,,300,,,typing
-738,8 out of what is 16%?,50,,,,300,,,typing
-739,What percent of 80 is 72?,90%,,,,300,,,typing
-740,178 is what percent of 200?,89%,,,,300,,,typing
-741,69 out of 92 is what percent?,75%,,,,300,,,typing
-742,52% of 125 is what?,65,,,,300,,,typing
-743,What is 19% of 100?,19,,,,300,,,typing
-744,What out of 125 is 8%?,10,,,,300,,,typing
-745,80% of what is 104?,130,,,,300,,,typing
-746,29 is 20% of what?,145,,,,300,,,typing
-747,141 out of what is 94%?,150,,,,300,,,typing
-748,What percent of 165 is 33?,20%,,,,300,,,typing
-749,33 is what percent of 75?,44%,,,,300,,,typing
-750,108 out of 135 is what percent?,80%,,,,300,,,typing
-751,25% of 160 is what?,40,,,,300,,,typing
-752,What is 79% of 200?,158,,,,300,,,typing
-753,What out of 60 is 65%?,39,,,,300,,,typing
-754,75% of what is 102?,136,,,,300,,,typing
-755,158 is 79% of what?,200,,,,300,,,typing
-756,42 out of what is 35%?,120,,,,300,,,typing
-757,What percent of 200 is 78?,39%,,,,300,,,typing
-758,38 is what percent of 190?,20%,,,,300,,,typing
-759,34 out of 200 is what percent?,17%,,,,300,,,typing
-760,46% of 200 is what?,92,,,,300,,,typing
-761,What is 20% of 175?,35,,,,300,,,typing
-762,What out of 180 is 5%?,9,,,,300,,,typing
-763,97% of what is 97?,100,,,,300,,,typing
-764,32 is 80% of what?,80,,,,300,,,typing
-765,49 out of what is 98%?,50,,,,300,,,typing
-766,What percent of 40 is 4?,10%,,,,300,,,typing
-767,30 is what percent of 150?,20%,,,,300,,,typing
-768,174 out of 200 is what percent?,87%,,,,300,,,typing
-769,88% of 50 is what?,44,,,,300,,,typing
-770,What is 20% of 20?,4,,,,300,,,typing
-771,What out of 15 is 20%?,3,,,,300,,,typing
-772,41% of what is 41?,100,,,,300,,,typing
-773,156 is 78% of what?,200,,,,300,,,typing
-774,2 out of what is 5%?,40,,,,300,,,typing
-775,What percent of 156 is 117?,75%,,,,300,,,typing
-776,21 is what percent of 105?,20%,,,,300,,,typing
-777,11 out of 100 is what percent?,11%,,,,300,,,typing
-778,50% of 186 is what?,93,,,,300,,,typing
-779,What is 54% of 150?,81,,,,300,,,typing
-780,What out of 100 is 41%?,41,,,,300,,,typing
-781,8% of what is 12?,150,,,,300,,,typing
-782,25 is 20% of what?,125,,,,300,,,typing
-783,55 out of what is 44%?,125,,,,300,,,typing
-784,What percent of 120 is 78?,65%,,,,300,,,typing
-785,21 is what percent of 25?,84%,,,,300,,,typing
-786,56 out of 80 is what percent?,70%,,,,300,,,typing
-787,12% of 200 is what?,24,,,,300,,,typing
-788,What is 10% of 200?,20,,,,300,,,typing
-789,What out of 80 is 50%?,40,,,,300,,,typing
-790,44% of what is 22?,50,,,,300,,,typing
-791,20 is 80% of what?,25,,,,300,,,typing
-792,21 out of what is 25%?,84,,,,300,,,typing
-793,What percent of 184 is 92?,50%,,,,300,,,typing
-794,78 is what percent of 120?,65%,,,,300,,,typing
-795,25 out of 125 is what percent?,20%,,,,300,,,typing
-796,50% of 18 is what?,9,,,,300,,,typing
-797,What is 20% of 75?,15,,,,300,,,typing
-798,What out of 68 is 25%?,17,,,,300,,,typing
-799,75% of what is 6?,8,,,,300,,,typing
-800,67 is 50% of what?,134,,,,300,,,typing
-801,47 out of what is 94%?,50,,,,300,,,typing
-802,What percent of 165 is 33?,20%,,,,300,,,typing
-803,13 is what percent of 100?,13%,,,,300,,,typing
-804,10 out of 200 is what percent?,5%,,,,300,,,typing
-805,80% of 140 is what?,112,,,,300,,,typing
-806,What is 75% of 132?,99,,,,300,,,typing
-807,What out of 120 is 60%?,72,,,,300,,,typing
-808,50% of what is 86?,172,,,,300,,,typing
-809,4 is 16% of what?,25,,,,300,,,typing
-810,54 out of what is 90%?,60,,,,300,,,typing
-811,What percent of 100 is 99?,99%,,,,300,,,typing
-812,4 is what percent of 40?,10%,,,,300,,,typing
-813,54 out of 75 is what percent?,72%,,,,300,,,typing
-814,50% of 40 is what?,20,,,,300,,,typing
-815,What is 30% of 150?,45,,,,300,,,typing
-816,What out of 54 is 50%?,27,,,,300,,,typing
-817,60% of what is 60?,100,,,,300,,,typing
-818,21 is 20% of what?,105,,,,300,,,typing
-819,8 out of what is 50%?,16,,,,300,,,typing
-820,What percent of 164 is 82?,50%,,,,300,,,typing
-821,14 is what percent of 35?,40%,,,,300,,,typing
-822,30 out of 125 is what percent?,24%,,,,300,,,typing
-823,52% of 50 is what?,26,,,,300,,,typing
-824,What is 12% of 50?,6,,,,300,,,typing
-825,What out of 100 is 73%?,73,,,,300,,,typing
-826,16% of what is 8?,50,,,,300,,,typing
-827,174 is 87% of what?,200,,,,300,,,typing
-828,119 out of what is 70%?,170,,,,300,,,typing
-829,What percent of 200 is 26?,13%,,,,300,,,typing
-830,71 is what percent of 100?,71%,,,,300,,,typing
-831,12 out of 16 is what percent?,75%,,,,300,,,typing
-832,36% of 25 is what?,9,,,,300,,,typing
-833,What is 32% of 75?,24,,,,300,,,typing
-834,What out of 25 is 68%?,17,,,,300,,,typing
-835,30% of what is 45?,150,,,,300,,,typing
-836,11 is 22% of what?,50,,,,300,,,typing
-837,32 out of what is 20%?,160,,,,300,,,typing
-838,What percent of 80 is 8?,10%,,,,300,,,typing
-839,141 is what percent of 150?,94%,,,,300,,,typing
-840,7 out of 70 is what percent?,10%,,,,300,,,typing
-841,26% of 200 is what?,52,,,,300,,,typing
-842,What is 12% of 200?,24,,,,300,,,typing
-843,What out of 10 is 50%?,5,,,,300,,,typing
-844,76% of what is 76?,100,,,,300,,,typing
-845,13 is 25% of what?,52,,,,300,,,typing
-846,37 out of what is 74%?,50,,,,300,,,typing
-847,What percent of 110 is 33?,30%,,,,300,,,typing
-848,21 is what percent of 105?,20%,,,,300,,,typing
-849,10 out of 20 is what percent?,50%,,,,300,,,typing
-850,50% of 190 is what?,95,,,,300,,,typing
-851,What is 85% of 80?,68,,,,300,,,typing
-852,What out of 190 is 80%?,152,,,,300,,,typing
-853,34% of what is 17?,50,,,,300,,,typing
-854,68 is 80% of what?,85,,,,300,,,typing
-855,89 out of what is 89%?,100,,,,300,,,typing
-856,What percent of 28 is 7?,25%,,,,300,,,typing
-857,55 is what percent of 125?,44%,,,,300,,,typing
-858,24 out of 150 is what percent?,16%,,,,300,,,typing
-859,37% of 200 is what?,74,,,,300,,,typing
-860,What is 68% of 150?,102,,,,300,,,typing
-861,What out of 56 is 25%?,14,,,,300,,,typing
-862,44% of what is 66?,150,,,,300,,,typing
-863,91 is 70% of what?,130,,,,300,,,typing
-864,2 out of what is 4%?,50,,,,300,,,typing
-865,What percent of 116 is 58?,50%,,,,300,,,typing
-866,123 is what percent of 164?,75%,,,,300,,,typing
-867,120 out of 160 is what percent?,75%,,,,300,,,typing
-868,50% of 186 is what?,93,,,,300,,,typing
-869,What is 2% of 200?,4,,,,300,,,typing
-870,What out of 144 is 75%?,108,,,,300,,,typing
-871,92% of what is 46?,50,,,,300,,,typing
-872,98 is 98% of what?,100,,,,300,,,typing
-873,5 out of what is 4%?,125,,,,300,,,typing
-874,What percent of 34 is 17?,50%,,,,300,,,typing
-875,80 is what percent of 75?,80%,,,,300,,,typing
-876,13 out of 52 is what percent?,25%,,,,300,,,typing
-877,75% of 200 is what?,150,,,,300,,,typing
-878,What is 21% of 200?,42,,,,300,,,typing
-879,What out of 200 is 87%?,174,,,,300,,,typing
-880,75% of what is 141?,188,,,,300,,,typing
-881,62 is 155% of what?,155,,,,300,,,typing
-882,8 out of what is 4%?,200,,,,300,,,typing
-883,What percent of 110 is 77?,70%,,,,300,,,typing
-884,21 is what percent of 140?,15%,,,,300,,,typing
-885,96 out of 192 is what percent?,50%,,,,300,,,typing
-886,71% of 100 is what?,71,,,,300,,,typing
-887,What is 36% of 175?,63,,,,300,,,typing
-888,What out of 75 is 80%?,60,,,,300,,,typing
-889,10% of what is 4?,40,,,,300,,,typing
-890,96 is 64% of what?,150,,,,300,,,typing
-891,21 out of what is 35%?,60,,,,300,,,typing
-892,What percent of 116 is 87?,75%,,,,300,,,typing
-893,96 is what percent of 120?,80%,,,,300,,,typing
-894,14 out of 70 is what percent?,20%,,,,300,,,typing
-895,71% of 200 is what?,142,,,,300,,,typing
-896,What is 10% of 190?,19,,,,300,,,typing
-897,What out of 20 is 50%?,10,,,,300,,,typing
-898,50% of what is 67?,134,,,,300,,,typing
-899,31 is 50% of what?,62,,,,300,,,typing
-900,34 out of what is 68%?,50,,,,300,,,typing
-901,What percent of 175 is 119?,68%,,,,300,,,typing
-902,16 is what percent of 25?,64%,,,,300,,,typing
-903,116 out of 145 is what percent?,80%,,,,300,,,typing
-904,75% of 184 is what?,138,,,,300,,,typing
-905,What is 75% of 60?,45,,,,300,,,typing
-906,What out of 20 is 95%?,19,,,,300,,,typing
-907,49% of what is 49?,100,,,,300,,,typing
-908,7 is 20% of what?,35,,,,300,,,typing
-909,34 out of what is 25%?,136,,,,300,,,typing
-910,What percent of 100 is 88?,88%,,,,300,,,typing
-911,3 is what percent of 30?,10%,,,,300,,,typing
-912,15 out of 25 is what percent?,60%,,,,300,,,typing
-913,64% of 200 is what?,128,,,,300,,,typing
-914,What is 10% of 50?,5,,,,300,,,typing
-915,What out of 150 is 52%?,78,,,,300,,,typing
-916,85% of what is 102?,120,,,,300,,,typing
-917,119 is 85% of what?,140,,,,300,,,typing
-918,24 out of what is 32%?,75,,,,300,,,typing
-919,What percent of 50 is 49?,98%,,,,300,,,typing
-920,72 is what percent of 160?,45%,,,,300,,,typing
-921,54 out of 120 is what percent?,45%,,,,300,,,typing
-922,70% of 120 is what?,84,,,,300,,,typing
-923,What is 90% of 150?,135,,,,300,,,typing
-924,What out of 4 is 75%?,3,,,,300,,,typing
-925,74% of what is 148?,200,,,,300,,,typing
-926,100 is 80% of what?,125,,,,300,,,typing
-927,100 out of what is 50%?,200,,,,300,,,typing
-928,What percent of 180 is 9?,5%,,,,300,,,typing
-929,36 is what percent of 144?,25%,,,,300,,,typing
-930,95 out of 100 is what percent?,95%,,,,300,,,typing
-931,10% of 130 is what?,13,,,,300,,,typing
-932,What is 62% of 50?,31,,,,300,,,typing
-933,What out of 120 is 85%?,102,,,,300,,,typing
-934,60% of what is 81?,135,,,,300,,,typing
-935,77 is 77% of what?,100,,,,300,,,typing
-936,39 out of what is 50%?,78,,,,300,,,typing
-937,What percent of 166 is 83?,50%,,,,300,,,typing
-938,24 is what percent of 100?,24%,,,,300,,,typing
-939,60 out of 100 is what percent?,60%,,,,300,,,typing
-940,15% of 15 is what?,6,,,,300,,,typing
-941,What is 92% of 150?,138,,,,300,,,typing
-942,What out of 180 is 5%?,9,,,,300,,,typing
-943,25% of what is 17?,68,,,,300,,,typing
-944,46 is 50% of what?,92,,,,300,,,typing
-945,66 out of what is 165%?,165,,,,300,,,typing
-946,What percent of 200 is 38?,19%,,,,300,,,typing
-947,1200 is what percent of 200?,70%,,,,300,,,typing
-948,3 out of 75 is what percent?,4%,,,,300,,,typing
-949,25% of 120 is what?,30,,,,300,,,typing
-950,What is 80% of 80?,64,,,,300,,,typing
-951,What out of 116 is 75%?,87,,,,300,,,typing
-952,60% of what is 18?,30,,,,300,,,typing
-953,10 is 5% of what?,200,,,,300,,,typing
-954,7 out of what is 25%?,28,,,,300,,,typing
-955,What percent of 180 is 18?,10%,,,,300,,,typing
-956,15 is what percent of 125?,12%,,,,300,,,typing
-957,24 out of 40 is what percent?,60%,,,,300,,,typing
-958,25% of 40 is what?,10,,,,300,,,typing
-959,What is 90% of 80?,72,,,,300,,,typing
-960,What out of 75 is 44%?,33,,,,300,,,typing
-961,50% of what is 14?,28,,,,300,,,typing
-962,91 is 50% of what?,182,,,,300,,,typing
-963,18 out of what is 20%?,90,,,,300,,,typing
-964,What percent of 50 is 42?,84%,,,,300,,,typing
-965,71 is what percent of 142?,50%,,,,300,,,typing
-966,10 out of 25 is what percent?,40%,,,,300,,,typing
-967,80% of 100 is what?,80,,,,300,,,typing
-968,What is 4% of 150?,6,,,,300,,,typing
-969,What out of 200 is 33%?,66,,,,300,,,typing
-970,66% of what is 99?,150,,,,300,,,typing
-971,48 is 32% of what?,150,,,,300,,,typing
-972,32 out of what is 20%?,160,,,,300,,,typing
-973,What percent of 70 is 35?,50%,,,,300,,,typing
-974,21 is what percent of 60?,35%,,,,300,,,typing
-975,58 out of 116 is what percent?,50%,,,,300,,,typing
-976,96% of 25 is what?,24,,,,300,,,typing
-977,What is 27% of 200?,54,,,,300,,,typing
-978,What out of 50 is 98%?,49,,,,300,,,typing
-979,20% of what is 28?,140,,,,300,,,typing
-980,6 is 3% of what?,200,,,,300,,,typing
-981,8 out of what is 25%?,32,,,,300,,,typing
-982,What percent of 180 is 18?,10%,,,,300,,,typing
-983,51 is what percent of 102?,50%,,,,300,,,typing
-984,51 out of 102 is what percent?,50%,,,,300,,,typing
-985,48% of 25 is what?,12,,,,300,,,typing
-986,What is 59% of 200?,118,,,,300,,,typing
-987,What out of 200 is 51%?,102,,,,300,,,typing
-988,75% of what is 63?,84,,,,300,,,typing
-989,152 is 95% of what?,160,,,,300,,,typing
-990,36 out of what is 90%?,40,,,,300,,,typing
-991,What percent of 125 is 65?,52%,,,,300,,,typing
-992,147 is what percent of 150?,98%,,,,300,,,typing
-993,11 out of 25 is what percent?,44%,,,,300,,,typing
-994,63% of 100 is what?,63,,,,300,,,typing
-995,What is 10% of 100?,10,,,,300,,,typing
-996,What out of 52 is 25%?,13,,,,300,,,typing
-997,5% of what is 4?,80,,,,300,,,typing
-998,68 is 34% of what?,200,,,,300,,,typing
-999,28 out of what is 70%?,70,,,,300,,,typing
-1000,What percent of 32 is 24?,75%,,,,300,,,typing
+1,What percent of 150 is 120?,80%,,,,300,,,typing
+2,147 is what percent of 150?,98%,,,,300,,,typing
+3,119 out of 140 is what percent?,85%,,,,300,,,typing
+4,What percent is 8 out of 32?,25%,,,,300,,,typing
+5,32% of 75 is what?,24,,,,300,,,typing
+6,What is 90% of 190?,171,,,,300,,,typing
+7,What out of 142 is 50%?,71,,,,300,,,typing
+8,85% is what out of 200?,170,,,,300,,,typing
+9,84% of what is 126?,150,,,,300,,,typing
+10,140 is 70% of what?,200,,,,300,,,typing
+11,96 out of what is 50%?,192,,,,300,,,typing
+12,60% is 3 out of what?,5,,,,300,,,typing
+13,What percent of 194 is 97?,50%,,,,300,,,typing
+14,152 is what percent of 190?,80%,,,,300,,,typing
+15,66 out of 165 is what percent?,40%,,,,300,,,typing
+16,What percent is 72 out of 144?,50%,,,,300,,,typing
+17,75% of 128 is what?,96,,,,300,,,typing
+18,What is 80% of 65?,52,,,,300,,,typing
+19,What out of 50 is 48%?,24,,,,300,,,typing
+20,50% is what out of 124?,62,,,,300,,,typing
+21,80% of what is 116?,145,,,,300,,,typing
+22,22 is 25% of what?,88,,,,300,,,typing
+23,76 out of what is 38%?,200,,,,300,,,typing
+24,76% is 114 out of what?,150,,,,300,,,typing
+25,What percent of 150 is 75?,50%,,,,300,,,typing
+26,49 is what percent of 50?,98%,,,,300,,,typing
+27,38 out of 40 is what percent?,95%,,,,300,,,typing
+28,What percent is 17 out of 85?,20%,,,,300,,,typing
+29,62% of 200 is what?,124,,,,300,,,typing
+30,What is 65% of 120?,78,,,,300,,,typing
+31,What out of 44 is 50%?,22,,,,300,,,typing
+32,80% is what out of 85?,68,,,,300,,,typing
+33,80% of what is 100?,125,,,,300,,,typing
+34,119 is 70% of what?,170,,,,300,,,typing
+35,119 out of what is 70%?,170,,,,300,,,typing
+36,90% is 27 out of what?,30,,,,300,,,typing
+37,What percent of 36 is 18?,50%,,,,300,,,typing
+38,156 is what percent of 200?,78%,,,,300,,,typing
+39,4 out of 20 is what percent?,20%,,,,300,,,typing
+40,What percent is 100 out of 125?,80%,,,,300,,,typing
+41,75% of 160 is what?,120,,,,300,,,typing
+42,What is 50% of 6?,3,,,,300,,,typing
+43,What out of 120 is 20%?,24,,,,300,,,typing
+44,65% is what out of 180?,117,,,,300,,,typing
+45,80% of what is 140?,175,,,,300,,,typing
+46,132 is 75% of what?,176,,,,300,,,typing
+47,12 out of what is 75%?,16,,,,300,,,typing
+48,80% is 12 out of what?,15,,,,300,,,typing
+49,What percent of 125 is 105?,84%,,,,300,,,typing
+50,61 is what percent of 122?,50%,,,,300,,,typing
+51,45 out of 60 is what percent?,75%,,,,300,,,typing
+52,What percent is 40 out of 125?,32%,,,,300,,,typing
+53,5% of 20 is what?,1,,,,300,,,typing
+54,What is 90% of 30?,27,,,,300,,,typing
+55,What out of 124 is 75%?,93,,,,300,,,typing
+56,46% is what out of 150?,69,,,,300,,,typing
+57,52% of what is 104?,200,,,,300,,,typing
+58,13 is 26% of what?,50,,,,300,,,typing
+59,44 out of what is 50%?,88,,,,300,,,typing
+60,90% is 126 out of what?,140,,,,300,,,typing
+61,What percent of 130 is 104?,80%,,,,300,,,typing
+62,166 is what percent of 200?,83%,,,,300,,,typing
+63,20 out of 25 is what percent?,80%,,,,300,,,typing
+64,What percent is 36 out of 48?,75%,,,,300,,,typing
+65,19% of 200 is what?,38,,,,300,,,typing
+66,What is 65% of 120?,78,,,,300,,,typing
+67,What out of 110 is 20%?,22,,,,300,,,typing
+68,40% is what out of 125?,50,,,,300,,,typing
+69,2% of what is 4?,200,,,,300,,,typing
+70,3 is 75% of what?,4,,,,300,,,typing
+71,55 out of what is 44%?,125,,,,300,,,typing
+72,13% is 26 out of what?,200,,,,300,,,typing
+73,What percent of 200 is 170?,85%,,,,300,,,typing
+74,21 is what percent of 84?,25%,,,,300,,,typing
+75,22 out of 200 is what percent?,11%,,,,300,,,typing
+76,What percent is 36 out of 50?,72%,,,,300,,,typing
+77,80% of 15 is what?,12,,,,300,,,typing
+78,What is 50% of 178?,89,,,,300,,,typing
+79,What out of 190 is 10%?,19,,,,300,,,typing
+80,25% is what out of 36?,9,,,,300,,,typing
+81,36% of what is 72?,200,,,,300,,,typing
+82,33 is 44% of what?,75,,,,300,,,typing
+83,96 out of what is 75%?,128,,,,300,,,typing
+84,60% is 105 out of what?,175,,,,300,,,typing
+85,What percent of 20 is 18?,90%,,,,300,,,typing
+86,2 is what percent of 8?,25%,,,,300,,,typing
+87,44 out of 110 is what percent?,40%,,,,300,,,typing
+88,What percent is 40 out of 50?,80%,,,,300,,,typing
+89,52% of 50 is what?,26,,,,300,,,typing
+90,What is 22% of 50?,11,,,,300,,,typing
+91,What out of 200 is 40%?,80,,,,300,,,typing
+92,42% is what out of 150?,63,,,,300,,,typing
+93,4% of what is 6?,150,,,,300,,,typing
+94,133 is 70% of what?,190,,,,300,,,typing
+95,132 out of what is 80%?,165,,,,300,,,typing
+96,20% is 15 out of what?,75,,,,300,,,typing
+97,What percent of 25 is 4?,16%,,,,300,,,typing
+98,44 is what percent of 176?,25%,,,,300,,,typing
+99,11 out of 50 is what percent?,22%,,,,300,,,typing
+100,What percent is 72 out of 90?,80%,,,,300,,,typing
+101,90% of 50 is what?,45,,,,300,,,typing
+102,What is 75% of 124?,93,,,,300,,,typing
+103,What out of 200 is 21%?,42,,,,300,,,typing
+104,68% is what out of 125?,85,,,,300,,,typing
+105,20% of what is 2?,10,,,,300,,,typing
+106,33 is 60% of what?,55,,,,300,,,typing
+107,39 out of what is 26%?,150,,,,300,,,typing
+108,80% is 100 out of what?,125,,,,300,,,typing
+109,What percent of 192 is 144?,75%,,,,300,,,typing
+110,39 is what percent of 60?,65%,,,,300,,,typing
+111,69 out of 115 is what percent?,60%,,,,300,,,typing
+112,What percent is 16 out of 50?,32%,,,,300,,,typing
+113,10% of 150 is what?,15,,,,300,,,typing
+114,What is 90% of 130?,117,,,,300,,,typing
+115,What out of 125 is 84%?,105,,,,300,,,typing
+116,20% is what out of 40?,8,,,,300,,,typing
+117,20% of what is 17?,85,,,,300,,,typing
+118,124 is 62% of what?,200,,,,300,,,typing
+119,105 out of what is 75%?,140,,,,300,,,typing
+120,25% is 8 out of what?,32,,,,300,,,typing
+121,What percent of 25 is 4?,16%,,,,300,,,typing
+122,135 is what percent of 150?,90%,,,,300,,,typing
+123,81 out of 180 is what percent?,45%,,,,300,,,typing
+124,What percent is 112 out of 175?,64%,,,,300,,,typing
+125,30% of 190 is what?,57,,,,300,,,typing
+126,What is 25% of 196?,49,,,,300,,,typing
+127,What out of 175 is 4%?,7,,,,300,,,typing
+128,25% is what out of 20?,5,,,,300,,,typing
+129,5% of what is 10?,200,,,,300,,,typing
+130,104 is 65% of what?,160,,,,300,,,typing
+131,35 out of what is 50%?,70,,,,300,,,typing
+132,60% is 84 out of what?,140,,,,300,,,typing
+133,What percent of 45 is 18?,40%,,,,300,,,typing
+134,40 is what percent of 125?,32%,,,,300,,,typing
+135,27 out of 75 is what percent?,36%,,,,300,,,typing
+136,What percent is 15 out of 20?,75%,,,,300,,,typing
+137,40% of 160 is what?,64,,,,300,,,typing
+138,What is 66% of 50?,33,,,,300,,,typing
+139,What out of 32 is 25%?,8,,,,300,,,typing
+140,27% is what out of 200?,54,,,,300,,,typing
+141,80% of what is 92?,115,,,,300,,,typing
+142,66 is 50% of what?,132,,,,300,,,typing
+143,58 out of what is 50%?,116,,,,300,,,typing
+144,50% is 16 out of what?,32,,,,300,,,typing
+145,What percent of 150 is 12?,8%,,,,300,,,typing
+146,21 is what percent of 28?,75%,,,,300,,,typing
+147,161 out of 175 is what percent?,92%,,,,300,,,typing
+148,What percent is 46 out of 200?,23%,,,,300,,,typing
+149,44% of 150 is what?,66,,,,300,,,typing
+150,What is 65% of 20?,13,,,,300,,,typing
+151,What out of 200 is 69%?,138,,,,300,,,typing
+152,12% is what out of 25?,3,,,,300,,,typing
+153,60% of what is 84?,140,,,,300,,,typing
+154,186 is 93% of what?,200,,,,300,,,typing
+155,91 out of what is 52%?,175,,,,300,,,typing
+156,40% is 56 out of what?,140,,,,300,,,typing
+157,What percent of 75 is 54?,72%,,,,300,,,typing
+158,35 is what percent of 70?,50%,,,,300,,,typing
+159,84 out of 168 is what percent?,50%,,,,300,,,typing
+160,What percent is 4 out of 20?,20%,,,,300,,,typing
+161,15% of 80 is what?,12,,,,300,,,typing
+162,What is 45% of 60?,27,,,,300,,,typing
+163,What out of 12 is 50%?,6,,,,300,,,typing
+164,50% is what out of 86?,43,,,,300,,,typing
+165,38% of what is 57?,150,,,,300,,,typing
+166,2 is 4% of what?,50,,,,300,,,typing
+167,130 out of what is 65%?,200,,,,300,,,typing
+168,65% is 104 out of what?,160,,,,300,,,typing
+169,What percent of 200 is 194?,97%,,,,300,,,typing
+170,42 is what percent of 60?,70%,,,,300,,,typing
+171,21 out of 35 is what percent?,60%,,,,300,,,typing
+172,What percent is 9 out of 12?,75%,,,,300,,,typing
+173,45% of 160 is what?,72,,,,300,,,typing
+174,What is 80% of 15?,12,,,,300,,,typing
+175,What out of 200 is 40%?,80,,,,300,,,typing
+176,50% is what out of 126?,63,,,,300,,,typing
+177,30% of what is 45?,150,,,,300,,,typing
+178,7 is 25% of what?,28,,,,300,,,typing
+179,45 out of what is 60%?,75,,,,300,,,typing
+180,96% is 24 out of what?,25,,,,300,,,typing
+181,What percent of 125 is 120?,96%,,,,300,,,typing
+182,36 is what percent of 75?,48%,,,,300,,,typing
+183,171 out of 180 is what percent?,95%,,,,300,,,typing
+184,What percent is 182 out of 200?,91%,,,,300,,,typing
+185,91% of 200 is what?,182,,,,300,,,typing
+186,What is 25% of 12?,3,,,,300,,,typing
+187,What out of 50 is 84%?,42,,,,300,,,typing
+188,22% is what out of 50?,11,,,,300,,,typing
+189,66% of what is 132?,200,,,,300,,,typing
+190,64 is 50% of what?,128,,,,300,,,typing
+191,66 out of what is 50%?,132,,,,300,,,typing
+192,88% is 132 out of what?,150,,,,300,,,typing
+193,What percent of 200 is 186?,93%,,,,300,,,typing
+194,45 is what percent of 125?,36%,,,,300,,,typing
+195,147 out of 150 is what percent?,98%,,,,300,,,typing
+196,What percent is 102 out of 200?,51%,,,,300,,,typing
+197,19% of 200 is what?,38,,,,300,,,typing
+198,What is 35% of 120?,42,,,,300,,,typing
+199,What out of 200 is 74%?,148,,,,300,,,typing
+200,30% is what out of 70?,21,,,,300,,,typing
+201,30% of what is 3?,10,,,,300,,,typing
+202,23 is 46% of what?,50,,,,300,,,typing
+203,48 out of what is 75%?,64,,,,300,,,typing
+204,50% is 33 out of what?,66,,,,300,,,typing
+205,What percent of 70 is 28?,40%,,,,300,,,typing
+206,51 is what percent of 75?,68%,,,,300,,,typing
+207,39 out of 150 is what percent?,26%,,,,300,,,typing
+208,What percent is 70 out of 200?,35%,,,,300,,,typing
+209,8% of 200 is what?,16,,,,300,,,typing
+210,What is 46% of 200?,92,,,,300,,,typing
+211,What out of 60 is 45%?,27,,,,300,,,typing
+212,50% is what out of 192?,96,,,,300,,,typing
+213,90% of what is 180?,200,,,,300,,,typing
+214,78 is 65% of what?,120,,,,300,,,typing
+215,14 out of what is 10%?,140,,,,300,,,typing
+216,16% is 24 out of what?,150,,,,300,,,typing
+217,What percent of 120 is 36?,30%,,,,300,,,typing
+218,27 is what percent of 45?,60%,,,,300,,,typing
+219,21 out of 70 is what percent?,30%,,,,300,,,typing
+220,What percent is 136 out of 170?,80%,,,,300,,,typing
+221,70% of 140 is what?,98,,,,300,,,typing
+222,What is 2% of 150?,3,,,,300,,,typing
+223,What out of 75 is 64%?,48,,,,300,,,typing
+224,20% is what out of 25?,5,,,,300,,,typing
+225,95% of what is 171?,180,,,,300,,,typing
+226,36 is 30% of what?,120,,,,300,,,typing
+227,42 out of what is 40%?,105,,,,300,,,typing
+228,70% is 49 out of what?,70,,,,300,,,typing
+229,What percent of 40 is 4?,10%,,,,300,,,typing
+230,66 is what percent of 88?,75%,,,,300,,,typing
+231,74 out of 200 is what percent?,37%,,,,300,,,typing
+232,What percent is 24 out of 60?,40%,,,,300,,,typing
+233,50% of 174 is what?,87,,,,300,,,typing
+234,What is 40% of 105?,42,,,,300,,,typing
+235,What out of 90 is 90%?,81,,,,300,,,typing
+236,75% is what out of 76?,57,,,,300,,,typing
+237,75% of what is 21?,28,,,,300,,,typing
+238,26 is 65% of what?,40,,,,300,,,typing
+239,5 out of what is 20%?,25,,,,300,,,typing
+240,20% is 9 out of what?,45,,,,300,,,typing
+241,What percent of 170 is 68?,40%,,,,300,,,typing
+242,66 is what percent of 165?,40%,,,,300,,,typing
+243,63 out of 70 is what percent?,90%,,,,300,,,typing
+244,What percent is 54 out of 72?,75%,,,,300,,,typing
+245,80% of 140 is what?,112,,,,300,,,typing
+246,What is 76% of 75?,57,,,,300,,,typing
+247,What out of 50 is 50%?,25,,,,300,,,typing
+248,25% is what out of 72?,18,,,,300,,,typing
+249,5% of what is 3?,60,,,,300,,,typing
+250,9 is 15% of what?,60,,,,300,,,typing
+251,166 out of what is 83%?,200,,,,300,,,typing
+252,72% is 54 out of what?,75,,,,300,,,typing
+253,What percent of 50 is 26?,52%,,,,300,,,typing
+254,32 is what percent of 160?,20%,,,,300,,,typing
+255,11 out of 22 is what percent?,50%,,,,300,,,typing
+256,What percent is 128 out of 160?,80%,,,,300,,,typing
+257,42% of 50 is what?,21,,,,300,,,typing
+258,What is 60% of 65?,39,,,,300,,,typing
+259,What out of 155 is 40%?,62,,,,300,,,typing
+260,60% is what out of 195?,117,,,,300,,,typing
+261,30% of what is 9?,30,,,,300,,,typing
+262,94 is 47% of what?,200,,,,300,,,typing
+263,6 out of what is 12%?,50,,,,300,,,typing
+264,75% is 72 out of what?,96,,,,300,,,typing
+265,What percent of 30 is 9?,30%,,,,300,,,typing
+266,122 is what percent of 200?,61%,,,,300,,,typing
+267,14 out of 40 is what percent?,35%,,,,300,,,typing
+268,What percent is 8 out of 40?,20%,,,,300,,,typing
+269,64% of 75 is what?,48,,,,300,,,typing
+270,What is 40% of 170?,68,,,,300,,,typing
+271,What out of 175 is 40%?,70,,,,300,,,typing
+272,30% is what out of 120?,36,,,,300,,,typing
+273,40% of what is 4?,10,,,,300,,,typing
+274,36 is 90% of what?,40,,,,300,,,typing
+275,7 out of what is 5%?,140,,,,300,,,typing
+276,90% is 135 out of what?,150,,,,300,,,typing
+277,What percent of 170 is 51?,30%,,,,300,,,typing
+278,12 is what percent of 60?,20%,,,,300,,,typing
+279,85 out of 125 is what percent?,68%,,,,300,,,typing
+280,What percent is 132 out of 150?,88%,,,,300,,,typing
+281,74% of 150 is what?,111,,,,300,,,typing
+282,What is 34% of 150?,51,,,,300,,,typing
+283,What out of 125 is 4%?,5,,,,300,,,typing
+284,72% is what out of 50?,36,,,,300,,,typing
+285,80% of what is 32?,40,,,,300,,,typing
+286,32 is 40% of what?,80,,,,300,,,typing
+287,1 out of what is 2%?,50,,,,300,,,typing
+288,25% is 6 out of what?,24,,,,300,,,typing
+289,What percent of 200 is 106?,53%,,,,300,,,typing
+290,190 is what percent of 200?,95%,,,,300,,,typing
+291,20 out of 125 is what percent?,16%,,,,300,,,typing
+292,What percent is 96 out of 128?,75%,,,,300,,,typing
+293,30% of 180 is what?,54,,,,300,,,typing
+294,What is 24% of 75?,18,,,,300,,,typing
+295,What out of 182 is 50%?,91,,,,300,,,typing
+296,75% is what out of 168?,126,,,,300,,,typing
+297,75% of what is 123?,164,,,,300,,,typing
+298,2 is 10% of what?,20,,,,300,,,typing
+299,13 out of what is 20%?,65,,,,300,,,typing
+300,60% is 108 out of what?,180,,,,300,,,typing
+301,What percent of 115 is 23?,20%,,,,300,,,typing
+302,194 is what percent of 200?,97%,,,,300,,,typing
+303,27 out of 180 is what percent?,15%,,,,300,,,typing
+304,What percent is 72 out of 150?,48%,,,,300,,,typing
+305,64% of 175 is what?,112,,,,300,,,typing
+306,What is 20% of 85?,17,,,,300,,,typing
+307,What out of 80 is 90%?,72,,,,300,,,typing
+308,75% is what out of 172?,129,,,,300,,,typing
+309,52% of what is 26?,50,,,,300,,,typing
+310,87 is 60% of what?,145,,,,300,,,typing
+311,63 out of what is 45%?,140,,,,300,,,typing
+312,98% is 196 out of what?,200,,,,300,,,typing
+313,What percent of 175 is 119?,68%,,,,300,,,typing
+314,45 is what percent of 150?,30%,,,,300,,,typing
+315,8 out of 10 is what percent?,80%,,,,300,,,typing
+316,What percent is 162 out of 200?,81%,,,,300,,,typing
+317,75% of 36 is what?,27,,,,300,,,typing
+318,What is 15% of 120?,18,,,,300,,,typing
+319,What out of 122 is 50%?,61,,,,300,,,typing
+320,88% is what out of 175?,154,,,,300,,,typing
+321,76% of what is 19?,25,,,,300,,,typing
+322,55 is 44% of what?,125,,,,300,,,typing
+323,196 out of what is 98%?,200,,,,300,,,typing
+324,32% is 48 out of what?,150,,,,300,,,typing
+325,What percent of 102 is 51?,50%,,,,300,,,typing
+326,95 is what percent of 190?,50%,,,,300,,,typing
+327,17 out of 85 is what percent?,20%,,,,300,,,typing
+328,What percent is 24 out of 25?,96%,,,,300,,,typing
+329,25% of 144 is what?,36,,,,300,,,typing
+330,What is 80% of 20?,16,,,,300,,,typing
+331,What out of 120 is 70%?,84,,,,300,,,typing
+332,40% is what out of 15?,6,,,,300,,,typing
+333,44% of what is 33?,75,,,,300,,,typing
+334,128 is 64% of what?,200,,,,300,,,typing
+335,17 out of what is 10%?,170,,,,300,,,typing
+336,17% is 34 out of what?,200,,,,300,,,typing
+337,What percent of 50 is 24?,48%,,,,300,,,typing
+338,18 is what percent of 24?,75%,,,,300,,,typing
+339,108 out of 144 is what percent?,75%,,,,300,,,typing
+340,What percent is 19 out of 190?,10%,,,,300,,,typing
+341,25% of 4 is what?,1,,,,300,,,typing
+342,What is 6% of 200?,12,,,,300,,,typing
+343,What out of 168 is 75%?,126,,,,300,,,typing
+344,80% is what out of 190?,152,,,,300,,,typing
+345,50% of what is 60?,120,,,,300,,,typing
+346,76 is 95% of what?,80,,,,300,,,typing
+347,84 out of what is 60%?,140,,,,300,,,typing
+348,15% is 21 out of what?,140,,,,300,,,typing
+349,What percent of 125 is 20?,16%,,,,300,,,typing
+350,22 is what percent of 25?,88%,,,,300,,,typing
+351,17 out of 20 is what percent?,85%,,,,300,,,typing
+352,What percent is 117 out of 156?,75%,,,,300,,,typing
+353,4% of 50 is what?,2,,,,300,,,typing
+354,What is 5% of 120?,6,,,,300,,,typing
+355,What out of 75 is 64%?,48,,,,300,,,typing
+356,95% is what out of 20?,19,,,,300,,,typing
+357,76% of what is 19?,25,,,,300,,,typing
+358,42 is 50% of what?,84,,,,300,,,typing
+359,51 out of what is 34%?,150,,,,300,,,typing
+360,75% is 144 out of what?,192,,,,300,,,typing
+361,What percent of 60 is 51?,85%,,,,300,,,typing
+362,32 is what percent of 200?,16%,,,,300,,,typing
+363,48 out of 80 is what percent?,60%,,,,300,,,typing
+364,What percent is 66 out of 150?,44%,,,,300,,,typing
+365,20% of 30 is what?,6,,,,300,,,typing
+366,What is 10% of 160?,16,,,,300,,,typing
+367,What out of 144 is 50%?,72,,,,300,,,typing
+368,42% is what out of 50?,21,,,,300,,,typing
+369,18% of what is 27?,150,,,,300,,,typing
+370,138 is 75% of what?,184,,,,300,,,typing
+371,52 out of what is 40%?,130,,,,300,,,typing
+372,75% is 27 out of what?,36,,,,300,,,typing
+373,What percent of 125 is 115?,92%,,,,300,,,typing
+374,30 is what percent of 125?,24%,,,,300,,,typing
+375,20 out of 50 is what percent?,40%,,,,300,,,typing
+376,What percent is 84 out of 120?,70%,,,,300,,,typing
+377,35% of 200 is what?,70,,,,300,,,typing
+378,What is 52% of 150?,78,,,,300,,,typing
+379,What out of 75 is 80%?,60,,,,300,,,typing
+380,50% is what out of 166?,83,,,,300,,,typing
+381,50% of what is 45?,90,,,,300,,,typing
+382,9 is 20% of what?,45,,,,300,,,typing
+383,6 out of what is 75%?,8,,,,300,,,typing
+384,90% is 63 out of what?,70,,,,300,,,typing
+385,What percent of 175 is 168?,96%,,,,300,,,typing
+386,47 is what percent of 50?,94%,,,,300,,,typing
+387,99 out of 132 is what percent?,75%,,,,300,,,typing
+388,What percent is 136 out of 170?,80%,,,,300,,,typing
+389,70% of 20 is what?,14,,,,300,,,typing
+390,What is 50% of 138?,69,,,,300,,,typing
+391,What out of 20 is 70%?,14,,,,300,,,typing
+392,75% is what out of 140?,105,,,,300,,,typing
+393,24% of what is 30?,125,,,,300,,,typing
+394,129 is 86% of what?,150,,,,300,,,typing
+395,52 out of what is 50%?,104,,,,300,,,typing
+396,20% is 31 out of what?,155,,,,300,,,typing
+397,What percent of 165 is 99?,60%,,,,300,,,typing
+398,69 is what percent of 115?,60%,,,,300,,,typing
+399,132 out of 165 is what percent?,80%,,,,300,,,typing
+400,What percent is 129 out of 150?,86%,,,,300,,,typing
+401,76% of 150 is what?,114,,,,300,,,typing
+402,What is 96% of 125?,120,,,,300,,,typing
+403,What out of 104 is 75%?,78,,,,300,,,typing
+404,50% is what out of 198?,99,,,,300,,,typing
+405,15% of what is 9?,60,,,,300,,,typing
+406,74 is 40% of what?,185,,,,300,,,typing
+407,154 out of what is 88%?,175,,,,300,,,typing
+408,92% is 115 out of what?,125,,,,300,,,typing
+409,What percent of 172 is 43?,25%,,,,300,,,typing
+410,102 is what percent of 136?,75%,,,,300,,,typing
+411,12 out of 30 is what percent?,40%,,,,300,,,typing
+412,What percent is 7 out of 35?,20%,,,,300,,,typing
+413,50% of 70 is what?,35,,,,300,,,typing
+414,What is 40% of 140?,56,,,,300,,,typing
+415,What out of 112 is 25%?,28,,,,300,,,typing
+416,86% is what out of 150?,129,,,,300,,,typing
+417,40% of what is 44?,110,,,,300,,,typing
+418,63 is 45% of what?,140,,,,300,,,typing
+419,41 out of what is 25%?,164,,,,300,,,typing
+420,50% is 58 out of what?,116,,,,300,,,typing
+421,What percent of 200 is 40?,20%,,,,300,,,typing
+422,42 is what percent of 200?,21%,,,,300,,,typing
+423,170 out of 200 is what percent?,85%,,,,300,,,typing
+424,What percent is 20 out of 25?,80%,,,,300,,,typing
+425,8% of 175 is what?,14,,,,300,,,typing
+426,What is 12% of 175?,21,,,,300,,,typing
+427,What out of 150 is 70%?,105,,,,300,,,typing
+428,40% is what out of 65?,26,,,,300,,,typing
+429,25% of what is 48?,192,,,,300,,,typing
+430,80 is 40% of what?,200,,,,300,,,typing
+431,117 out of what is 60%?,195,,,,300,,,typing
+432,20% is 7 out of what?,35,,,,300,,,typing
+433,What percent of 36 is 18?,50%,,,,300,,,typing
+434,49 is what percent of 140?,35%,,,,300,,,typing
+435,8 out of 160 is what percent?,5%,,,,300,,,typing
+436,What percent is 28 out of 35?,80%,,,,300,,,typing
+437,60% of 135 is what?,81,,,,300,,,typing
+438,What is 30% of 110?,33,,,,300,,,typing
+439,What out of 198 is 50%?,99,,,,300,,,typing
+440,5% is what out of 200?,10,,,,300,,,typing
+441,80% of what is 56?,70,,,,300,,,typing
+442,39 is 78% of what?,50,,,,300,,,typing
+443,24 out of what is 12%?,200,,,,300,,,typing
+444,32% is 24 out of what?,75,,,,300,,,typing
+445,What percent of 184 is 46?,25%,,,,300,,,typing
+446,11 is what percent of 110?,10%,,,,300,,,typing
+447,148 out of 185 is what percent?,80%,,,,300,,,typing
+448,What percent is 72 out of 120?,60%,,,,300,,,typing
+449,45% of 200 is what?,90,,,,300,,,typing
+450,What is 76% of 75?,57,,,,300,,,typing
+451,What out of 50 is 16%?,8,,,,300,,,typing
+452,75% is what out of 132?,99,,,,300,,,typing
+453,20% of what is 5?,25,,,,300,,,typing
+454,24 is 15% of what?,160,,,,300,,,typing
+455,104 out of what is 80%?,130,,,,300,,,typing
+456,25% is 1 out of what?,4,,,,300,,,typing
+457,What percent of 110 is 22?,20%,,,,300,,,typing
+458,16 is what percent of 200?,8%,,,,300,,,typing
+459,15 out of 25 is what percent?,60%,,,,300,,,typing
+460,What percent is 20 out of 80?,25%,,,,300,,,typing
+461,25% of 84 is what?,21,,,,300,,,typing
+462,What is 40% of 105?,42,,,,300,,,typing
+463,What out of 196 is 50%?,98,,,,300,,,typing
+464,86% is what out of 150?,129,,,,300,,,typing
+465,50% of what is 57?,114,,,,300,,,typing
+466,9 is 60% of what?,15,,,,300,,,typing
+467,48 out of what is 50%?,96,,,,300,,,typing
+468,12% is 24 out of what?,200,,,,300,,,typing
+469,What percent of 150 is 45?,30%,,,,300,,,typing
+470,18 is what percent of 20?,90%,,,,300,,,typing
+471,34 out of 68 is what percent?,50%,,,,300,,,typing
+472,What percent is 81 out of 90?,90%,,,,300,,,typing
+473,50% of 2 is what?,1,,,,300,,,typing
+474,What is 60% of 195?,117,,,,300,,,typing
+475,What out of 185 is 80%?,148,,,,300,,,typing
+476,60% is what out of 200?,120,,,,300,,,typing
+477,50% of what is 51?,102,,,,300,,,typing
+478,33 is 66% of what?,50,,,,300,,,typing
+479,17 out of what is 10%?,170,,,,300,,,typing
+480,21% is 42 out of what?,200,,,,300,,,typing
+481,What percent of 108 is 54?,50%,,,,300,,,typing
+482,77 is what percent of 175?,44%,,,,300,,,typing
+483,19 out of 25 is what percent?,76%,,,,300,,,typing
+484,What percent is 12 out of 15?,80%,,,,300,,,typing
+485,50% of 128 is what?,64,,,,300,,,typing
+486,What is 75% of 140?,105,,,,300,,,typing
+487,What out of 80 is 35%?,28,,,,300,,,typing
+488,17% is what out of 200?,34,,,,300,,,typing
+489,40% of what is 46?,115,,,,300,,,typing
+490,54 is 36% of what?,150,,,,300,,,typing
+491,12 out of what is 60%?,20,,,,300,,,typing
+492,50% is 10 out of what?,20,,,,300,,,typing
+493,What percent of 75 is 12?,16%,,,,300,,,typing
+494,38 is what percent of 50?,76%,,,,300,,,typing
+495,120 out of 160 is what percent?,75%,,,,300,,,typing
+496,What percent is 57 out of 60?,95%,,,,300,,,typing
+497,75% of 148 is what?,111,,,,300,,,typing
+498,What is 50% of 168?,84,,,,300,,,typing
+499,What out of 12 is 50%?,6,,,,300,,,typing
+500,64% is what out of 50?,32,,,,300,,,typing
+501,36% of what is 54?,150,,,,300,,,typing
+502,27 is 45% of what?,60,,,,300,,,typing
+503,18 out of what is 25%?,72,,,,300,,,typing
+504,40% is 2 out of what?,5,,,,300,,,typing
+505,What percent of 10 is 6?,60%,,,,300,,,typing
+506,100 is what percent of 200?,50%,,,,300,,,typing
+507,91 out of 175 is what percent?,52%,,,,300,,,typing
+508,What percent is 111 out of 148?,75%,,,,300,,,typing
+509,71% of 200 is what?,142,,,,300,,,typing
+510,What is 60% of 90?,54,,,,300,,,typing
+511,What out of 90 is 60%?,54,,,,300,,,typing
+512,25% is what out of 68?,17,,,,300,,,typing
+513,31% of what is 62?,200,,,,300,,,typing
+514,39 is 20% of what?,195,,,,300,,,typing
+515,112 out of what is 64%?,175,,,,300,,,typing
+516,40% is 24 out of what?,60,,,,300,,,typing
+517,What percent of 150 is 117?,78%,,,,300,,,typing
+518,11 is what percent of 55?,20%,,,,300,,,typing
+519,38 out of 152 is what percent?,25%,,,,300,,,typing
+520,What percent is 14 out of 140?,10%,,,,300,,,typing
+521,82% of 150 is what?,123,,,,300,,,typing
+522,What is 15% of 60?,9,,,,300,,,typing
+523,What out of 115 is 40%?,46,,,,300,,,typing
+524,86% is what out of 50?,43,,,,300,,,typing
+525,40% of what is 58?,145,,,,300,,,typing
+526,54 is 45% of what?,120,,,,300,,,typing
+527,44 out of what is 25%?,176,,,,300,,,typing
+528,69% is 138 out of what?,200,,,,300,,,typing
+529,What percent of 95 is 38?,40%,,,,300,,,typing
+530,120 is what percent of 160?,75%,,,,300,,,typing
+531,99 out of 150 is what percent?,66%,,,,300,,,typing
+532,What percent is 171 out of 190?,90%,,,,300,,,typing
+533,25% of 40 is what?,10,,,,300,,,typing
+534,What is 40% of 175?,70,,,,300,,,typing
+535,What out of 148 is 75%?,111,,,,300,,,typing
+536,80% is what out of 105?,84,,,,300,,,typing
+537,80% of what is 72?,90,,,,300,,,typing
+538,24 is 30% of what?,80,,,,300,,,typing
+539,10 out of what is 50%?,20,,,,300,,,typing
+540,25% is 8 out of what?,32,,,,300,,,typing
+541,What percent of 25 is 2?,8%,,,,300,,,typing
+542,44 is what percent of 110?,40%,,,,300,,,typing
+543,74 out of 148 is what percent?,50%,,,,300,,,typing
+544,What percent is 6 out of 75?,8%,,,,300,,,typing
+545,61% of 200 is what?,122,,,,300,,,typing
+546,What is 50% of 96?,48,,,,300,,,typing
+547,What out of 135 is 20%?,27,,,,300,,,typing
+548,50% is what out of 86?,43,,,,300,,,typing
+549,60% of what is 81?,135,,,,300,,,typing
+550,133 is 70% of what?,190,,,,300,,,typing
+551,141 out of what is 75%?,188,,,,300,,,typing
+552,40% is 12 out of what?,30,,,,300,,,typing
+553,What percent of 75 is 12?,16%,,,,300,,,typing
+554,49 is what percent of 98?,50%,,,,300,,,typing
+555,24 out of 32 is what percent?,75%,,,,300,,,typing
+556,What percent is 17 out of 50?,34%,,,,300,,,typing
+557,15% of 40 is what?,6,,,,300,,,typing
+558,What is 70% of 200?,140,,,,300,,,typing
+559,What out of 160 is 50%?,80,,,,300,,,typing
+560,50% is what out of 58?,29,,,,300,,,typing
+561,10% of what is 16?,160,,,,300,,,typing
+562,24 is 96% of what?,25,,,,300,,,typing
+563,38 out of what is 50%?,76,,,,300,,,typing
+564,80% is 160 out of what?,200,,,,300,,,typing
+565,What percent of 150 is 111?,74%,,,,300,,,typing
+566,12 is what percent of 15?,80%,,,,300,,,typing
+567,18 out of 150 is what percent?,12%,,,,300,,,typing
+568,What percent is 13 out of 65?,20%,,,,300,,,typing
+569,75% of 80 is what?,60,,,,300,,,typing
+570,What is 45% of 160?,72,,,,300,,,typing
+571,What out of 75 is 20%?,15,,,,300,,,typing
+572,60% is what out of 105?,63,,,,300,,,typing
+573,15% of what is 9?,60,,,,300,,,typing
+574,111 is 75% of what?,148,,,,300,,,typing
+575,8 out of what is 25%?,32,,,,300,,,typing
+576,50% is 52 out of what?,104,,,,300,,,typing
+577,What percent of 148 is 74?,50%,,,,300,,,typing
+578,84 is what percent of 120?,70%,,,,300,,,typing
+579,186 out of 200 is what percent?,93%,,,,300,,,typing
+580,What percent is 80 out of 125?,64%,,,,300,,,typing
+581,15% of 200 is what?,30,,,,300,,,typing
+582,What is 60% of 50?,30,,,,300,,,typing
+583,What out of 75 is 76%?,57,,,,300,,,typing
+584,85% is what out of 200?,170,,,,300,,,typing
+585,75% of what is 111?,148,,,,300,,,typing
+586,78 is 52% of what?,150,,,,300,,,typing
+587,99 out of what is 66%?,150,,,,300,,,typing
+588,10% is 7 out of what?,70,,,,300,,,typing
+589,What percent of 196 is 98?,50%,,,,300,,,typing
+590,24 is what percent of 32?,75%,,,,300,,,typing
+591,91 out of 182 is what percent?,50%,,,,300,,,typing
+592,What percent is 46 out of 200?,23%,,,,300,,,typing
+593,75% of 124 is what?,93,,,,300,,,typing
+594,What is 65% of 80?,52,,,,300,,,typing
+595,What out of 160 is 50%?,80,,,,300,,,typing
+596,75% is what out of 128?,96,,,,300,,,typing
+597,50% of what is 60?,120,,,,300,,,typing
+598,15 is 30% of what?,50,,,,300,,,typing
+599,136 out of what is 80%?,170,,,,300,,,typing
+600,40% is 20 out of what?,50,,,,300,,,typing
+601,What percent of 200 is 84?,42%,,,,300,,,typing
+602,24 is what percent of 25?,96%,,,,300,,,typing
+603,61 out of 122 is what percent?,50%,,,,300,,,typing
+604,What percent is 188 out of 200?,94%,,,,300,,,typing
+605,70% of 120 is what?,84,,,,300,,,typing
+606,What is 25% of 168?,42,,,,300,,,typing
+607,What out of 70 is 20%?,14,,,,300,,,typing
+608,68% is what out of 50?,34,,,,300,,,typing
+609,50% of what is 20?,40,,,,300,,,typing
+610,36 is 80% of what?,45,,,,300,,,typing
+611,9 out of what is 25%?,36,,,,300,,,typing
+612,60% is 24 out of what?,40,,,,300,,,typing
+613,What percent of 40 is 36?,90%,,,,300,,,typing
+614,7 is what percent of 140?,5%,,,,300,,,typing
+615,51 out of 150 is what percent?,34%,,,,300,,,typing
+616,What percent is 54 out of 180?,30%,,,,300,,,typing
+617,39% of 200 is what?,78,,,,300,,,typing
+618,What is 50% of 24?,12,,,,300,,,typing
+619,What out of 150 is 10%?,15,,,,300,,,typing
+620,76% is what out of 25?,19,,,,300,,,typing
+621,50% of what is 46?,92,,,,300,,,typing
+622,18 is 36% of what?,50,,,,300,,,typing
+623,112 out of what is 80%?,140,,,,300,,,typing
+624,65% is 130 out of what?,200,,,,300,,,typing
+625,What percent of 130 is 13?,10%,,,,300,,,typing
+626,21 is what percent of 60?,35%,,,,300,,,typing
+627,64 out of 160 is what percent?,40%,,,,300,,,typing
+628,What percent is 2 out of 200?,1%,,,,300,,,typing
+629,30% of 190 is what?,57,,,,300,,,typing
+630,What is 50% of 140?,70,,,,300,,,typing
+631,What out of 150 is 20%?,30,,,,300,,,typing
+632,25% is what out of 4?,1,,,,300,,,typing
+633,54% of what is 108?,200,,,,300,,,typing
+634,33 is 25% of what?,132,,,,300,,,typing
+635,114 out of what is 95%?,120,,,,300,,,typing
+636,48% is 96 out of what?,200,,,,300,,,typing
+637,What percent of 140 is 63?,45%,,,,300,,,typing
+638,51 is what percent of 85?,60%,,,,300,,,typing
+639,126 out of 140 is what percent?,90%,,,,300,,,typing
+640,What percent is 21 out of 30?,70%,,,,300,,,typing
+641,75% of 116 is what?,87,,,,300,,,typing
+642,What is 45% of 120?,54,,,,300,,,typing
+643,What out of 120 is 75%?,90,,,,300,,,typing
+644,68% is what out of 75?,51,,,,300,,,typing
+645,60% of what is 39?,65,,,,300,,,typing
+646,60 is 40% of what?,150,,,,300,,,typing
+647,17 out of what is 85%?,20,,,,300,,,typing
+648,64% is 80 out of what?,125,,,,300,,,typing
+649,What percent of 125 is 90?,72%,,,,300,,,typing
+650,24 is what percent of 160?,15%,,,,300,,,typing
+651,126 out of 140 is what percent?,90%,,,,300,,,typing
+652,What percent is 47 out of 94?,50%,,,,300,,,typing
+653,25% of 160 is what?,40,,,,300,,,typing
+654,What is 86% of 150?,129,,,,300,,,typing
+655,What out of 4 is 25%?,1,,,,300,,,typing
+656,30% is what out of 160?,48,,,,300,,,typing
+657,25% of what is 45?,180,,,,300,,,typing
+658,34 is 50% of what?,68,,,,300,,,typing
+659,126 out of what is 63%?,200,,,,300,,,typing
+660,75% is 30 out of what?,40,,,,300,,,typing
+661,What percent of 60 is 51?,85%,,,,300,,,typing
+662,25 is what percent of 50?,50%,,,,300,,,typing
+663,119 out of 140 is what percent?,85%,,,,300,,,typing
+664,What percent is 20 out of 25?,80%,,,,300,,,typing
+665,50% of 102 is what?,51,,,,300,,,typing
+666,What is 50% of 124?,62,,,,300,,,typing
+667,What out of 30 is 30%?,9,,,,300,,,typing
+668,26% is what out of 50?,13,,,,300,,,typing
+669,84% of what is 105?,125,,,,300,,,typing
+670,72 is 90% of what?,80,,,,300,,,typing
+671,9 out of what is 50%?,18,,,,300,,,typing
+672,92% is 23 out of what?,25,,,,300,,,typing
+673,What percent of 180 is 90?,50%,,,,300,,,typing
+674,72 is what percent of 90?,80%,,,,300,,,typing
+675,34 out of 50 is what percent?,68%,,,,300,,,typing
+676,What percent is 41 out of 50?,82%,,,,300,,,typing
+677,6% of 200 is what?,12,,,,300,,,typing
+678,What is 25% of 72?,18,,,,300,,,typing
+679,What out of 164 is 50%?,82,,,,300,,,typing
+680,30% is what out of 160?,48,,,,300,,,typing
+681,50% of what is 23?,46,,,,300,,,typing
+682,68 is 85% of what?,80,,,,300,,,typing
+683,69 out of what is 50%?,138,,,,300,,,typing
+684,64% is 16 out of what?,25,,,,300,,,typing
+685,What percent of 25 is 23?,92%,,,,300,,,typing
+686,40 is what percent of 80?,50%,,,,300,,,typing
+687,9 out of 45 is what percent?,20%,,,,300,,,typing
+688,What percent is 30 out of 50?,60%,,,,300,,,typing
+689,5% of 140 is what?,7,,,,300,,,typing
+690,What is 50% of 110?,55,,,,300,,,typing
+691,What out of 200 is 67%?,134,,,,300,,,typing
+692,25% is what out of 8?,2,,,,300,,,typing
+693,25% of what is 50?,200,,,,300,,,typing
+694,90 is 50% of what?,180,,,,300,,,typing
+695,12 out of what is 30%?,40,,,,300,,,typing
+696,75% is 33 out of what?,44,,,,300,,,typing
+697,What percent of 110 is 88?,80%,,,,300,,,typing
+698,41 is what percent of 164?,25%,,,,300,,,typing
+699,81 out of 90 is what percent?,90%,,,,300,,,typing
+700,What percent is 12 out of 48?,25%,,,,300,,,typing
+701,40% of 40 is what?,16,,,,300,,,typing
+702,What is 10% of 10?,1,,,,300,,,typing
+703,What out of 110 is 90%?,99,,,,300,,,typing
+704,95% is what out of 140?,133,,,,300,,,typing
+705,75% of what is 66?,88,,,,300,,,typing
+706,12 is 30% of what?,40,,,,300,,,typing
+707,119 out of what is 68%?,175,,,,300,,,typing
+708,40% is 44 out of what?,110,,,,300,,,typing
+709,What percent of 50 is 1?,2%,,,,300,,,typing
+710,63 is what percent of 150?,42%,,,,300,,,typing
+711,69 out of 75 is what percent?,92%,,,,300,,,typing
+712,What percent is 120 out of 160?,75%,,,,300,,,typing
+713,62% of 200 is what?,124,,,,300,,,typing
+714,What is 16% of 175?,28,,,,300,,,typing
+715,What out of 50 is 46%?,23,,,,300,,,typing
+716,25% is what out of 108?,27,,,,300,,,typing
+717,75% of what is 9?,12,,,,300,,,typing
+718,133 is 95% of what?,140,,,,300,,,typing
+719,133 out of what is 95%?,140,,,,300,,,typing
+720,84% is 168 out of what?,200,,,,300,,,typing
+721,What percent of 200 is 84?,42%,,,,300,,,typing
+722,147 is what percent of 150?,98%,,,,300,,,typing
+723,65 out of 125 is what percent?,52%,,,,300,,,typing
+724,What percent is 8 out of 200?,4%,,,,300,,,typing
+725,90% of 60 is what?,54,,,,300,,,typing
+726,What is 50% of 70?,35,,,,300,,,typing
+727,What out of 68 is 75%?,51,,,,300,,,typing
+728,95% is what out of 20?,19,,,,300,,,typing
+729,46% of what is 69?,150,,,,300,,,typing
+730,132 is 80% of what?,165,,,,300,,,typing
+731,152 out of what is 76%?,200,,,,300,,,typing
+732,75% is 60 out of what?,80,,,,300,,,typing
+733,What percent of 170 is 17?,10%,,,,300,,,typing
+734,21 is what percent of 50?,42%,,,,300,,,typing
+735,156 out of 200 is what percent?,78%,,,,300,,,typing
+736,What percent is 15 out of 60?,25%,,,,300,,,typing
+737,25% of 52 is what?,13,,,,300,,,typing
+738,What is 20% of 115?,23,,,,300,,,typing
+739,What out of 48 is 75%?,36,,,,300,,,typing
+740,60% is what out of 190?,114,,,,300,,,typing
+741,25% of what is 27?,108,,,,300,,,typing
+742,105 is 84% of what?,125,,,,300,,,typing
+743,8 out of what is 10%?,80,,,,300,,,typing
+744,44% is 22 out of what?,50,,,,300,,,typing
+745,What percent of 160 is 112?,70%,,,,300,,,typing
+746,95 is what percent of 125?,76%,,,,300,,,typing
+747,148 out of 185 is what percent?,80%,,,,300,,,typing
+748,What percent is 18 out of 20?,90%,,,,300,,,typing
+749,35% of 120 is what?,42,,,,300,,,typing
+750,What is 20% of 155?,31,,,,300,,,typing
+751,What out of 66 is 50%?,33,,,,300,,,typing
+752,50% is what out of 116?,58,,,,300,,,typing
+753,52% of what is 65?,125,,,,300,,,typing
+754,12 is 80% of what?,15,,,,300,,,typing
+755,10 out of what is 8%?,125,,,,300,,,typing
+756,52% is 39 out of what?,75,,,,300,,,typing
+757,What percent of 120 is 96?,80%,,,,300,,,typing
+758,7 is what percent of 28?,25%,,,,300,,,typing
+759,84 out of 140 is what percent?,60%,,,,300,,,typing
+760,What percent is 39 out of 156?,25%,,,,300,,,typing
+761,1% of 200 is what?,2,,,,300,,,typing
+762,What is 60% of 55?,33,,,,300,,,typing
+763,What out of 200 is 68%?,136,,,,300,,,typing
+764,50% is what out of 28?,14,,,,300,,,typing
+765,80% of what is 92?,115,,,,300,,,typing
+766,42 is 35% of what?,120,,,,300,,,typing
+767,6 out of what is 60%?,10,,,,300,,,typing
+768,25% is 33 out of what?,132,,,,300,,,typing
+769,What percent of 45 is 27?,60%,,,,300,,,typing
+770,126 is what percent of 200?,63%,,,,300,,,typing
+771,15 out of 25 is what percent?,60%,,,,300,,,typing
+772,What percent is 12 out of 40?,30%,,,,300,,,typing
+773,50% of 62 is what?,31,,,,300,,,typing
+774,What is 60% of 115?,69,,,,300,,,typing
+775,What out of 128 is 50%?,64,,,,300,,,typing
+776,50% is what out of 188?,94,,,,300,,,typing
+777,25% of what is 42?,168,,,,300,,,typing
+778,141 is 94% of what?,150,,,,300,,,typing
+779,44 out of what is 50%?,88,,,,300,,,typing
+780,60% is 111 out of what?,185,,,,300,,,typing
+781,What percent of 196 is 98?,50%,,,,300,,,typing
+782,8 is what percent of 10?,80%,,,,300,,,typing
+783,18 out of 150 is what percent?,12%,,,,300,,,typing
+784,What percent is 33 out of 66?,50%,,,,300,,,typing
+785,72% of 50 is what?,36,,,,300,,,typing
+786,What is 60% of 125?,75,,,,300,,,typing
+787,What out of 60 is 35%?,21,,,,300,,,typing
+788,96% is what out of 50?,48,,,,300,,,typing
+789,10% of what is 1?,10,,,,300,,,typing
+790,96 is 64% of what?,150,,,,300,,,typing
+791,59 out of what is 50%?,118,,,,300,,,typing
+792,20% is 6 out of what?,30,,,,300,,,typing
+793,What percent of 200 is 104?,52%,,,,300,,,typing
+794,6 is what percent of 10?,60%,,,,300,,,typing
+795,162 out of 180 is what percent?,90%,,,,300,,,typing
+796,What percent is 18 out of 30?,60%,,,,300,,,typing
+797,40% of 5 is what?,2,,,,300,,,typing
+798,What is 50% of 42?,21,,,,300,,,typing
+799,What out of 190 is 80%?,152,,,,300,,,typing
+800,60% is what out of 145?,87,,,,300,,,typing
+801,50% of what is 43?,86,,,,300,,,typing
+802,23 is 20% of what?,115,,,,300,,,typing
+803,13 out of what is 50%?,26,,,,300,,,typing
+804,92% is 69 out of what?,75,,,,300,,,typing
+805,What percent of 148 is 111?,75%,,,,300,,,typing
+806,20 is what percent of 200?,10%,,,,300,,,typing
+807,47 out of 50 is what percent?,94%,,,,300,,,typing
+808,What percent is 178 out of 200?,89%,,,,300,,,typing
+809,25% of 160 is what?,40,,,,300,,,typing
+810,What is 95% of 140?,133,,,,300,,,typing
+811,What out of 180 is 15%?,27,,,,300,,,typing
+812,40% is what out of 70?,28,,,,300,,,typing
+813,16% of what is 8?,50,,,,300,,,typing
+814,92 is 46% of what?,200,,,,300,,,typing
+815,18 out of what is 45%?,40,,,,300,,,typing
+816,75% is 108 out of what?,144,,,,300,,,typing
+817,What percent of 190 is 114?,60%,,,,300,,,typing
+818,119 is what percent of 175?,68%,,,,300,,,typing
+819,9 out of 36 is what percent?,25%,,,,300,,,typing
+820,What percent is 2 out of 8?,25%,,,,300,,,typing
+821,60% of 195 is what?,117,,,,300,,,typing
+822,What is 30% of 20?,6,,,,300,,,typing
+823,What out of 194 is 50%?,97,,,,300,,,typing
+824,36% is what out of 150?,54,,,,300,,,typing
+825,49% of what is 98?,200,,,,300,,,typing
+826,28 is 20% of what?,140,,,,300,,,typing
+827,35 out of what is 20%?,175,,,,300,,,typing
+828,75% is 27 out of what?,36,,,,300,,,typing
+829,What percent of 175 is 140?,80%,,,,300,,,typing
+830,96 is what percent of 192?,50%,,,,300,,,typing
+831,3 out of 20 is what percent?,15%,,,,300,,,typing
+832,What percent is 6 out of 200?,3%,,,,300,,,typing
+833,86% of 200 is what?,172,,,,300,,,typing
+834,What is 95% of 120?,114,,,,300,,,typing
+835,What out of 30 is 30%?,9,,,,300,,,typing
+836,10% is what out of 140?,14,,,,300,,,typing
+837,75% of what is 93?,124,,,,300,,,typing
+838,94 is 47% of what?,200,,,,300,,,typing
+839,6 out of what is 10%?,60,,,,300,,,typing
+840,50% is 18 out of what?,36,,,,300,,,typing
+841,What percent of 150 is 123?,82%,,,,300,,,typing
+842,35 is what percent of 70?,50%,,,,300,,,typing
+843,17 out of 170 is what percent?,10%,,,,300,,,typing
+844,What percent is 15 out of 75?,20%,,,,300,,,typing
+845,20% of 110 is what?,22,,,,300,,,typing
+846,What is 35% of 120?,42,,,,300,,,typing
+847,What out of 125 is 20%?,25,,,,300,,,typing
+848,20% is what out of 25?,5,,,,300,,,typing
+849,95% of what is 57?,60,,,,300,,,typing
+850,8 is 10% of what?,80,,,,300,,,typing
+851,45 out of what is 30%?,150,,,,300,,,typing
+852,80% is 88 out of what?,110,,,,300,,,typing
+853,What percent of 125 is 65?,52%,,,,300,,,typing
+854,78 is what percent of 130?,60%,,,,300,,,typing
+855,114 out of 120 is what percent?,95%,,,,300,,,typing
+856,What percent is 78 out of 104?,75%,,,,300,,,typing
+857,20% of 165 is what?,33,,,,300,,,typing
+858,What is 44% of 125?,55,,,,300,,,typing
+859,What out of 60 is 75%?,45,,,,300,,,typing
+860,74% is what out of 150?,111,,,,300,,,typing
+861,40% of what is 22?,55,,,,300,,,typing
+862,32 is 50% of what?,64,,,,300,,,typing
+863,54 out of what is 60%?,90,,,,300,,,typing
+864,50% is 2 out of what?,4,,,,300,,,typing
+865,What percent of 155 is 62?,40%,,,,300,,,typing
+866,144 is what percent of 200?,72%,,,,300,,,typing
+867,12 out of 75 is what percent?,16%,,,,300,,,typing
+868,What percent is 33 out of 66?,50%,,,,300,,,typing
+869,82% of 200 is what?,164,,,,300,,,typing
+870,What is 50% of 134?,67,,,,300,,,typing
+871,What out of 20 is 90%?,18,,,,300,,,typing
+872,20% is what out of 70?,14,,,,300,,,typing
+873,78% of what is 39?,50,,,,300,,,typing
+874,70 is 50% of what?,140,,,,300,,,typing
+875,29 out of what is 20%?,145,,,,300,,,typing
+876,70% is 35 out of what?,50,,,,300,,,typing
+877,What percent of 25 is 6?,24%,,,,300,,,typing
+878,8 is what percent of 200?,4%,,,,300,,,typing
+879,95 out of 125 is what percent?,76%,,,,300,,,typing
+880,What percent is 18 out of 200?,9%,,,,300,,,typing
+881,20% of 35 is what?,7,,,,300,,,typing
+882,What is 22% of 200?,44,,,,300,,,typing
+883,What out of 56 is 25%?,14,,,,300,,,typing
+884,25% is what out of 20?,5,,,,300,,,typing
+885,50% of what is 67?,134,,,,300,,,typing
+886,87 is 60% of what?,145,,,,300,,,typing
+887,48 out of what is 96%?,50,,,,300,,,typing
+888,50% is 100 out of what?,200,,,,300,,,typing
+889,What percent of 75 is 69?,92%,,,,300,,,typing
+890,51 is what percent of 60?,85%,,,,300,,,typing
+891,40 out of 160 is what percent?,25%,,,,300,,,typing
+892,What percent is 25 out of 50?,50%,,,,300,,,typing
+893,25% of 140 is what?,35,,,,300,,,typing
+894,What is 50% of 62?,31,,,,300,,,typing
+895,What out of 165 is 40%?,66,,,,300,,,typing
+896,60% is what out of 55?,33,,,,300,,,typing
+897,72% of what is 144?,200,,,,300,,,typing
+898,122 is 61% of what?,200,,,,300,,,typing
+899,83 out of what is 50%?,166,,,,300,,,typing
+900,70% is 7 out of what?,10,,,,300,,,typing
+901,What percent of 14 is 7?,50%,,,,300,,,typing
+902,39 is what percent of 65?,60%,,,,300,,,typing
+903,5 out of 125 is what percent?,4%,,,,300,,,typing
+904,What percent is 52 out of 130?,40%,,,,300,,,typing
+905,50% of 20 is what?,10,,,,300,,,typing
+906,What is 10% of 200?,20,,,,300,,,typing
+907,What out of 180 is 5%?,9,,,,300,,,typing
+908,8% is what out of 175?,14,,,,300,,,typing
+909,40% of what is 38?,95,,,,300,,,typing
+910,93 is 60% of what?,155,,,,300,,,typing
+911,27 out of what is 90%?,30,,,,300,,,typing
+912,50% is 97 out of what?,194,,,,300,,,typing
+913,What percent of 20 is 16?,80%,,,,300,,,typing
+914,3 is what percent of 15?,20%,,,,300,,,typing
+915,46 out of 184 is what percent?,25%,,,,300,,,typing
+916,What percent is 96 out of 150?,64%,,,,300,,,typing
+917,50% of 90 is what?,45,,,,300,,,typing
+918,What is 75% of 64?,48,,,,300,,,typing
+919,What out of 56 is 75%?,42,,,,300,,,typing
+920,10% is what out of 130?,13,,,,300,,,typing
+921,96% of what is 168?,175,,,,300,,,typing
+922,78 is 39% of what?,200,,,,300,,,typing
+923,100 out of what is 50%?,200,,,,300,,,typing
+924,20% is 26 out of what?,130,,,,300,,,typing
+925,What percent of 200 is 186?,93%,,,,300,,,typing
+926,39 is what percent of 156?,25%,,,,300,,,typing
+927,19 out of 190 is what percent?,10%,,,,300,,,typing
+928,What percent is 78 out of 130?,60%,,,,300,,,typing
+929,50% of 180 is what?,90,,,,300,,,typing
+930,What is 36% of 200?,72,,,,300,,,typing
+931,What out of 200 is 38%?,76,,,,300,,,typing
+932,40% is what out of 125?,50,,,,300,,,typing
+933,80% of what is 8?,10,,,,300,,,typing
+934,176 is 88% of what?,200,,,,300,,,typing
+935,126 out of what is 72%?,175,,,,300,,,typing
+936,50% is 52 out of what?,104,,,,300,,,typing
+937,What percent of 120 is 18?,15%,,,,300,,,typing
+938,4 is what percent of 20?,20%,,,,300,,,typing
+939,12 out of 30 is what percent?,40%,,,,300,,,typing
+940,What percent is 21 out of 28?,75%,,,,300,,,typing
+941,42% of 150 is what?,63,,,,300,,,typing
+942,What is 50% of 134?,67,,,,300,,,typing
+943,What out of 175 is 64%?,112,,,,300,,,typing
+944,80% is what out of 190?,152,,,,300,,,typing
+945,85% of what is 17?,20,,,,300,,,typing
+946,13 is 50% of what?,26,,,,300,,,typing
+947,33 out of what is 75%?,44,,,,300,,,typing
+948,74% is 148 out of what?,200,,,,300,,,typing
+949,What percent of 110 is 22?,20%,,,,300,,,typing
+950,47 is what percent of 188?,25%,,,,300,,,typing
+951,28 out of 140 is what percent?,20%,,,,300,,,typing
+952,What percent is 1 out of 5?,20%,,,,300,,,typing
+953,75% of 84 is what?,63,,,,300,,,typing
+954,What is 54% of 50?,27,,,,300,,,typing
+955,What out of 200 is 30%?,60,,,,300,,,typing
+956,50% is what out of 132?,66,,,,300,,,typing
+957,66% of what is 99?,150,,,,300,,,typing
+958,42 is 40% of what?,105,,,,300,,,typing
+959,54 out of what is 30%?,180,,,,300,,,typing
+960,76% is 133 out of what?,175,,,,300,,,typing
+961,What percent of 200 is 82?,41%,,,,300,,,typing
+962,51 is what percent of 68?,75%,,,,300,,,typing
+963,20 out of 125 is what percent?,16%,,,,300,,,typing
+964,What percent is 57 out of 190?,30%,,,,300,,,typing
+965,50% of 200 is what?,100,,,,300,,,typing
+966,What is 60% of 35?,21,,,,300,,,typing
+967,What out of 85 is 40%?,34,,,,300,,,typing
+968,78% is what out of 150?,117,,,,300,,,typing
+969,20% of what is 35?,175,,,,300,,,typing
+970,22 is 88% of what?,25,,,,300,,,typing
+971,112 out of what is 64%?,175,,,,300,,,typing
+972,50% is 27 out of what?,54,,,,300,,,typing
+973,What percent of 125 is 20?,16%,,,,300,,,typing
+974,62 is what percent of 124?,50%,,,,300,,,typing
+975,96 out of 150 is what percent?,64%,,,,300,,,typing
+976,What percent is 31 out of 124?,25%,,,,300,,,typing
+977,88% of 175 is what?,154,,,,300,,,typing
+978,What is 30% of 160?,48,,,,300,,,typing
+979,What out of 115 is 20%?,23,,,,300,,,typing
+980,84% is what out of 50?,42,,,,300,,,typing
+981,22% of what is 44?,200,,,,300,,,typing
+982,72 is 90% of what?,80,,,,300,,,typing
+983,12 out of what is 60%?,20,,,,300,,,typing
+984,38% is 19 out of what?,50,,,,300,,,typing
+985,What percent of 200 is 192?,96%,,,,300,,,typing
+986,12 is what percent of 120?,10%,,,,300,,,typing
+987,6 out of 150 is what percent?,4%,,,,300,,,typing
+988,What percent is 49 out of 196?,25%,,,,300,,,typing
+989,80% of 200 is what?,160,,,,300,,,typing
+990,What is 88% of 200?,176,,,,300,,,typing
+991,What out of 122 is 50%?,61,,,,300,,,typing
+992,76% is what out of 125?,95,,,,300,,,typing
+993,20% of what is 19?,95,,,,300,,,typing
+994,18 is 75% of what?,24,,,,300,,,typing
+995,110 out of what is 88%?,125,,,,300,,,typing
+996,25% is 11 out of what?,44,,,,300,,,typing
+997,What percent of 180 is 153?,85%,,,,300,,,typing
+998,24 is what percent of 48?,50%,,,,300,,,typing
+999,45 out of 150 is what percent?,30%,,,,300,,,typing
+1000,What percent is 4 out of 200?,2%,,,,300,,,typing
+1001,96% of 125 is what?,120,,,,300,,,typing
+1002,What is 25% of 4?,1,,,,300,,,typing
+1003,What out of 174 is 50%?,87,,,,300,,,typing
+1004,88% is what out of 75?,66,,,,300,,,typing
+1005,24% of what is 18?,75,,,,300,,,typing
+1006,17 is 85% of what?,20,,,,300,,,typing
+1007,80 out of what is 50%?,160,,,,300,,,typing
+1008,75% is 48 out of what?,64,,,,300,,,typing
+1009,What percent of 180 is 162?,90%,,,,300,,,typing
+1010,16 is what percent of 160?,10%,,,,300,,,typing
+1011,2 out of 4 is what percent?,50%,,,,300,,,typing
+1012,What percent is 47 out of 188?,25%,,,,300,,,typing
+1013,60% of 60 is what?,36,,,,300,,,typing
+1014,What is 65% of 140?,91,,,,300,,,typing
+1015,What out of 70 is 80%?,56,,,,300,,,typing
+1016,40% is what out of 110?,44,,,,300,,,typing
+1017,35% of what is 56?,160,,,,300,,,typing
+1018,42 is 21% of what?,200,,,,300,,,typing
+1019,63 out of what is 70%?,90,,,,300,,,typing
+1020,75% is 27 out of what?,36,,,,300,,,typing
+1021,What percent of 4 is 1?,25%,,,,300,,,typing
+1022,8 is what percent of 160?,5%,,,,300,,,typing
+1023,3 out of 75 is what percent?,4%,,,,300,,,typing
+1024,What percent is 4 out of 20?,20%,,,,300,,,typing
+1025,86% of 50 is what?,43,,,,300,,,typing
+1026,What is 11% of 200?,22,,,,300,,,typing
+1027,What out of 50 is 40%?,20,,,,300,,,typing
+1028,20% is what out of 200?,40,,,,300,,,typing
+1029,45% of what is 81?,180,,,,300,,,typing
+1030,82 is 50% of what?,164,,,,300,,,typing
+1031,78 out of what is 60%?,130,,,,300,,,typing
+1032,50% is 64 out of what?,128,,,,300,,,typing
+1033,What percent of 120 is 60?,50%,,,,300,,,typing
+1034,2 is what percent of 8?,25%,,,,300,,,typing
+1035,23 out of 46 is what percent?,50%,,,,300,,,typing
+1036,What percent is 24 out of 96?,25%,,,,300,,,typing
+1037,60% of 50 is what?,30,,,,300,,,typing
+1038,What is 24% of 200?,48,,,,300,,,typing
+1039,What out of 25 is 84%?,21,,,,300,,,typing
+1040,36% is what out of 200?,72,,,,300,,,typing
+1041,8% of what is 4?,50,,,,300,,,typing
+1042,60 is 75% of what?,80,,,,300,,,typing
+1043,135 out of what is 90%?,150,,,,300,,,typing
+1044,61% is 122 out of what?,200,,,,300,,,typing
+1045,What percent of 50 is 17?,34%,,,,300,,,typing
+1046,89 is what percent of 178?,50%,,,,300,,,typing
+1047,51 out of 75 is what percent?,68%,,,,300,,,typing
+1048,What percent is 144 out of 150?,96%,,,,300,,,typing
+1049,70% of 50 is what?,35,,,,300,,,typing
+1050,What is 25% of 64?,16,,,,300,,,typing
+1051,What out of 180 is 30%?,54,,,,300,,,typing
+1052,60% is what out of 150?,90,,,,300,,,typing
+1053,50% of what is 91?,182,,,,300,,,typing
+1054,154 is 88% of what?,175,,,,300,,,typing
+1055,88 out of what is 44%?,200,,,,300,,,typing
+1056,46% is 23 out of what?,50,,,,300,,,typing
+1057,What percent of 135 is 27?,20%,,,,300,,,typing
+1058,9 is what percent of 30?,30%,,,,300,,,typing
+1059,17 out of 50 is what percent?,34%,,,,300,,,typing
+1060,What percent is 9 out of 45?,20%,,,,300,,,typing
+1061,78% of 150 is what?,117,,,,300,,,typing
+1062,What is 16% of 150?,24,,,,300,,,typing
+1063,What out of 145 is 20%?,29,,,,300,,,typing
+1064,20% is what out of 105?,21,,,,300,,,typing
+1065,6% of what is 9?,150,,,,300,,,typing
+1066,24 is 12% of what?,200,,,,300,,,typing
+1067,39 out of what is 30%?,130,,,,300,,,typing
+1068,10% is 2 out of what?,20,,,,300,,,typing
+1069,What percent of 200 is 126?,63%,,,,300,,,typing
+1070,78 is what percent of 195?,40%,,,,300,,,typing
+1071,22 out of 110 is what percent?,20%,,,,300,,,typing
+1072,What percent is 156 out of 195?,80%,,,,300,,,typing
+1073,8% of 50 is what?,4,,,,300,,,typing
+1074,What is 50% of 30?,15,,,,300,,,typing
+1075,What out of 190 is 90%?,171,,,,300,,,typing
+1076,8% is what out of 150?,12,,,,300,,,typing
+1077,60% of what is 105?,175,,,,300,,,typing
+1078,36 is 72% of what?,50,,,,300,,,typing
+1079,21 out of what is 30%?,70,,,,300,,,typing
+1080,80% is 52 out of what?,65,,,,300,,,typing
+1081,What percent of 185 is 37?,20%,,,,300,,,typing
+1082,166 is what percent of 200?,83%,,,,300,,,typing
+1083,138 out of 200 is what percent?,69%,,,,300,,,typing
+1084,What percent is 21 out of 175?,12%,,,,300,,,typing
+1085,60% of 5 is what?,3,,,,300,,,typing
+1086,What is 12% of 50?,6,,,,300,,,typing
+1087,What out of 150 is 78%?,117,,,,300,,,typing
+1088,15% is what out of 180?,27,,,,300,,,typing
+1089,50% of what is 15?,30,,,,300,,,typing
+1090,85 is 50% of what?,170,,,,300,,,typing
+1091,69 out of what is 46%?,150,,,,300,,,typing
+1092,50% is 85 out of what?,170,,,,300,,,typing
+1093,What percent of 44 is 22?,50%,,,,300,,,typing
+1094,46 is what percent of 115?,40%,,,,300,,,typing
+1095,3 out of 4 is what percent?,75%,,,,300,,,typing
+1096,What percent is 20 out of 50?,40%,,,,300,,,typing
+1097,8% of 175 is what?,14,,,,300,,,typing
+1098,What is 70% of 20?,14,,,,300,,,typing
+1099,What out of 88 is 50%?,44,,,,300,,,typing
+1100,90% is what out of 160?,144,,,,300,,,typing
+1101,60% of what is 45?,75,,,,300,,,typing
+1102,8 is 20% of what?,40,,,,300,,,typing
+1103,21 out of what is 70%?,30,,,,300,,,typing
+1104,2% is 4 out of what?,200,,,,300,,,typing
+1105,What percent of 45 is 27?,60%,,,,300,,,typing
+1106,14 is what percent of 28?,50%,,,,300,,,typing
+1107,116 out of 145 is what percent?,80%,,,,300,,,typing
+1108,What percent is 98 out of 140?,70%,,,,300,,,typing
+1109,50% of 152 is what?,76,,,,300,,,typing
+1110,What is 80% of 5?,4,,,,300,,,typing
+1111,What out of 20 is 15%?,3,,,,300,,,typing
+1112,10% is what out of 200?,20,,,,300,,,typing
+1113,50% of what is 31?,62,,,,300,,,typing
+1114,162 is 90% of what?,180,,,,300,,,typing
+1115,78 out of what is 40%?,195,,,,300,,,typing
+1116,75% is 30 out of what?,40,,,,300,,,typing
+1117,What percent of 190 is 76?,40%,,,,300,,,typing
+1118,27 is what percent of 135?,20%,,,,300,,,typing
+1119,59 out of 118 is what percent?,50%,,,,300,,,typing
+1120,What percent is 78 out of 156?,50%,,,,300,,,typing
+1121,52% of 75 is what?,39,,,,300,,,typing
+1122,What is 45% of 60?,27,,,,300,,,typing
+1123,What out of 200 is 49%?,98,,,,300,,,typing
+1124,25% is what out of 72?,18,,,,300,,,typing
+1125,45% of what is 63?,140,,,,300,,,typing
+1126,13 is 52% of what?,25,,,,300,,,typing
+1127,47 out of what is 50%?,94,,,,300,,,typing
+1128,54% is 27 out of what?,50,,,,300,,,typing
+1129,What percent of 150 is 102?,68%,,,,300,,,typing
+1130,78 is what percent of 104?,75%,,,,300,,,typing
+1131,122 out of 200 is what percent?,61%,,,,300,,,typing
+1132,What percent is 15 out of 60?,25%,,,,300,,,typing
+1133,25% of 152 is what?,38,,,,300,,,typing
+1134,What is 70% of 80?,56,,,,300,,,typing
+1135,What out of 185 is 60%?,111,,,,300,,,typing
+1136,80% is what out of 170?,136,,,,300,,,typing
+1137,50% of what is 64?,128,,,,300,,,typing
+1138,18 is 15% of what?,120,,,,300,,,typing
+1139,52 out of what is 50%?,104,,,,300,,,typing
+1140,32% is 48 out of what?,150,,,,300,,,typing
+1141,What percent of 155 is 93?,60%,,,,300,,,typing
+1142,96 is what percent of 200?,48%,,,,300,,,typing
+1143,72 out of 180 is what percent?,40%,,,,300,,,typing
+1144,What percent is 8 out of 80?,10%,,,,300,,,typing
+1145,50% of 68 is what?,34,,,,300,,,typing
+1146,What is 89% of 200?,178,,,,300,,,typing
+1147,What out of 110 is 60%?,66,,,,300,,,typing
+1148,40% is what out of 35?,14,,,,300,,,typing
+1149,50% of what is 99?,198,,,,300,,,typing
+1150,60 is 48% of what?,125,,,,300,,,typing
+1151,43 out of what is 86%?,50,,,,300,,,typing
+1152,50% is 26 out of what?,52,,,,300,,,typing
+1153,What percent of 85 is 51?,60%,,,,300,,,typing
+1154,63 is what percent of 84?,75%,,,,300,,,typing
+1155,47 out of 50 is what percent?,94%,,,,300,,,typing
+1156,What percent is 12 out of 150?,8%,,,,300,,,typing
+1157,30% of 150 is what?,45,,,,300,,,typing
+1158,What is 80% of 45?,36,,,,300,,,typing
+1159,What out of 20 is 65%?,13,,,,300,,,typing
+1160,32% is what out of 75?,24,,,,300,,,typing
+1161,32% of what is 56?,175,,,,300,,,typing
+1162,33 is 25% of what?,132,,,,300,,,typing
+1163,126 out of what is 63%?,200,,,,300,,,typing
+1164,50% is 80 out of what?,160,,,,300,,,typing
+1165,What percent of 104 is 52?,50%,,,,300,,,typing
+1166,4 is what percent of 8?,50%,,,,300,,,typing
+1167,17 out of 34 is what percent?,50%,,,,300,,,typing
+1168,What percent is 56 out of 175?,32%,,,,300,,,typing
+1169,10% of 90 is what?,9,,,,300,,,typing
+1170,What is 50% of 8?,4,,,,300,,,typing
+1171,What out of 40 is 90%?,36,,,,300,,,typing
+1172,80% is what out of 10?,8,,,,300,,,typing
+1173,84% of what is 105?,125,,,,300,,,typing
+1174,147 is 75% of what?,196,,,,300,,,typing
+1175,72 out of what is 90%?,80,,,,300,,,typing
+1176,45% is 81 out of what?,180,,,,300,,,typing
+1177,What percent of 92 is 69?,75%,,,,300,,,typing
+1178,6 is what percent of 40?,15%,,,,300,,,typing
+1179,190 out of 200 is what percent?,95%,,,,300,,,typing
+1180,What percent is 30 out of 75?,40%,,,,300,,,typing
+1181,75% of 60 is what?,45,,,,300,,,typing
+1182,What is 25% of 188?,47,,,,300,,,typing
+1183,What out of 40 is 65%?,26,,,,300,,,typing
+1184,68% is what out of 200?,136,,,,300,,,typing
+1185,50% of what is 84?,168,,,,300,,,typing
+1186,34 is 85% of what?,40,,,,300,,,typing
+1187,12 out of what is 50%?,24,,,,300,,,typing
+1188,24% is 42 out of what?,175,,,,300,,,typing
+1189,What percent of 130 is 78?,60%,,,,300,,,typing
+1190,72 is what percent of 160?,45%,,,,300,,,typing
+1191,24 out of 150 is what percent?,16%,,,,300,,,typing
+1192,What percent is 63 out of 180?,35%,,,,300,,,typing
+1193,41% of 200 is what?,82,,,,300,,,typing
+1194,What is 76% of 175?,133,,,,300,,,typing
+1195,What out of 180 is 85%?,153,,,,300,,,typing
+1196,75% is what out of 32?,24,,,,300,,,typing
+1197,75% of what is 123?,164,,,,300,,,typing
+1198,22 is 40% of what?,55,,,,300,,,typing
+1199,90 out of what is 50%?,180,,,,300,,,typing
+1200,20% is 37 out of what?,185,,,,300,,,typing

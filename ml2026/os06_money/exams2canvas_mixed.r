@@ -3,8 +3,9 @@ n = 30
 outdir = "outcanvas"
 
 ### Entrance ticket
-pm = list("x_basic_percentages.Rmd",
-          "x_basic_percentages.Rmd",
+pm = list("x_get_percent.Rmd",
+          "x_get_part.Rmd",
+          "x_get_total.Rmd",
           "x_basic_percentages.Rmd",
           "x_basic_percentages.Rmd",
           "x_basic_percentages.Rmd")
@@ -13,7 +14,7 @@ exams2canvas(pm,
              dir=outdir,
              points=rep(2,length(pm)),
              maxattempts = 5,
-             name="m0430_percentages",
+             name="m0501_ET",
              template = "canvas_qti12.xml",
              cloze = list(enumerate = FALSE))
 
