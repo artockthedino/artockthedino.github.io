@@ -9,3 +9,4 @@
 *.pgm
 *.zip
 *.pdf
+!ml2026/blooket/percentages/perc_change_reference.pdf
