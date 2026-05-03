@@ -11,7 +11,7 @@
 
 
 
-<title>u2b_decay_factor.knit</title>
+<title>Percent Change From Initial Price to New Price</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -348,24 +348,36 @@ display: none;
 
 
 
+<h1 class="title toc-ignore">Percent Change From Initial Price to New
+Price</h1>
 
 </div>
 
 
-<div id="question" class="section level1">
-<h1>Question</h1>
-<p>What is the scale factor associated with the phrase “19% less”?</p>
-</div>
-<div id="solution" class="section level1">
-<h1>Solution</h1>
-<p>The phrase indicates a decrease or discount, so divide by 100 and
-then subtract from 1.</p>
-<p><span class="math display">\[1-\frac{19}{100}~=~0.81\]</span></p>
-</div>
-<div id="meta-information" class="section level1">
-<h1>Meta-information</h1>
-<p>extype: num exsolution: 0.81 exname: decay_factor</p>
-</div>
+<p><span class="math display">\[\begin{align*}
+s &amp;= \text{scale factor}\\
+i &amp;= \text{initial (old) price}\\
+n &amp;= \text{new price}\\
+c &amp;= \text{percent change (decimal form)}
+\end{align*}\]</span></p>
+<p><span class="math display">\[s = \frac{n}{i}\]</span></p>
+<p><span class="math display">\[i = \frac{n}{s}\]</span></p>
+<p><span class="math display">\[n = si\]</span></p>
+<p><span class="math display">\[c=|s-1|\]</span></p>
+<ul>
+<li>If new price is <strong>more</strong> than initial price, the
+percent change is a percent <strong>increase</strong>, and <span class="math inline">\(s=c+1\)</span>, and <span class="math inline">\(c=s-1\)</span>, and:</li>
+</ul>
+<p><span class="math display">\[c ~=~ \frac{n}{i}-1\]</span></p>
+<p><span class="math display">\[i = \frac{n}{1+c}\]</span></p>
+<p><span class="math display">\[n = i\cdot(1+c)\]</span></p>
+<ul>
+<li>If new price is <strong>less</strong> than initial price, the
+percent change is a percent <strong>decrease</strong>, and <span class="math inline">\(s=1-c\)</span>, and <span class="math inline">\(c=1-s\)</span>, and:</li>
+</ul>
+<p><span class="math display">\[c ~=~ 1-\frac{n}{i}\]</span></p>
+<p><span class="math display">\[i = \frac{n}{1-c}\]</span></p>
+<p><span class="math display">\[n = i\cdot(1-c)\]</span></p>
 
 
 

@@ -1,0 +1,38 @@
+```{r,echo=FALSE}
+
+while(T){
+    part = sample(1:199,1)
+    whole = sample(20:199,1)
+    perc = part/whole*100
+    if(perc%%1==0 && perc<100 && whole != 100 && perc!=50){break}
+}
+
+```
+
+Question
+========
+
+A store's normal retail price is $`r whole` per trinket. However, they are having a sale with a discount of `r perc`%.
+
+Find the sale price.
+
+
+Solution
+========
+
+This scenario represents a percent decrease. It is beneficial to find the scale factor.
+
+$$\text{scale factor}~=~1-\frac{`r perc`}{100}~=~`r 1-perc/100`$$
+
+Then, multiply the original cost by the scale factor to find the retail price.
+
+$$`r 1-perc/100`\cdot `r whole` = `r whole*(1-perc/100)`$$
+
+So the retail price is $`r round(whole*(1-perc/100))`.
+
+
+Meta-information
+============
+extype: num
+exsolution: `r round(whole*(1-perc/100))`
+exname: discount

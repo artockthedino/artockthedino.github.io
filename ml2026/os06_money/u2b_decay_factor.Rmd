@@ -2,11 +2,10 @@
 options(scipen=99)
 pm = sample(1:20,1)
 
-ss = c("PM less","PM off","decrease by PM","shrink by PM","PM discount","loss of PM")
+ss = c("PM less","PM off","PM decrease","PM discount","PM loss","PM down","PM lower")
 
 s = sample(ss,1)
 s = gsub("PM",paste0(pm,"%"),s,fixed=T)
-
 ```
 
 Question

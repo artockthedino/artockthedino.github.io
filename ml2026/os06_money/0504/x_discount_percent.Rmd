@@ -1,0 +1,42 @@
+```{r,echo=FALSE}
+
+while(T){
+    part = sample(1:199,1)
+    whole = sample(20:199,1)
+    perc = part/whole*100
+    if(perc%%1==0 && perc<100 && whole != 100 && perc!=50){break}
+}
+
+```
+
+Question
+========
+
+A store's normal retail price for a trinket is $`r whole`. 
+
+The store is having a sale; and the sale price of the trinket is $`r whole-part`. What is the percent discount?
+
+(Please include `%` in your answer.)
+
+
+Solution
+========
+
+This scenario represents a percent decrease. It is beneficial to find the scale factor.
+
+$$\text{scale factor}~=~\frac{\text{new price}}{\text{old price}}~=~\frac{`r whole-part`}{`r whole`}~=~`r (whole-part)/whole`$$
+
+To find the percent decrease, you can subtract the scale factor from 1. (And represent the answer as a percentage.)
+
+$$1-`r (whole-part)/whole`~=~`r perc`\%$$
+
+The alternative route is to find how many dollars cheaper the sale price is, and then divide this by the retail price.
+
+$$\frac{`r whole`-`r whole-part`}{`r whole`}~=~\frac{`r part`}{`r whole`}~=~`r part/whole`~=~`r perc`\%$$
+
+
+Meta-information
+============
+extype: num
+exsolution: `r round(whole*(1-perc/100))`
+exname: discount

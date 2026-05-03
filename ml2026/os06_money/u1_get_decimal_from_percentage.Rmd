@@ -1,0 +1,25 @@
+```{r,echo=FALSE}
+
+perc = sample(1:20,1)
+dec = round(perc/100,2)
+ans = paste0(perc,"%")
+
+```
+
+Question
+========
+
+Convert `r ans` into decimal form.
+
+
+Solution
+========
+
+The answer: `r dec`
+
+
+Meta-information
+============
+extype: num
+exsolution: `r dec`
+exname: get_decimal_from_percentage

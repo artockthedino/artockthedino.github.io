@@ -2,7 +2,7 @@
 options(scipen=99)
 pm = sample(1:20,1)
 
-ss = c("PM more","PM over","increase by PM","markup of PM","tax of PM","growth of PM")
+ss = c("PM more","PM over","PM increase","PM markup","PM growth","PM up","PM higher")
 
 s = sample(ss,1)
 s = gsub("PM",paste0(pm,"%"),s,fixed=T)

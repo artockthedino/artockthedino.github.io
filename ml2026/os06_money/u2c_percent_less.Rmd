@@ -22,7 +22,9 @@ Solution
 
 For a "percent less" question, the scale factor is found by dividing the percentage number by 100 and then subtracting it from 1.
 
-Determine that the scale factor equals `r 1-fraction` and multiply it by the given value.
+$$1-\frac{`r percentage`}{100}=`r 1-fraction`$$
+
+Multiply the scale factor by the initial value.
 
 $$`r 1-fraction`\cdot `r total` ~=~ `r part`$$
 

@@ -1,0 +1,39 @@
+---
+title: Percent Change From Initial Price to New Price
+output: html_document
+---
+
+\begin{align*}
+s &= \text{scale factor}\\
+i &= \text{initial (old) price}\\
+n &= \text{new price}\\
+c &= \text{percent change (decimal form)}
+\end{align*}
+
+
+$$s = \frac{n}{i}$$
+
+$$i = \frac{n}{s}$$
+
+$$n = si$$
+
+$$c=|s-1|$$
+
+* If new price is **more** than initial price, the percent change is a percent **increase**, and $s=c+1$, and $c=s-1$, and:
+
+$$c ~=~ \frac{n}{i}-1$$
+
+$$i = \frac{n}{1+c}$$
+
+$$n = i\cdot(1+c)$$
+
+
+* If new price is **less** than initial price, the percent change is a percent **decrease**, and $s=1-c$, and $c=1-s$, and:
+
+$$c ~=~ 1-\frac{n}{i}$$
+
+$$i = \frac{n}{1-c}$$
+
+$$n = i\cdot(1-c)$$
+
+

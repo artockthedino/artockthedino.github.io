@@ -1,0 +1,25 @@
+```{r,echo=FALSE}
+
+perc = sample(1:20,1)
+dec = round(perc/100,2)
+ans = paste0(perc,"%")
+
+```
+
+Question
+========
+
+Convert `r dec` into a percentage. Include `%` in your answer, no spaces.
+
+
+Solution
+========
+
+The answer: ``r perc`%`
+
+
+Meta-information
+============
+extype: string
+exsolution: `r ans`
+exname: get_percentage_from_decimal
