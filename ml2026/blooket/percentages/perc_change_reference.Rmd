@@ -1,7 +1,57 @@
 ---
-title: Percent Change From Initial Price to New Price
-output: html_document
+title: Percent Change From Old Price to New Price
+output: pdf_document
 ---
+
+
+# Spelled out methods...
+
+Remember, use decimal form of percentages in calculations. For example, an increase of 23% means `percent_increase` is 0.23 and the `scale_factor` is 1.23.
+
+
+## Find `new_price` from `old_price` and `percent_increase`
+
+`scale_factor` = 1 + `percent_increase`
+
+`new_price` = `old_price` * `scale_factor`
+
+
+## Find `new_price` from `old_price` and `percent_decrease`
+
+`scale_factor` = 1 - `percent_decrease`
+
+`new_price` = `old_price` * `scale_factor`
+
+## Find `old_price` from `new_price` and `percent_increase`
+
+`scale_factor` = 1 + `percent_increase`
+
+`old_price` = `new_price` / `scale_factor`
+
+## Find `old_price` from `new_price` and `percent_decrease`
+
+`scale_factor` = 1 - `percent_decrease`
+
+`old_price` = `new_price` / `scale_factor`
+
+
+## Find `percent_increase` from `old_price` and `new_price`
+
+`scale_factor` = `new_price` / `old_price`
+
+`percent_increase` = `scale_factor` - 1
+
+## Find `percent_increase` from `old_price` and `new_price`
+
+`scale_factor` = `new_price` / `old_price`
+
+`percent_decrease` = 1 - `scale_factor`
+
+
+\newpage
+
+
+# Formulas with variables
 
 \begin{align*}
 s &= \text{scale factor}\\
@@ -35,5 +85,9 @@ $$c ~=~ 1-\frac{n}{i}$$
 $$i = \frac{n}{1-c}$$
 
 $$n = i\cdot(1-c)$$
+
+
+
+
 
 

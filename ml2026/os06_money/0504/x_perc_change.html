@@ -355,18 +355,93 @@ display: none;
 <div id="question" class="section level1">
 <h1>Question</h1>
 <ul>
-<li>Old price = $120</li>
-<li>New price = $x</li>
-<li>Percent increase = 25%</li>
+<li>Old price = $235</li>
+<li>New price = $94</li>
+<li>Percent decrease = x%</li>
 </ul>
-<p>Find <span class="math inline">\(x\)</span>.</p>
+<p>Find x.</p>
 </div>
 <div id="solution" class="section level1">
 <h1>Solution</h1>
+<p>The answer is x = 60.</p>
+<p>You might find this reference helpful:</p>
+<p><a href="https://artockthedino.github.io/ml2026/blooket/percentages/perc_change_reference.pdf">https://artockthedino.github.io/ml2026/blooket/percentages/perc_change_reference.pdf</a></p>
+<p>One way or another it’ll be helpful to find the <strong>scale
+factor</strong>:</p>
+<ul>
+<li>If both prices are known, use new/old</li>
+<li>If percent increase is known, use 1+percent_increase</li>
+<li>If percent decrease is known, use 1-percent_decrease</li>
+</ul>
+<p>For this specific problem… scale_factor = new/old = 94/235 = 0.4.</p>
+<p>Remember, calculations use the decimal form of percentages.</p>
+<p>Now, find the unknown. Depending on what you need, use one of the
+formulas below:</p>
+<ul>
+<li>old_price = new_price/scale_factor.</li>
+<li>new_price = old_price*scale_factor.</li>
+<li>percent_increase = scale_factor-1.</li>
+<li>percent_decrease = 1-scale_factor.</li>
+</ul>
+<p>For this specific problem…percent_decrease = 1-scale_factor = 1-0.4 =
+0.6 = 60%.</p>
+<ul>
+<li>Old price = $235</li>
+<li>New price = $94</li>
+<li>Percent decrease = 60%</li>
+</ul>
+<p>Spelled out methods…</p>
+<p>Remember, use decimal form of percentages in calculations. For
+example, an increase of 23% means <code>percent_increase</code> is 0.23
+and the <code>scale_factor</code> is 1.23.</p>
+<ul>
+<li>Find <code>new_price</code> from <code>old_price</code> and
+<code>percent_increase</code>
+<ul>
+<li><code>scale_factor</code> = 1 + <code>percent_increase</code></li>
+<li><code>new_price</code> = <code>old_price</code> *
+<code>scale_factor</code></li>
+</ul></li>
+<li>Find <code>new_price</code> from <code>old_price</code> and
+<code>percent_decrease</code>
+<ul>
+<li><code>scale_factor</code> = 1 - <code>percent_decrease</code></li>
+<li><code>new_price</code> = <code>old_price</code> *
+<code>scale_factor</code></li>
+</ul></li>
+<li>Find <code>old_price</code> from <code>new_price</code> and
+<code>percent_increase</code>
+<ul>
+<li><code>scale_factor</code> = 1 + <code>percent_increase</code></li>
+<li><code>old_price</code> = <code>new_price</code> /
+<code>scale_factor</code></li>
+</ul></li>
+<li>Find <code>old_price</code> from <code>new_price</code> and
+<code>percent_decrease</code>
+<ul>
+<li><code>scale_factor</code> = 1 - <code>percent_decrease</code></li>
+<li><code>old_price</code> = <code>new_price</code> /
+<code>scale_factor</code></li>
+</ul></li>
+<li>Find <code>percent_increase</code> from <code>old_price</code> and
+<code>new_price</code>
+<ul>
+<li><code>scale_factor</code> = <code>new_price</code> /
+<code>old_price</code></li>
+<li><code>percent_increase</code> = <code>scale_factor</code> - 1</li>
+</ul></li>
+<li>Find <code>percent_increase</code> from <code>old_price</code> and
+<code>new_price</code>
+<ul>
+<li><code>scale_factor</code> = <code>new_price</code> /
+<code>old_price</code></li>
+<li><code>percent_decrease</code> = 1 - <code>scale_factor</code></li>
+</ul></li>
+</ul>
 </div>
 <div id="meta-information" class="section level1">
 <h1>Meta-information</h1>
-<p>extype: num exsolution: 150 exname: markup_percent</p>
+<p>extype: num exsolution: 60 exname: markup_percent</p>
 </div>
 
 
