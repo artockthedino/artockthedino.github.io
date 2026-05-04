@@ -5,6 +5,10 @@ date: "2026 Monday May 04"
 output: slidy_presentation
 ---
 
+# Short URL for these slides
+
+`https://shorturl.at/N89fZ`
+
 # Entrance Ticket
 
 The MOLALITY ($m$) of a solution equals the MOLES of solute divided by the KILOGRAMS of solvent.
@@ -149,6 +153,14 @@ Since pure water freezes at 0°C, we estimate this solution freezes at `r signif
 3. Calculate boiling point.
 $$\Delta T_\text{b} = 2 \cdot 0.512 \cdot `r m` = `r signif(2*0.512*m,3)` ~^\circ \mathrm{C}$$
 Since pure water boils at 100°C, we estimate this solution boils at `r 100+signif(2*0.512*m,3)`°C. *The actual boiling point of saturated aqueous NaCl is 108.7°C.*
+
+
+# More Practice
+
+https://shorturl.at/aSphP
+
+https://artockthedino.github.io/chemistry/colligative/examples.html
+
 
 
 
