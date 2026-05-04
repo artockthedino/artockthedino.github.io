@@ -1,0 +1,68 @@
+```{r,echo=FALSE}
+Kf = 1.86
+Kb = 0.512
+
+cmpnds =  list(list("NaCl",58.44,2),
+               list("KCl",74.55,2),
+               list("KF",18.02,2),
+               list("AgNO_3",169.87,2),
+               list("MgCl_2",95.211,3),
+               list("K_2CO_3",138.205,3),
+               list("CaCl_2",110.98,3),
+               list("Na_2SO_4",142.04,3),
+               list("(NH_4)_3PO_4",149.09,4),
+               list("FeCl_3",162.20,4),
+               list("Al(NO_3)_3",212.996,4),
+               list("K_3PO_4",212.27,4))
+
+mass_water = sample(c(50,100,200,250,300,400,500),1) #g
+while(T){
+    mass_solute = signif(runif(1,mass_water/20,mass_water/3),3)
+    kg_water = mass_water/1000
+    solutei = sample(1:length(cmpnds),1)
+    solute = cmpnds[[solutei]]
+    cmpnd = solute[[1]]
+    mm = solute[[2]]
+    i = solute[[3]]
+    molality = mass_solute/mm/kg_water
+    dTf = -i*Kf*molality
+    dTb = i*Kb*molality
+    if(dTf<0.1){break}
+}
+
+```
+
+
+Question
+========
+
+The freezing point of pure water is 0.0°C, and the boiling point of pure water is 100.0°C. The freezing-point-depression constant for water is $K_\text{f}= 1.86 ~\mathrm{\frac{^\circ C}{m}}$ and the boiling-point-elevation constant for water is $K_\text{b}= 0.512 ~\mathrm{\frac{^\circ C}{m}}$.
+
+Estimate the **boiling point** of an aqueous solution (in °C) made by dissolving `r mass_solute` grams of $\mathrm{`r cmpnd`}$ in `r mass_water` grams of water by assuming ideal-solution behavior. (The tolerance is $\pm 0.1$°C.)
+
+
+Solution
+========
+
+Calculate the molality of the solution. You'll need to know the molar mass of $\mathrm{`r cmpnd`}$ is `r mm` g/mol.
+
+$$\mathrm{\frac{`r mass_solute`~g~`r cmpnd`}{`r mass_water`~g~H_2O}\cdot\frac{1~mol~`r cmpnd`}{`r mm`~g~`r cmpnd`}\cdot\frac{1000~g~H_2O}{1~kg~H_2O}~=~`r molality`~\frac{mol~`r cmpnd`}{kg~H_2O}}$$
+
+Use the boiling-point-elevation formula. The van't Hoff factor is $i=`r i`$ because $\mathrm{`r cmpnd`}$ dissociates into `r i` ions (ideally).
+
+$$\Delta T_\text{b} ~=~ i \cdot K_\text{b} \cdot m$$
+
+
+$$\Delta T_\text{b} ~=~  `r i` \cdot `r Kb` \cdot `r molality`$$
+
+
+$$\Delta T_\text{b} ~=~  `r i*Kb*molality`$$
+
+Since pure water boils at 100.0°C, this solution should boil at `r sprintf("%.1f",100+dTb)`°C.
+
+Meta-information
+============
+extype: num
+exsolution: `r round(100+dTb,1)`
+exname: boiling_point
+extol: 0.1

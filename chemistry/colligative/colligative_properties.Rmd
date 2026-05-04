@@ -145,10 +145,10 @@ m = signif(36/100/58.44*1000,3)
 $$\frac{36 ~\mathrm{g ~ NaCl}}{100 ~\mathrm{g ~ H_2O}} \cdot \frac{1 ~\mathrm{mol ~ NaCl}}{58.44 ~\mathrm{g ~ NaCl}} \cdot \frac{1000 ~\mathrm{g ~ H_2O}}{1 ~\mathrm{kg ~ H_2O}}~=~`r signif(36/100/58.44*1000,3)` ~\mathrm{\frac{mol~solute}{kg~solvent}}$$
 2. Calculate freezing point.
 $$\Delta T_\text{f} = -2 \cdot 1.86 \cdot `r m` = `r signif(-2*1.86*m,3)`~^\circ \mathrm{C}$$
-Since pure water freezes at 0°C, we estimate this solution freezes at `r signif(-2*1.86*m,3)`°C.
+Since pure water freezes at 0°C, we estimate this solution freezes at `r signif(-2*1.86*m,3)`°C. *The actual freezing point of saturated aqueous NaCl is -21.1°C.*
 3. Calculate boiling point.
 $$\Delta T_\text{b} = 2 \cdot 0.512 \cdot `r m` = `r signif(2*0.512*m,3)` ~^\circ \mathrm{C}$$
-Since pure water boils at 100°C, we estimate this solution boils at `r 100+signif(2*0.512*m,3)`°C.
+Since pure water boils at 100°C, we estimate this solution boils at `r 100+signif(2*0.512*m,3)`°C. *The actual boiling point of saturated aqueous NaCl is 108.7°C.*
 
 
 
