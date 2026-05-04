@@ -6,7 +6,7 @@ with open("//Users/chad.worley@bartcharter.org/Documents/canvasAPItests/acctok.t
 
 # Variables
 course_id = '1945'  ## ML=1945... PBL_Q2_ACE=1703... PBL_Q2_BD=1698
-file_path_list = ["outcanvas/m0504_ET.zip","outcanvas/m0504_percent_change_unknowns.zip"]
+file_path_list = ["outcanvas/m0504_perc_change_EXIT.zip"]
 
 ######## FOR UPLOADING ETS
 
