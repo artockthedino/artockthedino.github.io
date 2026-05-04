@@ -6,9 +6,9 @@ pm = list(c("x_freezing_point.Rmd","x_boiling_point.Rmd"))
 
 exams2webquiz(pm,
              n=n,
-             title = "examples",
+             title = "colligative_freezing_boiling",
              dir = ".",
-             name="examples")
+             name="colligative_freezing_boiling")
 
 
 
