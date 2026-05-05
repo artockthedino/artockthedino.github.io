@@ -1,0 +1,29 @@
+```{r,echo=F,warning=F}
+options(scipen=99)
+pm = sample(1:20,1)
+
+ss = c("PM more","PM over","PM increase","PM markup","PM growth","PM up","PM higher")
+
+s = sample(ss,1)
+s = gsub("PM",paste0(pm,"%"),s,fixed=T)
+
+```
+
+Question
+========
+
+What is the scale factor associated with the phrase "`r s`"?
+
+Solution
+========
+
+The phrase indicates a growth or increase, so divide by 100 and then add to 1.
+
+$$1+\frac{`r pm`}{100}~=~`r 1+pm/100`$$
+
+
+Meta-information
+============
+extype: num
+exsolution: `r round(1+pm/100,2)`
+exname: growth_factor

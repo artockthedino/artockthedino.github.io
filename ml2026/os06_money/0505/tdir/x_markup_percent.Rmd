@@ -1,0 +1,44 @@
+```{r,echo=FALSE}
+
+while(T){
+    part = sample(1:199,1)
+    whole = sample(1:199,1)
+    perc = part/whole*100
+    if(perc%%1==0 && perc<100 && whole != 100 && perc!=50){break}
+}
+
+```
+
+Question
+========
+
+A store's wholesale cost is $`r whole` per trinket. To calculate the retail price, the store adds a markup. If the retail price is $`r (1+perc/100)*whole`, then what was the markup **percentage**?
+
+(Include the `%` in your answer, no spaces.)
+
+Solution
+========
+
+This scenario represents a percent increase. We can find the markup amount by subtracting the two amounts.
+
+$$`r part+whole`-`r whole`=`r part`$$
+
+Now we can find what percent is this markup out of the wholesale cost.
+
+$$\frac{`r part`}{`r whole`}~=~`r perc/100`~=~`r perc`\%$$
+
+The alternative route is to divide the retail price by the wholesale cost to find the scale factor.
+
+$$\frac{`r part+whole`}{`r whole`}=`r (part+whole)/whole`$$
+
+And subtract 1 to find the percent increase.
+
+
+$$\frac{`r part+whole`}{`r whole`}-1~=~`r perc`\%$$
+
+
+Meta-information
+============
+extype: string
+exsolution: `r perc`%
+exname: markup_percent

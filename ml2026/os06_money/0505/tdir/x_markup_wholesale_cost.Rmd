@@ -1,0 +1,41 @@
+```{r,echo=FALSE}
+
+while(T){
+    part = sample(1:199,1)
+    whole = sample(1:199,1)
+    perc = part/whole*100
+    if(perc%%1==0 && perc<100 && whole != 100 && perc!=50){break}
+}
+
+```
+
+Question
+========
+
+To calculate the retail price, the store adds a markup to its wholesale cost. If the markup percentage is `r perc`%, and the retail price is $`r (1+perc/100)*whole`, then what was the wholesale cost in dollars? 
+
+(Do NOT include `$` in your answer.)
+
+
+Solution
+========
+
+This scenario represents a percent increase. We are given the percent increase, so it can be helpful to calculate the scale factor.
+
+$$1+\frac{`r perc`}{100}~=~`r 1+perc/100`$$
+
+The retail price equals the wholesale cost times the scale factor. Let's call the unknown wholesale cost $x$.
+
+$$`r whole+part`=`r 1+perc/100`\cdot x$$
+
+So, we can get the wholesale cost by dividing the retail price by the scale factor.
+
+$$\frac{`r whole+part`}{`r 1+perc/100`} ~=~ `r whole`$$
+
+Thus, the wholesale cost was $`r whole`.
+
+Meta-information
+============
+extype: num
+exsolution: `r whole`
+exname: markup_wholesale_cost

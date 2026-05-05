@@ -1,0 +1,44 @@
+```{r,echo=FALSE}
+
+while(T){
+    part = sample(1:199,1)
+    whole = sample(20:199,1)
+    perc = part/whole*100
+    if(perc%%1==0 && perc<100 && whole != 100 && perc!=50){break}
+}
+
+```
+
+Question
+========
+
+
+A store is having a sale where every item is discounted by `r perc`%. If the sale price is $`r whole-part`, then what was the original retail price?
+
+
+Solution
+========
+
+This scenario represents a percent decrease. It is beneficial to find the scale factor.
+
+$$\text{scale factor}~=~1-\frac{`r perc`}{100}~=~`r 1-perc/100`$$
+
+The scale factor represents the ratio of new price over old price. In this case the old price is the retail price and the new price is the sale price. Let's use $x$ to represent the retail price.
+
+$$`r 1-perc/100`~=~\frac{\text{new price}}{\text{old price}}~=~\frac{\text{sale price}}{x}$$
+
+$$`r 1-perc/100`~=~\frac{`r whole-part`}{x}$$
+
+Multiply both sides by $x$ and divide both sides by `r 1-perc/100`.
+
+
+$$x~=~\frac{`r whole-part`}{`r 1-perc/100`}$$
+
+$$x=`r whole`$$
+
+
+Meta-information
+============
+extype: num
+exsolution: `r round(whole*(1-perc/100))`
+exname: discount_retail_price
