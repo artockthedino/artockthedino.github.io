@@ -1,0 +1,38 @@
+```{r,echo=FALSE}
+
+while(T){
+    part = sample(1:199,1)
+    whole = sample(1:199,1)
+    perc = part/whole*100
+    if(perc%%1==0 && perc<100 && whole != 100 && perc!=50){break}
+}
+
+```
+
+Question
+========
+
+A store's wholesale cost is \$`r whole` per trinket. To calculate the retail price, the store adds a markup percentage of `r perc`%.
+
+Find the retail price in dollars. (Do NOT include `$` in your answer.)
+
+
+Solution
+========
+
+This scenario represents a percent increase. It is beneficial to find the scale factor.
+
+$$\text{scale factor}~=~1+\frac{`r perc`}{100}~=~`r 1+perc/100`$$
+
+Then, multiply the original cost by the scale factor to find the retail price.
+
+$$`r 1+perc/100`\cdot `r whole` = `r whole*(1+perc/100)`$$
+
+So the retail price is \$`r round(whole*(1+perc/100))`.
+
+
+Meta-information
+============
+extype: num
+exsolution: `r round(whole*(1+perc/100))`
+exname: markup

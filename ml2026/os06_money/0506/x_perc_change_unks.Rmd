@@ -1,0 +1,118 @@
+```{r,echo=FALSE}
+while(T){
+    old = sample(1:400,1)
+    new = sample(1:400,1)
+    sf = new/old
+    pc = abs(sf-1)*100
+    if(pc%%1==0 && pc!=0 && pc<100 && pc!=50){break}
+}
+if(new>old){
+    ID = "increase"
+} else {
+    ID = "decrease"
+}
+unk = sample(1:3,1)
+nums = paste0(c(old,new,pc))
+ans = nums[unk]
+nums[unk] = "x"
+
+unkname = c("old_price","new_price","percent_change")
+
+if(unk!=3 && ID=="increase"){
+    step1 = paste0("scale_factor = 1+percent_increase = 1+",pc/100," = ",sf,".")
+}
+if(unk!=3 && ID=="decrease"){
+    step1 = paste0("scale_factor = 1-percent_decrease = 1-",pc/100," = ",sf,".")
+}
+if(unk==3){
+    step1 = paste0("scale_factor = new/old = ",new,"/",old," = ",sf,".")
+}
+
+
+if(unk==1){
+    step2 = paste0("old_price = new_price/scale_factor = ",new,"/",sf," = ",old)
+}
+if(unk==2){
+    step2 = paste0("new_price = old_price\\*scale_factor = ",old,"\\*",sf,"=",new)
+}
+if(unk==3 && ID=="increase"){
+    step2 = paste0("percent_increase = scale_factor-1 = ",sf,"-",1," = ",pc/100," = ",pc,"%.")
+}
+if(unk==3 && ID=="decrease"){
+    step2 = paste0("percent_decrease = 1-scale_factor = ",1,"-",sf," = ",pc/100," = ",pc,"%.")
+}
+
+
+```
+
+Question
+========
+
+* Old price = $`r nums[1]`
+* New price = $`r nums[2]`
+* Percent `r ID` = `r nums[3]`\%
+
+Find x.
+
+Solution
+========
+
+The answer is x = `r ans`.
+
+You might find this reference helpful:
+
+[https://artockthedino.github.io/ml2026/blooket/percentages/perc_change_reference.pdf](https://artockthedino.github.io/ml2026/blooket/percentages/perc_change_reference.pdf)
+
+One way or another it'll be helpful to find the **scale factor**:
+
+* If both prices are known, use new/old
+* If percent increase is known, use 1+percent_increase
+* If percent decrease is known, use 1-percent_decrease
+
+For this specific problem... `r step1`
+
+Remember, calculations use the decimal form of percentages.
+
+Now, find the unknown. Depending on what you need, use one of the formulas below:
+
+* old_price = new_price/scale_factor.
+* new_price = old_price*scale_factor.
+* percent_increase = scale_factor-1.
+* percent_decrease = 1-scale_factor.
+
+For this specific problem...`r step2`
+
+* Old price = $`r old`
+* New price = $`r new`
+* Percent `r ID` = `r pc`\%
+
+Spelled out methods...
+
+Remember, use decimal form of percentages in calculations. For example, an increase of 23% means `percent_increase` is 0.23 and the `scale_factor` is 1.23.
+
+
+* Find `new_price` from `old_price` and `percent_increase`
+    * `scale_factor` = 1 + `percent_increase`
+    * `new_price` = `old_price` * `scale_factor`
+* Find `new_price` from `old_price` and `percent_decrease`
+    * `scale_factor` = 1 - `percent_decrease`
+    * `new_price` = `old_price` * `scale_factor`
+* Find `old_price` from `new_price` and `percent_increase`
+    * `scale_factor` = 1 + `percent_increase`
+    * `old_price` = `new_price` / `scale_factor`
+* Find `old_price` from `new_price` and `percent_decrease`
+    * `scale_factor` = 1 - `percent_decrease`
+    * `old_price` = `new_price` / `scale_factor`
+* Find `percent_increase` from `old_price` and `new_price`
+    * `scale_factor` = `new_price` / `old_price`
+    * `percent_increase` = `scale_factor` - 1
+* Find `percent_increase` from `old_price` and `new_price`
+    * `scale_factor` = `new_price` / `old_price`
+    * `percent_decrease` = 1 - `scale_factor`
+
+
+Meta-information
+============
+extype: num
+exsolution: `r ans`
+exname: perc_change_unks

@@ -1,5 +1,5 @@
 ---
-title: Percent Change From Old Price to New Price
+title: Percent Change from Old Price to New Price
 output: pdf_document
 ---
 
