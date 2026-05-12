@@ -146,7 +146,7 @@ Our goal is to produce these patterns in Scratch. You will **submit a slideshow*
     * Adjust the parameters in the top of the code, click the green flag to run the code.
         * The main parameters are `n` and `turn`. These fundamentally alter the pattern drawn.
             * For `turn`, you should try a simple fraction of 360. Some examples are 30, 45, 60, 72, 90, 108, 120, 135, and 150. But you can also get nice patterns with random angles!
-        * **DO NOT** let drawing hit edge of screen. Use a smaller `scale` value or adjust `start_x` and `start_y` if this happens. I typically start with `scale`=1, or even `scale`=0.1, and then increase it until it fills the space (while tinkering with `start_x` and `start_y`).
+        * **DO NOT** let drawing hit edge of screen. Use a smaller `scale` value or adjust `start_x` and `start_y` if this happens. I typically start with `scale`=1, or even `scale`=0.1, and then increase it until the pattern fills the space (while tinkering with `start_x` and `start_y` to keep it centered).
     * Try to make the drawing as large as possible without hitting the edge of the window or going behind the readouts.
     * **Document your best patterns**. 
         * Start a new slideshow. Use [slides.new](https://slides.new) for google slides.
