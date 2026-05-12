@@ -11,7 +11,7 @@
 
 
 
-<title>u2c_percent_less.knit</title>
+<title>examples_0512</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -252,6 +252,252 @@ if (window.hljs) {
 
 
 
+<style type="text/css">:root {
+--incorrect: #983E82;
+--incorrect_alpha: #edaddd;
+--correct: #59935B;
+--correct_alpha: #c0edc2;
+--highlight: #467AAC;
+--highlight_alpha: #D1E4FF;
+--highlight_gray: #C3C3C3;
+--background_question: #7f7f7f0d;
+--background_input: white;
+--text_input: black;
+--webex-reveal-main-font-size: 1.5rem; 
+--webex-reveal-main-color: var(--r-main-color);
+}
+
+
+:root .quarto-dark, :root .color-theme-2 {
+--highlight: #5687B9;
+--background_input: black;
+--text_input: white;
+}
+
+.reveal .webex-question * {
+font-size: var(--webex-reveal-main-font-size) !important;
+color: var(--webex-reveal-main-color) !important;
+} 
+
+.webex-group .webex-question {
+display: none;
+}
+.webex-group .webex-question.active {
+display: block;
+}
+.webex-check {}
+.webex-box {
+border: 2px solid var(--highlight);
+padding: 0.5em;
+margin: 1em 0;
+border-radius: .25em;
+background-color: var(--background_question);
+}
+.webex-filename {
+display: block;
+font-family: "Lucida Console", "Courier New", monospace;
+color: gray;
+text-align: right;
+}
+.webex-filename > p { margin: 0; }
+.webex-total_correct {
+margin-left: 1em;
+}
+.unchecked .webex-total_correct {
+display: none;
+}
+.unchecked .webex-incorrect,
+.unchecked .webex-correct {
+border: 2px solid transparent !important;
+background-color: transparent !important;
+}
+
+.unchecked select.webex-incorrect,
+.unchecked select.webex-correct,
+.unchecked input.webex-incorrect,
+.unchecked input.webex-correct {
+border: 2px solid var(--highlight) !important;
+background-color: var(--background_input) !important;
+color: var(--text_input) !important;
+}
+
+.webex-select, .webex-solveme,
+.unchecked .webex-radiogroup > .webex-incorrect,
+.unchecked .webex-radiogroup > .webex-correct{
+border: 2px solid var(--highlight);
+background-color: var(--background_input);
+color: var(--text_input) !important;
+border-radius: 0.25em;
+width: auto;
+max-width: 90%;
+}
+.webex-question .tolerance + .webex-solveme {
+border-top-left-radius: 0;
+border-bottom-left-radius: 0;
+border-left: none;
+padding-left: 0.5em;
+}
+.webex-question .tolerance {
+border-color: var(--highlight);
+border-radius: 0.25em;
+background-color: #CECECE;
+color: gray;
+text-align: right;
+border-top-right-radius: 0;
+border-bottom-right-radius: 0;
+border-style: solid;
+border-right: none;
+padding-right: .5em;
+padding-left: .25em;
+}
+.webex-check:not(.unchecked) .tolerance:has(+ .webex-solveme.webex-incorrect) {
+border-color: var(--incorrect);
+color: var(--incorrect);
+}
+.webex-check:not(.unchecked) .tolerance:has(+ .webex-solveme.webex-correct) {
+border-color: var(--correct);
+color: var(--correct);
+}
+.webex-incorrect, .webex-checkboxgroup, .webex-solveme. .webex-radiogroup {
+
+border-radius: 0.25em;
+}
+.webex-checkboxgroup {
+margin-bottom: 1em;
+}
+.webex-incorrect,
+.webex-checkboxgroup > .webex-incorrect,
+.webex-solveme.webex-incorrect,
+.webex-radiogroup > .webex-incorrect {
+border: 2px solid var(--incorrect);
+background-color: var(--incorrect_alpha);
+}
+.webex-correct, .webex-checkboxgroup > .webex-correct,
+.webex-solveme.webex-correct,
+.webex-radiogroup >.webex-correct {
+border: 2px solid var(--correct);
+background-color: var(--correct_alpha);
+}
+.unchecked .webex-incorrect > span::after,
+.unchecked .webex-incorrect + .webex-icon::after,
+.unchecked .webex-correct > span::after,
+.unchecked .webex-correct + .webex-icon::after {
+content: "";
+}
+
+.webex-incorrect > span::after,
+.webex-incorrect + .webex-icon::after {
+content: "\00a0\00a0\2715";
+}
+.webex-correct > span::after,
+.webex-correct + .webex-icon::after {
+content: "\00a0\00a0\2713";
+}
+
+
+
+.webex-solution {
+display: none;
+padding: 0.5em;
+margin-bottom: 10px;
+border: 2px solid var(--highlight_gray);
+border-radius: 5px;
+}
+.webex-solution.visible {
+display: block;
+}
+.webex-solution > ul {
+padding-left: 2em;
+}
+
+ul.webex-button-list {
+display: flex;
+flex-wrap: wrap;
+width: 100%;
+list-style: none;
+padding: 0 !important; 
+margin: 0 !important; 
+}
+ul.webex-button-list > li {
+padding: 0;
+}
+ul.webex-button-list > li {
+margin-bottom: 0 !important; 
+}
+ul.webex-button-list > li:first-child {
+margin-right: auto;
+margin-top: 0; 
+}
+.webex-solution button,
+.webex-box .webex-button {
+height: 2em;
+min-width: 2em;
+margin-bottom: 0;
+margin-right: 0.25em;
+border-radius: 0.5em;
+background-color: transparent;
+border-color: var(--highlight);
+color: var(--highlight);
+padding: 0 0.5em;
+font-size: 1.2em;
+white-space: nowrap;
+}
+.webex-button:hover {
+background-color: var(--highlight_alpha);
+}
+.webex-solution pre.sourceCode {
+border-color: var(--correct);
+}
+ul.webex-button-list > li:last-child > .webex-button { margin-right: 0;
+}
+
+.webex-checkboxgroup > label,
+.unchecked .webex-checkboxgroup > label,
+.webex-radiogroup label {
+font-weight: 400;
+display: block;
+border: 2px solid transparent;
+background-color: inherit;
+border-radius: 0.25em;
+}
+.webex-checkboxgroup label > input[type=checkbox],
+.webex-radiogroup label > input[type=radio] {
+margin: 0.1em 0.5em 0 0.25em;
+position: relative;
+top: 0.125em;
+}
+.webex-radiogroup {
+margin: 1em 0;
+}
+
+.webex-box > ul:not(.webex-button-list) {
+list-style: none;
+margin: 0;
+padding: 0 0 1em 0.25em;
+}
+.webex-box > ul:not(.webex-button-list) > li {
+margin: 0 0 0.25em 0;
+}
+.webex-box > ul:not(.webex-button-list) > li > select {
+margin: 0 0.5em 0 0;
+}
+
+.webex-checkboxgroup > label {
+display: block;
+}
+.webex-checkboxgroup > label > span {
+font-weight: normal;
+}
+.unchecked .webex-checkboxgroup .webex-incorrect,
+.unchecked .webex-checkboxgroup .webex-correct {
+border: 2px solid transparent !important;
+background-color: transparent !important;
+}
+.unchecked .webex-checkboxgroup > label.webex-correct,
+.unchecked .webex-checkboxgroup > label.webex-incorrect {
+background-color: transparent;
+}
+</style>
 
 
 
@@ -348,27 +594,3803 @@ display: none;
 
 
 
+<h1 class="title toc-ignore">examples_0512</h1>
 
 </div>
 
 
-<div id="question" class="section level1">
-<h1>Question</h1>
-<p>What is 28.2% less than 584?</p>
+<div class="webex-group">
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $7500 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+6.89% for a term of 9 years, how much do you have to pay back at the end
+of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-8ee3771e0bad1c76a814f52f1cfbab90" data-tol="0.01" size="20" data-answer="Y0dUAQYCAUsHV0M5"></input></p>
 </div>
-<div id="solution" class="section level1">
-<h1>Solution</h1>
-<p>For a “percent less” question, the scale factor is found by dividing
-the percentage number by 100 and then subtracting it from 1.</p>
-<p><span class="math display">\[1-\frac{28.2}{100}=0.718\]</span></p>
-<p>Multiply the scale factor by the initial value.</p>
-<p><span class="math display">\[0.718\cdot 584 ~=~ 419.312\]</span></p>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 7500 \cdot 0.0689 \cdot
+9\]</span></p>
+<p><span class="math display">\[I = 4650.75\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 12150.75\]</span></p>
 </div>
-<div id="meta-information" class="section level1">
-<h1>Meta-information</h1>
-<p>extype: num exsolution: 419.312 exname: get_part extol: 1</p>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $6600 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+12.05% for a term of 6 years, how much do you have to pay back at the
+end of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-ee9826c75186a0e5fce47fcd316e1e66" data-tol="0.01" size="20" data-answer="PkcICQEBUhkNE2U="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 6600 \cdot 0.1205 \cdot
+6\]</span></p>
+<p><span class="math display">\[I = 4771.80\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 11371.80\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $5500 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+10.93% for a term of 8 years, how much do you have to pay back at the
+end of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-bf02d1cefcf6c864eef856b0ebd108c5" data-tol="0.01" size="20" data-answer="OUQBAlcBWktUQTs="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 5500 \cdot 0.1093 \cdot
+8\]</span></p>
+<p><span class="math display">\[I = 4809.20\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 10309.20\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $1700 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+5.44% for a term of 7 years, how much do you have to pay back at the end
+of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-df6ce9803437906473d3c981bc73a50e" data-tol="0.01" size="20" data-answer="P0QEUFEOFgMFFm4="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 1700 \cdot 0.0544 \cdot
+7\]</span></p>
+<p><span class="math display">\[I = 647.36\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 2347.36\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $6300 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+7.88% for a term of 9 years, how much do you have to pay back at the end
+of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-b1621dc9335e31699226a0928599130c" data-tol="0.01" size="20" data-answer="ORMHAgZSVBcKBRc4"></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 6300 \cdot 0.0788 \cdot
+9\]</span></p>
+<p><span class="math display">\[I = 4467.96\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 10767.96\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $6200 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+13.76% for a term of 8 years, how much do you have to pay back at the
+end of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-39812a90a53727b3641c6cc2a97d6076" data-tol="0.01" size="20" data-answer="aBsJAgJTDR5YAxFq"></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 6200 \cdot 0.1376 \cdot
+8\]</span></p>
+<p><span class="math display">\[I = 6824.96\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 13024.96\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $1900 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+17.83% for a term of 9 years, how much do you have to pay back at the
+end of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-b79f9cad7381d401908433f80dbae4c7" data-tol="0.01" size="20" data-answer="ORUNXw1bT10EEWU="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 1900 \cdot 0.1783 \cdot
+9\]</span></p>
+<p><span class="math display">\[I = 3048.93\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 4948.93\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $2800 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+4.25% for a term of 8 years, how much do you have to pay back at the end
+of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-b9c733678d8b3b408ab6eeb0ad43e129" data-tol="0.01" size="20" data-answer="ORtQAAYBFGo="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 2800 \cdot 0.0425 \cdot
+8\]</span></p>
+<p><span class="math display">\[I = 952.00\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 3752.00\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $4300 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+14.43% for a term of 9 years, how much do you have to pay back at the
+end of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-d62a71716d73dd7b9ac9a882d1ab9c3a" data-tol="0.01" size="20" data-answer="PxQLWQ8FGQUHRmo="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 4300 \cdot 0.1443 \cdot
+9\]</span></p>
+<p><span class="math display">\[I = 5584.41\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 9884.41\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $2900 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+8.25% for a term of 3 years, how much do you have to pay back at the end
+of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-9c32fde21eac542af0ca93709dc3a063" data-tol="0.01" size="20" data-answer="YkEABFdTSwUERzw="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 2900 \cdot 0.0825 \cdot
+3\]</span></p>
+<p><span class="math display">\[I = 717.75\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 3617.75\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $2200 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+7.52% for a term of 3 years, how much do you have to pay back at the end
+of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-274182b27424d6c06e3e035d5b03b65a" data-tol="0.01" size="20" data-answer="aRUGBwEETAEFFm8="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 2200 \cdot 0.0752 \cdot
+3\]</span></p>
+<p><span class="math display">\[I = 496.32\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 2696.32\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $7300 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+10.44% for a term of 5 years, how much do you have to pay back at the
+end of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-5978415ad5e1d3ead4795c945bc48930" data-tol="0.01" size="20" data-answer="bhsGCQUABU9SFzg="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 7300 \cdot 0.1044 \cdot
+5\]</span></p>
+<p><span class="math display">\[I = 3810.60\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 11110.60\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $800 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+2.54% for a term of 8 years, how much do you have to pay back at the end
+of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-a537b7198479ded61aea51f1acdb2297" data-tol="0.01" size="20" data-answer="OhcKAVAZBAwBDQ4AXVxdDwhYXENo"></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 800 \cdot 0.0254 \cdot
+8\]</span></p>
+<p><span class="math display">\[I = 162.56\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 962.56\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $5800 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+12.90% for a term of 5 years, how much do you have to pay back at the
+end of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-f16885bb939802044559807d2789b68a" data-tol="0.01" size="20" data-answer="PRMPDQwEQD8="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 5800 \cdot 0.129 \cdot
+5\]</span></p>
+<p><span class="math display">\[I = 3741.00\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 9541.00\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $5700 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+8.14% for a term of 3 years, how much do you have to pay back at the end
+of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-0e01e4ef26af700b9fe6a9605b48af88" data-tol="0.01" size="20" data-answer="a0cHAVwFS18GFDw="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 5700 \cdot 0.0814 \cdot
+3\]</span></p>
+<p><span class="math display">\[I = 1391.94\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 7091.94\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $5200 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+13.97% for a term of 6 years, how much do you have to pay back at the
+end of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-d16c951443bf3bf61af29571b433b5df" data-tol="0.01" size="20" data-answer="PxMPVgwNHwIHCltfCltfDwhYXxBk"></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 5200 \cdot 0.1397 \cdot
+6\]</span></p>
+<p><span class="math display">\[I = 4358.64\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 9558.64\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $7500 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+11.69% for a term of 8 years, how much do you have to pay back at the
+end of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-33e75381642a16ba35332863c8100552" data-tol="0.01" size="20" data-answer="aBFUAwACDBNr"></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 7500 \cdot 0.1169 \cdot
+8\]</span></p>
+<p><span class="math display">\[I = 7014.00\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 14514.00\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $2800 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+5.72% for a term of 4 years, how much do you have to pay back at the end
+of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-44871b303df9ff43485523bdd2ef826a" data-tol="0.01" size="20" data-answer="bxYLAwVSHQYHRjs="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 2800 \cdot 0.0572 \cdot
+4\]</span></p>
+<p><span class="math display">\[I = 640.64\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 3440.64\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $4500 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+5.04% for a term of 7 years, how much do you have to pay back at the end
+of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-97079fb8f6468b0d57d259240826bfb1" data-tol="0.01" size="20" data-answer="YhUGBwFRTA5Eaw=="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 4500 \cdot 0.0504 \cdot
+7\]</span></p>
+<p><span class="math display">\[I = 1587.60\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 6087.60\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $4300 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+10.39% for a term of 9 years, how much do you have to pay back at the
+end of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-18a0870069966e5f344ce07716f5bad6" data-tol="0.01" size="20" data-answer="ahpZAwoHHgkFG2Q="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 4300 \cdot 0.1039 \cdot
+9\]</span></p>
+<p><span class="math display">\[I = 4020.93\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 8320.93\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $8200 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+6.26% for a term of 7 years, how much do you have to pay back at the end
+of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-2998feaba9a9ac402cd4f46c39f2290b" data-tol="0.01" size="20" data-answer="aRsICVFcUkxTDUNk"></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 8200 \cdot 0.0626 \cdot
+7\]</span></p>
+<p><span class="math display">\[I = 3593.24\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 11793.24\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $6800 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+5.32% for a term of 5 years, how much do you have to pay back at the end
+of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-11c32cc3790c41edefe4ff7e45e73fa2" data-tol="0.01" size="20" data-answer="ahNbBQJbTQQOAAlaDQhcXVxfXBY7"></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 6800 \cdot 0.0532 \cdot
+5\]</span></p>
+<p><span class="math display">\[I = 1808.80\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 8608.80\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $8300 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+9.60% for a term of 5 years, how much do you have to pay back at the end
+of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-2b55ce06d410c428d79cad3b49fe84f3" data-tol="0.01" size="20" data-answer="aUAEB1FdBBQ5"></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 8300 \cdot 0.096 \cdot
+5\]</span></p>
+<p><span class="math display">\[I = 3984.00\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 12284.00\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $800 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+7.09% for a term of 4 years, how much do you have to pay back at the end
+of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-60ca2372fa7c9c1ba5573fb00a95f8be" data-tol="0.01" size="20" data-answer="bRJSUQAFGQpeQ2o="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 800 \cdot 0.0709 \cdot
+4\]</span></p>
+<p><span class="math display">\[I = 226.88\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 1026.88\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $6000 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+6.79% for a term of 5 years, how much do you have to pay back at the end
+of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-77316e2b6ae1a011a9368288ebf04e8e" data-tol="0.01" size="20" data-answer="bBULAQVSED8="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 6000 \cdot 0.0679 \cdot
+5\]</span></p>
+<p><span class="math display">\[I = 2037.00\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 8037.00\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $2600 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+2.97% for a term of 7 years, how much do you have to pay back at the end
+of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-231fe3cd502ae4e54c81162cc8b4769c" data-tol="0.01" size="20" data-answer="aRECV1EDTVEBEm8="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 2600 \cdot 0.0297 \cdot
+7\]</span></p>
+<p><span class="math display">\[I = 540.54\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 3140.54\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $1000 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+12.76% for a term of 4 years, how much do you have to pay back at the
+end of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-64f7ccdb119a29010d802ecedc4d36a9" data-tol="0.01" size="20" data-answer="bRZXAlJTSlYTbA=="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 1000 \cdot 0.1276 \cdot
+4\]</span></p>
+<p><span class="math display">\[I = 510.40\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 1510.40\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $7700 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+8.76% for a term of 6 years, how much do you have to pay back at the end
+of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-cbf94b2d60b5ada7b6305ac810f2db45" data-tol="0.01" size="20" data-answer="OEBXCANWBUoHAkBo"></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 7700 \cdot 0.0876 \cdot
+6\]</span></p>
+<p><span class="math display">\[I = 4047.12\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 11747.12\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $7900 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+2.89% for a term of 9 years, how much do you have to pay back at the end
+of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-0deca6bfe89e019e793da2db1f9b58ac" data-tol="0.01" size="20" data-answer="a0ZcWlQCTFFcCAlVAAEJVQcJAkY8"></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 7900 \cdot 0.0289 \cdot
+9\]</span></p>
+<p><span class="math display">\[I = 2054.79\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 9954.79\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $1300 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+12.28% for a term of 5 years, how much do you have to pay back at the
+end of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-c5fa609f62933c00759823f53e5fc1de" data-tol="0.01" size="20" data-answer="OBdUUQ8IF1QUbw=="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 1300 \cdot 0.1228 \cdot
+5\]</span></p>
+<p><span class="math display">\[I = 798.20\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 2098.20\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $7600 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+4.81% for a term of 3 years, how much do you have to pay back at the end
+of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-743cfdb1847cdfb906a9d242a549052f" data-tol="0.01" size="20" data-answer="bBYLVV9STAcAFmo="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 7600 \cdot 0.0481 \cdot
+3\]</span></p>
+<p><span class="math display">\[I = 1096.68\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 8696.68\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $2600 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+16.17% for a term of 8 years, how much do you have to pay back at the
+end of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-1382ec93cbb3eb23d49baf0a76b07b4e" data-tol="0.01" size="20" data-answer="ahENC1NQFwBVQD8="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 2600 \cdot 0.1617 \cdot
+8\]</span></p>
+<p><span class="math display">\[I = 3363.36\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 5963.36\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $4400 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+6.82% for a term of 7 years, how much do you have to pay back at the end
+of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-96ca0557763d27bb112e37c5bd59d8a0" data-tol="0.01" size="20" data-answer="YhRVVAAFGwIBFG4="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 4400 \cdot 0.0682 \cdot
+7\]</span></p>
+<p><span class="math display">\[I = 2100.56\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 6500.56\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $5700 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+11.13% for a term of 9 years, how much do you have to pay back at the
+end of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-aca70120120380b9828625ad5138e460" data-tol="0.01" size="20" data-answer="OkFQBgQBCx4HCxJu"></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 5700 \cdot 0.1113 \cdot
+9\]</span></p>
+<p><span class="math display">\[I = 5709.69\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 11409.69\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $8300 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+5.49% for a term of 4 years, how much do you have to pay back at the end
+of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-b6b6cc60ff7fa400455376b6774465f6" data-tol="0.01" size="20" data-answer="ORRTBlJRBB5QXhU7"></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 8300 \cdot 0.0549 \cdot
+4\]</span></p>
+<p><span class="math display">\[I = 1822.68\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 10122.68\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $6500 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+12.50% for a term of 8 years, how much do you have to pay back at the
+end of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-baf61dd726c7c3f2c9f3dcf2b22f075f" data-tol="0.01" size="20" data-answer="OUNXBQFUVBVv"></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 6500 \cdot 0.125 \cdot
+8\]</span></p>
+<p><span class="math display">\[I = 6500.00\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 13000.00\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $3100 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+12.18% for a term of 4 years, how much do you have to pay back at the
+end of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-f02e3f87a279d4e09de5fa9f02a3a90e" data-tol="0.01" size="20" data-answer="PRIGUwJWFgRTEGo="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 3100 \cdot 0.1218 \cdot
+4\]</span></p>
+<p><span class="math display">\[I = 1510.32\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 4610.32\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $2600 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+15.28% for a term of 5 years, how much do you have to pay back at the
+end of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-b2d9fe9f27d6c98204c7eb070ba26ba9" data-tol="0.01" size="20" data-answer="ORBQDF5TF1IQag=="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 2600 \cdot 0.1528 \cdot
+5\]</span></p>
+<p><span class="math display">\[I = 1986.40\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 4586.40\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $3400 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+5.47% for a term of 4 years, how much do you have to pay back at the end
+of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-b957501fcdfad175a67f78ab5ecce69e" data-tol="0.01" size="20" data-answer="ORsBBgEDH19RRjs="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 3400 \cdot 0.0547 \cdot
+4\]</span></p>
+<p><span class="math display">\[I = 743.92\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 4143.92\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $5000 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+16.97% for a term of 5 years, how much do you have to pay back at the
+end of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-35e145a3d8e9ea1baed8f87a63513fa4" data-tol="0.01" size="20" data-answer="aBdcAwAHTwZGZQ=="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 5000 \cdot 0.1697 \cdot
+5\]</span></p>
+<p><span class="math display">\[I = 4242.50\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 9242.50\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $4000 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+8.80% for a term of 7 years, how much do you have to pay back at the end
+of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-945796d00fb9351a604b4fe74612584a" data-tol="0.01" size="20" data-answer="YhYDAw8CRm0="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 4000 \cdot 0.088 \cdot
+7\]</span></p>
+<p><span class="math display">\[I = 2464.00\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 6464.00\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $1100 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+16.11% for a term of 3 years, how much do you have to pay back at the
+end of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-320f88f309a2cdc1eb1d8dc2cbac2f8c" data-tol="0.01" size="20" data-answer="aBABUAsJSAUDGzw="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 1100 \cdot 0.1611 \cdot
+3\]</span></p>
+<p><span class="math display">\[I = 531.63\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 1631.63\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $2000 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+8.07% for a term of 4 years, how much do you have to pay back at the end
+of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-53f9c22dd211aefb1d5c5cb8322bff81" data-tol="0.01" size="20" data-answer="bhFUD1cHHFJGbw=="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 2000 \cdot 0.0807 \cdot
+4\]</span></p>
+<p><span class="math display">\[I = 645.60\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 2645.60\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $6700 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+2.57% for a term of 5 years, how much do you have to pay back at the end
+of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-24293069dcd23b38e13888a87bf9c637" data-tol="0.01" size="20" data-answer="aRYFDAUAGABRQTk="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 6700 \cdot 0.0257 \cdot
+5\]</span></p>
+<p><span class="math display">\[I = 860.95\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 7560.95\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $8800 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+16.86% for a term of 3 years, how much do you have to pay back at the
+end of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-02c7bee84a0560edd07802715ec52da7" data-tol="0.01" size="20" data-answer="axBSBFBQVBYEVRJo"></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 8800 \cdot 0.1686 \cdot
+3\]</span></p>
+<p><span class="math display">\[I = 4451.04\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 13251.04\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $6900 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+17.67% for a term of 6 years, how much do you have to pay back at the
+end of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-115d404bb38b0024e3d20b189bee03a0" data-tol="0.01" size="20" data-answer="ahMEUAYBAUxRCxo/"></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 6900 \cdot 0.1767 \cdot
+6\]</span></p>
+<p><span class="math display">\[I = 7315.38\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 14215.38\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $7200 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+2.17% for a term of 4 years, how much do you have to pay back at the end
+of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-034415bee94dc8b07509beb26e0fb9ed" data-tol="0.01" size="20" data-answer="axEDDAMBTFxTG2k="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 7200 \cdot 0.0217 \cdot
+4\]</span></p>
+<p><span class="math display">\[I = 624.96\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 7824.96\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $5900 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+11.15% for a term of 5 years, how much do you have to pay back at the
+end of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-343afe502d13c24db8a236d33d5b1ba2" data-tol="0.01" size="20" data-answer="aBYKUF5cGwIHRmw="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 5900 \cdot 0.1115 \cdot
+5\]</span></p>
+<p><span class="math display">\[I = 3289.25\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 9189.25\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $4500 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+12.30% for a term of 3 years, how much do you have to pay back at the
+end of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-72426361589c2bd0f2a5ab3cb64d7a62" data-tol="0.01" size="20" data-answer="bBACAwADGAQXZQ=="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 4500 \cdot 0.123 \cdot
+3\]</span></p>
+<p><span class="math display">\[I = 1660.50\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 6160.50\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you borrow a principal of $1800 with a
+<strong>simple-interest</strong> loan at an annual interest rate of
+7.13% for a term of 9 years, how much do you have to pay back at the end
+of the loan?</p>
+<p><input class="webex-solveme nospaces" id="webex-aa45bdf8d08feaac74169b0cd3ea1ff6" data-tol="0.01" size="20" data-answer="OkMGDFdRSAhSEmU="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 1800 \cdot 0.0713 \cdot
+9\]</span></p>
+<p><span class="math display">\[I = 1155.06\]</span></p>
+<p>To find the total amount repaid, add the interest to the
+principal.</p>
+<p><span class="math display">\[T = P+I = 2955.06\]</span></p>
+</div>
+</div>
+</div>
+<div class="webex-group">
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $2800 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 15.72% for a term of 9 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-3827ca6da23c381dcdc29f94ad96c859" data-tol="0.01" size="20" data-answer="aBoEAFVQGFBVEG4="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 2800 \cdot 0.1572 \cdot
+9\]</span></p>
+<p><span class="math display">\[I = 3961.44\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 6761.44\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $4800 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 4.94% for a term of 9 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-e02977a75d04646944b4ddfa2bf260b3" data-tol="0.01" size="20" data-answer="PhIEAAQDTwcNRm0="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 4800 \cdot 0.0494 \cdot
+9\]</span></p>
+<p><span class="math display">\[I = 2134.08\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 6934.08\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $800 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 17.35% for a term of 6 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-918c7bcf8eb2ff663e1d961c9b14aac3" data-tol="0.01" size="20" data-answer="YhMJVQRQTV4aOA=="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 800 \cdot 0.1735 \cdot
+6\]</span></p>
+<p><span class="math display">\[I = 832.80\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 1632.80\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $6200 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 14.70% for a term of 4 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-4f1fe95bf83ae7cc9bc119a02ab6cfa0" data-tol="0.01" size="20" data-answer="b0QIXlEMG1REZQ=="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 6200 \cdot 0.147 \cdot
+4\]</span></p>
+<p><span class="math display">\[I = 3645.60\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 9845.60\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $8200 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 17.75% for a term of 5 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-9d4122d566b5e79eaa54569e0d29c2d3" data-tol="0.01" size="20" data-answer="YkYFBAYFUxsDFD8="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 8200 \cdot 0.1775 \cdot
+5\]</span></p>
+<p><span class="math display">\[I = 7277.50\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 15477.50\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $2700 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 10.37% for a term of 3 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-46a99ca28786c7edb051d0179b552503" data-tol="0.01" size="20" data-answer="bxRSDApaTwsPFWU="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 2700 \cdot 0.1037 \cdot
+3\]</span></p>
+<p><span class="math display">\[I = 839.97\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 3539.97\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $7000 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 12.32% for a term of 6 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-0735922b849034487d35af9cdfa621d0" data-tol="0.01" size="20" data-answer="axUCBwgFBkwMFmQ="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 7000 \cdot 0.1232 \cdot
+6\]</span></p>
+<p><span class="math display">\[I = 5174.40\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 12174.40\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $6100 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 15.43% for a term of 4 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-83a9ba71e166798f54f092ceadbca616" data-tol="0.01" size="20" data-answer="YxFYAVRVGQhXE2s="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 6100 \cdot 0.1543 \cdot
+4\]</span></p>
+<p><span class="math display">\[I = 3764.92\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 9864.92\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $5500 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 12.69% for a term of 4 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-7cd6867a8968ab1b6ced91ea39a5509a" data-tol="0.01" size="20" data-answer="bEFcBAEHGVYBAA8BWFsIWw9aXEZk"></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 5500 \cdot 0.1269 \cdot
+4\]</span></p>
+<p><span class="math display">\[I = 2791.80\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 8291.80\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $1700 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 10.21% for a term of 3 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-64f737e834de8b515fce043d56c0650e" data-tol="0.01" size="20" data-answer="bRZUBQEHSw8CFjk="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 1700 \cdot 0.1021 \cdot
+3\]</span></p>
+<p><span class="math display">\[I = 520.71\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 2220.71\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $3400 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 2.30% for a term of 6 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-0eebceae88b9cb294455c9be487fb8e2" data-tol="0.01" size="20" data-answer="a0dWWlVcT1caZQ=="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 3400 \cdot 0.023 \cdot
+6\]</span></p>
+<p><span class="math display">\[I = 469.20\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 3869.20\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $6500 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 2.68% for a term of 8 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-c21df6480c6cf6af47b00c8ffd70c418" data-tol="0.01" size="20" data-answer="OBAGXF8FGg4SPg=="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 6500 \cdot 0.0268 \cdot
+8\]</span></p>
+<p><span class="math display">\[I = 1393.60\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 7893.60\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $1300 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 3.21% for a term of 8 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-36679c9c8fd86212362f80dd2ac9a105" data-tol="0.01" size="20" data-answer="aBQHAQpQF1sMRDk="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 1300 \cdot 0.0321 \cdot
+8\]</span></p>
+<p><span class="math display">\[I = 333.84\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 1633.84\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $3500 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 17.15% for a term of 6 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-b317c775d94b7de301d68ba3db4f5bd2" data-tol="0.01" size="20" data-answer="OREGBlMGGQBGZA=="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 3500 \cdot 0.1715 \cdot
+6\]</span></p>
+<p><span class="math display">\[I = 3601.50\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 7101.50\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $8400 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 16.99% for a term of 4 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-add17e8fe0d3ced1e530f8b7b546bb6e" data-tol="0.01" size="20" data-answer="OkZVBQZVAEhTBEZu"></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 8400 \cdot 0.1699 \cdot
+4\]</span></p>
+<p><span class="math display">\[I = 5708.64\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 14108.64\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $3700 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 17.09% for a term of 8 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-004c8efbccaaeb3d8602863563cdd536" data-tol="0.01" size="20" data-answer="axIMVA1dSFRQWlhYXFsKXQEPCRBl"></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 3700 \cdot 0.1709 \cdot
+8\]</span></p>
+<p><span class="math display">\[I = 5058.64\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 8758.64\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $2500 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 15.35% for a term of 7 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-b07b18303f09e5a7c88930c28a8ecd25" data-tol="0.01" size="20" data-answer="ORICUwkOHQIGRG0="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 2500 \cdot 0.1535 \cdot
+7\]</span></p>
+<p><span class="math display">\[I = 2686.25\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 5186.25\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $8100 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 15.12% for a term of 3 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-f5d13d0d7236997a700d105fc603c6b5" data-tol="0.01" size="20" data-answer="PRdVAARTBEoGBBFr"></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 8100 \cdot 0.1512 \cdot
+3\]</span></p>
+<p><span class="math display">\[I = 3674.16\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 11774.16\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $5300 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 4.50% for a term of 5 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-4a8f09344b22ac2909ec54dd621a93c7" data-tol="0.01" size="20" data-answer="b0MOUgkLHQEWPw=="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 5300 \cdot 0.045 \cdot
+5\]</span></p>
+<p><span class="math display">\[I = 1192.50\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 6492.50\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $4500 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 2.48% for a term of 3 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-72f35be688be22fea48ba8d044029b97" data-tol="0.01" size="20" data-answer="bBBSCwZWSw4aZQ=="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 4500 \cdot 0.0248 \cdot
+3\]</span></p>
+<p><span class="math display">\[I = 334.80\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 4834.80\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $1600 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 4.16% for a term of 7 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-5b566c28f24da943525213b179e10c93" data-tol="0.01" size="20" data-answer="bkAHBgBWHAFUEGk="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 1600 \cdot 0.0416 \cdot
+7\]</span></p>
+<p><span class="math display">\[I = 465.92\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 2065.92\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $1400 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 8.23% for a term of 8 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-ffb1ee6356177f1306e2ca3b5cf03f05" data-tol="0.01" size="20" data-answer="PURQAldUGAQDFGw="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 1400 \cdot 0.0823 \cdot
+8\]</span></p>
+<p><span class="math display">\[I = 921.76\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 2321.76\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $2100 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 5.52% for a term of 3 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-8997f4fe83958433bce86fa11904b168" data-tol="0.01" size="20" data-answer="YxsLA1IDSFIOEWQ="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 2100 \cdot 0.0552 \cdot
+3\]</span></p>
+<p><span class="math display">\[I = 347.76\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 2447.76\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $5800 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 7.83% for a term of 8 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-a225a522dcd40dc724a796c56915ba90" data-tol="0.01" size="20" data-answer="OhALAVIGHANWU1QEAFRTBwIEUBVk"></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 5800 \cdot 0.0783 \cdot
+8\]</span></p>
+<p><span class="math display">\[I = 3633.12\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 9433.12\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $1500 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 6.42% for a term of 6 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-4e00858fc89d05918d35b220abbc4e41" data-tol="0.01" size="20" data-answer="b0cCAA8CFl5BZQ=="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 1500 \cdot 0.0642 \cdot
+6\]</span></p>
+<p><span class="math display">\[I = 577.80\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 2077.80\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $1500 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 15.42% for a term of 6 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-1412e5b431470404ca2c82b8b4bce476" data-tol="0.01" size="20" data-answer="ahYDCl0CTAwRbA=="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 1500 \cdot 0.1542 \cdot
+6\]</span></p>
+<p><span class="math display">\[I = 1387.80\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 2887.80\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $4200 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 9.34% for a term of 6 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-0f8813df3b553d26425873ed6dd0d3f1" data-tol="0.01" size="20" data-answer="a0QODQQASlALQGg="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 4200 \cdot 0.0934 \cdot
+6\]</span></p>
+<p><span class="math display">\[I = 2353.68\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 6553.68\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $1900 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 9.41% for a term of 3 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-1a3440f3598c445180489ce2b15e88c1" data-tol="0.01" size="20" data-answer="akMBAAcGSAACG2U="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 1900 \cdot 0.0941 \cdot
+3\]</span></p>
+<p><span class="math display">\[I = 536.37\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 2436.37\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $8100 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 11.86% for a term of 9 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-f06ac13719b2034db2a4d26f901f8397" data-tol="0.01" size="20" data-answer="PRIHV1QFBhkIDUBv"></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 8100 \cdot 0.1186 \cdot
+9\]</span></p>
+<p><span class="math display">\[I = 8645.94\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 16745.94\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $8900 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 2.14% for a term of 3 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-c28c6475d5502fb89d503bced38a7d9d" data-tol="0.01" size="20" data-answer="OBABVwEFGQZTDAwJC19bAQBdDBJu"></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 8900 \cdot 0.0214 \cdot
+3\]</span></p>
+<p><span class="math display">\[I = 571.38\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 9471.38\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $3500 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 14.44% for a term of 9 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-10a6f3d21eb409c4e7f42a1ddc52b474" data-tol="0.01" size="20" data-answer="ahJZBlILSgQTOA=="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 3500 \cdot 0.1444 \cdot
+9\]</span></p>
+<p><span class="math display">\[I = 4548.60\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 8048.60\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $8700 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 8.69% for a term of 6 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-98253a55fec6d2fe0c9a6400b22d0ca7" data-tol="0.01" size="20" data-answer="YhoDBgFSAxtXXUFr"></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 8700 \cdot 0.0869 \cdot
+6\]</span></p>
+<p><span class="math display">\[I = 4536.18\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 13236.18\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $3400 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 7.37% for a term of 9 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-45cdc858e3c946cc8ef4b7e18ed1aab5" data-tol="0.01" size="20" data-answer="bxdWUlYNGwpXET4="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 3400 \cdot 0.0737 \cdot
+9\]</span></p>
+<p><span class="math display">\[I = 2255.22\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 5655.22\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $7600 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 10.03% for a term of 5 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-2be01e85ded8ca378ca930fe3cd48624" data-tol="0.01" size="20" data-answer="aUBUAQVUCRtQRzk="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 7600 \cdot 0.1003 \cdot
+5\]</span></p>
+<p><span class="math display">\[I = 3811.40\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 11411.40\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $8900 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 4.86% for a term of 9 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-2a34dea655fc66a31c30707a8fe542ee" data-tol="0.01" size="20" data-answer="aUMCBlNcUxgNA0Q+"></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 8900 \cdot 0.0486 \cdot
+9\]</span></p>
+<p><span class="math display">\[I = 3892.86\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 12792.86\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $7900 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 13.68% for a term of 9 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-7e301d334260611fb0e3fa7a1b2e8cc9" data-tol="0.01" size="20" data-answer="bEcCBwdWBR0AChRt"></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 7900 \cdot 0.1368 \cdot
+9\]</span></p>
+<p><span class="math display">\[I = 9726.48\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 17626.48\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $3100 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 16.89% for a term of 5 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-38b871528ac8ede21f91e30199ae316c" data-tol="0.01" size="20" data-answer="aBpXDwYGGwsNQz4="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 3100 \cdot 0.1689 \cdot
+5\]</span></p>
+<p><span class="math display">\[I = 2617.95\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 5717.95\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $8400 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 16.15% for a term of 3 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-25ea68fd905aab213d4b289a025dd0e1" data-tol="0.01" size="20" data-answer="aRdUUwIOX0oBEmg="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 8400 \cdot 0.1615 \cdot
+3\]</span></p>
+<p><span class="math display">\[I = 4069.80\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 12469.80\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $7100 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 5.90% for a term of 8 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-20ff77e48f1356770b4213fa2556fa17" data-tol="0.01" size="20" data-answer="aRJXVgMCVBoKRGw="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 7100 \cdot 0.059 \cdot
+8\]</span></p>
+<p><span class="math display">\[I = 3351.20\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 10451.20\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $4500 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 10.97% for a term of 7 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-39ec9c77397750f942440c5e73b85194" data-tol="0.01" size="20" data-answer="aBtSWgxWGQIGG2o="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 4500 \cdot 0.1097 \cdot
+7\]</span></p>
+<p><span class="math display">\[I = 3455.55\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 7955.55\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $1700 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 2.54% for a term of 3 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-a1a1a1d623a7dd58e0ee883cedf15c14" data-tol="0.01" size="20" data-answer="OhNQCVMISgMGETw="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 1700 \cdot 0.0254 \cdot
+3\]</span></p>
+<p><span class="math display">\[I = 129.54\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 1829.54\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $2600 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 13.96% for a term of 5 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-6fb1214001d1a622d5b72cdfddec9ad4" data-tol="0.01" size="20" data-answer="bURWBQMFGggSbA=="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 2600 \cdot 0.1396 \cdot
+5\]</span></p>
+<p><span class="math display">\[I = 1814.80\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 4414.80\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $7200 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 11.19% for a term of 7 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-f02aa5591ae89eb03cb496164b61152c" data-tol="0.01" size="20" data-answer="PRIDU1kGDBcGV0dl"></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 7200 \cdot 0.1119 \cdot
+7\]</span></p>
+<p><span class="math display">\[I = 5639.76\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 12839.76\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $9000 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 17.59% for a term of 7 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-04df9b9a5604523d0d7a695790c5104b" data-tol="0.01" size="20" data-answer="axZWVglaCE8CFG0="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 9000 \cdot 0.1759 \cdot
+7\]</span></p>
+<p><span class="math display">\[I = 11081.70\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 20081.70\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $7000 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 9.61% for a term of 9 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-c1cd423197557348dfe765e5197195c3" data-tol="0.01" size="20" data-answer="OBNSVwQHBx8KFWg="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 7000 \cdot 0.0961 \cdot
+9\]</span></p>
+<p><span class="math display">\[I = 6054.30\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 13054.30\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $6900 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 16.06% for a term of 9 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-759c635be8d93269a8f01a011aabc466" data-tol="0.01" size="20" data-answer="bBcIVQ4EBkxXDkZk"></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 6900 \cdot 0.1606 \cdot
+9\]</span></p>
+<p><span class="math display">\[I = 9973.26\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 16873.26\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $8600 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 12.23% for a term of 9 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-cb7e5e219a0e26c54040e6d463c8f5b9" data-tol="0.01" size="20" data-answer="OEAGXQVTBB8JUxI4"></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 8600 \cdot 0.1223 \cdot
+9\]</span></p>
+<p><span class="math display">\[I = 9466.02\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 18066.02\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $2200 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 17.89% for a term of 3 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-75c59a4931fde2f1a381322d7e480ec6" data-tol="0.01" size="20" data-answer="bBdQBgFRGg4HEzs="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 2200 \cdot 0.1789 \cdot
+3\]</span></p>
+<p><span class="math display">\[I = 1180.74\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 3380.74\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $5300 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 2.83% for a term of 4 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-dd4100593931a731f851908106ac129f" data-tol="0.01" size="20" data-answer="P0YBCQkJGwAFG24="></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 5300 \cdot 0.0283 \cdot
+4\]</span></p>
+<p><span class="math display">\[I = 599.96\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 5899.96\]</span></p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>If you invest a principal of $6600 into a
+<strong>simple-interest</strong> investment at an annual interest rate
+of 11.76% for a term of 4 years, what will be your payout at the end of
+the term?</p>
+<p><input class="webex-solveme nospaces" id="webex-4c7c1c83d6d7ea9c5c9f51ac48ab0b23" data-tol="0.01" size="20" data-answer="b0EOVAFXFgVXD10OXFgAWgxaAERo"></input></p>
+</div>
+<div class="webex-solution">
+<p>The simple interest formula is <span class="math inline">\(I=P\cdot r
+\cdot t\)</span>, where <span class="math inline">\(P\)</span> is the
+principal, <span class="math inline">\(r\)</span> is the annual interest
+rate in decimal form, and <span class="math inline">\(t\)</span> is time
+(in years).</p>
+<p><span class="math display">\[I = 6600 \cdot 0.1176 \cdot
+4\]</span></p>
+<p><span class="math display">\[I = 3104.64\]</span></p>
+<p>To find the total payout, add the interest to the principal.</p>
+<p><span class="math display">\[T = P+I = 9704.64\]</span></p>
+</div>
+</div>
+</div>
+<div class="webex-group">
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $5900 is taken out at 11.80% annual
+percentage rate. A partial payment of $430 is made 95 days into the loan
+period. After this payment, what will the remaining balance of the loan
+be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-1dabc64dab3ac49876c5572940b01b19" data-tol="0.01" size="20" data-answer="akZUVFYFGlNQWwdVVwAbZQ=="></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 95 days.</p>
+<p><span class="math display">\[I=5900\cdot 0.118 \cdot
+\frac{95}{365}\]</span></p>
+<p><span class="math display">\[I=183.7194444\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[5900+183.7194444-430=5653.7194444\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+5653.72 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $7300 is taken out at 16.87% annual
+percentage rate. A partial payment of $700 is made 90 days into the loan
+period. After this payment, what will the remaining balance of the loan
+be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-f9f66aa658af178001c4d626796f04c5" data-tol="0.01" size="20" data-answer="PRtQDwZWTw4CD1REbA=="></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 90 days.</p>
+<p><span class="math display">\[I=7300\cdot 0.1687 \cdot
+\frac{90}{365}\]</span></p>
+<p><span class="math display">\[I=307.8775\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[7300+307.8775-700=6907.8775\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+6907.88 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $5600 is taken out at 13.84% annual
+percentage rate. A partial payment of $590 is made 100 days into the
+loan period. After this payment, what will the remaining balance of the
+loan be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-dbe459ddb0f49b939808ddd58d176cde" data-tol="0.01" size="20" data-answer="P0BQBgcMSlZaCF4MAVsbbg=="></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 100 days.</p>
+<p><span class="math display">\[I=5600\cdot 0.1384 \cdot
+\frac{100}{365}\]</span></p>
+<p><span class="math display">\[I=215.2888889\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[5600+215.2888889-590=5225.2888889\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+5225.29 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $3800 is taken out at 15.76% annual
+percentage rate. A partial payment of $100 is made 25 days into the loan
+period. After this payment, what will the remaining balance of the loan
+be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-daed85e1f7cb9e0f0cfd7147e035a248" data-tol="0.01" size="20" data-answer="P0NWUwwESwReD1taAVwSOw=="></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 25 days.</p>
+<p><span class="math display">\[I=3800\cdot 0.1576 \cdot
+\frac{25}{365}\]</span></p>
+<p><span class="math display">\[I=41.5888889\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[3800+41.5888889-100=3741.5888889\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+3741.59 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $9000 is taken out at 8.69% annual
+percentage rate. A partial payment of $290 is made 75 days into the loan
+period. After this payment, what will the remaining balance of the loan
+be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-fa29ccc7c34905adf77025d8943dcdb7" data-tol="0.01" size="20" data-answer="PUMKAVRRTQ5QBAEbbQ=="></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 75 days.</p>
+<p><span class="math display">\[I=9000\cdot 0.0869 \cdot
+\frac{75}{365}\]</span></p>
+<p><span class="math display">\[I=162.9375\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[9000+162.9375-290=8872.9375\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+8872.94 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $2600 is taken out at 15.67% annual
+percentage rate. A partial payment of $200 is made 100 days into the
+loan period. After this payment, what will the remaining balance of the
+loan be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-113d23dd0541af46f642181269518b02" data-tol="0.01" size="20" data-answer="ahMBUQMASlUHBwYDU1QWaw=="></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 100 days.</p>
+<p><span class="math display">\[I=2600\cdot 0.1567 \cdot
+\frac{100}{365}\]</span></p>
+<p><span class="math display">\[I=113.1722222\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[2600+113.1722222-200=2513.1722222\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+2513.17 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $8800 is taken out at 4.62% annual
+percentage rate. A partial payment of $290 is made 95 days into the loan
+period. After this payment, what will the remaining balance of the loan
+be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-e3a04d7afc87f28057ecafb2b10f9249" data-tol="0.01" size="20" data-answer="PhFZBgVTGVNeVQ4BUAUabQ=="></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 95 days.</p>
+<p><span class="math display">\[I=8800\cdot 0.0462 \cdot
+\frac{95}{365}\]</span></p>
+<p><span class="math display">\[I=107.2866667\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[8800+107.2866667-290=8617.2866667\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+8617.29 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $2600 is taken out at 8.50% annual
+percentage rate. A partial payment of $100 is made 100 days into the
+loan period. After this payment, what will the remaining balance of the
+loan be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-c0282a2916dc522d69983838a2be377d" data-tol="0.01" size="20" data-answer="OBIADQRQHAoJDlxbDQsQOQ=="></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 100 days.</p>
+<p><span class="math display">\[I=2600\cdot 0.085 \cdot
+\frac{100}{365}\]</span></p>
+<p><span class="math display">\[I=61.3888889\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[2600+61.3888889-100=2561.3888889\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+2561.39 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $6800 is taken out at 3.96% annual
+percentage rate. A partial payment of $80 is made 55 days into the loan
+period. After this payment, what will the remaining balance of the loan
+be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-d2fd7a64cb49d988d4dd3fad2d5b48e3" data-tol="0.01" size="20" data-answer="PxBQUwFQGAVXQGk="></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 55 days.</p>
+<p><span class="math display">\[I=6800\cdot 0.0396 \cdot
+\frac{55}{365}\]</span></p>
+<p><span class="math display">\[I=41.14\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[6800+41.14-80=6761.14\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+6761.14 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $6200 is taken out at 7.48% annual
+percentage rate. A partial payment of $240 is made 65 days into the loan
+period. After this payment, what will the remaining balance of the loan
+be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-dc519d17ad089e75b00c8ed41d51f489" data-tol="0.01" size="20" data-answer="P0EDAQ1XHwBSUAQMDVEVaA=="></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 65 days.</p>
+<p><span class="math display">\[I=6200\cdot 0.0748 \cdot
+\frac{65}{365}\]</span></p>
+<p><span class="math display">\[I=83.7344444\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[6200+83.7344444-240=6043.7344444\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+6043.73 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $900 is taken out at 10.35% annual
+percentage rate. A partial payment of $25 is made 90 days into the loan
+period. After this payment, what will the remaining balance of the loan
+be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-575c8193e06873a276cbf4d93883a7e4" data-tol="0.01" size="20" data-answer="bhUNWgAfCwtSBRRl"></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 90 days.</p>
+<p><span class="math display">\[I=900\cdot 0.1035 \cdot
+\frac{90}{365}\]</span></p>
+<p><span class="math display">\[I=23.2875\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[900+23.2875-25=898.2875\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+898.29 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $6200 is taken out at 13.57% annual
+percentage rate. A partial payment of $400 is made 70 days into the loan
+period. After this payment, what will the remaining balance of the loan
+be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-a6a13d10354f674de08b21d55b89abad" data-tol="0.01" size="20" data-answer="OhRUCAVXHwUKBgxeDg4WOQ=="></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 70 days.</p>
+<p><span class="math display">\[I=6200\cdot 0.1357 \cdot
+\frac{70}{365}\]</span></p>
+<p><span class="math display">\[I=163.5938889\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[6200+163.5938889-400=5963.5938889\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+5963.59 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $2200 is taken out at 2.33% annual
+percentage rate. A partial payment of $17 is made 55 days into the loan
+period. After this payment, what will the remaining balance of the loan
+be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-c326009384f891ff0ef0013712c89a1b" data-tol="0.01" size="20" data-answer="OBEABwkAFwsLBVUAAQhEOw=="></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 55 days.</p>
+<p><span class="math display">\[I=2200\cdot 0.0233 \cdot
+\frac{55}{365}\]</span></p>
+<p><span class="math display">\[I=7.8313889\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[2200+7.8313889-17=2190.8313889\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+2190.83 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $7300 is taken out at 4.04% annual
+percentage rate. A partial payment of $110 is made 90 days into the loan
+period. After this payment, what will the remaining balance of the loan
+be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-b6b6dc7a6fca1c8eb4669af14760e024" data-tol="0.01" size="20" data-answer="ORRVBFJQGVYFRD4="></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 90 days.</p>
+<p><span class="math display">\[I=7300\cdot 0.0404 \cdot
+\frac{90}{365}\]</span></p>
+<p><span class="math display">\[I=73.73\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[7300+73.73-110=7263.73\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+7263.73 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $2100 is taken out at 16.40% annual
+percentage rate. A partial payment of $170 is made 70 days into the loan
+period. After this payment, what will the remaining balance of the loan
+be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-2258011f4c3adb35daf33cdeff78724d" data-tol="0.01" size="20" data-answer="aRAEAQkHH18CVQVXUlURaA=="></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 70 days.</p>
+<p><span class="math display">\[I=2100\cdot 0.164 \cdot
+\frac{70}{365}\]</span></p>
+<p><span class="math display">\[I=66.9666667\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[2100+66.9666667-170=1996.9666667\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+1996.97 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $5400 is taken out at 2.98% annual
+percentage rate. A partial payment of $37 is made 45 days into the loan
+period. After this payment, what will the remaining balance of the loan
+be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-3cbdc027e93c6211dbb1fa980860f7ca" data-tol="0.01" size="20" data-answer="aEFXV1sDHAZUDBE+"></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 45 days.</p>
+<p><span class="math display">\[I=5400\cdot 0.0298 \cdot
+\frac{45}{365}\]</span></p>
+<p><span class="math display">\[I=20.115\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[5400+20.115-37=5383.115\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+5383.11 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $7300 is taken out at 4.90% annual
+percentage rate. A partial payment of $120 is made 45 days into the loan
+period. After this payment, what will the remaining balance of the loan
+be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-ac41d38bdaca5f5d5afc51d97c9c30bf" data-tol="0.01" size="20" data-answer="OkEDA1YHFlVVU1ZDaA=="></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 45 days.</p>
+<p><span class="math display">\[I=7300\cdot 0.049 \cdot
+\frac{45}{365}\]</span></p>
+<p><span class="math display">\[I=44.7125\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[7300+44.7125-120=7224.7125\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+7224.71 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $8900 is taken out at 12.03% annual
+percentage rate. A partial payment of $630 is made 75 days into the loan
+period. After this payment, what will the remaining balance of the loan
+be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-137235da9bdc99c8a46638bdd74127f0" data-tol="0.01" size="20" data-answer="ahEPBgoGSlEMVFZWG2Q="></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 75 days.</p>
+<p><span class="math display">\[I=8900\cdot 0.1203 \cdot
+\frac{75}{365}\]</span></p>
+<p><span class="math display">\[I=223.05625\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[8900+223.05625-630=8493.05625\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+8493.06 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $7600 is taken out at 10.26% annual
+percentage rate. A partial payment of $410 is made 95 days into the loan
+period. After this payment, what will the remaining balance of the loan
+be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-8cabda012c0da71211457ca53689f8e3" data-tol="0.01" size="20" data-answer="Y0FWUV1UHgYFQW0="></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 95 days.</p>
+<p><span class="math display">\[I=7600\cdot 0.1026 \cdot
+\frac{95}{365}\]</span></p>
+<p><span class="math display">\[I=205.77\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[7600+205.77-410=7395.77\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+7395.77 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $1900 is taken out at 9.62% annual
+percentage rate. A partial payment of $60 is made 55 days into the loan
+period. After this payment, what will the remaining balance of the loan
+be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-39073a6d262381a00418876cc7aa2dfe" data-tol="0.01" size="20" data-answer="aBsBDwVWGF0AAgUBCgNDbQ=="></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 55 days.</p>
+<p><span class="math display">\[I=1900\cdot 0.0962 \cdot
+\frac{55}{365}\]</span></p>
+<p><span class="math display">\[I=27.9247222\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[1900+27.9247222-60=1867.9247222\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+1867.92 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $2400 is taken out at 7.78% annual
+percentage rate. A partial payment of $51 is made 75 days into the loan
+period. After this payment, what will the remaining balance of the loan
+be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-b7a7d264d8c62c935f7c136359c1e18a" data-tol="0.01" size="20" data-answer="ORVTBFwFGA1GZQ=="></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 75 days.</p>
+<p><span class="math display">\[I=2400\cdot 0.0778 \cdot
+\frac{75}{365}\]</span></p>
+<p><span class="math display">\[I=38.9\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[2400+38.9-51=2387.9\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+2387.90 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $3000 is taken out at 7.74% annual
+percentage rate. A partial payment of $73 is made 75 days into the loan
+period. After this payment, what will the remaining balance of the loan
+be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-a2d1613642aba2857f98bcb4bf718e2a" data-tol="0.01" size="20" data-answer="OhBWCAEEHQUDB0M/"></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 75 days.</p>
+<p><span class="math display">\[I=3000\cdot 0.0774 \cdot
+\frac{75}{365}\]</span></p>
+<p><span class="math display">\[I=48.375\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[3000+48.375-73=2975.375\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+2975.38 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $4800 is taken out at 16.38% annual
+percentage rate. A partial payment of $140 is made 25 days into the loan
+period. After this payment, what will the remaining balance of the loan
+be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-f7e6b2895ec5ecd05b6a90b30bde6dc8" data-tol="0.01" size="20" data-answer="PRVRAVMGFg8XOA=="></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 25 days.</p>
+<p><span class="math display">\[I=4800\cdot 0.1638 \cdot
+\frac{25}{365}\]</span></p>
+<p><span class="math display">\[I=54.6\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[4800+54.6-140=4714.6\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+4714.60 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $8000 is taken out at 7.96% annual
+percentage rate. A partial payment of $210 is made 75 days into the loan
+period. After this payment, what will the remaining balance of the loan
+be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-645894887b4a142bfec8e48ee184028b" data-tol="0.01" size="20" data-answer="bRYCAQsGFg4BVAJXBwMQPw=="></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 75 days.</p>
+<p><span class="math display">\[I=8000\cdot 0.0796 \cdot
+\frac{75}{365}\]</span></p>
+<p><span class="math display">\[I=132.6666667\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[8000+132.6666667-210=7922.6666667\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+7922.67 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $3800 is taken out at 6.58% annual
+percentage rate. A partial payment of $90 is made 75 days into the loan
+period. After this payment, what will the remaining balance of the loan
+be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-aeb0e2b34d8ad7d95cd15f1d7b0b6a96" data-tol="0.01" size="20" data-answer="OkdRB1MATAMNVQ5XUgBGZA=="></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 75 days.</p>
+<p><span class="math display">\[I=3800\cdot 0.0658 \cdot
+\frac{75}{365}\]</span></p>
+<p><span class="math display">\[I=52.0916667\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[3800+52.0916667-90=3762.0916667\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+3762.09 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $7000 is taken out at 14.31% annual
+percentage rate. A partial payment of $320 is made 60 days into the loan
+period. After this payment, what will the remaining balance of the loan
+be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-956815a06deb95277bc25fb529496ed3" data-tol="0.01" size="20" data-answer="YhcAAAUDTwkDRjg="></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 60 days.</p>
+<p><span class="math display">\[I=7000\cdot 0.1431 \cdot
+\frac{60}{365}\]</span></p>
+<p><span class="math display">\[I=166.95\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[7000+166.95-320=6846.95\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+6846.95 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $1400 is taken out at 7.90% annual
+percentage rate. A partial payment of $71 is made 80 days into the loan
+period. After this payment, what will the remaining balance of the loan
+be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-276e6c608515bfdd51283eb63dfce18f" data-tol="0.01" size="20" data-answer="aRUHVgNQGAUPAgYCVV5GOQ=="></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 80 days.</p>
+<p><span class="math display">\[I=1400\cdot 0.079 \cdot
+\frac{80}{365}\]</span></p>
+<p><span class="math display">\[I=24.5777778\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[1400+24.5777778-71=1353.5777778\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+1353.58 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $1400 is taken out at 7.03% annual
+percentage rate. A partial payment of $51 is made 75 days into the loan
+period. After this payment, what will the remaining balance of the loan
+be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-d9fb0377d3b5d0c4d4a7f19348674fe0" data-tol="0.01" size="20" data-answer="PxtXUQYKGQJUB1MDUgdBaQ=="></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 75 days.</p>
+<p><span class="math display">\[I=1400\cdot 0.0703 \cdot
+\frac{75}{365}\]</span></p>
+<p><span class="math display">\[I=20.5041667\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[1400+20.5041667-51=1369.5041667\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+1369.50 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $7300 is taken out at 17.87% annual
+percentage rate. A partial payment of $530 is made 95 days into the loan
+period. After this payment, what will the remaining balance of the loan
+be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-ddea51109a937ce09be2897fea08bcf5" data-tol="0.01" size="20" data-answer="P0ZSUAQFHwINVA8KA1dHbQ=="></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 95 days.</p>
+<p><span class="math display">\[I=7300\cdot 0.1787 \cdot
+\frac{95}{365}\]</span></p>
+<p><span class="math display">\[I=344.2456944\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[7300+344.2456944-530=7114.2456944\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+7114.25 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $2500 is taken out at 9.13% annual
+percentage rate. A partial payment of $40 is made 40 days into the loan
+period. After this payment, what will the remaining balance of the loan
+be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-d8132132aff8050b9df87eaf281ce821" data-tol="0.01" size="20" data-answer="PxoDBwoEHQFXV1cJAQQSPw=="></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 40 days.</p>
+<p><span class="math display">\[I=2500\cdot 0.0913 \cdot
+\frac{40}{365}\]</span></p>
+<p><span class="math display">\[I=25.3611111\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[2500+25.3611111-40=2485.3611111\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+2485.36 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $3500 is taken out at 16.74% annual
+percentage rate. A partial payment of $200 is made 60 days into the loan
+period. After this payment, what will the remaining balance of the loan
+be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-61444bf35f0e8db1a39ef0f0386dce79" data-tol="0.01" size="20" data-answer="bRMHBw1VSAUARG0="></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 60 days.</p>
+<p><span class="math display">\[I=3500\cdot 0.1674 \cdot
+\frac{60}{365}\]</span></p>
+<p><span class="math display">\[I=97.65\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[3500+97.65-200=3397.65\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+3397.65 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $6200 is taken out at 6.82% annual
+percentage rate. A partial payment of $170 is made 90 days into the loan
+period. After this payment, what will the remaining balance of the loan
+be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-4f527f1681a29317779aecf4165d14fc" data-tol="0.01" size="20" data-answer="b0QDAwRTHwEJEzw="></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 90 days.</p>
+<p><span class="math display">\[I=6200\cdot 0.0682 \cdot
+\frac{90}{365}\]</span></p>
+<p><span class="math display">\[I=105.71\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[6200+105.71-170=6135.71\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+6135.71 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $7300 is taken out at 3.89% annual
+percentage rate. A partial payment of $55 is made 60 days into the loan
+period. After this payment, what will the remaining balance of the loan
+be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-9ab4c506bc7a7be1a0e3ef5469d189d4" data-tol="0.01" size="20" data-answer="YkNVBloHHgVQWwRSBFFHbA=="></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 60 days.</p>
+<p><span class="math display">\[I=7300\cdot 0.0389 \cdot
+\frac{60}{365}\]</span></p>
+<p><span class="math display">\[I=47.3283333\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[7300+47.3283333-55=7292.3283333\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+7292.33 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $5100 is taken out at 15.16% annual
+percentage rate. A partial payment of $330 is made 55 days into the loan
+period. After this payment, what will the remaining balance of the loan
+be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-92cb43a75e9de8819ff59f6b6ace4411" data-tol="0.01" size="20" data-answer="YhBXWgwLTwYHVA9SUw8abA=="></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 55 days.</p>
+<p><span class="math display">\[I=5100\cdot 0.1516 \cdot
+\frac{55}{365}\]</span></p>
+<p><span class="math display">\[I=118.1216667\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[5100+118.1216667-330=4888.1216667\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+4888.12 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $4700 is taken out at 17.80% annual
+percentage rate. A partial payment of $350 is made 85 days into the loan
+period. After this payment, what will the remaining balance of the loan
+be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-0c06a6a5dc9f3953cba03d7cfbd22fa1" data-tol="0.01" size="20" data-answer="a0EEA1UBTwBXUwxTBg8Xbg=="></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 85 days.</p>
+<p><span class="math display">\[I=4700\cdot 0.178 \cdot
+\frac{85}{365}\]</span></p>
+<p><span class="math display">\[I=197.5305556\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[4700+197.5305556-350=4547.5305556\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+4547.53 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $2000 is taken out at 2.23% annual
+percentage rate. A partial payment of $12 is made 35 days into the loan
+period. After this payment, what will the remaining balance of the loan
+be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-27661352d4bd4569d86a83cb8f895855" data-tol="0.01" size="20" data-answer="aRUHDwgBGwFXAlNVBQQUZA=="></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 35 days.</p>
+<p><span class="math display">\[I=2000\cdot 0.0223 \cdot
+\frac{35}{365}\]</span></p>
+<p><span class="math display">\[I=4.3361111\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[2000+4.3361111-12=1992.3361111\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+1992.34 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $8100 is taken out at 7.98% annual
+percentage rate. A partial payment of $440 is made 100 days into the
+loan period. After this payment, what will the remaining balance of the
+loan be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-9288e2c92f6a2bbfce5e6eb9a3e40a9e" data-tol="0.01" size="20" data-answer="YhAPAFYLTQwHRGs="></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 100 days.</p>
+<p><span class="math display">\[I=8100\cdot 0.0798 \cdot
+\frac{100}{365}\]</span></p>
+<p><span class="math display">\[I=179.55\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[8100+179.55-440=7839.55\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+7839.55 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $6300 is taken out at 9.04% annual
+percentage rate. A partial payment of $320 is made 70 days into the loan
+period. After this payment, what will the remaining balance of the loan
+be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-b1a4e187e59103f2e7368ed3775f984e" data-tol="0.01" size="20" data-answer="ORNXBFwBFgBRF2Q="></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 70 days.</p>
+<p><span class="math display">\[I=6300\cdot 0.0904 \cdot
+\frac{70}{365}\]</span></p>
+<p><span class="math display">\[I=110.74\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[6300+110.74-320=6090.74\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+6090.74 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $1900 is taken out at 13.18% annual
+percentage rate. A partial payment of $140 is made 85 days into the loan
+period. After this payment, what will the remaining balance of the loan
+be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-159ffb68db028127c0e7bb10295b2f6a" data-tol="0.01" size="20" data-answer="ahcIXldbGAlWVAkGDAUQag=="></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 85 days.</p>
+<p><span class="math display">\[I=1900\cdot 0.1318 \cdot
+\frac{85}{365}\]</span></p>
+<p><span class="math display">\[I=59.1269444\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[1900+59.1269444-140=1819.1269444\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+1819.13 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $4100 is taken out at 3.33% annual
+percentage rate. A partial payment of $89 is made 85 days into the loan
+period. After this payment, what will the remaining balance of the loan
+be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-40ae6a701e5d513b88c7b512a2c531ec" data-tol="0.01" size="20" data-answer="bxJVVQJSGQICUwdRF2w="></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 85 days.</p>
+<p><span class="math display">\[I=4100\cdot 0.0333 \cdot
+\frac{85}{365}\]</span></p>
+<p><span class="math display">\[I=32.23625\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[4100+32.23625-89=4043.23625\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+4043.24 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $2900 is taken out at 10.79% annual
+percentage rate. A partial payment of $230 is made 100 days into the
+loan period. After this payment, what will the remaining balance of the
+loan be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-d375f0b5dac173e50069bbc3e73b347b" data-tol="0.01" size="20" data-answer="PxEFAlMGTAxVWFcFAwdHaA=="></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 100 days.</p>
+<p><span class="math display">\[I=2900\cdot 0.1079 \cdot
+\frac{100}{365}\]</span></p>
+<p><span class="math display">\[I=86.9194444\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[2900+86.9194444-230=2756.9194444\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+2756.92 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $800 is taken out at 10.83% annual
+percentage rate. A partial payment of $18 is made 50 days into the loan
+period. After this payment, what will the remaining balance of the loan
+be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-76824b27ced6185143fed93e9a0456b1" data-tol="0.01" size="20" data-answer="bBQPCwBMAgRQVlcFAhpo"></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 50 days.</p>
+<p><span class="math display">\[I=800\cdot 0.1083 \cdot
+\frac{50}{365}\]</span></p>
+<p><span class="math display">\[I=12.0333333\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[800+12.0333333-18=794.0333333\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+794.03 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $3100 is taken out at 10.59% annual
+percentage rate. A partial payment of $180 is made 75 days into the loan
+period. After this payment, what will the remaining balance of the loan
+be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-937bc17c5c6c3078e11d10d2969b0777" data-tol="0.01" size="20" data-answer="YhEFW1sJGVAMUAFWEW0="></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 75 days.</p>
+<p><span class="math display">\[I=3100\cdot 0.1059 \cdot
+\frac{75}{365}\]</span></p>
+<p><span class="math display">\[I=68.39375\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[3100+68.39375-180=2988.39375\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+2988.39 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $2700 is taken out at 6.86% annual
+percentage rate. A partial payment of $46 is made 30 days into the loan
+period. After this payment, what will the remaining balance of the loan
+be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-9afadc9327b59d9fae8823d1852ae299" data-tol="0.01" size="20" data-answer="YkNUV1JaFwcBAkBo"></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 30 days.</p>
+<p><span class="math display">\[I=2700\cdot 0.0686 \cdot
+\frac{30}{365}\]</span></p>
+<p><span class="math display">\[I=15.435\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[2700+15.435-46=2669.435\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+2669.43 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $4900 is taken out at 5.08% annual
+percentage rate. A partial payment of $160 is made 100 days into the
+loan period. After this payment, what will the remaining balance of the
+loan be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-31a1f357fc26088941f0397d80cd6f10" data-tol="0.01" size="20" data-answer="aBNVCVYKGwZSVwYCBAwaZA=="></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 100 days.</p>
+<p><span class="math display">\[I=4900\cdot 0.0508 \cdot
+\frac{100}{365}\]</span></p>
+<p><span class="math display">\[I=69.1444444\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[4900+69.1444444-160=4809.1444444\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+4809.14 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $8100 is taken out at 17.98% annual
+percentage rate. A partial payment of $180 is made 35 days into the loan
+period. After this payment, what will the remaining balance of the loan
+be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-7a47056e41168e294d4128d356c64d8c" data-tol="0.01" size="20" data-answer="bEMMBwYEGFANAwQUZQ=="></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 35 days.</p>
+<p><span class="math display">\[I=8100\cdot 0.1798 \cdot
+\frac{35}{365}\]</span></p>
+<p><span class="math display">\[I=141.5925\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[8100+141.5925-180=8061.5925\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+8061.59 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $2700 is taken out at 2.26% annual
+percentage rate. A partial payment of $10 is made 25 days into the loan
+period. After this payment, what will the remaining balance of the loan
+be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-2743ee9047530b574d938d195c2622a3" data-tol="0.01" size="20" data-answer="aRUGBVxRFwIHAAARbQ=="></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 25 days.</p>
+<p><span class="math display">\[I=2700\cdot 0.0226 \cdot
+\frac{25}{365}\]</span></p>
+<p><span class="math display">\[I=4.2375\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[2700+4.2375-10=2694.2375\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+2694.24 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $1200 is taken out at 6.01% annual
+percentage rate. A partial payment of $30 is made 100 days into the loan
+period. After this payment, what will the remaining balance of the loan
+be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-34fee51bcf46bbe2737b8043ec805eb5" data-tol="0.01" size="20" data-answer="aBZXVFwFH1JQVQcFUVFHbw=="></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 100 days.</p>
+<p><span class="math display">\[I=1200\cdot 0.0601 \cdot
+\frac{100}{365}\]</span></p>
+<p><span class="math display">\[I=20.0333333\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[1200+20.0333333-30=1190.0333333\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+1190.03 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $8800 is taken out at 11.13% annual
+percentage rate. A partial payment of $290 is made 50 days into the loan
+period. After this payment, what will the remaining balance of the loan
+be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-55bd9a7d426bade2f6b66272274106b9" data-tol="0.01" size="20" data-answer="bhdaUg1XGVQHAQVRUldHbw=="></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 50 days.</p>
+<p><span class="math display">\[I=8800\cdot 0.1113 \cdot
+\frac{50}{365}\]</span></p>
+<p><span class="math display">\[I=136.0333333\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[8800+136.0333333-290=8646.0333333\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+8646.03 USD.</p>
+</div>
+</div>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>A simple interest loan for $3200 is taken out at 8.17% annual
+percentage rate. A partial payment of $33 is made 25 days into the loan
+period. After this payment, what will the remaining balance of the loan
+be?</p>
+<p>(Assume 365 days per year.)</p>
+<p><input class="webex-solveme nospaces" id="webex-0eedd3a81cb07453f6d9c4416f9d0206" data-tol="0.01" size="20" data-answer="a0dWVVwGTwkEVlcFAgIXbg=="></input></p>
+</div>
+<div class="webex-solution">
+<p>First, calculate the interest accrued during the 25 days.</p>
+<p><span class="math display">\[I=3200\cdot 0.0817 \cdot
+\frac{25}{365}\]</span></p>
+<p><span class="math display">\[I=18.1555556\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[3200+18.1555556-33=3185.1555556\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+3185.16 USD.</p>
+</div>
+</div>
 </div>
 
+<script>
+
+/* definition of content for the buttons */
+const webex_buttons = {check_hidden:          "<b>&check;</b>",
+                       check_hidden_alt:      "Check answer",
+                       check_shown:           "<b>&lsh;</b>",
+                       check_shown_alt:       "Hide check",
+                       check_of_total:        "/",
+                       solution:              "<b>&quest;</b>",
+                       solution_alt:          "Correct solution",
+                       question_next:         "<b>&#8634;</b>",
+                       question_next_alt:     "Next question",
+                       question_previous:     "",
+                       question_previous_alt: ""}
+
+
+/* update total correct if #webex-total_correct exists */
+update_total_correct = function() {
+  console.log("webex: update total_correct");
+
+  document.querySelectorAll(".webex-total_correct").forEach(total => {
+    p = total.closest(".webex-box");
+    var correct = p.getElementsByClassName("webex-correct").length;
+    var solvemes = p.getElementsByClassName("webex-solveme").length;
+    var radiogroups = p.getElementsByClassName("webex-radiogroup").length;
+    var selects = p.getElementsByClassName("webex-select").length;
+    /* no specific class on input node, thus searching via query selector */
+    var checkboxgroups = p.querySelectorAll("div[class=webex-checkboxgroup] input[type=checkbox]").length
+
+    /* show number of correct / total number of answers */
+    total.innerHTML = correct + "&nbsp;" + webex_buttons.check_of_total + "&nbsp;" + (solvemes + radiogroups + checkboxgroups + selects);
+  });
+}
+
+/* check answers */
+check_func = function() {
+  console.log("webex: check answer");
+
+  //var cl = elem.parentElement.classList;
+  var cl = this.closest(".webex-box").classList;
+  if (cl.contains("unchecked")) {
+    cl.remove("unchecked");
+    this.innerHTML = webex_buttons.check_shown; //"Hide check";
+    if (webex_buttons.check_shown_alt.length > 0) this.setAttribute("title", webex_buttons.check_shown_alt);
+  } else {
+    cl.add("unchecked");
+    this.innerHTML = webex_buttons.check_hidden; //"Check answer";
+    if (webex_buttons.check_hidden_alt.length > 0) this.setAttribute("title", webex_buttons.check_hidden_alt);
+  }
+}
+
+/* helper functions for checking the webex ID */
+const id_checker = {"fmt": new RegExp("[g-zG-Z]"),
+                    "load": function(e) { return e.getAttribute("id").match("(?<=(-)).*$")[0]; },
+                    "eval": new TextEncoder(),
+                    "dval": new TextDecoder()}
+
+/* Show/hide correct solution */
+solution_func = function() {
+  console.log("webex: show/hide solution");
+
+  var div = this.closest(".webex-question").querySelector(".webex-solution");
+  var cl = div.classList;
+
+  if (cl.contains("visible")) {
+    cl.remove("visible");
+  } else {
+    cl.add("visible");
+  }
+}
+
+/* function to check if the real answer is numeric */
+convert_to_numeric = function(x) {
+  if (typeof x == "string") {
+    /* do nothing */
+  } else if (x.length == 1) {
+    /* take first element */
+    x = x[0]
+  } else {
+    return NaN;
+  }
+
+  /* remove spaces for easier parsing */
+  x = x.replace(/\s/g, "");
+
+  /* Define patterns for different formats, note that spaces have been removed above */
+  const patterns = [
+    {regex: /^[+-]?\d+(\.\d{3})*,\d+$/, decimal: ",", thousand: "." },  // Format: "1.100.100.100,3"
+    {regex: /^[+-]?\d+(,\d{3})*\.\d+$/, decimal: ".", thousand: "," },  // Format: "1,100,100,100.3"
+    {regex: /^[+-]?\d+(\.|\.\d+)?$/, decimal: "." },                    // Format: "1100100100.5" or "1100100100."
+    {regex: /^[+-]?\d+(,|,\d+)$/, decimal: "," }                        // Format: "1100100100,5" or "1100100100,"
+  ];
+
+
+  /* testing all regular expressions, convert to float if possible */
+  for (const { regex, decimal, thousand } of patterns) {
+    if (regex.test(x)) {
+      let numeric = x;
+      if (thousand) numeric = numeric.replace(new RegExp(`\\${thousand}`, "g"), "");
+      numeric = numeric.replace(decimal, ".");
+      return parseFloat(numeric);
+    }
+  }
+
+  /* input of length 1 but none of the known formats, return NaN */
+  return NaN;
+}
+
+/* Checking webex ID, returns formalsol */
+check_id = function(e) {
+  /* loading webex ID */
+  var id = id_checker["load"](e);
+
+  /* extracting answer */
+  let answer = e.dataset.answer;
+
+  /* checking unique id, prepare and return array */
+  if (!id_checker["fmt"].test(id)) {
+    const a = id_checker["eval"].encode(atob(answer));
+    const b = id_checker["eval"].encode(id);
+    const res = a.map((byte, index) => byte^b[index % b.length]);
+    answer = id_checker["dval"].decode(res);
+    /* Replacing &amp; with ' before parsing */
+    answer = answer.replaceAll("&apos;", "'");
+  }
+
+  return JSON.parse(answer);
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  /* avoid that keyup and keychange twice execute this function within nms = 10
+   * ms, clearing inputTimer and add timeout */
+  console.log("webex: check solveme");
+
+  /* float, precision for checking numeric answers */
+  const eps = 0.00000000000001;
+
+  /* get last checked user answer */
+  const question = this.closest(".webex-question")
+
+  /* extracting classes */
+  var cl = this.classList;
+  var my_answer = this.value;
+
+  /* extracting classes */
+  var cl = this.classList;
+
+  /* empty answer? Job done */
+  if (my_answer == "") {
+    cl.remove("webex-correct");
+    cl.remove("webex-incorrect");
+    return false;
+  }
+
+  /* Find closest (parent) webex-question */
+  let formalsols = check_id(this)
+
+  /* by default we assume the users' answer is incorrect */
+  var user_answer_correct = false;
+
+  /* check if the correct answer is numeric, i.e. if 
+   * formalsols is of length 1 containing one single numeric
+   * value in a known format, else, NaN is returned */
+  const num_formalsol = convert_to_numeric(formalsols);
+  const num_my_answer = convert_to_numeric(my_answer);
+
+  /* if the correct answer is numeric (float), the user's answer
+   * must also be numeric. If not, it is wrong. Else we can
+   * compare floating point numbers */
+  if (!isNaN(num_formalsol) && !isNaN(num_my_answer)) {
+    /* check if the real answer and the user input are numerically the same;
+     * adding 'delta' to avoid precision issues */
+    var diff = Math.abs(num_formalsol - num_my_answer);
+    if (diff < parseFloat(this.dataset.tol) + eps) { user_answer_correct = true; }
+
+  /* if the question contains regex, a regular expression is used
+   * to evaluate the users answer. Allows for multiple regular expressions */
+  } else if (cl.contains("regex")) {
+    for (let i = 0; i < formalsols.length; i++) {
+        let regex = new RegExp(formalsols[i], cl.contains("ignorecase") ? "i" : "");
+        if (regex.test(my_answer)) { user_answer_correct = true; break; }
+    }
+
+  /* else we evaluate on 'string level', considering the creators preferences
+   * regarding set options */
+  } else {
+    /* modify/prepare answer */
+    if (cl.contains("ignorecase")) { my_answer = my_answer.toLowerCase(); }
+    if (cl.contains("nospaces"))   { my_answer = my_answer.replace(/ /g, ""); }
+
+    /* if the real answer includes user input - correct */
+    if (formalsols.includes(my_answer)) {
+      user_answer_correct = true;
+  
+      // added regex bit
+      if (cl.contains("regex")) {
+        answer_regex = RegExp(formalsols.join("|"))
+        if (answer_regex.test(my_answer)) {
+          cl.add("webex-correct");
+        }
+      }
+    }
+  }
+
+  if (user_answer_correct) {
+      cl.add("webex-correct");
+      cl.remove("webex-incorrect");
+  } else {
+      cl.add("webex-incorrect");
+      cl.remove("webex-correct");
+  }
+
+  update_total_correct();
+
+}
+
+/* function for checking select answers */
+select_func = function(e) {
+  console.log("webex: check select");
+
+  var options   = [];
+  Array.from(this.querySelectorAll("option")).forEach((option, index) => {
+    if (!option.hasAttribute("value") || !option.getAttribute("value") === "blank") {
+      options.push(option);
+    }
+  });
+
+  /* get selected option */
+  function get_selected(options) { return options.findIndex(option => option.selected); }
+  var option_index = get_selected(options)
+
+  /* loading webex ID */
+  var formalsol = check_id(this)
+
+  /* add class for current selection */
+  this.classList.remove("webex-incorrect");
+  this.classList.remove("webex-correct");
+  if (option_index >= 0) {
+    this.classList.add(formalsol[option_index] === 1 ? "webex-correct" : "webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+/* function for checking radiogroups answers */
+radiogroups_func = function(e) {
+  console.log("webex: check radiogroups");
+
+  /* get real answer (binary integer array) */
+  var id = e.target.getAttribute("name");
+  var group = document.querySelector(".webex-radiogroup[id='webex-" + id + "']");
+  var formalsol = check_id(group)
+
+  /* check which radiobuttion is selected (user answer) */
+  function get_checked(radios) {
+    return radios.findIndex(radios => radios.checked);
+  }
+  var radios = Array.from(group.querySelectorAll("input[type='radio']"))
+  var radio_index = get_checked(radios);
+
+  /* remove existing classes */
+  radios.forEach(radio => {
+    let cl = radio.closest("label").classList
+    cl.remove("webex-incorrect");
+    cl.remove("webex-correct");
+  });
+
+  /* add class for current selection */
+  let cl = radios[radio_index].closest("label").classList
+  if (formalsol[radio_index] === 1) {
+      cl.add("webex-correct");
+  } else {
+      cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+
+/* function for checking checkboxgroups answers */
+checkboxgroups_func = function(e) {
+  console.log("webex: check checkboxgroups");
+
+  /* get real answer (binary integer array) */
+  var group = document.querySelector(".webex-checkboxgroup[id='" + this.id + "']");
+  var formalsol = check_id(group);
+
+  /* check which checkbox is checked (user answer) */
+  function get_checked(group) {
+      const checkboxes = Array.from(group.querySelectorAll("input[type='checkbox']"));
+      return checkboxes.reduce((indices, checkbox, index) => {
+          if (checkbox.checked) indices.push(index);
+          return indices;
+      }, []);
+  }
+  var checks = Array.from(group.querySelectorAll("input[type='checkbox']"));
+  var check_index = get_checked(group);
+
+  checks.forEach((e, index) => {
+    var label = e.parentNode;
+    var ans = formalsol[index];
+    if ((e.checked && ans === 1) || (!e.checked && ans === 0)) {
+        label.setAttribute("class", "webex-correct")
+    } else {
+        label.setAttribute("class", "webex-incorrect")
+    }
+  });
+
+  update_total_correct();
+}
+
+/* shuffling array (thanks to stack overflow)
+ * If argument x is an integer we create an integer sequence
+ * from 0, 1, ..., (x - 1) and return a shuffled version. If
+ * the input is an array, we simply shuffle it */
+shuffle_array = function(x) {
+   if (Number.isInteger(x) && !isNaN(x)) {
+     x = Array.from({length: x}, (v, i) => i);
+   }
+   let shuffled = x.map(value => ({ value, sort: Math.random() }))
+        .sort((a, b) => a.sort - b.sort).map(({ value }) => value)
+   return shuffled;
+}
+
+/* ---------------------------------------------------------
+ * ---------------------------------------------------------
+ * --------------------------------------------------------- */
+window.onload = function() {
+  //console.log("webex: onload");
+
+  /* setting up buttons and actions to show/hide answers */
+  document.querySelectorAll(".webex-check").forEach(section => {
+    section.classList.add("unchecked");
+
+    /* ul to take up the list items with buttons */
+    let button_ul = document.createElement("ul");
+    button_ul.setAttribute("class", "webex-button-list");
+    section.appendChild(button_ul);
+
+    /* button to _check_ if answers given are correct */
+    let li_check = document.createElement("li");
+    button_ul.appendChild(li_check); /* add list item to ul */
+    let btn_check = document.createElement("button");
+    btn_check.innerHTML = webex_buttons.check_hidden;  // "Check answer";
+    btn_check.setAttribute("class", "webex-button webex-button-check");
+    if (webex_buttons.check_hidden_alt.length > 0) btn_check.setAttribute("title", webex_buttons.check_hidden_alt);
+    btn_check.onclick = check_func;
+    li_check.appendChild(btn_check);
+
+    /* span to show current number of points (when _check_ active) */
+    let spn = document.createElement("span");
+    spn.classList.add("webex-total_correct");
+    li_check.appendChild(spn);
+
+    /* button to show the _solution_ if there is one */
+    var has_solution = section.parentNode.querySelectorAll(".webex-solution").length > 0;
+    if (has_solution) {
+      let li_solution = document.createElement("li");
+      button_ul.appendChild(li_solution); /* add list item to ul */
+      let btn_solution = document.createElement("button");
+      btn_solution.innerHTML = webex_buttons.solution; // "Correct answer";
+      btn_solution.setAttribute("class", "webex-button webex-button-solution");
+      if (webex_buttons.solution_alt.length > 0) btn_solution.setAttribute("title", webex_buttons.solution_alt);
+      btn_solution.onclick = solution_func;
+      li_solution.appendChild(btn_solution);
+    }
+
+  });
+
+  /* set up webex-solveme inputs */
+  document.querySelectorAll(".webex-solveme").forEach(solveme => {
+    solveme.setAttribute("autocomplete","off");
+    solveme.setAttribute("autocorrect", "off");
+    solveme.setAttribute("autocapitalize", "off");
+    solveme.setAttribute("spellcheck", "false");
+    solveme.value = "";
+
+    /* adjust answer for 'no spaces' (ignore spaces) */
+    if (solveme.classList.contains("nospaces")) {
+      solveme.dataset.answer = solveme.dataset.answer.replace(/ /g, "");
+    }
+
+    /* attach checking function, triggered on key up, change, and when
+     * elemnt is out of focus. Only evaluated once by tracking changes
+     * via variable solveme_last_user_answer */
+    solveme.addEventListener("keyup",  solveme_func);
+    solveme.addEventListener("change", solveme_func);
+    solveme.addEventListener("blur",   solveme_func);
+
+    /* adding span to show correct/incorrect icon */
+    solveme.insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+  });
+
+  /* set up radiogroups (single choice questions with display = "buttons") */
+  document.querySelectorAll(".webex-radiogroup").forEach(radiogroup => {
+    radiogroup.onchange = radiogroups_func;
+  });
+
+  /* set up checkboxgroups (multiple choice questions with display = "buttons") */
+  document.querySelectorAll(".webex-checkboxgroup").forEach(checkboxgroup => {
+    checkboxgroup.onchange = checkboxgroups_func;
+  });
+
+  /* set up selects (dropdown menus) */
+  document.querySelectorAll(".webex-select").forEach(select => {
+    select.onchange = select_func;
+    /* append webex-icon for correct/incorrect icons */
+    var elem = document.createElement("span")
+    elem.classList.add("webex-icon")
+    select.parentNode.appendChild(elem)
+  });
+
+  /* change to next/previous question if multiple are available */
+  function handleQuestionClick(group, questions, step) {
+    return async function() {
+      /* get question order as integer vector */
+      let questionOrder = group.dataset.questionOrder.split(",").map(str => parseInt(str));
+
+      /* current question/position */
+      let currentPosition = parseInt(group.dataset.currentPosition);
+
+      /* Hide the current question */
+      questions.forEach(question => { question.classList.remove("active"); });
+
+      /* Move to the next question index */
+      currentPosition = (currentPosition + step) % questionOrder.length;
+      if (currentPosition < 0) currentPosition = currentPosition + questionOrder.length
+
+      /* Display the new question */
+      questions[questionOrder[currentPosition]].classList.add("active");
+
+      // Update the currentPosition data attribute on the group div
+      group.dataset.currentPosition = currentPosition;
+    };
+  }
+
+  document.querySelectorAll(".webex-group").forEach(group => {
+    const questions = Array.from(group.querySelectorAll(".webex-question"));
+
+    /* Create vector with question order. If the webex-group does
+     * not have class '.noshuffle' we will randomly shuffle the order */
+    let questionOrder = Array.from({length: questions.length}, (v, i) => i);
+    if (!group.classList.contains("noshuffle")) {
+      questionOrder = shuffle_array(questionOrder);
+    }
+
+    /* take start position (if set) or start at 0 */
+    const currentPosition = parseInt(group.getAttribute("data-start-position")) || 0;
+
+    /* show the default question for each group */
+    questions[questionOrder[currentPosition]].classList.add("active");
+
+    /* store random order of questions as well as current position */
+    group.dataset.questionOrder   = questionOrder;
+    group.dataset.currentPosition = currentPosition;
+
+    /* find all webex-questions, search for .webex-button-list and
+     * populate the list with necessary <li><button>...</button></li> elements */
+    questions.forEach(question => {
+        let button_ul = question.querySelector("ul.webex-button-list");
+
+        let li_next = document.createElement("li");
+        let nextButton = document.createElement("button");
+        nextButton.setAttribute("class", "webex-button webex-button-next");
+        if (webex_buttons.question_next_alt.length > 0) nextButton.setAttribute("title", webex_buttons.question_next_alt);
+        nextButton.innerHTML = webex_buttons.question_next; // "Next question";
+        nextButton.addEventListener("click", handleQuestionClick(group, questions, 1));
+        li_next.appendChild(nextButton);
+
+        let li_previous = document.createElement("li");
+        let previousButton = document.createElement("button");
+        previousButton.setAttribute("class", "webex-button webex-button-previous");
+        if (webex_buttons.question_previous_alt.length > 0) previousButton.setAttribute("title", webex_buttons.question_previous_alt);
+        previousButton.innerHTML = webex_buttons.question_previous; // "Previous question";
+        previousButton.addEventListener("click", handleQuestionClick(group, questions, -1));
+        li_previous.appendChild(previousButton);
+
+        if (webex_buttons.question_previous.length > 0) button_ul.appendChild(li_previous);
+        if (webex_buttons.question_next.length > 0) button_ul.appendChild(li_next);
+    });
+  });
+
+  /* Development options */
+  document.querySelectorAll(".webex-question.check").forEach(question => {
+      question.querySelector(".webex-button-check").click()
+  });
+  document.querySelectorAll(".webex-question.solution").forEach(question => {
+      let btn = question.querySelector(".webex-button-solution");
+      if (btn !== null) { btn.click(); }
+  });
+
+  /* Pre-filling <input> fields */
+  document.querySelectorAll(".webex-question.prefill").forEach(question => {
+      question.querySelectorAll("input.webex-solveme").forEach(solveme => {
+          let x = JSON.parse(solveme.dataset.answer);
+          solveme.value = x[0];
+          /* Trigger the on change event */
+          solveme.dispatchEvent(new Event("change"));
+      });
+
+      /* Pre-filling radiogroups, that is for schoice questions */
+      question.querySelectorAll(".webex-radiogroup").forEach(radiogroup => {
+          let x = JSON.parse(radiogroup.dataset.answer);
+          let idx = x.indexOf(1);
+          let radios = radiogroup.querySelectorAll('input[type="radio"]');
+          radios[idx].checked = true;
+          /* Trigger the on change event */
+          radios[idx].dispatchEvent(new Event("change", { bubbles: true }));
+      });
+
+      /* Pre-filling checkboxgroups, that is for schoice questions w/ dropdown menus */
+      question.querySelectorAll(".webex-select").forEach(dropdown => {
+          let x = JSON.parse(dropdown.dataset.answer);
+          let idx = x.indexOf(1) + 1; /* +1 to skip the first blank option */
+          let options = dropdown.querySelectorAll("option");
+          options[idx].selected = true;
+          /* Trigger the on change event */
+          options[idx].dispatchEvent(new Event("change", { bubbles: true }));
+      });
+
+      /* Pre-filling checkboxgroups, that is for mchoice questions */
+      question.querySelectorAll(".webex-checkboxgroup").forEach(radiogroup => {
+          let x = JSON.parse(radiogroup.dataset.answer);
+          let checkboxes = radiogroup.querySelectorAll('input[type="checkbox"]');
+          for (let i = 0; i < checkboxes.length; i++) {
+              checkboxes[i].checked = x[i];
+          }
+          /* Trigger the on change event */
+          checkboxes[0].dispatchEvent(new Event("change", { bubbles: true }));
+      });
+  });
+
+  /* Show set tolerance (devel option) */
+  function calc_width(x, txt, offset = 20) {
+      /* We do the following:
+       * Create a new span, insert the value we need in the .tolerance
+       * input node, and calculate its offsetWidth. Then remove it
+       * again; this is just used to calculate the required width. */
+      var cwtmp = document.createElement("span");
+      x.appendChild(cwtmp);
+      cwtmp.innerHTML = txt || "";
+      var w = parseInt(cwtmp.getBoundingClientRect().width) + offset;
+      cwtmp.remove();
+      return w;
+  }
+
+  /* If tolerance should be shown (devel option) we calculate:
+   * - the width required to properly display the solution
+   * - the width required to properly display the tolerance
+   * - add a new element to display the tolerance
+   * - reduce the width of the solution input box. */
+  document.querySelectorAll(".webex-question.tolerance").forEach(question => {
+      question.querySelectorAll("input[data-tol]").forEach(elem => {
+          var w = null;
+
+          /* Add new element showing the tolerance */
+          let tol = document.createElement("input");
+          tol.type = "text"; // <inpyt type="text">
+          tol.disabled = true; // Disable input element
+          tol.classList.add("tolerance"); // Appending class
+          tol.value = "± " + elem.getAttribute("data-tol");
+
+          /* Add new node */
+          elem.parentNode.insertBefore(tol, elem)
+
+          var body     = document.querySelector("body");
+          //tol.value = "± " + "0.0000007";
+          //tol.value = "± " + "0.07";
+          w    = calc_width(body, tol.value);
+          wold = parseInt(elem.getBoundingClientRect().width);
+          wmin = calc_width(body, elem.value);
+
+          /* Calculate required width of the 'tolerance' node, and the
+           * reduction of the original 'input' node */
+          let wnew = Math.max(wmin, wold - w);
+          tol.style.width  = w + "px";
+          elem.style.width = wnew + "px";
+      });
+  });
+
+  update_total_correct();
+}
+
+</script>
 
 
 

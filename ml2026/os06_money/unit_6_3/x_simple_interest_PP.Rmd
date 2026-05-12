@@ -1,0 +1,50 @@
+```{r,echo=F,warning=F}
+options(scipen=99)
+P = sample(8:90,1)*100
+# n = sample(3:9,1)
+r = round(runif(1,2,18),2)
+sr = paste0(sprintf("%.2f",r),"%")
+
+days = sample(5:20,1)*5
+I = P*r/100*days/360
+
+while(T){
+    payment = signif(I*runif(1,1.05,3),2)
+    if(payment>I){break}
+}
+
+ans = P+I-payment
+
+```
+
+Question
+========
+
+A simple interest loan for \$`r P` is taken out at `r sr` annual percentage rate. A partial payment of \$`r payment` is made `r days` days into the loan period. After this payment, what will the remaining balance of the loan be?
+
+(Assume 365 days per year.)
+
+
+Solution
+========
+
+First, calculate the interest accrued during the `r days` days.
+
+$$I=`r P`\cdot `r r/100` \cdot \frac{`r days`}{365}$$
+
+$$I=`r I`$$
+
+To find the remaining balance, add the interest to the principal and subtract the payment.
+
+$$`r P`+`r I`-`r payment`=`r P+I-payment`$$
+
+You can round to the nearest penny to get the current balance is `r sprintf("%.2f",ans)` USD.
+
+
+
+Meta-information
+============
+extype: num
+exsolution: `r P+I-payment`
+exname: simple_interest_PP
+extol: 0.01

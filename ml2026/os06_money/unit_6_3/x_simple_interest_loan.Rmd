@@ -1,0 +1,39 @@
+```{r,echo=F,warning=F}
+options(scipen=99)
+P = sample(8:90,1)*100
+n = sample(3:9,1)
+r = round(runif(1,2,18),2)
+sr = paste0(sprintf("%.2f",r),"%")
+
+I = P*r*n/100
+
+```
+
+Question
+========
+
+If you borrow a principal of \$`r P` with a **simple-interest** loan at an annual interest rate of `r sr` for a term of `r n` years, how much do you have to pay back at the end of the loan? 
+
+
+
+Solution
+========
+
+The simple interest formula is $I=P\cdot r \cdot t$, where $P$ is the principal, $r$ is the annual interest rate in decimal form, and $t$ is time (in years).
+
+$$I = `r P` \cdot `r r/100` \cdot `r n`$$
+
+
+$$I = `r sprintf("%.2f",P*r*n/100)`$$
+
+To find the total amount repaid, add the interest to the principal.
+
+$$T = P+I = `r sprintf("%.2f",P+I)`$$
+
+
+Meta-information
+============
+extype: num
+exsolution: `r P+I`
+exname: simple_interest_loan
+extol: 0.01

@@ -606,15 +606,59 @@ tiling
   "thickness": "3"
 }
 
+triple cross fractal
+{
+  "axiom": "AAA",
+  "rules": "A > AAB--C--BAA\nB > BAA+++C+++AAB\nC > CC",
+  "iters": "7",
+  "angle": "30",
+  "startAngle": "0",
+  "stroke": "#000000",
+  "bg": "#ffffff",
+  "thickness": "15"
+}
+
+alien triangle
+{
+  "axiom": "AAA",
+  "rules": "A > AAB--C--BAA\nB > BAA+++C+++AAB\nC > CC",
+  "iters": "7",
+  "angle": "165",
+  "startAngle": "0",
+  "stroke": "#ffffff",
+  "bg": "#000000",
+  "thickness": "15"
+}
+
+star man
+{
+  "axiom": "AAAAA",
+  "rules": "A > AAB--C--BAA\nB > BAA+++C+++AAB\nC > CC",
+  "iters": "7",
+  "angle": "160",
+  "startAngle": "200",
+  "stroke": "#ffffff",
+  "bg": "#000000",
+  "thickness": "15"
+}
+
+three headed beetle
+{
+  "axiom": "AAAAA",
+  "rules": "A > AAB--C--BAA\nB > BAA+++C+++AAB\nC > CC",
+  "iters": "7",
+  "angle": "50",
+  "startAngle": "40",
+  "stroke": "#26004d",
+  "bg": "#feecec",
+  "thickness": "0.5"
+}
+
+
+
 
 https://launchpag.classlink.com/bart
 
+https://arcade.makecode.com/
 
-Give graph, ask for remainder when the polynomial is divided by (x-2).
 
-
-Water:
-
-Kb
-
-https://shorturl.at/U9lAE

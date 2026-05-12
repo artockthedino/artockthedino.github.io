@@ -41,7 +41,7 @@ Remember, use decimal form of percentages in calculations. For example, an incre
 
 `percent_increase` = `scale_factor` - 1
 
-## Find `percent_increase` from `old_price` and `new_price`
+## Find `percent_decrease` from `old_price` and `new_price`
 
 `scale_factor` = `new_price` / `old_price`
 

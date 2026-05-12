@@ -11,7 +11,7 @@
 
 
 
-<title>u2c_percent_less.knit</title>
+<title>x_simple_interest_PP.knit</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -354,19 +354,28 @@ display: none;
 
 <div id="question" class="section level1">
 <h1>Question</h1>
-<p>What is 28.2% less than 584?</p>
+<p>A simple interest loan for $7300 is taken out at 3.05% annual
+percentage rate. A partial payment of $74 is made 55 days into the loan
+period. After this payment, what will the remaining balance of the loan
+be?</p>
+<p>(Assume 365 days per year.)</p>
 </div>
 <div id="solution" class="section level1">
 <h1>Solution</h1>
-<p>For a “percent less” question, the scale factor is found by dividing
-the percentage number by 100 and then subtracting it from 1.</p>
-<p><span class="math display">\[1-\frac{28.2}{100}=0.718\]</span></p>
-<p>Multiply the scale factor by the initial value.</p>
-<p><span class="math display">\[0.718\cdot 584 ~=~ 419.312\]</span></p>
+<p>First, calculate the interest accrued during the 55 days.</p>
+<p><span class="math display">\[I=7300\cdot 0.0305 \cdot
+\frac{55}{365}\]</span></p>
+<p><span class="math display">\[I=34.0159722\]</span></p>
+<p>To find the remaining balance, add the interest to the principal and
+subtract the payment.</p>
+<p><span class="math display">\[7300+34.0159722-74=7260.0159722\]</span></p>
+<p>You can round to the nearest penny to get the current balance is
+7260.02 USD.</p>
 </div>
 <div id="meta-information" class="section level1">
 <h1>Meta-information</h1>
-<p>extype: num exsolution: 419.312 exname: get_part extol: 1</p>
+<p>extype: num exsolution: 7260.0159722 exname: simple_interest_PP
+extol: 0.01</p>
 </div>
 
 

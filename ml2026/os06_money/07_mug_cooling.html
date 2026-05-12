@@ -11,7 +11,7 @@
 
 
 
-<title>u2c_percent_less.knit</title>
+<title>07_mug_cooling.knit</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -354,19 +354,25 @@ display: none;
 
 <div id="question" class="section level1">
 <h1>Question</h1>
-<p>What is 28.2% less than 584?</p>
+<p>At <span class="math inline">\(t=0\)</span> minutes, a cup of coffee
+is 58 <a href="https://en.wikipedia.org/wiki/Kelvin">Kelvin</a> hotter
+than the surrounding air. Each minute, this amount decreases by 4.57%.
+After 22 minutes, how many Kelvin above surrounding-air temperature is
+the cup of coffee?</p>
 </div>
 <div id="solution" class="section level1">
 <h1>Solution</h1>
-<p>For a “percent less” question, the scale factor is found by dividing
-the percentage number by 100 and then subtracting it from 1.</p>
-<p><span class="math display">\[1-\frac{28.2}{100}=0.718\]</span></p>
-<p>Multiply the scale factor by the initial value.</p>
-<p><span class="math display">\[0.718\cdot 584 ~=~ 419.312\]</span></p>
+<p>Find the scale factor.</p>
+<p><span class="math display">\[1-0.0457~=~0.9543\]</span></p>
+<p>Multiply the initial amount by the scale factor 22 times.</p>
+<p><span class="math display">\[58\cdot
+0.9543^{22}~=~20.7250849\]</span></p>
+<p>So, after 22 minutes, the coffee is only 21 Kelvin hotter than the
+surrounding air.</p>
 </div>
 <div id="meta-information" class="section level1">
 <h1>Meta-information</h1>
-<p>extype: num exsolution: 419.312 exname: get_part extol: 1</p>
+<p>extype: num exsolution: 20.7250849 exname: mug_cooling extol: 1</p>
 </div>
 
 

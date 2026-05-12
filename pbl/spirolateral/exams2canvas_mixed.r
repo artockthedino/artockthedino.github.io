@@ -3,25 +3,25 @@ n = 30
 outdir = "outcanvas"
 
 ### Entrance ticket
-# pm = list("which_spirolateral.Rmd","which_spirolateral.Rmd")
-# exams2canvas(pm,
-#              n=n,
-#              dir=outdir,
-#              points=c(5,5),
-#              maxattempts = 8,
-#              name="pbl_0309_ET",
-#              template = "canvas_qti12.xml",
-#              cloze = list(enumerate = FALSE))
-
-pm = list("gcfs.Rmd")
+pm = list("turtle_path_C.Rmd")
 exams2canvas(pm,
              n=n,
              dir=outdir,
-             points=c(5),
-             maxattempts = 6,
-             name="pbl_0309_great_common_factor",
+             points=c(11),
+             maxattempts = 8,
+             name="pbl_day202_ET",
              template = "canvas_qti12.xml",
              cloze = list(enumerate = FALSE))
+
+# pm = list("gcfs.Rmd")
+# exams2canvas(pm,
+#              n=n,
+#              dir=outdir,
+#              points=c(5),
+#              maxattempts = 6,
+#              name="pbl_0309_great_common_factor",
+#              template = "canvas_qti12.xml",
+#              cloze = list(enumerate = FALSE))
 
 
 # pm = list("standard_from_graph.Rmd",
