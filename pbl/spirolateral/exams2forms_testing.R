@@ -2,12 +2,12 @@ library("exams2forms")
 n = 10
 
 ### Entrance ticket
-pm = list("which_spirolateral.Rmd","gcfs.Rmd")
+pm = list("bev_turn_left_right.Rmd")
 
 exams2webquiz(pm,
              n=n,
-             title = "examples_0309",
+             title = "examples_turn_left_right",
              dir = ".",
-             name="examples_0309")
+             name="examples_turn_left_right")
 
 

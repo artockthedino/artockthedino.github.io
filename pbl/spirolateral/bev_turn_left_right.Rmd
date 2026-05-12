@@ -1,0 +1,46 @@
+```{r,echo=FALSE}
+
+directions = c("North","East","South","West")
+d1 = sample(0:3,1)
+turn = sample(c(-1,1),1)
+d2 = (d1+turn)%%4
+if(turn==-1){
+    TD = "left"
+} else {
+    TD = "right"
+}
+
+D1 = directions[d1+1]
+D2 = directions[d2+1]
+
+sol = paste0(1*(0:3==d2),collapse="")
+
+```
+
+Question
+========
+
+A turtle is walking **`r D1`**. The turtle stops walking forward, and then turns 90° to their **`r TD`**. Which direction is the turtle now facing.
+
+
+Answerlist
+--------
+
+* North
+* East
+* South
+* West
+
+
+
+Solution
+========
+
+After turning, the turtle is facing **`r D2`**.
+
+
+Meta-information
+============
+extype: schoice
+exsolution: `r sol`
+exname: bev_turn_left_right
