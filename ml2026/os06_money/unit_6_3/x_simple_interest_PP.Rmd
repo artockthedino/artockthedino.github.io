@@ -6,7 +6,7 @@ r = round(runif(1,2,18),2)
 sr = paste0(sprintf("%.2f",r),"%")
 
 days = sample(5:20,1)*5
-I = P*r/100*days/360
+I = P*r/100*days/365
 
 while(T){
     payment = signif(I*runif(1,1.05,3),2)

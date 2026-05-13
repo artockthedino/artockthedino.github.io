@@ -665,6 +665,7 @@ https://arcade.makecode.com/
 
 intervals!
 Find interval where f(x) is always positive.
+Find interval where f(x) is always decreasing.
 
 
 

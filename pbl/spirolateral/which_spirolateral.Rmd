@@ -88,7 +88,7 @@ You can use this tool:
 
 [https://artockthedino.github.io/pbl/spirolateral/spirolateral_generator.html](https://artockthedino.github.io/pbl/spirolateral/spirolateral_generator.html)
 
-```{r,echo=F,fig.dim=c(5,10)}
+```{r,echo=F,fig.dim=c(4,8)}
 par(mar=c(1,1,3,1),mfrow=c(4,2),pty="s")
 for(i in 1:8){
     drawit(cdms[ord[i]],angles[ord[i]])
