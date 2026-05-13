@@ -662,3 +662,9 @@ https://launchpag.classlink.com/bart
 https://arcade.makecode.com/
 
 
+
+intervals!
+Find interval where f(x) is always positive.
+
+
+

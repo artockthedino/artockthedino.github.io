@@ -1,0 +1,39 @@
+```{r,echo=FALSE}
+options(scipen=99)
+r = sample(2:16,1)/100
+n = sample(c(6,12,52,100,365),1)
+
+y = (1+r/n)^n-1
+
+ans = paste0(sprintf("%.3f",y*100),"%")
+
+```
+
+Question
+========
+
+An investment compounds with an interest rate of `r sprintf("%.3f",r*100)`% and a compound frequency of `r n` per year. What is the **effective annual yield**?
+
+Express your answer as a percentage, rounded to the nearest thousandth of a percent. Include trailing zeros if necessary and include the % symbol. For example, if you calculate the effective annual yield is 0.1234025, write your answer as `12.340%`.
+
+Solution
+========
+
+The [textbook](https://openstax.org/books/contemporary-mathematics/pages/6-4-compound-interest) provides this formula:
+
+$$Y=\left(1+\frac{r}{n}\right)^n-1$$
+
+where $Y$ is the effective annual yield, $r$ is the (nominal) interest rate in decimal form, and $n$ is the number of compoundings per year. Plug in the numbers.
+
+$$Y=\left(1+\frac{`r r`}{`r n`}\right)^{`r n`}-1$$
+
+$$Y=`r y`$$
+
+Thus, your answer should be ``r ans``
+
+
+Meta-information
+============
+extype: string
+exsolution: `r ans`
+exname: effective_annual_yield
