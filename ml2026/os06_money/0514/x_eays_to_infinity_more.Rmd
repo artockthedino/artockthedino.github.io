@@ -1,0 +1,87 @@
+```{r,echo=FALSE}
+options(scipen=99)
+r = sample(20:160,1)/1000
+n = c(1,2,4,12,52,365,9999)
+y = (1+r/n)^n-1
+y = c(y,exp(r)-1)
+ans = paste0(sprintf("%.3f",y*100),"%")
+
+ach = unique(paste0(sprintf("%.3f",y*100),"%"))
+while(length(ach)<12){
+    n2 = 2^(runif(1,0,15))
+    y2 = (1+r/n2)^n2-1
+    ach = unique(c(ach,paste0(sprintf("%.3f",y2*100),"%")))
+}
+ach = sort(ach)
+
+al = paste0("* ",ach,collapse="\n")
+
+sols = character()
+
+for(i in 1:length(y)){
+    sols = c(sols,paste0(1*(ach==paste0(sprintf("%.3f",y[i]*100),"%")),collapse=""))
+}
+
+
+```
+
+Question
+========
+
+Let's investigate what happens as the compounding frequency increases. If the interest rate is `r r*100`%, then please calculate the effective annual yield ($Y$) for the following values of $n$, where $n$ represents the annual compounding frequency.
+
+| n | Y |
+|:---:|:---:|
+| 1 | ##ANSWER1## |
+| 2 | ##ANSWER2## |
+| 4 | ##ANSWER3## |
+| 12 | ##ANSWER4## |
+| 52 | ##ANSWER5## |
+| 365 | ##ANSWER6## |
+| 9999 | ##ANSWER7## |
+
+Now, also calculate $e^{r}-1$, where $e$ is [Euler's number](https://en.wikipedia.org/wiki/E_(mathematical_constant)).
+
+* $e^r-1=$ ##ANSWER8##
+
+Answerlist
+--------
+
+`r al`
+`r al`
+`r al`
+`r al`
+`r al`
+`r al`
+`r al`
+`r al`
+
+
+Solution
+========
+
+The [textbook](https://openstax.org/books/contemporary-mathematics/pages/6-4-compound-interest) provides this formula:
+
+$$Y=\left(1+\frac{r}{n}\right)^n-1$$
+
+where $Y$ is the effective annual yield, $r$ is the (nominal) interest rate in decimal form, and $n$ is the number of compoundings per year. Plug in the numbers.
+
+| n | Y |
+|:---:|:---:|
+| 1 | `r ans[1]` |
+| 2 | `r ans[2]` |
+| 4 | `r ans[3]` |
+| 12 | `r ans[4]` |
+| 52 | `r ans[5]` |
+| 365 | `r ans[6]` |
+| 9999 | `r ans[7]` |
+
+And, $e^r-1=$ `r ans[8]`
+
+
+Meta-information
+============
+extype: cloze
+exclozetype: `r paste0(rep("schoice",length(y)),collapse="|")`
+exsolution: `r paste0(sols,collapse="|")`
+exname: EAY_to_infinity
