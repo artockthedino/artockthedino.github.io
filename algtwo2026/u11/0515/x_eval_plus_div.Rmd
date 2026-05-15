@@ -1,0 +1,41 @@
+```{r,echo=FALSE}
+# y = (x+a)/b
+# by-a = x
+
+yab = sample(2:9,3)
+y = yab[1]*sample(c(-1,1),1)
+a = yab[2]
+b = yab[3]
+
+x = b*y-a
+
+
+```
+
+
+Question
+========
+
+Let function $f$ be defined by the algebraic expression below:
+
+$$f(x)=\frac{x+`r a`}{`r b`}$$
+
+Evaluate $f(`r x`)$.
+
+
+Solution
+========
+
+
+$$f(`r x`)=\frac{`r x`+`r a`}{`r b`}$$
+
+$$f(`r x`)=\frac{`r x+a`}{`r b`}$$
+
+$$f(`r x`)=`r y`$$
+
+
+Meta-information
+============
+extype: num
+exsolution: `r y`
+exname: x_eval_plus_div

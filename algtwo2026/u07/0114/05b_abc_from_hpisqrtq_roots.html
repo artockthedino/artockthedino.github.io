@@ -11,7 +11,7 @@
 
 
 
-<title>01_realize_denominator.knit</title>
+<title>05b_abc_from_hpisqrtq_roots.knit</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -354,33 +354,59 @@ display: none;
 
 <div id="question" class="section level1">
 <h1>Question</h1>
-<p>Simplify the following expression so that the denominator is a
-positive real integer. Also reduce the fraction if possible.</p>
-<p><span class="math display">\[\frac{-9-6i}{3-5i}\]</span></p>
-<p>Your answer will have the form <span class="math inline">\(\frac{r+qi}{n}\)</span>.</p>
-<p><em>If your answer is <span class="math inline">\(\frac{4-10i}{3}\)</span>, type your answer as
-<code>(4-10i)/3</code> without any spaces.</em></p>
+<p>Below is a quadratic function written in factored form.</p>
+<p><span class="math display">\[f(x)~=~\left[x-\left(6-4i\sqrt{10}\right)\right]\cdot\left[x-\left(6+4i\sqrt{10}\right)\right]\]</span></p>
+<p>By finding parameters <span class="math inline">\(b\)</span> and
+<span class="math inline">\(c\)</span>, the same function can be
+expressed in standard form:</p>
+<p><span class="math display">\[f(x)~=~x^2+bx+c\]</span></p>
+<p>Find <span class="math inline">\(b\)</span> and <span class="math inline">\(c\)</span>.</p>
+<p><span class="math inline">\(b=\)</span> ##ANSWER1##</p>
+<p><span class="math inline">\(c=\)</span> ##ANSWER2##</p>
+<div id="answerlist" class="section level2">
+<h2>Answerlist</h2>
+<ul>
+<li>-14</li>
+<li>-12</li>
+<li>-10</li>
+<li>-8</li>
+<li>8</li>
+<li>10</li>
+<li>12</li>
+<li>14</li>
+<li>88</li>
+<li>101</li>
+<li>112</li>
+<li>115</li>
+<li>139</li>
+<li>196</li>
+<li>205</li>
+<li>441</li>
+</ul>
+</div>
 </div>
 <div id="solution" class="section level1">
 <h1>Solution</h1>
-<p>Multiply the numerator and denominator by the complex conjugate of
-the denominator.</p>
-<p><span class="math display">\[\frac{(-9-6i)(3+5i)}{(3-5i)(3+5i)}\]</span></p>
-<p>“FOIL” the numerator and “FOIL” the denominator.</p>
-<p><span class="math display">\[\frac{-27-45i-18i-30i^2}{9+15i-15i-25i^2}\]</span></p>
-<p>Remember, <span class="math inline">\(i^2=-1\)</span>.</p>
-<p><span class="math display">\[\frac{-27-45i-18i+30}{9+15i-15i+25}\]</span></p>
-<p>Combine like terms.</p>
-<p><span class="math display">\[\frac{3-63i}{34}\]</span></p>
-<p>If all terms have a common factor, reduce the fraction. The greatest
-common factor of 3 and 63 and 34 is the number 1.</p>
-<p><span class="math display">\[\frac{3-63i}{34}\]</span></p>
-<p>So, your answer is typed exactly like <code>(3-63i)/34</code> without
-any spaces.</p>
+<p>Start in factored form. We know <span class="math inline">\(a=1\)</span>.</p>
+<p><span class="math display">\[f(x)~=~\left[x-(6-4i\sqrt{10})\right]\cdot\left[x-(6+4i\sqrt{10})\right]\]</span></p>
+<p>At this point, you can either FOIL or distribute away the inside
+parentheses. I think it’ll be a bit cleaner to distribute the
+subtraction across the parentheses.</p>
+<p><span class="math display">\[\left[x-6+4i\sqrt{10}\right]\cdot\left[x-6-4i\sqrt{10}\right]\]</span></p>
+<p>But now, instead of FOIL, we need to generalize, because each factor
+has three terms: a linear term and two constant terms. You could
+probably guess that we simply multiply each of the first factor’s terms
+by each of the second factor’s terms.</p>
+<p><span class="math display">\[x^2-6x-4i\sqrt{10}x-6x+36+24i\sqrt{10}+4i\sqrt{10}x-24i\sqrt{10}-160i^2\]</span></p>
+<p>Remember, <span class="math inline">\(i^2=-1\)</span>. Combine like
+terms. Opposite terms cancel each other out.</p>
+<p><span class="math display">\[x^2-12x+196\]</span></p>
+<p>Thus, <span class="math inline">\(b=-12\)</span> and <span class="math inline">\(c=196\)</span>.</p>
 </div>
 <div id="meta-information" class="section level1">
 <h1>Meta-information</h1>
-<p>extype: string exsolution: (3-63i)/34 exname: realize_denominator</p>
+<p>extype: cloze exclozetype: schoice|schoice exsolution:
+01000000|00000100 exname: abc_from_hpsqrtq_roots</p>
 </div>
 
 

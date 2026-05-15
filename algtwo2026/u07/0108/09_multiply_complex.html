@@ -11,7 +11,7 @@
 
 
 
-<title>01_realize_denominator.knit</title>
+<title>09_multiply_complex.knit</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -354,33 +354,77 @@ display: none;
 
 <div id="question" class="section level1">
 <h1>Question</h1>
-<p>Simplify the following expression so that the denominator is a
-positive real integer. Also reduce the fraction if possible.</p>
-<p><span class="math display">\[\frac{-9-6i}{3-5i}\]</span></p>
-<p>Your answer will have the form <span class="math inline">\(\frac{r+qi}{n}\)</span>.</p>
-<p><em>If your answer is <span class="math inline">\(\frac{4-10i}{3}\)</span>, type your answer as
-<code>(4-10i)/3</code> without any spaces.</em></p>
+<p>Let <span class="math inline">\(z_1\)</span> and <span class="math inline">\(z_2\)</span> be two <a href="https://en.wikipedia.org/wiki/Complex_number">complex numbers</a>.
+<span class="math display">\[z_1 = 8+6i\]</span> <span class="math display">\[z_2 = -1-4i\]</span> Find the product. <span class="math display">\[z_1 \cdot z_2 = ~?\]</span></p>
+<p><em>Type your answer precisely, with no spaces, using digits, “-”,
+“+”, and “i”. If the real term is nonzero, put it first. If either
+component is zero, do not include that term. If both components are
+zero, type “0” without the quotes. Instead of writing “1i” or “-1i” just
+write “i” or “-i”.</em></p>
 </div>
 <div id="solution" class="section level1">
 <h1>Solution</h1>
-<p>Multiply the numerator and denominator by the complex conjugate of
-the denominator.</p>
-<p><span class="math display">\[\frac{(-9-6i)(3+5i)}{(3-5i)(3+5i)}\]</span></p>
-<p>“FOIL” the numerator and “FOIL” the denominator.</p>
-<p><span class="math display">\[\frac{-27-45i-18i-30i^2}{9+15i-15i-25i^2}\]</span></p>
-<p>Remember, <span class="math inline">\(i^2=-1\)</span>.</p>
-<p><span class="math display">\[\frac{-27-45i-18i+30}{9+15i-15i+25}\]</span></p>
-<p>Combine like terms.</p>
-<p><span class="math display">\[\frac{3-63i}{34}\]</span></p>
-<p>If all terms have a common factor, reduce the fraction. The greatest
-common factor of 3 and 63 and 34 is the number 1.</p>
-<p><span class="math display">\[\frac{3-63i}{34}\]</span></p>
-<p>So, your answer is typed exactly like <code>(3-63i)/34</code> without
-any spaces.</p>
+<p>To multiply complex numbers, follow a procedure similar to <a href="https://en.wikipedia.org/wiki/FOIL_method">FOIL</a>, but remember
+<span class="math inline">\(i^2=-1\)</span>.</p>
+<p><span class="math display">\[(8+6i)(-1-4i)\]</span></p>
+<p><span class="math display">\[\Big((8)+(6i)\Big)\Big((-1)+(-4i)\Big)\]</span></p>
+<p><span class="math display">\[(8)(-1)~~+~~(8)(-4i)~~+~~(6i)(-1)~~+~~(6i)(-4i)\]</span>
+<span class="math display">\[-8~~+~~(-32)i~~+~~(-6)i
+~~+~~(-24)i^2\]</span></p>
+<style type="text/css">
+.boxy td {
+border: 1px solid black;
+color: black;
+background-color: white;
+}
+.boxy th {
+background-color: rgb(200, 200, 200);
+color: black;
+border: 1px solid black;
+}
+.boxy td:first-child {
+background-color: rgb(200, 200, 200);
+color: black;
+border: 1px solid black;
+}
+</style>
+<p>You could also use a box to multiply.</p>
+<div class="boxy">
+<table>
+<thead>
+<tr class="header">
+<th align="center">*</th>
+<th align="center"><span class="math inline">\(8\)</span></th>
+<th align="center"><span class="math inline">\(6i\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(-1\)</span></td>
+<td align="center"><span class="math inline">\(-8\)</span></td>
+<td align="center"><span class="math inline">\(-6i\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(-4i\)</span></td>
+<td align="center"><span class="math inline">\(-32i\)</span></td>
+<td align="center"><span class="math inline">\(-24i^2\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><span class="math display">\[-8~~+~~(-32)i~~+~~(-6)i
+~~+~~(-24)i^2\]</span></p>
+<p>Remember that <span class="math inline">\(i^2=-1\)</span>.</p>
+<p><span class="math display">\[-8~~+~~(-32)i~~+~~(-6)i~~+~~(24)\]</span></p>
+<p>Let’s group similar terms. We put the real terms to the left and the
+imaginary terms to the right.</p>
+<p><span class="math display">\[-8~~+~~(24)~~+~~(-32)i~~+~~(-6)i\]</span> Combine
+the real terms and combine the imaginary terms.</p>
+<p><span class="math display">\[16-38i\]</span></p>
 </div>
 <div id="meta-information" class="section level1">
 <h1>Meta-information</h1>
-<p>extype: string exsolution: (3-63i)/34 exname: realize_denominator</p>
+<p>extype: string exsolution: 16-38i exname: multiply_complex</p>
 </div>
 
 

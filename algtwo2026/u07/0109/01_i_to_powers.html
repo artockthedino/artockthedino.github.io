@@ -11,7 +11,7 @@
 
 
 
-<title>01_realize_denominator.knit</title>
+<title>01_i_to_powers.knit</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -354,33 +354,89 @@ display: none;
 
 <div id="question" class="section level1">
 <h1>Question</h1>
-<p>Simplify the following expression so that the denominator is a
-positive real integer. Also reduce the fraction if possible.</p>
-<p><span class="math display">\[\frac{-9-6i}{3-5i}\]</span></p>
-<p>Your answer will have the form <span class="math inline">\(\frac{r+qi}{n}\)</span>.</p>
-<p><em>If your answer is <span class="math inline">\(\frac{4-10i}{3}\)</span>, type your answer as
-<code>(4-10i)/3</code> without any spaces.</em></p>
+<p>Simplify the following powers of <span class="math inline">\(i\)</span>.</p>
+<ul>
+<li><span class="math inline">\(i^{23}=\)</span> ##ANSWER1##</li>
+<li><span class="math inline">\(i^{29}=\)</span> ##ANSWER2##</li>
+<li><span class="math inline">\(i^{54}=\)</span> ##ANSWER3##</li>
+<li><span class="math inline">\(i^{60}=\)</span> ##ANSWER4##</li>
+</ul>
+<div id="answerlist" class="section level2">
+<h2>Answerlist</h2>
+<ul>
+<li>i</li>
+<li>-1</li>
+<li>-i</li>
+<li>1</li>
+<li>i</li>
+<li>-1</li>
+<li>-i</li>
+<li>1</li>
+<li>i</li>
+<li>-1</li>
+<li>-i</li>
+<li>1</li>
+<li>i</li>
+<li>-1</li>
+<li>-i</li>
+<li>1</li>
+</ul>
+</div>
 </div>
 <div id="solution" class="section level1">
 <h1>Solution</h1>
-<p>Multiply the numerator and denominator by the complex conjugate of
-the denominator.</p>
-<p><span class="math display">\[\frac{(-9-6i)(3+5i)}{(3-5i)(3+5i)}\]</span></p>
-<p>“FOIL” the numerator and “FOIL” the denominator.</p>
-<p><span class="math display">\[\frac{-27-45i-18i-30i^2}{9+15i-15i-25i^2}\]</span></p>
-<p>Remember, <span class="math inline">\(i^2=-1\)</span>.</p>
-<p><span class="math display">\[\frac{-27-45i-18i+30}{9+15i-15i+25}\]</span></p>
-<p>Combine like terms.</p>
-<p><span class="math display">\[\frac{3-63i}{34}\]</span></p>
-<p>If all terms have a common factor, reduce the fraction. The greatest
-common factor of 3 and 63 and 34 is the number 1.</p>
-<p><span class="math display">\[\frac{3-63i}{34}\]</span></p>
-<p>So, your answer is typed exactly like <code>(3-63i)/34</code> without
-any spaces.</p>
+<p>For any positive integer <span class="math inline">\(n\)</span>, we
+can evaluate <span class="math inline">\(i^n\)</span> by determining the
+remainder when <span class="math inline">\(n\)</span> is divided by
+4.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Remainder of <span class="math inline">\(n/4\)</span></th>
+<th align="center"><span class="math inline">\(i^n\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">0</td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+</tr>
+<tr class="even">
+<td align="center">1</td>
+<td align="center"><span class="math inline">\(i\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center">2</td>
+<td align="center"><span class="math inline">\(-1\)</span></td>
+</tr>
+<tr class="even">
+<td align="center">3</td>
+<td align="center"><span class="math inline">\(-i\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>In computer programming, the <a href="https://en.wikipedia.org/wiki/Modulo">modulo operator</a> returns
+the remainder. This operation is used so frequently, that it is often
+abbreviated to a single symbol (for example, in Python, <code>5%2</code>
+represents the remainder when 5 is divided by 2.)</p>
+<p>I will represent the remainders using the <a href="https://www.desmos.com/calculator">Desmos</a> notation.</p>
+<ul>
+<li><span class="math inline">\(\mathrm{mod}(23,4)=3\)</span> so <span class="math inline">\(i^{23}=-i\)</span></li>
+<li><span class="math inline">\(\mathrm{mod}(29,4)=1\)</span> so <span class="math inline">\(i^{29}=i\)</span></li>
+<li><span class="math inline">\(\mathrm{mod}(54,4)=2\)</span> so <span class="math inline">\(i^{54}=-1\)</span></li>
+<li><span class="math inline">\(\mathrm{mod}(60,4)=0\)</span> so <span class="math inline">\(i^{60}=1\)</span></li>
+</ul>
+<p>To find the remainder using a scientific calculator, I would divide
+by 4, <a href="https://en.wikipedia.org/wiki/Floor_and_ceiling_functions">floor</a>
+the result, multiply by 4, and subtract that amount from the
+original.</p>
+<p><span class="math display">\[\mathrm{mod}(x,4)~=~x-4\cdot
+\left\lfloor\frac{x}{4}\right\rfloor\]</span></p>
 </div>
 <div id="meta-information" class="section level1">
 <h1>Meta-information</h1>
-<p>extype: string exsolution: (3-63i)/34 exname: realize_denominator</p>
+<p>extype: cloze exclozetype: schoice|schoice|schoice|schoice
+exsolution: 0010|1000|0100|0001 exname: i_to_power</p>
 </div>
 
 

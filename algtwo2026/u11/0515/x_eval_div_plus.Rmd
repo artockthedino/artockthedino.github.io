@@ -1,0 +1,42 @@
+```{r,echo=FALSE}
+# y = x/a+b
+# (y-b)*a = x
+
+yab = sample(2:9,3)
+y = yab[1]*sample(c(-1,1),1)
+a = yab[2]
+b = yab[3]
+
+x = (y-b)*a
+
+
+```
+
+
+Question
+========
+
+Let function $f$ be defined by the algebraic expression below:
+
+$$f(x)=\frac{x}{`r a`}+`r b`$$
+
+Evaluate $f(`r x`)$.
+
+
+Solution
+========
+
+
+$$f(`r x`)=\frac{`r x`}{`r a`}+`r b`$$
+
+
+$$f(`r x`)=`r round(x/a)`+`r b`$$
+
+$$f(`r x`)=`r y`$$
+
+
+Meta-information
+============
+extype: num
+exsolution: `r y`
+exname: x_eval_div_plus

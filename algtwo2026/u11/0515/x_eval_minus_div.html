@@ -11,7 +11,7 @@
 
 
 
-<title>01_realize_denominator.knit</title>
+<title>x_eval_minus_div.knit</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -354,33 +354,19 @@ display: none;
 
 <div id="question" class="section level1">
 <h1>Question</h1>
-<p>Simplify the following expression so that the denominator is a
-positive real integer. Also reduce the fraction if possible.</p>
-<p><span class="math display">\[\frac{-9-6i}{3-5i}\]</span></p>
-<p>Your answer will have the form <span class="math inline">\(\frac{r+qi}{n}\)</span>.</p>
-<p><em>If your answer is <span class="math inline">\(\frac{4-10i}{3}\)</span>, type your answer as
-<code>(4-10i)/3</code> without any spaces.</em></p>
+<p>Let function <span class="math inline">\(f\)</span> be defined by the
+algebraic expression below:</p>
+<p><span class="math display">\[f(x)=\frac{x-6}{2}\]</span></p>
+<p>Evaluate <span class="math inline">\(f(-10)\)</span>.</p>
 </div>
 <div id="solution" class="section level1">
 <h1>Solution</h1>
-<p>Multiply the numerator and denominator by the complex conjugate of
-the denominator.</p>
-<p><span class="math display">\[\frac{(-9-6i)(3+5i)}{(3-5i)(3+5i)}\]</span></p>
-<p>“FOIL” the numerator and “FOIL” the denominator.</p>
-<p><span class="math display">\[\frac{-27-45i-18i-30i^2}{9+15i-15i-25i^2}\]</span></p>
-<p>Remember, <span class="math inline">\(i^2=-1\)</span>.</p>
-<p><span class="math display">\[\frac{-27-45i-18i+30}{9+15i-15i+25}\]</span></p>
-<p>Combine like terms.</p>
-<p><span class="math display">\[\frac{3-63i}{34}\]</span></p>
-<p>If all terms have a common factor, reduce the fraction. The greatest
-common factor of 3 and 63 and 34 is the number 1.</p>
-<p><span class="math display">\[\frac{3-63i}{34}\]</span></p>
-<p>So, your answer is typed exactly like <code>(3-63i)/34</code> without
-any spaces.</p>
+<p><span class="math display">\[f(-10)=\frac{-10-6}{2}\]</span></p>
+<p><span class="math display">\[f(-10)=-8\]</span></p>
 </div>
 <div id="meta-information" class="section level1">
 <h1>Meta-information</h1>
-<p>extype: string exsolution: (3-63i)/34 exname: realize_denominator</p>
+<p>extype: num exsolution: -8 exname: x_eval_minus_div</p>
 </div>
 
 

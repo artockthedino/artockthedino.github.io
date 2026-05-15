@@ -667,5 +667,19 @@ intervals!
 Find interval where f(x) is always positive.
 Find interval where f(x) is always decreasing.
 
+(1+2i)/(4+3i)
+
+(1+2i)(4-3i)/(16+9)
 
 
+(4-3i+8i+6)/(16+9)
+
+(10+5i)/25
+
+(2+i)/5
+
+
+
+(1+2i)(4+3i)/(16+9)
+
+(-5+11i)/(16+9)
