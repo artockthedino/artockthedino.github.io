@@ -433,6 +433,12 @@ $$\frac{2x^3-13x^2+22x+2}{x-3}$$
     b. Using interval notation, express where the function is negative.
     c. Using interval notation, express where the function is increasing.
     d. Using interval notation, express where the function is decreasing.
+    
+\vfill    
+
+40. Sketch the polynomial on the axes below. Be accurate with the $x$ intercepts and where the function is positive or negative.
+
+$$y=(x+3)^2\cdot $$
 
 
 \newpage
@@ -477,6 +483,7 @@ $$\frac{2x^3-13x^2+22x+2}{x-3}$$
 38. $f(x)=12x^3+25x^2-4x-12$
 39. 
     a. Positive: $(-8,1) \cup (4,10)$.
-    a. Negative: $(-10,-8) \cup (1,4)$.
-    a. Increasing: $(-10,-5) \cup (3,6)$.
-    a. Decreasing: $(-5,3) \cup (6,10)$.
+    b. Negative: $(-10,-8) \cup (1,4)$.
+    c. Increasing: $(-10,-5) \cup (3,6)$.
+    d. Decreasing: $(-5,3) \cup (6,10)$.
+40. 

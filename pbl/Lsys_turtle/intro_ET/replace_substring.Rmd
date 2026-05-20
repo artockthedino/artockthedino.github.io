@@ -1,0 +1,52 @@
+```{r data generation, echo = FALSE, results = "hide"}
+
+lfix = LETTERS[LETTERS!="O"]
+
+n1 = sample(6:9,1)
+w1 = sample(lfix,n1,T)
+lr = sample(lfix,1)
+nrep = sample(2:3,1)
+px = sample(1:n1,nrep)
+w1[px] = rep(lr,nrep)
+
+W1 = paste0(w1,collapse="")
+
+while(T){
+  lets = sample(lfix,2)
+  repstr = paste0(lets,collapse="")
+  if(!(lr %in% lets)){break}
+}
+
+
+W2 = gsub(lr,repstr,W1)
+
+
+```
+
+Question
+========
+
+Consider the string of characters shown below:
+
+``r W1``
+
+What new string would be created if every instance of ``r lr`` was replaced with ``r repstr``?
+
+(Please use all uppercase letters and NO spaces.)
+
+
+Solution
+========
+
+Here is the answer:
+
+`r W2`
+
+Notice, every ``r lr`` is now ``r repstr``.
+
+
+Meta-information
+============
+extype: string
+exsolution: `r W2`
+exname: replace_substring

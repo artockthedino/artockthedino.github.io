@@ -1,0 +1,131 @@
+```{r,echo=FALSE}
+# All 90-deg turns
+# Expressed with right, up, left, down
+
+n = 4
+
+while(T){
+    handles = character()
+    x = sample(1:4,n,T)
+    turns = c(0,sample(c(-1,1),n-1,T))
+    tops = c("left","right")
+    tus = tops[turns[2:n]/2+1.5]
+    st = cumsum(turns)
+    # ths = c(0,pi/2,pi,3*pi/2)
+    # dis = c("East","North","West","South")
+    ths = c(pi/2,0,3*pi/2,pi)
+    dis = c("North","East","South","West")
+    j0 = 0 #sample(0:3,1)
+    jj = (j0+st)%%4+1
+    tt = ths[jj]
+    dd = dis[jj]
+    xx = c(0)
+    yy = c(0)
+    for(i in 1:n){
+        xnew = round(xx[i]+x[i]*cos(tt[i]))
+        ynew = round(yy[i]+x[i]*sin(tt[i]))
+        xx = c(xx,xnew)
+        yy = c(yy,ynew)
+        if(i%%2==0){
+            handles = c(handles,paste0("e",round(ynew)))
+        } else {
+            handles = c(handles,paste0("o",round(xnew)))
+        }
+    }
+    
+    if(max(abs(xx))<=10 && max(abs(yy))<=10 && length(unique(dd))>2 && length(unique(x))>1 && length(unique(handles))==length(handles)){break}
+}
+
+# acho = dis
+# ache = 1:5
+# 
+# alo = paste0("* ",acho,collapse="\n")
+# ale = paste0("* ",ache,collapse="\n")
+# 
+# sols = character()
+# for(i in 1:n){
+#     solo = paste0(1*(dd[i]==acho),collapse="")
+#     sole = paste0(1*(x[i]==ache),collapse="")
+#     sols = c(sols,solo,sole)
+# }
+
+acho = 1:5
+ache = c("left","right")
+
+sols = c(paste0(1*(x[1]==acho),collapse=""))
+for(i in 2:n){
+    sole = paste0(1*(tus[i-1]==ache),collapse="")
+    solo = paste0(1*(x[i]==acho),collapse="")
+    sols = c(sols,sole,solo)
+}
+
+alo = paste0("* ",acho,collapse="\n")
+ale = paste0("* ",ache,collapse="\n")
+
+tch = c("-","+")
+tchs = tch[turns[2:n]/2+1.5]
+    
+cs = paste0(rep("F",x[1]),collapse="")
+for(i in 1:(n-1)){
+  cs = paste0(cs,tchs[i])
+  cs = paste0(cs,paste0(rep("F",x[i+1]),collapse=""))
+}
+
+```
+
+Question
+========
+
+A turtle starts at the star in the middle, facing North. While dragging markers, she walks forward for a while, then turns either to her right (clockwise) or to her left (counterclockwise) by 90°. She repeats this, starting with a red marker, until she has drawn `r n` segments.
+
+The distance between adjacent dots is 1 unit.
+
+```{r,echo=F,fig.dim=c(4,4)}
+par(mar=c(0,0,0,0),pty="s")
+plot(0,0,"n",xlim=c(-10,10),ylim=c(-10,10),axes=F,ann=F)
+
+for(i in -10:10){
+    points(rep(i,21),-10:10,pch=20,cex=0.6)
+    points(-10:10,rep(i,21),pch=20,cex=0.6)
+}
+points(0,0,pch=8,cex=1)
+
+# lines(xx,yy,lwd=2,col="blue")
+cols = hsv(seq(0,1,length.out=n+1),0.9,0.9)
+for(i in 1:n){
+    lines(c(xx[i],xx[i+1]),c(yy[i],yy[i+1]),col=cols[i],lwd=2)
+}
+```
+\
+
+Describe the path taken by the turtle by typing a string of characters.
+
+* Character `F` means go forward 1 unit.
+* Character `+` means turn right (clockwise) 90°.
+* Character `-` means turn left (counterclockwise) 90°.
+
+Remember to use uppercase `F` and no spaces.
+
+
+Solution
+========
+
+The path could be described as...
+ 
+* Go `r x[1]`
+```{r,echo=F,results='asis'}
+for(i in 2:n){
+    cat(paste0("* Turn ",tus[i-1],"\n"))
+    cat(paste0("* Go ",x[i],"\n"))
+}
+```
+
+So, using those characters...
+
+``r cs``
+
+Meta-information
+============
+extype: string
+exsolution: `r cs`
+exname: path_string
