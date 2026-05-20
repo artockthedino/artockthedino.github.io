@@ -169,8 +169,270 @@ $$\frac{2x^3-13x^2+22x+2}{x-3}$$
 
 \vfill
 
+\newpage
 
 
+26. A polynomial function is plotted below.
+    ```{r,echo=F,fig.dim=c(5,1.5),fig.align='center'}
+    par(mar=c(0,0,0,0))
+    plot(0,0,"n",xlim=c(-10,10),ylim=c(-1,1),axes=F,ann=F)
+    xx = seq(-10,10,0.01)
+    yy = -(xx+7)^2*(xx+2)*(xx-5)^2
+    yy = yy/max(abs(yy[abs(xx+1)<=6]))
+    abline(v=0)
+    for(i in c(-10:-1,1:10)){
+      lines(c(i,i),c(-0.1,0.1),col="grey")
+      text(i,-0.3,i,col="grey")
+    }
+    abline(h=0)
+    lines(xx,yy,col="blue",lwd=2)
+    ```
+    Express the polynomial in **factored** form. Please assume that in standard form the leading coefficient would be 1 or -1.
+
+\vfill
+
+27. A polynomial function is plotted below.
+    ```{r,echo=F,fig.dim=c(5,1.5),fig.align='center'}
+    par(mar=c(0,0,0,0))
+    plot(0,0,"n",xlim=c(-10,10),ylim=c(-1,1),axes=F,ann=F)
+    xx = seq(-10,10,0.01)
+    yy = (xx+3)*(xx-5)^2
+    yy = yy/max(abs(yy[abs(xx-1)<=4]))
+    abline(v=0)
+    for(i in c(-10:-1,1:10)){
+      lines(c(i,i),c(-0.1,0.1),col="grey")
+      text(i,-0.3,i,col="grey")
+    }
+    abline(h=0)
+    lines(xx,yy,col="blue",lwd=2)
+    ```
+    Express the polynomial in **expanded** form. Please assume that in standard form the leading coefficient would be 1 or -1.
+
+\vfill
+
+
+28. A polynomial is plotted below.
+    ```{r,echo=F,fig.dim=c(5,1.5),fig.align='center'}
+    par(mar=c(0,0,0,0))
+    plot(0,0,"n",xlim=c(-10,10),ylim=c(0,2),axes=F,ann=F)
+    xx = seq(-10,10,0.01)
+    yy = (xx+3)*(xx)^2*(xx-5)
+    yy = yy/max(abs(yy[abs(xx-1)<=4]))+1
+    abline(v=0)
+    for(i in c(-10:-1,1:10)){
+      lines(c(i,i),c(-0.1,0.1),col="grey")
+      text(i,-0.3,i,col="grey")
+    }
+    abline(h=0)
+    lines(xx,yy,col="blue",lwd=2)
+    ```
+    What is the minimum degree of the polynomial?
+
+\vfill
+
+\newpage
+
+29. The discriminant, $b^2-4ac$, is the expression in the radicand in the quadratic formula. Describe the implications of the discriminant being less than 0, more than 0, or equal to 0.
+
+\vfill
+
+30. Express $\left(x+1\right)^{2}-3\left(x+1\right)-10$ in factored form.
+
+\vfill
+
+31. Check if $x-2$ is a factor of $x^3-x^2-10x-8$ by using synthetic division.
+
+\vfill
+
+32. Find solution set to $\sqrt{2x+8}-3=x+1$. Express your answer as a set (listed in curly braces).
+
+\vfill
+
+33. The graph of $y=p(x)$ below shows a polynomial.
+
+    ```{r,echo=F,fig.dim=c(4,4),fig.align="center"}
+    par(mar=c(0,0,0,0))
+    plot(0,0,"n",xlim=c(-10,10),ylim=c(-10,10),axes=F,ann=F)
+    for(i in c(-10:-1,1:10)){
+      lines(c(i,i),c(-10,10),col="lightgrey",lwd=0.8)
+      lines(c(-10,10),c(i,i),col="lightgrey",lwd=0.8)
+    }
+    for(i in c(-10,-5,5,10)){
+      lines(c(i,i),c(-10,10),col="grey",lwd=1.2)
+      lines(c(-10,10),c(i,i),col="grey",lwd=1.2)
+    }
+    abline(h=0,lwd=1.5)
+    abline(v=0,lwd=1.5)
+    x = seq(-10,10,0.01)
+    y = x*(x+2)*(x-3)*(x-6)*(x+4)
+    n = 4
+    a = -3
+    y = y/y[x==n]*a
+    lines(x,y,col="blue",lwd=2)
+    text(10,0,"10",adj=c(0.5,1.3))
+    text(0,10,"10",adj=c(1.3,0.5))
+    text(10,0,"x",adj=c(-0.5,-0.5))
+    text(0,10,"y",adj=c(-0.5,-0.5))
+    ```
+    
+    What is the remainder when $p(x)$ is divided by $x-4$?
+
+\vfill
+
+\newpage
+
+34. Consider the function graphed below.
+
+    ```{r,echo=F,fig.dim=c(3,3),fig.align="center"}
+    par(mar=c(0,0,0,0))
+    plot(0,0,"n",xlim=c(-10,10),ylim=c(-10,10),axes=F,ann=F)
+    for(i in c(-10:-1,1:10)){
+      lines(c(i,i),c(-10,10),col="lightgrey",lwd=0.8)
+      lines(c(-10,10),c(i,i),col="lightgrey",lwd=0.8)
+    }
+    for(i in c(-10,-5,5,10)){
+      lines(c(i,i),c(-10,10),col="grey",lwd=1.2)
+      lines(c(-10,10),c(i,i),col="grey",lwd=1.2)
+    }
+    abline(h=0,lwd=1.5)
+    abline(v=0,lwd=1.5)
+    x = seq(-10,10,0.01)
+    y = 10/x
+    
+    lines(x,y,col="blue",lwd=2)
+    
+    text(10,0,"10",adj=c(0.5,1.3),cex=0.8)
+    text(0,10,"10",adj=c(1.3,0.5),cex=0.8)
+    text(10,0,"x",adj=c(-0.4,-0.4),cex=0.8)
+    text(0,10,"y",adj=c(-0.4,-0.4),cex=0.8)
+    
+    ```
+    
+    a. Is the function even?
+    b. Is the function odd?
+    c. Is the function one-to-one?
+
+\vfill
+
+35. Consider the function graphed below.
+
+    ```{r,echo=F,fig.dim=c(3,3),fig.align="center"}
+    par(mar=c(0,0,0,0))
+    plot(0,0,"n",xlim=c(-10,10),ylim=c(-10,10),axes=F,ann=F)
+    for(i in c(-10:-1,1:10)){
+      lines(c(i,i),c(-10,10),col="lightgrey",lwd=0.8)
+      lines(c(-10,10),c(i,i),col="lightgrey",lwd=0.8)
+    }
+    for(i in c(-10,-5,5,10)){
+      lines(c(i,i),c(-10,10),col="grey",lwd=1.2)
+      lines(c(-10,10),c(i,i),col="grey",lwd=1.2)
+    }
+    abline(h=0,lwd=1.5)
+    abline(v=0,lwd=1.5)
+    x = seq(-10,10,0.01)
+    y = x^2/10-6
+    
+    lines(x,y,col="blue",lwd=2)
+    
+    text(10,0,"10",adj=c(0.5,1.3),cex=0.8)
+    text(0,10,"10",adj=c(1.3,0.5),cex=0.8)
+    text(10,0,"x",adj=c(-0.4,-0.4),cex=0.8)
+    text(0,10,"y",adj=c(-0.4,-0.4),cex=0.8)
+    
+    ```
+    
+    a. Is the function even?
+    b. Is the function odd?
+    c. Is the function one-to-one?
+
+
+\newpage
+
+36. Consider the function graphed below.
+
+    ```{r,echo=F,fig.dim=c(3,3),fig.align="center"}
+    par(mar=c(0,0,0,0))
+    plot(0,0,"n",xlim=c(-10,10),ylim=c(-10,10),axes=F,ann=F)
+    for(i in c(-10:-1,1:10)){
+      lines(c(i,i),c(-10,10),col="lightgrey",lwd=0.8)
+      lines(c(-10,10),c(i,i),col="lightgrey",lwd=0.8)
+    }
+    for(i in c(-10,-5,5,10)){
+      lines(c(i,i),c(-10,10),col="grey",lwd=1.2)
+      lines(c(-10,10),c(i,i),col="grey",lwd=1.2)
+    }
+    abline(h=0,lwd=1.5)
+    abline(v=0,lwd=1.5)
+    x = seq(-10,10,0.01)
+    y = 5*abs(x+2)^(1/3)*sign(x+2)-3
+    
+    lines(x,y,col="blue",lwd=2)
+    
+    text(10,0,"10",adj=c(0.5,1.3),cex=0.8)
+    text(0,10,"10",adj=c(1.3,0.5),cex=0.8)
+    text(10,0,"x",adj=c(-0.4,-0.4),cex=0.8)
+    text(0,10,"y",adj=c(-0.4,-0.4),cex=0.8)
+    
+    ```
+    
+    a. Is the function even?
+    b. Is the function odd?
+    c. Is the function one-to-one?
+
+\vfill
+
+37. Find a cubic polynomial with leading coefficient 1 and roots of $2$ and $1+3i$.
+
+\vfill
+
+38. Find a cubic polynomial with integer coefficients and a positive leading coefficient that is as small as possible and roots of $\frac{2}{3}$ and $\frac{-3}{4}$ and $-2$.
+
+\vfill
+
+\newpage
+
+39. Consider the function graphed below. Assume the domain is $x$ values between -10 and 10 (so the entire function is shown here).
+
+    ```{r,echo=F,fig.dim=c(3,3),fig.align="center"}
+    par(mar=c(0,0,0,0))
+    plot(0,0,"n",xlim=c(-10,10),ylim=c(-10,10),axes=F,ann=F)
+    for(i in c(-10:-1,1:10)){
+      lines(c(i,i),c(-10,10),col="lightgrey",lwd=0.8)
+      lines(c(-10,10),c(i,i),col="lightgrey",lwd=0.8)
+    }
+    for(i in c(-10,-5,5,10)){
+      lines(c(i,i),c(-10,10),col="grey",lwd=1.2)
+      lines(c(-10,10),c(i,i),col="grey",lwd=1.2)
+    }
+    abline(h=0,lwd=1.5)
+    abline(v=0,lwd=1.5)
+    x = seq(-10,-5,0.01)
+    y = 2*(x+10)-4
+    lines(x,y,col="blue",lwd=2)
+    
+    x = seq(-5,3,0.01)
+    y = -1*(x+5)+6
+    lines(x,y,col="blue",lwd=2)
+    
+    x = seq(3,6,0.01)
+    y = 2*(x-3)-2
+    lines(x,y,col="blue",lwd=2)
+    
+    x = seq(6,10,0.01)
+    y = -1/2*(x-6)+4
+    lines(x,y,col="blue",lwd=2)
+    
+    text(10,0,"10",adj=c(0.5,1.3),cex=0.8)
+    text(0,10,"10",adj=c(1.3,0.5),cex=0.8)
+    text(10,0,"x",adj=c(-0.4,-0.4),cex=0.8)
+    text(0,10,"y",adj=c(-0.4,-0.4),cex=0.8)
+    
+    ```
+
+    a. Using interval notation, express where the function is positive.
+    b. Using interval notation, express where the function is negative.
+    c. Using interval notation, express where the function is increasing.
+    d. Using interval notation, express where the function is decreasing.
 
 
 \newpage
@@ -200,3 +462,21 @@ $$\frac{2x^3-13x^2+22x+2}{x-3}$$
 23. $(0,-8)$
 24. $(x-1)(x+3)(x-4)$
 25. $5\sqrt{3}$
+26. $y=-(x+7)^2\cdot (x+2)\cdot (x-5)^2$
+27. $y=x^3-7x^2-5x+75$
+28. There are 3 extrema shown, so the minimum degree is 4.
+29. If $b^2-4ac<0$, then two complex solutions. If $b^2-4ac>0$, then two real solutions. If $b^2-4ac=0$, then one real solution (with multiplicity 2).
+30. $(x+3)(x-4)$
+31. When you divide $x^3+5x^2+2x-8$ by $x-2$ the result is $x^2+7x+16+\frac{24}{x-2}$, so the remainder is 24. The remainder is not 0, so $x-2$ is **not** a factor.
+32. The solution set is $\{-4,-2\}$, meaning both $x=-4$ and $x=-2$ are valid solutions to the equation.
+33. The **remainder theorem** tells us that $p(4)$ equals the remainder when $p(x)$ is divided by $x-4$. Look at the graph to find the point $(4,-3)$ on the curve, which tells us $p(4)=-3$, so the remainder is -3.
+34. This function is **not** even, but it **is** odd and it **is** one-to-one.
+35. This function **is** even, but it **is not** odd and it **is not** one-to-one.
+36. This function is **not** even and **not** odd, but it **is** one-to-one.
+37. $f(x)=x^3-4x^2+6x-20$
+38. $f(x)=12x^3+25x^2-4x-12$
+39. 
+    a. Positive: $(-8,1) \cup (4,10)$.
+    a. Negative: $(-10,-8) \cup (1,4)$.
+    a. Increasing: $(-10,-5) \cup (3,6)$.
+    a. Decreasing: $(-5,3) \cup (6,10)$.

@@ -1,5 +1,55 @@
 ---
 title: "quiz_0520"
-output: html_document
+output: pdf_document
 ---
+
+Name: \vspace{0.1in} \hrule
+
+
+## Question 1
+
+A store buys a trinket wholesale for \$10.00 and sells the trinket for a retail price of $16.00. What is the markup percentage?
+
+\vfill
+
+## Question 2
+
+A store normally prices trinkets at a retail price of \$16.00, but the store is offering a sale of 20% off retail price. What is the sale price?
+
+\vfill
+
+## Question 3
+
+If another store is offering a sale of 30% off retail price, and the sale price is $5.60, what is the (non-sale) original retail price?
+
+\vfill
+
+\newpage
+
+Some helpful formulas:
+
+$$A = P\left(1+\frac{r}{n}\right)^{nt}$$
+
+$$Y = \left(1+\frac{r}{n}\right)^{n}$$
+
+## Question 4
+
+If \$1000 is invested in an account with 4% interest rate compounded monthly, what will the value be in 10 years?
+
+\vfill
+
+## Question 5
+
+If you want an investment to be worth 1 million dollars in 30 years with an interest rate of 8% compounded 4 times per year, how much do you need to invest now?
+
+\vfill
+
+## Question 6
+
+What is the effective annual yield of a nominal interest rate of 5% compounded daily? (Assume 365 days in a year.)
+
+\vfill
+
+
+
 
