@@ -1,0 +1,202 @@
+---
+output: pdf_document
+params:
+    rseed: 0
+    showsol: true
+header-includes:
+  - \usepackage{multicol}
+---
+
+
+Name: \vspace{5pt} \hrule
+
+# Final Practice 01
+
+1. Solve the linear equation.
+$$20=4(x+3)$$
+
+\vfill
+
+2. Let function $f$ be defined by the algebraic expression below:
+$$f(x)=\frac{x}{5}+9$$
+Evaluate $f(-15)$.
+
+\vfill
+
+3. Let function $f$ be defined by the algebraic expression below: $$f(x)=\sqrt[5]{x-4}+3$$
+Find the inverse of function $f$.
+
+\vfill
+
+4. When a relation is displayed as a curve on a cartesian coordinates:
+   a. What is needed for $y$ to be a function of $x$?
+   b. What is needed for $x$ to be a function of $y$?
+   c. What is needed for the curve to represent a one-to-one function?
+
+\vfill
+
+5. Solve the radical equation: $$7-\sqrt{x+10}=4$$
+
+\vfill
+
+\newpage
+
+6. Solve the equation.
+$$(8x-3)(5x+6)=0$$
+
+\vfill
+
+7. State the quadratic formula.
+
+\vfill
+
+8. Factor the quadratic expression.
+$$x^2-10x+9$$
+
+\vfill
+
+9. Factor the quadratic expression.
+$$3x^2+x-10$$
+
+\vfill
+
+
+10. Expand the quadratic expression. $(x+6)(x+7)$
+
+\vfill
+
+11. Rationalize the denominator. Remember, $i=\sqrt{-1}$. $$\frac{3-2i}{5-9i}$$
+
+\vfill
+
+12. Expand the quadratic polynomial with complex roots.
+$$(x-(5+2i))(x-(5-2i))$$
+
+\vfill
+
+13. Solve the quadratic equation. $$x^2-6x+13=0$$
+
+\vfill
+
+\newpage
+
+The questions on this page refer to this graph.
+
+```{r,echo=F,fig.dim=c(5,5),fig.align='center'}
+par(mar=c(0,0,0,0))
+plot(0,0,"n",xlim=c(-10,10),ylim=c(-10,10),axes=F,ann=F)
+for(i in -10:10){
+  lines(c(i,i),c(-10,10),col="lightgrey",lwd=0.6)
+  lines(c(-10,10),c(i,i),col="lightgrey",lwd=0.6)
+}
+for(i in c(-10,-5,5,10)){
+  lines(c(i,i),c(-10,10),col="grey",lwd=0.9)
+  lines(c(-10,10),c(i,i),col="grey",lwd=0.9)
+}
+abline(h=0)
+abline(v=0)
+text(10,0,"x",adj=c(-0.3,-0.3))
+text(0,10,"y",adj=c(-0.3,-0.3))
+text(10,0,"10",adj=c(0.5,1.5))
+text(0,10,"10",adj=c(1.5,0.5))
+
+x1 = seq(-12,12,0.1)
+y1 = x1+3
+
+x2 = seq(-3,12,0.01)
+y2 = -sqrt(x2+3)+2
+
+lines(x1,y1,col="red")
+lines(x2,y2,col="blue")
+
+legend("topleft",c("y=f(x)","y=g(x)"),col=c("red","blue"),lwd=c(1,1))
+
+```
+
+14. Write an equation in slope-intercept form for $f(x)$.
+
+\vfill
+
+15. Write an equation for $g(x)$.
+
+\vfill
+
+16. Find the valid solution to $f(x)=g(x)$.
+
+\vfill
+
+17. Find the extraneous solution to $f(x)=g(x)$.
+
+\vfill
+
+
+\newpage
+
+18. Remember $i=\sqrt{-1}$. Simplify $i^{82}$.
+
+\vfill
+
+19. Expand the binomial power expression.
+$$(3x+2)^4$$
+
+\vfill
+
+
+20. Expand the product.
+$$(x^4+2x+3)(x^3-6)$$
+
+\vfill
+
+21. Use polynomial division to express as a polynomial plus the remainder over the divisor.
+$$\frac{2x^3-13x^2+22x+2}{x-3}$$
+
+
+\vfill
+
+22. If $f(x)$ is a polynomial and $\frac{f(x)}{x-5}=2x^5-3x^3+2x+8$ for all values of $x$ (except $x=5$), then the remainder theorem promises that $f(5)$ equals what and why?
+
+\vfill
+
+23. What is the $y$ intercept of the polynomial function $y=5x^3-2x^2+3x-8$?
+
+\vfill
+
+24. Factor the polynomial $x^3-2x^2-11x+12$.
+
+\vfill
+
+25. Simplify the radical $\sqrt{75}$.
+
+\vfill
+
+
+
+
+
+\newpage
+
+1. $x=2$
+2. $f(-15)=6$
+3. $f^{-1}(x)=(x-3)^5+4$
+4. a. pass vertical line test. b. pass horizontal line test. c. the curve must pass both line tests.
+5. $x=-1$
+6. $x=\frac{3}{8}$ and $x=\frac{-6}{5}$
+7. If $ax^2+bx+c=0$ then $x=\frac{-b\pm \sqrt{b^2-4ac}}{2a}$
+8. $(x-9)(x-1)$
+9. $(3x-5)(x+2)$
+10. $x^2+13x+42$
+11. $\frac{33+17i}{106}$
+12. $x^2-10x+29$
+13. $x = 3\pm 2i$
+14. $f(x)=x+3$
+15. $g(x)=-\sqrt{x+3}+2$
+16. $x=-2$
+17. $x=1$
+18. $-1$
+19. $81x^4+216x^3+216x^2+96x+16$
+20. $x^7-4x^4+3x^3-12x-18$
+21. $2x^2-7x+1+\frac{5}{x-3}$
+22. Because the remainder when dividing $f(x)$ by $x-5$ is 0, then we know $f(5)=0$. This is a special case of the **remainder theorem**.
+23. $(0,-8)$
+24. $(x-1)(x+3)(x-4)$
+25. $5\sqrt{3}$

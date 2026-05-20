@@ -1,0 +1,82 @@
+---
+output: pdf_document
+params:
+    rseed: 0
+    showsol: false
+header-includes:
+  - \usepackage{multicol}
+---
+
+```{r,echo=F,warning=FALSE,message=FALSE}
+options(scipen=999)
+if(params$rseed !=0){
+    set.seed(params$rseed)
+}
+knitr::opts_chunk$set(echo = FALSE)
+bn <- basename(knitr::current_input())
+bn = strsplit(bn,".",fixed=T)[[1]][1]
+```
+
+Name: \vspace{5pt} \hrule
+
+## `r bn`
+
+```{r}
+gcd2 <- function(a, b) {
+  if (b == 0) a else Recall(b, a %% b)
+}
+gcd <- function(...) Reduce(gcd2, c(...))
+```
+
+
+```{r}
+probs = character()
+sols = character()
+
+aaa = c(sample(c(2,3,5,7)),sample(c(2,3,5,7),2))
+signtypes = list(c(1,1),c(-1,1),c(1,-1),c(-1,-1))
+
+signs = c(sample(1:4),sample(1:4,2))
+
+while(length(probs)<6){
+  abcd = sample(2:10,4,T)
+  a = aaa[length(probs)+1] #sample(c(2,3,5,7),1) #abcd[1]
+  b = abcd[2]*signtypes[[signs[length(probs)+1]]][1] #sample(c(-1,1),1)
+  c = 1 #abcd[3]
+  d = abcd[4]*signtypes[[signs[length(probs)+1]]][2]
+  A = a*c
+  B = a*d+b*c
+  C = b*d
+  prob = paste0(A,"x^2+",B,"x+",C,collapse="")
+  prob = gsub("+-","-",prob,fixed=T)
+  prob = gsub("+1x","+x",prob,fixed=T)
+  prob = gsub("-1x","-x",prob,fixed=T)
+  sol = paste0("(",a,"x+",b,")(x+",d,")",collapse="")
+  sol = gsub("+-","-",sol,fixed=T)
+  if(!(prob %in% probs) && abs(gcd(c(a,b)))==1 && B!=0){
+    probs = c(probs,prob)
+    sols = c(sols,sol)
+  }
+}
+```
+
+```{r,results='asis'}
+for(i in 1:length(probs)){
+  cat("## Question ",i,"\n\n Factor ")
+  cat(paste0("$",probs[i],"$"))
+  cat("\n\n\\vfill\n\n")
+  
+  if(params$showsol){
+    cat("\\color{red}\n\n\\vfill\n\n")
+    cat(paste0("$$",sols[i],"$$"))
+    cat("\\color{black}\n\n\\vfill\n\n")
+  }
+  
+  if(i==3){
+    cat("\n\n\\newpage\n\n")
+  }
+}
+```
+
+
+
