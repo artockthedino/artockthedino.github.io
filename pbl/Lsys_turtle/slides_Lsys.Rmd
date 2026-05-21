@@ -2,11 +2,11 @@
 output: slidy_presentation
 title: "Lindenmayer Systems and Turtle Graphics"
 author: "Mr. Worley"
-date: "2026 Mar 11"
+date: "2026 May 21"
 ---
 
 ```{r,echo=F}
-subtrahend = 2
+subtrahend = 1
 ```
 
 
