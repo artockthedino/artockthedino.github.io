@@ -437,8 +437,20 @@ $$\frac{2x^3-13x^2+22x+2}{x-3}$$
 \vfill    
 
 40. Sketch the polynomial on the axes below. Be accurate with the $x$ intercepts and where the function is positive or negative.
+$$y=(x+3)^2\cdot (x-5)\cdot (x+8) \cdot (x-1)$$
 
-$$y=(x+3)^2\cdot $$
+    ```{r,echo=F,fig.dim=c(6,2),fig.align='center'}
+    par(mar=c(0,0,0,0))
+    plot(0,0,"n",xlim=c(-10,10),ylim=c(-1,1),axes=F,ann=F)
+    for(i in c(-10:-1,1:10)){
+      lines(c(i,i),c(-0.05,0.05),col="grey")
+      text(i,-0.2,i,cex=0.7,col="grey")
+    }
+    abline(h=0)
+    abline(v=0)
+    text(10.5,0.1,"x")
+    text(0.3,1,"y")
+    ```
 
 
 \newpage
@@ -487,3 +499,56 @@ $$y=(x+3)^2\cdot $$
     c. Increasing: $(-10,-5) \cup (3,6)$.
     d. Decreasing: $(-5,3) \cup (6,10)$.
 40. 
+```{r,echo=F,fig.dim=c(5,1),fig.align="center"}
+par(mar=c(0,0,0,0))
+plot(0,0,"n",xlim=c(-10,10),ylim=c(-1,1),axes=F,ann=F)
+for(i in c(-10:-1,1:10)){
+  lines(c(i,i),c(-0.05,0.05),col="grey")
+  text(i,-0.2,i,cex=0.7,col="grey")
+}
+abline(h=0)
+abline(v=0)
+text(10.5,0.1,"x")
+text(0.3,1,"y")
+
+x = seq(-10,-8,0.01)
+y = (x+8)
+lines(x,y,col="blue",lwd=2)
+
+x = seq(-8,-8+pi/2,0.01)
+y = sin(x+8)
+lines(x,y,col="blue",lwd=2)
+
+x = seq(-8+pi/2,-3-pi/2,0.01)
+y = rep(1,length(x))
+lines(x,y,col="blue",lwd=2)
+
+x = seq(-3-pi/2,-3+pi/2,0.01)
+y = sin(x+3)^2
+lines(x,y,col="blue",lwd=2)
+
+x = seq(-3+pi/2,1-pi/2,0.01)
+y = rep(1,length(x))
+lines(x,y,col="blue",lwd=2)
+
+x = seq(1-pi/2,1+pi/2,0.01)
+y = -sin(x-1)
+lines(x,y,col="blue",lwd=2)
+
+x = seq(1+pi/2,5-pi/2,0.01)
+y = rep(-1,length(x))
+lines(x,y,col="blue",lwd=2)
+
+x = seq(5-pi/2,5,0.01)
+y = sin(x-5)
+lines(x,y,col="blue",lwd=2)
+
+x = seq(5,10,0.01)
+y = x-5
+lines(x,y,col="blue",lwd=2)
+
+
+# (x+3)^2\cdot (x-5)\cdot (x+8) \cdot (x-1)
+
+
+```

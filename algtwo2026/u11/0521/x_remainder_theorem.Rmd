@@ -1,0 +1,65 @@
+```{r data generation, echo = FALSE, results = "hide"}
+
+
+
+
+while(T){
+  h = sample(-4:4,1)
+  k = sample(-4:4,1)
+  m = sample(1:2,1)*sample(c(-1,1),1)
+  x = seq(-10,10,0.001)
+  y = m*(x-h)+sin((x-h)*pi/2)+k
+  xp = sample(1:10,1)*sample(c(-1,1),1)
+  yp = y[x==xp]
+  yp2 = y[x==-xp]
+  if(abs(yp)<10 && abs(yp2)<10 && yp!=0 && y[x==0]!=0 && abs(yp)!=abs(yp2)){
+    break
+  }
+}
+
+divisor = paste0("x-",xp,collapse="")
+divisor = gsub("--","+",divisor,fixed=T)
+
+```
+
+Question
+========
+
+This problem is based on the [polynomial remainder theorem](https://en.wikipedia.org/wiki/Polynomial_remainder_theorem). A polynomial function, $y=p(x)$, is plotted below.
+
+```{r,echo=F,fig.dim=c(5,5)}
+par(mar=c(0,0,0,0))
+plot(0,0,"n",xlim=c(-10,10),ylim=c(-10,10),axes=F,ann=F)
+for(i in c(-10:-1,1:10)){
+  lines(c(-10,10),c(i,i),col="lightgrey",lwd=0.7)
+  lines(c(i,i),c(-10,10),col="lightgrey",lwd=0.7)
+}
+for(i in c(-10,-5,5,10)){
+  lines(c(-10,10),c(i,i),col="grey",lwd=0.9)
+  lines(c(i,i),c(-10,10),col="grey",lwd=0.9)
+}
+abline(h=0,lwd=1.5)
+abline(v=0,lwd=1.5)
+
+lines(x[abs(y)<=10],y[abs(y)<=10],col="blue",lwd=2)
+
+```
+
+What is the remainder when $p(x)$ is divided by $`r divisor`$?
+
+
+Solution
+========
+
+The remainder theorem tells us that the remainder when $p(x)$ is divided by $`r divisor`$ is equivalent to $p(`r xp`)$.
+
+The curve goes through point $(`r xp`,`r yp`)$. Thus, $p(`r xp`)=`r yp`$.
+
+So, the answer is `r yp`.
+
+
+Meta-information
+============
+extype: num
+exsolution: `r yp`
+exname: remainder_theorem

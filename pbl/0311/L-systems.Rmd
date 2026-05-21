@@ -1,7 +1,7 @@
 ---
 output: pdf_document
 params:
-    showsol: false
+    showsol: true
 ---
 
 
