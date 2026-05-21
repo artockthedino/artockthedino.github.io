@@ -5,7 +5,7 @@ pm = list("replace_substring.Rmd","path_string.Rmd")
 
 exams2webquiz(pm,
              n=n,
-             title = "examples_0318",
+             title = "examples_0521",
              dir = ".",
-             name="examples_0318")
+             name="examples_0521")
 

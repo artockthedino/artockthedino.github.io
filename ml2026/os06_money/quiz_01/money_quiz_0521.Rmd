@@ -1,10 +1,10 @@
 ---
-title: "quiz_0520"
 output: pdf_document
 ---
 
 Name: \vspace{0.1in} \hrule
 
+# Money_Quiz_0521
 
 ## Question 1
 
@@ -14,11 +14,32 @@ A store buys a trinket wholesale for \$10.00 and sells the trinket for a retail 
 
 ## Question 2
 
-A store normally prices trinkets at a retail price of \$16.00, but the store is offering a sale of 20% off retail price. What is the sale price?
+A store buys a trinket wholesale for \$20.00. To calculate the retail price, the store applies a 75% markup. What is the retail price?
 
 \vfill
 
 ## Question 3
+
+A store buys a trinket wholesale for \$x. To calculate the retail price, the store applies a 60% markup. The retail price is \$80.00. What is the wholesale cost?
+
+\vfill
+
+\newpage
+
+
+## Question 4
+
+A store normally prices trinkets at a retail price of \$16.00, but the store is offering a sale of 20% off retail price. What is the sale price?
+
+\vfill
+
+## Question 5
+
+A store normally prices trinkets at a retail price of \$90.00, but the sale price is \$67.50. What is the discount percentage?
+
+\vfill
+
+## Question 6
 
 If another store is offering a sale of 30% off retail price, and the sale price is $5.60, what is the (non-sale) original retail price?
 
@@ -32,21 +53,30 @@ $$A = P\left(1+\frac{r}{n}\right)^{nt}$$
 
 $$Y = \left(1+\frac{r}{n}\right)^{n}$$
 
-## Question 4
+## Question 7
 
 If \$1000 is invested in an account with 4% interest rate compounded monthly, what will the value be in 10 years?
 
 \vfill
 
-## Question 5
+## Question 8
 
 If you want an investment to be worth 1 million dollars in 30 years with an interest rate of 8% compounded 4 times per year, how much do you need to invest now?
 
 \vfill
 
-## Question 6
+\newpage
+
+## Question 9
 
 What is the effective annual yield of a nominal interest rate of 5% compounded daily? (Assume 365 days in a year.)
+
+\vfill
+
+
+## Question 10
+
+You buy a stock at \$100 on Monday. On Tuesday, the price is 10% higher than Monday. On Wednesday, the price is 10% lower than Tuesday. What is the price on Wednesday?
 
 \vfill
 

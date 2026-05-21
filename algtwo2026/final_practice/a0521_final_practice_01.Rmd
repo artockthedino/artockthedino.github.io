@@ -28,7 +28,7 @@ Find the inverse of function $f$.
 
 \vfill
 
-4. When a relation is displayed as a curve on a cartesian coordinates:
+4. When a relation is displayed as a curve on an $x,y$ plane:
    a. What is needed for $y$ to be a function of $x$?
    b. What is needed for $x$ to be a function of $y$?
    c. What is needed for the curve to represent a one-to-one function?

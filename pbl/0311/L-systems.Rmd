@@ -117,7 +117,7 @@ makeplot = function(xyc,lwd=1){
 
 
 ```{r,echo=F,fig.dim=c(6,1)}
-minus = 2
+minus = 1
 par(mfrow=c(1,6),mar=c(0,0,0,0),oma=c(0,0,0,0),pty="s")
 
 start = c("A")
@@ -234,6 +234,8 @@ Starting at $(0,0)$ pointing up, draw the pattern described by the commands in t
 start = c("F")
 rules = list("F"="FF[+F-F][-F+F]xF",
              "X"="XX")
+# rules = list("F"="FX-XF",
+#              "X"="F+F[-FF]")
 s = getstr(start,rules,n=2)
 s1 = substr(s,1,50)
 s2 = substr(s,51,100)

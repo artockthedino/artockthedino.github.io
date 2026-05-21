@@ -42,8 +42,8 @@ abline(h=0,lwd=1.5)
 abline(v=0,lwd=1.5)
 
 lines(x[abs(y)<=10],y[abs(y)<=10],col="blue",lwd=2)
-
 ```
+\
 
 What is the remainder when $p(x)$ is divided by $`r divisor`$?
 
