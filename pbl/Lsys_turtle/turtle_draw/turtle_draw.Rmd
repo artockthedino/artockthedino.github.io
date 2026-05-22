@@ -3,7 +3,9 @@ output: pdf_document
 urlcolor: blue
 ---
 
-## Instructions for `Turtle Draw Pic 1` (page 3) and `Turtle Draw Pic 2` (page 4)
+## Turtle_draw
+
+You will submit a screenshot on Canvas to get credit for this assignment.
 
 ### L-system Turtle Graphics
 
@@ -26,11 +28,13 @@ urlcolor: blue
     * Delete the 2nd costume.
     * Change the 1st costume to look like the following turtle:
     
-![](turtle.png){width=35%}
+![](turtle.png){height=40%}
+
+\newpage
 
 3. Make the following variables and lists (for all sprites):
 
-![](variables.png) ![](lists.png)
+![](variables.png){height=30%} ![](lists.png){height=30%}
 
 4. Add the Pen extension! (Purple button in bottom left corner).
 
@@ -40,14 +44,18 @@ urlcolor: blue
 
 ![](code.png)
 
-6. Make the turtle sized small (just big enough to see it is a turtle in fullscreen mode).
+
 
 \newpage
 
-7. Make a drawing!
+6. Make the turtle sized small (just big enough to see it is a turtle in fullscreen mode).
+
+7. Call over Mr. Worley to check that your buttons work.
+
+8. Make a drawing!
     * Go to fullscreen mode.
     * Click the green flag to `Go`.
-    * Type (slowly, carefully) the following keys on your keyboard:
+    * Type (slowly, carefully, without spaces) the following keys on your keyboard:
     
 ```{r,echo=F}
 s = "[A[-ASA][+ASA]A[-A[-ASA][+ASA]ASSA[-ASA][+ASA]A][+A[-ASA][+ASA]ASSA[-ASA][+ASA]A]A[-ASA][+ASA]A][++A[-ASA][+ASA]A[-A[-ASA][+ASA]ASSA[-ASA][+ASA]A][+A[-ASA][+ASA]ASSA[-ASA][+ASA]A]A[-ASA][+ASA]A][--A[-ASA][+ASA]A[-A[-ASA][+ASA]ASSA[-ASA][+ASA]A][+A[-ASA][+ASA]ASSA[-ASA][+ASA]A]A[-ASA][+ASA]A]SSSSSSSSSSSS"
@@ -77,18 +85,8 @@ for(i in 1:(nchar(s)/4)){
 
 \vfill
 
-8. **Submit** a screenshot of the drawing **on Canvas** under assignment `Turtle Draw Pic 1`.
+8. **Submit** a screenshot of the drawing **on Canvas** under assignment `Turtle_draw`.
 
 \vfill
 
-\newpage
-
-9. Make your own drawing!
-    * Return to the code. Change `angle` variable to 15°.
-    * Add a key (`c`) that changes the color by 10 (in Pen extension).
-    * Restart by hitting the green flag. (`Go.`)
-    * Control the turtle to make a drawing, changing colors as you go.
-    * Be sure to **include branching** by using `e` and `q`!
-10. **Submit** a screenshot of your drawing **on Canvas** under assignment `Turtle Draw Pic 2`.
-    
     
