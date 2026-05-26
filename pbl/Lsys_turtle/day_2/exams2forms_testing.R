@@ -8,7 +8,7 @@ pm = list("lsys_string.Rmd",
 
 exams2webquiz(pm,
              n=n,
-             title = "examples_0522",
+             title = "examples_0526",
              dir = ".",
-             name="examples_0522")
+             name="examples_0526")
 

@@ -1,0 +1,962 @@
+---
+output: pdf_document
+params:
+    rseed: 0
+    showsol: true
+header-includes:
+  - \usepackage{multicol}
+---
+
+
+Name: \vspace{5pt} \hrule
+
+# Modified Final Examples with Explanations.
+
+1. Solve the linear equation.
+$$20=4(x+3)$$
+
+\vfill
+
+\color{red}
+
+1. Identify the two operations and the order of operations. In this case, the order is **addition of 3** followed by **multiplication by 4**.
+2. Undo these operations in reverse order. This is just like although you put on socks and then shoes, you take off shoes and then socks. In this case, we start by **dividing both sides by 4**.
+$$5 = x+3$$
+Then, we **subtract 3** from both sides.
+$$x=2$$
+And that is our answer.
+
+\color{black}
+
+\vfill
+
+2. Let function $f$ be defined by the algebraic expression below:
+$$f(x)=\frac{x}{5}+9$$
+Evaluate $f(-15)$.
+
+\vfill
+
+\color{red}
+
+1. To evaluate $f(-15)$, replace all $x$s with $-15$ in the function definition expression.
+$$f(-15)=\frac{-15}{5}+9$$
+Use arithmetic to find the value. Follow the order of operations.
+$$f(-15)=-3+9$$
+$$f(-15)=6$$
+
+\color{black}
+
+\vfill
+
+\newpage
+
+3. Let function $f$ be defined by the algebraic expression below: $$f(x)=\sqrt[5]{x-4}+3$$
+Find the inverse of function $f$.
+
+\vfill
+
+\color{red}
+
+This is kind of like question 1. We are going to undo operations in reverse order. The standard approach is to first get rid of function notation.
+$$y=\sqrt[5]{x-4}+3$$
+Now, for an inverse function **swap $x$ and $y$**.
+$$x=\sqrt[5]{y-4}+3$$
+Solve for $y$. In this case, we start by subtracting 3 from both sides.
+$$x-3=\sqrt[5]{y-4}$$
+To undo a fifth root, raise both sides to the power of 5.
+$$(x-3)^5=\left(\sqrt[5]{y-4}\right)^5$$
+$$(x-3)^5=y-4$$
+Add 4 to both sides.
+$$(x-3)^5+4=y$$
+We typically write the solve-for variable on the left. Swap sides.
+$$y=(x-3)^5+4$$
+Now, we can return to function notation. Because we swapped $x$ and $y$, we replace $y$ with $f^{-1}(x)$.
+$$f^{-1}(x)=(x-3)^5+4$$
+
+\color{black}
+
+\vfill
+
+4. When a relation is displayed as a curve on an $x,y$ plane:
+   a. What is needed for $y$ to be a function of $x$?
+   b. What is needed for $x$ to be a function of $y$?
+   c. What is needed for the curve to represent a one-to-one function?
+
+\vfill
+
+\color{red}
+
+a. For $y$ to be a function of $x$, the curve needs to pass the vertical line test. To pass the vertical line test means that no vertical line hits the curve more than once.
+b. For $x$ to be a function of $y$, the curve needs to pass the horizontal line test. To pass the horizontal line test means that no horizontal line hits the curve more than once.
+c. For the function to be one-to-one, it must pass both tests (vertical and horizontal).
+
+\color{black}
+
+\vfill
+
+\newpage
+
+5. Solve the radical equation: $$7-\sqrt{x+10}=4$$
+
+\vfill
+
+\color{red}
+
+To solve for $x$, we need too apply inverse operations in reverse order (like in questions 1 and 3). We can start by subtracting 7 from both sides.
+$$-\sqrt{x+10}=-3$$
+Multiply both sides by $-1$.
+$$\sqrt{x+10}=3$$
+To under the square-root function, we can square both sides (raise both sides to power of 2).
+$$\left(\sqrt{x+10}\right)^2=(3)^2$$
+$$x+10=9$$
+Subtract 10 from both sides.
+$$x+10-10=9-10$$
+$$x=-1$$
+
+
+\color{black}
+
+\vfill
+
+
+6. Solve the equation.
+$$(8x-3)(5x+6)=0$$
+
+\vfill
+
+\color{red}
+
+Use the zero-product property. Basically, when we multiply two factors and get a product of 0, that means one of the factors must equal 0. So, we can just set each factor equal to 0 and solve.
+$$8x-3=0$$
+$$8x=3$$
+$$x=\frac{3}{8}$$
+
+Now set the other factor equal to 0 and solve.
+$$5x+6=0$$
+$$5x=-6$$
+$$x=\frac{-6}{5}$$
+
+So the two solutions are $x=\frac{3}{8}$ and $x=\frac{-6}{5}$.
+
+\color{black}
+
+\vfill
+
+
+\newpage
+
+7. State the quadratic formula.
+
+\vfill
+
+\color{red}
+
+The quadratic formula can be found by completing the square on the general standard-form quadratic equation.
+$$ax^2+bx+c=0$$
+Subtract $c$ from both sides.
+$$ax^2+bx=-c$$
+Divide by $a$.
+$$x^2+\frac{b}{a}x=\frac{-c}{a}$$
+To complete the square, add $\left(\frac{b}{2a}\right)^2$ to both sides.
+$$x^2+\frac{b}{a}x+\left(\frac{b}{2a}\right)^2=\frac{-c}{a}+\left(\frac{b}{2a}\right)^2$$
+Factor the left side (which is now a perfct) and simplify the right side.
+$$\left(x+\frac{b}{2a}\right)^2=\frac{b^2-4ac}{4a^2}$$
+Square-root both sides. Don't forget the $\pm$.
+$$x+\frac{b}{2a}=\pm\frac{\sqrt{b^2-4ac}}{2a}$$
+Isolate $x$ with subtraction.
+$$x=\pm\frac{\sqrt{b^2-4ac}}{2a}-\frac{b}{2a}$$
+Switch the order of the operands.
+$$x=\frac{-b}{2a}\pm\frac{\sqrt{b^2-4ac}}{2a}$$
+Combine the fractions. Look, they aleady have a common denominator!  (Then, you'll have the answer.)
+
+\color{black}
+
+\vfill
+
+\newpage
+
+8. Factor the quadratic expression.
+$$x^2-10x+9$$
+
+\vfill
+
+\color{red}
+
+This is a guess and check process. Because our leading coefficient is 1 (notice no number in front of the $x^2$ term), the process is simply finding two numbers that multiply to give the constant but add to give the linear coefficient.
+
+In this case that means we need two numbers that multiply to give $9$ but add to give $-10$. Think of all the pairs of numbers that multiply to give 9.
+$$1\cdot 9=9$$
+$$(-1)\cdot (-9)=9$$
+$$3\cdot 3=9$$
+$$(-3)\cdot (-3)=9$$
+
+Now, for each of those pairs, check the sum.
+
+$$1 + 9=10$$
+$$(-1) + (-9)=-10$$
+$$3 + 3=6 $$
+$$(-3) + (-3)=-6$$
+
+So it seems that $-1$ and $-9$ are the two numbers that multiply to give $9$ and add to give $-10$. Thus, the answer:
+
+$$(x-1)(x-9)$$
+
+\color{black}
+
+\vfill
+
+
+9. Expand the quadratic expression. $(x+6)(x+7)$
+
+\vfill
+
+\color{red}
+
+You can use a box.
+
+```{r,echo=F,fig.dim=c(1.5,1.5),fig.align='center'}
+library(latex2exp)
+par(mar=c(0,0,0,0))
+plot(0,0,"n",axes=F,ann=F,xlim=c(0,1),ylim=c(0,1))
+lines(c(0,1),c(0.8,0.8),col="red")
+lines(c(0.2,0.2),c(0,1),col="red")
+text(0.1,0.6,"x",col="red")
+text(0.1,0.2,"6",col="red")
+text(0.4,0.9,"x",col="red")
+text(0.8,0.9,"7",col="red")
+text(0.4,0.6,TeX("$x^2$"),col="red",adj=c(0.5,0.3))
+text(0.8,0.6,"7x",col="red")
+text(0.4,0.2,"6x",col="red")
+text(0.8,0.2,"42",col="red")
+points(0.1,0.9,pch=19,col="red")
+
+```
+
+$$x^2+7x+6x+42$$
+
+Combine the like terms.
+
+
+$$x^2+13x+42$$
+
+
+\color{black}
+
+\vfill
+
+
+\newpage
+
+10. Multiply the complex numbers. Remember, $i=\sqrt{-1}$. $$(2+3i)(4+5i)$$
+
+\vfill
+
+\color{red}
+
+You can use a box.
+
+```{r,echo=F,fig.dim=c(1.5,1.5),fig.align='center'}
+library(latex2exp)
+par(mar=c(0,0,0,0))
+plot(0,0,"n",axes=F,ann=F,xlim=c(0,1),ylim=c(0,1))
+lines(c(0,1),c(0.8,0.8),col="red")
+lines(c(0.2,0.2),c(0,1),col="red")
+text(0.1,0.6,"2",col="red")
+text(0.1,0.2,"3i",col="red")
+text(0.4,0.9,"4",col="red")
+text(0.8,0.9,"5i",col="red")
+text(0.4,0.6,"8",col="red")
+text(0.8,0.6,"10i",col="red")
+text(0.4,0.2,"12i",col="red")
+text(0.8,0.2,TeX("$15i^2$"),col="red",adj=c(0.5,0.3))
+points(0.1,0.9,pch=19,col="red")
+
+```
+
+$$8+10i+12i+15i^2$$
+
+Remember, $i^2=-1$.
+
+
+$$8+10i+12i+15(-1)$$
+
+$$8+10i+12i-15$$
+
+Rearrange to juxtapose like terms.
+
+$$8-15+10i+12i$$
+
+Combine like terms.
+
+
+$$-7+22i$$
+
+
+
+\color{black}
+
+\vfill
+
+\newpage
+
+11. Solve the quadratic equation. $$x^2-6x+13=0$$
+
+\vfill
+\color{red}
+
+Use the quadratic formula! Identify the coefficients. $a=1$ and $b=-6$ and $c=13$.
+
+$$x=\frac{-b\pm \sqrt{b^2-4ac}}{2a}$$
+
+$$x=\frac{-(-6)\pm \sqrt{(-6)^2-4(1)(13)}}{2(1)}$$
+
+
+$$x=\frac{6 \pm \sqrt{36-52}}{2}$$
+
+
+$$x=\frac{6 \pm \sqrt{-16}}{2}$$
+
+
+$$x=\frac{6 \pm 4i}{2}$$
+
+
+$$x=3 \pm 2i$$
+
+\color{black}
+\vfill
+
+\newpage
+
+The questions on this page refer to this graph.
+
+```{r,echo=F,fig.dim=c(3,3),fig.align='center'}
+par(mar=c(0,0,0,0))
+plot(0,0,"n",xlim=c(-10,10),ylim=c(-10,10),axes=F,ann=F)
+for(i in -10:10){
+  lines(c(i,i),c(-10,10),col="lightgrey",lwd=0.6)
+  lines(c(-10,10),c(i,i),col="lightgrey",lwd=0.6)
+}
+for(i in c(-10,-5,5,10)){
+  lines(c(i,i),c(-10,10),col="grey",lwd=0.9)
+  lines(c(-10,10),c(i,i),col="grey",lwd=0.9)
+}
+abline(h=0)
+abline(v=0)
+text(10,0,"x",adj=c(-0.3,-0.3))
+text(0,10,"y",adj=c(-0.3,-0.3))
+text(10,0,"10",adj=c(0.5,1.5))
+text(0,10,"10",adj=c(1.5,0.5))
+
+x1 = seq(-12,12,0.1)
+y1 = x1+3
+
+x2 = seq(-3,12,0.01)
+y2 = -sqrt(x2+3)+2
+
+lines(x1,y1,col="red")
+lines(x2,y2,col="blue")
+
+legend("topleft",c("y=f(x)","y=g(x)"),col=c("red","blue"),lwd=c(1,1))
+
+```
+
+12. Write an equation in slope-intercept form for $f(x)$.
+
+\vfill
+\color{red}
+
+The slope is 1 and the $y$-intercept is 3, so $y=x+3$. In point-slope form, you could pick any point on the line, say point $(2,5)$, and use $y=m(x-x_0)+y_0$, so like $y=1\cdot (x-2)+5$.
+
+\color{black}
+\vfill
+
+13. Write an equation for $g(x)$.
+
+\vfill
+\color{red}
+
+This function is a transformed square-root function. It is shifted in both horizontal and vertical directions and reflected vertically. For square-root functions, we can identify the shifts by finding the location of the endpoint. In this case the endpoint is at $(-3,2)$. So, $y=-\sqrt{x+3}+2$. Remember the horizontal translation is counterintuitive, so adding 3 inside the radicand causes a shift to the left.
+
+\color{black}
+\vfill
+
+14. Find the valid solution to $f(x)=g(x)$.
+
+\vfill
+\color{red}
+
+It is easiest to do this visually. Find where the two functions cross. This happens at point $(-2,1)$. So, the valid solution is $x=2$.
+
+\color{black}
+\vfill
+
+15. Find the extraneous solution to $f(x)=g(x)$.
+
+\vfill
+\color{red}
+
+For this one, draw the other half of the parabola. It helps to first draw a line of symmetry horizontally through the endpoint (so at $y=2$ in this case). You'll see this other half hits the line at point $(1,4)$, so the extraneous solution is $x=1$.
+
+\color{black}
+\vfill
+
+
+\newpage
+
+16. Remember $i=\sqrt{-1}$. Simplify $i^{82}$.
+
+\vfill
+\color{red}
+
+Start by thinking through the first four powers of $i$.
+
+$$i^1=i$$
+$$i^2=-1$$
+$$i^3=-1\cdot(i)~=~-i$$
+$$i^4=-1\cdot(i)\cdot(i)~=~-1 \cdot (-1) ~=~ 1$$
+
+This pattern, $i, -1, -i, 1$ repeats. So $i^5=i$ and $i^6=-1$ and $i^7=-i$ and $i^8=1$ and $i^9=i$ and $i^{10}=-1$ and $i^{11}=-i$ and $i^{12}=1$. You could keep writing these, or you can recognize that if the exponent is a multiple of 4, then the power equals 1. Find the nearest multiple of 4.
+
+80 is a multiple of 4.
+
+$$i^{80}=1$$
+$$i^{81}=i$$
+$$i^{82}=-1$$
+
+\color{black}
+\vfill
+
+
+17. Expand (multiply) the product.
+$$(x^4+2x+3)(x^3-6)$$
+
+\vfill
+\color{red}
+
+You can use a box.
+
+```{r,echo=F,fig.dim=c(2,2),fig.align='center'}
+library(latex2exp)
+par(mar=c(0,0,0,0))
+plot(0,0,"n",axes=F,ann=F,xlim=c(0,1),ylim=c(0,1))
+lines(c(0,1),c(0.8,0.8),col="red")
+lines(c(0.2,0.2),c(0,1),col="red")
+text(0.1,0.6,TeX("$x^3$"),col="red",adj=c(0.5,0.3))
+text(0.1,0.2,TeX("$-6$"),col="red",adj=c(0.5,0.3))
+text(0.3,0.9,TeX("$x^4$"),col="red",adj=c(0.5,0.3))
+text(0.6,0.9,TeX("$2x$"),col="red",adj=c(0.5,0.3))
+text(0.9,0.9,TeX("$3$"),col="red",adj=c(0.5,0.3))
+text(0.3,0.6,TeX("$x^7$"),col="red",adj=c(0.5,0.3))
+text(0.6,0.6,TeX("$2x^4$"),col="red",adj=c(0.5,0.3))
+text(0.9,0.6,TeX("$3x^3$"),col="red",adj=c(0.5,0.3))
+text(0.3,0.2,TeX("$-6x^4$"),col="red",adj=c(0.5,0.3))
+text(0.6,0.2,TeX("$-12x$"),col="red",adj=c(0.5,0.3))
+text(0.9,0.2,TeX("$-18$"),col="red",adj=c(0.5,0.3))
+points(0.1,0.9,pch=19,col="red")
+
+```
+
+Combine like terms.
+
+$$x^7-4x^4+3x^3-12x-18$$
+
+\vfill
+\color{black}
+
+\newpage
+
+18. Use polynomial division to express as a polynomial plus the remainder over the divisor.
+$$\frac{2x^4-13x^2-22x+2}{x-3}$$
+
+\vfill
+\color{red}
+
+You can use polynomial long division, synthetic division, or the box method. I'll show the work with synthetic. Remember, you might have "missing terms", and you'll need to put 0 for those coefficients.
+
+```{r,echo=F,fig.dim=c(5*0.6,3*0.6),fig.align="center"}
+par(mar=c(0,0,0,0))
+plot(0,0,"n",axes=F,ann=F,xlim=c(-0.5,5.5),ylim=c(0.5,3.5))
+lines(c(0.5,0.5),c(0.5,3.5),col="red")
+lines(c(-0.5,5.5),c(1.5,1.5),col="red")
+text(0,2,"3",col="red")
+text(1,3,"2",col="red")
+text(2,3,"0",col="red")
+text(3,3,"-13",col="red")
+text(4,3,"-22",col="red")
+text(5,3,"2",col="red")
+text(1,1,"2",col="red")
+text(2,2,"6",col="red")
+text(2,1,"6",col="red")
+text(3,2,"18",col="red")
+text(3,1,"5",col="red")
+text(4,2,"15",col="red")
+text(4,1,"-7",col="red")
+text(5,2,"-21",col="red")
+text(5,1,"-19",col="red")
+
+```
+
+The dividend had a degree of 4 (and the divisor had degree 1), so the quotient will have a degree of 3.
+
+So the answer is:
+
+$$2x^3+6x^2+5x-7+\frac{-19}{x-3}$$
+
+\color{black}
+\vfill
+
+19. If $f(x)$ is a polynomial and $\frac{f(x)}{x-5}=2x^5-3x^3+2x+8$ for all values of $x$ (except $x=5$), then the remainder theorem promises that $f(5)$ equals what and why?
+
+\vfill
+\color{red}
+
+Notice that the remainder is 0, because there is no integer over $x-5$ at the end of $\frac{f(x)}{x-5}=2x^5-3x^3+2x+8$. Since the remainder is 0, we know $f(5)=0$. And this would be true the other way as well.
+
+The remainder theorem tells us that for polynomial function $p(x)$, if the remainder of $\frac{p(x)}{x-a}$ is $R$, then we also know that $p(a)=R$. In this special case, $R=0$.
+
+\color{black}
+\vfill
+
+20. What is the $y$ intercept of the polynomial function $y=5x^3-2x^2+3x-8$?
+
+\vfill
+\color{red}
+
+To find the $y$ intercept, set $x$ equal to 0.
+
+$$y_{\text{intercept}}=5(0)^3-2(0)^2+3(0)-8$$
+$$y_{\text{intercept}}=0-0+0-8$$
+$$y_{\text{intercept}}=-8$$
+
+So, the $y$-intercept is at point $(0,-8)$.
+
+\color{black}
+\vfill
+
+\newpage
+
+21. Simplify the radical $\sqrt{75}$.
+
+\vfill
+\color{red}
+
+Use a factor tree to find the prime factorization of the radicand. In this case, $75=3\cdot 5\cdot 5$.
+
+$$\sqrt{75}=\sqrt{3\cdot 5 \cdot 5}$$
+
+The square-root function (like any power function) distributes over multiplication.
+$$\sqrt{75}=\sqrt{3}\cdot \sqrt{5 \cdot 5}$$
+
+Of course, $\sqrt{5 \cdot 5}=5$. So...
+
+$$\sqrt{75}= 5 \sqrt{3}$$
+
+You could also remember that repeated factors under a square-root can be brought in front of the radical as a single factor.
+
+
+\color{black}
+\vfill
+
+
+22. A polynomial function is plotted below.
+    ```{r,echo=F,fig.dim=c(5,1.5),fig.align='center'}
+    par(mar=c(0,0,0,0))
+    plot(0,0,"n",xlim=c(-10,10),ylim=c(-1,1),axes=F,ann=F)
+    xx = seq(-10,10,0.01)
+    yy = -(xx+7)^2*(xx+2)*(xx-5)^2
+    yy = yy/max(abs(yy[abs(xx+1)<=6]))
+    abline(v=0)
+    for(i in c(-10:-1,1:10)){
+      lines(c(i,i),c(-0.1,0.1),col="grey")
+      text(i,-0.3,i,col="grey")
+    }
+    abline(h=0)
+    lines(xx,yy,col="blue",lwd=2)
+    ```
+    Express the polynomial in **factored** form. Please assume that in standard form the leading coefficient would be 1 or -1.
+
+\vfill
+\color{red}
+
+Notice the $x$-intercepts are at $-3$ and $5$. Notice the curve "bounces" off the $x$-axis at $5$, meaning the curve does not change sign before/after that intercept. However, the curve "cuts through" at $x=-3$, meaning the sign changes. The bouncing intercept indicate a double root (meaning we raise to the power of 2).
+
+When writing the factors "the sign changes".
+
+Also notice the right-side end behavior is heading up. This means we do NOT have a negative multiplier. If the right-side end behavior is heading down, we would put a negative in front of the factors.
+
+So, in this case, the function is $y=(x+3)(x-5)^2$
+
+\color{black}
+\vfill
+
+
+\newpage
+
+23. The discriminant, $b^2-4ac$, is the expression in the radicand in the quadratic formula. Describe the implications of the discriminant being less than 0, more than 0, or equal to 0.
+
+\vfill
+\color{red}
+
+Let the discriminant be reffered to as $D$.
+
+$$D=b^2-4ac$$
+
+* If $D>0$, then two real solutions.
+* If $D=0$, then one real solution.
+* If $D<0$, then two complex solutions, and the two solutions are complex conjugates.
+
+\color{black}
+\vfill
+
+\newpage
+
+24. Find solution set to $\sqrt{2x+8}-3=x+1$. Express your answer as a set (listed in curly braces).
+
+\vfill
+\color{red}
+
+$$\sqrt{2x+8}-3=x+1$$
+
+Isolate the radical expression by adding 3 to both sides.
+
+$$\sqrt{2x+8}=x+4$$
+
+Square both sides.
+
+$$2x+8=(x+4)^2$$
+
+Expand.
+
+$$2x+8=(x+4)\cdot(x+4)$$
+$$2x+8=x^2+8x+16$$
+
+Subtract $2x+8$ from both sides.
+
+$$0=x^2+6x+8$$
+
+Use quadratic formula or factor. This one is easy to factor.
+
+$$0=(x+2)(x+4)$$
+
+So the two possible solutions are $x=-2$ and $x=-4$. We need to verify both. It is possible they might be extraneous.
+
+$$\sqrt{2(-2)+8}-3\stackrel{?}{=}(-2)+1$$
+
+
+$$\sqrt{4}-3\stackrel{?}{=}-1$$
+
+$$2-3\stackrel{?}{=}-1$$
+
+And indeed $-1=-1$, so $x=-2$ is a valid solution. Now check $x=-4$.
+
+$$\sqrt{2(-4)+8}-3\stackrel{?}{=}(-4)+1$$
+
+$$\sqrt{0}-3\stackrel{?}{=}-3$$
+
+$$0-3\stackrel{?}{=}-3$$
+
+And indeed $-3=-3$, so $x=-4$ is a valid solution. Both are valid solutions. Using curly braces we can express the set of solutions as $\{-4,-2\}$.
+
+\color{black}
+\vfill
+
+
+25. The graph of $y=p(x)$ below shows a polynomial.
+
+    ```{r,echo=F,fig.dim=c(4,4),fig.align="center"}
+    par(mar=c(0,0,0,0))
+    plot(0,0,"n",xlim=c(-10,10),ylim=c(-10,10),axes=F,ann=F)
+    for(i in c(-10:-1,1:10)){
+      lines(c(i,i),c(-10,10),col="lightgrey",lwd=0.8)
+      lines(c(-10,10),c(i,i),col="lightgrey",lwd=0.8)
+    }
+    for(i in c(-10,-5,5,10)){
+      lines(c(i,i),c(-10,10),col="grey",lwd=1.2)
+      lines(c(-10,10),c(i,i),col="grey",lwd=1.2)
+    }
+    abline(h=0,lwd=1.5)
+    abline(v=0,lwd=1.5)
+    x = seq(-10,10,0.01)
+    y = x*(x+2)*(x-3)*(x-6)*(x+4)
+    n = 4
+    a = -3
+    y = y/y[x==n]*a
+    lines(x,y,col="blue",lwd=2)
+    text(10,0,"10",adj=c(0.5,1.3))
+    text(0,10,"10",adj=c(1.3,0.5))
+    text(10,0,"x",adj=c(-0.5,-0.5))
+    text(0,10,"y",adj=c(-0.5,-0.5))
+    ```
+    
+    What is the remainder when $p(x)$ is divided by $x-4$?
+
+\vfill
+\color{red}
+
+The remainder when $p(x)$ is divided by $x-4$ will equal $p(4)$. This is promised by the remainder theorem. To find evaluate $p(4)$ using the graph, find the point on the curve where $x=4$. That point is $(4,-3)$. This tells us that $p(4)=-3$, and that tells us the remainder when $p(x)$ is divided by $x-4$ is also $-3$.
+
+\color{black}
+\vfill
+
+\newpage
+
+26. Consider the function graphed below.
+
+    ```{r,echo=F,fig.dim=c(3,3),fig.align="center"}
+    par(mar=c(0,0,0,0))
+    plot(0,0,"n",xlim=c(-10,10),ylim=c(-10,10),axes=F,ann=F)
+    for(i in c(-10:-1,1:10)){
+      lines(c(i,i),c(-10,10),col="lightgrey",lwd=0.8)
+      lines(c(-10,10),c(i,i),col="lightgrey",lwd=0.8)
+    }
+    for(i in c(-10,-5,5,10)){
+      lines(c(i,i),c(-10,10),col="grey",lwd=1.2)
+      lines(c(-10,10),c(i,i),col="grey",lwd=1.2)
+    }
+    abline(h=0,lwd=1.5)
+    abline(v=0,lwd=1.5)
+    x = seq(-10,10,0.01)
+    y = 10/x
+    
+    lines(x,y,col="blue",lwd=2)
+    
+    text(10,0,"10",adj=c(0.5,1.3),cex=0.8)
+    text(0,10,"10",adj=c(1.3,0.5),cex=0.8)
+    text(10,0,"x",adj=c(-0.4,-0.4),cex=0.8)
+    text(0,10,"y",adj=c(-0.4,-0.4),cex=0.8)
+    
+    ```
+    
+    a. Is the function even?
+    b. Is the function odd?
+    c. Is the function one-to-one?
+
+\vfill
+\color{red}
+
+a. To be even, it must have mirror symmetry over the $y$ axis. In other words, opposite inputs must produce equal outputs. In function notation, this means for all $x$ it must be that $f(x)=f(-x)$. This function is NOT even.
+b. To be odd, it must have 180° rotational symmetry around the origin. In other words, opposite inputs must produce opposite outputs. In function notation, this means for all $x$ it must be that $f(x)=-f(-x)$. This function IS odd.
+c. To be one-to-one, the function must pass the vertical line test AND the horizontal line test. This passes both, so it IS one-to-one.
+
+\color{black}
+\vfill
+
+\newpage
+
+27. Consider the function graphed below.
+
+    ```{r,echo=F,fig.dim=c(3,3),fig.align="center"}
+    par(mar=c(0,0,0,0))
+    plot(0,0,"n",xlim=c(-10,10),ylim=c(-10,10),axes=F,ann=F)
+    for(i in c(-10:-1,1:10)){
+      lines(c(i,i),c(-10,10),col="lightgrey",lwd=0.8)
+      lines(c(-10,10),c(i,i),col="lightgrey",lwd=0.8)
+    }
+    for(i in c(-10,-5,5,10)){
+      lines(c(i,i),c(-10,10),col="grey",lwd=1.2)
+      lines(c(-10,10),c(i,i),col="grey",lwd=1.2)
+    }
+    abline(h=0,lwd=1.5)
+    abline(v=0,lwd=1.5)
+    x = seq(-10,10,0.01)
+    y = x^2/10-6
+    
+    lines(x,y,col="blue",lwd=2)
+    
+    text(10,0,"10",adj=c(0.5,1.3),cex=0.8)
+    text(0,10,"10",adj=c(1.3,0.5),cex=0.8)
+    text(10,0,"x",adj=c(-0.4,-0.4),cex=0.8)
+    text(0,10,"y",adj=c(-0.4,-0.4),cex=0.8)
+    
+    ```
+    
+    a. Is the function even?
+    b. Is the function odd?
+    c. Is the function one-to-one?
+
+\vfill
+\color{red}
+
+a. To be even, it must have mirror symmetry over the $y$ axis. In other words, opposite inputs must produce equal outputs. In function notation, this means for all $x$ it must be that $f(x)=f(-x)$. This function IS even.
+b. To be odd, it must have 180° rotational symmetry around the origin. In other words, opposite inputs must produce opposite outputs. In function notation, this means for all $x$ it must be that $f(x)=-f(-x)$. This function is NOT odd.
+c. To be one-to-one, the function must pass the vertical line test AND the horizontal line test. This passes both, so it is NOT one-to-one.
+
+\color{black}
+\vfill
+
+
+\newpage
+
+28. Consider the function graphed below.
+
+    ```{r,echo=F,fig.dim=c(3,3),fig.align="center"}
+    par(mar=c(0,0,0,0))
+    plot(0,0,"n",xlim=c(-10,10),ylim=c(-10,10),axes=F,ann=F)
+    for(i in c(-10:-1,1:10)){
+      lines(c(i,i),c(-10,10),col="lightgrey",lwd=0.8)
+      lines(c(-10,10),c(i,i),col="lightgrey",lwd=0.8)
+    }
+    for(i in c(-10,-5,5,10)){
+      lines(c(i,i),c(-10,10),col="grey",lwd=1.2)
+      lines(c(-10,10),c(i,i),col="grey",lwd=1.2)
+    }
+    abline(h=0,lwd=1.5)
+    abline(v=0,lwd=1.5)
+    x = seq(-10,10,0.01)
+    y = 5*abs(x+2)^(1/3)*sign(x+2)-3
+    
+    lines(x,y,col="blue",lwd=2)
+    
+    text(10,0,"10",adj=c(0.5,1.3),cex=0.8)
+    text(0,10,"10",adj=c(1.3,0.5),cex=0.8)
+    text(10,0,"x",adj=c(-0.4,-0.4),cex=0.8)
+    text(0,10,"y",adj=c(-0.4,-0.4),cex=0.8)
+    
+    ```
+    
+    a. Is the function even?
+    b. Is the function odd?
+    c. Is the function one-to-one?
+
+\vfill
+\color{red}
+
+a. To be even, it must have mirror symmetry over the $y$ axis. In other words, opposite inputs must produce equal outputs. In function notation, this means for all $x$ it must be that $f(x)=f(-x)$. This function is NOT even.
+b. To be odd, it must have 180° rotational symmetry around the origin. In other words, opposite inputs must produce opposite outputs. In function notation, this means for all $x$ it must be that $f(x)=-f(-x)$. This function is NOT odd.
+c. To be one-to-one, the function must pass the vertical line test AND the horizontal line test. This passes both, so it IS one-to-one.
+
+\color{black}
+\vfill
+
+\newpage
+
+29 and 30. Consider the function graphed below. Assume the domain is $x$ values between -10 and 10 (so the entire function is shown here).
+
+```{r,echo=F,fig.dim=c(3,3),fig.align="center"}
+par(mar=c(0,0,0,0))
+plot(0,0,"n",xlim=c(-10,10),ylim=c(-10,10),axes=F,ann=F)
+for(i in c(-10:-1,1:10)){
+  lines(c(i,i),c(-10,10),col="lightgrey",lwd=0.8)
+  lines(c(-10,10),c(i,i),col="lightgrey",lwd=0.8)
+}
+for(i in c(-10,-5,5,10)){
+  lines(c(i,i),c(-10,10),col="grey",lwd=1.2)
+  lines(c(-10,10),c(i,i),col="grey",lwd=1.2)
+}
+abline(h=0,lwd=1.5)
+abline(v=0,lwd=1.5)
+x = seq(-10,-5,0.01)
+y = 2*(x+10)-4
+lines(x,y,col="blue",lwd=2)
+
+x = seq(-5,3,0.01)
+y = -1*(x+5)+6
+lines(x,y,col="blue",lwd=2)
+
+x = seq(3,6,0.01)
+y = 2*(x-3)-2
+lines(x,y,col="blue",lwd=2)
+
+x = seq(6,10,0.01)
+y = -1/2*(x-6)+4
+lines(x,y,col="blue",lwd=2)
+
+text(10,0,"10",adj=c(0.5,1.3),cex=0.8)
+text(0,10,"10",adj=c(1.3,0.5),cex=0.8)
+text(10,0,"x",adj=c(-0.4,-0.4),cex=0.8)
+text(0,10,"y",adj=c(-0.4,-0.4),cex=0.8)
+
+```
+
+a. Using interval notation, express where the function is positive.
+b. Using interval notation, express where the function is negative.
+c. Using interval notation, express where the function is increasing.
+d. Using interval notation, express where the function is decreasing.
+    
+
+\vfill
+\color{red}
+
+The function is POSITIVE when the curve is ABOVE the $x$ axis.
+
+The function is NEGATIVE when the curve is BELOW the $x$ axis.
+
+The function is INCREASING when the curve is going up (when traversing left to right).
+
+The function is DECREASING when the curve is going down (when traversing left to right).
+
+We indicate intervals by writing down the $x$ values (the left $x$ and then the right $x$) at the boundaries.
+
+We use $\cup$ to indicate the UNION of multiple intervals.
+
+a. positive: $(-8,1) \cup (4,10)$
+b. negative: $(-10,-8) \cup (1,4)$
+c. increasing: $(-10,-5) \cup (3,6)$
+d. decreasing: $(-5,3) \cup (6,10)$
+
+\color{black}
+\vfill
+
+\newpage 
+
+31. Sketch the polynomial on the axes below. Be accurate with the $x$ intercepts and where the function is positive or negative.
+$$y=(x+3)^2\cdot (x-5)\cdot (x+8) \cdot (x-1)$$
+
+\color{red}
+\vfill
+
+Look at question 22 for more information. Each factor corresponds to an $x$ intercept. If the factor is squared, the curve bounces. If the factor is not square, the curve cuts through. The right-side end behavior is dictated by whether or not there is a negative in front of all the factors. If there is no negative, the right side goes up. If there is a negative in front of the factors, the right side goes down.
+
+\color{black}
+
+```{r,echo=F,fig.dim=c(6,2),fig.align='center'}
+par(mar=c(0,0,0,0))
+plot(0,0,"n",xlim=c(-10,10),ylim=c(-1,1),axes=F,ann=F)
+for(i in c(-10:-1,1:10)){
+  lines(c(i,i),c(-0.05,0.05),col="grey")
+  text(i,-0.2,i,cex=0.7,col="grey")
+}
+abline(h=0)
+abline(v=0)
+text(10.5,0.1,"x")
+text(0.3,1,"y")
+
+x = seq(-10,-8,0.01)
+y = (x+8)
+lines(x,y,col="red",lwd=2)
+
+x = seq(-8,-8+pi/2,0.01)
+y = sin(x+8)
+lines(x,y,col="red",lwd=2)
+
+x = seq(-8+pi/2,-3-pi/2,0.01)
+y = rep(1,length(x))
+lines(x,y,col="red",lwd=2)
+
+x = seq(-3-pi/2,-3+pi/2,0.01)
+y = sin(x+3)^2
+lines(x,y,col="red",lwd=2)
+
+x = seq(-3+pi/2,1-pi/2,0.01)
+y = rep(1,length(x))
+lines(x,y,col="red",lwd=2)
+
+x = seq(1-pi/2,1+pi/2,0.01)
+y = -sin(x-1)
+lines(x,y,col="red",lwd=2)
+
+x = seq(1+pi/2,5-pi/2,0.01)
+y = rep(-1,length(x))
+lines(x,y,col="red",lwd=2)
+
+x = seq(5-pi/2,5,0.01)
+y = sin(x-5)
+lines(x,y,col="red",lwd=2)
+
+x = seq(5,10,0.01)
+y = x-5
+lines(x,y,col="red",lwd=2)
+```
+
+
+\vfill
