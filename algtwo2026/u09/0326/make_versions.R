@@ -1,7 +1,7 @@
 fn = "a0326_cubic_TEST.Rmd"
 shortfn = strsplit(fn,"_")[[1]][1]
 nlow = 300
-nhigh = 340
+nhigh = 301
 
 sss44 = "<!DOCTYPE html>
 <html lang='en'>
