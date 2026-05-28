@@ -1,0 +1,127 @@
+```{r,echo=F,warning=F}
+matpr = function(A){
+  pra = "\\begin{bmatrix}\n"
+  for(i in 1:dim(A)[1]){
+    pra = paste0(pra,paste0(A[i,],collapse=" & "))
+    if(i<dim(A)[1]){pra = paste0(pra,"\\\\\n")} else {pra = paste0(pra,"\n")}
+  }
+  pra = paste0(pra,"\\end{bmatrix}")
+  return(pra)
+}
+foods = c("apple","banana","cherry","durian",
+          "eggplant","fig","grapefruit","honeydew")
+pricemu = c(1.5,0.9,6,8,4,4,3,6)
+groceries = c("Lovely Lunches","More Munchies",
+              "Nick's Necessities","Overpriced Options",
+              "Price Pincher")
+people = c("Quintin","Rachel","Sebastian","Trevor","Ursula","Venus")
+while(T){
+  mults = runif(length(foods)*length(groceries),0.75,1.25)
+  prices = round(rep(pricemu,length(groceries))*mults,2)
+  amounts = numeric()
+  for(i in 1:length(people)){
+    amounts = c(amounts,sample(c(0,0,0,0,1,1,1,2,2,2,3,4),length(foods)))
+  }
+  P = matrix(prices,nrow=length(groceries),byrow=T)
+  Q = matrix(amounts,ncol=length(people))
+  
+  C = P%*%Q
+  if(max(C)<100){break}
+}
+
+
+smm = function(M){
+  dastras = character()
+  for(i in 1:dim(M)[1]){
+    dastras = c(dastras,paste0(M[i,],collapse=","))
+  }
+  s = paste0("[[",paste0(dastras,collapse="],\n            ["),"]]")
+  return(s)
+}
+
+smm2 = function(M){
+  dastras = character()
+  for(i in 1:dim(M)[1]){
+    dastras = c(dastras,paste0(sprintf("%.2f",M[i,]),collapse=","))
+  }
+  s = paste0("[[",paste0(dastras,collapse="],\n            ["),"]]")
+  return(s)
+}
+
+```
+
+Question
+========
+
+A few grocery stores' prices (in USD) for some foods are shown.
+
+```{r,echo=F}
+dfP = data.frame(P)
+rownames(dfP) = groceries
+colnames(dfP) = foods
+knitr::kable(dfP)
+```
+
+Each of the people below plans to go shopping for those foods. Their grocery lists are shown.
+
+```{r,echo=F}
+dfQ = data.frame(Q)
+rownames(dfQ) = foods
+colnames(dfQ) = people
+knitr::kable(dfQ)
+```
+
+We can create these matrices in [SageMath](https://chadworley.github.io/sage.html) using the following commands:
+
+```
+P = matrix(`r smm2(P)`)
+
+Q = matrix(`r smm(Q)`)
+```
+
+The product, $A$, of those two matrices can be calculated in SageMath. Notice, in programming languages the `=` symbol is the [assignment operator](https://doc.sagemath.org/html/en/tutorial/tour_assignment.html). This means the expression on the right is evaluated and stored into the variable on the left. 
+
+```
+A = P*Q
+```
+
+The result can be printed using [`pretty_print` function](https://doc.sagemath.org/html/en/reference/repl/sage/repl/rich_output/pretty_print.html).
+
+```
+pretty_print(A)
+```
+
+After you run those commands, you should see a matrix filled with all the possible totals spent by various people at various stores. What is the maximum possible cost of a grocery trip?
+
+
+Solution
+========
+
+The maximum cost is `r max(C)` USD. When you run the lines of code, you should get the following matrix:
+
+$$`r matpr(C)`$$
+If there are many trailing 0s, you can use the [`n` function](https://doc.sagemath.org/html/en/reference/misc/sage/misc/functional.html#sage.misc.functional.n) to get numerical approximations.
+
+```
+P = matrix(`r smm2(P)`)
+Q = matrix(`r smm(Q)`)
+A = P*Q
+B = n(A,digits=4)
+pretty_print(B)
+```
+
+You can manually identify the maximum cost.
+
+[Getting sagemath to identify the largest element is annoyingly unintuitive.](https://ask.sagemath.org/question/10344/maximum-element-of-a-matrix/)
+
+```
+print(max(B.list()))
+```
+
+
+Meta-information
+============
+extype: num
+exsolution: `r max(C)`
+exname: groceries
+extol: 0.01
