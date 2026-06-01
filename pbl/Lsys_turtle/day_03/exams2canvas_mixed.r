@@ -8,9 +8,9 @@ pm = list("Lsys_string_long.Rmd",
 exams2canvas(pm,
              n=n,
              dir=outdir,
-             points=c(5,5),
+             points=c(3,3),
              maxattempts = 6,
-             name="pbl_lsysday03_ET",
+             name="pbl_lsysday04_ET",
              template = "canvas_qti12.xml",
              cloze = list(enumerate = FALSE))
 
