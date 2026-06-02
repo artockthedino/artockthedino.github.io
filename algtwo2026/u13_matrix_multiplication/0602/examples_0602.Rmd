@@ -1,0 +1,16 @@
+---
+title: "examples_0602"
+output: exams2forms::webquiz
+---
+
+```{r exams2forms-setup, include = FALSE}
+## package and exercises
+library("exams2forms")
+exm <- list("01_mult_3x3s_get_qm.Rmd", "08_dimensions_of_product.Rmd", 
+    "27_mult_2x2_mats.Rmd", "22_area_parallelogram.Rmd", "23_determinant_A.Rmd", 
+    "24_determinant_B.Rmd", "26_Cramers_rule_2x2.Rmd")
+```
+
+```{r exams2forms-include, echo = FALSE, message = FALSE, results="asis"}
+exams2forms(exm,  n = 20, nsamp = NULL, noshuffle = TRUE)
+```
