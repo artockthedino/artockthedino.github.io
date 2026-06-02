@@ -7,7 +7,7 @@ pm = list("are_replacements_palindromes.Rmd",
 
 exams2webquiz(pm,
              n=n,
-             title = "examples_0601",
+             title = "examples_0602",
              dir = ".",
-             name="examples_0601")
+             name="examples_0602")
 

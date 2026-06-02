@@ -16,7 +16,8 @@ exams2canvas(pm,
              cloze = list(enumerate = FALSE))
 
 pm = list("22_area_parallelogram.Rmd",
-          "23_determinant_A.Rmd")
+          "23_determinant_A.Rmd",
+          "24_determinant_B.Rmd")
 exams2canvas(pm,
              n=n,
              dir=outdir,
@@ -31,8 +32,8 @@ pm = list("26_Cramers_rule_2x2.Rmd",
 exams2canvas(pm,
              n=n,
              dir=outdir,
-             points=rep(3,length(pm)),
+             points=rep(5,length(pm)),
              maxattempts = 5,
-             name="a0429_random_review_B",
+             name="a0602_Cramers_rule",
              template = "canvas_qti12.xml",
              cloze = list(enumerate = FALSE))

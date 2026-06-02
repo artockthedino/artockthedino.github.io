@@ -1,0 +1,95 @@
+---
+output: pdf_document
+params:
+    rseed: 0
+    showsol: true
+---
+
+\renewcommand{\arraystretch}{1.2}
+
+```{r,echo=F,warning=FALSE,message=FALSE}
+options(scipen=999)
+if(params$rseed !=0){
+    set.seed(params$rseed)
+}
+knitr::opts_chunk$set(echo = FALSE)
+bn <- basename(knitr::current_input())
+bn = strsplit(bn,".",fixed=T)[[1]][1]
+```
+
+Name: \vspace{0.1in} \hrule
+
+## `r bn` (v_`r params$rseed`)
+
+```{r}
+matpr = function(A){
+  pra = "\\begin{bmatrix}\n"
+  for(i in 1:dim(A)[1]){
+    pra = paste0(pra,paste0(A[i,],collapse=" & "))
+    if(i<dim(A)[1]){pra = paste0(pra,"\\\\\n")} else {pra = paste0(pra,"\n")}
+  }
+  pra = paste0(pra,"\\end{bmatrix}")
+  return(pra)
+}
+
+
+
+while(T){
+  qs = character()
+  as = character()
+  dims = character()
+  while(length(qs)<18){
+    solvable = sample(c(T,F),1,F,c(5,1))
+    if(solvable){
+      dimen = sample(1:4,3,T,c(1,4,4,2))
+      nA = dimen[1]*dimen[2]
+      nB = dimen[2]*dimen[3]
+      A = matrix(sample(-6:6,nA,T),nrow=dimen[1])
+      B = matrix(sample(-6:6,nB,T),nrow=dimen[2])
+      C = A %*% B
+      q = paste0(matpr(A),"\\cdot ",matpr(B))
+      a = paste0("$",matpr(C),"$")
+      dims = c(dims,paste0(dimen[c(1,2,2,3)],collapse=","))
+    } else {
+      outers = sample(1:4,2,T,c(1,4,4,2))
+      inners = sample(1:4,2,F,c(1,4,4,2))
+      nA = outers[1]*inners[1]
+      nB = inners[2]*outers[2]
+      A = matrix(sample(-6:6,nA,T),nrow=outers[1])
+      B = matrix(sample(-6:6,nB,T),nrow=inners[2])
+      q = paste0(matpr(A),"\\cdot ",matpr(B))
+      a = "Undefined"
+      dims = c(dims,paste0(outers[1],inners,outers[2],collapse=","))
+    }
+    if(!(q %in% qs)){
+      qs = c(qs,q)
+      as = c(as,a)
+    }
+  }
+  if(sum(as=="Undefined")>2 && sum(as=="Undefined")<7 && length(unique(dims))>15){
+    break
+  }
+}
+
+```
+
+
+
+```{r,results='asis'}
+for(i in 1:length(qs)){
+  cat(paste0("## Question ",i,"\n\n"))
+  cat(paste0("$",qs[i],"$\n\n\\vfill\n\n"))
+  if(i%%6 == 0){
+    cat("\n\n\\newpage\n\n")
+  }
+}
+
+cat("\\newpage \\twocolumn\n\n## Solutions \n\n")
+
+for(i in 1:length(qs)){
+  cat(paste0(i,". ",as[i],"\n\n"))
+}
+
+```
+
+
