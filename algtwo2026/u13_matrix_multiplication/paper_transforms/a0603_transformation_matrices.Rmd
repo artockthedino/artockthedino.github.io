@@ -1,0 +1,44 @@
+---
+output: pdf_document
+params:
+    rseed: 0
+    showsol: true
+---
+
+\renewcommand{\arraystretch}{1.2}
+
+```{r,echo=F,warning=FALSE,message=FALSE}
+options(scipen=999)
+if(params$rseed !=0){
+    set.seed(params$rseed)
+}
+knitr::opts_chunk$set(echo = FALSE)
+bn <- basename(knitr::current_input())
+bn = strsplit(bn,".",fixed=T)[[1]][1]
+```
+
+Name: \vspace{0.1in} \hrule
+
+## `r bn` (v_`r params$rseed`)
+
+```{r}
+matpr = function(A){
+  pra = "\\begin{bmatrix}\n"
+  for(i in 1:dim(A)[1]){
+    pra = paste0(pra,paste0(A[i,],collapse=" & "))
+    if(i<dim(A)[1]){pra = paste0(pra,"\\\\\n")} else {pra = paste0(pra,"\n")}
+  }
+  pra = paste0(pra,"\\end{bmatrix}")
+  return(pra)
+}
+```
+
+
+
+
+
+
+
+
+
+

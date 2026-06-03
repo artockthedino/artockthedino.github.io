@@ -11,7 +11,7 @@
 
 
 
-<title>26_Cramers_rule_2x2.knit</title>
+<title>L-sys pattern with rotational symmetry</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -348,101 +348,293 @@ display: none;
 
 
 
+<h1 class="title toc-ignore">L-sys pattern with rotational symmetry</h1>
 
 </div>
 
 
-<div id="question" class="section level1">
-<h1>Question</h1>
-<p>A <a href="https://en.wikipedia.org/wiki/System_of_linear_equations">linear
-2-equation-2-variable system</a> of equations can be expressed generally
-in standard form, using 6 parameters (<span class="math inline">\(a\)</span> through <span class="math inline">\(f\)</span>) and 2 variables (<span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>).</p>
-<p><span class="math display">\[\begin{align}ax+by &amp;= c \\ dx+ey
-&amp;=f\end{align}\]</span></p>
-<p>Using determinants, we can express <a href="https://en.wikipedia.org/wiki/Cramer%27s_rule">Cramer’s rule</a>,
-which gives us the solutions to the system:</p>
-<p><span class="math display">\[x = \frac{\det\left(\begin{bmatrix}c
-&amp; b\\ f &amp; e\end{bmatrix}\right)}{\det\left(\begin{bmatrix}a
-&amp; b\\ d &amp;
-e\end{bmatrix}\right)}~=~\frac{ce-bf}{ae-bd}\]</span></p>
-<p>and</p>
-<p><span class="math display">\[y = \frac{\det\left(\begin{bmatrix}a
-&amp; c\\ d &amp; f\end{bmatrix}\right)}{\det\left(\begin{bmatrix}a
-&amp; b\\ d &amp;
-e\end{bmatrix}\right)}~=~\frac{af-cd}{ae-bd}\]</span></p>
-<p>Using Cramer’s rule, solve the linear system below:</p>
-<p><span class="math display">\[\begin{align}6x+8y&amp;=-9\\5x+3y&amp;=-7\end{align}\]</span></p>
-<p>Express your answers in decimal form rounded to the hundredths
-place.</p>
+<p>Use this tool: <a href="https://artockthedino.github.io/lsys.html" class="uri">https://artockthedino.github.io/lsys.html</a></p>
+<p>Produce a cool image (and submit it here on Canvas) with
+<strong>rotational symmetry</strong>. Make sure the screenshot shows the
+pattern <strong>and the settings</strong>.</p>
+<p>To do this, I recommend trying some of the <code>Turn_Angle</code>
+and <code>Start_String</code> combinations listed below. You also
+need:</p>
 <ul>
-<li><span class="math inline">\(x=\)</span> ##ANSWER1##</li>
-<li><span class="math inline">\(y=\)</span> ##ANSWER2##</li>
+<li>Replacement rules for “A”, “B”, and “C”. Each replacement should
+contain all three letters and some “+” and “-”.</li>
+<li>At least 4 iterations.</li>
 </ul>
-<div id="answerlist" class="section level2">
-<h2>Answerlist</h2>
-<ul>
-<li>-1.32</li>
-<li>-1.31</li>
-<li>-1.30</li>
-<li>-1.29</li>
-<li>-1.28</li>
-<li>-1.27</li>
-<li>-0.14</li>
-<li>-0.13</li>
-<li>-0.12</li>
-<li>-0.11</li>
-<li>-0.10</li>
-<li>-0.09</li>
-<li>-1.32</li>
-<li>-1.31</li>
-<li>-1.30</li>
-<li>-1.29</li>
-<li>-1.28</li>
-<li>-1.27</li>
-<li>-0.14</li>
-<li>-0.13</li>
-<li>-0.12</li>
-<li>-0.11</li>
-<li>-0.10</li>
-<li>-0.09</li>
-</ul>
-</div>
-</div>
-<div id="solution" class="section level1">
-<h1>Solution</h1>
-<p>Use Cramer’s rule. Here is the given system:</p>
-<p><span class="math display">\[\begin{align}6x+8y&amp;=-9\\5x+3y&amp;=-7\end{align}\]</span></p>
-<p>Identify the parameters as defined in the general desciption.</p>
-<p><span class="math display">\[a=6\]</span> <span class="math display">\[b=8\]</span> <span class="math display">\[c=-9\]</span> <span class="math display">\[d=5\]</span> <span class="math display">\[e=3\]</span> <span class="math display">\[f=-7\]</span></p>
-<p>Put parameters into the formula for <span class="math inline">\(x\)</span>.</p>
-<p><span class="math display">\[x = \frac{\det\left(\begin{bmatrix}c
-&amp; b\\ f &amp; e\end{bmatrix}\right)}{\det\left(\begin{bmatrix}a
-&amp; b\\ d &amp;
-e\end{bmatrix}\right)}~=~\frac{\det\left(\begin{bmatrix}-9 &amp; 8\\ -7
-&amp; 3\end{bmatrix}\right)}{\det\left(\begin{bmatrix}6 &amp; 8\\ 5
-&amp; 3\end{bmatrix}\right)}\]</span></p>
-<p>Remember how to calculate a <a href="https://en.wikipedia.org/wiki/Determinant">determinant</a>.</p>
-<p><span class="math display">\[\begin{align}x~&amp;=~\frac{(-9)(3)-(8)(-7)}{(6)(3)-(8)(5)}\\\\
-x~&amp;=~ \frac{29}{-22} \\\\
-x~&amp;\approx~ -1.32
-\end{align}\]</span></p>
-<p>Put parameters into the formula for <span class="math inline">\(y\)</span>.</p>
-<p><span class="math display">\[y = \frac{\det\left(\begin{bmatrix}a
-&amp; c\\ d &amp; f\end{bmatrix}\right)}{\det\left(\begin{bmatrix}a
-&amp; b\\ d &amp;
-e\end{bmatrix}\right)}~=~\frac{\det\left(\begin{bmatrix}6 &amp; -9\\ 5
-&amp; -7\end{bmatrix}\right)}{\det\left(\begin{bmatrix}6 &amp; 8\\ 5
-&amp; 3\end{bmatrix}\right)}\]</span></p>
-<p><span class="math display">\[\begin{align}y~&amp;=~\frac{(6)(-7)-(-9)(5)}{(6)(3)-(8)(5)}\\\\
-y~&amp;=~ \frac{3}{-22} \\\\
-y~&amp;\approx~ -0.14
-\end{align}\]</span></p>
-</div>
-<div id="meta-information" class="section level1">
-<h1>Meta-information</h1>
-<p>extype: cloze exclozetype: schoice|schoice exsolution:
-100000000000|000000100000 exname: Cramers_rule_2x2</p>
-</div>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Turn Angle</th>
+<th align="center">Possible Start String</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">120°</td>
+<td align="center"><code>AAA</code></td>
+</tr>
+<tr class="even">
+<td align="center">120°</td>
+<td align="center"><code>A+A+A</code></td>
+</tr>
+<tr class="odd">
+<td align="center">120°</td>
+<td align="center"><code>A-A-A</code></td>
+</tr>
+<tr class="even">
+<td align="center">120°</td>
+<td align="center"><code>[A]+[A]+[A]</code></td>
+</tr>
+<tr class="odd">
+<td align="center">120°</td>
+<td align="center"><code>[A]-[A]-[A]</code></td>
+</tr>
+<tr class="even">
+<td align="center">90°</td>
+<td align="center"><code>AAAA</code></td>
+</tr>
+<tr class="odd">
+<td align="center">90°</td>
+<td align="center"><code>A+A+A+A</code></td>
+</tr>
+<tr class="even">
+<td align="center">90°</td>
+<td align="center"><code>A-A-A-A</code></td>
+</tr>
+<tr class="odd">
+<td align="center">90°</td>
+<td align="center"><code>A++A++A++A</code></td>
+</tr>
+<tr class="even">
+<td align="center">90°</td>
+<td align="center"><code>[A]+[A]+[A]+[A]</code></td>
+</tr>
+<tr class="odd">
+<td align="center">90°</td>
+<td align="center"><code>[A]-[A]-[A]-[A]</code></td>
+</tr>
+<tr class="even">
+<td align="center">90°</td>
+<td align="center"><code>[A]++[A]++[A]++[A]</code></td>
+</tr>
+<tr class="odd">
+<td align="center">72° or 144°</td>
+<td align="center"><code>AAAAA</code></td>
+</tr>
+<tr class="even">
+<td align="center">72° or 144°</td>
+<td align="center"><code>A+A+A+A+A</code></td>
+</tr>
+<tr class="odd">
+<td align="center">72° or 144°</td>
+<td align="center"><code>A-A-A-A-A</code></td>
+</tr>
+<tr class="even">
+<td align="center">72° or 144°</td>
+<td align="center"><code>A++A++A++A++A</code></td>
+</tr>
+<tr class="odd">
+<td align="center">72° or 144°</td>
+<td align="center"><code>A--A--A--A--A</code></td>
+</tr>
+<tr class="even">
+<td align="center">72° or 144°</td>
+<td align="center"><code>[A]+[A]+[A]+[A]+[A]</code></td>
+</tr>
+<tr class="odd">
+<td align="center">72° or 144°</td>
+<td align="center"><code>[A]-[A]-[A]-[A]-[A]</code></td>
+</tr>
+<tr class="even">
+<td align="center">72° or 144°</td>
+<td align="center"><code>[A]++[A]++[A]++[A]++[A]</code></td>
+</tr>
+<tr class="odd">
+<td align="center">72° or 144°</td>
+<td align="center"><code>[A]--[A]--[A]--[A]--[A]</code></td>
+</tr>
+<tr class="even">
+<td align="center">60°</td>
+<td align="center"><code>AAAAAA</code></td>
+</tr>
+<tr class="odd">
+<td align="center">60°</td>
+<td align="center"><code>A+A+A+A+A+A</code></td>
+</tr>
+<tr class="even">
+<td align="center">60°</td>
+<td align="center"><code>A-A-A-A-A-A</code></td>
+</tr>
+<tr class="odd">
+<td align="center">60°</td>
+<td align="center"><code>A++A++A++A++A++A</code></td>
+</tr>
+<tr class="even">
+<td align="center">60°</td>
+<td align="center"><code>A--A--A--A--A--A</code></td>
+</tr>
+<tr class="odd">
+<td align="center">60°</td>
+<td align="center"><code>A+++A+++A+++A+++A+++A</code></td>
+</tr>
+<tr class="even">
+<td align="center">60°</td>
+<td align="center"><code>[A]+[A]+[A]+[A]+[A]+[A]</code></td>
+</tr>
+<tr class="odd">
+<td align="center">60°</td>
+<td align="center"><code>[A]-[A]-[A]-[A]-[A]-[A]</code></td>
+</tr>
+<tr class="even">
+<td align="center">60°</td>
+<td align="center"><code>[A]++[A]++[A]++[A]++[A]++[A]</code></td>
+</tr>
+<tr class="odd">
+<td align="center">60°</td>
+<td align="center"><code>[A]--[A]--[A]--[A]--[A]--[A]</code></td>
+</tr>
+<tr class="even">
+<td align="center">60°</td>
+<td align="center"><code>[A]+++[A]+++[A]+++[A]+++[A]+++[A]</code></td>
+</tr>
+<tr class="odd">
+<td align="center">45° or 135°</td>
+<td align="center"><code>AAAAAAAA</code></td>
+</tr>
+<tr class="even">
+<td align="center">45° or 135°</td>
+<td align="center"><code>A+A+A+A+A+A+A+A</code></td>
+</tr>
+<tr class="odd">
+<td align="center">45° or 135°</td>
+<td align="center"><code>A-A-A-A-A-A-A-A</code></td>
+</tr>
+<tr class="even">
+<td align="center">45° or 135°</td>
+<td align="center"><code>A++A++A++A++A++A++A++A</code></td>
+</tr>
+<tr class="odd">
+<td align="center">45° or 135°</td>
+<td align="center"><code>A--A--A--A--A--A--A--A</code></td>
+</tr>
+<tr class="even">
+<td align="center">45° or 135°</td>
+<td align="center"><code>A+++A+++A+++A+++A+++A+++A+++A</code></td>
+</tr>
+<tr class="odd">
+<td align="center">45° or 135°</td>
+<td align="center"><code>A---A---A---A---A---A---A---A</code></td>
+</tr>
+<tr class="even">
+<td align="center">45° or 135°</td>
+<td align="center"><code>[A]+[A]+[A]+[A]+[A]+[A]+[A]+[A]</code></td>
+</tr>
+<tr class="odd">
+<td align="center">45° or 135°</td>
+<td align="center"><code>[A]-[A]-[A]-[A]-[A]-[A]-[A]-[A]</code></td>
+</tr>
+<tr class="even">
+<td align="center">45° or 135°</td>
+<td align="center"><code>[A]++[A]++[A]++[A]++[A]++[A]++[A]++[A]</code></td>
+</tr>
+<tr class="odd">
+<td align="center">45° or 135°</td>
+<td align="center"><code>[A]--[A]--[A]--[A]--[A]--[A]--[A]--[A]</code></td>
+</tr>
+<tr class="even">
+<td align="center">45° or 135°</td>
+<td align="center"><code>[A]+++[A]+++[A]+++[A]+++[A]+++[A]+++[A]+++[A]</code></td>
+</tr>
+<tr class="odd">
+<td align="center">45° or 135°</td>
+<td align="center"><code>[A]---[A]---[A]---[A]---[A]---[A]---[A]---[A]</code></td>
+</tr>
+<tr class="even">
+<td align="center">40° or 80° or 160°</td>
+<td align="center"><code>AAAAAAAAA</code></td>
+</tr>
+<tr class="odd">
+<td align="center">40° or 80° or 160°</td>
+<td align="center"><code>A+A+A+A+A+A+A+A+A</code></td>
+</tr>
+<tr class="even">
+<td align="center">40° or 80° or 160°</td>
+<td align="center"><code>A-A-A-A-A-A-A-A-A</code></td>
+</tr>
+<tr class="odd">
+<td align="center">40° or 80° or 160°</td>
+<td align="center"><code>A++A++A++A++A++A++A++A++A</code></td>
+</tr>
+<tr class="even">
+<td align="center">40° or 80° or 160°</td>
+<td align="center"><code>A--A--A--A--A--A--A--A--A</code></td>
+</tr>
+<tr class="odd">
+<td align="center">40° or 80° or 160°</td>
+<td align="center"><code>A+++A+++A+++A+++A+++A+++A+++A+++A</code></td>
+</tr>
+<tr class="even">
+<td align="center">40° or 80° or 160°</td>
+<td align="center"><code>A---A---A---A---A---A---A---A---A</code></td>
+</tr>
+<tr class="odd">
+<td align="center">40° or 80° or 160°</td>
+<td align="center"><code>[A]+[A]+[A]+[A]+[A]+[A]+[A]+[A]+[A]</code></td>
+</tr>
+<tr class="even">
+<td align="center">40° or 80° or 160°</td>
+<td align="center"><code>[A]-[A]-[A]-[A]-[A]-[A]-[A]-[A]-[A]</code></td>
+</tr>
+<tr class="odd">
+<td align="center">40° or 80° or 160°</td>
+<td align="center"><code>[A]++[A]++[A]++[A]++[A]++[A]++[A]++[A]++[A]</code></td>
+</tr>
+<tr class="even">
+<td align="center">40° or 80° or 160°</td>
+<td align="center"><code>[A]--[A]--[A]--[A]--[A]--[A]--[A]--[A]--[A]</code></td>
+</tr>
+<tr class="odd">
+<td align="center">36° or 108°</td>
+<td align="center"><code>AAAAAAAAAA</code></td>
+</tr>
+<tr class="even">
+<td align="center">36° or 108°</td>
+<td align="center"><code>A+A+A+A+A+A+A+A+A+A</code></td>
+</tr>
+<tr class="odd">
+<td align="center">36° or 108°</td>
+<td align="center"><code>A-A-A-A-A-A-A-A-A-A</code></td>
+</tr>
+<tr class="even">
+<td align="center">36° or 108°</td>
+<td align="center"><code>A++A++A++A++A++A++A++A++A++A</code></td>
+</tr>
+<tr class="odd">
+<td align="center">36° or 108°</td>
+<td align="center"><code>A--A--A--A--A--A--A--A--A--A</code></td>
+</tr>
+<tr class="even">
+<td align="center">36° or 108°</td>
+<td align="center"><code>[A]+[A]+[A]+[A]+[A]+[A]+[A]+[A]+[A]+[A]</code></td>
+</tr>
+<tr class="odd">
+<td align="center">36° or 108°</td>
+<td align="center"><code>[A]-[A]-[A]-[A]-[A]-[A]-[A]-[A]-[A]-[A]</code></td>
+</tr>
+<tr class="even">
+<td align="center">36° or 108°</td>
+<td align="center"><code>[A]++[A]++[A]++[A]++[A]++[A]++[A]++[A]++[A]++[A]</code></td>
+</tr>
+<tr class="odd">
+<td align="center">36° or 108°</td>
+<td align="center"><code>[A]--[A]--[A]--[A]--[A]--[A]--[A]--[A]--[A]--[A]</code></td>
+</tr>
+</tbody>
+</table>
 
 
 

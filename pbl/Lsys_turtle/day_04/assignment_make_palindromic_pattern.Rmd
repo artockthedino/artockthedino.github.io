@@ -1,0 +1,19 @@
+---
+title: "assignment_make_palindromic_pattern"
+output: html_document
+---
+
+Use this tool: https://artockthedino.github.io/lsys.html
+
+
+Produce a cool image (and submit it here on Canvas) with:
+
+* A starting string that is palindromic. It can just be "A".
+* Use uppercase "A", "B", and "C".
+* For each of those letters, make a PALINDROMIC replacement rule that contains turns ("+" and "-") and all three letters.
+* Use at least 4 iterations.
+* Try different turn angles until you find something that looks cool.
+* Take a screenshot that shows the image **and the rules**. Submit the screenshot here.
+ 
+
+The image should have [BILATERAL SYMMETRY](https://en.wikipedia.org/wiki/Symmetry_in_biology#Bilateral_symmetry) if the starting string and all replacements are palindromes.

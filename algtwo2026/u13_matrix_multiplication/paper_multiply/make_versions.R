@@ -1,7 +1,7 @@
-fn = "a0326_cubic_TEST.Rmd"
+fn = "a0603_multiply_matrices.Rmd"
 shortfn = strsplit(fn,"_")[[1]][1]
-nlow = 300
-nhigh = 301
+nlow = 100
+nhigh = 140
 
 sss44 = "<!DOCTYPE html>
 <html lang='en'>

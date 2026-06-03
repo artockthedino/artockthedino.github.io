@@ -1,0 +1,83 @@
+---
+title: "L-sys pattern with rotational symmetry"
+output: html_document
+---
+
+Use this tool: https://artockthedino.github.io/lsys.html
+
+Produce a cool image (and submit it here on Canvas) with **rotational symmetry**. Make sure the screenshot shows the pattern **and the settings**.
+
+To do this, I recommend trying some of the `Turn_Angle` and `Start_String` combinations listed below. You also need:
+
+* Replacement rules for "A", "B", and "C". Each replacement should contain all three letters and some "+" and "-".
+* At least 4 iterations.
+
+| Turn Angle | Possible Start String |
+|:---:|:---:|
+| 120°| `AAA` |
+| 120°| `A+A+A` |
+| 120°| `A-A-A` |
+| 120°| `[A]+[A]+[A]` |
+| 120°| `[A]-[A]-[A]` |
+| 90° | `AAAA` |
+| 90° | `A+A+A+A` |
+| 90° | `A-A-A-A` |
+| 90° | `A++A++A++A` |
+| 90° | `[A]+[A]+[A]+[A]` |
+| 90° | `[A]-[A]-[A]-[A]` |
+| 90° | `[A]++[A]++[A]++[A]` |
+| 72° or 144° | `AAAAA` |
+| 72° or 144° | `A+A+A+A+A` |
+| 72° or 144° | `A-A-A-A-A` |
+| 72° or 144° | `A++A++A++A++A` |
+| 72° or 144° | `A--A--A--A--A` |
+| 72° or 144° | `[A]+[A]+[A]+[A]+[A]` |
+| 72° or 144° | `[A]-[A]-[A]-[A]-[A]` |
+| 72° or 144° | `[A]++[A]++[A]++[A]++[A]` |
+| 72° or 144° | `[A]--[A]--[A]--[A]--[A]` |
+| 60° | `AAAAAA` |
+| 60° | `A+A+A+A+A+A` |
+| 60° | `A-A-A-A-A-A` |
+| 60° | `A++A++A++A++A++A` |
+| 60° | `A--A--A--A--A--A` |
+| 60° | `A+++A+++A+++A+++A+++A` |
+| 60° | `[A]+[A]+[A]+[A]+[A]+[A]` |
+| 60° | `[A]-[A]-[A]-[A]-[A]-[A]` |
+| 60° | `[A]++[A]++[A]++[A]++[A]++[A]` |
+| 60° | `[A]--[A]--[A]--[A]--[A]--[A]` |
+| 60° | `[A]+++[A]+++[A]+++[A]+++[A]+++[A]` |
+| 45° or 135° | `AAAAAAAA` |
+| 45° or 135° | `A+A+A+A+A+A+A+A` |
+| 45° or 135° | `A-A-A-A-A-A-A-A` |
+| 45° or 135° | `A++A++A++A++A++A++A++A` |
+| 45° or 135° | `A--A--A--A--A--A--A--A` |
+| 45° or 135° | `A+++A+++A+++A+++A+++A+++A+++A` |
+| 45° or 135° | `A---A---A---A---A---A---A---A` |
+| 45° or 135° | `[A]+[A]+[A]+[A]+[A]+[A]+[A]+[A]` |
+| 45° or 135° | `[A]-[A]-[A]-[A]-[A]-[A]-[A]-[A]` |
+| 45° or 135° | `[A]++[A]++[A]++[A]++[A]++[A]++[A]++[A]` |
+| 45° or 135° | `[A]--[A]--[A]--[A]--[A]--[A]--[A]--[A]` |
+| 45° or 135° | `[A]+++[A]+++[A]+++[A]+++[A]+++[A]+++[A]+++[A]` |
+| 45° or 135° | `[A]---[A]---[A]---[A]---[A]---[A]---[A]---[A]` |
+| 40° or 80° or 160° | `AAAAAAAAA` |
+| 40° or 80° or 160° | `A+A+A+A+A+A+A+A+A` |
+| 40° or 80° or 160° | `A-A-A-A-A-A-A-A-A` |
+| 40° or 80° or 160° | `A++A++A++A++A++A++A++A++A` |
+| 40° or 80° or 160° | `A--A--A--A--A--A--A--A--A` |
+| 40° or 80° or 160° | `A+++A+++A+++A+++A+++A+++A+++A+++A` |
+| 40° or 80° or 160° | `A---A---A---A---A---A---A---A---A` |
+| 40° or 80° or 160° | `[A]+[A]+[A]+[A]+[A]+[A]+[A]+[A]+[A]` |
+| 40° or 80° or 160° | `[A]-[A]-[A]-[A]-[A]-[A]-[A]-[A]-[A]` |
+| 40° or 80° or 160° | `[A]++[A]++[A]++[A]++[A]++[A]++[A]++[A]++[A]` |
+| 40° or 80° or 160° | `[A]--[A]--[A]--[A]--[A]--[A]--[A]--[A]--[A]` |
+| 36° or 108° | `AAAAAAAAAA` |
+| 36° or 108° | `A+A+A+A+A+A+A+A+A+A` |
+| 36° or 108° | `A-A-A-A-A-A-A-A-A-A` |
+| 36° or 108° | `A++A++A++A++A++A++A++A++A++A` |
+| 36° or 108° | `A--A--A--A--A--A--A--A--A--A` |
+| 36° or 108° | `[A]+[A]+[A]+[A]+[A]+[A]+[A]+[A]+[A]+[A]` |
+| 36° or 108° | `[A]-[A]-[A]-[A]-[A]-[A]-[A]-[A]-[A]-[A]` |
+| 36° or 108° | `[A]++[A]++[A]++[A]++[A]++[A]++[A]++[A]++[A]++[A]` |
+| 36° or 108° | `[A]--[A]--[A]--[A]--[A]--[A]--[A]--[A]--[A]--[A]` |
+
+

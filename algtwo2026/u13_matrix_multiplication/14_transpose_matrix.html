@@ -11,7 +11,7 @@
 
 
 
-<title>15_2D_rotation_mat_post.knit</title>
+<title>14_transpose_matrix.knit</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -354,65 +354,50 @@ display: none;
 
 <div id="question" class="section level1">
 <h1>Question</h1>
-<p>The <a href="https://en.wikipedia.org/wiki/Rotation_matrix">2D
-rotation matrix</a> is defined below for a counter-clockwise rotation by
-an angle <span class="math inline">\(\theta\)</span> when it is the
-<strong>second operand</strong> in matrix multiplication. (<em>Note:
-wikipedia’s article shows the more standard left operator. I’m opting
-for the right-operator definition for various mysterious
-reasons…</em>)</p>
-<p><span class="math display">\[R = \begin{bmatrix}\cos(\theta) &amp;
-\sin(\theta) \\ -\sin(\theta) &amp; \cos(\theta) \end{bmatrix}
-\]</span></p>
-<p>Let <span class="math inline">\(\theta=5.93\)</span> radians.
-Determine <span class="math inline">\(R\)</span> (approximate decimal
-values).</p>
-<p><span class="math inline">\(R =\)</span></p>
-<table>
-<tbody>
-<tr class="odd">
-<td align="center">##ANSWER1##</td>
-<td align="center">##ANSWER3##</td>
-</tr>
-<tr class="even">
-<td align="center">##ANSWER2##</td>
-<td align="center">##ANSWER4##</td>
-</tr>
-</tbody>
-</table>
+<p>Let matrix <span class="math inline">\(M\)</span> be defined
+below:</p>
+<p><span class="math display">\[M = \begin{bmatrix}
+4 &amp; 2\\
+1 &amp; 5\\
+6 &amp; 3
+\end{bmatrix}\]</span></p>
+<p>Which matrix equals <span class="math inline">\(M^\mathrm{T}\)</span>, the <a href="https://en.wikipedia.org/wiki/Transpose">transpose</a> of <span class="math inline">\(M\)</span>?</p>
+<p><span class="math display">\[A = \begin{bmatrix}
+4 &amp; 1 &amp; 6\\
+2 &amp; 5 &amp; 3
+\end{bmatrix}\]</span> <span class="math display">\[B = \begin{bmatrix}
+4 &amp; 1\\
+6 &amp; 2\\
+5 &amp; 3
+\end{bmatrix}\]</span> <span class="math display">\[C = \begin{bmatrix}
+4 &amp; 6 &amp; 5\\
+1 &amp; 2 &amp; 3
+\end{bmatrix}\]</span> <span class="math display">\[D = \begin{bmatrix}
+4 &amp; 2\\
+1 &amp; 5\\
+6 &amp; 3
+\end{bmatrix}\]</span></p>
 <div id="answerlist" class="section level2">
 <h2>Answerlist</h2>
 <ul>
-<li>-0.94</li>
-<li>-0.35</li>
-<li>0.35</li>
-<li>0.94</li>
-<li>-0.94</li>
-<li>-0.35</li>
-<li>0.35</li>
-<li>0.94</li>
-<li>-0.94</li>
-<li>-0.35</li>
-<li>0.35</li>
-<li>0.94</li>
-<li>-0.94</li>
-<li>-0.35</li>
-<li>0.35</li>
-<li>0.94</li>
+<li>A</li>
+<li>B</li>
+<li>C</li>
+<li>D</li>
 </ul>
 </div>
 </div>
 <div id="solution" class="section level1">
 <h1>Solution</h1>
-<p><span class="math display">\[R = \begin{bmatrix}
-0.94 &amp; -0.35\\
-0.35 &amp; 0.94
-\end{bmatrix}\]</span></p>
+<p>You can use <a href="https://sagecell.sagemath.org/">SageMath</a>.</p>
+<pre><code>M = matrix([[4,2],
+            [1,5],
+            [6,3]])
+print(M.transpose())</code></pre>
 </div>
 <div id="meta-information" class="section level1">
 <h1>Meta-information</h1>
-<p>extype: cloze exclozetype: schoice|schoice|schoice|schoice
-exsolution: 0001|0010|0100|0001 exname: 2D_rotation_matrix</p>
+<p>extype: schoice exsolution: 1000 exname: transpose</p>
 </div>
 
 
