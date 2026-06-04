@@ -6,7 +6,7 @@ print(pag.position())
 pag.PAUSE = 0.8 #wait after each click
 # pyautogui.FAILSAFE = True #KEEP THIS TRUE
 
-file = open("p2_sols.txt", "r")
+file = open("sols.txt", "r")
 lines = file.readlines()
 sols = []
 for line in lines:
@@ -35,7 +35,8 @@ cpos = [A1c_pos,A2c_pos,A3c_pos,A4c_pos]
 Save_pos = pag.Point(711,228)
 
 pag.click(switch_win_pos)
-for i in range(1000):
+time.sleep(0.5)
+for i in range(133,1000):
     ifn = "q{:03d}.png".format(i+1)
     ans = sols[i]
     # ca = ans[0]

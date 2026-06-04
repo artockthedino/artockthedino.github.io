@@ -34,11 +34,31 @@ matpr = function(A){
 ```
 
 
+Below are some (left-multiplicative) transformation matrices. 
+
+\begin{tabular}{c c c c }
+2D rotation & horizontal reflection & vertical reflection & scale \\  
+$\begin{bmatrix}\cos(\theta) & \sin(\theta) \\ -\sin(\theta) & \cos(\theta) \end{bmatrix}$ & $\begin{bmatrix} -1 & 0 \\ 0 & 1 \end{bmatrix}$ & $\begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix}$ & $\begin{bmatrix} k & 0 \\ 0 & k \end{bmatrix}$ \\\\
+swap $x$ and $y$ & horizontal shear & vertical shear & squeeze\\
+$\begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}$ & 
+$\begin{bmatrix} 1 & m \\ 0 & 1 \end{bmatrix}$ &
+$\begin{bmatrix} 1 & 0 \\ m & 1 \end{bmatrix}$ & 
+$\begin{bmatrix} k & 0 \\ 0 & \frac{1}{k} \end{bmatrix}$\\
+\end{tabular}
 
 
+### Example:
+
+Let's start with a triangle with vertices at $(0,0)$ and $(5,0)$ and $(5,5)$. We wish to shear it horizontally by $m=2$, then shear it vertically by $m=4$, then squeeze it by $k=2$, and then rotate by $\theta=`r atan(4/3)/pi*180`^{\circ}$. To find the new coordinates, we could complete the following multiplication.
+
+```{r,echo=F}
+th = atan(4/3)
+```
 
 
+$$\begin{bmatrix}`r cos(th)` & `r sin(th)` \\ `r -sin(th)` & `r cos(th)` \end{bmatrix} \cdot \begin{bmatrix} 2 & 0 \\ 0 & \frac{1}{2} \end{bmatrix} \cdot \begin{bmatrix} 1 & 0 \\ 4 & 1 \end{bmatrix} \cdot \begin{bmatrix} 1 & 2 \\ 0 & 1 \end{bmatrix} \cdot \begin{bmatrix} 0 & 5 & 5 \\ 0 & 0 & 5 \end{bmatrix}$$
 
+Notice, the order seems backward. This is the standard way of representing transformations.
 
 
 

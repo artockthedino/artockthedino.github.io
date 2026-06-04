@@ -5,7 +5,7 @@ header-includes:
 output: pdf_document
 params:
     rseed: 1
-    useseed: false
+    useseed: true
     showsol: true
     titex: "Practice"
 urlcolor: blue
@@ -22,7 +22,7 @@ lwd2 = 1.2
 
 Name: \hspace{4in} Date: \hfill \vspace{3pt} \hrule
 
-## s19 Matrix Exam (`r params$titex` v`r params$rseed`)
+## Practice Matrix Mastery (`r params$titex` v`r params$rseed`)
 
 
 ```{r}
