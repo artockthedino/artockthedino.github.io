@@ -1,8 +1,8 @@
-fn = "practice_matrix_mastery.Rmd"
+fn = "matrix_mastery.Rmd"
 shortfn = strsplit(fn,"_")[[1]][1]
-nlow = 100
-nhigh = 140
-dp = "practice_matrix_mastery/"
+nlow = 600
+nhigh = 640
+dp = "matrix_mastery"
 
 sss44 = "<!DOCTYPE html>
 <html lang='en'>

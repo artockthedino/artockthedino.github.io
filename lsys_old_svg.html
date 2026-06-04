@@ -53,7 +53,7 @@
         <input type="number" id="thickness" value="1" step="0.1">
     </div>
     <button onclick="generate()" style="background: #2ecc71; color:white; font-weight: bold; cursor: pointer; margin-top:10px; border:none;">Generate</button>
-    <button onclick="downloadPNG()">Download PNG</button>
+    <button onclick="downloadSVG()">Download SVG</button>
     <div id="stats"></div>
 </div>
 
@@ -183,75 +183,17 @@ function updateBounds(nx, ny) {
     if (ny < minY) minY = ny; if (ny > maxY) maxY = ny;
 }
 
-function downloadPNG() {
-    const canvas = document.createElement('canvas');
-    canvas.width = 1920*2;
-    canvas.height = 1080*2;
-    const ctx = canvas.getContext('2d');
-
+function downloadSVG() {
+    const svg = document.getElementById('svg');
     const bgColor = document.getElementById('bgColor').value;
-    const strokeColor = document.getElementById('strokeColor').value;
-    const thickness = parseFloat(document.getElementById('thickness').value);
-    
-    // Background
-    ctx.fillStyle = bgColor;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    // Right side: Pattern (1000x1000)
-    const patternBoxSize = 1040*2;
-    const patternOffsetX = canvas.width/2-patternBoxSize/2 ; //1800; //900 + (1020 - patternBoxSize) / 2;
-    const patternOffsetY = (1080*2 - patternBoxSize) / 2;
-
-    const width = maxX - minX, height = maxY - minY;
-    const size = Math.max(width, height) || 10;
-    const centerX = minX + width / 2, centerY = minY + height / 2;
-    const padding = size * 0.05 + 2;
-    const finalSize = size + padding * 2;
-    const scale = patternBoxSize / finalSize;
-
-    ctx.save();
-    ctx.translate(patternOffsetX, patternOffsetY);
-    ctx.scale(scale, scale);
-    ctx.translate(-(centerX - finalSize / 2), -(centerY - finalSize / 2));
-
-    ctx.strokeStyle = strokeColor;
-    ctx.lineWidth = thickness;
-    ctx.lineCap = 'butt';
-    ctx.lineJoin = 'round';
-
-    const path = new Path2D(pathSegments.join(' '));
-    ctx.stroke(path);
-    ctx.restore();
-
-    // Left side: Parameters
-    ctx.fillStyle = strokeColor; 
-    ctx.font = '18px monospace';
-    
-    const lines = [
-        `Lindenmayer System`,
-        `===============`,
-        `Axiom: ${document.getElementById('axiom').value}`,
-        `Iterations: ${document.getElementById('iters').value}`,
-        `Turn Angle: ${document.getElementById('angle').value}°`,
-        `Start Direction: ${document.getElementById('startAngle').value}°`,
-        `Thickness: ${thickness}`,
-        ``,
-        `Rules:`
-    ];
-    document.getElementById('rules').value.split('\n').forEach(r => {
-        if(r.trim()) lines.push(`  ${r.trim()}`);
-    });
-
-    let currentY = 100;
-    lines.forEach(line => {
-        ctx.fillText(line.length > 70 ? line.substring(0, 67) + "..." : line, canvas.width/2+patternBoxSize/2+60, currentY);
-        currentY += 35;
-    });
-
-    const link = document.createElement('a');
-    link.download = 'lsystem.png';
-    link.href = canvas.toDataURL('image/png');
-    link.click();
+    const vb = svg.getAttribute('viewBox');
+    const bgRect = `<rect x="${vb.split(' ')[0]}" y="${vb.split(' ')[1]}" width="${vb.split(' ')[2]}" height="${vb.split(' ')[3]}" fill="${bgColor}" />`;
+    const fullSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${vb}">${bgRect}${svg.innerHTML}</svg>`;
+    const blob = new Blob([fullSvg], {type: "image/svg+xml"});
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "lsystem.svg";
+    a.click();
 }
 
 generate();
