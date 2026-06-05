@@ -6,54 +6,56 @@
     <style>
         body { font-family: sans-serif; margin: 20px; display: flex; gap: 20px; height: 95vh; }
         #controls { width: 320px; display: flex; flex-direction: column; gap: 8px; overflow-y: auto; padding-right: 10px; flex-shrink: 0; }
-        input, textarea, button { width: 100%; box-sizing: border-box; padding: 6px; border: 1px solid #ccc; border-radius: 4px; }
-        #output { flex-grow: 1; border: 1px solid #ccc; background: #eee; display: flex; justify-content: center; align-items: center; overflow: hidden; }
-        svg { width: 100%; height: 100%; display: block; }
-        label { font-weight: bold; font-size: 0.85em; margin-top: 5px; color: #444; }
-        .row { display: flex; gap: 5px; align-items: center; }
-        .row > * { flex: 1; }
-        #stats { font-size: 0.8em; color: #666; margin-top: 10px; }
+        input, textarea, button { width: 100%; box-sizing: border-box; }
+        textarea { height: 90px; font-family: monospace; }
+        #output { flex: 1; min-width: 0; }
+        #svg { width: 100%; height: 100%; background: white; border: 1px solid #ccc; }
+        .row { display: flex; gap: 8px; }
+        .row > button { flex: 1; }
+        label { font-weight: bold; margin-top: 6px; }
+        #stats { font-size: 12px; color: #555; }
+        details { background: #f7f7f7; padding: 10px; border-radius: 4px; cursor: pointer; }
     </style>
 </head>
 <body>
-
 <div id="controls">
-    <h3 style="margin-top:0">L-System Generator</h3>
-    <details style="font-size: 0.8em; background: #f9f9f9; padding: 10px; border-radius: 4px; cursor: pointer;">
-    <summary><b>View Instructions</b></summary>
-    <div style="margin-top: 10px;">
-        See <a href="https://en.wikipedia.org/wiki/L-system">L-system on wikipedia</a> 
-        <p><b>Commands:</b></p>
-        <ul style="padding-left: 20px;">
-            <li><b>A-L:</b> Move and Draw</li>
-            <li><b>M-Z:</b> Move only (No Draw)</li>
-            <li><b>+ / -:</b> Turn Right/Left</li>
-            <li><b>[ :</b> Save Position (Branch Start)</li>
-            <li><b>] :</b> Return to Position (Branch End)</li>
-        </ul>
-        <p><b>Tips:</b> High iterations will crash your browser.</p>
-        <p>Lowercase letters can be used for replacements, but will not cause any drawing.</p>
-    </div>
-</details>
+    <details>
+        <summary><b>View Instructions</b></summary>
+        <div style="margin-top: 10px;">
+            See <a href="https://en.wikipedia.org/wiki/L-system">L-system on wikipedia</a>
+            <p><b>Commands:</b></p>
+            <ul style="padding-left: 20px;">
+                <li><b>A-L:</b> Move and Draw</li>
+                <li><b>M-Z:</b> Move only (No Draw)</li>
+                <li><b>+ / -:</b> Turn Right/Left</li>
+                <li><b>[ :</b> Save Position (Branch Start)</li>
+                <li><b>] :</b> Return to Position (Branch End)</li>
+            </ul>
+            <p><b>Tips:</b> High iterations will crash your browser.</p>
+            <p>Lowercase letters can be used for replacements, but will not cause any drawing.</p>
+        </div>
+    </details>
     <label>Axiom (Start String)</label>
     <input id="axiom" value="F">
-    <label>Rules (Char > Result)</label>
-    <textarea id="rules" rows="5">F > G-F-G&#10;G > F+G+F</textarea>
+    <label>Rules</label>
+    <textarea id="rules">F > F+F--F+G\nG > FFG-GFF</textarea>
     <label>Iterations</label>
-    <input type="number" id="iters" value="4">
-    <div class="row"><label>Turn Angle</label><label>Start Angle</label></div>
-    <div class="row">
-        <input type="number" id="angle" value="60">
-        <input type="number" id="startAngle" value="0">
-    </div>
-    <label>Appearance (Stroke / BG / Width)</label>
-    <div class="row">
-        <input type="color" id="strokeColor" value="#000000">
-        <input type="color" id="bgColor" value="#ffffff">
-        <input type="number" id="thickness" value="1" step="0.1">
-    </div>
+    <input id="iters" type="number" value="4" min="0" max="10">
+    <label>Angle</label>
+    <input id="angle" type="number" value="60">
+    <label>Start Angle</label>
+    <input id="startAngle" type="number" value="0">
+    <label>Stroke Color</label>
+    <input id="strokeColor" type="color" value="#000000">
+    <label>Background Color</label>
+    <input id="bgColor" type="color" value="#ffffff">
+    <label>Thickness</label>
+    <input id="thickness" type="number" value="1" min="1" max="20">
     <button onclick="generate()" style="background: #2ecc71; color:white; font-weight: bold; cursor: pointer; margin-top:10px; border:none;">Generate</button>
-    <button onclick="downloadPNG()">Get PNG and copy parameters</button>
+    <div class="row" style="margin-top: 0;">
+        <button onclick="downloadPNG()">Download PNG</button>
+        <button onclick="loadPNG()">Load PNG</button>
+    </div>
     <div id="stats"></div>
 </div>
 
@@ -77,19 +79,16 @@ function exportConfig() {
         bg: document.getElementById('bgColor').value,
         thickness: document.getElementById('thickness').value
     };
-    const json = JSON.stringify(config, null, 2);
-    document.getElementById('configBox').value = json;
-    navigator.clipboard.writeText(json);
-    alert("Config copied to clipboard!");
+    return JSON.stringify(config);
 }
 
-function importConfig() {
+function loadConfig(jsonText) {
     try {
-        const config = JSON.parse(document.getElementById('configBox').value);
-        document.getElementById('axiom').value = config.axiom || "F";
-        document.getElementById('rules').value = config.rules || "";
-        document.getElementById('iters').value = config.iters || 1;
-        document.getElementById('angle').value = config.angle || 90;
+        const config = JSON.parse(jsonText);
+        document.getElementById('axiom').value = config.axiom || 'F';
+        document.getElementById('rules').value = config.rules || 'F > F+GF--FG+F\nG > GG-F-GG';
+        document.getElementById('iters').value = config.iters || 0;
+        document.getElementById('angle').value = config.angle || 60;
         document.getElementById('startAngle').value = config.startAngle || 0;
         document.getElementById('strokeColor').value = config.stroke || "#000000";
         document.getElementById('bgColor').value = config.bg || "#ffffff";
@@ -99,45 +98,40 @@ function importConfig() {
         alert("Invalid JSON format.");
     }
 }
+
 function generate() {
     const axiom = document.getElementById('axiom').value;
     const rulesText = document.getElementById('rules').value;
     const iters = parseInt(document.getElementById('iters').value) || 0;
     angleStep = parseFloat(document.getElementById('angle').value) * Math.PI / 180;
     angle = parseFloat(document.getElementById('startAngle').value) * Math.PI / 180;
-    
+
     rules = {};
     rulesText.split('\n').forEach(line => {
-        const parts = line.split('>');
-        if (parts.length === 2) rules[parts[0].trim()] = parts[1].trim();
+        const [from, to] = line.split('=');
+        if (from && to) rules[from.trim()] = to.trim();
     });
 
-    // Reset turtle and bounds
     x = 0; y = 0;
-    minX = 0; minY = 0; maxX = 0; maxY = 0;
-    pathSegments = [`M 0 0`];
+    minX = maxX = x; minY = maxY = y;
+    pathSegments = [`M ${x.toFixed(2)} ${y.toFixed(2)}`];
     stack = [];
 
-    // Recursive walk (avoids memory-heavy string building)
-    for (let char of axiom) {
-        walk(char, iters);
-    }
+    walk(axiom, iters);
 
-    const svg = document.getElementById('svg');
     const pathEl = document.getElementById('path');
-    
-    svg.style.backgroundColor = document.getElementById('bgColor').value;
+    const svg = document.getElementById('svg');
+    svg.style.background = document.getElementById('bgColor').value;
     pathEl.setAttribute('d', pathSegments.join(' '));
     pathEl.setAttribute('stroke', document.getElementById('strokeColor').value);
     pathEl.setAttribute('stroke-width', document.getElementById('thickness').value);
-    
-    // 1:1 Aspect Ratio Scaling
+
     const width = maxX - minX, height = maxY - minY;
     const size = Math.max(width, height) || 10;
     const centerX = minX + width / 2, centerY = minY + height / 2;
     const padding = size * 0.05 + 2;
     const finalSize = size + padding * 2;
-    
+
     svg.setAttribute('viewBox', `${centerX - finalSize/2} ${centerY - finalSize/2} ${finalSize} ${finalSize}`);
     document.getElementById('stats').innerText = `Path steps: ${pathSegments.length.toLocaleString()}`;
 }
@@ -153,12 +147,12 @@ function walk(char, level) {
 }
 
 function execute(char) {
-    if (char >= 'A' && char <= 'L') { // Draw
+    if (char >= 'A' && char <= 'L') {
         x += Math.cos(angle) * 10;
         y += Math.sin(angle) * 10;
         pathSegments.push(`L ${x.toFixed(2)} ${y.toFixed(2)}`);
         updateBounds(x, y);
-    } else if (char >= 'M' && char <= 'Z') { // Move
+    } else if (char >= 'M' && char <= 'Z') {
         x += Math.cos(angle) * 10;
         y += Math.sin(angle) * 10;
         pathSegments.push(`M ${x.toFixed(2)} ${y.toFixed(2)}`);
@@ -168,7 +162,7 @@ function execute(char) {
     } else if (char === '-') {
         angle -= angleStep;
     } else if (char === '[') {
-        stack.push({x, y, angle});
+        stack.push({ x, y, angle });
     } else if (char === ']') {
         const s = stack.pop();
         if (s) {
@@ -186,32 +180,34 @@ function updateBounds(nx, ny) {
 function downloadPNG() {
     generate()
     const canvas = document.createElement('canvas');
-    canvas.width = 1080*2;
+    canvas.width = 1920*2;
     canvas.height = 1080*2;
     const ctx = canvas.getContext('2d');
 
     const bgColor = document.getElementById('bgColor').value;
     const strokeColor = document.getElementById('strokeColor').value;
     const thickness = parseFloat(document.getElementById('thickness').value);
-    
-    // Background
+
     ctx.fillStyle = bgColor;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Right side: Pattern (1000x1000)
-    const patternBoxSize = 1040*2;
-    const patternOffsetX = (1080*2 - patternBoxSize) / 2; //canvas.width/2-patternBoxSize/2 ; //1800; //900 + (1020 - patternBoxSize) / 2;
-    const patternOffsetY = (1080*2 - patternBoxSize) / 2;
+    const configJson = exportConfig();
+
+    const patternBoxSize = 1080*2-100;
+    const patternX = 80;
+    const patternY = 80;
+    const patternW = 1920 - patternX * 2;
+    const patternH = 1080 - patternY * 2;
 
     const width = maxX - minX, height = maxY - minY;
     const size = Math.max(width, height) || 10;
     const centerX = minX + width / 2, centerY = minY + height / 2;
     const padding = size * 0.05 + 2;
     const finalSize = size + padding * 2;
-    const scale = patternBoxSize / finalSize;
 
     ctx.save();
-    ctx.translate(patternOffsetX, patternOffsetY);
+    const scale = Math.min(patternW, patternH) / finalSize;
+    ctx.translate(patternX + patternW / 2, patternY + patternH / 2);
     ctx.scale(scale, scale);
     ctx.translate(-(centerX - finalSize / 2), -(centerY - finalSize / 2));
 
@@ -224,10 +220,9 @@ function downloadPNG() {
     ctx.stroke(path);
     ctx.restore();
 
-    // Left side: Parameters
-    ctx.fillStyle = strokeColor; 
+    ctx.fillStyle = strokeColor;
     ctx.font = '18px monospace';
-    
+
     const lines = [
         `Lindenmayer System`,
         `===============`,
@@ -236,25 +231,47 @@ function downloadPNG() {
         `Turn Angle: ${document.getElementById('angle').value}°`,
         `Start Direction: ${document.getElementById('startAngle').value}°`,
         `Thickness: ${thickness}`,
-        ``,
-        `Rules:`
+        ``
     ];
-    document.getElementById('rules').value.split('\n').forEach(r => {
-        if(r.trim()) lines.push(`  ${r.trim()}`);
+
+    const rulesLines = document.getElementById('rules').value.split('\n').filter(r => r.trim());
+    lines.push(`Rules:`);
+    rulesLines.forEach(r => lines.push(`  ${r.trim()}`));
+
+    const leftX = patternBoxSize + 100;
+    let currentY = canvas.height / 2 - (lines.length * 18 * 0.9) / 2;
+    lines.forEach(line => {
+        ctx.fillText(line, leftX, currentY);
+        currentY += 24;
     });
 
-    navigator.clipboard.writeText(lines.join('\n'));
-    
-    // let currentY = 1080-35*5;
-    // lines.forEach(line => {
-    //    ctx.fillText(line.length > 120 ? line.substring(0, 117) + "..." : line, patternBoxSize+100, currentY);
-    //    currentY += 35;
-    //});
-
+    const meta = canvas.toDataURL('image/png');
     const link = document.createElement('a');
     link.download = 'lsystem.png';
-    link.href = canvas.toDataURL('image/png');
+    link.href = meta;
     link.click();
+}
+
+function loadPNG() {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/png';
+    input.onchange = async () => {
+        const file = input.files && input.files[0];
+        if (!file) return;
+        try {
+            const text = await file.text();
+            const match = text.match(/<metadata[^>]*>([\s\S]*?)<\/metadata>/i);
+            if (match && match[1].trim()) {
+                loadConfig(match[1].trim());
+            } else {
+                alert('No embedded metadata found in PNG.');
+            }
+        } catch (e) {
+            alert('Could not read PNG metadata.');
+        }
+    };
+    input.click();
 }
 
 generate();
