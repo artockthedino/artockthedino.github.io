@@ -147,7 +147,6 @@ function generate() {
         `Axiom: ${document.getElementById('axiom').value}`,
         `Iterations: ${document.getElementById('iters').value}`,
         `Turn Angle: ${document.getElementById('angle').value}°`,
-        `Start Direction: ${document.getElementById('startAngle').value}°`,
         ``,
         `Rules:`
     ];
@@ -197,80 +196,6 @@ function execute(char) {
 function updateBounds(nx, ny) {
     if (nx < minX) minX = nx; if (nx > maxX) maxX = nx;
     if (ny < minY) minY = ny; if (ny > maxY) maxY = ny;
-}
-
-function downloadPNG() {
-    generate();
-    const canvas = document.createElement('canvas');
-    canvas.width = 1080*2;
-    canvas.height = 1080*2;
-    const ctx = canvas.getContext('2d');
-
-    const bgColor = document.getElementById('bgColor').value;
-    const strokeColor = document.getElementById('strokeColor').value;
-    const thickness = parseFloat(document.getElementById('thickness').value);
-    
-    // Background
-    ctx.fillStyle = bgColor;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    // Right side: Pattern (1000x1000)
-    const patternBoxSize = 1040*2;
-    const patternOffsetX = (1080*2 - patternBoxSize) / 2; //canvas.width/2-patternBoxSize/2 ; //1800; //900 + (1020 - patternBoxSize) / 2;
-    const patternOffsetY = (1080*2 - patternBoxSize) / 2;
-
-    const width = maxX - minX, height = maxY - minY;
-    const size = Math.max(width, height) || 10;
-    const centerX = minX + width / 2, centerY = minY + height / 2;
-    const padding = size * 0.05 + 2;
-    const finalSize = size + padding * 2;
-    const scale = patternBoxSize / finalSize;
-
-    ctx.save();
-    ctx.translate(patternOffsetX, patternOffsetY);
-    ctx.scale(scale, scale);
-    ctx.translate(-(centerX - finalSize / 2), -(centerY - finalSize / 2));
-
-    ctx.strokeStyle = strokeColor;
-    ctx.lineWidth = thickness;
-    ctx.lineCap = 'butt';
-    ctx.lineJoin = 'round';
-
-    const path = new Path2D(pathSegments.join(' '));
-    ctx.stroke(path);
-    ctx.restore();
-
-    // Left side: Parameters
-    ctx.fillStyle = strokeColor; 
-    ctx.font = '18px monospace';
-    
-    const lines = [
-        `Lindenmayer System`,
-        `===============`,
-        `Axiom: ${document.getElementById('axiom').value}`,
-        `Iterations: ${document.getElementById('iters').value}`,
-        `Turn Angle: ${document.getElementById('angle').value}°`,
-        `Start Direction: ${document.getElementById('startAngle').value}°`,
-        `Thickness: ${thickness}`,
-        ``,
-        `Rules:`
-    ];
-    document.getElementById('rules').value.split('\n').forEach(r => {
-        if(r.trim()) lines.push(`  ${r.trim()}`);
-    });
-
-    navigator.clipboard.writeText(lines.join('\n'));
-    
-    // let currentY = 1080-35*5;
-    // lines.forEach(line => {
-    //    ctx.fillText(line.length > 120 ? line.substring(0, 117) + "..." : line, patternBoxSize+100, currentY);
-    //    currentY += 35;
-    //});
-
-    const link = document.createElement('a');
-    link.download = 'lsystem.png';
-    link.href = canvas.toDataURL('image/png');
-    link.click();
 }
 
 generate();
